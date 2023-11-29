@@ -1,0 +1,8 @@
+INHERIT: ../base.yml
+site_name: Digital Hub - Dev
+site_url: http://docs/dev
+
+nav:
+  - 'index.md'
+  - Tasks:
+    - 'tasks/rm-custom-views.md'
