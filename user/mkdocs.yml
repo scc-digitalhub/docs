@@ -3,37 +3,42 @@ site_name: Digital Hub - User
 site_url: http://docs/user
 
 nav:
-  - 'index.md'
-  - 'architecture.md'
-  - 'installation.md'
-  - 'core.md'
+  - "index.md"
+  - "architecture.md"
+  - "installation.md"
+  - "core.md"
   - Components:
-    - 'components/deploying-components.md'
-    - 'components/dashboard.md'
-    - 'components/jupyter.md'
-    - 'components/dremio.md'
-    - 'components/mlrun.md'
-    - 'components/sqlpad.md'
-    - 'components/grafana.md'
-    - 'components/vscode.md'
-    - 'components/resourcemanager.md'
+      - "components/deploying-components.md"
+      - "components/dashboard.md"
+      - "components/jupyter.md"
+      - "components/dremio.md"
+      - "components/mlrun.md"
+      - "components/sqlpad.md"
+      - "components/grafana.md"
+      - "components/vscode.md"
+      - "components/resourcemanager.md"
   - Tasks:
-    - 'tasks/projects.md'
-    - 'tasks/workspaces.md'
-    - 'tasks/data.md'
-    - 'tasks/git.md'
+      - "tasks/projects.md"
+      - "tasks/workspaces.md"
+      - "tasks/data.md"
+      - "tasks/git.md"
   - Scenarios:
-    - Extract-Transform-Load:
-      - 'scenarios/etl/intro.md'
-      - 'scenarios/etl/collect.md'
-      - 'scenarios/etl/process.md'
-      - 'scenarios/etl/pipeline.md'
-      - 'scenarios/etl/expose.md'
-    - ML model training:
-      - 'scenarios/ml/intro.md'
-      - 'scenarios/ml/training.md'
-      - 'scenarios/ml/deploy.md'
-    - DBT transformation:
-      - 'scenarios/etl-core/scenario.md'
-    - Nefertem validation:
-      - 'scenarios/validation/scenario.md'
+      - Extract-Transform-Load:
+          - "scenarios/etl/intro.md"
+          - "scenarios/etl/collect.md"
+          - "scenarios/etl/process.md"
+          - "scenarios/etl/pipeline.md"
+          - "scenarios/etl/expose.md"
+      - ML model training:
+          - "scenarios/ml/intro.md"
+          - "scenarios/ml/training.md"
+          - "scenarios/ml/deploy.md"
+      - DBT transformation:
+          - "scenarios/etl-core/scenario.md"
+      - Nefertem validation:
+          - "scenarios/validation/scenario.md"
+  - Runtimes documentation:
+      - DBT:
+          - "runtimes/dbt.md"
+      - Nefertem:
+          - "runtimes/nefertem.md"
