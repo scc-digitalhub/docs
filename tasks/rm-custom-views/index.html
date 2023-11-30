@@ -19,7 +19,7 @@
     
     
       
-        <title>CRM - Custom views - Digital Hub - Dev</title>
+        <title>KRM - Custom views - Digital Hub - Dev</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#crm-custom-views" class="md-skip">
+        <a href="#krm-custom-views" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CRM - Custom views
+              KRM - Custom views
             
           </span>
         </div>
@@ -272,12 +272,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          CRM - Custom views
+          KRM - Custom views
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        CRM - Custom views
+        KRM - Custom views
       </a>
       
         
@@ -379,8 +379,8 @@
                   
 
 
-<h1 id="crm-custom-views">CRM - Custom views</h1>
-<p>In <a href="/digitalhub/components/resourcemanager">Custom Resource Manager</a>, it is possible to customize the pages for creating, listing, inspecting and editing custom resources of a specific kind. As it involves writing React code, and using the <a href="https://marmelab.com/react-admin/documentation.html">React-admin</a> library, familiarity with these technologies may be required, depending on the desired level of customization.</p>
+<h1 id="krm-custom-views">KRM - Custom views</h1>
+<p>In Kubernetes Resource Manager, it is possible to customize the pages for creating, listing, inspecting and editing custom resources of a specific kind. As it involves writing React code, and using the <a href="https://marmelab.com/react-admin/documentation.html">React-admin</a> library, familiarity with these technologies may be required, depending on the desired level of customization.</p>
 <h2 id="create-a-custom-view">Create a custom view</h2>
 <p>Create a new file, under <code>frontend/src/resources</code>, containing the name of the <em>custom resource definition</em> (<em>CRD</em>), in the format <code>cr.&lt;CRD&gt;.ts</code>. For example, if the CRD is <code>myresource.example.com</code>, the filename will be <code>cr.myresource.example.com.tsx</code>.</p>
 <p>You are encouraged to use other files within the path as reference on how to write this file. You are expected to define 4 functions, one for each of these actions: <em>Create</em>, <em>List</em>, <em>Show</em>, <em>Edit</em>. Each would have this structure:
