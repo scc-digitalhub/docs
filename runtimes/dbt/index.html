@@ -8,14 +8,16 @@
       
       
       
-        <link rel="canonical" href="http://scc-digitalhub.github.io/docs/user/runtimes/dbt/">
+        <link rel="canonical" href="http://docs/user/runtimes/dbt/">
       
       
         <link rel="prev" href="../../scenarios/validation/scenario/">
       
       
+        <link rel="next" href="../nefertem/">
+      
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.20">
     
     
       
@@ -994,6 +996,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#runtime-workflow" class="md-nav__link">
+    Runtime workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#snippet-example" class="md-nav__link">
     Snippet example
   </a>
@@ -1051,8 +1060,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../nefertem.md" class="md-nav__link">
-        None
+      <a href="../nefertem/" class="md-nav__link">
+        Nefertem runtime
       </a>
     </li>
   
@@ -1146,6 +1155,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#runtime-workflow" class="md-nav__link">
+    Runtime workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#snippet-example" class="md-nav__link">
     Snippet example
   </a>
@@ -1229,11 +1245,25 @@ The runtime introduces a function of kind <code>dbt</code> and a task of kind <c
     <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dataitems&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;my_output_table&quot;</span><span class="p">]},</span>
 <span class="p">)</span>
 </code></pre></div>
+<h2 id="runtime-workflow">Runtime workflow</h2>
+<p>The DBT runtime execution workflow is the following:</p>
+<ol>
+<li>The runtime fetches the input dataitems by downloading them locally. The runtime tries to get the file from the <code>path</code> attribute. At the moment, we support the following path types:<ul>
+<li><code>http(s)://&lt;url&gt;</code></li>
+<li><code>s3://&lt;bucket&gt;/&lt;path&gt;</code></li>
+<li><code>sql://&lt;database&gt;(/&lt;schema-optional&gt;)/&lt;table&gt;</code></li>
+<li><code>&lt;local-path&gt;</code></li>
+</ul>
+</li>
+<li>The runtime inserts the data into a temporary versioned table in the default postgres database. These tables are named <code>&lt;dataitem-name&gt;_v&lt;dataitem-id&gt;</code>, and will be deleted at the end of the execution.</li>
+<li>The runtime creates all the necessary DBT artifacts (profiles.yml, dbt_project.yml, etc.) and runs the DBT transformation.</li>
+<li>The runtime stores the output table into the default postgres database as result of the DBT execution. The table name is built from the <code>outputs</code> parameter. Then, the runtime creates a dataitem with the <code>outputs</code> name parameter and saves it into the Core backend. You can retrieve the dataitem with the <code>run.get_dataitem()</code> method. In general, the output table is named <code>&lt;dataitem-output-name&gt;_v&lt;dataitem-output-id&gt;</code> and is stored in the default postgres database passed to the runtime via env variable.</li>
+</ol>
 <h2 id="snippet-example">Snippet example</h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub_core</span> <span class="k">as</span> <span class="nn">dhcore</span>
 
 <span class="c1"># Get or create project</span>
-<span class="n">project</span> <span class="o">=</span> <span class="n">dhcore</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;proj&quot;</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="n">loc</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dhcore</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;project-dbt&quot;</span><span class="p">)</span>
 
 <span class="c1"># Create new input dataitem</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://media.githubusercontent.com/media/datablist/sample-csv-files/main/files/organizations/organizations-1000.csv&quot;</span>
@@ -1243,13 +1273,13 @@ The runtime introduces a function of kind <code>dbt</code> and a task of kind <c
 
 <span class="c1"># Create new function</span>
 <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">WITH table AS (</span>
+<span class="s2">WITH tab AS (</span>
 <span class="s2">    SELECT  *</span>
 <span class="s2">    FROM    {{ ref(&#39;organizations&#39;) }}</span>
 <span class="s2">)</span>
 <span class="s2">SELECT  *</span>
-<span class="s2">FROM    table</span>
-<span class="s2">WHERE   table.&quot;Country&quot; = &#39;Algeria&#39;</span>
+<span class="s2">FROM    tab</span>
+<span class="s2">WHERE   tab.&quot;Country&quot; = &#39;Algeria&#39;</span>
 <span class="s2">&quot;&quot;&quot;</span>
 <span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;algerian-organizations&quot;</span><span class="p">,</span>
                                 <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dbt&quot;</span><span class="p">,</span>

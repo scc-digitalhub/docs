@@ -8,12 +8,14 @@
       
       
       
-        <link rel="canonical" href="http://scc-digitalhub.github.io/docs/user/runtimes/nfertem/">
+        <link rel="canonical" href="http://docs/user/runtimes/nefertem/">
       
+      
+        <link rel="prev" href="../dbt/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.20">
     
     
       
@@ -851,16 +853,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-        
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
       
       
       
@@ -869,7 +871,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_8">
           <span class="md-nav__icon md-icon"></span>
           Runtimes documentation
@@ -930,16 +932,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-        
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" checked>
       
       
       
@@ -948,7 +950,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_8_2">
           <span class="md-nav__icon md-icon"></span>
           Nefertem
@@ -959,11 +961,127 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../nefertem.md" class="md-nav__link">
-        None
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Nefertem runtime
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Nefertem runtime
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    Function
+  </a>
+  
+    <nav class="md-nav" aria-label="Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nefertem-function-parameters" class="md-nav__link">
+    Nefertem function parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
+    Task
+  </a>
+  
+    <nav class="md-nav" aria-label="Task">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validate-task-parameters" class="md-nav__link">
+    Validate task parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profile-task-parameters" class="md-nav__link">
+    Profile task parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infer-task-parameters" class="md-nav__link">
+    Infer task parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metric-task-parameters" class="md-nav__link">
+    Metric task parameters
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-workflow" class="md-nav__link">
+    Runtime workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#snippet-example" class="md-nav__link">
+    Snippet example
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1073,6 +1191,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-workflow" class="md-nav__link">
+    Runtime workflow
+  </a>
   
 </li>
       
@@ -1218,11 +1343,49 @@ The runtime introduces a function of kind <code>neferetm</code> and four task of
                    <span class="n">run_config</span><span class="o">=</span><span class="n">nefertem_run_config</span><span class="p">,</span>
                    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dataitems&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;organizations&quot;</span><span class="p">]})</span>
 </code></pre></div>
+<h2 id="runtime-workflow">Runtime workflow</h2>
+<p>The Nefertem runtime execution workflow is the following:</p>
+<ol>
+<li>The runtime fetches the input dataitems by downloading them locally. The runtime tries to get the file from the <code>path</code> attribute. At the moment, we support the following path types:<ul>
+<li><code>http(s)://&lt;url&gt;</code></li>
+<li><code>s3://&lt;bucket&gt;/&lt;path&gt;</code></li>
+<li><code>sql://&lt;database&gt;(/&lt;schema-optional&gt;)/&lt;table&gt;</code></li>
+<li><code>&lt;local-path&gt;</code></li>
+</ul>
+</li>
+<li>The runtime creates a Nefertem <code>DataResource</code> from the input dataitem. The <code>DataResource</code> is a Nefertem object that represents the data to be validated, profiled, inferred or measured.</li>
+<li>The runtime then create a Nefertem <code>run</code> and execute it. The Nefertem <code>run</code> executes three methods based on the <em>task</em>, and produces a <code>run_metadata</code> report file:</li>
+<li>If the task is <code>validate</code>:<ul>
+<li><code>run.validate()</code></li>
+<li><code>run.log_report()</code> -&gt; produces a <code>NefertemReport</code></li>
+<li><code>run.persist_report()</code> -&gt; produces one or more validation framework reports</li>
+</ul>
+</li>
+<li>If the task is <code>profile</code>:<ul>
+<li><code>run.profile()</code></li>
+<li><code>run.log_profile()</code> -&gt; produces a <code>NefertemProfile</code></li>
+<li><code>run.persist_profile()</code> -&gt; produces one or more profiling framework reports</li>
+</ul>
+</li>
+<li>If the task is <code>infer</code>:<ul>
+<li><code>run.infer()</code></li>
+<li><code>run.log_schema()</code> -&gt; produces a <code>NefertemSchema</code></li>
+<li><code>run.persist_schema()</code> -&gt; produces one or more inference framework reports</li>
+</ul>
+</li>
+<li>If the task is <code>metric</code>:<ul>
+<li><code>run.metric()</code></li>
+<li><code>run.log_metric()</code> -&gt; produces a <code>NefertemMetricReport</code></li>
+<li><code>run.persist_metric()</code> -&gt; produces one or more metric framework reports</li>
+</ul>
+</li>
+<li>The runtime then creates an <code>Artifact</code> object for each file produced by Nefertem and saves it into the <em>Core backend</em>. It then uploads all the files to the default <em>s3</em> storage provided. You can extract the path where the files are uploaded with the <code>run.get_artifacts()</code> method. In general, the path is <code>s3://&lt;bucket-from-env&gt;/&lt;project-name&gt;/artifacts/ntruns/&lt;nefertem-run-uuid&gt;/&lt;file&gt;</code>.</li>
+</ol>
 <h2 id="snippet-example">Snippet example</h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub_core</span> <span class="k">as</span> <span class="nn">dhcore</span>
 
 <span class="c1"># Get or create project</span>
-<span class="n">project</span> <span class="o">=</span> <span class="n">dhcore</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;nefertem-project&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dhcore</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;project-nefertem&quot;</span><span class="p">)</span>
 
 <span class="c1"># Create dataitem</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://media.githubusercontent.com/media/datablist/sample-csv-files/main/files/organizations/organizations-1000.csv&quot;</span>
@@ -1242,7 +1405,7 @@ The runtime introduces a function of kind <code>neferetm</code> and four task of
   <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
   <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">5</span>
 <span class="p">}</span>
-<span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;nefertem-function&quot;</span><span class="p">,</span>
+<span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;function-nefertem&quot;</span><span class="p">,</span>
                                 <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;nefertem&quot;</span><span class="p">,</span>
                                 <span class="n">constraints</span><span class="o">=</span><span class="p">[</span><span class="n">constraint</span><span class="p">])</span>
 

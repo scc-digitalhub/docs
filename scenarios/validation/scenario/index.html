@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="http://scc-digitalhub.github.io/docs/user/scenarios/validation/scenario/">
+        <link rel="canonical" href="http://docs/user/scenarios/validation/scenario/">
       
       
         <link rel="prev" href="../../etl-core/scenario/">
@@ -17,7 +17,7 @@
         <link rel="next" href="../../../runtimes/dbt/">
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.20">
     
     
       
@@ -1041,8 +1041,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../runtimes/nefertem.md" class="md-nav__link">
-        None
+      <a href="../../../runtimes/nefertem/" class="md-nav__link">
+        Nefertem runtime
       </a>
     </li>
   
@@ -1148,69 +1148,88 @@
 <h1 id="validation-with-digitalhub-core-and-nefertem-scenario-introduction">Validation with digitalhub-core and Nefertem scenario introduction</h1>
 <p>This scenario demonstrates how to use digitalhub-core and Nefertem to validate data.</p>
 <p>Access Jupyter from your Coder instance and create a new notebook. If a Jupyter workspace isn't already available, create one from its template.</p>
-<p>Open a new notebook using the digitalhub-core kernel.</p>
+<p>Open a new notebook using the <strong><code>digitalhub-core</code></strong> kernel.</p>
 <p>We'll now start writing code. Copy the snippets of code from here and paste them in your notebook, then execute them with <em>Shift+Enter</em>. After running, Jupyter will create a new code cell.</p>
 <p>The notebook file covering this scenario, as well as files for individual functions, are available in the <code>documentation/examples/validation</code>path within the repository of this documentation.</p>
 <h2 id="setup">Setup</h2>
 <p>First, we initialize our environment and create a project.</p>
-<p>Import required libraries:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span><span class="o">-</span><span class="n">core</span> <span class="k">as</span> <span class="n">dhcore</span>
+<p>Import required library:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub_core</span> <span class="k">as</span> <span class="nn">dhcore</span>
 </code></pre></div>
 <p>Create a project:</p>
-<div class="highlight"><pre><span></span><code><span class="n">PROJECT</span> <span class="o">=</span> <span class="s2">&quot;demo-validation&quot;</span>
-<span class="n">project</span> <span class="o">=</span> <span class="n">dhcore</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="n">PROJECT</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">project</span> <span class="o">=</span> <span class="n">dhcore</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;project-nefertem&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Check that the project has been created successfully:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="set-data-source">Set data source</h2>
 <p>The data we will use is available as a CSV file on GitHub. It is a table of organizations, with columns for the organization name, country, and city.
-Set the URL to the data:</p>
-<div class="highlight"><pre><span></span><code><span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://media.githubusercontent.com/media/datablist/sample-csv-files/main/files/organizations/organizations-1000.csv&quot;</span>
+The URL to the data is:</p>
+<div class="highlight"><pre><span></span><code><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://media.githubusercontent.com/media/datablist/sample-csv-files/main/files/organizations/organizations-1000.csv&quot;</span>
 </code></pre></div>
-<p>Create a dataitem that represents the table and call it <code>table</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">di</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="p">,</span>
+<p>We can now create a dataitem to represent the data source that we want to validate. The Nefertem runtime will use the dataitem specifications to fetch the data and perform the <code>validate</code> task on it.</p>
+<p>To create the dataitem, we call the <code>new_dataitem</code> method of the project object. We pass the following mandatory parameters:</p>
+<div class="highlight"><pre><span></span><code><span class="n">di</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;organizations&quot;</span><span class="p">,</span>
                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dataitem&quot;</span><span class="p">,</span>
-                          <span class="n">path</span><span class="o">=</span><span class="n">URL</span><span class="p">)</span>
+                          <span class="n">path</span><span class="o">=</span><span class="n">url</span><span class="p">)</span>
 </code></pre></div>
+<ul>
+<li><code>name</code> is the identifier of the dataitem.</li>
+<li><code>kind</code> is the type of the dataitem (at the moment we support only <em>dataitem</em> as kind)</li>
+<li><code>path</code> is the path to the data source.</li>
+</ul>
+<p>Please note that the dataitem is not the data itself, but contains a reference to the data. The dataitem is a Core object that represents the data source, and it is stored in the Core backend. The data itself are (eventually) present on the path specified in the dataitem.</p>
 <h2 id="set-up-the-function">Set up the function</h2>
 <p>We can now set up the function that operates a validation task on the dataitem.
-First we define the constraint that we want to validate:</p>
+First we define the <em>constraint</em> that we want to validate. A <em>constaint</em> is a rule that we wanto to check against the data. In this case, we want to check that the <code>Country</code> column is of type <code>string</code>. We define the <em>constraint</em> as a dictionary:</p>
 <div class="highlight"><pre><span></span><code><span class="n">constraint</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">&#39;constraint&#39;</span><span class="p">:</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span>
   <span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="s1">&#39;Country&#39;</span><span class="p">,</span>
   <span class="s1">&#39;field_type&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
   <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;check_country_string&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;resources&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;table&#39;</span><span class="p">],</span>
+  <span class="s1">&#39;resources&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;organizations&#39;</span><span class="p">],</span>
   <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
   <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;frictionless&#39;</span><span class="p">,</span>
   <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
   <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">5</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>With the constraint defined, we can now create the function. We pass the constraint as the <code>constraints</code> parameter (note that the constraints parameter is a list, so we pass the constraint as a list). We also specify that we want to run the function with the <code>nefertem</code> framework:</p>
-<div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">proj</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;demo-function&quot;</span><span class="p">,</span>
-                         <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;nefertem&quot;</span><span class="p">,</span>
-                         <span class="n">constraints</span><span class="o">=</span><span class="p">[</span><span class="n">constraint</span><span class="p">])</span>
+<p>With the <em>constraint</em> defined, we can now create the function from the project object. We pass the following parameters:</p>
+<div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;function-nefertem&quot;</span><span class="p">,</span>
+                                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;nefertem&quot;</span><span class="p">,</span>
+                                <span class="n">constraints</span><span class="o">=</span><span class="p">[</span><span class="n">constraint</span><span class="p">])</span>
 </code></pre></div>
+<p>The parameters are:</p>
+<ul>
+<li><code>name</code> is the identifier of the function.</li>
+<li><code>kind</code> is the type of the function. <strong>Must be <code>nefertem</code></strong>.</li>
+<li><code>constraints</code> is the list of constraints that we want to validate.</li>
+</ul>
 <h2 id="set-nefertem-run-configuration">Set Nefertem run configuration</h2>
-<p>We can now set up the Nefertem run configuration. We specify that we want to run the function in validation mode, and we specify the framework that we want to use for validation, which is <code>frictionless</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">cfg</span> <span class="o">=</span> <span class="p">{</span>
+<p>We can now set up the Nefertem run configuration. We specify that we want to run the function in validation mode, and we specify that the framework we want to use for validation is <code>frictionless</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">nefertem_run_config</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;operation&quot;</span><span class="p">:</span> <span class="s2">&quot;validation&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;exec_config&quot;</span><span class="p">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;framework&quot;</span><span class="p">:</span> <span class="s2">&quot;frictionless&quot;</span><span class="p">}]</span>
+        <span class="s2">&quot;exec_config&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;framework&quot;</span><span class="p">:</span> <span class="s2">&quot;frictionless&quot;</span><span class="p">}]</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="run-the-function">Run the function</h2>
-<p>We can now run the function and see the results. To do this we use the <code>run</code> method of the function. To the method we pass the run configuration, and the input dataitem referenced by its name. We also specify that we want to run the function with <code>validate</code> task:</p>
-<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;validate&quot;</span><span class="p">,</span>
-               <span class="n">run_config</span><span class="o">=</span><span class="n">cfg</span><span class="p">,</span>
-               <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dataitems&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;table&quot;</span><span class="p">]})</span>
+<p>We can now run the function and see the results. To do this we use the <code>run</code> method of the function. To the method, we pass:</p>
+<ul>
+<li>the task we want to run (in this case, <code>validate</code>)</li>
+<li>the run configuration we defined earlier</li>
+<li>the input dataitem (in this case, <code>organizations</code>) in the form of a dictionary with the key <code>dataitems</code> and the value a list of dataitem names</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;validate&quot;</span><span class="p">,</span>
+                   <span class="n">run_config</span><span class="o">=</span><span class="n">nefertem_run_config</span><span class="p">,</span>
+                   <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dataitems&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;organizations&quot;</span><span class="p">]})</span>
 </code></pre></div>
-<p>As you can see, we specify the input dataitem as <code>table</code>, which is the dataitem we created earlier. This is because the function expects the dataitem to be named <code>table</code>. If you named the dataitem differently, you would need to specify the name of your dataitem instead.
-Once the function has finished running, we can see the results:</p>
+<p>We can check the status of the run:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>
+</code></pre></div>
+<p>If the status says <code>state: RUNNING</code>, wait some time and relaunch the refresh method. Once the function has finished (<code>state</code> should be <code>COMPLETED</code> or <code>ERRROR</code>), we can inspect the results:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">run</span><span class="p">)</span>
 </code></pre></div>
+<p>Note that calling run.refresh() will update the run object with the latest information from the Core backend.</p>
 <h2 id="explore-the-results">Explore the results</h2>
 <p>We can now explore the results of the function. A Neferetem run produces various artifacts, like reports produced by Nefertem and the framework used for validation (in our case, a Frictionless report).
 We can get the artifact list from the run:</p>
