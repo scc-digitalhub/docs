@@ -79,13 +79,26 @@ run = function.run(
 )
 ```
 
+## Runtime workflow
+
+The DBT runtime execution workflow is the following:
+
+1. The runtime fetches the input dataitems by downloading them locally. The runtime tries to get the file from the `path` attribute. At the moment, we support the following path types:
+     - `http(s)://<url>`
+     - `s3://<bucket>/<path>`
+     - `sql://<database>(/<schema-optional>)/<table>`
+     - `<local-path>`
+2. The runtime inserts the data into a temporary versioned table in the default postgres database. These tables are named `<dataitem-name>_v<dataitem-id>`, and will be deleted at the end of the execution.
+3. The runtime creates all the necessary DBT artifacts (profiles.yml, dbt_project.yml, etc.) and runs the DBT transformation.
+4. The runtime stores the output table into the default postgres database as result of the DBT execution. The table name is built from the `outputs` parameter. Then, the runtime creates a dataitem with the `outputs` name parameter and saves it into the Core backend. You can retrieve the dataitem with the `run.get_dataitem()` method. In general, the output table is named `<dataitem-output-name>_v<dataitem-output-id>` and is stored in the default postgres database passed to the runtime via env variable.
+
 ## Snippet example
 
 ```python
 import digitalhub_core as dhcore
 
 # Get or create project
-project = dhcore.get_or_create_project("proj", local=loc)
+project = dhcore.get_or_create_project("project-dbt")
 
 # Create new input dataitem
 url = "https://media.githubusercontent.com/media/datablist/sample-csv-files/main/files/organizations/organizations-1000.csv"
@@ -95,13 +108,13 @@ di = project.new_dataitem(name="organizations",
 
 # Create new function
 sql = """
-WITH table AS (
+WITH tab AS (
     SELECT  *
     FROM    {{ ref('organizations') }}
 )
 SELECT  *
-FROM    table
-WHERE   table."Country" = 'Algeria'
+FROM    tab
+WHERE   tab."Country" = 'Algeria'
 """
 function = project.new_function(name="algerian-organizations",
                                 kind="dbt",

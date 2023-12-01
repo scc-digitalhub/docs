@@ -4,7 +4,7 @@ Here we explore a proper, realistic scenario. We collect some data regarding org
 
 Access Jupyter from your Coder instance and create a new notebook. If a Jupyter workspace isn't already available, create one from its template.
 
-Open a new notebook using the digitalhub-core kernel.
+Open a new notebook using the **`digitalhub-core`** kernel.
 
 We'll now start writing code. Copy the snippets of code from here and paste them in your notebook, then execute them with *Shift+Enter*. After running, Jupyter will create a new code cell.
 
@@ -16,15 +16,16 @@ First, we initialize our environment and create a project.
 
 Import required libraries:
 
-``` python
-import digitalhub-core as dhcore
+Import required library:
+
+```python
+import digitalhub_core as dhcore
 ```
 
 Create a project:
 
 ``` python
-PROJECT = "demo-etl"
-project = dhcore.get_or_create_project(PROJECT)
+project = dhcore.get_or_create_project("project-dbt")
 ```
 
 Check that the project has been created successfully:
@@ -36,24 +37,34 @@ print(project)
 ## Set data source
 
 The data we will use is available as a CSV file on GitHub. It is a table of organizations, with columns for the organization name, country, and city.
-Set the URL to the data:
+The URL to the data is:
 
-``` python
-URL = "https://media.githubusercontent.com/media/datablist/sample-csv-files/main/files/organizations/organizations-1000.csv"
+```python
+url = "https://media.githubusercontent.com/media/datablist/sample-csv-files/main/files/organizations/organizations-1000.csv"
 ```
 
-Create a dataitem that represents the table and call it `table`:
+We can now create a dataitem to represent the data source that we want to operate transformation on. The DBT runtime will use the dataitem specifications to fetch the data and perform the `transform` task on it.
 
-``` python
-di = project.new_dataitem(name="table",
+To create the dataitem, we call the `new_dataitem` method of the project object. We pass the following mandatory parameters:
+
+```python
+di = project.new_dataitem(name="organizations",
                           kind="dataitem",
-                          path=URL)
+                          path=url)
 ```
+
+The parameters are:
+
+- `name` is the identifier of the dataitem.
+- `kind` is the type of the dataitem (at the moment we support only *dataitem* as kind)
+- `path` is the path to the data source.
+
+Please note that the dataitem is not the data itself, but contains a reference to the data. The dataitem is a Core object that represents the data source, and it is stored in the Core backend. The data itself are (eventually) present on the path specified in the dataitem.
 
 ## Set up the function
 
 We can now set up the function that operates a tranformation on data with DBT.
-First we define the SQL query that will be used:
+Our function will be an SQL query that selects all the organizations from Algeria.
 
 ``` python
 sql = """
@@ -66,46 +77,61 @@ FROM    tab
 WHERE   tab."Country" = 'Algeria'
 ```
 
-We simply select all rows from the table that have `Algeria` as the country.
-Then we create the function and call it `demo-function`:
+We create the function from the project object:
 
 ``` python
-func = proj.new_function(name="demo-function",
-                         kind="dbt",
-                         sql=sql)
+function = project.new_function(name="function-dbt",
+                                kind="dbt",
+                                sql=sql)
 ```
+
+The parameters are:
+
+- `name` is the identifier of the function.
+- `kind` is the type of the function. **Must be `dbt`**.
+- `sql` is the SQL query that will be executed by the function.
 
 ## Run the function
 
-We can now run the function and see the results:
+We can now run the function and see the results. To do this we use the `run` method of the function. To the method, we pass:
+
+- the task we want to run (in this case, `transform`)
+- the input dataitem(s) (in this case, `organizations`) in the form of a dictionary with the key `dataitems` and the value a list of dataitem names
+- the output dataitem (in this case, `algerian-organizations`) in the form of a dictionary with the key `dataitems` and the value a list of dataitem names. The output dataitem name must be only one, because the DBT runtime produces only one output table
 
 ``` python
-run = func.run("transform",
-               inputs={"dataitems": ["table"]},
-               outputs={"dataitems": ["algeria"]})
+run = function.run("transform",
+                   inputs={"dataitems": ["organizations"]},
+                   outputs={"dataitems": ["algerian-organizations"]})
 ```
 
-As you can see, we specify the input dataitem as `table`, which is the dataitem we created earlier, and the output dataitem as `algeria` which is the dataitem table that will be created by the function.
+We can check the status of the run:
 
-Once the function has finished running, we can see the results:
+```python
+print(run.refresh().status)
+```
 
-``` python
+If the status says `state: RUNNING`, wait some time and relaunch the refresh method. Once the function has finished (`state` should be `COMPLETED` or `ERRROR`), we can inspect the results:
+
+```python
 print(run)
 ```
+
+Note that calling run.refresh() will update the run object with the latest information from the Core backend.
 
 ## Explore the results
 
 We can now explore the results of the function.
-First, we get the dataitem that was created by the function:
+First, we get the dataitem that was created during execution:
 
 ``` python
-di = run.get_dataitem("algeria")
+out_di = run.get_dataitems("algerian-organizations")
 ```
 
-Then we can get the dataitem as a Pandas dataframe:
+Then we can import the dataitem as a Pandas dataframe:
 
 ``` python
-df = di.as_df()
+df = out_di.as_df()
 ```
 
 We can now explore the dataframe:

@@ -149,13 +149,42 @@ run = function.run("metric",
                    inputs={"dataitems": ["organizations"]})
 ```
 
+## Runtime workflow
+
+The Nefertem runtime execution workflow is the following:
+
+1. The runtime fetches the input dataitems by downloading them locally. The runtime tries to get the file from the `path` attribute. At the moment, we support the following path types:
+     - `http(s)://<url>`
+     - `s3://<bucket>/<path>`
+     - `sql://<database>(/<schema-optional>)/<table>`
+     - `<local-path>`
+2. The runtime creates a Nefertem `DataResource` from the input dataitem. The `DataResource` is a Nefertem object that represents the data to be validated, profiled, inferred or measured.
+3. The runtime then create a Nefertem `run` and execute it. The Nefertem `run` executes three methods based on the *task*, and produces a `run_metadata` report file:
+   1. If the task is `validate`:
+      - `run.validate()`
+      - `run.log_report()` -> produces a `NefertemReport`
+      - `run.persist_report()` -> produces one or more validation framework reports
+   2. If the task is `profile`:
+      - `run.profile()`
+      - `run.log_profile()` -> produces a `NefertemProfile`
+      - `run.persist_profile()` -> produces one or more profiling framework reports
+   3. If the task is `infer`:
+      - `run.infer()`
+      - `run.log_schema()` -> produces a `NefertemSchema`
+      - `run.persist_schema()` -> produces one or more inference framework reports
+   4. If the task is `metric`:
+      - `run.metric()`
+      - `run.log_metric()` -> produces a `NefertemMetricReport`
+      - `run.persist_metric()` -> produces one or more metric framework reports
+4. The runtime then creates an `Artifact` object for each file produced by Nefertem and saves it into the *Core backend*. It then uploads all the files to the default *s3* storage provided. You can extract the path where the files are uploaded with the `run.get_artifacts()` method. In general, the path is `s3://<bucket-from-env>/<project-name>/artifacts/ntruns/<nefertem-run-uuid>/<file>`.
+
 ## Snippet example
 
 ```python
 import digitalhub_core as dhcore
 
 # Get or create project
-project = dhcore.get_or_create_project("nefertem-project")
+project = dhcore.get_or_create_project("project-nefertem")
 
 # Create dataitem
 url = "https://media.githubusercontent.com/media/datablist/sample-csv-files/main/files/organizations/organizations-1000.csv"
@@ -175,7 +204,7 @@ constraint = {
   'value': 'string',
   'weight': 5
 }
-function = project.new_function(name="nefertem-function",
+function = project.new_function(name="function-nefertem",
                                 kind="nefertem",
                                 constraints=[constraint])
 

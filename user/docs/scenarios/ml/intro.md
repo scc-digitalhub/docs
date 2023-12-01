@@ -2,6 +2,8 @@
 
 This is a scenario that comes as an official tutorial of MLRun. In fact, its related notebook can be found in your Jupyter instance: `/tutorial/01-mlrun-basics.ipynb`. However, we skip a number of cells to keep it concise and to the point, while preserving the same functionality.
 
+To run this notebook, use the **`Python 3 (ipykernel)`** kernel. To do this, select `kernel` in the top bar and `change kernel` in the dropdown menu. A new window will open, where you can select the desired kernel.
+
 The resulting edited notebook, as well as a file for the function we will create, are available in the `documentation/examples/ml` path within the repository of this documentation.
 
 We will prepare data, train a model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook.

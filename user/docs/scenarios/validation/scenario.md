@@ -4,7 +4,7 @@ This scenario demonstrates how to use digitalhub-core and Nefertem to validate d
 
 Access Jupyter from your Coder instance and create a new notebook. If a Jupyter workspace isn't already available, create one from its template.
 
-Open a new notebook using the digitalhub-core kernel.
+Open a new notebook using the **`digitalhub-core`** kernel.
 
 We'll now start writing code. Copy the snippets of code from here and paste them in your notebook, then execute them with *Shift+Enter*. After running, Jupyter will create a new code cell.
 
@@ -14,17 +14,16 @@ The notebook file covering this scenario, as well as files for individual functi
 
 First, we initialize our environment and create a project.
 
-Import required libraries:
+Import required library:
 
 ```python
-import digitalhub-core as dhcore
+import digitalhub_core as dhcore
 ```
 
 Create a project:
 
 ```python
-PROJECT = "demo-validation"
-project = dhcore.get_or_create_project(PROJECT)
+project = dhcore.get_or_create_project("project-nefertem")
 ```
 
 Check that the project has been created successfully:
@@ -36,24 +35,32 @@ print(project)
 ## Set data source
 
 The data we will use is available as a CSV file on GitHub. It is a table of organizations, with columns for the organization name, country, and city.
-Set the URL to the data:
+The URL to the data is:
 
 ```python
-URL = "https://media.githubusercontent.com/media/datablist/sample-csv-files/main/files/organizations/organizations-1000.csv"
+url = "https://media.githubusercontent.com/media/datablist/sample-csv-files/main/files/organizations/organizations-1000.csv"
 ```
 
-Create a dataitem that represents the table and call it `table`:
+We can now create a dataitem to represent the data source that we want to validate. The Nefertem runtime will use the dataitem specifications to fetch the data and perform the `validate` task on it.
+
+To create the dataitem, we call the `new_dataitem` method of the project object. We pass the following mandatory parameters:
 
 ```python
-di = project.new_dataitem(name="table",
+di = project.new_dataitem(name="organizations",
                           kind="dataitem",
-                          path=URL)
+                          path=url)
 ```
+
+- `name` is the identifier of the dataitem.
+- `kind` is the type of the dataitem (at the moment we support only *dataitem* as kind)
+- `path` is the path to the data source.
+
+Please note that the dataitem is not the data itself, but contains a reference to the data. The dataitem is a Core object that represents the data source, and it is stored in the Core backend. The data itself are (eventually) present on the path specified in the dataitem.
 
 ## Set up the function
 
 We can now set up the function that operates a validation task on the dataitem.
-First we define the constraint that we want to validate:
+First we define the *constraint* that we want to validate. A *constaint* is a rule that we wanto to check against the data. In this case, we want to check that the `Country` column is of type `string`. We define the *constraint* as a dictionary:
 
 ```python
 constraint = {
@@ -61,7 +68,7 @@ constraint = {
   'field': 'Country',
   'field_type': 'string',
   'name': 'check_country_string',
-  'resources': ['table'],
+  'resources': ['organizations'],
   'title': '',
   'type': 'frictionless',
   'value': 'string',
@@ -69,42 +76,58 @@ constraint = {
 }
 ```
 
-With the constraint defined, we can now create the function. We pass the constraint as the `constraints` parameter (note that the constraints parameter is a list, so we pass the constraint as a list). We also specify that we want to run the function with the `nefertem` framework:
+With the *constraint* defined, we can now create the function from the project object. We pass the following parameters:
 
 ```python
-func = proj.new_function(name="demo-function",
-                         kind="nefertem",
-                         constraints=[constraint])
+function = project.new_function(name="function-nefertem",
+                                kind="nefertem",
+                                constraints=[constraint])
 ```
+
+The parameters are:
+
+- `name` is the identifier of the function.
+- `kind` is the type of the function. **Must be `nefertem`**.
+- `constraints` is the list of constraints that we want to validate.
 
 ## Set Nefertem run configuration
 
-We can now set up the Nefertem run configuration. We specify that we want to run the function in validation mode, and we specify the framework that we want to use for validation, which is `frictionless`:
+We can now set up the Nefertem run configuration. We specify that we want to run the function in validation mode, and we specify that the framework we want to use for validation is `frictionless`:
 
 ```python
-cfg = {
+nefertem_run_config = {
         "operation": "validation",
-        "exec_config": [{
-            "framework": "frictionless"}]
+        "exec_config": [{"framework": "frictionless"}]
 }
 ```
 
 ## Run the function
 
-We can now run the function and see the results. To do this we use the `run` method of the function. To the method we pass the run configuration, and the input dataitem referenced by its name. We also specify that we want to run the function with `validate` task:
+We can now run the function and see the results. To do this we use the `run` method of the function. To the method, we pass:
+
+- the task we want to run (in this case, `validate`)
+- the run configuration we defined earlier
+- the input dataitem (in this case, `organizations`) in the form of a dictionary with the key `dataitems` and the value a list of dataitem names
 
 ```python
-run = func.run("validate",
-               run_config=cfg,
-               inputs={"dataitems": ["table"]})
+run = function.run("validate",
+                   run_config=nefertem_run_config,
+                   inputs={"dataitems": ["organizations"]})
 ```
 
-As you can see, we specify the input dataitem as `table`, which is the dataitem we created earlier. This is because the function expects the dataitem to be named `table`. If you named the dataitem differently, you would need to specify the name of your dataitem instead.
-Once the function has finished running, we can see the results:
+We can check the status of the run:
+
+```python
+print(run.refresh().status)
+```
+
+If the status says `state: RUNNING`, wait some time and relaunch the refresh method. Once the function has finished (`state` should be `COMPLETED` or `ERRROR`), we can inspect the results:
 
 ```python
 print(run)
 ```
+
+Note that calling run.refresh() will update the run object with the latest information from the Core backend.
 
 ## Explore the results
 
