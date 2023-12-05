@@ -1235,12 +1235,14 @@ First we define the <em>constraint</em> that we want to validate. A <em>constain
 We can get the artifact list from the run:</p>
 <div class="highlight"><pre><span></span><code><span class="n">artifacts</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">get_artifacts</span><span class="p">()</span>
 </code></pre></div>
-<p>And save the artifacts to a local directory:</p>
+<p>And save the artifacts to a local directory. The artifacts will be saved in a directory named after the project, in a subdirectory named <code>artifacts</code>, and in a subdirectory named after the kind of artifact. At the moment we only have one kind of artifact, <code>artifact</code>, so the artifacts will be saved in the directory <code>project-nefertem/artifacts/artifact</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">artifact</span> <span class="ow">in</span> <span class="n">artifacts</span><span class="p">:</span>
     <span class="n">artifact</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
 </code></pre></div>
 <p>And we can now explore the artifacts. For example, we can read the run report:</p>
-<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;run_metadata.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="n">filepath</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;project-nefertem/artifacts/artifact/run_metadata.json&quot;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </code></pre></div>
 
