@@ -138,7 +138,7 @@ We can get the artifact list from the run:
 artifacts = run.get_artifacts()
 ```
 
-And save the artifacts to a local directory:
+And save the artifacts to a local directory. The artifacts will be saved in a directory named after the project, in a subdirectory named `artifacts`, and in a subdirectory named after the kind of artifact. At the moment we only have one kind of artifact, `artifact`, so the artifacts will be saved in the directory `project-nefertem/artifacts/artifact`:
 
 ```python
 for artifact in artifacts:
@@ -148,6 +148,8 @@ for artifact in artifacts:
 And we can now explore the artifacts. For example, we can read the run report:
 
 ```python
-with open("run_metadata.json") as f:
+filepath = f"project-nefertem/artifacts/artifact/run_metadata.json"
+
+with open(filepath) as f:
     print(f.read())
 ```
