@@ -1,5 +1,7 @@
 Repository for the documentation of the Digital Hub.
 
+New pages can be created by writing *.md* files. To enable and add a page to the navigation, add the path to your file to the `nav` element in *mkdocs.yml*.
+
 ## Run locally
 ``` shell
 cd user
