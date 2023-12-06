@@ -20,6 +20,7 @@ nav:
   - Tasks:
       - "tasks/projects.md"
       - "tasks/workspaces.md"
+      - "tasks/resources.md"
       - "tasks/data.md"
       - "tasks/git.md"
   - Scenarios:
