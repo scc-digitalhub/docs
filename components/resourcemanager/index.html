@@ -17,11 +17,11 @@
         <link rel="next" href="../../tasks/projects/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.20">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.1.21">
     
     
       
-        <title>Custom Resource Manager - Digital Hub - User</title>
+        <title>Kubernetes Resource Manager - Digital Hub - User</title>
       
     
     
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#custom-resource-manager" class="md-skip">
+        <a href="#kubernetes-resource-manager" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Custom Resource Manager
+              Kubernetes Resource Manager
             
           </span>
         </div>
@@ -431,12 +431,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Custom Resource Manager
+          Kubernetes Resource Manager
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Custom Resource Manager
+        Kubernetes Resource Manager
       </a>
       
         
@@ -455,8 +455,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#services-deployments" class="md-nav__link">
-    Services, Deployments
+  <a href="#standard-kubernetes-resources" class="md-nav__link">
+    Standard Kubernetes Resources
   </a>
   
 </li>
@@ -536,6 +536,20 @@
     <li class="md-nav__item">
       <a href="../../tasks/workspaces/" class="md-nav__link">
         Workspaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tasks/resources/" class="md-nav__link">
+        Resource Management with KRM
       </a>
     </li>
   
@@ -1061,8 +1075,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#services-deployments" class="md-nav__link">
-    Services, Deployments
+  <a href="#standard-kubernetes-resources" class="md-nav__link">
+    Standard Kubernetes Resources
   </a>
   
 </li>
@@ -1089,8 +1103,8 @@
                   
 
 
-<h1 id="custom-resource-manager">Custom Resource Manager</h1>
-<p><strong>Custom Resource Manager</strong> (CRM) is an application to manage several types of Kubernetes resources:</p>
+<h1 id="kubernetes-resource-manager">Kubernetes Resource Manager</h1>
+<p><strong>Kubernetes Resource Manager</strong> (KRM) is an application to manage several types of Kubernetes resources:</p>
 <ul>
 <li>Custom resources</li>
 <li>Services</li>
@@ -1100,21 +1114,11 @@
 </ul>
 <p>It consists in a back-end, written in <em>Java</em>, which connects to the Kubernetes API to perform actions on resources, and a front-end, written in <em>React</em> and based on <a href="https://marmelab.com/react-admin/">React-admin</a>.</p>
 <p>Instructions on how to install and start an instance can be found on the <a href="https://github.com/scc-digitalhub/custom-resource-manager">repository</a>.</p>
-<h2 id="services-deployments">Services, Deployments</h2>
-<p>You can list services or deployments by clicking the corresponding button in the left menu, and view the details of one item by clicking its <em>Show</em> button. </p>
+<h2 id="standard-kubernetes-resources">Standard Kubernetes Resources</h2>
+<p>With KRM you can control the main Kubernetes resources (e.g., services, deployments), manage Persistent Volume Claims, and access the secrets.Click the corresponding button in the left menu, and view the details of one item by clicking its <em>Show</em> button. </p>
 <h2 id="custom-resources">Custom resources</h2>
 <p>Custom resources can be viewed, created, edited and deleted through the use of the interface. </p>
 <p>If you don't see a specific kind of custom resource listed to the left, it means neither Kubernetes nor KRM contain a schema for it. A schema is required so that the application may understand and describe the related resources.</p>
-<p>Creating a schema is fairly simple. Access the <strong>Settings</strong> section from the left menu and click <em>Create</em>.</p>
-<p>The <strong>CRD</strong> drop-down menu will list all <em>Custom Resource Definitions</em> available on the Kubernetes instance; when you pick one, the <strong>Version</strong> field will automatically be filled with the version of the currently active schema.</p>
-<p>Providing the <strong>Schema</strong> may seem daunting, but you can simply leave it empty and click <em>Save</em>, and it will automatically be built from the currently active schema.</p>
-<div class="admonition warning">
-<p class="admonition-title">Automatic schema specification</p>
-<p>When the schema is built automatically, you will need to <em>Edit</em> it afterwards, to add the <code>"$schema":"https://json-schema.org/draft/2020-12/schema"</code> property at root level, like this:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;$schema&quot;</span><span class="p">:</span><span class="s2">&quot;https://json-schema.org/draft/2020-12/schema&quot;</span><span class="p">,</span><span class="err">...</span><span class="p">}</span>
-</code></pre></div>
-<p>This property is required by the <em>OpenAPI</em> specification, yet is missing from the properties present in Kubernetes. Until a solution to make it compliant is implemented, it will have to be manually added after automatic creation.</p>
-</div>
 <p>If some resources already exist, they will be immediately be visible.</p>
 
 
