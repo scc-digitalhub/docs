@@ -1,0 +1,342 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "digital-hub-dremio",
+          "uid": "ccc2ef34-cf3d-4ea3-8f9e-2d6330487f6b"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 20,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "basemap": {
+            "config": {},
+            "name": "Layer 0",
+            "type": "default"
+          },
+          "controls": {
+            "mouseWheelZoom": true,
+            "showAttribution": true,
+            "showDebug": false,
+            "showMeasure": false,
+            "showScale": false,
+            "showZoom": true
+          },
+          "layers": [
+            {
+              "config": {
+                "showLegend": true,
+                "style": {
+                  "color": {
+                    "fixed": "dark-green"
+                  },
+                  "opacity": 0.4,
+                  "rotation": {
+                    "fixed": 0,
+                    "max": 360,
+                    "min": -360,
+                    "mode": "mod"
+                  },
+                  "size": {
+                    "fixed": 5,
+                    "max": 15,
+                    "min": 2
+                  },
+                  "symbol": {
+                    "fixed": "img/icons/marker/circle.svg",
+                    "mode": "fixed"
+                  },
+                  "textConfig": {
+                    "fontSize": 12,
+                    "offsetX": 0,
+                    "offsetY": 0,
+                    "textAlign": "center",
+                    "textBaseline": "middle"
+                  }
+                }
+              },
+              "filterData": {
+                "id": "byRefId",
+                "options": "A"
+              },
+              "location": {
+                "latitude": "latitudine",
+                "longitude": "longitudine",
+                "mode": "coords"
+              },
+              "name": "Spire",
+              "tooltip": true,
+              "type": "markers"
+            }
+          ],
+          "tooltip": {
+            "mode": "details"
+          },
+          "view": {
+            "allLayers": true,
+            "id": "coords",
+            "lat": 44.495999,
+            "lon": 11.342528,
+            "zoom": 12.09
+          }
+        },
+        "pluginVersion": "10.0.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "digital-hub-dremio",
+              "uid": "ccc2ef34-cf3d-4ea3-8f9e-2d6330487f6b"
+            },
+            "queryText": "SELECT \"codice spira\", tipologia, \"Nome via\", direzione, longitudine, latitudine FROM demo_etl.spire;",
+            "queryTimeout": 60,
+            "refId": "A",
+            "timeCol": ""
+          }
+        ],
+        "title": "Posizione delle spire",
+        "type": "geomap"
+      },
+      {
+        "datasource": {
+          "type": "digital-hub-dremio",
+          "uid": "ccc2ef34-cf3d-4ea3-8f9e-2d6330487f6b"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "custom": {
+              "align": "auto",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "id": 4,
+        "options": {
+          "cellHeight": "sm",
+          "footer": {
+            "countRows": false,
+            "fields": "",
+            "reducer": [
+              "sum"
+            ],
+            "show": false
+          },
+          "showHeader": true
+        },
+        "pluginVersion": "10.0.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "digital-hub-dremio",
+              "uid": "ccc2ef34-cf3d-4ea3-8f9e-2d6330487f6b"
+            },
+            "queryText": "SELECT \"codice spira\", SUM(totale_giornaliero) AS veicoli FROM demo_etl.misurazioni_giornaliere\nGROUP BY \"codice spira\"\nORDER BY veicoli DESC;",
+            "queryTimeout": 60,
+            "refId": "A",
+            "timeCol": "data"
+          }
+        ],
+        "title": "Veicoli per spira nel periodo di riferimento",
+        "transformations": [],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "digital-hub-dremio",
+          "uid": "ccc2ef34-cf3d-4ea3-8f9e-2d6330487f6b"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 12
+        },
+        "id": 6,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "timezones": [
+            ""
+          ],
+          "tooltip": {
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "digital-hub-dremio",
+              "uid": "ccc2ef34-cf3d-4ea3-8f9e-2d6330487f6b"
+            },
+            "queryText": "SELECT data, SUM(totale_giornaliero) AS veicoli FROM demo_etl.misurazioni_giornaliere GROUP BY data;",
+            "queryTimeout": 60,
+            "refId": "A",
+            "timeCol": "data"
+          }
+        ],
+        "title": "Veicoli registrati in totale per mese",
+        "type": "timeseries"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 38,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6M",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "utc",
+    "title": "Demo ETL",
+    "uid": "0gQ50ij4z",
+    "version": 2,
+    "weekStart": "monday"
+  }

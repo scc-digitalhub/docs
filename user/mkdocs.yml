@@ -38,6 +38,8 @@ nav:
           - "scenarios/etl-core/scenario.md"
       - Nefertem validation:
           - "scenarios/validation/scenario.md"
+      - Dremio transformation:
+          - "scenarios/dremio_grafana/scenario.md"
   - Runtimes documentation:
       - DBT:
           - "runtimes/dbt.md"
