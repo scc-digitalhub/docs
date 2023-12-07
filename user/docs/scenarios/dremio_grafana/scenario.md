@@ -6,7 +6,7 @@ In order to collect the initial data and make it accessible to Dremio, we will f
 
 ## Collect the data
 
-**NOTE**: the procedure is only summarized here, as it is already described in depth in the [ETL scenario introduction](http://localhost:8000/user/scenarios/etl/intro/) and [Collect the data](http://localhost:8000/user/scenarios/etl/collect/) pages.
+**NOTE**: the procedure is only summarized here, as it is already described in depth in the [ETL scenario introduction](/user/scenarios/etl/intro/) and [Collect the data](/user/scenarios/etl/collect/) pages.
 
 1. Access Jupyter from your Coder instance and create a new notebook using the **`Python 3 (ipykernel)`** kernel
 2. Set up the environment and create a project
