@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/tasks/workspaces/">
+        <link rel="canonical" href="http://docs/user/scenarios/dremio_grafana/scenario/">
       
       
-        <link rel="prev" href="../projects/">
+        <link rel="prev" href="../../validation/scenario/">
       
       
-        <link rel="next" href="../resources/">
+        <link rel="next" href="../../../runtimes/dbt/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
     
     
       
-        <title>Workspaces - Digital Hub - User</title>
+        <title>Data transformation and usage with Dremio and Grafana - Digital Hub - User</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.fad675c6.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.fad675c6.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -48,7 +48,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -77,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#workspaces" class="md-skip">
+        <a href="#data-transformation-and-usage-with-dremio-and-grafana" class="md-skip">
           Skip to content
         </a>
       
@@ -93,7 +93,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Digital Hub - User" class="md-header__button md-logo" aria-label="Digital Hub - User" data-md-component="logo">
+    <a href="../../.." title="Digital Hub - User" class="md-header__button md-logo" aria-label="Digital Hub - User" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Workspaces
+              Data transformation and usage with Dremio and Grafana
             
           </span>
         </div>
@@ -211,7 +211,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Digital Hub - User" class="md-nav__button md-logo" aria-label="Digital Hub - User" data-md-component="logo">
+    <a href="../../.." title="Digital Hub - User" class="md-nav__button md-logo" aria-label="Digital Hub - User" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -229,7 +229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -249,7 +249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/" class="md-nav__link">
+      <a href="../../../architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -269,7 +269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/" class="md-nav__link">
+      <a href="../../../installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -289,7 +289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../core/" class="md-nav__link">
+      <a href="../../../core/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -348,7 +348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/deploying-components/" class="md-nav__link">
+      <a href="../../../components/deploying-components/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -369,7 +369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dashboard/" class="md-nav__link">
+      <a href="../../../components/dashboard/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -390,7 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/jupyter/" class="md-nav__link">
+      <a href="../../../components/jupyter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -411,7 +411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dremio/" class="md-nav__link">
+      <a href="../../../components/dremio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -432,7 +432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/mlrun/" class="md-nav__link">
+      <a href="../../../components/mlrun/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -453,7 +453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/sqlpad/" class="md-nav__link">
+      <a href="../../../components/sqlpad/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -474,7 +474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/grafana/" class="md-nav__link">
+      <a href="../../../components/grafana/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -495,7 +495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/vscode/" class="md-nav__link">
+      <a href="../../../components/vscode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -516,253 +516,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/resourcemanager/" class="md-nav__link">
+      <a href="../../../components/resourcemanager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Kubernetes Resource Manager
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Tasks
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
-            <span class="md-nav__icon md-icon"></span>
-            Tasks
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../projects/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Projects
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Workspaces
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Workspaces
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#access-the-workspace-in-a-local-terminal" class="md-nav__link">
-    <span class="md-ellipsis">
-      Access the workspace in a local terminal
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#port-forwarding" class="md-nav__link">
-    <span class="md-ellipsis">
-      Port-forwarding
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Port-forwarding">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#public" class="md-nav__link">
-    <span class="md-ellipsis">
-      Public
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#local" class="md-nav__link">
-    <span class="md-ellipsis">
-      Local
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../resources/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Resource Management with KRM
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../data/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Data and transformations
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../git/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Git best practices
   </span>
   
 
@@ -797,7 +555,158 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tasks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Tasks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tasks/projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tasks/workspaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workspaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tasks/resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Management with KRM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tasks/data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data and transformations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tasks/git/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git best practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -811,7 +720,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Scenarios
@@ -864,7 +773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/intro/" class="md-nav__link">
+      <a href="../../etl/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -885,7 +794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/collect/" class="md-nav__link">
+      <a href="../../etl/collect/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -906,7 +815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/process/" class="md-nav__link">
+      <a href="../../etl/process/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -927,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/pipeline/" class="md-nav__link">
+      <a href="../../etl/pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -948,7 +857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/expose/" class="md-nav__link">
+      <a href="../../etl/expose/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1016,7 +925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/ml/intro/" class="md-nav__link">
+      <a href="../../ml/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1037,7 +946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/ml/training/" class="md-nav__link">
+      <a href="../../ml/training/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1058,7 +967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/ml/deploy/" class="md-nav__link">
+      <a href="../../ml/deploy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1126,7 +1035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl-core/scenario/" class="md-nav__link">
+      <a href="../../etl-core/scenario/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1194,7 +1103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/validation/scenario/" class="md-nav__link">
+      <a href="../../validation/scenario/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1220,21 +1129,21 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" checked>
         
           
           <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
@@ -1248,7 +1157,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_5">
             <span class="md-nav__icon md-icon"></span>
             Dremio transformation
@@ -1259,10 +1168,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../scenarios/dremio_grafana/scenario/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Data transformation and usage with Dremio and Grafana
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1271,6 +1200,80 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#collect-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Collect the data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-the-data-from-dremio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access the data from Dremio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extract-measurement-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extract measurement data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extract-traffic-sensors-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extract traffic sensors data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transform-hourly-measurements-into-daily-measurements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transform hourly measurements into daily measurements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-grafana-to-dremio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect Grafana to Dremio
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1376,7 +1379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/dbt/" class="md-nav__link">
+      <a href="../../../runtimes/dbt/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1444,7 +1447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/nefertem/" class="md-nav__link">
+      <a href="../../../runtimes/nefertem/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1500,51 +1503,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#access-the-workspace-in-a-local-terminal" class="md-nav__link">
+  <a href="#collect-the-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Access the workspace in a local terminal
+      Collect the data
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#port-forwarding" class="md-nav__link">
+  <a href="#access-the-data-from-dremio" class="md-nav__link">
     <span class="md-ellipsis">
-      Port-forwarding
+      Access the data from Dremio
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Port-forwarding">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#public" class="md-nav__link">
-    <span class="md-ellipsis">
-      Public
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#local" class="md-nav__link">
-    <span class="md-ellipsis">
-      Local
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
+  <a href="#extract-measurement-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Resources
+      Extract measurement data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extract-traffic-sensors-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extract traffic sensors data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transform-hourly-measurements-into-daily-measurements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transform hourly measurements into daily measurements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-grafana-to-dremio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect Grafana to Dremio
     </span>
   </a>
   
@@ -1565,63 +1571,67 @@
                   
 
 
-<h1 id="workspaces">Workspaces</h1>
-<p>Workspaces in Coder contain dependencies and configuration required for applications to run.</p>
-<p>We've already seen <a href="/digitalhub/components/deploying-components">how to create a workspace from a template</a> and how to access its applications once it's running, so let's take a look at how to access the workspace in a terminal.</p>
-<p>The easiest and fastest way is to simply click on the <em>Terminal</em> button above the logs, which will open a terminal in your browser that allows you to browse the workspace's environment.</p>
-<p><img alt="Coder buttons image" src="../../images/coder-buttons.png" /></p>
-<p>If you click on <em>VS Code Desktop</em>, it will open a connection to the workspace in your local instance of <em>VSCode</em> and you can open a terminal by clicking <em>Terminal</em> &gt; <em>New Terminal</em>.</p>
-<h2 id="access-the-workspace-in-a-local-terminal">Access the workspace in a local terminal</h2>
-<p>You can also connect your local terminal to the workspace via SSH. If you click on <em>SSH</em>, it will show some commands you need to run in your terminal, but first you have to install the <code>coder</code> command and log into the Coder instance.</p>
-<p>Install <code>coder</code>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux / macOS</label><label for="__tabbed_1_2">From binaries (Windows)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://coder.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+<h1 id="data-transformation-and-usage-with-dremio-and-grafana">Data transformation and usage with Dremio and Grafana</h1>
+<p>In this scenario we will learn how to use Dremio to transform data and create some virtual datasets on top of it. Then we will visualize the transformed data in a dashboard created with Grafana.</p>
+<p>In order to collect the initial data and make it accessible to Dremio, we will follow the first step of the ETL scenario, in which we download some traffic data and store it in the DigitalHub datalake.</p>
+<h2 id="collect-the-data">Collect the data</h2>
+<p><strong>NOTE</strong>: the procedure is only summarized here, as it is already described in depth in the <a href="http://localhost:8000/user/scenarios/etl/intro/">ETL scenario introduction</a> and <a href="http://localhost:8000/user/scenarios/etl/collect/">Collect the data</a> pages.</p>
+<ol>
+<li>Access Jupyter from your Coder instance and create a new notebook using the <strong><code>Python 3 (ipykernel)</code></strong> kernel</li>
+<li>Set up the environment and create a project</li>
+<li>Set the URL to the data:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?lang=it&amp;timezone=Europe</span><span class="si">%2F</span><span class="s2">Rome&amp;use_labels=true&amp;delimiter=%3B&quot;</span>
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<p>Download the <a href="https://github.com/coder/coder/releases">release</a> for your OS (for example: <code>coder_0.27.2_windows_amd64.zip</code>), unzip it and move the <code>coder</code> executable to a location that's on your <code>PATH</code>. If you need to know how to add a directory to <code>PATH</code>, follow <a href="https://answers.microsoft.com/en-us/windows/forum/all/adding-path-variable/97300613-20cb-4d85-8d0e-cc9d3549ba23">this</a>.</p>
-<div class="admonition info">
-<p class="admonition-title">Restart the command prompt</p>
-<p>If it is already running, you will need to restart the <em>Command Prompt</em> for this change to take into effect.</p>
-</div>
-</div>
-</div>
-</div>
-<p>Log in:
-<div class="highlight"><pre><span></span><code>coder<span class="w"> </span>login<span class="w"> </span>https://coder.my-digitalhub-instance.it
+<ol>
+<li>Create the <code>src</code> folder, define the download function and register it</li>
+<li>Execute it locally and wait for its completion:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="n">project</span><span class="o">.</span><span class="n">run_function</span><span class="p">(</span><span class="s2">&quot;download-data&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span><span class="n">URL</span><span class="p">},</span> <span class="n">local</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-A tab will open in your browser, ask you to log-in if you haven't already, then display a token that you're supposed to copy and paste in the terminal.</p>
-<p><img alt="Coder token image" src="../../images/coder-token.png" /></p>
-<p>Now you can run the two commands you saw when you clicked on <em>SSH</em>. Configure SSH hosts (confirm with <code>yes</code> when asked):
-<div class="highlight"><pre><span></span><code>coder<span class="w"> </span>config-ssh
+<h2 id="access-the-data-from-dremio">Access the data from Dremio</h2>
+<p>Access Dremio from your Coder instance or create a new Dremio workspace. You should see MinIO already configured as an object storage and you should find the downloaded data in a .parquet file at the path <code>minio/datalake/projects/demo-etl/artifacts/download-data-downloader/0/dataset.parquet</code>.</p>
+<p>Click on the file to open <em>Dataset Settings</em>, verify that the selected format is <code>Parquet</code> and save it as a Dremio dataset, so that it can be queried.</p>
+<p>Now you can see the data either by clicking again on the dataset or via the SQL runner, by executing a query such as:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">minio</span><span class="p">.</span><span class="n">datalake</span><span class="p">.</span><span class="n">projects</span><span class="p">.</span><span class="ss">&quot;demo-etl&quot;</span><span class="p">.</span><span class="n">artifacts</span><span class="p">.</span><span class="ss">&quot;download-data-downloader&quot;</span><span class="p">.</span><span class="ss">&quot;0&quot;</span><span class="p">.</span><span class="ss">&quot;dataset.parquet&quot;</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">data</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;codice spira&quot;</span>
 </code></pre></div>
-Note that, if you create new workspaces after running this command, you will need to re-run it to connect to them.</p>
-<p>The sample command below displays how to connect to the Jupyter workspace and will differ depending on the workspace you want to connect to. Take the actual command from what you see when you click <em>SSH</em> on Coder.
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>coder.jupyter.jupyter
-</code></pre></div></p>
-<p>Your terminal should now be connected to the workspace. When you want to terminate the connection, simply type <code>exit</code>. To log coder out, type <code>coder logout</code>.</p>
-<h2 id="port-forwarding">Port-forwarding</h2>
-<p>Port-forwarding may be done on any port: there are no pre-configured ones and it will work as long as there is a service listening on that port. Ports may be forwarded to make a service public, or through a local session.</p>
-<h3 id="public">Public</h3>
-<p>This can be done from Coder, directly from the workspace's page. Click on <em>Port forward</em>, enter the port number and click <em>Open URL</em>. Users will have to log in to access the service.</p>
-<h3 id="local">Local</h3>
-<p>You can start a SSH port-forwarding session from your local terminal. First, log in:
-<div class="highlight"><pre><span></span><code>coder<span class="w"> </span>login<span class="w"> </span>https://coder.my-digitalhub-instance.it
-</code></pre></div></p>
-<p>The format for the SSH port-forwarding command is:
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-L<span class="w"> </span><span class="o">[</span>localport<span class="o">]</span>:localhost:<span class="o">[</span>remoteport<span class="o">]</span><span class="w"> </span>coder.<span class="o">[</span>workspace<span class="o">]</span>
-</code></pre></div></p>
-<p>For example, it may be:
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">3000</span>:localhost:3000<span class="w"> </span>coder.jupyter.jupyter
-</code></pre></div></p>
-<p>You will now be able to access the service in your browser, at <code>localhost:3000</code>.</p>
-<h2 id="resources">Resources</h2>
+<p>Create a new Dremio space named <code>demo_etl</code>. We will create three virtual datasets and save them here.</p>
+<h2 id="extract-measurement-data">Extract measurement data</h2>
+<p>Open the SQL runner and execute the following query, which will extract the traffic measurements to save them as a separate dataset:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="k">data</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="ss">&quot;codice spira&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;00:00-01:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;01:00-02:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;02:00-03:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;03:00-04:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;04:00-05:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;05:00-06:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;06:00-07:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;07:00-08:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;08:00-09:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;09:00-10:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;10:00-11:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;11:00-12:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;12:00-13:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;13:00-14:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;14:00-15:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;15:00-16:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;16:00-17:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;17:00-18:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;18:00-19:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;19:00-20:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;20:00-21:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;21:00-22:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;22:00-23:00&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;23:00-24:00&quot;</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">minio</span><span class="p">.</span><span class="n">datalake</span><span class="p">.</span><span class="n">projects</span><span class="p">.</span><span class="ss">&quot;demo-etl&quot;</span><span class="p">.</span><span class="n">artifacts</span><span class="p">.</span><span class="ss">&quot;download-data-downloader&quot;</span><span class="p">.</span><span class="ss">&quot;0&quot;</span><span class="p">.</span><span class="ss">&quot;dataset.parquet&quot;</span>
+</code></pre></div>
+<p>Click on the arrow next to <em>Save Script as</em>, select <em>Save View as...</em>, name the new dataset <code>misurazioni</code> and save it in the space <code>demo_etl</code>.</p>
+<h2 id="extract-traffic-sensors-data">Extract traffic sensors data</h2>
+<p>Open the SQL runner and execute the following query, which will extract the traffic sensors data (e.g. their geographical position) as a separate dataset:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="ss">&quot;codice spira&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="n">tipologia</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="n">id_uni</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="n">codice</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="n">Livello</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="ss">&quot;codice arco&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="ss">&quot;codice via&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="ss">&quot;Nome via&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="ss">&quot;Nodo da&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="ss">&quot;Nodo a&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="n">stato</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="n">direzione</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="n">angolo</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="n">longitudine</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="n">latitudine</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;dataset.parquet&quot;</span><span class="p">.</span><span class="n">geopoint</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">minio</span><span class="p">.</span><span class="n">datalake</span><span class="p">.</span><span class="n">projects</span><span class="p">.</span><span class="ss">&quot;demo-etl&quot;</span><span class="p">.</span><span class="n">artifacts</span><span class="p">.</span><span class="ss">&quot;download-data-downloader&quot;</span><span class="p">.</span><span class="ss">&quot;0&quot;</span><span class="p">.</span><span class="ss">&quot;dataset.parquet&quot;</span>
+</code></pre></div>
+<p>Click on the arrow next to <em>Save Script as</em>, select <em>Save View as...</em>, name the new dataset <code>spire</code> and save it in the space <code>demo_etl</code>.</p>
+<h2 id="transform-hourly-measurements-into-daily-measurements">Transform hourly measurements into daily measurements</h2>
+<p>Open the SQL runner and execute the following query, which will sum the measurement columns, each corresponding to an hour, to obtain the daily value and save it as a new dataset:</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">data</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;codice spira&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;00:00-01:00&quot;</span><span class="o">+</span><span class="ss">&quot;01:00-02:00&quot;</span><span class="o">+</span><span class="ss">&quot;02:00-03:00&quot;</span><span class="o">+</span><span class="ss">&quot;03:00-04:00&quot;</span><span class="o">+</span><span class="ss">&quot;04:00-05:00&quot;</span><span class="o">+</span><span class="ss">&quot;05:00-06:00&quot;</span><span class="o">+</span><span class="ss">&quot;06:00-07:00&quot;</span><span class="o">+</span><span class="ss">&quot;07:00-08:00&quot;</span><span class="o">+</span><span class="ss">&quot;08:00-09:00&quot;</span><span class="o">+</span><span class="ss">&quot;09:00-10:00&quot;</span><span class="o">+</span><span class="ss">&quot;10:00-11:00&quot;</span><span class="o">+</span><span class="ss">&quot;11:00-12:00&quot;</span>
+<span class="o">+</span><span class="ss">&quot;12:00-13:00&quot;</span><span class="o">+</span><span class="ss">&quot;13:00-14:00&quot;</span><span class="o">+</span><span class="ss">&quot;14:00-15:00&quot;</span><span class="o">+</span><span class="ss">&quot;15:00-16:00&quot;</span><span class="o">+</span><span class="ss">&quot;16:00-17:00&quot;</span><span class="o">+</span><span class="ss">&quot;17:00-18:00&quot;</span><span class="o">+</span><span class="ss">&quot;18:00-19:00&quot;</span><span class="o">+</span><span class="ss">&quot;19:00-20:00&quot;</span><span class="o">+</span><span class="ss">&quot;20:00-21:00&quot;</span><span class="o">+</span><span class="ss">&quot;21:00-22:00&quot;</span><span class="o">+</span><span class="ss">&quot;22:00-23:00&quot;</span><span class="o">+</span><span class="ss">&quot;23:00-24:00&quot;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">totale_giornaliero</span>
+<span class="k">FROM</span><span class="w"> </span><span class="p">(</span>
+<span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;demo_etl&quot;</span><span class="p">.</span><span class="n">misurazioni</span>
+<span class="p">)</span><span class="w"> </span><span class="n">nested_0</span><span class="p">;</span>
+</code></pre></div>
+<p>Click on the arrow next to <em>Save Script as</em>, select <em>Save View as...</em>, name the new dataset <code>misurazioni_giornaliere</code> and save it in the space <code>demo_etl</code>.</p>
+<h2 id="connect-grafana-to-dremio">Connect Grafana to Dremio</h2>
+<p>Access Grafana from your Coder instance or create a new Grafana workspace. Open the left menu and navigate to <em>Connections - Data Sources</em>. Add a new <code>Dremio</code> data source configured as follows:</p>
 <ul>
-<li><a href="https://coder.com/docs/v2/latest/install">Official documentation</a> on installation</li>
-<li><a href="https://coder.com/docs/v2/latest/workspaces">Official documentation</a> on Coder workspaces</li>
+<li>Name: <code>Dremio</code></li>
+<li>URL: the <em>Internal Endpoint</em> you see on Coder for your Dremio workspace</li>
+<li>User: <code>admin</code></li>
+<li>Password: <code>&lt;dremio_password_set_on_coder&gt;</code></li>
 </ul>
+<p>Now you can create a dashboard to visualize Dremio data.</p>
+<p>An example dashboard is available as a JSON file at the <code>user/examples/dremio_grafana</code> path within the repository of this documentation. In order to use it, you can import it in Grafana instead of creating a new dashboard. You will need to update the <code>datasource.uid</code> field, which holds a reference to the Dremio data source in your Grafana instance, throughout the JSON model. The easiest way to obtain your ID is by navigating to the data source configuration page and copying it from the URL:</p>
+<div class="highlight"><pre><span></span><code>https://&lt;grafana_host&gt;/connections/datasources/edit/&lt;YOUR_DATASOURCE_ID&gt;
+</code></pre></div>
+<p>The dashboard includes three panels: a map of the traffic sensors, a table with the daily number of vehicles registered by each sensor and a graph of the vehicles registered monthly.</p>
 
 
 
@@ -1656,10 +1666,10 @@ Note that, if you create new workspaces after running this command, you will nee
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
       
     
   </body>
