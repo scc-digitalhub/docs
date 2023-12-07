@@ -93,3 +93,7 @@ https://<grafana_host>/connections/datasources/edit/<YOUR_DATASOURCE_ID>
 ```
 
 The dashboard includes three panels: a map of the traffic sensors, a table with the daily number of vehicles registered by each sensor and a graph of the vehicles registered monthly.
+
+![Grafana Dremio dashboard image](../../images/scenario-dremio-dashboard.png)
+
+We can now use the dashboard to explore the data. We can either interact with the map to get the information related to each sensor, or use the dashboard filters to select different time ranges and analyze traffic evolution over time.
