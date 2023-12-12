@@ -96,18 +96,27 @@ In the Database details view it is possible also to configure the DB users that 
 
 ### Managing PostgREST Data Services with KRM
 
-Using KRM it is possible to instantiate and deploy new PostgREST Data services.
+Using KRM it is possible to instantiate and deploy new PostgREST Data services. A PostgREST service exposes
+a set of PostgreSQL tables as API, allowing for querying the information and even modifying it.
 
 Accessing `PostgREST Data Services` menu it is possible to list, create, and delete data service instances.
 
 ![KRM PostgREST image](../images/krm/krm_postgrest.png)
 
-To create a new data service, it is necessary to provide the following information
-- name of the resource
-- name of the DB schema to expose
-- list of DB permissions to enable for this service and list of exposed DB tables OR
-- if a predefined user exists, specify the name of the existing user role to expose all that user can perform
+To create a new data service, it is necessary to provide the information about the exposed schema and tables,
+the DB access information, and the role with which the service operates. This latter may be specified either as an
+existing users with the appropriate permissions or may be created if the DB access information is sufficient for 
+that operation. More specifically, it is necessary to provide the following information
+- name of the resource.
+- name of the DB schema to expose.
+- the existing DB user (role) on behalf of which the service will operate OR the list of DB permissions to enable for this service and list of exposed DB tables. In this case the user will be created (if the connection information allows for it).
 - Connection information with cluster DB host and port (optional), name of the database, DB username / password OR, alternatively, DB secret to use in order to extract the connection credentials. In this later case the secret should contain elements `USERNAME` and `PASSWORD`, or alternatively `POSTGRES_URL` with the full connection information.
+
+!!! warning "Connection information"
+
+    Please note that in order to create a new role that will be used by the service to access the data, the user specified with the connection information
+    should have sufficient privileges to perform the operation. By default, the owner/writer/readers users created by the Postgres operator do not have this permission.
+
 
 ![KRM PostgREST create image](../images/krm/krm_postgrest_create.png)
 
