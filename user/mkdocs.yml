@@ -34,10 +34,10 @@ nav:
           - "scenarios/ml/intro.md"
           - "scenarios/ml/training.md"
           - "scenarios/ml/deploy.md"
-      #   - DBT transformation:
-      #       - "scenarios/etl-core/scenario.md"
-      #   - Nefertem validation:
-      #       - "scenarios/validation/scenario.md"
+      - DBT transformation:
+          - "scenarios/etl-core/scenario.md"
+      - Nefertem validation:
+          - "scenarios/validation/scenario.md"
       - Dremio transformation:
           - "scenarios/dremio_grafana/scenario.md"
   - Runtimes documentation:
