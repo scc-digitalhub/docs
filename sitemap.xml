@@ -126,6 +126,21 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://docs/user/scenarios/postgrest/data/</loc>
+         <lastmod>2023-12-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>http://docs/user/scenarios/postgrest/intro/</loc>
+         <lastmod>2023-12-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>http://docs/user/scenarios/postgrest/postgrest/</loc>
+         <lastmod>2023-12-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://docs/user/scenarios/validation/scenario/</loc>
          <lastmod>2023-12-13</lastmod>
          <changefreq>daily</changefreq>

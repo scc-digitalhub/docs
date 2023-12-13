@@ -8,25 +8,27 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/">
+        <link rel="canonical" href="http://docs/user/scenarios/postgrest/postgrest/">
       
       
+        <link rel="prev" href="../data/">
       
-        <link rel="next" href="architecture/">
       
-      <link rel="icon" href="assets/images/favicon.png">
+        <link rel="next" href="../../../runtimes/dbt/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
     
     
       
-        <title>Digital Hub - User</title>
+        <title>Expose data with PostgREST - Digital Hub - User</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.eebd395e.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.eebd395e.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ecc896b0.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
       
       
 
@@ -42,7 +44,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -71,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction" class="md-skip">
+        <a href="#expose-data-with-postgrest" class="md-skip">
           Skip to content
         </a>
       
@@ -87,7 +89,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Digital Hub - User" class="md-header__button md-logo" aria-label="Digital Hub - User" data-md-component="logo">
+    <a href="../../.." title="Digital Hub - User" class="md-header__button md-logo" aria-label="Digital Hub - User" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -106,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              Expose data with PostgREST
             
           </span>
         </div>
@@ -199,7 +201,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Digital Hub - User" class="md-nav__button md-logo" aria-label="Digital Hub - User" data-md-component="logo">
+    <a href="../../.." title="Digital Hub - User" class="md-nav__button md-logo" aria-label="Digital Hub - User" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -216,21 +218,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         Introduction
       </a>
-      
     </li>
   
 
@@ -243,7 +235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="architecture/" class="md-nav__link">
+      <a href="../../../architecture/" class="md-nav__link">
         Overview and architecture
       </a>
     </li>
@@ -258,7 +250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="installation/" class="md-nav__link">
+      <a href="../../../installation/" class="md-nav__link">
         Installation
       </a>
     </li>
@@ -273,7 +265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="core/" class="md-nav__link">
+      <a href="../../../core/" class="md-nav__link">
         Core
       </a>
     </li>
@@ -317,7 +309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="components/deploying-components/" class="md-nav__link">
+      <a href="../../../components/deploying-components/" class="md-nav__link">
         Deploying components
       </a>
     </li>
@@ -331,7 +323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="components/dashboard/" class="md-nav__link">
+      <a href="../../../components/dashboard/" class="md-nav__link">
         Dashboard
       </a>
     </li>
@@ -345,7 +337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="components/jupyter/" class="md-nav__link">
+      <a href="../../../components/jupyter/" class="md-nav__link">
         Jupyter
       </a>
     </li>
@@ -359,7 +351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="components/dremio/" class="md-nav__link">
+      <a href="../../../components/dremio/" class="md-nav__link">
         Dremio
       </a>
     </li>
@@ -373,7 +365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="components/mlrun/" class="md-nav__link">
+      <a href="../../../components/mlrun/" class="md-nav__link">
         MLRun
       </a>
     </li>
@@ -387,7 +379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="components/sqlpad/" class="md-nav__link">
+      <a href="../../../components/sqlpad/" class="md-nav__link">
         SQLPad
       </a>
     </li>
@@ -401,7 +393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="components/grafana/" class="md-nav__link">
+      <a href="../../../components/grafana/" class="md-nav__link">
         Grafana
       </a>
     </li>
@@ -415,7 +407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="components/vscode/" class="md-nav__link">
+      <a href="../../../components/vscode/" class="md-nav__link">
         Visual Studio Code
       </a>
     </li>
@@ -429,7 +421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="components/resourcemanager/" class="md-nav__link">
+      <a href="../../../components/resourcemanager/" class="md-nav__link">
         Kubernetes Resource Manager
       </a>
     </li>
@@ -480,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tasks/projects/" class="md-nav__link">
+      <a href="../../../tasks/projects/" class="md-nav__link">
         Projects
       </a>
     </li>
@@ -494,7 +486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tasks/workspaces/" class="md-nav__link">
+      <a href="../../../tasks/workspaces/" class="md-nav__link">
         Workspaces
       </a>
     </li>
@@ -508,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tasks/resources/" class="md-nav__link">
+      <a href="../../../tasks/resources/" class="md-nav__link">
         Resource Management with KRM
       </a>
     </li>
@@ -522,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tasks/data/" class="md-nav__link">
+      <a href="../../../tasks/data/" class="md-nav__link">
         Data and transformations
       </a>
     </li>
@@ -536,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tasks/git/" class="md-nav__link">
+      <a href="../../../tasks/git/" class="md-nav__link">
         Git best practices
       </a>
     </li>
@@ -556,16 +548,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-        
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
       
       
       
@@ -574,7 +566,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_7">
           <span class="md-nav__icon md-icon"></span>
           Scenarios
@@ -616,7 +608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scenarios/etl/intro/" class="md-nav__link">
+      <a href="../../etl/intro/" class="md-nav__link">
         ETL scenario introduction
       </a>
     </li>
@@ -630,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scenarios/etl/collect/" class="md-nav__link">
+      <a href="../../etl/collect/" class="md-nav__link">
         Collect the data
       </a>
     </li>
@@ -644,7 +636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scenarios/etl/process/" class="md-nav__link">
+      <a href="../../etl/process/" class="md-nav__link">
         Process the data
       </a>
     </li>
@@ -658,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scenarios/etl/pipeline/" class="md-nav__link">
+      <a href="../../etl/pipeline/" class="md-nav__link">
         Workflow
       </a>
     </li>
@@ -672,7 +664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scenarios/etl/expose/" class="md-nav__link">
+      <a href="../../etl/expose/" class="md-nav__link">
         Expose datasets as API
       </a>
     </li>
@@ -722,7 +714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scenarios/ml/intro/" class="md-nav__link">
+      <a href="../../ml/intro/" class="md-nav__link">
         ML scenario introduction
       </a>
     </li>
@@ -736,7 +728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scenarios/ml/training/" class="md-nav__link">
+      <a href="../../ml/training/" class="md-nav__link">
         Training the model
       </a>
     </li>
@@ -750,7 +742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scenarios/ml/deploy/" class="md-nav__link">
+      <a href="../../ml/deploy/" class="md-nav__link">
         Deploy and expose the model
       </a>
     </li>
@@ -800,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scenarios/etl-core/scenario/" class="md-nav__link">
+      <a href="../../etl-core/scenario/" class="md-nav__link">
         ETL with digitalhub-core and DBT scenario introduction
       </a>
     </li>
@@ -850,7 +842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scenarios/validation/scenario/" class="md-nav__link">
+      <a href="../../validation/scenario/" class="md-nav__link">
         Validation with digitalhub-core and Nefertem scenario introduction
       </a>
     </li>
@@ -900,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scenarios/dremio_grafana/scenario/" class="md-nav__link">
+      <a href="../../dremio_grafana/scenario/" class="md-nav__link">
         Data transformation and usage with Dremio and Grafana
       </a>
     </li>
@@ -919,16 +911,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-        
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" checked>
       
       
       
@@ -937,7 +929,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_7_6">
           <span class="md-nav__icon md-icon"></span>
           API via PostgREST
@@ -950,7 +942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scenarios/postgrest/intro/" class="md-nav__link">
+      <a href="../intro/" class="md-nav__link">
         PostgREST scenario introduction
       </a>
     </li>
@@ -964,7 +956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="scenarios/postgrest/data/" class="md-nav__link">
+      <a href="../data/" class="md-nav__link">
         Insert data into the database
       </a>
     </li>
@@ -976,11 +968,59 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="scenarios/postgrest/postgrest/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Expose data with PostgREST
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Expose data with PostgREST
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#inspect-users-secrets" class="md-nav__link">
+    Inspect users' secrets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-postgrest-service" class="md-nav__link">
+    Creating the PostgREST service
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1065,7 +1105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="runtimes/dbt/" class="md-nav__link">
+      <a href="../../../runtimes/dbt/" class="md-nav__link">
         DBT runtime
       </a>
     </li>
@@ -1115,7 +1155,7 @@
   
   
     <li class="md-nav__item">
-      <a href="runtimes/nefertem/" class="md-nav__link">
+      <a href="../../../runtimes/nefertem/" class="md-nav__link">
         Nefertem runtime
       </a>
     </li>
@@ -1156,6 +1196,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#inspect-users-secrets" class="md-nav__link">
+    Inspect users' secrets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-the-postgrest-service" class="md-nav__link">
+    Creating the PostgREST service
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1169,9 +1231,39 @@
                   
 
 
-<h1 id="introduction">Introduction</h1>
-<p>The Digital Hub is an open-source platform for interoperability of data and services, built by integrating several open-source projects to manage, elaborate, expose and serve data through modern standards.</p>
-<p>This documentation is aimed at <strong>users</strong> and will illustrate the vision and architecture of the Digital Hub, teach you the purpose of its components, how to access and use them, as well as guide you through the process of developing a simple project.</p>
+<h1 id="expose-data-with-postgrest">Expose data with PostgREST</h1>
+<p>We will go back to KRM to create a PostgREST service and expose the database's table via API.</p>
+<h2 id="inspect-users-secrets">Inspect users' secrets</h2>
+<p>There are a number of parameters we need to configure PostgREST. Similarly to what you did in the first stage of the scenario, go to <strong>Secrets</strong> on the left and look for the two secrets, belonging to the <em>owner</em> and <em>reader</em> users you created.</p>
+<p>You will need the following properties, so write them down somewhere for convenience:</p>
+<p>For the <strong>owner</strong>:</p>
+<ul>
+<li>The <em>Name</em> of the secret.</li>
+<li><em>DATABASE_NAME</em></li>
+<li><em>HOST</em></li>
+</ul>
+<p>For the <strong>reader</strong>:</p>
+<ul>
+<li><em>ROLE</em></li>
+</ul>
+<h2 id="creating-the-postgrest-service">Creating the PostgREST service</h2>
+<p>Click <strong>PostgREST Data Services</strong> on the left and then <em>Create</em>.</p>
+<p>Fill the first few fields as follows:</p>
+<ul>
+<li><code>Name</code>: Anything you'd like, it's once again an identifier for Kubernetes.</li>
+<li><code>Schema</code>: <code>public</code></li>
+<li>Toggle on <code>With existing DB user</code>.</li>
+<li><code>Existing DB user name</code>: Value of the <strong>reader</strong>'s secret <em>ROLE</em>.</li>
+</ul>
+<p>Under <em>Connection</em>, fill the fields as follows:</p>
+<ul>
+<li><code>DB Host</code>: Value of the <strong>owner</strong>'s secret <em>HOST</em>.</li>
+<li><code>DB Port</code>: <code>5432</code>. In case the host's value contains the port, remove it from there (delete the <code>:</code> symbol) and put it here.</li>
+<li><code>Database name</code>: Value of the <strong>owner</strong>'s secret <em>DATABASE_NAME</em>.</li>
+<li>Toggle on <code>With existing secret</code>.</li>
+<li><code>Secret name</code>: The <em>Name</em> of the <strong>owner</strong>'s secret.</li>
+</ul>
+<p>When you hit <em>Save</em>, the PostgREST instance will be launched!</p>
 
 
 
@@ -1205,10 +1297,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.220ee61c.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
       
     
   </body>
