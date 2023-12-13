@@ -4,7 +4,7 @@ Deploying a model is as easy as defining a serverless function, providing the mo
 
 Create a model serving function and provide the model:
 ``` python
-serving_fn = mlrun.new_function("serving", image="python:3.9", kind="serving", requirements=["mlrun[complete]", "scikit-learn~=1.2.0"])
+serving_fn = mlrun.new_function("serving", image="mlrun/mlrun", kind="serving")
 serving_fn.add_model('cancer-classifier',model_path=trainer_run.outputs["model"], class_name='mlrun.frameworks.sklearn.SklearnModelServer')
 ```
 
