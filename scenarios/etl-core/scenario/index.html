@@ -1237,11 +1237,12 @@ Our function will be an SQL query that selects all the organizations from Algeri
 <div class="highlight"><pre><span></span><code><span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">WITH tab AS (</span>
 <span class="s2">    SELECT  *</span>
-<span class="s2">    FROM    {{ ref(&#39;table&#39;) }}</span>
+<span class="s2">    FROM    {{ ref(&#39;organizations&#39;) }}</span>
 <span class="s2">)</span>
 <span class="s2">SELECT  *</span>
 <span class="s2">FROM    tab</span>
 <span class="s2">WHERE   tab.&quot;Country&quot; = &#39;Algeria&#39;</span>
+<span class="s2">&quot;&quot;&quot;</span>
 </code></pre></div>
 <p>We create the function from the project object:</p>
 <div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;function-dbt&quot;</span><span class="p">,</span>
