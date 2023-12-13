@@ -70,11 +70,12 @@ Our function will be an SQL query that selects all the organizations from Algeri
 sql = """
 WITH tab AS (
     SELECT  *
-    FROM    {{ ref('table') }}
+    FROM    {{ ref('organizations') }}
 )
 SELECT  *
 FROM    tab
 WHERE   tab."Country" = 'Algeria'
+"""
 ```
 
 We create the function from the project object:
