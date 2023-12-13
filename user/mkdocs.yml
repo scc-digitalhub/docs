@@ -40,6 +40,10 @@ nav:
           - "scenarios/validation/scenario.md"
       - Dremio transformation:
           - "scenarios/dremio_grafana/scenario.md"
+      - API via PostgREST:
+          - "scenarios/postgrest/intro.md"
+          - "scenarios/postgrest/data.md"
+          - "scenarios/postgrest/postgrest.md"
   - Runtimes documentation:
       - DBT:
           - "runtimes/dbt.md"

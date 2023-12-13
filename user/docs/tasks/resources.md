@@ -52,7 +52,7 @@ To create a new PVC it is necessary to provide the namefollowing information
 - Access modes (standard K8S values)
 - PVC mode (Filesystem or Block)
 
-![KRM PVC Create image](../images/krm/krm_pvc_Create.png)
+![KRM PVC Create image](../images/krm/krm_pvc_create.png)
 
 ### Listing K8S Secrets 
 
