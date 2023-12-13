@@ -36,6 +36,19 @@ To install DigitalHub locally, it is possible to use Minikube. To proceed, pleas
 ```sh
     kubectl --namespace digitalhub get pods
 ```
+6. Retrieve database and S3 secrets
+```sh
+    kubectl --namespace digitalhub get secret minio -o yaml
+    kubectl --namespace digitalhub get secret digitalhub-owner-user.database-postgres-cluster.credentials.postgresql.acid.zalan.do -o yaml
+```
+7. Decode secret values
+```sh
+    echo -n "<BASE64_VALUES_FROM_SECRET>" | base64 -d 
+```
+8. Create secret with previously decoded values
+```
+    kubectl -n digitalhub create secret generic digitalhub-common-creds --from-literal=POSTGRES_USER=<DECODED_VALUE> --from-literal=POSTGRES_PASSWORD=<DECODED_VALUE> --from-literal=AWS_ACCESS_KEY_ID=<DECODED_VALUE> --from-literal=AWS_SECRET_ACCESS_KEY=<DECODED_VALUE>
+```
 
 Once installed, you should see the references (URLs) for the different tools of the platform.
 
