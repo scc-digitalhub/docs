@@ -18,7 +18,7 @@ import requests
 
 Connect to the database. You will need the value of **POSTGRES_URL** you got from the owner's secret in the first stage of the scenario.
 ``` python
-engine = create_engine('postgresql://owner-UrN9ct:88aX8tLFJ95qYU7@database-postgres-cluster/albtest')
+engine = create_engine('postgresql://owner-UrN9ct:88aX8tLFJ95qYU7@database-postgres-cluster/mydb')
 ```
 
 Download a CSV file and parse it (may take a few minutes):

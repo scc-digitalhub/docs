@@ -37,4 +37,6 @@ Under *Connection*, fill the fields as follows:
 - `Secret name`: The *Name* of the **owner**'s secret.
 
 When you hit *Save*, the PostgREST instance will be launched!
- 
+
+![Create PostgREST](../../images/postgrest-scenario/create-postgrest.png)
+

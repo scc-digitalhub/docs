@@ -10,6 +10,8 @@ Let's start by setting up the database. Access your KRM instance and **Postgres 
 - `Database`: The actual name on the database. Type `mydb`.
 - Toggle on `Drop on delete`, which conveniently deletes the database when you delete the custom resource.
 
+![Create DB](../../images/postgrest-scenario/create-db.png)
+
 Click *Save*. You should now see your database listed.
 
 ## Add users to database
@@ -23,6 +25,8 @@ Create the first one as follows:
 - `Privileges`: Indicates what privileges the user will have. Pick `Owner`.
 - `Secret name`: The secret to authenticate the user. Type `owner`.
 
+![Create user](../../images/postgrest-scenario/create-user.png)
+
 Add a second user. This one will only be able to read data.
 
 - `Name`: An identifier for Kubernetes. Type `db-reader`.
@@ -35,3 +39,5 @@ Add a second user. This one will only be able to read data.
 Together with the users, two secrets have also been created. Go to **Secrets** on the left menu; the list should contain two secrets with names referring the users you created.
 
 Look for the owner's secret, click *Show* and then *Decode* on the `POSTGRES_URL` entry. It will automatically copy the connection string to the clipboard. Write this down somewhere, as we will use it to log into the database and insert some data.
+
+![Secret](../../images/postgrest-scenario/secret.png)
