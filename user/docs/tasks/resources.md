@@ -121,6 +121,11 @@ that operation. More specifically, it is necessary to provide the following info
     Please note that in order to create a new role that will be used by the service to access the data, the user specified with the connection information
     should have sufficient privileges to perform the operation. By default, the owner/writer/readers users created by the Postgres operator do not have this permission.
 
+!!! warning "Schema exposure"
+    PostgREST exposes all the tables and views in the schema specified in the configuration. In order to have a better control over the exposed data, it is 
+    recommended to create a separate schema (e.g., 'api') and provide the access to the data via views / stored procedures. To accomplish this, it is possible
+    to use SQLPad to create schemas and views.
+
 
 ![KRM PostgREST create image](../images/krm/krm_postgrest_create.png)
 
