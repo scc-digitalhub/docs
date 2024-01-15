@@ -28,7 +28,7 @@ Accessing the `Deployments` menu of the KRM, it is possible to list the (subset 
 
 For each deployment KRM shows its name and availability of instances. In the deployment details view it is possible to access other metadata, such as labels, creation timestamps. version, etc.
 
-### Managing Persistent Volumen Claims
+### Managing Persistent Volume Claims
 
 In certain cases, the operations developed with the Digital Hub may require more substantial disk space, e.g., for training / producing significant amount of data. In this case, it is possible to attach to the tasks the corresponding Persistent Volume Claim (PVC) references. To create a new PVC for the use of the pipeline or Job, KRM provides the corresponding interface.
 
@@ -44,7 +44,8 @@ It is also possible to delete the PVC and create new ones.
 
     Please note that deleting a PVC bound to a Pod or a Job may affect negatively their execution.
 
-To create a new PVC it is necessary to provide the namefollowing information
+To create a new PVC it is necessary to provide the following information
+
 - name of the resource
 - Disk space requeste
 - Storage class name (select one of the available in your deployment)
@@ -78,6 +79,7 @@ Accessing `Postgres DBs` menu of the KRM, it is possible to list, create, and de
 ![KRM Postgres image](../images/krm/krm_postgres.png)
 
 To create a new Database, it is necessary to provide the following information
+
 - name of the database to create
 - whether to drop the DB on resource deletion
 - Comma-separated list of PostgreSQL extensions to enable (e.g., timescale and/or postgis) as supported by the platform deployment (optional). 
@@ -86,7 +88,8 @@ To create a new Database, it is necessary to provide the following information
 
 ![KRM Postgres create image](../images/krm/krm_postgres_create.png)
 
-In the Database details view it is possible also to configure the DB users that can access and operate the Database (create, edit, view, delete). To create a new user, it is necessary to specify
+In the Database details view it is possible also to configure the DB users that can access and operate the Database (create, edit, view, delete). To create a new user, it is necessary to specify 
+
 - name of the associated resource
 - name of the user to be created
 - access privileges (e.g., Owner, Read, or Write)
@@ -107,6 +110,7 @@ To create a new data service, it is necessary to provide the information about t
 the DB access information, and the role with which the service operates. This latter may be specified either as an
 existing users with the appropriate permissions or may be created if the DB access information is sufficient for 
 that operation. More specifically, it is necessary to provide the following information
+
 - name of the resource.
 - name of the DB schema to expose.
 - the existing DB user (role) on behalf of which the service will operate OR the list of DB permissions to enable for this service and list of exposed DB tables. In this case the user will be created (if the connection information allows for it).
@@ -132,6 +136,7 @@ Accessing `Dremio Data Services` menu it is possible to list, create, and delete
 ![KRM Dremio image](../images/krm/krm_dremio.png)
 
 To create a new data service, it is necessary to provide the following information
+
 - name of the resource
 - list of exposed virtual datasets
 - Connection information with dremio host and port (optional), Dremio username / password OR, alternatively, a secret to use in order to extract the connection credentials. In this later case the secret should contain elements `USER` and `PASSWORD`.
