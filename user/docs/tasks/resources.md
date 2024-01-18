@@ -150,6 +150,20 @@ To create a new data service, it is necessary to provide the following informati
 
 This will result in a deployment of Dremio REST microservice connected to the specified database and exposing a simple REST API over the specified datasets. 
 
+### Exposing services externally
+
+Various APIs and services (e.g., PostgREST o Dremio data services, Nuclio serverless functions) may be exposed externally, outside of the platform on a public 
+domain of the platform. Using KRM the operation amounts to defining a new API gateway resource that will be transformed in the corresponding ingres routing specification. 
+
+![KRM API gateway create image](../images/krm/krm_apigw.png)
+
+To create a new API gatway, it is necessary to provide the following information
+
+- name of the gateway
+- Kubernetes service to be exposed (selecting it from the service dropdown list the service and the port are fulfilled)
+- host and relative path to be exposed. The host defines the full domain name to be exposed. By default it refers to the 'services' subdomain, e.g., ``myservice.services.example.com`` where ``example.com`` corresponds to the platform domain.
+- authentication information. Currently, The services may be exposed unprotected (authentication mode ``None``) or protected with Basic authentication (authentication mode ``Basic``) specyfing the username and password.
+
 ## Defining and Managing CRD Schemas
 
 To have a valid representation of the CRs in the system, it is necessary to have a JSON specification schema for each CRDs. Normally, such as schema is
