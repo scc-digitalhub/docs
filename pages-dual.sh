@@ -2,7 +2,7 @@
 
 set -e
 
-echo "--------------------------Script for GH Pages-------------------------"
+echo "--------------------- Script for GH Pages (dual) ---------------------"
 echo "--- Deleting current 'site' folder..."
 rm -rf site
 mkdir site
