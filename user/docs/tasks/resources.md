@@ -44,7 +44,7 @@ It is also possible to delete the PVC and create new ones.
 
     Please note that deleting a PVC bound to a Pod or a Job may affect negatively their execution.
 
-To create a new PVC it is necessary to provide the following information
+To create a new PVC, provide the following:
 
 - name of the resource
 - Disk space requeste
@@ -78,7 +78,7 @@ Accessing `Postgres DBs` menu of the KRM, it is possible to list, create, and de
 
 ![KRM Postgres image](../images/krm/krm_postgres.png)
 
-To create a new Database, it is necessary to provide the following information
+To create a new Database, provide the following:
 
 - name of the database to create
 - whether to drop the DB on resource deletion
@@ -88,7 +88,7 @@ To create a new Database, it is necessary to provide the following information
 
 ![KRM Postgres create image](../images/krm/krm_postgres_create.png)
 
-In the Database details view it is possible also to configure the DB users that can access and operate the Database (create, edit, view, delete). To create a new user, it is necessary to specify 
+In the Database details view it is possible also to configure the DB users that can access and operate the Database (create, edit, view, delete). To create a new user, it is necessary to specify:
 
 - name of the associated resource
 - name of the user to be created
@@ -109,7 +109,7 @@ Accessing `PostgREST Data Services` menu it is possible to list, create, and del
 To create a new data service, it is necessary to provide the information about the exposed schema and tables,
 the DB access information, and the role with which the service operates. This latter may be specified either as an
 existing users with the appropriate permissions or may be created if the DB access information is sufficient for 
-that operation. More specifically, it is necessary to provide the following information
+that operation. More specifically, it is necessary to provide the following information:
 
 - name of the resource.
 - name of the DB schema to expose.
@@ -140,7 +140,7 @@ Accessing `Dremio Data Services` menu it is possible to list, create, and delete
 
 ![KRM Dremio image](../images/krm/krm_dremio.png)
 
-To create a new data service, it is necessary to provide the following information
+To create a new data service, provide the following:
 
 - name of the resource
 - list of exposed virtual datasets
@@ -152,21 +152,20 @@ This will result in a deployment of Dremio REST microservice connected to the sp
 
 ### Exposing services externally
 
-Various APIs and services (e.g., PostgREST o Dremio data services, Nuclio serverless functions) may be exposed externally, outside of the platform on a public 
-domain of the platform. Using KRM the operation amounts to defining a new API gateway resource that will be transformed in the corresponding ingres routing specification. 
+Various APIs and services (e.g., PostgREST or Dremio data services, Nuclio serverless functions) may be exposed externally, outside of the platform, on a public domain of the platform. Using KRM, the operation amounts to defining a new API gateway resource that will be transformed into the corresponding ingress routing specification. 
 
 ![KRM API gateway create image](../images/krm/krm_apigw.png)
 
-To create a new API gatway, it is necessary to provide the following information
+To create a new API gatway, provide the following:
 
 - name of the gateway
-- Kubernetes service to be exposed (selecting it from the service dropdown list the service and the port are fulfilled)
+- Kubernetes service to be exposed (select it from the dropdown list and the port will automatically be provided)
 - host and relative path to be exposed. The host defines the full domain name to be exposed. By default it refers to the 'services' subdomain, e.g., ``myservice.services.example.com`` where ``example.com`` corresponds to the platform domain.
-- authentication information. Currently, The services may be exposed unprotected (authentication mode ``None``) or protected with Basic authentication (authentication mode ``Basic``) specyfing the username and password.
+- authentication information. Currently, services may be unprotected (``None``) or protected with ``Basic`` authentication, specifying username and password.
 
 ## Defining and Managing CRD Schemas
 
-To have a valid representation of the CRs in the system, it is necessary to have a JSON specification schema for each CRDs. Normally, such as schema is
+To have a valid representation of the CRs in the system, it is necessary to have a JSON specification schema for each CRDs. Normally, such schema is
 provided with the CRD definition and is used by KRM to manage the resources. However, in certain cases a CRD may have no structured schema definition attached.
 To allow for managing such resources, it is possible to provide a custom schema for the CRD.
 
