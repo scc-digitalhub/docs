@@ -5,6 +5,11 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
 
+site_name: Digital Hub
+
+extra:
+  site: https://scc-digitalhub.github.io
+
 theme:
   name: material
   custom_dir: ../custom/
@@ -14,7 +19,7 @@ theme:
     - content.code.copy
   palette:
     # Palette toggle for light mode
-    - scheme: default
+    - scheme: orange
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode

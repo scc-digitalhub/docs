@@ -1,0 +1,31 @@
+name: deploy-docs
+run-name: Build and deploy docs
+on: [push]
+permissions:
+  contents: write
+jobs:
+  deploy-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - run: pip install mkdocs-material
+      - run: |
+          cd user && mkdocs build && cd ..
+          cd dev && mkdocs build && cd ..
+          mv user/site ./site
+          mv dev/site site/dev
+      - run: |
+          git fetch
+          git checkout gh-pages
+          cp -r site/* .
+          rm -r site
+          git config --global user.name '${{ github.actor }}'
+          git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
+          git add --all
+          git commit -m "Workflow updating docs"
+          git push
+
+      

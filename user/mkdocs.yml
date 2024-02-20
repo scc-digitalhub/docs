@@ -1,6 +1,14 @@
 INHERIT: ../base.yml
-site_name: Digital Hub - User
 site_url: http://docs/user
+
+extra:
+  current_portal: User
+  other_portal: Dev
+  other_portal_path: /docs/dev
+
+extra_css:
+  - stylesheets/portal_selection.css
+  - stylesheets/colors.css
 
 nav:
   - "index.md"

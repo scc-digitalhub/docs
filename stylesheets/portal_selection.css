@@ -1,0 +1,48 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+}
+  
+.dd-button {
+    background-color: #00000042;
+    color: white;
+    padding: 7px;
+    cursor: pointer;
+    border-radius: .1rem;
+}
+  
+.dd-arrow {
+    font-size: 60%;
+    position: relative;
+    top: -1px;
+    margin-left: 5px;
+}
+  
+.dd-content {
+    display: none;
+    position: absolute;
+    background-color: var(--md-primary-fg-color);
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 0 0 .1rem .1rem;
+}
+  
+.dd-content a {
+    padding: 0 12px;
+    display: block;
+    font-weight: 400;
+}
+  
+.dropdown:hover .dd-button {
+    background-color: #ffffff1f;
+}
+  
+.dropdown:hover .dd-content {
+    display: block;
+}
+  
+.dd-content a:hover {
+    background-color: #ffffff1f
+}
