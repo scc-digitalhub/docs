@@ -4,9 +4,8 @@ Different platform entities are associated with and represented as Kubernetes re
 
 ![KRM image](../images/krm/krm.png)
 
-KRM navigation menu provides access to different types of resources. This includes both the standard resources (Services, Deployments, Persistent Volume Claims, Secrets) and custom resources based on Custom Resource Definitions currently installed on the platform. Some custom resources are managed with the customized UI
-(e.g., PostgreSQL instances, PostgREST Data services o Dremio Data service), while the others may be managed with the standard UI based on 
-their JSON schema.
+KRM navigation menu provides access to different types of resources. This includes both standard resources (Services, Deployments, Persistent Volume Claims, Secrets) and custom resources based on Custom Resource Definitions currently installed on the platform. Some custom resources are managed with the customized UI
+(e.g., PostgreSQL instances, PostgREST Data services o Dremio Data service), while the others may be managed with the standard UI based on their JSON schema.
 
 ## Management of Standard Kubernetes Resources
 
@@ -30,13 +29,13 @@ For each deployment KRM shows its name and availability of instances. In the dep
 
 ### Managing Persistent Volume Claims
 
-In certain cases, the operations developed with the Digital Hub may require more substantial disk space, e.g., for training / producing significant amount of data. In this case, it is possible to attach to the tasks the corresponding Persistent Volume Claim (PVC) references. To create a new PVC for the use of the pipeline or Job, KRM provides the corresponding interface.
+In certain cases, the operations developed with the Digital Hub may require more substantial disk space, e.g., for training / producing significant amounts of data. In this case, it is possible to attach to the tasks the corresponding Persistent Volume Claim (PVC) references. To create a new PVC for the use of the pipeline or Job, KRM provides the corresponding interface.
 
 Accessing `Persistent Volume Claims` menu, it is possible to list and manage the PVCs of the platform. 
 
 ![KRM PVCs image](../images/krm/krm_pvcs.png)
 
-For each PVC it is shown the status (Pending or Bound) of the PVC, the name of the volume (if specified), the storage class and the size in Gb. The details view provides further metadata regarding the PVC.
+For each PVC, you can see the status (Pending or Bound) of the PVC, the name of the volume (if specified), the storage class and the size in *Gi*. The details view provides further metadata regarding the PVC.
 
 It is also possible to delete the PVC and create new ones.
 
@@ -156,7 +155,7 @@ Various APIs and services (e.g., PostgREST or Dremio data services, Nuclio serve
 
 ![KRM API gateway create image](../images/krm/krm_apigw.png)
 
-To create a new API gatway, provide the following:
+To create a new API gateway, provide the following:
 
 - name of the gateway
 - Kubernetes service to be exposed (select it from the dropdown list and the port will automatically be provided)
