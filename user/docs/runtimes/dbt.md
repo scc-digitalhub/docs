@@ -52,13 +52,15 @@ Optionally, you can specify the following parameters:
 For example:
 
 ```python
-import digitalhub_core as dhcore
+import digitalhub as dh
+
+project = dh.get_or_create_project('my_project')
 
 sql = """
 SELECT * FROM {{ ref('my_table') }}
 """
 
-function = dhcore.new_function(
+function = dh.new_function(
     kind='dbt',
     name='my_function',
     sql=sql
