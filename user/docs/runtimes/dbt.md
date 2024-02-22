@@ -7,17 +7,25 @@ The runtime introduces a function of kind `dbt` and a task of kind `transform`.
 
 Python libraries:
 
-- python >= 3.9
-- digitalhub-core
-- digitalhub-core-dbt
+- python 3.9 or 3.10
+- digitalhub
+- dbt-postgres
 
-If you want to execute DBT transformation locally, you need to install digitalhub-core-dbt with `local` flag:
+We need first to install dbt:
 
 ```bash
-pip install digitalhub-core-dbt[local]
+pip install dbt-postgres==1.6.7
 ```
 
-Otherwise, only remote execution with Core backed available is possible.
+and then we can install digitalhub sdk and collect digitalhub dbt modules
+
+```bash
+pip install digitalhub[data]
+git clone https://github.com/scc-digitalhub/digitalhub-sdk.git
+pip install digitalhub-sdk/data/modules/dbt/ --no-deps
+```
+
+If you want to exeute the dbt runtime only remotely, you can avoid to install dbt.
 
 ## Function
 
@@ -90,19 +98,19 @@ The DBT runtime execution workflow is the following:
      - `<local-path>`
 2. The runtime inserts the data into a temporary versioned table in the default postgres database. These tables are named `<dataitem-name>_v<dataitem-id>`, and will be deleted at the end of the execution.
 3. The runtime creates all the necessary DBT artifacts (profiles.yml, dbt_project.yml, etc.) and runs the DBT transformation.
-4. The runtime stores the output table into the default postgres database as result of the DBT execution. The table name is built from the `outputs` parameter. Then, the runtime creates a dataitem with the `outputs` name parameter and saves it into the Core backend. You can retrieve the dataitem with the `run.get_dataitem()` method. In general, the output table is named `<dataitem-output-name>_v<dataitem-output-id>` and is stored in the default postgres database passed to the runtime via env variable.
+4. The runtime stores the output table into the default postgres database as result of the DBT execution. The table name is built from the `outputs` parameter. Then, the runtime creates a dataitem with the `outputs` name parameter and saves it into the Core backend. You can retrieve the dataitem with the `run.results().get_dataitems()` method. In general, the output table is named `<dataitem-output-name>_v<dataitem-output-id>` and is stored in the default postgres database passed to the runtime via env variable.
 
 ## Snippet example
 
 ```python
-import digitalhub_core as dhcore
+import digitalhub as dh
 
 # Get or create project
-project = dhcore.get_or_create_project("project-dbt")
+project = dh.get_or_create_project("project-dbt")
 
 # Create new input dataitem
-url = "https://media.githubusercontent.com/media/datablist/sample-csv-files/main/files/organizations/organizations-1000.csv"
-di = project.new_dataitem(name="organizations",
+url = "https://gist.githubusercontent.com/kevin336/acbb2271e66c10a5b73aacf82ca82784/raw/e38afe62e088394d61ed30884dd50a6826eee0a8/employees.csv"
+di = project.new_dataitem(name="employees",
                           kind="dataitem",
                           path=url)
 
@@ -110,18 +118,21 @@ di = project.new_dataitem(name="organizations",
 sql = """
 WITH tab AS (
     SELECT  *
-    FROM    {{ ref('organizations') }}
+    FROM    {{ ref('employees') }}
 )
 SELECT  *
 FROM    tab
-WHERE   tab."Country" = 'Algeria'
+WHERE   tab."DEPARTMENT_ID" = '60'
 """
-function = project.new_function(name="algerian-organizations",
+function = project.new_function(name="function-dbt",
                                 kind="dbt",
                                 sql=sql)
 
 # Run function
 run = function.run("transform",
-                   inputs={"dataitems": ["organizations"]},
-                   outputs={"dataitems": ["algerian-organizations"]})
+                   inputs={"dataitems": ["employees"]},
+                   outputs={"dataitems": ["department-60"]})
+
+# Refresh run
+run.refresh()
 ```
