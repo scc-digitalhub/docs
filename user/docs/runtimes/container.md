@@ -1,6 +1,6 @@
-# DBT runtime
+# Container runtime
 
-The Container runtime allows you to depl.
+The Container runtime allows you to deploy deployments, jobs and services on Kubernetes.
 
 ## Prerequisites
 
