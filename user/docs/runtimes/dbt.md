@@ -8,7 +8,7 @@ The runtime introduces a function of kind `dbt` and a task of kind `transform`.
 Python libraries:
 
 - python 3.9 or 3.10
-- digitalhub
+- digitalhub sdk
 - dbt-postgres
 
 We need first to install dbt:
@@ -78,6 +78,17 @@ When you want to execute a task of kind `transform`, you need to pass the follow
 - **`action`**: the action to perform. This must be `transform`.
 - **`inputs`**: the list of **dataitem names** used as input for the transformation. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
 - **`outputs`**: a list containing **one** element that represents the output table name. A dataitem with that name will be created by the runtime if the transformation is successful.
+
+As optional, you can pass the following task parameters specific for remote execution:
+
+- **`node_selector`**: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.
+- **`volumes`**: a list of volumes
+- **`resources`**: a list of resources (CPU, memory, GPU)
+- **`labels`**: a list of labels to attach to kubernetes resources
+- **`affinity`**: node affinity
+- **`tolerations`**: tolerations
+- **`env`**: environment variables to inject in the container
+- **`secrets`**: list of secrets to inject in the container
 
 For example:
 
