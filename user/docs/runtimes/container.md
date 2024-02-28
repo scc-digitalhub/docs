@@ -36,7 +36,6 @@ Optionally, you can specify the following parameters:
 - **`description`**: the description of the function
 - **`labels`**: the labels of the function
 - **`source_remote`**: the remote source of the function (git repository)
-- **`source_code`**: pointer to the source code of the function
 - **`embedded`**: whether the function is embedded or not. If `True`, the function is embedded (all the details are expressed) in the project. If `False`, the function is not embedded in the project.
 - **`base_image`**: the base container image.
 - **`command`**: the command to run inside the container.
