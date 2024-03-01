@@ -11,6 +11,8 @@ extra_css:
   - ../stylesheets/colors.css
 
 nav:
-  - 'index.md'
+  - "index.md"
   - Tasks:
-    - 'tasks/rm-custom-views.md'
+      - "tasks/rm-custom-views.md"
+  - Runtimes:
+      - "runtimes/sdk-runtimes.md"
