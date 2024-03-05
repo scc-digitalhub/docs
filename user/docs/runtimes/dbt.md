@@ -60,6 +60,8 @@ sql = """
 SELECT * FROM {{ ref('my_table') }}
 """
 
+# Dataitem called "my_table" should exist in Core, otherwise must be created
+
 function = dh.new_function(
     kind='dbt',
     name='my_function',
@@ -104,7 +106,7 @@ run = function.run(
 
 The DBT runtime execution workflow is the following:
 
-1. The runtime fetches the input dataitems by downloading them locally. The runtime tries to get the file from the `path` attribute. At the moment, we support the following path types:
+1. The runtime fetches the input dataitems by downloading them locally. The runtime tries to get the file from the `path` attribute in the dataitem specification. At the moment, we support the following path types:
      - `http(s)://<url>`
      - `s3://<bucket>/<path>`
      - `sql://<database>(/<schema-optional>)/<table>`
@@ -124,7 +126,7 @@ project = dh.get_or_create_project("project-dbt")
 # Create new input dataitem
 url = "https://gist.githubusercontent.com/kevin336/acbb2271e66c10a5b73aacf82ca82784/raw/e38afe62e088394d61ed30884dd50a6826eee0a8/employees.csv"
 di = project.new_dataitem(name="employees",
-                          kind="dataitem",
+                          kind="table",
                           path=url)
 
 # Create new function

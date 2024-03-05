@@ -47,14 +47,14 @@ To create the dataitem, we call the `new_dataitem` method of the project object.
 
 ```python
 di = project.new_dataitem(name="employees",
-                          kind="dataitem",
+                          kind="table",
                           path=url)
 ```
 
 The parameters are:
 
 - `name` is the identifier of the dataitem.
-- `kind` is the type of the dataitem (at the moment we support only *dataitem* as kind)
+- `kind` is the type of the dataitem (In this case, `table`, because our data is a table).
 - `path` is the path to the data source.
 
 Please note that the dataitem is not the data itself, but contains a reference to the data. The dataitem is a Core object that represents the data source, and it is stored in the Core backend. The data itself are (eventually) present on the path specified in the dataitem.
