@@ -4,7 +4,7 @@ site_url: http://docs/user
 extra:
   current_portal: User
   other_portal: Dev
-  other_portal_path: /docs/dev
+  other_portal_path: '/dev'
 
 extra_css:
   - !ENV [USER_STYLESHEETS_PORTAL_SELECTION, 'stylesheets/portal_selection.css']
