@@ -45,6 +45,6 @@ streamlit run streamlit-data.py --browser.gatherUsageStats false
 
 Access `localhost:8501` on your browser to view the data!
 
-![Streamlit image](../images/streamlit.png)
+![Streamlit image](../../../images/streamlit.png)
 
 The graph we displayed is very simple, but you are welcome to experiment with more Streamlit features.
