@@ -15,6 +15,7 @@ nav:
   - "architecture.md"
   - "installation.md"
   - "core.md"
+  - "dh_console.md"
   - Components:
       - "components/deploying-components.md"
       - "components/dashboard.md"
