@@ -19,14 +19,14 @@
     margin-left: 5px;
 }
   
+.dd-options-container {
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+  
 .dd-content {
     display: none;
-    position: absolute;
     background-color: var(--md-primary-fg-color);
     min-width: 100%;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 0 0 .1rem .1rem;
 }
   
 .dd-content a {

@@ -8,7 +8,9 @@ markdown_extensions:
 site_name: Digital Hub
 
 extra:
-  site: https://scc-digitalhub.github.io
+  site: https://scc-digitalhub.github.io/docs
+  docs_version: !ENV [DOCS_VERSION, 'current']
+  versions: !ENV [VERSIONS]
 
 theme:
   name: material

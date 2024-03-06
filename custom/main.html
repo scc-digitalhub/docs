@@ -57,11 +57,42 @@
           </span>
           <div class="dropdown">
             <button class="dd-button">
+              <span>{{ config.extra.docs_version }}</span>
+              <span class="dd-arrow">&#9660;</span>
+            </button>
+            <div class="dd-options-container">
+              {% if config.extra.versions is defined and config.extra.versions != None %}
+                {% set versions = config.extra.versions.split(',') %}
+                {% set _ = versions.append('current') %}
+              {% else %}
+                {% set versions = ['current'] %}
+              {% endif %}
+              {% for version in versions|reverse %}
+                {% if version != config.extra.docs_version %}
+                  <div class="dd-content">
+                    {% if version == 'current' %}
+                      <a href="{{ config.extra.site }}">{{ version }}</a>
+                    {% else %}
+                    <a href="{{ config.extra.site }}/{{ version }}">{{ version }}</a>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dd-button">
               <span>{{ config.extra.current_portal }}</span>
               <span class="dd-arrow">&#9660;</span>
             </button>
-            <div class="dd-content">
-              <a href="{{ config.extra.site }}{{ config.extra.other_portal_path }}">{{ config.extra.other_portal }}</a>
+            <div class="dd-options-container">
+              <div class="dd-content">
+                {% if config.extra.docs_version == 'current' %}
+                  <a href="{{ config.extra.site }}{{ config.extra.other_portal_path }}">{{ config.extra.other_portal }}</a>
+                {% else %}
+                  <a href="{{ config.extra.site }}/{{ config.extra.docs_version }}{{ config.extra.other_portal_path }}">{{ config.extra.other_portal }}</a>
+                {% endif %}
+              </div>
             </div>
           </div>
         </div>

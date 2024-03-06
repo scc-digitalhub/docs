@@ -4,7 +4,7 @@ on: [push]
 permissions:
   contents: write
 jobs:
-  deploy-docs:
+  deploy-current:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,19 +13,51 @@ jobs:
           python-version: '3.9'
       - run: pip install mkdocs-material
       - run: |
+          git fetch --prune --unshallow --tags
+          export VERSIONS=$(echo `git tag`|sed 's/ /,/g')
           cd user && mkdocs build && cd ..
           cd dev && mkdocs build && cd ..
           mv user/site ./site
           mv dev/site site/dev
       - run: |
-          git fetch
+          git checkout -b gh-pages
+          cp -r site/* .
+          rm -r site
+          git config --global user.name '${{ github.actor }}'
+          git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
+          git add --all
+          git commit -m "Workflow docs - Current"
+          git push -u origin gh-pages
+  deploy-versioned:
+    needs: deploy-current
+    if: github.ref_type == 'tag'
+    runs-on: ubuntu-latest
+    env:
+      DOCS_VERSION: ${{ github.ref_name }}
+      USER_STYLESHEETS_PORTAL_SELECTION: ../stylesheets/portal_selection.css
+      USER_STYLESHEETS_COLORS: ../stylesheets/colors.css
+      DEV_STYLESHEETS_PORTAL_SELECTION: ../../stylesheets/portal_selection.css
+      DEV_STYLESHEETS_COLORS: ../../stylesheets/colors.css
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - run: pip install mkdocs-material
+      - run: |
+          git fetch --prune --unshallow --tags
+          export VERSIONS=$(echo `git tag`|sed 's/ /,/g')
+          cd user && mkdocs build && cd ..
+          cd dev && mkdocs build && cd ..
+          mkdir ./site
+          mv user/site site/${{ github.ref_name }}
+          mv dev/site site/${{ github.ref_name }}/dev
+      - run: |
           git checkout gh-pages
           cp -r site/* .
           rm -r site
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
           git add --all
-          git commit -m "Workflow updating docs"
-          git push -u
-
-      
+          git commit -m "Workflow docs - Versioned"
+          git push

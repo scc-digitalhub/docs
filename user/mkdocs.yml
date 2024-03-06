@@ -7,8 +7,8 @@ extra:
   other_portal_path: /docs/dev
 
 extra_css:
-  - stylesheets/portal_selection.css
-  - stylesheets/colors.css
+  - !ENV [USER_STYLESHEETS_PORTAL_SELECTION, 'stylesheets/portal_selection.css']
+  - !ENV [USER_STYLESHEETS_COLORS, 'stylesheets/colors.css']
 
 nav:
   - "index.md"
