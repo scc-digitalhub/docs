@@ -30,4 +30,4 @@ And run it, this time remotely:
 project.run("pipeline")
 ```
 
-The last section will describe how to expose this newly obtained dataset as a REST API.
+The next section will describe how to expose this newly obtained dataset as a REST API.
