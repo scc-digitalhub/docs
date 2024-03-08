@@ -9,6 +9,7 @@
 !!! info "How to access"
 
     Grafana may be launched from [Coder, using its template](/docs/components/deploying-components).
+    After launching it from Coder you can access Grafana on [Grafana UI](http://nodeipaddress:30110).
 
 ## Add a data source
 
