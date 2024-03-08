@@ -4,11 +4,11 @@ site_url: http://docs/user
 extra:
   current_portal: User
   other_portal: Dev
-  other_portal_path: '/dev'
+  other_portal_path: "/dev"
 
 extra_css:
-  - !ENV [USER_STYLESHEETS_PORTAL_SELECTION, 'stylesheets/portal_selection.css']
-  - !ENV [USER_STYLESHEETS_COLORS, 'stylesheets/colors.css']
+  - !ENV [USER_STYLESHEETS_PORTAL_SELECTION, "stylesheets/portal_selection.css"]
+  - !ENV [USER_STYLESHEETS_COLORS, "stylesheets/colors.css"]
 
 nav:
   - "index.md"
@@ -32,6 +32,7 @@ nav:
       - "tasks/resources.md"
       - "tasks/data.md"
       - "tasks/git.md"
+      - "tasks/kubernetes-resources.md"
   - Scenarios:
       - Extract-Transform-Load:
           - "scenarios/etl/intro.md"
