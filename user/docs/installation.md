@@ -18,11 +18,11 @@
 3. Change the IP in  'global.registry.url' and 'global.externalHostAddress' properties in values file (*helm/digitalhub/values.yaml*) with the one obtained in the previous step.
 4. Add Digitalhub repository:
 ```sh
-helm repo add digitalhub https://scc-digitalhub.github.io/digitalhub/
+    helm repo add digitalhub https://scc-digitalhub.github.io/digitalhub/
 ```
 5. Install DigitalHub with Helm:
 ```sh
-    helm upgrade digitalhub digitalhub/digitalhub -n digitalhub --install --create-namespace --timeout 15m0s
+    minikube start --insecure-registry "192.168.49.0/24" --memory 8192 --cpus 4
 ```
 6. Wait until all pods are in Running state
 ```sh
