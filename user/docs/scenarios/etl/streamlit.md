@@ -101,7 +101,7 @@ Now, run a container:
 podman run -p 8501:8501 --name streamlit-app streamlit
 ```
 
-!!! "Port already in use"
+!!! info "Port already in use"
 
     If you run into an error, it's likely that you didn't quit the remote session you opened while following the previous section, meaning port 8501 is already in use.
 
