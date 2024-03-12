@@ -42,7 +42,7 @@ Install streamlit:
 pip install streamlit
 ```
 
-Run streamlit:
+Finally, we run the app. The `browser.gatherUsageStats` flag is set to `false` because, otherwise, Streamlit will automatically gather usage stats and print a warning about it.
 ``` shell
 streamlit run streamlit-app.py --browser.gatherUsageStats false
 ```
@@ -55,7 +55,7 @@ The graph we displayed is very simple, but you are welcome to experiment with mo
 
 ## As Docker container
 
-Streamlit apps can be run as Docker containers. For this section, we will run the same application locally as a container, so you will need either Podman or Docker installed on your machine. Instructions refer to Podman, but if you prefer to use Docker, the commands are equivalent: simply replace instances of `podman` with `docker`.
+Streamlit apps can be run as Docker containers. For this section, we will run the same application locally as a container, so you will need either Docker or Podman installed on your machine. Instructions refer to Docker, but if you prefer to use Podman, commands are equivalent: simply replace instances of `docker` with `podman`.
 
 Download the `result.json` file obtained previously on your machine, as we will need its data for the app. Also download the `streamlit-app.py` file.
 
@@ -88,17 +88,17 @@ The Dockerfile describes how the image for the container will be built. In short
 
 Make sure the three files are in the same directory, then open a shell in it and run the following, which builds the Docker image:
 ``` shell
-podman build -t streamlit .
+docker build -t streamlit .
 ```
 
 Once it's finished, you can verify the image exists with:
 ``` shell
-podman images
+docker images
 ```
 
 Now, run a container:
 ``` shell
-podman run -p 8501:8501 --name streamlit-app streamlit
+docker run -p 8501:8501 --name streamlit-app streamlit
 ```
 
 !!! info "Port already in use"
@@ -109,5 +109,5 @@ Open your browser and visit `localhost:8501` to view the data!
 
 To stop the container, simply press *Ctrl+C*, then run the following to remove the container:
 ``` shell
-podman rm -f streamlit-app
+docker rm -f streamlit-app
 ```
