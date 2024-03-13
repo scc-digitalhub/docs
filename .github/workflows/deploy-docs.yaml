@@ -6,6 +6,7 @@ permissions:
 jobs:
   deploy-current:
     runs-on: ubuntu-latest
+    if: github.ref_name == 'main'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -29,7 +30,6 @@ jobs:
           git commit -m "Workflow docs - Current"
           git push
   deploy-versioned:
-    needs: deploy-current
     if: github.ref_type == 'tag'
     runs-on: ubuntu-latest
     env:
@@ -45,6 +45,9 @@ jobs:
           python-version: '3.9'
       - run: pip install mkdocs-material
       - run: |
+          raw=$(git branch -r --contains ${{ github.ref }})
+          branch=${raw##*/}
+          git checkout $branch
           git fetch --prune --unshallow --tags
           export VERSIONS=$(echo `git tag`|sed 's/ /,/g')
           cd user && mkdocs build && cd ..
