@@ -9,37 +9,24 @@
 
 1. Start minikube (change 192.168.49.0 if your network setup is different):
 ```sh
-    minikube start --insecure-registry "192.168.49.0/24" --memory 8192 --cpus 4
+    minikube start --insecure-registry "192.168.49.0/24" --memory 12288 --cpus 4
 ```
 2. Get minikube external IP:
 ```sh
     minikube ip
 ```
-3. Change the IP in  'global.registry.url' and 'global.externalHostAddress' properties in values file (*helm/digitalhub/values.yaml*) with the one obtained in the previous step.
+3. Change the IP in  'global.registry.url' and 'global.externalHostAddress' properties in values file (*chart/digitalhub/values.yaml*) with the one obtained in the previous step.
 4. Add Digitalhub repository:
 ```sh
-    helm repo add digitalhub https://scc-digitalhub.github.io/digitalhub/
+helm repo add digitalhub https://scc-digitalhub.github.io/digitalhub/
 ```
 5. Install DigitalHub with Helm:
 ```sh
-    helm upgrade digitalhub digitalhub/digitalhub -n digitalhub --install --create-namespace --timeout 15m0s
+helm upgrade digitalhub digitalhub/digitalhub -n digitalhub --install --create-namespace --timeout 15m0s
 ```
-6. Wait until all pods are in Running state
+6. Wait until all pods are in Running or Completed state
 ```sh
-    kubectl --namespace digitalhub get pods
-```
-7. Retrieve database and S3 secrets
-```sh
-    kubectl --namespace digitalhub get secret minio -o yaml
-    kubectl --namespace digitalhub get secret digitalhub-owner-user.database-postgres-cluster.credentials.postgresql.acid.zalan.do -o yaml
-```
-8. Decode secret values
-```sh
-    echo -n "<BASE64_VALUES_FROM_SECRET>" | base64 -d 
-```
-9. Create secret with previously decoded values
-```
-    kubectl -n digitalhub create secret generic digitalhub-common-creds --from-literal=POSTGRES_USER=<DECODED_VALUE> --from-literal=POSTGRES_PASSWORD=<DECODED_VALUE> --from-literal=AWS_ACCESS_KEY_ID=<DECODED_VALUE> --from-literal=AWS_SECRET_ACCESS_KEY=<DECODED_VALUE>
+kubectl --namespace digitalhub get pods
 ```
 
 Once installed, you should see the references (URLs) for the different tools of the platform.
