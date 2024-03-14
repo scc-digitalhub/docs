@@ -41,7 +41,6 @@ Optionally, you can specify the following parameters:
 - **`source_code`**: pointer to the source code of the function
 - **`constraints`**: the constraints of the function to be applied on the data. Valid only for `validate` tasks
 - **`error_report`**: the error report output format. Valid only for `validate` tasks
-- **`metrics`**: the metrics of the function to be applied on the data. Valid only for `metric` tasks
 - **`embedded`**: whether the function is embedded or not. If `True`, the function is embedded (all the details are expressed) in the project. If `False`, the function is not embedded in the project.
 
 For example:
@@ -51,12 +50,12 @@ import digitalhub_core as dhcore
 
 constraint = {
   'constraint': 'type',
-  'field': 'Country',
+  'field': 'field-name',
   'field_type': 'string',
   'name': 'check_country_string',
-  'resources': ['organizations'],
+  'resources': ['ref-source'],
   'title': '',
-  'type': 'frictionless',
+  'type': 'const-type',
   'value': 'string',
   'weight': 5
 }
@@ -67,26 +66,22 @@ function = dhcore.new_function(name="nefertem-function",
 
 ## Task
 
-The Nefertem runtime introduces four tasks of kind `validate`, `profile`, `infer` and `metric` that allows you to run a Nefertem validation, profiling, inference or metric on your data.
+The Nefertem runtime introduces three tasks of kind `validate`, `profile` and `infer` that allows you to run a Nefertem validation, profiling or inference on your data.
 
 ### Validate task parameters
 
 When you want to execute a task of kind `validate`, you need to pass the following mandatory parameters to the function method `run()`:
 
 - **`action`**: the action to perform. This must be `validate`.
-- **`inputs`**: the list of **dataitem names** to be validated. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
-- **`run_config`**: Nefretm run configuration.
+- **`framework`**: the Nefertem framework to be used.
+- **`inputs`**: the list of nefertem resources referenced in the constraint mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
 
 For example:
 
 ```python
-nefertem_run_config = {
-        "operation": "validation",
-        "exec_config": [{"framework": "frictionless"}]
-}
 run = function.run("validate",
-                   run_config=nefertem_run_config,
-                   inputs={"dataitems": ["organizations"]})
+                   framework="frictionless",
+                   inputs=[{"employees": di.key}])
 ```
 
 ### Profile task parameters
@@ -94,19 +89,15 @@ run = function.run("validate",
 When you want to execute a task of kind `profile`, you need to pass the following mandatory parameters to the function method `run()`:
 
 - **`action`**: the action to perform. This must be `profile`.
-- **`inputs`**: the list of **dataitem names** to be profiled. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
-- **`run_config`**: Nefretm run configuration.
+- **`framework`**: the Nefertem framework to be used.
+- **`inputs`**: the list of nefertem resources referenced mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
 
 For example:
 
 ```python
-nefertem_run_config = {
-        "operation": "profiling",
-        "exec_config": [{"framework": "frictionless"}]
-}
 run = function.run("profile",
-                   run_config=nefertem_run_config,
-                   inputs={"dataitems": ["organizations"]})
+                   framework="frictionless",
+                   inputs=[{"employees": di.key}])
 ```
 
 ### Infer task parameters
@@ -114,39 +105,15 @@ run = function.run("profile",
 When you want to execute a task of kind `infer`, you need to pass the following mandatory parameters to the function method `run()`:
 
 - **`action`**: the action to perform. This must be `infer`.
-- **`inputs`**: the list of **dataitem names** to be inferred. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
-- **`run_config`**: Nefretm run configuration.
+- **`framework`**: the Nefertem framework to be used.
+- **`inputs`**: the list of nefertem resources referenced mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
 
 For example:
 
 ```python
-nefertem_run_config = {
-        "operation": "inference",
-        "exec_config": [{"framework": "frictionless"}]
-}
 run = function.run("infer",
-                   run_config=nefertem_run_config,
-                   inputs={"dataitems": ["organizations"]})
-```
-
-### Metric task parameters
-
-When you want to execute a task of kind `metric`, you need to pass the following mandatory parameters to the function method `run()`:
-
-- **`action`**: the action to perform. This must be `metric`.
-- **`inputs`**: the list of **dataitem names** to be measured. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
-- **`run_config`**: Nefretm run configuration.
-
-For example:
-
-```python
-nefertem_run_config = {
-        "operation": "measure",
-        "exec_config": [{"framework": "frictionless"}]
-}
-run = function.run("metric",
-                   run_config=nefertem_run_config,
-                   inputs={"dataitems": ["organizations"]})
+                   framework="frictionless",
+                   inputs=[{"employees": di.key}])
 ```
 
 ## Runtime workflow
@@ -172,36 +139,32 @@ The Nefertem runtime execution workflow is the following:
       - `run.infer()`
       - `run.log_schema()` -> produces a `NefertemSchema`
       - `run.persist_schema()` -> produces one or more inference framework reports
-   4. If the task is `metric`:
-      - `run.metric()`
-      - `run.log_metric()` -> produces a `NefertemMetricReport`
-      - `run.persist_metric()` -> produces one or more metric framework reports
 4. The runtime then creates an `Artifact` object for each file produced by Nefertem and saves it into the *Core backend*. It then uploads all the files to the default *s3* storage provided. You can extract the path where the files are uploaded with the `run.get_artifacts()` method. In general, the path is `s3://<bucket-from-env>/<project-name>/artifacts/ntruns/<nefertem-run-uuid>/<file>`.
 
 ## Snippet example
 
 ```python
-import digitalhub_core as dhcore
+import digitalhub as dh
 
 # Get or create project
-project = dhcore.get_or_create_project("project-nefertem")
+project = dh.get_or_create_project("project-nefertem")
 
 # Create dataitem
-url = "https://media.githubusercontent.com/media/datablist/sample-csv-files/main/files/organizations/organizations-1000.csv"
-di = project.new_dataitem(name="organizations",
-                          kind="dataitem",
+url = "https://gist.githubusercontent.com/kevin336/acbb2271e66c10a5b73aacf82ca82784/raw/e38afe62e088394d61ed30884dd50a6826eee0a8/employees.csv"
+di = project.new_dataitem(name="employees",
+                          kind="table",
                           path=url)
 
 # Create function
 constraint = {
   'constraint': 'type',
-  'field': 'Country',
-  'field_type': 'string',
-  'name': 'check_country_string',
-  'resources': ['organizations'],
+  'field': 'SALARY',
+  'field_type': 'number',
+  'name': 'check_value_integer',
   'title': '',
+  'resources': ['employees'],
   'type': 'frictionless',
-  'value': 'string',
+  'value': 'number',
   'weight': 5
 }
 function = project.new_function(name="function-nefertem",
@@ -209,11 +172,10 @@ function = project.new_function(name="function-nefertem",
                                 constraints=[constraint])
 
 # Run validate task
-nefertem_run_config = {
-        "operation": "validation",
-        "exec_config": [{"framework": "frictionless"}]
-}
 run = function.run("validate",
-                   run_config=nefertem_run_config,
-                   inputs={"dataitems": ["organizations"]})
+                   framework="frictionless",
+                   inputs=[{"employees": di.key}])
+
+# Refresh run
+run.refresh()
 ```

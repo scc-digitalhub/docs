@@ -60,7 +60,7 @@ sql = """
 SELECT * FROM {{ ref('my_table') }}
 """
 
-# Dataitem called "my_table" should exist in Core, otherwise must be created
+dataitem = project.new_dataitem("my_dataitem", kind="table", path="path-to-some-data")
 
 function = dh.new_function(
     kind='dbt',
@@ -78,8 +78,8 @@ The DBT runtime introduces a task of kind `transform` that allows you to run a D
 When you want to execute a task of kind `transform`, you need to pass the following mandatory parameters to the function method `run()`:
 
 - **`action`**: the action to perform. This must be `transform`.
-- **`inputs`**: the list of **dataitem names** used as input for the transformation. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
-- **`outputs`**: a list containing **one** element that represents the output table name. A dataitem with that name will be created by the runtime if the transformation is successful.
+- **`inputs`**: the list of referenced tables in the sql query mapped to the dataitem keys.
+- **`outputs`**: a list containing **one** element that map the key `output_table` with a name of the output query table and output dataitem.
 
 As optional, you can pass the following task parameters specific for remote execution:
 
@@ -97,8 +97,8 @@ For example:
 ```python
 run = function.run(
     action='transform',
-    inputs={"dataitems": ["my_table"]},
-    outputs={"dataitems": ["my_output_table"]},
+    inputs=[{"my_table": "my_dataitem.key"}],
+    outputs=[{"output_table": "my_output_table"}],
 )
 ```
 
@@ -141,12 +141,12 @@ WHERE   tab."DEPARTMENT_ID" = '60'
 """
 function = project.new_function(name="function-dbt",
                                 kind="dbt",
-                                sql=sql)
+                                source={"code": sql})
 
 # Run function
 run = function.run("transform",
-                   inputs={"dataitems": ["employees"]},
-                   outputs={"dataitems": ["department-60"]})
+                   inputs=[{"employees": di.key}],
+                   outputs=[{"output_table": "department-60"}])
 
 # Refresh run
 run.refresh()

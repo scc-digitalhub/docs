@@ -39,7 +39,6 @@ Optionally, you can specify the following parameters:
 - **`embedded`**: whether the function is embedded or not. If `True`, the function is embedded (all the details are expressed) in the project. If `False`, the function is not embedded in the project.
 - **`base_image`**: the base container image.
 - **`command`**: the command to run inside the container.
-- **`entrypoint`**: the entrypoint to run inside the container.
 - **`args`**: the arguments to pass to the entrypoint.
 
 For example:

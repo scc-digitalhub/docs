@@ -4,15 +4,18 @@ site_url: http://docs/dev
 extra:
   current_portal: Dev
   other_portal: User
-  other_portal_path: ''
+  other_portal_path: ""
 
 extra_css:
-  - !ENV [DEV_STYLESHEETS_PORTAL_SELECTION, '../stylesheets/portal_selection.css']
-  - !ENV [DEV_STYLESHEETS_COLORS, '../stylesheets/colors.css']
+  - !ENV [
+      DEV_STYLESHEETS_PORTAL_SELECTION,
+      "../stylesheets/portal_selection.css",
+    ]
+  - !ENV [DEV_STYLESHEETS_COLORS, "../stylesheets/colors.css"]
 
 nav:
   - "index.md"
   - Tasks:
       - "tasks/rm-custom-views.md"
-  - Runtimes:
-      - "runtimes/sdk-runtimes.md"
+  # - Runtimes:
+  #     - "runtimes/sdk-runtimes.md"
