@@ -17,13 +17,13 @@ First, we initialize our environment and create a project.
 Import required library:
 
 ```python
-import digitalhub_core as dhcore
+import digitalhub as dh
 ```
 
 Create a project:
 
 ```python
-project = dhcore.get_or_create_project("project-nefertem")
+project = dh.get_or_create_project("project-nefertem")
 ```
 
 Check that the project has been created successfully:
@@ -34,25 +34,27 @@ print(project)
 
 ## Set data source
 
-The data we will use is available as a CSV file on GitHub. It is a table of organizations, with columns for the organization name, country, and city.
+The data we will use is available as a CSV file on GitHub. It is a generic sample table of employees.
 The URL to the data is:
 
 ```python
-url = "https://media.githubusercontent.com/media/datablist/sample-csv-files/main/files/organizations/organizations-1000.csv"
+url = "https://gist.githubusercontent.com/kevin336/acbb2271e66c10a5b73aacf82ca82784/raw/e38afe62e088394d61ed30884dd50a6826eee0a8/employees.csv"
 ```
 
-We can now create a dataitem to represent the data source that we want to validate. The Nefertem runtime will use the dataitem specifications to fetch the data and perform the `validate` task on it.
+We can now create a dataitem to represent the data source that we want to operate transformation on. The Nefertem runtime will use the dataitem specifications to fetch the data and perform the `validate` task on it.
 
 To create the dataitem, we call the `new_dataitem` method of the project object. We pass the following mandatory parameters:
 
 ```python
-di = project.new_dataitem(name="organizations",
-                          kind="dataitem",
+di = project.new_dataitem(name="employees",
+                          kind="table",
                           path=url)
 ```
 
+The parameters are:
+
 - `name` is the identifier of the dataitem.
-- `kind` is the type of the dataitem (at the moment we support only *dataitem* as kind)
+- `kind` is the type of the dataitem (In this case, `table`, because our data is a table).
 - `path` is the path to the data source.
 
 Please note that the dataitem is not the data itself, but contains a reference to the data. The dataitem is a Core object that represents the data source, and it is stored in the Core backend. The data itself are (eventually) present on the path specified in the dataitem.
@@ -60,18 +62,18 @@ Please note that the dataitem is not the data itself, but contains a reference t
 ## Set up the function
 
 We can now set up the function that operates a validation task on the dataitem.
-First we define the *constraint* that we want to validate. A *constaint* is a rule that we wanto to check against the data. In this case, we want to check that the `Country` column is of type `string`. We define the *constraint* as a dictionary:
+First we define the *constraint* that we want to validate. A *constaint* is a rule that we wanto to check against the data. In this case, we want to check that the `SALARY` column is of type `int`. We define the *constraint* as a dictionary:
 
 ```python
 constraint = {
   'constraint': 'type',
-  'field': 'Country',
-  'field_type': 'string',
-  'name': 'check_country_string',
-  'resources': ['organizations'],
+  'field': 'SALARY',
+  'field_type': 'number',
+  'name': 'check_value_integer',
   'title': '',
+  'resources': ['employees'],
   'type': 'frictionless',
-  'value': 'string',
+  'value': 'number',
   'weight': 5
 }
 ```
@@ -90,29 +92,18 @@ The parameters are:
 - `kind` is the type of the function. **Must be `nefertem`**.
 - `constraints` is the list of constraints that we want to validate.
 
-## Set Nefertem run configuration
-
-We can now set up the Nefertem run configuration. We specify that we want to run the function in validation mode, and we specify that the framework we want to use for validation is `frictionless`:
-
-```python
-nefertem_run_config = {
-        "operation": "validation",
-        "exec_config": [{"framework": "frictionless"}]
-}
-```
-
 ## Run the function
 
 We can now run the function and see the results. To do this we use the `run` method of the function. To the method, we pass:
 
 - the task we want to run (in this case, `validate`)
-- the run configuration we defined earlier
-- the input dataitem (in this case, `organizations`) in the form of a dictionary with the key `dataitems` and the value a list of dataitem names
+- framework we want to use (in this case, `frictionless`)
+- the inputs map the resource defined in the constraint with our dataitem key. The runtime will collect the data referenced in the dataitem path an treat that data as Nefertem `DataResource`.
 
 ```python
 run = function.run("validate",
-                   run_config=nefertem_run_config,
-                   inputs={"dataitems": ["organizations"]})
+                   framework="frictionless",
+                   inputs=[{"employees": di.key}])
 ```
 
 We can check the status of the run:
@@ -135,21 +126,17 @@ We can now explore the results of the function. A Neferetem run produces various
 We can get the artifact list from the run:
 
 ```python
-artifacts = run.get_artifacts()
+artifacts = run.outputs(as_key=False)
+
+
+print(artifacts)
 ```
 
-And save the artifacts to a local directory. The artifacts will be saved in a directory named after the project, in a subdirectory named `artifacts`, and in a subdirectory named after the kind of artifact. At the moment we only have one kind of artifact, `artifact`, so the artifacts will be saved in the directory `project-nefertem/artifacts/artifact`:
+If we want to get the report, we can get it from the artifact and read it:
 
 ```python
-for artifact in artifacts:
-    artifact.download()
-```
+path = artifacts[0]["run-metadata"].download()
 
-And we can now explore the artifacts. For example, we can read the run report:
-
-```python
-filepath = f"project-nefertem/artifacts/artifact/run_metadata.json"
-
-with open(filepath) as f:
+with open(path) as f:
     print(f.read())
 ```

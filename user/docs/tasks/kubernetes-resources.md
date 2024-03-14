@@ -95,8 +95,8 @@ You need to declare the resource type as `cpu`, request and/or limit specificati
 
 resources = [{
     "resource_type": "cpu",
-    "request": 12,
-    "limit": 16
+    "requests": "12",
+    "limits": "16"
 }]
 
 function.run(resources=resources)
@@ -110,7 +110,7 @@ You need to declare the resource type as `memory`, request and/or limit specific
 ```python
 resources = [{
     "resource_type": "memory",
-    "request": 64
+    "requests": "64Gi"
 }]
 function.run(resources=resources)
 ```
@@ -127,7 +127,7 @@ Here follow an example for the digitahub in FBK that needs to specyfy the `toler
 
 resources = [{
     "resource_type": "gpu",
-    "limit": 1
+    "limits": "1"
 }]
 toleration = [{
     "key": "nvidia.com/gpu",

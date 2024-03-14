@@ -81,27 +81,27 @@ We create the function from the project object:
 ``` python
 function = project.new_function(name="function-dbt",
                                 kind="dbt",
-                                sql=sql)
+                                source={"code": sql})
 ```
 
 The parameters are:
 
 - `name` is the identifier of the function.
 - `kind` is the type of the function. **Must be `dbt`**.
-- `sql` is the SQL query that will be executed by the function.
+- `source` contains the code that is the SQL we'll execute in the function. Must have key `code` and value the SQL code.query that
 
 ## Run the function
 
 We can now run the function and see the results. To do this we use the `run` method of the function. To the method, we pass:
 
 - the task we want to run (in this case, `transform`)
-- the input dataitem(s) (in this case, `organizations`) in the form of a dictionary with the key `dataitems` and the value a list of dataitem names
-- the output dataitem (in our case, `department-60`) in the form of a dictionary with the key `dataitems` and the value a list of dataitem names. The output dataitem name must be only one, because the DBT runtime produces only one output table
+- the inputs map the refereced table in the DBT query (`{{ ref('employees') }}`) to one of our dataitems key. The Runtime will fetch the data and use dem as reference for the query.
+- the output map the output table name. The name of the output table will be `department-60` and will be the sql query table name result and the output dataitem name.
 
 ``` python
 run = function.run("transform",
-                   inputs={"dataitems": ["employees"]},
-                   outputs={"dataitems": ["department-60"]})
+                   inputs=[{"employees": di.key}],
+                   outputs=[{"output_table": "department-60"}])
 ```
 
 We can check the status of the run:
@@ -121,21 +121,9 @@ Note that calling `run.refresh()` will update the run object with the latest inf
 ## Explore the results
 
 We can now explore the results of the function.
-First, we get the dataitem that was created during execution:
+We can fetch the output table and explore it with `pandas`.
 
 ``` python
-outputs = run.results()
-out_di = outputs.get_dataitem_by_key("department-60")
-```
-
-Then we can import the dataitem as a Pandas dataframe:
-
-``` python
-df = out_di.as_df()
-```
-
-We can now explore the dataframe:
-
-``` python
+df = run.outputs(as_key=False)[0]['department-60'].as_df()
 df.head()
 ```
