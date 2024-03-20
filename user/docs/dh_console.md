@@ -8,11 +8,17 @@ The Digital Hub console is a front-end application backed by the Digital Hub Cor
 
 Such objects are project-scoped. When you access the console, you land to the project management page, where you can create or delete projects.
 
-**TODO** screenshot projects
+## Create a Project
+
+In order to create a new project, press the button on the first element of the list
+
+![Coder buttons](../images/console/project-create.png)
+
+Now you can fill the form with the data of your new project, adding Name, Description and its Metadata
+![Coder buttons](../images/console/project-form.png)
 
 Following the selection of a project, you can get an overview of the associated objects on its dashboard and manage them on the dedicated pages.
 
-**TODO** screenshot dashboard
 
 ## Versioning
 
