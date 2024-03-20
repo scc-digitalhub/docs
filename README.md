@@ -32,7 +32,7 @@ Different versions of the documentation may be available at once.
 The `current` version of the documentation reflects the most up-to-date state of the `main` branch, and is only updated when new commits to `main` are made. To generate the documentation for a specific version, create and push a new tag (you can do this from any branch):
 ``` shell
 git tag v1
-git push origin v1
+git push origin tag v1
 ```
 
 A snapshot of the documentation at this point, on the branch you were at, will be available at `/docs/v1`. To update this specific version, you will have to delete the tag (both local and remote), then repeat the above commands.
