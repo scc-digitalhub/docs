@@ -1,6 +1,6 @@
 # Visualize data with Streamlit
 
-We can take this one step further and visualize our data in a graph. We will make use of [Streamlit](https://streamlit.io/), a library to create web apps and visualize data by writing simple scripts.
+We can take this one step further and visualize our data in a graph using [Streamlit](https://streamlit.io/), a library to create web apps and visualize data by writing simple scripts. Let's get familiar with it.
 
 ## Setup
 
@@ -19,39 +19,67 @@ Create the script that Streamlit will run:
 import pandas as pd
 import streamlit as st
 
-rdf = pd.read_json('result.json', orient='records')
+rdf = pd.read_json("result.json", orient="records")
+
+# Replace colons in column names as they can cause issues with Streamlit
+rdf.columns = rdf.columns.str.replace(":", "")
 
 st.write("""My data""")
-st.line_chart(rdf, x='codice spira', y='12:00-13:00')
+st.line_chart(rdf, x="codice spira", y="1200-1300")
 ```
 
 ## Launch app
 
-Now, open a local shell and login to your Coder instance as follows. A tab will open on your browser, containing a token you must copy and paste to the shell (it may ask your credentials, if your browser isn't already logged in).
-``` shell
-coder login https://coder.my-digitalhub-instance.it
+In a new code cell, run the following to install Streamlit in the workspace. It's actually not code: the `!` at the beginning tells Jupyter to run the contents as a shell command.
+
+```sh
+!pip install streamlit
 ```
 
-Connect to the workspace, port-forwarding via ssh:
-``` shell
-ssh -L 8501:localhost:8501 coder.my-jupyter-workspace
+Similarly, run the following command. This will start hosting the Streamlit web app, so the cell will remain running. The `browser.gatherUsageStats` flag is set to `false` because, otherwise, Streamlit will automatically gather usage stats and print a warning about it.
+```sh
+!streamlit run streamlit-app.py --browser.gatherUsageStats false
 ```
 
-Install streamlit:
-``` shell
-pip install streamlit
-```
+![Coder buttons](../../../images/scenario-etl/coder-jupyter-buttons.png)
 
-Finally, we run the app. The `browser.gatherUsageStats` flag is set to `false` because, otherwise, Streamlit will automatically gather usage stats and print a warning about it.
-``` shell
-streamlit run streamlit-app.py --browser.gatherUsageStats false
-```
+![Coder port-forward](../../../images/scenario-etl/coder-jupyter-portfw.png)
 
-Access `localhost:8501` on your browser to view the data!
+Next, go to your Coder instance and access the Jupyter workspace you've been using. Click on *Ports*, type `8501` (Streamlit's default port), then click the button next to it. It will open a tab to the Streamlit app, where you can visualize data!
 
-![Streamlit image](../../../images/streamlit.png)
+![Streamlit image](../../../images/scenario-etl/streamlit.png)
 
-The graph we displayed is very simple, but you are welcome to experiment with more Streamlit features.
+The graph we displayed is very simple, but you are welcome to experiment with more Streamlit features. Don't forget to stop the above code cell, to stop the app.
+
+!!! info "Connect to workspace remotely"
+
+    Alternatively to running shell commands from Jupyter and port-forwarding through the Coder interface, you could connect your local shell to the workspace remotely. You do not need to do this if you already used the method above.
+
+    Login to Coder with the following command. A tab will open in your browser, containing a token you must copy and paste to the shell (it may ask for your credentials, if your browser isn't already logged in).
+
+    ``` shell
+    coder login https://coder.my-digitalhub-instance.it
+    ```
+
+    With this, your shell is authenticated to the Coder instance, and the following command will be able to connect your shell to the workspace remotely, while tunneling port 8501:
+
+    ``` shell
+    ssh -L 8501:localhost:8501 coder.my-jupyter-workspace
+    ```
+
+    Install streamlit:
+
+    ``` shell
+    pip install streamlit
+    ```
+
+    Run the app:
+
+    ``` shell
+    streamlit run streamlit-app.py --browser.gatherUsageStats false
+    ```
+
+    Access `localhost:8501` on your browser to view the app!
 
 ## As Docker container
 
