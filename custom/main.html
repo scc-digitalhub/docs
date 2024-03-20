@@ -62,7 +62,8 @@
             </button>
             <div class="dd-options-container">
               {% if config.extra.versions is defined and config.extra.versions != None %}
-                {% set versions = config.extra.versions.split(',') %}
+                {% set versionsString = config.extra.versions|string %}
+                {% set versions = versionsString.split(',') %}
                 {% set _ = versions.append('current') %}
               {% else %}
                 {% set versions = ['current'] %}
