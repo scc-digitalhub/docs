@@ -19,6 +19,16 @@ Now you can fill the form with the data of your new project, adding Name, Descri
 
 Following the selection of a project, you can get an overview of the associated objects on its dashboard and manage them on the dedicated pages.
 
+## Dashboard
+
+The console dashboard shows the resources that have been created with a series of cards and allows you to quickly access them. In addition to the artifacts, data items and functions, the last card shows the runs present and their respective status
+![Coder buttons](../images/console/dashboard.png)
+
+## Objects
+### Functions
+### Dataitems 
+### Artifacts 
+### Secrets
 
 ## Versioning
 
