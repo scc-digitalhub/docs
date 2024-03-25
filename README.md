@@ -11,9 +11,10 @@ Commit your changes to the `main` branch and the website will automatically be u
 
 If you wish to test your changes locally before pushing, the quickest way to do so is:
 
-Install MkDocs:
+Install MkDocs and mkdocs-material:
 ```sh
 pip install mkdocs
+pip install mkdocs-material
 ```
 
 Remove `custom_dir: ../custom/` from `base.yml` (this file concerns CSS, so things like colours will be different). If not removed, you may receive an error when performing the next step. Make sure not to include this change in your later commit.
