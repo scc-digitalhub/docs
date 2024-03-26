@@ -16,15 +16,15 @@ In addition you can inject into the task's container:
 
 ## Volumes
 
-Whit SDK you can request four types of volumes:
+With SDK you can request four types of volumes:
 
-- **Persistent volumes claim (pvc)**
+- **Persistent volume claims (pvc)**
 - **ConfigMap**
 - **Secret**
 
-### Persistent volumes claim (PVC)
+### Persistent volume claims (PVC)
 
-You can ask for a persistent volume claim (pvc) to be mounted on the container beign launched by the task.
+You can ask for a persistent volume claim (pvc) to be mounted on the container being launched by the task.
 You need to declare the volume type as `persistent_volume_claim`, a name for the PVC for the user (e.g., `my-pvc`), the mount path on the container and a spec with the name of the PVC on Kubernetes (e.g., `pvc-name-on-k8s`).
 
 ```python
@@ -42,7 +42,7 @@ function.run(volumes=volumes)
 
 ### ConfigMap
 
-You can ask for a configmap to be mounted on the container beign launched by the task.
+You can ask for a configmap to be mounted on the container being launched by the task.
 You need to declare the volume type as `config_map`, a name for the ConfigMap for the user (e.g., `my-config-map`), the mount path on the container and a spec with the name of the ConfigMap on Kubernetes (e.g., `config-map-name-on-k8s`).
 
 ```python
@@ -60,7 +60,7 @@ function.run(volumes=volumes)
 
 ### Secret
 
-You can ask for a secret to be mounted on the container beign launched by the task.
+You can ask for a secret to be mounted on the container being launched by the task.
 You need to declare the volume type as `secret`, a name for the Secret for the user (e.g., `my-secret`), the mount path on the container and a spec with the name of the Secret on Kubernetes (e.g., `secret-name-on-k8s`).
 
 ```python
@@ -78,8 +78,7 @@ function.run(volumes=volumes)
 
 ## Hardware resources
 
-You can request a specified amount of hardware resources (cpu, memory, gpu) for the task.
-The declaration pass thorugh the `resources` task parameter. `resources` must be a list of Resource objects represented as a dictionary.
+You can request a specific amount of hardware resources (cpu, memory, gpu) for the task, declared thorugh the `resources` task parameter; `resources` must be a list of Resource objects represented as a dictionary.
 At the moment Digitalhub SDK supports:
 
 - **CPU**
@@ -88,7 +87,7 @@ At the moment Digitalhub SDK supports:
 
 ### CPU
 
-You can request a specified amount of CPU for the task.
+You can request a specific amount of CPU for the task.
 You need to declare the resource type as `cpu`, request and/or limit specifications.
 
 ```python
@@ -104,7 +103,7 @@ function.run(resources=resources)
 
 ### RAM memory
 
-You can request a specified amount of RAM memory for the task.
+You can request a specific amount of RAM memory for the task.
 You need to declare the resource type as `memory`, request and/or limit specifications.
 
 ```python
@@ -117,11 +116,11 @@ function.run(resources=resources)
 
 ### GPU
 
-You can request a specified amount of GPU for the task.
-You need to declare the resource type as `gpu`, request and/or limit specifications. There could be administation specific requirements for requesting a GPU. You may need to use `tolerations` or `affinity` parameter to request the GPU. Both of these parameters are described in the [Kubernetes documentation](https://kubernetes.io/docs/home/).
-Other times you mey need to specify a list of labels with the `labels` parameter.
+You can request a specific amount of GPU for the task.
+You need to declare the resource type as `gpu`, request and/or limit specifications. There could be administation-specific requirements for requesting a GPU. You may need to use `tolerations` or `affinity` parameters to request the GPU. Both of these parameters are described in the [Kubernetes documentation](https://kubernetes.io/docs/home/).
+Other times you may need to specify a list of labels with the `labels` parameter.
 
-Here follow an example for the digitahub in FBK that needs to specyfy the `tolerations` parameter:
+Here is an example for the digitahub in FBK that uses the `tolerations` parameter:
 
 ```python
 
@@ -140,7 +139,7 @@ function.run(resources=resources, tolerations=toleration)
 
 ## Values injection
 
-You can ask to the backaned to inject values into the container beign launched by the task.
+You can ask the backend to inject values into the container being launched by the task.
 You can inject:
 
 - **Secrets**
@@ -148,7 +147,7 @@ You can inject:
 
 ### Secrets
 
-You can requests a secret injection into the container beign launched by the task by passing the reference to the backend with the `secrets` task parameters.
+You can request a secret injection into the container being launched by the task by passing the reference to the backend with the `secrets` task parameters.
 
 ```python
 secrets = ["my-secret"]
@@ -157,7 +156,7 @@ function.run(secrets=secrets)
 
 ### Environment variables
 
-You can requests an environment variable injection into the container beign launched by the task by passing the reference to the backend with the `env` task parameters.
+You can request an environment variable injection into the container being launched by the task by passing the reference to the backend with the `env` task parameters.
 
 ```python
 env = [{
