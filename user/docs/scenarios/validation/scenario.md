@@ -126,7 +126,7 @@ We can now explore the results of the function. A Neferetem run produces various
 We can get the artifact list from the run:
 
 ```python
-artifacts = run.outputs(as_key=False)
+artifacts = run.outputs()
 
 
 print(artifacts)

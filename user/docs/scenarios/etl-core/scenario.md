@@ -124,6 +124,6 @@ We can now explore the results of the function.
 We can fetch the output table and explore it with `pandas`.
 
 ``` python
-df = run.outputs(as_key=False)[0]['department-60'].as_df()
+df = run.outputs()[0]['department-60'].as_df()
 df.head()
 ```
