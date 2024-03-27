@@ -59,7 +59,7 @@ nav:
           - "scenarios/postgrest/intro.md"
           - "scenarios/postgrest/data.md"
           - "scenarios/postgrest/postgrest.md"
-  - Runtimes documentation:
+  - Runtimes reference:
       - DBT:
           - "runtimes/dbt.md"
       - Nefertem:
