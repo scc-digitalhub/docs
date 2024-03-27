@@ -30,12 +30,8 @@ You can then view the docs at `localhost:8000`. As the docs on the website are g
 
 Different versions of the documentation may be available at once.
 
-The `current` version of the documentation reflects the most up-to-date state of the `main` branch, and is only updated when new commits to `main` are made. To generate the documentation for a specific version, create and push a new tag (you can do this from any branch):
-``` shell
-git tag v1
-git push origin tag v1
-```
+The `current` version of the documentation reflects the most up-to-date state of the `main` branch, and is updated when new commits to `main` are made. It can be found under `/docs`.
 
-A snapshot of the documentation at this point, on the branch you were at, will be available at `/docs/v1`. To update this specific version, you will have to delete the tag (both local and remote), then repeat the above commands.
+Publishing a new branch will generate another documentation portal, named after the branch, under `/docs/<branch_name>`. Further pushes to this branch will update the corresponding portal.
 
-Keep in mind that the toolbar containing the version drop-down menu is generated alongside the documentation. This means that the portal for a specific version of the docs will not include links to newer versions, unless it was updated after their creation.
+Keep in mind that the toolbar containing the version drop-down menu is generated alongside the documentation. This means that the toolbar in the portal for a specific version of the docs will not include links to newer versions, unless it was updated after their creation.
