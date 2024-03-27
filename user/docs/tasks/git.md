@@ -1,4 +1,5 @@
 # Git best practices
+TODO align
 
 Outside of test cases, projects should be backed by a Git repository, to keep track of their history.
 

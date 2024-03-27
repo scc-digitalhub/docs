@@ -14,25 +14,29 @@ nav:
   - "index.md"
   - "architecture.md"
   - "installation.md"
-  - "core.md"
-  - "dh_console.md"
-  - Components:
-      - "components/deploying-components.md"
-      - "components/dashboard.md"
-      - "components/jupyter.md"
-      - "components/dremio.md"
-      - "components/mlrun.md"
-      - "components/sqlpad.md"
-      - "components/grafana.md"
-      - "components/vscode.md"
-      - "components/resourcemanager.md"
-  - Tasks:
+  #- "core.md"
+  - Concepts and Tasks:
       - "tasks/projects.md"
+      - "tasks/functions.md"
       - "tasks/workspaces.md"
       - "tasks/resources.md"
       - "tasks/data.md"
-      - "tasks/git.md"
       - "tasks/kubernetes-resources.md"
+      - "tasks/secrets.md"
+    #   - "tasks/git.md"
+  - Components:
+      - "components/dashboard.md"
+      - "components/dh_console.md"
+      - "components/resourcemanager.md"
+      - "components/mlrun.md"
+      - "components/nuclio.md"
+      - "components/kubeflow.md"
+      - Interactive Workspaces:
+        - "components/jupyter.md"
+        - "components/dremio.md"
+        - "components/sqlpad.md"
+        - "components/grafana.md"
+        - "components/vscode.md"
   - Scenarios:
       - Extract-Transform-Load:
           - "scenarios/etl/intro.md"
@@ -62,3 +66,5 @@ nav:
           - "runtimes/nefertem.md"
       - Container:
           - "runtimes/container.md"
+      - MLRun:
+          - "runtimes/mlrun.md"

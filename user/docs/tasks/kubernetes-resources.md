@@ -1,4 +1,4 @@
-# Setting up Kubernetes Resources for tasks
+# Using Kubernetes Resources for Runs
 
 With Digitalhub SDK you can manage Kubernetes resources for your tasks. When you run a function you can require some Kubernetes resources for the task.
 
