@@ -6,7 +6,6 @@ permissions:
 jobs:
   deploy-current:
     runs-on: ubuntu-latest
-    if: github.ref_name == 'main' || github.ref_type == 'tag'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -16,23 +15,23 @@ jobs:
       - run: |
           git fetch --prune --unshallow --tags
           git checkout main
-          export VERSIONS=$(echo `git tag`|sed 's/ /,/g')
+          export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|sed 's/origin\///g'|sed 's/HEAD//g'|sed 's/main/current/g'|sed 's/gh-pages//g'|xargs|sed 's/ /,/g')
           cd user && mkdocs build && cd ..
           cd dev && mkdocs build && cd ..
           mv user/site ./site
           mv dev/site site/dev
       - run: |
-          git checkout gh-pages
+          git checkout -b gh-pages
           cp -r site/* .
           rm -r site
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
           git add --all
           git commit -m "Workflow docs - Current"
-          git push
+          git push -u origin gh-pages
   deploy-versioned:
     needs: deploy-current
-    if: github.ref_type == 'tag'
+    if: github.ref_name != 'main' && github.ref_name != 'gh-pages'
     runs-on: ubuntu-latest
     env:
       DOCS_VERSION: ${{ github.ref_name }}
@@ -47,11 +46,9 @@ jobs:
           python-version: '3.9'
       - run: pip install mkdocs-material
       - run: |
-          raw=$(git branch -r --contains ${{ github.ref }})
-          branch=${raw##*/}
-          git checkout $branch
           git fetch --prune --unshallow --tags
-          export VERSIONS=$(echo `git tag`|sed 's/ /,/g')
+          git checkout ${{ github.ref_name }}
+          export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|sed 's/origin\///g'|sed 's/HEAD//g'|sed 's/main/current/g'|sed 's/gh-pages//g'|xargs|sed 's/ /,/g')
           cd user && mkdocs build && cd ..
           cd dev && mkdocs build && cd ..
           mkdir ./site
