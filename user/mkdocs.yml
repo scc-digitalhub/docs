@@ -56,9 +56,11 @@ nav:
           - "scenarios/postgrest/data.md"
           - "scenarios/postgrest/postgrest.md"
   - Runtimes documentation:
-      - DBT:
-          - "runtimes/dbt.md"
-      - Nefertem:
-          - "runtimes/nefertem.md"
       - Container:
           - "runtimes/container.md"
+      - DBT:
+          - "runtimes/dbt.md"
+      - Mlrun:
+          - "runtimes/mlrun.md"
+      - Nefertem:
+          - "runtimes/nefertem.md"

@@ -100,7 +100,7 @@ For example:
 ```python
 run = function.run(
     action='transform',
-    inputs=[{"my_table": "my_dataitem.key"}],
+    inputs=[{"my_table": my_dataitem.key}],
     outputs=[{"output_table": "my_output_table"}],
 )
 ```

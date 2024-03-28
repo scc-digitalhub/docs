@@ -21,8 +21,6 @@ pip install core/ data/ ./
 pip install data/modules/nefertem[local]
 ```
 
-Otherwise, only remote execution with Core backed available is possible.
-
 ## Function
 
 The Nefertem runtime introduces a function of kind `neferetm` that allows you to execute various tasks on your data.
@@ -49,7 +47,7 @@ Optionally, you can specify the following parameters:
 For example:
 
 ```python
-import digitalhub_core as dhcore
+import digitalhub_core as dh
 
 constraint = {
   'constraint': 'type',
@@ -62,9 +60,9 @@ constraint = {
   'value': 'string',
   'weight': 5
 }
-function = dhcore.new_function(name="nefertem-function",
-                               kind="nefertem",
-                               constraints=[constraint])
+function = dh.new_function(name="nefertem-function",
+                           kind="nefertem",
+                           constraints=[constraint])
 ```
 
 ## Task
