@@ -8,14 +8,17 @@ The runtime introduces a function of kind `neferetm` and four task of kind `vali
 Python libraries:
 
 - python >= 3.9
-- digitalhub-core[base_yaml]
-- digitalhub-core-nefertem
+- digitalhub
+- digitalhub-data-nefertem
 - Nefertem plugins available in the [Nefertem repository](https://github.com/scc-digitalhub/nefertem/tree/main/plugins)
 
 If you want to execute Nefertem tasks locally, you need to install digitalhub-core-nefertem package with `local` flag:
 
 ```bash
-pip install digitalhub-core-nefertem[local]
+git clone https://github.com/scc-digitalhub/digitalhub-sdk.git
+cd digitalhub-sdk
+pip install core/ data/ ./
+pip install data/modules/nefertem[local]
 ```
 
 Otherwise, only remote execution with Core backed available is possible.
@@ -37,7 +40,7 @@ Optionally, you can specify the following parameters:
 - **`uuid`**: the uuid of the function (this is automatically generated if not provided). **Must** be a valid uuid v4.
 - **`description`**: the description of the function
 - **`labels`**: the labels of the function
-- **`source_remote`**: the remote source of the function (git repository)
+- **`git_source`**: the remote source of the function (git repository)
 - **`source_code`**: pointer to the source code of the function
 - **`constraints`**: the constraints of the function to be applied on the data. Valid only for `validate` tasks
 - **`error_report`**: the error report output format. Valid only for `validate` tasks
@@ -76,6 +79,20 @@ When you want to execute a task of kind `validate`, you need to pass the followi
 - **`framework`**: the Nefertem framework to be used.
 - **`inputs`**: the list of nefertem resources referenced in the constraint mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
 
+As optional, you can pass the following task parameters specific for remote execution:
+
+- **`node_selector`**: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.
+- **`volumes`**: a list of volumes
+- **`resources`**: a list of resources (CPU, memory, GPU)
+- **`labels`**: a list of labels to attach to kubernetes resources
+- **`affinity`**: node affinity
+- **`tolerations`**: tolerations
+- **`env`**: environment variables to inject in the container
+- **`secrets`**: list of secrets to inject in the container
+- **`backoff_limit`**: the number of retries when a job fails.
+- **`schedule`**: the schedule of the job as a cron expression
+- **`replicas`**: the number of replicas of the deployment
+
 For example:
 
 ```python
@@ -92,6 +109,20 @@ When you want to execute a task of kind `profile`, you need to pass the followin
 - **`framework`**: the Nefertem framework to be used.
 - **`inputs`**: the list of nefertem resources referenced mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
 
+As optional, you can pass the following task parameters specific for remote execution:
+
+- **`node_selector`**: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.
+- **`volumes`**: a list of volumes
+- **`resources`**: a list of resources (CPU, memory, GPU)
+- **`labels`**: a list of labels to attach to kubernetes resources
+- **`affinity`**: node affinity
+- **`tolerations`**: tolerations
+- **`env`**: environment variables to inject in the container
+- **`secrets`**: list of secrets to inject in the container
+- **`backoff_limit`**: the number of retries when a job fails.
+- **`schedule`**: the schedule of the job as a cron expression
+- **`replicas`**: the number of replicas of the deployment
+
 For example:
 
 ```python
@@ -107,6 +138,20 @@ When you want to execute a task of kind `infer`, you need to pass the following 
 - **`action`**: the action to perform. This must be `infer`.
 - **`framework`**: the Nefertem framework to be used.
 - **`inputs`**: the list of nefertem resources referenced mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
+
+As optional, you can pass the following task parameters specific for remote execution:
+
+- **`node_selector`**: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.
+- **`volumes`**: a list of volumes
+- **`resources`**: a list of resources (CPU, memory, GPU)
+- **`labels`**: a list of labels to attach to kubernetes resources
+- **`affinity`**: node affinity
+- **`tolerations`**: tolerations
+- **`env`**: environment variables to inject in the container
+- **`secrets`**: list of secrets to inject in the container
+- **`backoff_limit`**: the number of retries when a job fails.
+- **`schedule`**: the schedule of the job as a cron expression
+- **`replicas`**: the number of replicas of the deployment
 
 For example:
 
@@ -139,7 +184,7 @@ The Nefertem runtime execution workflow is the following:
       - `run.infer()`
       - `run.log_schema()` -> produces a `NefertemSchema`
       - `run.persist_schema()` -> produces one or more inference framework reports
-4. The runtime then creates an `Artifact` object for each file produced by Nefertem and saves it into the *Core backend*. It then uploads all the files to the default *s3* storage provided. You can extract the path where the files are uploaded with the `run.get_artifacts()` method. In general, the path is `s3://<bucket-from-env>/<project-name>/artifacts/ntruns/<nefertem-run-uuid>/<file>`.
+4. The runtime then creates an `Artifact` object for each file produced by Nefertem and saves it into the *Core backend*. It then uploads all the files to the default *s3* storage provided. You can collect the artifacts with the `run.outputs()` method. In general, the saving path is `s3://<bucket-from-env>/<project-name>/artifacts/ntruns/<nefertem-run-uuid>/<file>`.
 
 ## Snippet example
 

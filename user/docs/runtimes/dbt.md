@@ -14,15 +14,16 @@ Python libraries:
 We need first to install dbt:
 
 ```bash
-pip install dbt-postgres==1.6.7
+pip install dbt-postgres==1.6.7 pandas==2.1.4
 ```
 
 and then we can install digitalhub sdk and collect digitalhub dbt modules
 
 ```bash
-pip install digitalhub[data]
 git clone https://github.com/scc-digitalhub/digitalhub-sdk.git
-pip install digitalhub-sdk/data/modules/dbt/ --no-deps
+cd digitalhub-sdk
+pip install core/ data/ ./
+pip install data/modules/dbt
 ```
 
 If you want to exeute the dbt runtime only remotely, you can avoid to install dbt.
@@ -38,15 +39,14 @@ When you create a function of kind `dbt`, you need to specify the following mand
 - **`project`**: the project name with which the function is associated. **Only** if you do not use the project context to create the function, e.g. `project.new_function()`.
 - **`name`**: the name of the function
 - **`kind`**: the kind of the function, **must** be `dbt`
-- **`sql`**: the SQL query to run against the data
+- **`source`**: the source dictionary that contains the SQL query to run against the data
 
 Optionally, you can specify the following parameters:
 
 - **`uuid`**: the uuid of the function (this is automatically generated if not provided). **Must** be a valid uuid v4.
 - **`description`**: the description of the function
 - **`labels`**: the labels of the function
-- **`source_remote`**: the remote source of the function (git repository)
-- **`source_code`**: pointer to the source code of the function
+- **`git_source`**: the remote source of the function (git repository)
 - **`embedded`**: whether the function is embedded or not. If `True`, the function is embedded (all the details are expressed) in the project. If `False`, the function is not embedded in the project.
 
 For example:
@@ -65,7 +65,7 @@ dataitem = project.new_dataitem("my_dataitem", kind="table", path="path-to-some-
 function = dh.new_function(
     kind='dbt',
     name='my_function',
-    sql=sql
+    source={"code": sql}
 )
 ```
 
@@ -91,6 +91,9 @@ As optional, you can pass the following task parameters specific for remote exec
 - **`tolerations`**: tolerations
 - **`env`**: environment variables to inject in the container
 - **`secrets`**: list of secrets to inject in the container
+- **`backoff_limit`**: the number of retries when a job fails.
+- **`schedule`**: the schedule of the job as a cron expression
+- **`replicas`**: the number of replicas of the deployment
 
 For example:
 
@@ -113,7 +116,7 @@ The DBT runtime execution workflow is the following:
      - `<local-path>`
 2. The runtime inserts the data into a temporary versioned table in the default postgres database. These tables are named `<dataitem-name>_v<dataitem-id>`, and will be deleted at the end of the execution.
 3. The runtime creates all the necessary DBT artifacts (profiles.yml, dbt_project.yml, etc.) and runs the DBT transformation.
-4. The runtime stores the output table into the default postgres database as result of the DBT execution. The table name is built from the `outputs` parameter. Then, the runtime creates a dataitem with the `outputs` name parameter and saves it into the Core backend. You can retrieve the dataitem with the `run.results().get_dataitems()` method. In general, the output table is named `<dataitem-output-name>_v<dataitem-output-id>` and is stored in the default postgres database passed to the runtime via env variable.
+4. The runtime stores the output table into the default postgres database as result of the DBT execution. The table name is built from the `outputs` parameter. Then, the runtime creates a dataitem with the `outputs` name parameter and saves it into the Core backend. You can retrieve the dataitem with the `run.outputs()` method. In general, the output table versioned is named `<dataitem-output-name>_v<dataitem-output-id>` and is stored in the default postgres database passed to the runtime via env variable.
 
 ## Snippet example
 
