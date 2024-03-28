@@ -1941,12 +1941,15 @@ The runtime introduces a function of kind <code>neferetm</code> and four task of
 <p>Python libraries:</p>
 <ul>
 <li>python &gt;= 3.9</li>
-<li>digitalhub-core[base_yaml]</li>
-<li>digitalhub-core-nefertem</li>
+<li>digitalhub</li>
+<li>digitalhub-data-nefertem</li>
 <li>Nefertem plugins available in the <a href="https://github.com/scc-digitalhub/nefertem/tree/main/plugins">Nefertem repository</a></li>
 </ul>
 <p>If you want to execute Nefertem tasks locally, you need to install digitalhub-core-nefertem package with <code>local</code> flag:</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>digitalhub-core-nefertem<span class="o">[</span>local<span class="o">]</span>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/scc-digitalhub/digitalhub-sdk.git
+<span class="nb">cd</span><span class="w"> </span>digitalhub-sdk
+pip<span class="w"> </span>install<span class="w"> </span>core/<span class="w"> </span>data/<span class="w"> </span>./
+pip<span class="w"> </span>install<span class="w"> </span>data/modules/nefertem<span class="o">[</span>local<span class="o">]</span>
 </code></pre></div>
 <p>Otherwise, only remote execution with Core backed available is possible.</p>
 <h2 id="function">Function</h2>
@@ -1963,7 +1966,7 @@ The runtime introduces a function of kind <code>neferetm</code> and four task of
 <li><strong><code>uuid</code></strong>: the uuid of the function (this is automatically generated if not provided). <strong>Must</strong> be a valid uuid v4.</li>
 <li><strong><code>description</code></strong>: the description of the function</li>
 <li><strong><code>labels</code></strong>: the labels of the function</li>
-<li><strong><code>source_remote</code></strong>: the remote source of the function (git repository)</li>
+<li><strong><code>git_source</code></strong>: the remote source of the function (git repository)</li>
 <li><strong><code>source_code</code></strong>: pointer to the source code of the function</li>
 <li><strong><code>constraints</code></strong>: the constraints of the function to be applied on the data. Valid only for <code>validate</code> tasks</li>
 <li><strong><code>error_report</code></strong>: the error report output format. Valid only for <code>validate</code> tasks</li>
@@ -1996,6 +1999,20 @@ The runtime introduces a function of kind <code>neferetm</code> and four task of
 <li><strong><code>framework</code></strong>: the Nefertem framework to be used.</li>
 <li><strong><code>inputs</code></strong>: the list of nefertem resources referenced in the constraint mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.</li>
 </ul>
+<p>As optional, you can pass the following task parameters specific for remote execution:</p>
+<ul>
+<li><strong><code>node_selector</code></strong>: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.</li>
+<li><strong><code>volumes</code></strong>: a list of volumes</li>
+<li><strong><code>resources</code></strong>: a list of resources (CPU, memory, GPU)</li>
+<li><strong><code>labels</code></strong>: a list of labels to attach to kubernetes resources</li>
+<li><strong><code>affinity</code></strong>: node affinity</li>
+<li><strong><code>tolerations</code></strong>: tolerations</li>
+<li><strong><code>env</code></strong>: environment variables to inject in the container</li>
+<li><strong><code>secrets</code></strong>: list of secrets to inject in the container</li>
+<li><strong><code>backoff_limit</code></strong>: the number of retries when a job fails.</li>
+<li><strong><code>schedule</code></strong>: the schedule of the job as a cron expression</li>
+<li><strong><code>replicas</code></strong>: the number of replicas of the deployment</li>
+</ul>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;validate&quot;</span><span class="p">,</span>
                    <span class="n">framework</span><span class="o">=</span><span class="s2">&quot;frictionless&quot;</span><span class="p">,</span>
@@ -2008,6 +2025,20 @@ The runtime introduces a function of kind <code>neferetm</code> and four task of
 <li><strong><code>framework</code></strong>: the Nefertem framework to be used.</li>
 <li><strong><code>inputs</code></strong>: the list of nefertem resources referenced mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.</li>
 </ul>
+<p>As optional, you can pass the following task parameters specific for remote execution:</p>
+<ul>
+<li><strong><code>node_selector</code></strong>: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.</li>
+<li><strong><code>volumes</code></strong>: a list of volumes</li>
+<li><strong><code>resources</code></strong>: a list of resources (CPU, memory, GPU)</li>
+<li><strong><code>labels</code></strong>: a list of labels to attach to kubernetes resources</li>
+<li><strong><code>affinity</code></strong>: node affinity</li>
+<li><strong><code>tolerations</code></strong>: tolerations</li>
+<li><strong><code>env</code></strong>: environment variables to inject in the container</li>
+<li><strong><code>secrets</code></strong>: list of secrets to inject in the container</li>
+<li><strong><code>backoff_limit</code></strong>: the number of retries when a job fails.</li>
+<li><strong><code>schedule</code></strong>: the schedule of the job as a cron expression</li>
+<li><strong><code>replicas</code></strong>: the number of replicas of the deployment</li>
+</ul>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;profile&quot;</span><span class="p">,</span>
                    <span class="n">framework</span><span class="o">=</span><span class="s2">&quot;frictionless&quot;</span><span class="p">,</span>
@@ -2019,6 +2050,20 @@ The runtime introduces a function of kind <code>neferetm</code> and four task of
 <li><strong><code>action</code></strong>: the action to perform. This must be <code>infer</code>.</li>
 <li><strong><code>framework</code></strong>: the Nefertem framework to be used.</li>
 <li><strong><code>inputs</code></strong>: the list of nefertem resources referenced mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.</li>
+</ul>
+<p>As optional, you can pass the following task parameters specific for remote execution:</p>
+<ul>
+<li><strong><code>node_selector</code></strong>: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.</li>
+<li><strong><code>volumes</code></strong>: a list of volumes</li>
+<li><strong><code>resources</code></strong>: a list of resources (CPU, memory, GPU)</li>
+<li><strong><code>labels</code></strong>: a list of labels to attach to kubernetes resources</li>
+<li><strong><code>affinity</code></strong>: node affinity</li>
+<li><strong><code>tolerations</code></strong>: tolerations</li>
+<li><strong><code>env</code></strong>: environment variables to inject in the container</li>
+<li><strong><code>secrets</code></strong>: list of secrets to inject in the container</li>
+<li><strong><code>backoff_limit</code></strong>: the number of retries when a job fails.</li>
+<li><strong><code>schedule</code></strong>: the schedule of the job as a cron expression</li>
+<li><strong><code>replicas</code></strong>: the number of replicas of the deployment</li>
 </ul>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;infer&quot;</span><span class="p">,</span>
@@ -2055,7 +2100,7 @@ The runtime introduces a function of kind <code>neferetm</code> and four task of
 <li><code>run.persist_schema()</code> -&gt; produces one or more inference framework reports</li>
 </ul>
 </li>
-<li>The runtime then creates an <code>Artifact</code> object for each file produced by Nefertem and saves it into the <em>Core backend</em>. It then uploads all the files to the default <em>s3</em> storage provided. You can extract the path where the files are uploaded with the <code>run.get_artifacts()</code> method. In general, the path is <code>s3://&lt;bucket-from-env&gt;/&lt;project-name&gt;/artifacts/ntruns/&lt;nefertem-run-uuid&gt;/&lt;file&gt;</code>.</li>
+<li>The runtime then creates an <code>Artifact</code> object for each file produced by Nefertem and saves it into the <em>Core backend</em>. It then uploads all the files to the default <em>s3</em> storage provided. You can collect the artifacts with the <code>run.outputs()</code> method. In general, the saving path is <code>s3://&lt;bucket-from-env&gt;/&lt;project-name&gt;/artifacts/ntruns/&lt;nefertem-run-uuid&gt;/&lt;file&gt;</code>.</li>
 </ol>
 <h2 id="snippet-example">Snippet example</h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>

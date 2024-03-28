@@ -1924,7 +1924,7 @@ pip<span class="w"> </span>install<span class="w"> </span>digitalhub-sdk/core/mo
 <li><strong><code>uuid</code></strong>: the uuid of the function (this is automatically generated if not provided). <strong>Must</strong> be a valid uuid v4.</li>
 <li><strong><code>description</code></strong>: the description of the function</li>
 <li><strong><code>labels</code></strong>: the labels of the function</li>
-<li><strong><code>source_remote</code></strong>: the remote source of the function (git repository)</li>
+<li><strong><code>git_source</code></strong>: the remote source of the function (git repository)</li>
 <li><strong><code>embedded</code></strong>: whether the function is embedded or not. If <code>True</code>, the function is embedded (all the details are expressed) in the project. If <code>False</code>, the function is not embedded in the project.</li>
 <li><strong><code>base_image</code></strong>: the base container image.</li>
 <li><strong><code>command</code></strong>: the command to run inside the container.</li>
@@ -1962,6 +1962,9 @@ pip<span class="w"> </span>install<span class="w"> </span>digitalhub-sdk/core/mo
 <li><strong><code>tolerations</code></strong>: tolerations</li>
 <li><strong><code>env</code></strong>: environment variables to inject in the container</li>
 <li><strong><code>secrets</code></strong>: list of secrets to inject in the container</li>
+<li><strong><code>backoff_limit</code></strong>: the number of retries when a job fails.</li>
+<li><strong><code>schedule</code></strong>: the schedule of the job as a cron expression</li>
+<li><strong><code>replicas</code></strong>: the number of replicas of the deployment</li>
 </ul>
 <p>For the <code>serve</code> action, you can also pass the following task parameters:</p>
 <ul>
@@ -1969,9 +1972,7 @@ pip<span class="w"> </span>install<span class="w"> </span>digitalhub-sdk/core/mo
 <li><strong><code>service_type</code></strong>: the type of service</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s1">&#39;job&#39;</span>
-<span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;job&#39;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="notes">Notes</h2>
 <p>The Container runtime does not support local execution.</p>
