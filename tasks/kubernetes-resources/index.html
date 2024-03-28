@@ -2094,7 +2094,7 @@ You need to declare the resource type as <code>memory</code>, request and/or lim
 <p>You can request a specific amount of GPU for the task.
 You need to declare the resource type as <code>gpu</code>, request and/or limit specifications. There could be administation-specific requirements for requesting a GPU. You may need to use <code>tolerations</code> or <code>affinity</code> parameters to request the GPU. Both of these parameters are described in the <a href="https://kubernetes.io/docs/home/">Kubernetes documentation</a>.
 Other times you may need to specify a list of labels with the <code>labels</code> parameter.</p>
-<p>Here is an example for the digitahub in FBK that uses the <code>tolerations</code> parameter:</p>
+<p>Here is an example that uses the <code>tolerations</code> parameter:</p>
 <div class="highlight"><pre><span></span><code><span class="n">resources</span> <span class="o">=</span> <span class="p">[{</span>
     <span class="s2">&quot;resource_type&quot;</span><span class="p">:</span> <span class="s2">&quot;gpu&quot;</span><span class="p">,</span>
     <span class="s2">&quot;limits&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
