@@ -120,7 +120,7 @@ You can request a specific amount of GPU for the task.
 You need to declare the resource type as `gpu`, request and/or limit specifications. There could be administation-specific requirements for requesting a GPU. You may need to use `tolerations` or `affinity` parameters to request the GPU. Both of these parameters are described in the [Kubernetes documentation](https://kubernetes.io/docs/home/).
 Other times you may need to specify a list of labels with the `labels` parameter.
 
-Here is an example for the digitahub in FBK that uses the `tolerations` parameter:
+Here is an example that uses the `tolerations` parameter:
 
 ```python
 
