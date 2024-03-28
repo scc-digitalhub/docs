@@ -81,6 +81,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://docs/user/runtimes/mlrun/</loc>
+         <lastmod>2024-03-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://docs/user/runtimes/nefertem/</loc>
          <lastmod>2024-03-28</lastmod>
          <changefreq>daily</changefreq>
