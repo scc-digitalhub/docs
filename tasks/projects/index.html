@@ -937,6 +937,72 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#managing-projects-via-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing Projects via UI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing Projects via UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crud_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      CRUD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CRUD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2243,6 +2309,72 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#managing-projects-via-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing Projects via UI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing Projects via UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crud_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      CRUD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CRUD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2460,6 +2592,61 @@ Furthermore, according to the SDK digitalhub layer installed, the <code>Project<
 <ul>
 <li><strong><code>models</code></strong></li>
 </ul>
+<h2 id="managing-projects-via-ui">Managing Projects via UI</h2>
+<p>In the following sections we document the Project management through UI available using the  <code>Digital Hub Console</code>.</p>
+<h3 id="crud_1">CRUD</h3>
+<p>Here we analyze how to Create, Read, Update and Delete Projects using the UI, similarly to what happens with the SDK</p>
+<h4 id="create_1">Create</h4>
+<p>A project is created pressing the button <code>CREATE</code> in the Homepage od the Console.</p>
+<p><img alt="Project create" src="../../images/console/project-create.png" /></p>
+<p>After pressing the button, the dialog asking the Project's parameter is shown:</p>
+<p><img alt="Project form" src="../../images/console/project-form.png" /></p>
+<p>It has the following mandatory parameters:</p>
+<ul>
+<li><strong><code>name</code></strong>: the name of the project, it is also the identifier of the project </li>
+<li><strong><code>description</code></strong>: a human readable description of the project</li>
+</ul>
+<p>The other <code>Metadata</code> parameters are optional and mutable after the creation:</p>
+<ul>
+<li><strong><code>name</code></strong>: the name of the project</li>
+<li><strong><code>description</code></strong>: a human readable description of the project</li>
+<li><strong><code>updated</code></strong>: the date of the last modification made to the project</li>
+<li><strong><code>labels</code></strong>: a list of labels (strings)</li>
+</ul>
+<p>Pressing on the <code>Save</code> button, the project is added to the list of the projects in Homepage</p>
+<h4 id="read_1">Read</h4>
+<p>In the Home Page are listed all the projects present in the database. The tile shows:</p>
+<ul>
+<li><strong><code>name</code></strong>: the name of the project</li>
+<li><strong><code>id</code></strong>: the identifier of the project</li>
+<li><strong><code>created</code></strong>: the date of the creation of the project</li>
+<li><strong><code>updated</code></strong>: the date of the last modification made to the project</li>
+</ul>
+<p>On the bottom the button for <code>Open</code> and enter in the Project and the <code>Delete</code></p>
+<p><img alt="Project form" src="../../images/console/project-tile.png" /></p>
+<p>Clicking on the <code>Open</code> button, the following Dashboard is shown</p>
+<p><img alt="Dashboard" src="../../images/console/dashboard-prj.png" /></p>
+<p>This dashboard reports a summary of the resources associated with the project and a series
+of features to access the management of these resources.</p>
+<ul>
+<li><strong><code>Artifacts</code></strong>: the number and the list of the last Artifacts created</li>
+<li><strong><code>Data items</code></strong>: the number and the list of the last Data items created</li>
+<li><strong><code>Functions and code</code></strong>: the number and the list of the last Functions created</li>
+<li><strong><code>Jobs and runs</code></strong>: the status and list of runs performed</li>
+</ul>
+<p>From any page of the dashboard it is possible to change the project by selecting from the menu at the top of the bar</p>
+<p><img alt="Dashboard" src="../../images/console/root-project.png" /></p>
+<h4 id="update_1">Update</h4>
+<p>You can update a project <code>Metadata</code> pressing the button <code>Configuration</code> in the side Menubar.</p>
+<p><img alt="Configuration" src="../../images/console/configuration.png" /></p>
+<p>Pressing the <code>Edit</code> button on the top right of the page the form for editing the <code>Metadata</code> values of the project is shown.
+In the example below, the labels <code>test</code> and <code>prj1</code> are added</p>
+<p><img alt="Update conf" src="../../images/console/update-prj.png" />
+After the modification, pressing Save the new configuration is stored</p>
+<h4 id="delete_1">Delete</h4>
+<p>You can delete a project from the <code>Home page</code>  and from the <code>Configuration</code> pressing the <code>Delete</code> button.
+For confirm the choice of deleting, insert the name of the project in the dialog</p>
+<p><img alt="Update conf" src="../../images/console/project-delete.png" /></p>
 
 
 
