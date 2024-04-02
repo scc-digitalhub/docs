@@ -28,6 +28,8 @@ nav:
       - "components/resourcemanager.md"
   - Tasks:
       - "tasks/projects.md"
+      - "tasks/artifacts.md"
+      - "tasks/dataitems.md"
       - "tasks/workspaces.md"
       - "tasks/resources.md"
       - "tasks/data.md"
