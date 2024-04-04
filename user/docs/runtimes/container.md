@@ -12,9 +12,10 @@ Python libraries:
 Install digitalhub sdk and collect digitalhub container modules:
 
 ```bash
-pip install digitalhub
 git clone https://github.com/scc-digitalhub/digitalhub-sdk.git
-pip install digitalhub-sdk/core/modules/container/ --no-deps
+cd digitalhub-sdk
+pip install core/
+pip install core/modules/container/ --no-deps
 ```
 
 ## Function
@@ -78,6 +79,9 @@ As optional, you can pass the following task parameters specific for remote exec
 - **`tolerations`**: tolerations
 - **`env`**: environment variables to inject in the container
 - **`secrets`**: list of secrets to inject in the container
+- **`backoff_limit`**: the number of retries when a job fails.
+- **`schedule`**: the schedule of the job as a cron expression
+- **`replicas`**: the number of replicas of the deployment
 
 For the `serve` action, you can also pass the following task parameters:
 
