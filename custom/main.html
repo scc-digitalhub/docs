@@ -64,12 +64,11 @@
               {% if config.extra.versions is defined and config.extra.versions != None %}
                 {% set versionsString = config.extra.versions|string %}
                 {% set versions = versionsString.split(',') %}
-                {% set _ = versions.append('current') %}
               {% else %}
                 {% set versions = ['current'] %}
               {% endif %}
               {% for version in versions|reverse %}
-                {% if version != config.extra.docs_version %}
+                {% if version != config.extra.docs_version|string %}
                   <div class="dd-content">
                     {% if version == 'current' %}
                       <a href="{{ config.extra.site }}">{{ version }}</a>
