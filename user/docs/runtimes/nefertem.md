@@ -81,8 +81,7 @@ As optional, you can pass the following task parameters specific for remote exec
 
 - **`node_selector`**: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.
 - **`volumes`**: a list of volumes
-- **`resources`**: a list of resources (CPU, memory, GPU)
-- **`labels`**: a list of labels to attach to kubernetes resources
+- **`resources`**: a map of resources (CPU, memory, GPU)
 - **`affinity`**: node affinity
 - **`tolerations`**: tolerations
 - **`env`**: environment variables to inject in the container
@@ -111,8 +110,7 @@ As optional, you can pass the following task parameters specific for remote exec
 
 - **`node_selector`**: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.
 - **`volumes`**: a list of volumes
-- **`resources`**: a list of resources (CPU, memory, GPU)
-- **`labels`**: a list of labels to attach to kubernetes resources
+- **`resources`**: a map of resources (CPU, memory, GPU)
 - **`affinity`**: node affinity
 - **`tolerations`**: tolerations
 - **`env`**: environment variables to inject in the container
@@ -141,8 +139,7 @@ As optional, you can pass the following task parameters specific for remote exec
 
 - **`node_selector`**: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.
 - **`volumes`**: a list of volumes
-- **`resources`**: a list of resources (CPU, memory, GPU)
-- **`labels`**: a list of labels to attach to kubernetes resources
+- **`resources`**: a map of resources (CPU, memory, GPU)
 - **`affinity`**: node affinity
 - **`tolerations`**: tolerations
 - **`env`**: environment variables to inject in the container

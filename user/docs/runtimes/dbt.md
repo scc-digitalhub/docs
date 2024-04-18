@@ -54,17 +54,17 @@ For example:
 ```python
 import digitalhub as dh
 
-project = dh.get_or_create_project('my_project')
+project = dh.get_or_create_project("my_project")
 
 sql = """
-SELECT * FROM {{ ref('my_table') }}
+SELECT * FROM {{ ref("my_table") }}
 """
 
 dataitem = project.new_dataitem("my_dataitem", kind="table", path="path-to-some-data")
 
 function = dh.new_function(
-    kind='dbt',
-    name='my_function',
+    kind="dbt",
+    name="my_function",
     source={"code": sql}
 )
 ```
@@ -85,8 +85,7 @@ As optional, you can pass the following task parameters specific for remote exec
 
 - **`node_selector`**: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.
 - **`volumes`**: a list of volumes
-- **`resources`**: a list of resources (CPU, memory, GPU)
-- **`labels`**: a list of labels to attach to kubernetes resources
+- **`resources`**: a map of resources (CPU, memory, GPU)
 - **`affinity`**: node affinity
 - **`tolerations`**: tolerations
 - **`env`**: environment variables to inject in the container
@@ -99,7 +98,7 @@ For example:
 
 ```python
 run = function.run(
-    action='transform',
+    action="transform",
     inputs=[{"my_table": my_dataitem.key}],
     outputs=[{"output_table": "my_output_table"}],
 )
@@ -136,11 +135,11 @@ di = project.new_dataitem(name="employees",
 sql = """
 WITH tab AS (
     SELECT  *
-    FROM    {{ ref('employees') }}
+    FROM    {{ ref("employees") }}
 )
 SELECT  *
 FROM    tab
-WHERE   tab."DEPARTMENT_ID" = '60'
+WHERE   tab."DEPARTMENT_ID" = "60"
 """
 function = project.new_function(name="function-dbt",
                                 kind="dbt",

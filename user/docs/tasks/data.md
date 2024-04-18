@@ -277,7 +277,7 @@ artifact = project.new_artifact(name="my-artifact",
                                 path="s3://my-bucket/my-artifact.ext")
 ```
 
-The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete an artifact. It focus on managing artifacts from library. If you want to managie artifacts from the project, you can use the `Project` object and avoid to specify the `project` parameter.
+The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete an artifact. It focus on managing artifacts from library. If you want to manage artifacts from the project, you can use the `Project` object and avoid to specify the `project` parameter.
 
 ##### Create
 
@@ -384,7 +384,7 @@ The optional parameters are:
 
 - **`entity_name`**: to use the name of the artifact as identifier
 - **`entity_id`**: to use the uuid of the artifact as identifier
-- **`delete_all_versions`**: if `True`, all versions of the artifact will be deleted
+- **`delete_all_versions`**: if `True`, all versions of the artifact will be deleted. Its mutually exclusive with the `entity_id` parameter
 - **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
 
 Example:
@@ -503,7 +503,7 @@ dataitem = project.new_dataitem(name="my-dataitem",
                                 path="s3://my-bucket/my-dataitem.ext")
 ```
 
-The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a dataitem. It focus on managing dataitems from library. If you want to managie dataitems from the project, you can use the `Project` object and avoid to specify the `project` parameter.
+The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a dataitem. It focus on managing dataitems from library. If you want to manage dataitems from the project, you can use the `Project` object and avoid to specify the `project` parameter.
 
 ##### Create
 
@@ -609,7 +609,7 @@ The optional parameters are:
 
 - **`entity_name`**: to use the name of the dataitem as identifier
 - **`entity_id`**: to use the uuid of the dataitem as identifier
-- **`delete_all_versions`**: if `True`, all versions of the dataitem will be deleted
+- **`delete_all_versions`**: if `True`, all versions of the dataitem will be deleted. Its mutually exclusive with the `entity_id` parameter
 - **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
 
 Example:
