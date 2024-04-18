@@ -54,8 +54,8 @@ Optionally, you can specify the following parameters:
 The **`source`** parameter must be a dictionary containing reference to the sql query to be executed. The parameter is structured as a dictionary with the following keys:
 
 - **`source`**: the source URI to the code. It accepts the following values:
-  - **git+https://repo-host/repo-owner/repo.git#indication-where-to-checkout**: the code is fetched from a git repository. The link points to the root of the repository, the fragment is as simple indication of the branch, tag or commit to checkout. The runtime will clone the repository and checkout the indicated branch, tag or commit.
-  - **zip+s3://path-to-some-code.zip**: the code is fetched from a zip file in the *minio* digitalhub instance. The link points to the path to the zip file. The runtime will download the zip file and extract it. It fails if the zip file is not valid.
+  1. **git+https://repo-host/repo-owner/repo.git#indication-where-to-checkout**: the code is fetched from a git repository. The link points to the root of the repository, the fragment is as simple indication of the branch, tag or commit to checkout. The runtime will clone the repository and checkout the indicated branch, tag or commit.
+  2. **zip+s3://path-to-some-code.zip**: the code is fetched from a zip file in the *minio* digitalhub instance. The link points to the path to the zip file. The runtime will download the zip file and extract it. It fails if the zip file is not valid.
 - **`code`**: the python string code
 - **`base64`**: the base64 encoded code
 - **`lang`**: the language of the code use in the console higlihter
