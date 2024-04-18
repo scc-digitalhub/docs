@@ -39,7 +39,7 @@ When you create a function of kind `dbt`, you need to specify the following mand
 - **`project`**: the project name with which the function is associated. **Only** if you do not use the project context to create the function, e.g. `project.new_function()`.
 - **`name`**: the name of the function
 - **`kind`**: the kind of the function, **must** be `dbt`
-- **`source`**: the source dictionary that contains the SQL query to run against the data
+- **`source`**: the sql query to execute. See section below
 
 Optionally, you can specify the following parameters:
 
@@ -49,7 +49,18 @@ Optionally, you can specify the following parameters:
 - **`git_source`**: the remote source of the function (git repository)
 - **`embedded`**: whether the function is embedded or not. If `True`, the function is embedded (all the details are expressed) in the project. If `False`, the function is not embedded in the project.
 
-For example:
+#### Source
+
+The **`source`** parameter must be a dictionary containing reference to the sql query to be executed. The parameter is structured as a dictionary with the following keys:
+
+- **`source`**: the source URI to the code. It accepts the following values:
+  - **git+https://repo-host/repo-owner/repo.git#indication-where-to-checkout**: the code is fetched from a git repository. The link points to the root of the repository, the fragment is as simple indication of the branch, tag or commit to checkout. The runtime will clone the repository and checkout the indicated branch, tag or commit.
+  - **zip+s3://path-to-some-code.zip**: the code is fetched from a zip file in the *minio* digitalhub instance. The link points to the path to the zip file. The runtime will download the zip file and extract it. It fails if the zip file is not valid.
+- **`code`**: the python string code
+- **`base64`**: the base64 encoded code
+- **`lang`**: the language of the code use in the console higlihter
+
+Example:
 
 ```python
 import digitalhub as dh
@@ -94,7 +105,7 @@ As optional, you can pass the following task parameters specific for remote exec
 - **`schedule`**: the schedule of the job as a cron expression
 - **`replicas`**: the number of replicas of the deployment
 
-For example:
+Example:
 
 ```python
 run = function.run(
