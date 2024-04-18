@@ -2569,6 +2569,22 @@ For confirm the choice of deleting, insert the name of the project in the dialog
     <span class="s2">&quot;access_token&quot;</span><span class="p">:</span> <span class="s2">&quot;token&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>In case you try to get a project without from the backend with invalid credentials, an exception will be raised.
+Because the backend client is a Singleton object, it will autoconfigure credentials at startup, so the only way to setup proper credentials once it fails to connect is to use the SDK method <code>set_dhub_env()</code>.
+The method accepts the following optional parameters:</p>
+<ul>
+<li><strong><code>endpoint</code></strong>: the endpoint of the backend</li>
+<li><strong><code>user</code></strong>: the user for basic auth</li>
+<li><strong><code>password</code></strong>: the password for basic auth</li>
+<li><strong><code>token</code></strong>: the auth token</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">dh</span><span class="o">.</span><span class="n">set_dhub_env</span><span class="p">(</span>
+    <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;https://some-digitalhub:8080&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;token&quot;</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Note that the <code>set_dhub_env()</code> method ovverrides the environment variables and (if already instantiated) the credentials attributes of the backend client.</p>
 <h5 id="setup-kwargs">Setup kwargs</h5>
 <p>The <strong><code>setup_kwargs</code></strong> parameter can be used to provide a dictionary containing the project hook setup arguments. The concept behind this parameter is that at the beginning of the project lifecycle, the project can be configured with an hook script that will be executed when the project is created / got.
 First of all, the configuration script <strong>MUST</strong> comply with the following format:</p>

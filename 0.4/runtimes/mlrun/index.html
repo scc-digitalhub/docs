@@ -1857,6 +1857,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Mlrun function parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1982,6 +1997,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Mlrun function parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2072,7 +2102,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <li><strong><code>project</code></strong>: the project name with which the function is associated. <strong>Only</strong> if you do not use the project context to create the function, e.g. <code>project.new_function()</code>.</li>
 <li><strong><code>name</code></strong>: the name of the function</li>
 <li><strong><code>kind</code></strong>: the kind of the function, <strong>must</strong> be <code>mlrun</code></li>
-<li><strong><code>source</code></strong>: the source dictionary that contains the code, encoded code or path to code to be executed by mlrun</li>
+<li><strong><code>source</code></strong>: the source dictionary that contains the code, encoded code or path to code to be executed by mlrun. See section below</li>
 </ul>
 <p>Optionally, you can specify the following parameters:</p>
 <ul>
@@ -2082,7 +2112,17 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <li><strong><code>git_source</code></strong>: the remote source of the function (git repository)</li>
 <li><strong><code>embedded</code></strong>: whether the function is embedded or not. If <code>True</code>, the function is embedded (all the details are expressed) in the project. If <code>False</code>, the function is not embedded in the project.</li>
 </ul>
-<p>For example:</p>
+<h4 id="source">Source</h4>
+<p>The <strong><code>source</code></strong> parameter must be a dictionary containing reference to the sql query to be executed. The parameter is structured as a dictionary with the following keys:</p>
+<ul>
+<li><strong><code>source</code></strong>: the source URI to the code. It accepts the following values:</li>
+<li><strong>git+https://repo-host/repo-owner/repo.git#indication-where-to-checkout</strong>: the code is fetched from a git repository. The link points to the root of the repository, the fragment is as simple indication of the branch, tag or commit to checkout. The runtime will clone the repository and checkout the indicated branch, tag or commit.</li>
+<li><strong>zip+s3://path-to-some-code.zip</strong>: the code is fetched from a zip file in the <em>minio</em> digitalhub instance. The link points to the path to the zip file. The runtime will download the zip file and extract it. It fails if the zip file is not valid.</li>
+<li><strong><code>code</code></strong>: the python string code</li>
+<li><strong><code>base64</code></strong>: the base64 encoded code</li>
+<li><strong><code>lang</code></strong>: the language of the code use in the console higlihter</li>
+</ul>
+<p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
 
 <span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s1">&#39;my_project&#39;</span><span class="p">)</span>
@@ -2123,7 +2163,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <li><strong><code>schedule</code></strong>: the schedule of the job as a cron expression</li>
 <li><strong><code>replicas</code></strong>: the number of replicas of the deployment</li>
 </ul>
-<p>For example:</p>
+<p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
     <span class="n">action</span><span class="o">=</span><span class="s1">&#39;job&#39;</span><span class="p">,</span>
     <span class="n">inputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;mlrun-input-param-name&quot;</span><span class="p">:</span> <span class="n">my_dataitem</span><span class="o">.</span><span class="n">key</span><span class="p">}],</span>
