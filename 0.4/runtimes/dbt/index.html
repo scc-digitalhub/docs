@@ -2089,17 +2089,17 @@ pip<span class="w"> </span>install<span class="w"> </span>data/modules/dbt
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
 
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s1">&#39;my_project&#39;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;my_project&quot;</span><span class="p">)</span>
 
 <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT * FROM {{ ref(&#39;my_table&#39;) }}</span>
+<span class="s2">SELECT * FROM {{ ref(&quot;my_table&quot;) }}</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="n">dataitem</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="s2">&quot;my_dataitem&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;path-to-some-data&quot;</span><span class="p">)</span>
 
 <span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
-    <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;dbt&#39;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_function&#39;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dbt&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_function&quot;</span><span class="p">,</span>
     <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="n">sql</span><span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -2116,8 +2116,7 @@ pip<span class="w"> </span>install<span class="w"> </span>data/modules/dbt
 <ul>
 <li><strong><code>node_selector</code></strong>: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.</li>
 <li><strong><code>volumes</code></strong>: a list of volumes</li>
-<li><strong><code>resources</code></strong>: a list of resources (CPU, memory, GPU)</li>
-<li><strong><code>labels</code></strong>: a list of labels to attach to kubernetes resources</li>
+<li><strong><code>resources</code></strong>: a map of resources (CPU, memory, GPU)</li>
 <li><strong><code>affinity</code></strong>: node affinity</li>
 <li><strong><code>tolerations</code></strong>: tolerations</li>
 <li><strong><code>env</code></strong>: environment variables to inject in the container</li>
@@ -2128,7 +2127,7 @@ pip<span class="w"> </span>install<span class="w"> </span>data/modules/dbt
 </ul>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s1">&#39;transform&#39;</span><span class="p">,</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span>
     <span class="n">inputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;my_table&quot;</span><span class="p">:</span> <span class="n">my_dataitem</span><span class="o">.</span><span class="n">key</span><span class="p">}],</span>
     <span class="n">outputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;output_table&quot;</span><span class="p">:</span> <span class="s2">&quot;my_output_table&quot;</span><span class="p">}],</span>
 <span class="p">)</span>
@@ -2163,11 +2162,11 @@ pip<span class="w"> </span>install<span class="w"> </span>data/modules/dbt
 <span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">WITH tab AS (</span>
 <span class="s2">    SELECT  *</span>
-<span class="s2">    FROM    {{ ref(&#39;employees&#39;) }}</span>
+<span class="s2">    FROM    {{ ref(&quot;employees&quot;) }}</span>
 <span class="s2">)</span>
 <span class="s2">SELECT  *</span>
 <span class="s2">FROM    tab</span>
-<span class="s2">WHERE   tab.&quot;DEPARTMENT_ID&quot; = &#39;60&#39;</span>
+<span class="s2">WHERE   tab.&quot;DEPARTMENT_ID&quot; = &quot;60&quot;</span>
 <span class="s2">&quot;&quot;&quot;</span>
 <span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;function-dbt&quot;</span><span class="p">,</span>
                                 <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dbt&quot;</span><span class="p">,</span>

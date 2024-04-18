@@ -3092,7 +3092,7 @@ Example:</p>
                                 <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span>
                                 <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-artifact.ext&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete an artifact. It focus on managing artifacts from library. If you want to managie artifacts from the project, you can use the <code>Project</code> object and avoid to specify the <code>project</code> parameter.</p>
+<p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete an artifact. It focus on managing artifacts from library. If you want to manage artifacts from the project, you can use the <code>Project</code> object and avoid to specify the <code>project</code> parameter.</p>
 <h5 id="create_2">Create</h5>
 <p>To create an artifact you can use the <code>new_artifact()</code> method.</p>
 <p>The mandatory parameters are:</p>
@@ -3176,7 +3176,7 @@ Example:</p>
 <ul>
 <li><strong><code>entity_name</code></strong>: to use the name of the artifact as identifier</li>
 <li><strong><code>entity_id</code></strong>: to use the uuid of the artifact as identifier</li>
-<li><strong><code>delete_all_versions</code></strong>: if <code>True</code>, all versions of the artifact will be deleted</li>
+<li><strong><code>delete_all_versions</code></strong>: if <code>True</code>, all versions of the artifact will be deleted. Its mutually exclusive with the <code>entity_id</code> parameter</li>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
 <p>Example:</p>
@@ -3270,7 +3270,7 @@ Example:</p>
                                 <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dataitem&quot;</span><span class="p">,</span>
                                 <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-dataitem.ext&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a dataitem. It focus on managing dataitems from library. If you want to managie dataitems from the project, you can use the <code>Project</code> object and avoid to specify the <code>project</code> parameter.</p>
+<p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a dataitem. It focus on managing dataitems from library. If you want to manage dataitems from the project, you can use the <code>Project</code> object and avoid to specify the <code>project</code> parameter.</p>
 <h5 id="create_3">Create</h5>
 <p>To create a dataitem you can use the <code>new_dataitem()</code> method.</p>
 <p>The mandatory parameters are:</p>
@@ -3353,7 +3353,7 @@ Example:</p>
 <ul>
 <li><strong><code>entity_name</code></strong>: to use the name of the dataitem as identifier</li>
 <li><strong><code>entity_id</code></strong>: to use the uuid of the dataitem as identifier</li>
-<li><strong><code>delete_all_versions</code></strong>: if <code>True</code>, all versions of the dataitem will be deleted</li>
+<li><strong><code>delete_all_versions</code></strong>: if <code>True</code>, all versions of the dataitem will be deleted. Its mutually exclusive with the <code>entity_id</code> parameter</li>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
 <p>Example:</p>
