@@ -2119,9 +2119,11 @@ pip<span class="w"> </span>install<span class="w"> </span>data/modules/dbt
 <h4 id="source">Source</h4>
 <p>The <strong><code>source</code></strong> parameter must be a dictionary containing reference to the sql query to be executed. The parameter is structured as a dictionary with the following keys:</p>
 <ul>
-<li><strong><code>source</code></strong>: the source URI to the code. It accepts the following values:</li>
-<li><strong>git+https://repo-host/repo-owner/repo.git#indication-where-to-checkout</strong>: the code is fetched from a git repository. The link points to the root of the repository, the fragment is as simple indication of the branch, tag or commit to checkout. The runtime will clone the repository and checkout the indicated branch, tag or commit.</li>
-<li><strong>zip+s3://path-to-some-code.zip</strong>: the code is fetched from a zip file in the <em>minio</em> digitalhub instance. The link points to the path to the zip file. The runtime will download the zip file and extract it. It fails if the zip file is not valid.</li>
+<li><strong><code>source</code></strong>: the source URI to the code. It accepts the following values:<ol>
+<li><strong>git+</strong><em>https://repo-host/repo-owner/repo.git#indication-where-to-checkout</em>: the code is fetched from a git repository. The link points to the root of the repository, the fragment is as simple indication of the branch, tag or commit to checkout. The runtime will clone the repository and checkout the indicated branch, tag or commit.</li>
+<li><strong>zip+</strong><em>s3://path-to-some-code.zip</em>: the code is fetched from a zip file in the <em>minio</em> digitalhub instance. The link points to the path to the zip file. The runtime will download the zip file and extract it. It fails if the zip file is not valid.</li>
+</ol>
+</li>
 <li><strong><code>code</code></strong>: the python string code</li>
 <li><strong><code>base64</code></strong>: the base64 encoded code</li>
 <li><strong><code>lang</code></strong>: the language of the code use in the console higlihter</li>
