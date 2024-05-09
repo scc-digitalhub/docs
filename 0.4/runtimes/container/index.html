@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
     
     
       
@@ -2070,10 +2070,11 @@ pip<span class="w"> </span>install<span class="w"> </span>core/modules/container
 <li><strong><code>project</code></strong>: the project name with which the function is associated. <strong>Only</strong> if you do not use the project context to create the function, e.g. <code>project.new_function()</code>.</li>
 <li><strong><code>name</code></strong>: the name of the function</li>
 <li><strong><code>kind</code></strong>: the kind of the function, <strong>must</strong> be <code>container</code></li>
-<li><strong><code>image</code></strong>: the container image to deploy</li>
 </ul>
 <p>Optionally, you can specify the following parameters:</p>
 <ul>
+<li><strong><code>image</code></strong>: the container image to deploy</li>
+<li><strong><code>base_image</code></strong>: the base container image to use in the build task</li>
 <li><strong><code>uuid</code></strong>: the uuid of the function (this is automatically generated if not provided). <strong>Must</strong> be a valid uuid v4.</li>
 <li><strong><code>description</code></strong>: the description of the function</li>
 <li><strong><code>labels</code></strong>: the labels of the function</li>
@@ -2099,11 +2100,12 @@ pip<span class="w"> </span>install<span class="w"> </span>core/modules/container
 <li><code>job</code>: to deploy a job</li>
 <li><code>deploy</code>: to deploy a deployment</li>
 <li><code>serve</code>: to deploy a service</li>
+<li><code>build</code>: to build an image</li>
 </ul>
 <h3 id="run-and-task-parameters">Run and task parameters</h3>
 <p>When you want to execute a task, you <strong>must</strong> pass the following mandatory parameters to the function method <code>run()</code>:</p>
 <ul>
-<li><strong><code>action</code></strong>: the action to perform. Can be <code>job</code>, <code>deploy</code> or <code>serve</code>.</li>
+<li><strong><code>action</code></strong>: the action to perform. Can be <code>job</code>, <code>deploy</code>, <code>serve</code> or <code>build</code>.</li>
 </ul>
 <p>As optional, you can pass the following task parameters specific for remote execution:</p>
 <ul>
@@ -2140,15 +2142,6 @@ pip<span class="w"> </span>install<span class="w"> </span>core/modules/container
                               <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">,</span>
                               <span class="n">image</span><span class="o">=</span><span class="s2">&quot;hello-world:latest&quot;</span><span class="p">)</span>
 <span class="n">run_cont</span> <span class="o">=</span> <span class="n">func_cont</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;job&quot;</span><span class="p">)</span>
-
-
-<span class="c1"># Serve stremlit service</span>
-<span class="n">func_serve</span> <span class="o">=</span> <span class="n">proj</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;function-serve&quot;</span><span class="p">,</span>
-                               <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">,</span>
-                               <span class="n">image</span><span class="o">=</span><span class="s2">&quot;ghcr.io/scc-digitalhub/digitalhub-core-streamlit:latest&quot;</span><span class="p">)</span>
-<span class="n">run_serve</span> <span class="o">=</span> <span class="n">func_serve</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span>
-                           <span class="n">service_ports</span><span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8085</span><span class="p">,</span> <span class="s2">&quot;target_port&quot;</span><span class="p">:</span> <span class="mi">8501</span><span class="p">}],</span>
-                           <span class="n">service_type</span><span class="o">=</span><span class="s2">&quot;NodePort&quot;</span><span class="p">)</span>
 </code></pre></div>
 
 
@@ -2195,7 +2188,7 @@ pip<span class="w"> </span>install<span class="w"> </span>core/modules/container
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
       
     
   </body>
