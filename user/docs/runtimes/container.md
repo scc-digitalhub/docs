@@ -29,10 +29,11 @@ When you create a function of kind `container`, you must specify the following m
 - **`project`**: the project name with which the function is associated. **Only** if you do not use the project context to create the function, e.g. `project.new_function()`.
 - **`name`**: the name of the function
 - **`kind`**: the kind of the function, **must** be `container`
-- **`image`**: the container image to deploy
 
 Optionally, you can specify the following parameters:
 
+- **`image`**: the container image to deploy
+- **`base_image`**: the base container image to use in the build task
 - **`uuid`**: the uuid of the function (this is automatically generated if not provided). **Must** be a valid uuid v4.
 - **`description`**: the description of the function
 - **`labels`**: the labels of the function
@@ -62,12 +63,13 @@ The Container runtime introduces three task's kinds:
 - `job`: to deploy a job
 - `deploy`: to deploy a deployment
 - `serve`: to deploy a service
+- `build`: to build an image
 
 ### Run and task parameters
 
 When you want to execute a task, you **must** pass the following mandatory parameters to the function method `run()`:
 
-- **`action`**: the action to perform. Can be `job`, `deploy` or `serve`.
+- **`action`**: the action to perform. Can be `job`, `deploy`, `serve` or `build`.
 
 As optional, you can pass the following task parameters specific for remote execution:
 
@@ -111,13 +113,4 @@ func_cont = proj.new_function(name="function-container",
                               kind="container",
                               image="hello-world:latest")
 run_cont = func_cont.run("job")
-
-
-# Serve stremlit service
-func_serve = proj.new_function(name="function-serve",
-                               kind="container",
-                               image="ghcr.io/scc-digitalhub/digitalhub-core-streamlit:latest")
-run_serve = func_serve.run("serve",
-                           service_ports= [{"port": 8085, "target_port": 8501}],
-                           service_type="NodePort")
 ```
