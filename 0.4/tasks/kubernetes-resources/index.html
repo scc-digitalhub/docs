@@ -2213,7 +2213,7 @@ You need to declare the volume type as <code>secret</code>, a name for the Secre
 <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">volumes</span><span class="o">=</span><span class="n">volumes</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="hardware-resources">Hardware resources</h2>
-<p>You can request a specific amount of hardware resources (cpu, memory, gpu) for the task, declared thorugh the <code>resources</code> task parameter; <code>resources</code> must be a list of Resource objects represented as a dictionary.
+<p>You can request a specific amount of hardware resources (cpu, memory, gpu) for the task, declared thorugh the <code>resources</code> task parameter; <code>resources</code> must be a map of Resource objects represented as a dictionary.
 At the moment Digitalhub SDK supports:</p>
 <ul>
 <li><strong>CPU</strong></li>
@@ -2223,21 +2223,23 @@ At the moment Digitalhub SDK supports:</p>
 <h3 id="cpu">CPU</h3>
 <p>You can request a specific amount of CPU for the task.
 You need to declare the resource type as <code>cpu</code>, request and/or limit specifications.</p>
-<div class="highlight"><pre><span></span><code><span class="n">resources</span> <span class="o">=</span> <span class="p">[{</span>
-    <span class="s2">&quot;resource_type&quot;</span><span class="p">:</span> <span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;requests&quot;</span><span class="p">:</span> <span class="s2">&quot;12&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;limits&quot;</span><span class="p">:</span> <span class="s2">&quot;16&quot;</span>
-<span class="p">}]</span>
+<div class="highlight"><pre><span></span><code><span class="n">resources</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;cpu&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;requests&quot;</span><span class="p">:</span> <span class="s2">&quot;12&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;limits&quot;</span><span class="p">:</span> <span class="s2">&quot;16&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
 <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">resources</span><span class="o">=</span><span class="n">resources</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="ram-memory">RAM memory</h3>
 <p>You can request a specific amount of RAM memory for the task.
-You need to declare the resource type as <code>memory</code>, request and/or limit specifications.</p>
-<div class="highlight"><pre><span></span><code><span class="n">resources</span> <span class="o">=</span> <span class="p">[{</span>
-    <span class="s2">&quot;resource_type&quot;</span><span class="p">:</span> <span class="s2">&quot;memory&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;requests&quot;</span><span class="p">:</span> <span class="s2">&quot;64Gi&quot;</span>
-<span class="p">}]</span>
+You need to declare the resource type as <code>mem</code>, request and/or limit specifications.</p>
+<div class="highlight"><pre><span></span><code><span class="n">resources</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;mem&quot;</span><span class="p">{</span>
+        <span class="s2">&quot;requests&quot;</span><span class="p">:</span> <span class="s2">&quot;64Gi&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">resources</span><span class="o">=</span><span class="n">resources</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="gpu">GPU</h3>
@@ -2245,10 +2247,11 @@ You need to declare the resource type as <code>memory</code>, request and/or lim
 You need to declare the resource type as <code>gpu</code>, request and/or limit specifications. There could be administation-specific requirements for requesting a GPU. You may need to use <code>tolerations</code> or <code>affinity</code> parameters to request the GPU. Both of these parameters are described in the <a href="https://kubernetes.io/docs/home/">Kubernetes documentation</a>.
 Other times you may need to specify a list of labels with the <code>labels</code> parameter.</p>
 <p>Here is an example for the digitahub in FBK that uses the <code>tolerations</code> parameter:</p>
-<div class="highlight"><pre><span></span><code><span class="n">resources</span> <span class="o">=</span> <span class="p">[{</span>
-    <span class="s2">&quot;resource_type&quot;</span><span class="p">:</span> <span class="s2">&quot;gpu&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;limits&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
-<span class="p">}]</span>
+<div class="highlight"><pre><span></span><code><span class="n">resources</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;gpu&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;limits&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 <span class="n">toleration</span> <span class="o">=</span> <span class="p">[{</span>
     <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;nvidia.com/gpu&quot;</span><span class="p">,</span>
     <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;Equal&quot;</span><span class="p">,</span>

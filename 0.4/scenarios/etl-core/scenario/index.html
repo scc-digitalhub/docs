@@ -2055,8 +2055,8 @@ Our function will be an SQL query that selects all the employees of department 6
 <li>the output map the output table name. The name of the output table will be <code>department-60</code> and will be the sql query table name result and the output dataitem name.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span>
-                   <span class="n">inputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;employees&quot;</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">}],</span>
-                   <span class="n">outputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;output_table&quot;</span><span class="p">:</span> <span class="s2">&quot;department-60&quot;</span><span class="p">}])</span>
+                   <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;employees&quot;</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">},</span>
+                   <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;output_table&quot;</span><span class="p">:</span> <span class="s2">&quot;department-60&quot;</span><span class="p">})</span>
 </code></pre></div>
 <p>We can check the status of the run:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>

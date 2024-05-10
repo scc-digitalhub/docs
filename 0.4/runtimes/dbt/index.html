@@ -2151,8 +2151,8 @@ pip<span class="w"> </span>install<span class="w"> </span>data/modules/dbt
 <p>When you want to execute a task of kind <code>transform</code>, you need to pass the following mandatory parameters to the function method <code>run()</code>:</p>
 <ul>
 <li><strong><code>action</code></strong>: the action to perform. This must be <code>transform</code>.</li>
-<li><strong><code>inputs</code></strong>: the list of referenced tables in the sql query mapped to the dataitem keys.</li>
-<li><strong><code>outputs</code></strong>: a list containing <strong>one</strong> element that map the key <code>output_table</code> with a name of the output query table and output dataitem.</li>
+<li><strong><code>inputs</code></strong>: the dictionary of referenced tables in the sql query mapped to the dataitem keys.</li>
+<li><strong><code>outputs</code></strong>: a dictionary containing <strong>one</strong> element that map the key <code>output_table</code> with a name of the output query table and output dataitem.</li>
 </ul>
 <p>As optional, you can pass the following task parameters specific for remote execution:</p>
 <ul>
@@ -2170,8 +2170,8 @@ pip<span class="w"> </span>install<span class="w"> </span>data/modules/dbt
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
     <span class="n">action</span><span class="o">=</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span>
-    <span class="n">inputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;my_table&quot;</span><span class="p">:</span> <span class="n">my_dataitem</span><span class="o">.</span><span class="n">key</span><span class="p">}],</span>
-    <span class="n">outputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;output_table&quot;</span><span class="p">:</span> <span class="s2">&quot;my_output_table&quot;</span><span class="p">}],</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;my_table&quot;</span><span class="p">:</span> <span class="n">my_dataitem</span><span class="o">.</span><span class="n">key</span><span class="p">},</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;output_table&quot;</span><span class="p">:</span> <span class="s2">&quot;my_output_table&quot;</span><span class="p">},</span>
 <span class="p">)</span>
 </code></pre></div>
 <h2 id="runtime-workflow">Runtime workflow</h2>
@@ -2216,8 +2216,8 @@ pip<span class="w"> </span>install<span class="w"> </span>data/modules/dbt
 
 <span class="c1"># Run function</span>
 <span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span>
-                   <span class="n">inputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;employees&quot;</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">}],</span>
-                   <span class="n">outputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;output_table&quot;</span><span class="p">:</span> <span class="s2">&quot;department-60&quot;</span><span class="p">}])</span>
+                   <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;employees&quot;</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">},</span>
+                   <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;output_table&quot;</span><span class="p">:</span> <span class="s2">&quot;department-60&quot;</span><span class="p">})</span>
 
 <span class="c1"># Refresh run</span>
 <span class="n">run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>

@@ -2353,8 +2353,8 @@ Example:</p>
 <p>For runtime specific task parameters, see the runtime documentation.</p>
 <p>The optional <em>run</em> parameters are:</p>
 <ul>
-<li><strong><code>inputs</code></strong>: a list of map inputs</li>
-<li><strong><code>outputs</code></strong>: a list of map outputs</li>
+<li><strong><code>inputs</code></strong>: a map inputs</li>
+<li><strong><code>outputs</code></strong>: a map outputs</li>
 <li><strong><code>parameters</code></strong>: a map of parameters</li>
 <li><strong><code>values</code></strong>: a list of values</li>
 <li><strong><code>local_execution</code></strong>: if <code>True</code>, the function will be executed locally</li>
@@ -2362,8 +2362,8 @@ Example:</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
     <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
-    <span class="n">inputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;input-param&quot;</span><span class="p">:</span> <span class="s2">&quot;input-value&quot;</span><span class="p">}],</span>
-    <span class="n">outputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;output-param&quot;</span><span class="p">:</span> <span class="s2">&quot;output-value&quot;</span><span class="p">}]</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;input-param&quot;</span><span class="p">:</span> <span class="s2">&quot;input-value&quot;</span><span class="p">},</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;output-param&quot;</span><span class="p">:</span> <span class="s2">&quot;output-value&quot;</span><span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
 
