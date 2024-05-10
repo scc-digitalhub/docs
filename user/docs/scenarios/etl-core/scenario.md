@@ -100,8 +100,8 @@ We can now run the function and see the results. To do this we use the `run` met
 
 ``` python
 run = function.run("transform",
-                   inputs=[{"employees": di.key}],
-                   outputs=[{"output_table": "department-60"}])
+                   inputs={"employees": di.key},
+                   outputs={"output_table": "department-60"})
 ```
 
 We can check the status of the run:

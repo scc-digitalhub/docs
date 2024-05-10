@@ -78,7 +78,7 @@ function.run(volumes=volumes)
 
 ## Hardware resources
 
-You can request a specific amount of hardware resources (cpu, memory, gpu) for the task, declared thorugh the `resources` task parameter; `resources` must be a list of Resource objects represented as a dictionary.
+You can request a specific amount of hardware resources (cpu, memory, gpu) for the task, declared thorugh the `resources` task parameter; `resources` must be a map of Resource objects represented as a dictionary.
 At the moment Digitalhub SDK supports:
 
 - **CPU**
@@ -92,11 +92,12 @@ You need to declare the resource type as `cpu`, request and/or limit specificati
 
 ```python
 
-resources = [{
-    "resource_type": "cpu",
-    "requests": "12",
-    "limits": "16"
-}]
+resources = {
+    "cpu": {
+        "requests": "12",
+        "limits": "16"
+    }
+}
 
 function.run(resources=resources)
 ```
@@ -104,13 +105,14 @@ function.run(resources=resources)
 ### RAM memory
 
 You can request a specific amount of RAM memory for the task.
-You need to declare the resource type as `memory`, request and/or limit specifications.
+You need to declare the resource type as `mem`, request and/or limit specifications.
 
 ```python
-resources = [{
-    "resource_type": "memory",
-    "requests": "64Gi"
-}]
+resources = {
+    "mem"{
+        "requests": "64Gi",
+    }
+}
 function.run(resources=resources)
 ```
 
@@ -124,10 +126,11 @@ Here is an example for the digitahub in FBK that uses the `tolerations` paramete
 
 ```python
 
-resources = [{
-    "resource_type": "gpu",
-    "limits": "1"
-}]
+resources = {
+    "gpu": {
+        "limits": "1"
+    }
+}
 toleration = [{
     "key": "nvidia.com/gpu",
     "operator": "Equal",

@@ -224,8 +224,8 @@ For runtime specific task parameters, see the runtime documentation.
 
 The optional *run* parameters are:
 
-- **`inputs`**: a list of map inputs
-- **`outputs`**: a list of map outputs
+- **`inputs`**: a map inputs
+- **`outputs`**: a map outputs
 - **`parameters`**: a map of parameters
 - **`values`**: a list of values
 - **`local_execution`**: if `True`, the function will be executed locally
@@ -235,7 +235,7 @@ Example:
 ```python
 run = function.run(
     action="job",
-    inputs=[{"input-param": "input-value"}],
-    outputs=[{"output-param": "output-value"}]
+    inputs={"input-param": "input-value"},
+    outputs={"output-param": "output-value"}
 )
 ```

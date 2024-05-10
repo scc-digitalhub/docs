@@ -95,7 +95,7 @@ For example:
 ```python
 run = function.run("validate",
                    framework="frictionless",
-                   inputs=[{"employees": di.key}])
+                   inputs={"employees": di.key})
 ```
 
 ### Profile task parameters
@@ -124,7 +124,7 @@ For example:
 ```python
 run = function.run("profile",
                    framework="frictionless",
-                   inputs=[{"employees": di.key}])
+                   inputs={"employees": di.key})
 ```
 
 ### Infer task parameters
@@ -153,7 +153,7 @@ For example:
 ```python
 run = function.run("infer",
                    framework="frictionless",
-                   inputs=[{"employees": di.key}])
+                   inputs={"employees": di.key})
 ```
 
 ## Runtime workflow
@@ -214,7 +214,7 @@ function = project.new_function(name="function-nefertem",
 # Run validate task
 run = function.run("validate",
                    framework="frictionless",
-                   inputs=[{"employees": di.key}])
+                   inputs={"employees": di.key})
 
 # Refresh run
 run.refresh()

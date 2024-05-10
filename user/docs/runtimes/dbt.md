@@ -89,8 +89,8 @@ The DBT runtime introduces a task of kind `transform` that allows you to run a D
 When you want to execute a task of kind `transform`, you need to pass the following mandatory parameters to the function method `run()`:
 
 - **`action`**: the action to perform. This must be `transform`.
-- **`inputs`**: the list of referenced tables in the sql query mapped to the dataitem keys.
-- **`outputs`**: a list containing **one** element that map the key `output_table` with a name of the output query table and output dataitem.
+- **`inputs`**: the dictionary of referenced tables in the sql query mapped to the dataitem keys.
+- **`outputs`**: a dictionary containing **one** element that map the key `output_table` with a name of the output query table and output dataitem.
 
 As optional, you can pass the following task parameters specific for remote execution:
 
@@ -110,8 +110,8 @@ Example:
 ```python
 run = function.run(
     action="transform",
-    inputs=[{"my_table": my_dataitem.key}],
-    outputs=[{"output_table": "my_output_table"}],
+    inputs={"my_table": my_dataitem.key},
+    outputs={"output_table": "my_output_table"},
 )
 ```
 
@@ -158,8 +158,8 @@ function = project.new_function(name="function-dbt",
 
 # Run function
 run = function.run("transform",
-                   inputs=[{"employees": di.key}],
-                   outputs=[{"output_table": "department-60"}])
+                   inputs={"employees": di.key},
+                   outputs={"output_table": "department-60"})
 
 # Refresh run
 run.refresh()

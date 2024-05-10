@@ -84,8 +84,8 @@ When you want to execute a task of kind `job`, you need to pass the following ma
 
 The following parameters are optional, but usually you need to pass them:
 
-- **`inputs`**: the list of referenced items used in the mlrun function.
-- **`outputs`**: a list referenced items produced by the mlrun function.
+- **`inputs`**: the dictionary of referenced items used in the mlrun function.
+- **`outputs`**: a dictionary of referenced items produced by the mlrun function.
 - **`parameters`**: a dictionary of parameters to pass to the mlrun function `mlrun.run_function()`
 - **`values`**: a list of output values that are not `artifacts`, `dataitems` or `models`
 
@@ -107,8 +107,8 @@ Example:
 ```python
 run = function.run(
     action='job',
-    inputs=[{"mlrun-input-param-name": my_dataitem.key}],
-    outputs=[{"mlrun-input-param-name": "my-output-name"}],
+    inputs={"mlrun-input-param-name": my_dataitem.key},
+    outputs={"mlrun-input-param-name": "my-output-name"},
     parameters={"inputs": {"key": "value"}},
     values=["simple-mlrun-output-value-name"]
 )
@@ -149,8 +149,8 @@ downloader_function = project.new_function(name="mlrun-downloader",
 
 # Run function
 downloader_run = downloader_function.run("job",
-                                         inputs=[{"url": dataitem.key}],
-                                         outputs=[{"dataset": "dataset"}])
+                                         inputs={"url": dataitem.key},
+                                         outputs={"dataset": "dataset"})
 
 # Run refresh
 downloader_run.refresh()
