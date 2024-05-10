@@ -75,7 +75,7 @@ When you want to execute a task of kind `validate`, you need to pass the followi
 
 - **`action`**: the action to perform. This must be `validate`.
 - **`framework`**: the Nefertem framework to be used.
-- **`inputs`**: the list of nefertem resources referenced in the constraint mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
+- **`inputs`**: the dictionary of nefertem resources referenced in the constraint mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
 
 As optional, you can pass the following task parameters specific for remote execution:
 
@@ -104,7 +104,7 @@ When you want to execute a task of kind `profile`, you need to pass the followin
 
 - **`action`**: the action to perform. This must be `profile`.
 - **`framework`**: the Nefertem framework to be used.
-- **`inputs`**: the list of nefertem resources referenced mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
+- **`inputs`**: the dictionary of nefertem resources referenced mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
 
 As optional, you can pass the following task parameters specific for remote execution:
 
@@ -133,7 +133,7 @@ When you want to execute a task of kind `infer`, you need to pass the following 
 
 - **`action`**: the action to perform. This must be `infer`.
 - **`framework`**: the Nefertem framework to be used.
-- **`inputs`**: the list of nefertem resources referenced mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
+- **`inputs`**: the dictionary of nefertem resources referenced mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
 
 As optional, you can pass the following task parameters specific for remote execution:
 
