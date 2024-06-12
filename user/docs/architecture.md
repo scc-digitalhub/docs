@@ -16,7 +16,6 @@ Everything is accessible and usable within a single project.
 
 The platform adopts a layered design, where every layer adds functionalities and value on top of the lower layers. From top to bottom:
 
-* *AI Domain solutions* are complex AI applications which integrates different ML and Data products to deliver a full AI product
 * *ML Engineering* is dedicated to MLOps and the definition, training and usage of ML products
 * *Data Engineering* is devoted to DataOps, with full support for ETL, storage, schemas, transactions and full data management, with advanced capabilities for profiling, lineage, validation and versioning of datasets
 * *Execution infrastructure* serves as the base layer
@@ -47,6 +46,12 @@ The principles adopted during the design can be grouped under the following cate
 * Automate processes
 * Track experiments
 * Ensure reproducibility
+
+#### Extensibility
+
+* Native support for the integration of new functionality
+* Standard infrastructures and frameworks
+* Common workflow and abstractions
 
 #### Resource optimization
 
@@ -193,14 +198,13 @@ Adopting MLOps means embracing the complete lifecycle of ML models, from data pr
 
 The platform integrates a suite of tools aimed at covering the full span of operations, enabling ML engineers to not only train and deploy models, but also manage complex pipelines, operations and services.
 
-The foundation for the ML layer is the open source MLRun framework, which offers an open MLOps environment for building  ML applications across their lifecycle (depicted in picture)
 
-![MLRun](architecture/images/mlrun.png)
+![MLRun](architecture/images/mlops.png)
 
 ### MLOps: Interactive workspaces
 
 The job of a ML engineer is mostly carried out inside an interactive compute environment, where the user performs all the operations related to data preparation, feature extraction, model training and evaluation.
-The platform adopts JupyterLab, along with MLRun, as interactive compute environment, delivering a pre-configured, fully adaptable workspace for ML tasks.
+The platform adopts JupyterLab, along with ML a range of frameworks, as interactive compute environment, delivering a pre-configured, fully adaptable workspace for ML tasks.
 
 ### MLOps: Data and features
 
@@ -235,11 +239,3 @@ The platform supports a unified Model Server, which can expose any model built u
 * feature access
 * performance tracking
 * drift tracking and analysis
-
-### AI solutions
-
-Building over the base layers, the platform aims at supporting full scale AI solutions, which encompass the full stack of tools and resources required to deliver a specific solution in the domain.
-
-Datasets, ML models, workflows, services all contribute to the construction of a fully integrated and replicable AI solution.
-
-**Note: the AI layer is still in early development phase.**

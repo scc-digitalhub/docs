@@ -1,17 +1,15 @@
 # Projects
 
-A project in Digital Hub is a container for everything (code, assets, configuration, ...) that concerns an application. It is the context in which you can run functions and manage data and artifacts.
+A project in Digital Hub represents a data and AI  application and is a container for different entities (code, assets, configuration, ...) that constitute the application. It is the context in which you can run functions and manage models, data, and artifacts.
 Projects may be created and managed from the UI, but also by using DH Core's API using, e.g, Python SDK.
 
 ## Managing Projects via UI
 
 In the following sections we document the Project management through UI available using the  `Digital Hub Console`.
 
-### CRUD
-
 Here we analyze how to Create, Read, Update and Delete Projects using the UI, similarly to what happens with the SDK
 
-#### Create
+### Create
 
 A project is created pressing the button `CREATE` in the Homepage od the Console.
 
@@ -35,7 +33,7 @@ The other `Metadata` parameters are optional and mutable after the creation:
 
 Pressing on the `Save` button, the project is added to the list of the projects in Homepage
 
-#### Read
+### Read
 
 In the Home Page are listed all the projects present in the database. The tile shows:
 
@@ -64,7 +62,7 @@ From any page of the dashboard it is possible to change the project by selecting
 
 ![Dashboard](../images/console/root-project.png)
 
-#### Update
+### Update
 
 You can update a project `Metadata` pressing the button `Configuration` in the side Menubar.
 
@@ -76,7 +74,7 @@ In the example below, the labels `test` and `prj1` are added
 ![Update conf](../images/console/update-prj.png)
 After the modification, pressing Save the new configuration is stored
 
-#### Delete
+### Delete
 
 You can delete a project from the `Home page`  and from the `Configuration` pressing the `Delete` button.
 For confirm the choice of deleting, insert the name of the project in the dialog
@@ -87,7 +85,7 @@ For confirm the choice of deleting, insert the name of the project in the dialog
 
 In the following sections we document the project CRUD methods available in the SDK and the methods exposed by the `Project` entity.
 
-### CRUD
+### Basic Operations
 
 Here we analyze how to create, read, update and delete projects using the SDK.
 
@@ -332,7 +330,7 @@ Note that the filename must have the `.yaml` extension. The project will be expo
 
 According to the SDK digitalhub layer installed, the `Project` class exposes CRUD methods for a variety of entities.
 
-#### Entities CRUD
+#### Entity Management Operations
 
 The project acts as context for other entities as mentioned in the introduction. With a `Project` object, you can create, read, update and delete these entities. The methods exposed are basically five for all entities, and are:
 

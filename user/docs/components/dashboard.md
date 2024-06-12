@@ -7,13 +7,10 @@ access to the platform components and to the monitoring subsystem of the platfor
 
 **Components**
 
+- *Coder*, Tool for managing interactive workspaces
 - *DH Core Console*, UI for the Digital Hub management
 - *KRM*, or Kubernetes Resource Manager, is the tool for organizing and managing standard and custom Kubernetes resources
 - *MLRun*, a framework for MLOps
-- *MinIO*, an S3-compatible object datalake
 - *Nuclio*, a platform for serverless functions
-- *Kubeflow*, a tool for ML workflows on Kubernetes
-
-**Monitoring**
-
-TODO - Monitoring features are work-in-progress.
+- *Kubeflow*, a tool for ML pipelines on Kubernetes
+- *MinIO*, an S3-compatible object datalake UI

@@ -13,6 +13,7 @@ extra_css:
 nav:
   - "index.md"
   - "architecture.md"
+  - "quickstart.md"
   - "installation.md"
   #- "core.md"
   - Concepts and Tasks:
@@ -23,6 +24,7 @@ nav:
       - "tasks/data.md"
       - "tasks/kubernetes-resources.md"
       - "tasks/secrets.md"
+      - "tasks/workflows.md"
     #   - "tasks/git.md"
   - Components:
       - "components/dashboard.md"
@@ -59,7 +61,13 @@ nav:
           - "scenarios/postgrest/intro.md"
           - "scenarios/postgrest/data.md"
           - "scenarios/postgrest/postgrest.md"
+  - Administration:
+      - "admin/overview.md"
+      - "admin/authentication.md"
+      - "admin/configuration.md"
   - Runtimes reference:
+      - Python:
+          - "runtimes/python.md"
       - DBT:
           - "runtimes/dbt.md"
       - Nefertem:
@@ -68,3 +76,5 @@ nav:
           - "runtimes/container.md"
       - MLRun:
           - "runtimes/mlrun.md"
+      - Pipelines:
+          - "runtimes/kfp_pipelines.md"

@@ -1,12 +1,14 @@
-# Digital Hub Console
+# Digital Hub Core UI
 
-The Digital Hub console is a front-end application backed by the Digital Hub Core API. It is a management interface to Core objects, namely:
+The Digital Hub console is a front-end application backed by the Digital Hub Core API. It provides a management interface 
+for the organization and operations over the Data Science [Projects](../tasks/projects.md) and the associated entities, such as:
 
-- **functions** for all the configured runtimes (see the *Runtimes documentation* section for more information)
-- **dataitems**
-- **artifacts**
+- **functions** of various runtimes (see the [Functions and Runtimes](../tasks/functions.md) section for details), as well as their executions (runs) grouped by the corresponding operations (tasks)
+- **dataitems** - structured [Data Items](../tasks/data.md) managed by the project
+- **artifacts** - unstructured files related and maanged by the project
+- **models** - versioned ML Model artifacts with their metrics and metadata (see [ML Models](../tasks/models.md) section for details)
 
-Such objects are project-scoped. When you access the console, you land to the project management page, where you can create or delete projects.
+When you access the console, you land to the project management page, where you can create or delete projects.
 
 ## Create a Project
 
@@ -25,17 +27,23 @@ The console dashboard shows the resources that have been created with a series o
 ![Coder buttons](../images/console/dashboard.png)
 
 ## Objects
+TODO
 ### Functions
+TODO
 ### Dataitems 
+TODO
 ### Artifacts 
+TODO
+### ML Models
+TODO
 ### Secrets
+TODO
 
 ## Versioning
 
-Functions, dataitems and artifacts are versioned. When you visualize the details of an object, all of its versions are listed and browsable. Moreover, when you visualize a dataitem, its schema and data preview are available.
+All the entities operated by Core are versioned. When you visualize the details of an object, all of its versions are listed and browsable. Moreover, when you visualize a dataitem, its schema and data preview are available.
 
 ## Running functions
 
 The console can be used to create function runs. When you visualize a function, different operations are available depending on its kind (i.e., its runtime). For example, when you create a Nefertem function, you can then perform either `validate`, `profile`, `infer` or `metric` tasks providing the desired run configuration.
 
-**TODO** screenshot Nefertem function

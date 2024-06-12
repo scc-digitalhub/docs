@@ -43,13 +43,13 @@ Similarly, run the following command. This will start hosting the Streamlit web 
 
 Next, go to your Coder instance and access the Jupyter workspace you've been using.
 
-![Coder buttons](../../../images/scenario-etl/coder-jupyter-buttons.png)
+![Coder buttons](../../images/scenario-etl/coder-jupyter-buttons.png)
 
 <img align="right" width="150" src="../../../images/scenario-etl/coder-jupyter-portfw.png">
 
 Click on *Ports*, type `8501` (Streamlit's default port), then click the button next to it. It will open a tab to the Streamlit app, where you can visualize data!
 
-![Streamlit image](../../../images/scenario-etl/streamlit.png)
+![Streamlit image](../../images/scenario-etl/streamlit.png)
 
 The graph we displayed is very simple, but you are welcome to experiment with more Streamlit features. Don't forget to stop the above code cell, to stop the app.
 

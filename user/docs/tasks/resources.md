@@ -96,6 +96,38 @@ In the Database details view it is possible also to configure the DB users that 
 
 ![KRM Postgres user create image](../images/krm/krm_postgres_user_create.png)
 
+### Managing S3 resources with KRM
+
+If supported by the deployment, using Minio S3 operator (http://github.com/scc-digitalhub/minio-operator/) it is possible to create new S3 buckets, policies, and create/associate users to them.
+
+Accessing `S3 Buckets` menu of the KRM, it is possible to list, create, and delete S3 buckets, policies, and users.
+
+![KRM S3 buckets image](../images/krm/krm_s3.png)
+
+To create a new Bucket, provide the following:
+
+- name of the bucket to create
+- optional quota for the bucket
+
+![KRM S3 bucket create image](../images/krm/krm_s3_bucket_create.png)
+
+In the S3 Policies tab view it is possible also to configure the S3 policies. To create a new policy, it is necessary to specify:
+
+- name of the associated resource
+- name of the policy to be created
+- standard S3 policy spec in JSON format.
+
+![KRM S3 policy create image](../images/krm/krm_s3_policy_create.png)
+
+In the S3 Users tab view it is possible also to configure the S3 users. To create a new user, it is necessary to specify:
+
+- name of the associated resource
+- access key for the user to be created
+- secret key for the user
+- list of policies to associate to the user.
+
+![KRM S3 policy create image](../images/krm/krm_s3_user_create.png)
+
 ### Managing PostgREST Data Services with KRM
 
 Using KRM it is possible to instantiate and deploy new PostgREST Data services. A PostgREST service exposes

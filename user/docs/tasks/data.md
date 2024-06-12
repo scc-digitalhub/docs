@@ -10,7 +10,7 @@ Digital Hub natively supports two types of storages:
 
 The data is represented in the platform as entities of different types, depending on its usage and format. More specifically, we distinguish
 
-- *data items* which represent immutable tabular datasets resulting from different transformation operations and ready for use in differerent types of analysis. Data items are enriched with metadata (e.g., versions, lineage, stats, profiling, schema) and unique keys and managed and persisted to the datalake directly by the platform in the form of Apache Parquet files.
+- *data items* which represent immutable datasets resulting from different transformation operations and ready for use in differerent types of analysis. Data items are enriched with metadata (e.g., versions, lineage, stats, profiling, schema) and unique keys and managed and persisted to the datalake directly by the platform in the form of Apache Parquet files. Dealing with tabular data (dataitems of ``table`` kind) it is possible to treat them as, e.g., DataFrames with the conventional libraries.
 - *artifacts* which represent arbitrary files stored to the datalake with some extra metadata, but are not limited to tabular formats.
 
 Each data entity may be accessed and manipulated by the platform via UI or using the API, e.g., with SDK.
@@ -36,7 +36,7 @@ Pressing on Artifact side menu button, the paginated list of the artifacts is sh
 
 In the next section, we will see how to create, read, update and delete artifacts.
 
-#### CRUD
+#### Artifact Management via UI
 
 Here we analyze how to Create, Read, Update and Delete Artifacts using the UI, similarly to what happens with the SDK.
 
@@ -141,7 +141,7 @@ Pressing on Data items side menu button, the paginated list of the resource is s
 
 In the next section, we will see how to create, read, update and delete dataitems.
 
-#### CRUD
+#### Dataitem Management via UI
 
 Here we analyze how to Create, Read, Update and Delete Dataitems using the UI, similarly to what happens with the SDK.
 
@@ -247,7 +247,7 @@ To manage artifacts, you need to have `digitalhub_core` layer installed.
 In the first section, we will see how to create, read, update and delete artifacts.
 In the second section, we will see what can be done with the `Artifact` object.
 
-#### CRUD
+#### Artifact Management via SDK
 
 An `artifact` is created entity can be managed with the following methods.
 
@@ -473,7 +473,7 @@ To manage dataitems, you need to have `digitalhub_data` layer installed.
 In the first section, we will see how to create, read, update and delete dataitems.
 In the second section, we will see what can be done with the `Dataitem` object.
 
-#### CRUD
+#### Dataitem Management via SDK
 
 An `dataitem` is created entity can be managed with the following methods.
 

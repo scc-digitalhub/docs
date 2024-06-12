@@ -34,5 +34,3 @@ Once installed, you should see the references (URLs) for the different tools of 
 ## Install with MS Azure
 TODO
 
-## Install with OpenStack
-TODO

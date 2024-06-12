@@ -1,14 +1,24 @@
 # Functions and Runtimes
 
-Functions are the logical description of an executable. They are associated with a given runtime, which implements the actual execution and determines which are the actions available. Examples are dbt, nefertem, mlrun, etc.
+In the platform **functions** are the logical description of something that platforms may execute and track for you. Function may
+represent a code to run as a job, an ML model inference to be used as batch procedure or as a service, a data validation, etc.
+In the platform we perform **actions** over the functions (also referred to as "actions" or "tasks"), such as job execution, deploy, 
+container image build. A single action execution is called **run**, and the platform keeps track of these executions, keeping
+the metadata about the function version, the operation parameters, and eventual runtime parameters for a single execution. 
+
+They are associated with a given runtime, which implements the actual execution and determines which are the actions available. Examples are dbt, nefertem, mlrun, etc.
 
 Runtimes are the entities responsible for the actual execution of a given run. They are highly specialized components which can translate the representation of a given execution as expressed in the run into an actual execution operation performed via libraries, code, external tools etc.
 
-## Managing functions with SDK
+TODO: detail
+
+## Managing Functions with UI
+
+TODO
+
+## Managing Functions with SDK
 
 In the following sections, we will see how to create, read, update and delete functions and what can be done with the `Function` object with the SDK.
-
-### CRUD
 
 You can manage the entity `Function` with the following methods:
 
@@ -38,7 +48,7 @@ function = project.new_function(name="my-function",
     **kwargs)
 ```
 
-#### Create
+### Create
 
 To create a function you can use the `new_function()` method.
 
@@ -65,11 +75,11 @@ function = dh.new_function(project="my-project",
                            **kwargs)
 ```
 
-#### Read
+### Read
 
 To read a function you can use the `get_function()` or `import_function()` methods. The first one searches for the function into the backend, the second one load it from a local yaml.
 
-##### Get
+#### Get
 
 The mandatory parameters are:
 
@@ -91,7 +101,7 @@ function = dh.get_function(project="my-project",
                            entity_id="uuid-of-my-function")
 ```
 
-##### Import
+#### Import
 
 The mandatory parameters are:
 
@@ -103,7 +113,7 @@ Example:
 function = dh.import_function(file="my-function.yaml")
 ```
 
-#### Update
+### Update
 
 To update a function you can use the `update_function()` method.
 
@@ -122,7 +132,7 @@ function = dh.update_function(function=function,
                               **kwargs)
 ```
 
-#### Delete
+### Delete
 
 To delete a function you can use the `delete_function()` method.
 
@@ -145,7 +155,7 @@ function = dh.delete_function(project="my-project",
                               entity_name="my-function")
 ```
 
-#### List
+### List
 
 To list all functions you can use the `list_functions()` method.
 
