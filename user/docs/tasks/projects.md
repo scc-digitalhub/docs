@@ -1,83 +1,79 @@
 # Projects
 
-A project in Digital Hub represents a data and AI  application and is a container for different entities (code, assets, configuration, ...) that constitute the application. It is the context in which you can run functions and manage models, data, and artifacts.
-Projects may be created and managed from the UI, but also by using DH Core's API using, e.g, Python SDK.
+A Digital Hub *project* represents a data and AI application and is a container for different entities (code, assets, configuration, ...) that form the application. It is the context in which you can run functions and manage models, data, and artifacts.
+Projects may be created and managed from the UI, but also by using DH Core's API, for example via Python SDK.
 
 ## Managing Projects via UI
 
-In the following sections we document the Project management through UI available using the  `Digital Hub Console`.
+In the following sections we document project management via the `Digital Hub Console` UI.
 
-Here we analyze how to Create, Read, Update and Delete Projects using the UI, similarly to what happens with the SDK
+Here we detail how to [create](#create), [read](#read), [update](#update) and [delete](#delete) projects using the UI, similarly to SDK usage.
 
 ### Create
 
-A project is created pressing the button `CREATE` in the Homepage od the Console.
+A project is created by clicking `CREATE A NEW PROJECT` in the console's home page.
 
-![Project create](../images/console/project-create.png)
+![Project list](../images/console/project-list.png)
 
-After pressing the button, the dialog asking the Project's parameter is shown:
+A form asking for the project's details is then shown:
 
 ![Project form](../images/console/project-form.png)
 
- It has the following mandatory parameters:
+The following parameters are mandatory:
 
-- **`name`**: the name of the project, it is also the identifier of the project
-- **`description`**: a human readable description of the project
+- **`name`**: name of the project, also acts as identifier of the project
 
-The other `Metadata` parameters are optional and mutable after the creation:
+`Metadata` parameters are optional and may be changed later:
 
-- **`name`**: the name of the project
-- **`description`**: a human readable description of the project
-- **`updated`**: the date of the last modification made to the project
-- **`labels`**: a list of labels (strings)
+- **`name`**: name of the project
+- **`description`**: a human-readable description of the project
+- **`labels`**: a list of string labels
 
-Pressing on the `Save` button, the project is added to the list of the projects in Homepage
+`Save` and the project will appear in the home page.
 
 ### Read
 
-In the Home Page are listed all the projects present in the database. The tile shows:
+All projects present in the database are listed in the home page. Each tile shows:
 
-- **`name`**: the name of the project
-- **`id`**: the identifier of the project
-- **`created`**: the date of the creation of the project
-- **`updated`**: the date of the last modification made to the project
+- Identifier of the project
+- Name of the project (hidden if same as identifier)
+- Description
+- Date of creation
+- Date of last modification
 
-On the bottom the button for `Open` and enter in the Project and the `Delete`
+![Project tile](../images/console/project-tile.png)
 
-![Project form](../images/console/project-tile.png)
+Click on the tile to access the project's dashboard:
 
-Clicking on the `Open` button, the following Dashboard is shown
+![Project dashboard](../images/console/dashboard-prj.png)
 
-![Dashboard](../images/console/dashboard-prj.png)
+This dashboard shows a summary of the resources associated with the project and allows you to access the management of these resources.
 
-This dashboard reports a summary of the resources associated with the project and a series
-of features to access the management of these resources.
+- **`Jobs and runs`**: list and status of performed runs
+- **`Models`**: number and list of latest models
+- **`Functions and code`**: number and list of latest functions
+- **`Data items`**: number and list of latest data items
+- **`Artifacts`**: number and list of latest artifacts
 
-- **`Artifacts`**: the number and the list of the last Artifacts created
-- **`Data items`**: the number and the list of the last Data items created
-- **`Functions and code`**: the number and the list of the last Functions created
-- **`Jobs and runs`**: the status and list of runs performed
+You can return to the list of projects at any time by clicking *Projects* at the bottom of the left menu, or switch directly to a specific project by using the drop-down menu in the upper left of the interface.
 
-From any page of the dashboard it is possible to change the project by selecting from the menu at the top of the bar
-
-![Dashboard](../images/console/root-project.png)
+![Project drop-down](../images/console/root-project.png)
 
 ### Update
 
-You can update a project `Metadata` pressing the button `Configuration` in the side Menubar.
+To update a project's `Metadata`, first click `Configuration` in the left menu.
 
 ![Configuration](../images/console/configuration.png)
 
-Pressing the `Edit` button on the top right of the page the form for editing the `Metadata` values of the project is shown.
-In the example below, the labels `test` and `prj1` are added
+Click `Edit` in the top right and the edit form for `Metadata` properties will be shown. In the example below, a label was added.
 
 ![Update conf](../images/console/update-prj.png)
-After the modification, pressing Save the new configuration is stored
+
+When you're done updating the project, click *Save*.
 
 ### Delete
 
-You can delete a project from the `Home page`  and from the `Configuration` pressing the `Delete` button.
-For confirm the choice of deleting, insert the name of the project in the dialog
+You can delete a project from the `Configuration` page, by clicking `Delete`. You will be asked to confirm by entering the project's identifier.
 
 ![Update conf](../images/console/project-delete.png)
 
