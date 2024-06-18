@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
@@ -2733,61 +2733,57 @@
 
 
 <h1 id="projects">Projects</h1>
-<p>A project in Digital Hub represents a data and AI  application and is a container for different entities (code, assets, configuration, ...) that constitute the application. It is the context in which you can run functions and manage models, data, and artifacts.
-Projects may be created and managed from the UI, but also by using DH Core's API using, e.g, Python SDK.</p>
+<p>A Digital Hub <em>project</em> represents a data and AI application and is a container for different entities (code, assets, configuration, ...) that form the application. It is the context in which you can run functions and manage models, data, and artifacts.
+Projects may be created and managed from the UI, but also by using DH Core's API, for example via Python SDK.</p>
 <h2 id="managing-projects-via-ui">Managing Projects via UI</h2>
-<p>In the following sections we document the Project management through UI available using the  <code>Digital Hub Console</code>.</p>
-<p>Here we analyze how to Create, Read, Update and Delete Projects using the UI, similarly to what happens with the SDK</p>
+<p>In the following sections we document project management via the <code>Digital Hub Console</code> UI.</p>
+<p>Here we detail how to <a href="#create">create</a>, <a href="#read">read</a>, <a href="#update">update</a> and <a href="#delete">delete</a> projects using the UI, similarly to SDK usage.</p>
 <h3 id="create">Create</h3>
-<p>A project is created pressing the button <code>CREATE</code> in the Homepage od the Console.</p>
-<p><img alt="Project create" src="../../images/console/project-create.png" /></p>
-<p>After pressing the button, the dialog asking the Project's parameter is shown:</p>
+<p>A project is created by clicking <code>CREATE A NEW PROJECT</code> in the console's home page.</p>
+<p><img alt="Project list" src="../../images/console/project-list.png" /></p>
+<p>A form asking for the project's details is then shown:</p>
 <p><img alt="Project form" src="../../images/console/project-form.png" /></p>
-<p>It has the following mandatory parameters:</p>
+<p>The following parameters are mandatory:</p>
 <ul>
-<li><strong><code>name</code></strong>: the name of the project, it is also the identifier of the project</li>
-<li><strong><code>description</code></strong>: a human readable description of the project</li>
+<li><strong><code>name</code></strong>: name of the project, also acts as identifier of the project</li>
 </ul>
-<p>The other <code>Metadata</code> parameters are optional and mutable after the creation:</p>
+<p><code>Metadata</code> parameters are optional and may be changed later:</p>
 <ul>
-<li><strong><code>name</code></strong>: the name of the project</li>
-<li><strong><code>description</code></strong>: a human readable description of the project</li>
-<li><strong><code>updated</code></strong>: the date of the last modification made to the project</li>
-<li><strong><code>labels</code></strong>: a list of labels (strings)</li>
+<li><strong><code>name</code></strong>: name of the project</li>
+<li><strong><code>description</code></strong>: a human-readable description of the project</li>
+<li><strong><code>labels</code></strong>: a list of string labels</li>
 </ul>
-<p>Pressing on the <code>Save</code> button, the project is added to the list of the projects in Homepage</p>
+<p><code>Save</code> and the project will appear in the home page.</p>
 <h3 id="read">Read</h3>
-<p>In the Home Page are listed all the projects present in the database. The tile shows:</p>
+<p>All projects present in the database are listed in the home page. Each tile shows:</p>
 <ul>
-<li><strong><code>name</code></strong>: the name of the project</li>
-<li><strong><code>id</code></strong>: the identifier of the project</li>
-<li><strong><code>created</code></strong>: the date of the creation of the project</li>
-<li><strong><code>updated</code></strong>: the date of the last modification made to the project</li>
+<li>Identifier of the project</li>
+<li>Name of the project (hidden if same as identifier)</li>
+<li>Description</li>
+<li>Date of creation</li>
+<li>Date of last modification</li>
 </ul>
-<p>On the bottom the button for <code>Open</code> and enter in the Project and the <code>Delete</code></p>
-<p><img alt="Project form" src="../../images/console/project-tile.png" /></p>
-<p>Clicking on the <code>Open</code> button, the following Dashboard is shown</p>
-<p><img alt="Dashboard" src="../../images/console/dashboard-prj.png" /></p>
-<p>This dashboard reports a summary of the resources associated with the project and a series
-of features to access the management of these resources.</p>
+<p><img alt="Project tile" src="../../images/console/project-tile.png" /></p>
+<p>Click on the tile to access the project's dashboard:</p>
+<p><img alt="Project dashboard" src="../../images/console/dashboard-prj.png" /></p>
+<p>This dashboard shows a summary of the resources associated with the project and allows you to access the management of these resources.</p>
 <ul>
-<li><strong><code>Artifacts</code></strong>: the number and the list of the last Artifacts created</li>
-<li><strong><code>Data items</code></strong>: the number and the list of the last Data items created</li>
-<li><strong><code>Functions and code</code></strong>: the number and the list of the last Functions created</li>
-<li><strong><code>Jobs and runs</code></strong>: the status and list of runs performed</li>
+<li><strong><code>Jobs and runs</code></strong>: list and status of performed runs</li>
+<li><strong><code>Models</code></strong>: number and list of latest models</li>
+<li><strong><code>Functions and code</code></strong>: number and list of latest functions</li>
+<li><strong><code>Data items</code></strong>: number and list of latest data items</li>
+<li><strong><code>Artifacts</code></strong>: number and list of latest artifacts</li>
 </ul>
-<p>From any page of the dashboard it is possible to change the project by selecting from the menu at the top of the bar</p>
-<p><img alt="Dashboard" src="../../images/console/root-project.png" /></p>
+<p>You can return to the list of projects at any time by clicking <em>Projects</em> at the bottom of the left menu, or switch directly to a specific project by using the drop-down menu in the upper left of the interface.</p>
+<p><img alt="Project drop-down" src="../../images/console/root-project.png" /></p>
 <h3 id="update">Update</h3>
-<p>You can update a project <code>Metadata</code> pressing the button <code>Configuration</code> in the side Menubar.</p>
+<p>To update a project's <code>Metadata</code>, first click <code>Configuration</code> in the left menu.</p>
 <p><img alt="Configuration" src="../../images/console/configuration.png" /></p>
-<p>Pressing the <code>Edit</code> button on the top right of the page the form for editing the <code>Metadata</code> values of the project is shown.
-In the example below, the labels <code>test</code> and <code>prj1</code> are added</p>
-<p><img alt="Update conf" src="../../images/console/update-prj.png" />
-After the modification, pressing Save the new configuration is stored</p>
+<p>Click <code>Edit</code> in the top right and the edit form for <code>Metadata</code> properties will be shown. In the example below, a label was added.</p>
+<p><img alt="Update conf" src="../../images/console/update-prj.png" /></p>
+<p>When you're done updating the project, click <em>Save</em>.</p>
 <h3 id="delete">Delete</h3>
-<p>You can delete a project from the <code>Home page</code>  and from the <code>Configuration</code> pressing the <code>Delete</code> button.
-For confirm the choice of deleting, insert the name of the project in the dialog</p>
+<p>You can delete a project from the <code>Configuration</code> page, by clicking <code>Delete</code>. You will be asked to confirm by entering the project's identifier.</p>
 <p><img alt="Update conf" src="../../images/console/project-delete.png" /></p>
 <h2 id="managing-projects-via-sdk">Managing Projects via SDK</h2>
 <p>In the following sections we document the project CRUD methods available in the SDK and the methods exposed by the <code>Project</code> entity.</p>
