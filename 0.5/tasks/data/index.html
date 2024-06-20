@@ -3165,14 +3165,14 @@
 
 
 <h1 id="data-and-transformations">Data and transformations</h1>
-<p>The platform supports data of different type to be stored and operated by the underlying storage subsystems.</p>
+<p>The platform supports data of different types to be stored and operated by the underlying storage subsystems.</p>
 <p>Digital Hub natively supports two types of storages:</p>
 <ul>
 <li><em>persistence</em> object storage (datalake S3 Minio), which manages immutable data in the form of files.</li>
 <li><em>operational</em> relational data storage (PostgreSQL database), which is used for efficient querying of mutable data. <em>Postgres</em>
    is rich with extensions, most notably for geo-spatial and time-series data.</li>
 </ul>
-<p>The data is represented in the platform as entities of different types, depending on its usage and format. More specifically, we distinguish</p>
+<p>The data is represented in the platform as entities of different types, depending on its usage and format. More specifically, we distinguish:</p>
 <ul>
 <li><em>data items</em> which represent immutable datasets resulting from different transformation operations and ready for use in differerent types of analysis. Data items are enriched with metadata (e.g., versions, lineage, stats, profiling, schema) and unique keys and managed and persisted to the datalake directly by the platform in the form of Apache Parquet files. Dealing with tabular data (dataitems of <code>table</code> kind) it is possible to treat them as, e.g., DataFrames with the conventional libraries.</li>
 <li><em>artifacts</em> which represent arbitrary files stored to the datalake with some extra metadata, but are not limited to tabular formats.</li>
