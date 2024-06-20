@@ -1,7 +1,6 @@
 # Landing Page
 
-The landing page is a central access point to reach a number of tools that are automatically run when the platform is installed. It provides the 
-access to the platform components and to the monitoring subsystem of the platform.
+The landing page is a central access point to reach a number of tools that are automatically run when the platform is installed. It provides access to the platform components and to the monitoring subsystem of the platform.
 
 ![Dashboard image](../images/dashboard.png)
 

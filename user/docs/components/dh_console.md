@@ -12,18 +12,18 @@ When you access the console, you land to the project management page, where you 
 
 ## Create a Project
 
-In order to create a new project, press the button on the first element of the list
+Start by clicking the `CREATE A NEW PROJECT` button.
 
-![Coder buttons](../images/console/project-create.png)
+![Project list](../images/console/project-list.png)
 
-Now you can fill the form with the data of your new project, adding Name, Description and its Metadata
+Fill the form's properties.
 ![Coder buttons](../images/console/project-form.png)
 
-Following the selection of a project, you can get an overview of the associated objects on its dashboard and manage them on the dedicated pages.
+Following the selection of a project, you can get an overview of the associated objects on its dashboard and manage them on their dedicated pages.
 
 ## Dashboard
 
-The console dashboard shows the resources that have been created with a series of cards and allows you to quickly access them. In addition to the artifacts, data items and functions, the last card shows the runs present and their respective status
+The console dashboard shows the resources that have been created with a series of cards and allows you to quickly access them. You can see the runs performed and their respective status, as well as artifacts, data items and functions.
 ![Coder buttons](../images/console/dashboard.png)
 
 ## Objects
@@ -41,9 +41,8 @@ TODO
 
 ## Versioning
 
-All the entities operated by Core are versioned. When you visualize the details of an object, all of its versions are listed and browsable. Moreover, when you visualize a dataitem, its schema and data preview are available.
+All entities operated by Core are versioned. When you view the details of an object, all of its versions are listed and browsable. Moreover, when you view a dataitem, its schema and data preview are available.
 
 ## Running functions
 
-The console can be used to create function runs. When you visualize a function, different operations are available depending on its kind (i.e., its runtime). For example, when you create a Nefertem function, you can then perform either `validate`, `profile`, `infer` or `metric` tasks providing the desired run configuration.
-
+The console can be used to create function runs. When you view a function, different operations are available depending on its kind (i.e., its runtime). For example, when you create a Nefertem function, you can then perform either `validate`, `profile`, `infer` or `metric` tasks providing the desired run configuration.

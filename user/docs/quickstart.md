@@ -1,11 +1,8 @@
 # Quick Start
 
-To start with DigitalHub, the first step is to install the platform and all its components. For its functionality, DigitalHub relies on [Kubernetes](https://kubernetes.io/), a state-of-art Open-Source containerized application deployment, orchestration and execution platform. While it is possible to run DigitalHub 
-on literaly any Kubernetes installation, the quickest way to start with is to deploy it on [Minikube](https://minikube.sigs.k8s.io/docs/start), a local Kubernetes environment with minimal settings. See [here](installation.md) the instruction on how to set up DigitalHub on Minikube.
+To start with DigitalHub, the first step is to install the platform and all its components. For its functionality, DigitalHub relies on [Kubernetes](https://kubernetes.io/), a state-of-art Open-Source containerized application deployment, orchestration and execution platform. While it is possible to run DigitalHub on any Kubernetes installation, the quickest way is to deploy it on [Minikube](https://minikube.sigs.k8s.io/docs/start), a local Kubernetes environment with minimal settings. See [here](installation.md) instruction on how to set up DigitalHub on Minikube.
 
-Once installed, you can access different platform components and perform different operations, ranging from exlorative data science with Jupyter Notebooks, 
-creating projects for data processing or ML tasks, managing necessary resources (e.g., databases or datalake buckets), creating and running 
-different functions, etc.
+Once installed, you can access different platform components and perform different operations, ranging from exlorative data science with Jupyter Notebooks, creating projects for data processing or ML tasks, managing necessary resources (e.g., databases or datalake buckets), creating and running different functions, etc.
 
 ## Platform Components and Functionality
 

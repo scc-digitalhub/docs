@@ -1,14 +1,12 @@
 # Functions and Runtimes
 
-In the platform **functions** are the logical description of something that platforms may execute and track for you. Function may
-represent a code to run as a job, an ML model inference to be used as batch procedure or as a service, a data validation, etc.
-In the platform we perform **actions** over the functions (also referred to as "actions" or "tasks"), such as job execution, deploy, 
-container image build. A single action execution is called **run**, and the platform keeps track of these executions, keeping
-the metadata about the function version, the operation parameters, and eventual runtime parameters for a single execution. 
+**Functions** are the logical description of something that the platform may execute and track for you. Function may represent a code to run as a job, an ML model inference to be used as batch procedure or as a service, a data validation, etc.
 
-They are associated with a given runtime, which implements the actual execution and determines which are the actions available. Examples are dbt, nefertem, mlrun, etc.
+In the platform we perform **actions** over functions (also referred to as "tasks"), such as job execution, deploy, container image build. A single action execution is called **run**, and the platform keeps track of these executions, keeping metadata about function version, operation parameters, and runtime parameters for a single execution. 
 
-Runtimes are the entities responsible for the actual execution of a given run. They are highly specialized components which can translate the representation of a given execution as expressed in the run into an actual execution operation performed via libraries, code, external tools etc.
+They are associated with a given runtime, which implements the actual execution and determines which actions are available. Examples are dbt, nefertem, mlrun, etc.
+
+Runtimes are the entities responsible for the actual execution of a given run. They are highly specialized components which can translate the representation of a given execution, as expressed in the run, into an actual execution operation performed via libraries, code, external tools etc.
 
 TODO: detail
 
@@ -18,9 +16,9 @@ TODO
 
 ## Managing Functions with SDK
 
-In the following sections, we will see how to create, read, update and delete functions and what can be done with the `Function` object with the SDK.
+In the following sections, we will see how to create, read, update and delete functions and what can be done with the `Function` object through the SDK.
 
-You can manage the entity `Function` with the following methods:
+You can manage the `Function` entity with the following methods:
 
 - **`new_function`**: create a new function
 - **`get_function`**: get a function
@@ -28,7 +26,8 @@ You can manage the entity `Function` with the following methods:
 - **`delete_function`**: delete a function
 - **`list_functions`**: list all functions
 
-This is done in two ways. The first is through the SDK and the second is through the `Project` object.
+The can be done through the SDK, or through the `Project` object.
+
 Example:
 
 ```python
@@ -52,18 +51,18 @@ function = project.new_function(name="my-function",
 
 To create a function you can use the `new_function()` method.
 
-The mandatory parameters are:
+Mandatory parameters are:
 
 - **`project`**: the project in which the function will be created
-- **`name`**: the name of the function
-- **`kind`**: the kind of the function
+- **`name`**: name of the function
+- **`kind`**: kind of the function
 
-The the optional parameters are:
+Optional parameters are:
 
-- **`uuid`**: the uuid of the function (this is automatically generated if not provided). **Must** be a valid uuid v4.
-- **`description`**: the description of the function
-- **`labels`**: the labels of the function
-- **`git_source`**: the remote source of the function
+- **`uuid`**: the uuid of the function (this is automatically generated if not provided). If provided, **must** be a valid uuid v4.
+- **`description`**: description of the function
+- **`labels`**: labels for the function
+- **`git_source`**: remote source of the function
 - **`kwargs`**: keyword arguments passed to the *spec* constructor
 
 Example:
@@ -77,21 +76,21 @@ function = dh.new_function(project="my-project",
 
 ### Read
 
-To read a function you can use the `get_function()` or `import_function()` methods. The first one searches for the function into the backend, the second one load it from a local yaml.
+To read a function you can use the `get_function()` or `import_function()` methods. The first one searches for the function in the back-end, the second one loads it from a local yaml file.
 
 #### Get
 
-The mandatory parameters are:
+Mandatory parameters are:
 
 - **`project`**: the project in which the function will be created
 
-The optional parameters are:
+Optional parameters are:
 
-- **`entity_name`**: to use the name of the function as identifier. It returns the latest version of the function
-- **`entity_id`**: to use the uuid of the function as identifier. It returns the specified version of the function
-- **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
+- **`entity_name`**: to use the name of the function as identifier. It returns the latest version of the function.
+- **`entity_id`**: to use the uuid of the function as identifier. It returns the specified version of the function.
+- **`kwargs`**: keyword arguments passed to the client that communicates with the back-end
 
-Example:
+Examples:
 
 ```python
 function = dh.get_function(project="my-project",
@@ -103,7 +102,7 @@ function = dh.get_function(project="my-project",
 
 #### Import
 
-The mandatory parameters are:
+Mandatory parameters are:
 
 - **`file`**: file path to the function yaml
 
@@ -115,15 +114,15 @@ function = dh.import_function(file="my-function.yaml")
 
 ### Update
 
-To update a function you can use the `update_function()` method.
+To update a function, use the `update_function()` method.
 
-The mandatory parameters are:
+Mandatory parameters are:
 
 - **`function`**: the function object to update
 
-The the optional parameters are:
+Optional parameters are:
 
-- **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
+- **`kwargs`**: keyword arguments passed to the client that communicates with the back-end
 
 Example:
 
@@ -134,19 +133,19 @@ function = dh.update_function(function=function,
 
 ### Delete
 
-To delete a function you can use the `delete_function()` method.
+To delete a function, use the `delete_function()` method.
 
-The mandatory parameters are:
+Mandatory parameters are:
 
 - **`project`**: the project in which the function will be created
 
-The optional parameters are:
+Optional parameters are:
 
 - **`entity_name`**: to use the name of the function as identifier
-- **`entity_id`**: to use the uuid of the function as identifier
-- **`delete_all_versions`**: if `True`, all versions of the function will be deleted. Its mutually exclusive with the `entity_id` parameter
+- **`entity_id`**: to use the uuid of the function as identifier. Mutually exclusive with `delete_all_versions`.
+- **`delete_all_versions`**: if `True`, all versions of the function will be deleted. Mutually exclusive with `entity_id`.
 - **`cascade`**: if `True`, all `Task` and `Run` objects associated with the function will be deleted
-- **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
+- **`kwargs`**: keyword arguments passed to the client that communicates with the back-end
 
 Example:
 
@@ -157,15 +156,15 @@ function = dh.delete_function(project="my-project",
 
 ### List
 
-To list all functions you can use the `list_functions()` method.
+To list all functions, use the `list_functions()` method.
 
-The mandatory parameters are:
+Mandatory parameters are:
 
 - **`project`**: the project in which the function will be created
 
-The optional parameters are:
+Optional parameters are:
 
-- **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
+- **`kwargs`**: keyword arguments passed to the client that communicates with the back-end
 
 Example:
 
@@ -179,11 +178,11 @@ The `Function` object represents an executable function. The object exposes meth
 
 #### Save
 
-To save a function into the backend you can use the `save()` method.
+To save a function in the back-end, use the `save()` method.
 
 The method accepts the following optional parameters:
 
-- **`update`**: a boolean value, if `True` the function will be updated on the backend
+- **`update`**: a boolean value, if `True` the function will be updated on the back-end
 
 Example:
 
@@ -193,7 +192,7 @@ function.save()
 
 #### Export
 
-To export a function as yaml you can use the `export()` method.
+To export a function as yaml, use the `export()` method.
 
 The method accepts the following optional parameters:
 
@@ -207,7 +206,7 @@ function.export(filename="my-function.yaml")
 
 #### Run
 
-To run a function you can use the `run()` method. This method is a shortcut for:
+To run a function, use the `run()` method. This method is a shortcut for:
 
 - creating a `Task` object
 - creating a `Run` object
@@ -215,27 +214,27 @@ To run a function you can use the `run()` method. This method is a shortcut for:
 
 The method accepts the following mandatory parameters:
 
-- **`action`**: the action to be executed. The possible values for this parameter depends on the `kind` of the function. See the runtimes section for more information.
+- **`action`**: the action to be executed. Possible values for this parameter depend on the `kind` of the function. See the runtimes section for more information.
 
-The optional *task* parameters are as follows. For Kuberenetes:
+The optional *task* parameters are as follows. For Kubernetes:
 
 - **`node_selector`**: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.
 - **`volumes`**: a list of volumes
 - **`resources`**: a map of resources (CPU, memory, GPU)
 - **`affinity`**: node affinity
 - **`tolerations`**: tolerations
-- **`env`**: environment variables to inject in the container
-- **`secrets`**: list of secrets to inject in the container
-- **`backoff_limit`**: the number of retries when a job fails.
-- **`schedule`**: the schedule of the job as a cron expression
-- **`replicas`**: the number of replicas of the deployment
+- **`env`**: environment variables to inject into the container
+- **`secrets`**: list of secrets to inject into the container
+- **`backoff_limit`**: number of retries when a job fails.
+- **`schedule`**: schedule of the job as a cron expression
+- **`replicas`**: number of replicas of the deployment
 
-For runtime specific task parameters, see the runtime documentation.
+For runtime-specific task parameters, see the runtime documentation.
 
 The optional *run* parameters are:
 
-- **`inputs`**: a map inputs
-- **`outputs`**: a map outputs
+- **`inputs`**: a map of inputs
+- **`outputs`**: a map of outputs
 - **`parameters`**: a map of parameters
 - **`values`**: a list of values
 - **`local_execution`**: if `True`, the function will be executed locally
