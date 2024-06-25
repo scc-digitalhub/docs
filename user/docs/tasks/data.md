@@ -50,7 +50,7 @@ Other fields are optional and may be updated later.
 - (Metadata) **`Name`**: name of the artifact
 - (Metadata) **`Description`**: a human-readable description of the artifact
 - (Metadata) **`Version`**: version of the artifact
-- (Metadata) **`Labels`**: a list of labels
+- (Metadata) **`Labels`**: list of labels
 - (Spec) **`Source path`**: local path to the artifact, used in case of upload into remote storage
 
 ##### Read
@@ -118,7 +118,7 @@ Other fields are optional and may be updated later:
 - (Metadata) **`Description`**: a human-readable description
 - (Metadata) **`Version`**: version of the data item
 - (Metadata) **`Updated`**: date of last modification
-- (Metadata) **`Labels`**: a list of labels
+- (Metadata) **`Labels`**: list of labels
 - (Spec) **`Source path`**: local path of the data item, used in case of upload into remote storage
 
 ###### Kind
@@ -160,28 +160,28 @@ You can delete a data item from either its detail page or the list of data items
 
 ![Dataitems delete](../images/console/dataitems-delete.png)
 
-## Managing data with SDk
+## Managing data with SDK
 
 ### Artifacts
 
 Artifacts (ARTIFACT) are (binary) objects stored in one of the artifact stores of the platform, and available to every process, module and component as files (or data streams).
 Artifacts can be created and managed as *entities* with the SDK CRUD methods. This can be done directly from the package or through the `Project` object.
-To manage artifacts, you need to have `digitalhub_core` layer installed.
+To manage artifacts, you need to have the `digitalhub_core` layer installed.
 
 In the first section, we will see how to create, read, update and delete artifacts.
 In the second section, we will see what can be done with the `Artifact` object.
 
 #### Artifact Management via SDK
 
-An `artifact` is created entity can be managed with the following methods.
+An `artifact` can be managed with the following methods.
 
-- **`new_artifact`**: create a new artifact
-- **`get_artifact`**: get an artifact
-- **`update_artifact`**: update an artifact
-- **`delete_artifact`**: delete an artifact
-- **`list_artifacts`**: list all artifacts
+- [**`new_artifact`**](#create_2): create a new artifact
+- [**`get_artifact`**](#read_2): get an artifact
+- [**`update_artifact`**](#update_2): update an artifact
+- [**`delete_artifact`**](#delete_2): delete an artifact
+- [**`list_artifacts`**](#list): list all artifacts
 
-This is done in two ways. The first is through the SDK and the second is through the `Project` object.
+This is done in two ways. The first is through the SDK and the second is through the `Artifact` object.
 Example:
 
 ```python
@@ -207,14 +207,14 @@ The syntax is the same for all CRUD methods. The following sections describe how
 
 To create an artifact you can use the `new_artifact()` method.
 
-The mandatory parameters are:
+Mandatory parameters are:
 
 - **`project`**: the project in which the artifact will be created
 - **`name`**: the name of the artifact
 - **`kind`**: the kind of the artifact
 - **`path`**: the remote path where the artifact is stored
 
-The optional parameters are:
+Optional parameters are:
 
 - **`uuid`**: the uuid of the artifact (this is automatically generated if not provided). **Must** be a valid uuid v4.
 - **`description`**: the description of the artifact
@@ -235,15 +235,15 @@ artifact = dh.new_artifact(project="my-project",
 
 ##### Read
 
-To read an artifact you can use the `get_artifact()` or `import_artifact()` methods. The first one searches for the artifact into the backend, the second one load it from a local yaml.
+To read an artifact you can use the `get_artifact()` or `import_artifact()` methods. The first one searches for the artifact into the backend, the second one loads it from a local yaml.
 
 ###### Get
 
-The mandatory parameters are:
+Mandatory parameters are:
 
 - **`project`**: the project in which the artifact will be created
 
-The optional parameters are:
+Optional parameters are:
 
 - **`entity_name`**: to use the name of the artifact as identifier. It returns the latest version of the artifact
 - **`entity_id`**: to use the uuid of the artifact as identifier. It returns the specified version of the artifact
@@ -261,7 +261,7 @@ artifact = dh.get_artifact(project="my-project",
 
 ###### Import
 
-The mandatory parameters are:
+Mandatory parameters are:
 
 - **`file`**: file path to the artifact yaml
 
@@ -275,11 +275,11 @@ artifact = dh.import_artifact(file="./some-path/my-artifact.yaml")
 
 To update an artifact you can use the `update_artifact()` method.
 
-The mandatory parameters are:
+Mandatory parameters are:
 
 - **`artifact`**: artifact object to be updated
 
-The optional parameters are:
+Optional parameters are:
 
 - **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
 
@@ -300,11 +300,11 @@ artifact = dh.update_artifact(artifact=artifact)
 
 To delete an artifact you can use the `delete_artifact()` method.
 
-The mandatory parameters are:
+Mandatory parameters are:
 
 - **`project`**: the project in which the artifact will be created
 
-The optional parameters are:
+Optional parameters are:
 
 - **`entity_name`**: to use the name of the artifact as identifier
 - **`entity_id`**: to use the uuid of the artifact as identifier
@@ -327,11 +327,11 @@ dh.delete_artifact(project="my-project",
 
 To list all artifacts you can use the `list_artifacts()` method.
 
-The mandatory parameters are:
+Mandatory parameters are:
 
 - **`project`**: the project in which the artifact will be created
 
-The optional parameters are:
+Optional parameters are:
 
 - **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
 
@@ -388,26 +388,26 @@ The method accepts the following parameters:
 - **`target`**: remote path of the artifact to be uploaded (eg. `s3://my-bucket/my-artifact.ext`). By default, it is used the `spec` `path`
 
 
-### Dataitems
+### Data items
 
 Data items (DATAITEM) are data objects which contain a dataset of a given type, stored in an addressable repository and accessible to every component able to understand the type (kind) and the source (path). Do note that data items could be stored in the artifact store as artifacts, but that is not a dependency or a requirement.
 Dataitems can be created and managed as *entities* with the SDK CRUD methods. This can be done directly from the package or through the `Project` object.
-To manage dataitems, you need to have `digitalhub_data` layer installed.
+To manage dataitems, you need to have the `digitalhub_data` layer installed.
 
 In the first section, we will see how to create, read, update and delete dataitems.
 In the second section, we will see what can be done with the `Dataitem` object.
 
-#### Dataitem Management via SDK
+#### Data item management via SDK
 
-An `dataitem` is created entity can be managed with the following methods.
+A `data item` can be managed with the following methods.
 
-- **`new_dataitem`**: create a new dataitem
-- **`get_dataitem`**: get a dataitem
-- **`update_dataitem`**: update a dataitem
-- **`delete_dataitem`**: delete a dataitem
-- **`list_dataitems`**: list all dataitems
+- [**`new_dataitem`**](#create_3): create a new data item
+- [**`get_dataitem`**](#read_3): get a data item
+- [**`update_dataitem`**](#update_3): update a data item
+- [**`delete_dataitem`**](#delete_3): delete a data item
+- [**`list_dataitems`**](#list_1): list all data items
 
-This is done in two ways. The first is through the SDK and the second is through the `Project` object.
+This is done in two ways. The first is through the SDK and the second is through the `Dataitem` object.
 Example:
 
 ```python
@@ -427,26 +427,26 @@ dataitem = project.new_dataitem(name="my-dataitem",
                                 path="s3://my-bucket/my-dataitem.ext")
 ```
 
-The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a dataitem. It focus on managing dataitems from library. If you want to manage dataitems from the project, you can use the `Project` object and avoid to specify the `project` parameter.
+The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a data item, focusing on managing data items through its library. If you want to manage data items from the project, you can use the `Project` object and avoid having to specify the `project` parameter.
 
 ##### Create
 
-To create a dataitem you can use the `new_dataitem()` method.
+To create a data item you can use the `new_dataitem()` method.
 
-The mandatory parameters are:
+Mandatory parameters are:
 
-- **`project`**: the project in which the dataitem will be created
-- **`name`**: the name of the dataitem
-- **`kind`**: the kind of the dataitem
-- **`path`**: the remote path where the dataitem is stored
+- **`project`**: project in which the data item will be created
+- **`name`**: name of the data item
+- **`kind`**: kind of the data item
+- **`path`**: remote path where the data item is stored
 
-The optional parameters are:
+Optional parameters are:
 
-- **`uuid`**: the uuid of the dataitem (this is automatically generated if not provided). **Must** be a valid uuid v4.
-- **`description`**: the description of the dataitem
-- **`source`**: the remote source of the dataitem (git repository)
-- **`labels`**: the labels of the dataitem
-- **`embedded`**: whether the dataitem is embedded or not. If `True`, the dataitem is embedded (all the spec details are expressed) in the project. If `False`, the dataitem is not embedded in the project
+- **`uuid`**: uuid of the data item (this is automatically generated if not provided). **Must** be a valid uuid v4.
+- **`description`**: description of the data item
+- **`source`**: remote source of the data item (git repository)
+- **`labels`**: list of labels
+- **`embedded`**: whether the data item is embedded or not. If `True`, the data item is embedded (all the spec details are expressed) in the project. If `False`, the data item is not embedded in the project.
 - **`kwargs`**: keyword arguments passed to the *spec* constructor
 
 Example:
@@ -460,18 +460,18 @@ dataitem = dh.new_dataitem(project="my-project",
 
 ##### Read
 
-To read a dataitem you can use the `get_dataitem()` or `import_dataitem()` methods. The first one searches for the dataitem into the backend, the second one load it from a local yaml.
+To read a data item you can use the `get_dataitem()` or `import_dataitem()` methods. The first one searches for the data item into the backend, the second one load it from a local yaml.
 
 ###### Get
 
-The mandatory parameters are:
+Mandatory parameters are:
 
-- **`project`**: the project in which the dataitem will be created
+- **`project`**: the project in which the data item will be created
 
-The optional parameters are:
+Optional parameters are:
 
-- **`entity_name`**: to use the name of the dataitem as identifier. It returns the latest version of the dataitem
-- **`entity_id`**: to use the uuid of the dataitem as identifier. It returns the specified version of the dataitem
+- **`entity_name`**: to use the name of the data item as identifier. It returns the latest version of the data item.
+- **`entity_id`**: to use the uuid of the data item as identifier. It returns the specified version of the data item.
 - **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
 
 Example:
@@ -486,7 +486,7 @@ dataitem = dh.get_dataitem(project="my-project",
 
 ###### Import
 
-The mandatory parameters are:
+Mandatory parameters are:
 
 - **`file`**: file path to the dataitem yaml
 
@@ -498,13 +498,13 @@ dataitem = dh.import_dataitem(file="./some-path/my-dataitem.yaml")
 
 ##### Update
 
-To update a dataitem you can use the `update_dataitem()` method.
+To update a data item you can use the `update_dataitem()` method.
 
-The mandatory parameters are:
+Mandatory parameters are:
 
-- **`dataitem`**: dataitem object to be updated
+- **`dataitem`**: data item object to be updated
 
-The optional parameters are:
+Optional parameters are:
 
 - **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
 
@@ -523,17 +523,17 @@ dataitem = dh.update_dataitem(dataitem=dataitem)
 
 ##### Delete
 
-To delete a dataitem you can use the `delete_dataitem()` method.
+To delete a data item you can use the `delete_dataitem()` method.
 
-The mandatory parameters are:
+Mandatory parameters are:
 
-- **`project`**: the project in which the dataitem will be created
+- **`project`**: the project in which the data item will be created
 
-The optional parameters are:
+Optional parameters are:
 
-- **`entity_name`**: to use the name of the dataitem as identifier
-- **`entity_id`**: to use the uuid of the dataitem as identifier
-- **`delete_all_versions`**: if `True`, all versions of the dataitem will be deleted. Its mutually exclusive with the `entity_id` parameter
+- **`entity_name`**: to use the name of the data item as identifier
+- **`entity_id`**: to use the uuid of the data item as identifier
+- **`delete_all_versions`**: if `True`, all versions of the data item will be deleted. Its mutually exclusive with the `entity_id` parameter
 - **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
 
 Example:
@@ -550,13 +550,13 @@ dh.delete_dataitem(project="my-project",
 
 ##### List
 
-To list all dataitems you can use the `list_dataitems()` method.
+To list all data items you can use the `list_dataitems()` method.
 
-The mandatory parameters are:
+Mandatory parameters are:
 
-- **`project`**: the project in which the dataitem will be created
+- **`project`**: the project in which the data item will be created
 
-The optional parameters are:
+Optional parameters are:
 
 - **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
 
@@ -568,24 +568,24 @@ dataitems = dh.list_dataitems(project="my-project")
 
 #### Dataitem object
 
-The `Dataitem` object is built using the `new_dataitem()` method. There are several variations of the `Dataitem` object based on the `kind` of the dataitem. The SDK supports the following kinds:
+The `Dataitem` object is built using the `new_dataitem()` method. There are several variations of the `Dataitem` object based on the `kind` of the data item. The SDK supports the following kinds:
 
-- **`dataitem`**: represents a generic dataitem
-- **`table`**: represents a table dataitem
+- **`dataitem`**: represents a generic data item
+- **`table`**: represents a table data item
 
 For each different kind, the `Dataitem` object has a different set of methods and different `spec`, `status` and `metadata`.
 
-To create a specific dataitem, you must use the desired `kind` in the `new_dataitem()` method.
-All the `Dataitem` kinds have a `save()` and an `export()` method to save and export the *entity* dataitem into backend or locally as yaml.
+To create a specific data item, you must use the desired `kind` in the `new_dataitem()` method.
+All the `Dataitem` kinds have a `save()` and an `export()` method to save and export the *entity* data item into backend or locally as yaml.
 
 ##### Dataitem
 
-The `dataitem` kind indicates that the dataitem is a generic dataitem.
-There are no specific `spec` parameters nor specific method exposed. It acts as a generic dataitem.
+The `dataitem` kind indicates that the data item is a generic data item.
+There are no specific `spec` parameters nor specific method exposed. It acts as a generic data item.
 
 ##### Table
 
-The `table` kind indicates that the dataitem point to a table.
+The `table` kind indicates that the data item point to a table.
 The optional `spec` parameters are:
 
 - **`schema`**: the schema of the table in [table_schema](https://specs.frictionlessdata.io/table-schema/) format
@@ -593,7 +593,7 @@ The optional `spec` parameters are:
 The `table` kind also has the following methods:
 
 - **`as_df()`**: to collect the data in a pandas dataframe
-- **`write_df()`**: to write the dataitem as parquet
+- **`write_df()`**: to write the data item as parquet
 
 ###### Read table
 
@@ -605,8 +605,8 @@ The method accepts the following parameters:
 
 ###### Write table
 
-The `write_df()` method writes the dataitem as parquet.
+The `write_df()` method writes the data item as parquet.
 The method accepts the following parameters:
 
-- **`target_path`**: the path of the target parquet file. If not provided, the target path will created by the SDK and the dataitem will be stored in the default store
+- **`target_path`**: the path of the target parquet file. If not provided, the target path will created by the SDK and the data item will be stored in the default store
 - **`kwargs`**: keyword arguments passed to the pandas `to_parquet` method

@@ -27,7 +27,7 @@ The following parameters are mandatory:
 
 - **`name`**: name of the project
 - **`description`**: a human-readable description of the project
-- **`labels`**: a list of labels
+- **`labels`**: list of labels
 
 `Save` and the project will appear in the home page.
 
@@ -96,7 +96,7 @@ The other parameters are optional:
 - **`context`**: path where project can export yaml files locally
 - **`description`**: a human readable description of the project
 - **`source`**: a Git repository URL where lies the project code
-- **`labels`**: a list of labels
+- **`labels`**: list of labels
 - **`local`**: a boolean value, if `True` the project will be managed without *Core backend*. Defaults to `False`
 - **`config`**: a dictionary containing the project configuration like user and password for basic auth or a bearer token
 - **`setup_kwargs`**: a dictionary containing the project hook setup arguments

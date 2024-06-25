@@ -22,6 +22,7 @@ nav:
       - "tasks/workspaces.md"
       - "tasks/resources.md"
       - "tasks/data.md"
+      - "tasks/models.md"
       - "tasks/kubernetes-resources.md"
       - "tasks/secrets.md"
       - "tasks/workflows.md"

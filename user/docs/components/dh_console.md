@@ -24,7 +24,7 @@ Following the selection of a project, you can get an overview of the associated 
 ## Dashboard
 
 The console dashboard shows the resources that have been created with a series of cards and allows you to quickly access them. You can see the runs performed and their respective status, as well as artifacts, data items and functions.
-![Coder buttons](../images/console/dashboard.png)
+![Coder buttons](../images/console/dashboard-prj.png)
 
 ## Objects
 TODO
