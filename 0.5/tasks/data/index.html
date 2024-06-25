@@ -647,23 +647,23 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dataitems" class="md-nav__link">
+  <a href="#data-items" class="md-nav__link">
     <span class="md-ellipsis">
-      Dataitems
+      Data items
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Dataitems">
+    <nav class="md-nav" aria-label="Data items">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#dataitem-management-via-ui" class="md-nav__link">
+  <a href="#data-item-management-via-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      Dataitem Management via UI
+      Data item management via UI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Dataitem Management via UI">
+    <nav class="md-nav" aria-label="Data item management via UI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -899,7 +899,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dataitems_1" class="md-nav__link">
+  <a href="#dataitems" class="md-nav__link">
     <span class="md-ellipsis">
       Dataitems
     </span>
@@ -2737,23 +2737,23 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dataitems" class="md-nav__link">
+  <a href="#data-items" class="md-nav__link">
     <span class="md-ellipsis">
-      Dataitems
+      Data items
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Dataitems">
+    <nav class="md-nav" aria-label="Data items">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#dataitem-management-via-ui" class="md-nav__link">
+  <a href="#data-item-management-via-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      Dataitem Management via UI
+      Data item management via UI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Dataitem Management via UI">
+    <nav class="md-nav" aria-label="Data item management via UI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2989,7 +2989,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dataitems_1" class="md-nav__link">
+  <a href="#dataitems" class="md-nav__link">
     <span class="md-ellipsis">
       Dataitems
     </span>
@@ -3169,183 +3169,112 @@
 <p>Digital Hub natively supports two types of storages:</p>
 <ul>
 <li><em>persistence</em> object storage (datalake S3 Minio), which manages immutable data in the form of files.</li>
-<li><em>operational</em> relational data storage (PostgreSQL database), which is used for efficient querying of mutable data. <em>Postgres</em>
-   is rich with extensions, most notably for geo-spatial and time-series data.</li>
+<li><em>operational</em> relational data storage (PostgreSQL database), which is used for efficient querying of mutable data. <em>Postgres</em> is rich with extensions, most notably for geo-spatial and time-series data.</li>
 </ul>
 <p>The data is represented in the platform as entities of different types, depending on its usage and format. More specifically, we distinguish:</p>
 <ul>
-<li><em>data items</em> which represent immutable datasets resulting from different transformation operations and ready for use in differerent types of analysis. Data items are enriched with metadata (e.g., versions, lineage, stats, profiling, schema) and unique keys and managed and persisted to the datalake directly by the platform in the form of Apache Parquet files. Dealing with tabular data (dataitems of <code>table</code> kind) it is possible to treat them as, e.g., DataFrames with the conventional libraries.</li>
-<li><em>artifacts</em> which represent arbitrary files stored to the datalake with some extra metadata, but are not limited to tabular formats.</li>
+<li><em>data items</em>, which represent immutable data sets resulting from different transformation operations and are ready for use in differerent types of analysis. Data items are enriched with metadata (versions, lineage, stats, profiling, schema, ...) and unique keys and managed and persisted to the datalake directly by the platform in the form of <em>Parquet</em> files. It is possible to treat tabular data (items of <code>table</code> kind) as, for example, <em>DataFrames</em>, using conventional libraries.</li>
+<li><em>artifacts</em>, which represent arbitrary files, not limited to tabular format, stored to the datalake with some extra metadata.</li>
 </ul>
-<p>Each data entity may be accessed and manipulated by the platform via UI or using the API, e.g., with SDK.</p>
+<p>Each data entity may be accessed and manipulated by the platform via UI or using the API, for example with SDK.</p>
 <h2 id="manipulating-data-via-ui">Manipulating data via UI</h2>
 <h3 id="artifacts">Artifacts</h3>
-<p>Artifacts can be created and managed as <em>entities</em> with the console. This can be done accessing through the user's menu or using the shortcut on the dashboard.</p>
-<p><img alt="Artifact intro" src="../../images/console/artifacts-intro.png" /></p>
-<p>Pressing on Artifact side menu button, the paginated list of the artifacts is showed. From this pages is possible:</p>
+<p>Artifacts can be created and managed as <em>entities</em> with the console. You can access them from the dashboard or the left menu. You can:</p>
 <ul>
 <li><code>create</code> a new artifact</li>
-<li><code>expand</code> an artifact and see the last 5 versions</li>
+<li><code>expand</code> an artifact to see its 5 latest versions</li>
 <li><code>show</code> the details of an artifact</li>
 <li><code>edit</code> an artifact</li>
 <li><code>delete</code> an artifact</li>
-<li><code>filter</code> the artifact by name and kind</li>
+<li><code>filter</code> artifacts by name and kind</li>
 </ul>
 <p><img alt="Artifact list" src="../../images/console/artifacts-list.png" /></p>
-<p>In the next section, we will see how to create, read, update and delete artifacts.</p>
 <h4 id="artifact-management-via-ui">Artifact Management via UI</h4>
-<p>Here we analyze how to Create, Read, Update and Delete Artifacts using the UI, similarly to what happens with the SDK.</p>
+<p>Here we analyze how to <a href="#create">create</a>, <a href="#read">read</a>, <a href="#update">update</a> and <a href="#delete">delete</a> Artifacts using the UI, similarly to what is done with the SDK.</p>
 <h5 id="create">Create</h5>
-<p>A project is created pressing the button <code>CREATE</code> in the Artifacts' list page. After pressing the button, the dialog asking the Artifact's parameter is shown:</p>
+<p>Click <code>CREATE</code> and a form will be shown:</p>
 <p><img alt="Artifact form" src="../../images/console/artifacts-form.png" /></p>
-<p>It has the following mandatory parameters:
-The mandatory parameters are:</p>
+<p>Mandatory fields are:</p>
 <ul>
-<li><strong><code>name</code></strong>: the name of the artifact</li>
-<li><strong><code>kind</code></strong>: the kind of the artifact</li>
+<li><strong><code>Name</code></strong>: name and identifier of the artifact</li>
+<li><strong><code>Kind</code></strong>: kind of the artifact</li>
+<li>(Spec) <strong><code>Path</code></strong>: remote path where the artifact is stored</li>
 </ul>
-<p>The only <code>Metadata</code> mandatory parameter is:</p>
+<p>Other fields are optional and may be updated later.</p>
 <ul>
-<li><strong><code>path</code></strong>: the remote path where the artifact is stored</li>
-</ul>
-<p>The other <code>Metadata</code> parameters are optional and mutable after the creation:</p>
-<ul>
-<li><strong><code>name</code></strong>: the name of the artifact</li>
-<li><strong><code>version</code></strong>: the version of the artifact</li>
-<li><strong><code>description</code></strong>: a human readable description of the artifact</li>
-<li><strong><code>updated</code></strong>: the date of the last modification made to the artifact</li>
-<li><strong><code>src_path</code></strong>: local path of the artifact, used in case of upload into remote storage</li>
-<li><strong><code>labels</code></strong>: the labels of the artifact</li>
+<li>(Metadata) <strong><code>Name</code></strong>: name of the artifact</li>
+<li>(Metadata) <strong><code>Description</code></strong>: a human-readable description of the artifact</li>
+<li>(Metadata) <strong><code>Version</code></strong>: version of the artifact</li>
+<li>(Metadata) <strong><code>Labels</code></strong>: a list of labels</li>
+<li>(Spec) <strong><code>Source path</code></strong>: local path to the artifact, used in case of upload into remote storage</li>
 </ul>
 <h5 id="read">Read</h5>
-<p>To read an artifact you can click on the <code>SHOW</code> button.</p>
-<p><img alt="Artifact read" src="../images/console/artifacts-read.png" /></p>
-<p>The page shows the following details</p>
-<ul>
-<li><strong><code>id</code></strong>: the id of the artifact</li>
-<li><strong><code>kind</code></strong>: the kind of the artifact</li>
-<li><strong><code>Key</code></strong>: the unique URL that identifies the resource</li>
-</ul>
-<p>The <code>Metadata</code> values are:</p>
-<ul>
-<li><strong><code>name</code></strong>: the name of the artifact</li>
-<li><strong><code>description</code></strong>: a human readable description of the artifact</li>
-<li><strong><code>version</code></strong>: the version of the artifact</li>
-<li><strong><code>created</code></strong>: the date of the creation to the artifact</li>
-<li><strong><code>updated</code></strong>: the date of the last modification made to the artifact</li>
-<li><strong><code>labels</code></strong>: the labels of the artifact</li>
-<li><strong><code>path</code></strong>: the remote path where the artifact is stored</li>
-<li><strong><code>src_path</code></strong>: local path of the artifact, used in case of upload into remote storage</li>
-</ul>
-<p>On the right side of this page are all the version of the resource is listed and the actual version is highlighted. Selecting a different element
-the different version is shown.</p>
+<p>Click on <code>SHOW</code> to view an artifact's details.</p>
+<p><img alt="Artifact details" src="../../images/console/artifact-read.png" /></p>
+<p>On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.</p>
 <p><img alt="Artifacts version" src="../../images/console/artifacts-version.png" /></p>
-<p>From the menu on top is possible to <code>EDIT</code>, <code>DELETE</code>, <code>INSPECT</code> or <code>EXPORT</code> the current artifact. For the first 2 options there are specific section
-of this document.</p>
-<p>Clicking on <code>INSPECTOR</code> a dialog that shows the artifact in JSON format is shown.</p>
-<p><img alt="Artifact inspector" src="../images/console/artifacts-inspector.png" /></p>
-<p>Clicking the <code>EXPORT</code> button the artifact is downloaded in a yaml file.</p>
+<p>From the menu on top, you can <code>EDIT</code>, <code>DELETE</code>, <code>INSPECT</code> or <code>EXPORT</code> the current artifact. For the first two options, you will find specific sections in this document.</p>
+<p>The <code>INSPECTOR</code> button will show a dialog containing the artifact in JSON format.</p>
+<p><img alt="Artifact inspector" src="../../images/console/artifact-inspector.png" /></p>
+<p>The <code>EXPORT</code> button will download the displayed information as a yaml file.</p>
 <h5 id="update">Update</h5>
-<p>You can update artifact's <code>Metadata</code> pressing the button <code>EDIT</code> in the list or in the show page. All the <code>Metadata</code> values can be modified</p>
-<ul>
-<li><strong><code>name</code></strong>: the name of the artifact</li>
-<li><strong><code>description</code></strong>: a human readable description of the artifact</li>
-<li><strong><code>version</code></strong>: the version of the artifact</li>
-<li><strong><code>updated</code></strong>: the date of the last modification made to the artifact</li>
-<li><strong><code>labels</code></strong>: the labels of the artifact</li>
-<li><strong><code>path</code></strong>: the remote path where the artifact is stored</li>
-<li><strong><code>src_path</code></strong>: local path of the artifact, used in case of upload into remote storage</li>
-</ul>
+<p>You can update an artifact by clicking <code>EDIT</code>. Greyed-out fields may not be updated.</p>
 <p><img alt="Artifact edit" src="../../images/console/artifact-edit.png" /></p>
 <h5 id="delete">Delete</h5>
-<p>You can delete an artifact from the list or from the detail pressing the button <code>DELETE</code>. A dialog asking confirmation is shown</p>
+<p>You can delete an artifact from either its detail page or the list of artifacts, by clicking <code>DELETE</code>.</p>
 <p><img alt="Artifact delete" src="../../images/console/artifact-delete.png" /></p>
-<h3 id="dataitems">Dataitems</h3>
-<p>Dataitems can be created and managed as <em>entities</em> with the console. This can be done accessing through the user's menu or using the shortcut on the dashboard.</p>
-<p><img alt="Dataitem intro" src="../../images/console/artifacts-intro.png" /></p>
-<p>Pressing on Data items side menu button, the paginated list of the resource is showed. From this pages is possible:</p>
+<h3 id="data-items">Data items</h3>
+<p>Data items can be created and managed as <em>entities</em> with the console. You can access them from the dashboard or the left menu. You can:</p>
 <ul>
-<li><code>create</code> a new dataitem</li>
-<li><code>expand</code> an dataitem and see the last 5 versions</li>
-<li><code>show</code> the details of an dataitem</li>
-<li><code>edit</code> an dataitem</li>
-<li><code>delete</code> an dataitem</li>
-<li><code>filter</code> the dataitem by name and kind</li>
+<li><code>create</code> a new data item</li>
+<li><code>expand</code> a data item and see its 5 latest versions</li>
+<li><code>show</code> the details of a data item</li>
+<li><code>edit</code> a data item</li>
+<li><code>delete</code> a data item</li>
+<li><code>filter</code> data items by name and kind</li>
 </ul>
 <p><img alt="Dataitem list" src="../../images/console/dataitems-list.png" /></p>
-<p>In the next section, we will see how to create, read, update and delete dataitems.</p>
-<h4 id="dataitem-management-via-ui">Dataitem Management via UI</h4>
-<p>Here we analyze how to Create, Read, Update and Delete Dataitems using the UI, similarly to what happens with the SDK.</p>
+<h4 id="data-item-management-via-ui">Data item management via UI</h4>
+<p>Here we analyze how to <a href="#create_1">create</a>, <a href="#read_1">read</a>, <a href="#update_1">update</a> and <a href="#delete_1">delete</a> data items using the UI, similarly to what is done with the SDK.</p>
 <h5 id="create_1">Create</h5>
-<p>A project is created pressing the button <code>CREATE</code> in the Dataitems' list page. After pressing the button, the dialog asking the Dataitem's parameter is shown:</p>
+<p>Click <code>CREATE</code> and a form will be shown:</p>
 <p><img alt="Dataitem form" src="../../images/console/dataitems-form.png" /></p>
-<p>It has the following mandatory parameters:
-The mandatory parameters are:</p>
+<p>Mandatory fields are:</p>
 <ul>
-<li><strong><code>name</code></strong>: the name of the dataitem</li>
-<li><strong><code>kind</code></strong>: the kind of the dataitem</li>
+<li><strong><code>Name</code></strong>: name of the dataitem</li>
+<li><strong><code>Kind</code></strong>: kind of the dataitem</li>
+<li>(Spec) <strong><code>Path</code></strong>: remote path where the data item is stored</li>
 </ul>
-<p>The only <code>Metadata</code> mandatory parameter is:</p>
+<p>Other fields are optional and may be updated later:</p>
 <ul>
-<li><strong><code>path</code></strong>: the remote path where the dataitem is stored</li>
-</ul>
-<p>The other <code>Metadata</code> parameters are optional and mutable after the creation:</p>
-<ul>
-<li><strong><code>name</code></strong>: the name of the dataitem</li>
-<li><strong><code>version</code></strong>: the version of the dataitem</li>
-<li><strong><code>description</code></strong>: a human readable description of the dataitem</li>
-<li><strong><code>updated</code></strong>: the date of the last modification made to the dataitem</li>
-<li><strong><code>src_path</code></strong>: local path of the dataitem, used in case of upload into remote storage</li>
-<li><strong><code>labels</code></strong>: the labels of the dataitem</li>
+<li>(Metadata) <strong><code>Name</code></strong>: name of the data item</li>
+<li>(Metadata) <strong><code>Description</code></strong>: a human-readable description</li>
+<li>(Metadata) <strong><code>Version</code></strong>: version of the data item</li>
+<li>(Metadata) <strong><code>Updated</code></strong>: date of last modification</li>
+<li>(Metadata) <strong><code>Labels</code></strong>: a list of labels</li>
+<li>(Spec) <strong><code>Source path</code></strong>: local path of the data item, used in case of upload into remote storage</li>
 </ul>
 <h6 id="kind">Kind</h6>
 <p>There are 2 possible kinds for dataitems:</p>
 <ul>
-<li><strong><code>Dataitem</code></strong>: indicates that the dataitem is a generic dataitem. There are no specific attributes in the creation page.</li>
-<li><strong><code>table</code></strong>: indicates that the dataitem point to a table. The optional parameter is the schema of the table in <a href="https://specs.frictionlessdata.io/table-schema/">table_schema</a> format</li>
+<li><strong><code>Dataitem</code></strong>: indicates it is a generic data item. There are no specific attributes in the creation page.</li>
+<li><strong><code>table</code></strong>: indicates that the data item points to a table. The optional parameter is the schema of the table in <a href="https://specs.frictionlessdata.io/table-schema/">table_schema</a> format.</li>
 </ul>
 <h5 id="read_1">Read</h5>
-<p>To read an dataitem you can click on the <code>SHOW</code> button.</p>
+<p>Click on <code>SHOW</code> to view a data item's details.</p>
 <p><img alt="Dataitem read" src="../../images/console/dataitems-read.png" /></p>
-<p>The page shows the following details</p>
-<ul>
-<li><strong><code>id</code></strong>: the id of the dataitem</li>
-<li><strong><code>kind</code></strong>: the kind of the dataitem</li>
-<li><strong><code>Key</code></strong>: the unique URL that identifies the resource</li>
-</ul>
-<p>The <code>Metadata</code> values are:</p>
-<ul>
-<li><strong><code>name</code></strong>: the name of the dataitem</li>
-<li><strong><code>description</code></strong>: a human readable description of the dataitem</li>
-<li><strong><code>version</code></strong>: the version of the dataitem</li>
-<li><strong><code>created</code></strong>: the date of the creation to the dataitem</li>
-<li><strong><code>updated</code></strong>: the date of the last modification made to the dataitem</li>
-<li><strong><code>labels</code></strong>: the labels of the dataitem</li>
-<li><strong><code>path</code></strong>: the remote path where the dataitem is stored</li>
-</ul>
-<p>Based on the kind of the dataitem, there may be <strong><code>schema</code></strong>, indicates that the dataitem point to a table.</p>
-<p>On the right side of this page are all the version of the resource is listed and the actual version is highlighted. Selecting a different element
-the different version is shown.</p>
+<p>Based on the <code>kind</code>, there may be a <strong><code>schema</code></strong>, indicating that the dataitem point to a table.</p>
+<p>On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.</p>
 <p><img alt="Dataitems version" src="../../images/console/dataitems-version.png" /></p>
-<p>From the menu on top is possible to <code>EDIT</code>, <code>DELETE</code>, <code>INSPECT</code> or <code>EXPORT</code> the current dataitem. For the first 2 options there are specific section
-of this document.</p>
-<p>Clicking on <code>INSPECTOR</code> a dialog that shows the dataitem in JSON format is shown.</p>
+<p>From the menu on top, you can <code>EDIT</code>, <code>DELETE</code>, <code>INSPECT</code> or <code>EXPORT</code> the current data item. For the first two options, you will find specific sections in this document.</p>
+<p>The <code>INSPECTOR</code> button will show a dialog containing the data item in JSON format.</p>
 <p><img alt="Dataitems inspector" src="../../images/console/dataitems-inspector.png" /></p>
-<p>Clicking the <code>EXPORT</code> button the dataitem is downloaded in a yaml file.</p>
+<p>The <code>EXPORT</code> button will download the displayed information as a yaml file.</p>
 <h5 id="update_1">Update</h5>
-<p>You can update dataitem's <code>Metadata</code> pressing the button <code>EDIT</code> in the list or in the show page. All the <code>Metadata</code> values can be modified</p>
-<ul>
-<li><strong><code>name</code></strong>: the name of the dataitem</li>
-<li><strong><code>description</code></strong>: a human readable description of the dataitem</li>
-<li><strong><code>version</code></strong>: the version of the dataitem</li>
-<li><strong><code>updated</code></strong>: the date of the last modification made to the dataitem</li>
-<li><strong><code>labels</code></strong>: the labels of the dataitem</li>
-<li><strong><code>path</code></strong>: the remote path where the dataitem is stored</li>
-</ul>
-<p>Based on the kind of the dataitem, there may be <strong><code>schema</code></strong>, indicates that the dataitem point to a table.</p>
+<p>You can update a data item by clicking <code>EDIT</code>. Greyed-out fields may not be updated.</p>
 <p><img alt="Dataitems edit" src="../../images/console/dataitems-edit.png" /></p>
 <h5 id="delete_1">Delete</h5>
-<p>You can delete an dataitem from the list or from the detail pressing the button <code>DELETE</code>. A dialog asking confirmation is shown</p>
+<p>You can delete a data item from either its detail page or the list of data items, by clicking <code>DELETE</code>.</p>
 <p><img alt="Dataitems delete" src="../../images/console/dataitems-delete.png" /></p>
 <h2 id="managing-data-with-sdk">Managing data with SDk</h2>
 <h3 id="artifacts_1">Artifacts</h3>
@@ -3526,7 +3455,7 @@ The method accepts the following parameters:</p>
 <li><strong><code>source</code></strong>: local path of the artifact to be uploaded</li>
 <li><strong><code>target</code></strong>: remote path of the artifact to be uploaded (eg. <code>s3://my-bucket/my-artifact.ext</code>). By default, it is used the <code>spec</code> <code>path</code></li>
 </ul>
-<h3 id="dataitems_1">Dataitems</h3>
+<h3 id="dataitems">Dataitems</h3>
 <p>Data items (DATAITEM) are data objects which contain a dataset of a given type, stored in an addressable repository and accessible to every component able to understand the type (kind) and the source (path). Do note that data items could be stored in the artifact store as artifacts, but that is not a dependency or a requirement.
 Dataitems can be created and managed as <em>entities</em> with the SDK CRUD methods. This can be done directly from the package or through the <code>Project</code> object.
 To manage dataitems, you need to have <code>digitalhub_data</code> layer installed.</p>
