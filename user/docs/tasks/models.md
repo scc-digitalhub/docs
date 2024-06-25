@@ -15,11 +15,41 @@ We will now see how to [create](#create), [read](#read), [update](#update) and [
 
 ### Create
 
+Click `CREATE` and a form will be shown:
+
+![Model form](../images/console/model-form.png)
+
+Mandatory fields are:
+
+- **`Name`**: name and identifier of the model
+- **`Kind`**: kind of the model
+- (Spec) **`Path`**: remote path where the model is stored
+
 ### Read
+
+Click `SHOW` to view a model's details.
+
+![Model details](../images/console/model-read.png)
+
+On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.
+
+The `INSPECTOR` button will show a dialog containing the resource in JSON format.
+
+![Model inspector](../images/console/model-inspector.png)
+
+The `EXPORT` button will download the resource's information as a yaml file.
 
 ### Update
 
+You can update a model by clicking `EDIT`. Greyed-out fields may not be updated.
+
+![Model edit](../images/console/model-edit.png)
+
 ### Delete
+
+You can delete a model from either its detail page or the list of models, by clicking `DELETE`.
+
+![Model delete](../images/console/model-delete.png)
 
 ## Model management via SDK
 

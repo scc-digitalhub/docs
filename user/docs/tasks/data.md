@@ -55,7 +55,7 @@ Other fields are optional and may be updated later.
 
 ##### Read
 
-Click on `SHOW` to view an artifact's details.
+Click `SHOW` to view an artifact's details.
 
 ![Artifact details](../images/console/artifact-read.png)
 
@@ -65,11 +65,11 @@ On the right side, all versions of the resource are listed, with the current one
 
 From the menu on top, you can `EDIT`, `DELETE`, `INSPECT` or `EXPORT` the current artifact. For the first two options, you will find specific sections in this document.
 
-The `INSPECTOR` button will show a dialog containing the artifact in JSON format.
+The `INSPECTOR` button will show a dialog containing the resource in JSON format.
 
 ![Artifact inspector](../images/console/artifact-inspector.png)
 
-The `EXPORT` button will download the displayed information as a yaml file.
+The `EXPORT` button will download the resource's information as a yaml file.
 
 ##### Update
 
@@ -130,7 +130,7 @@ There are 2 possible kinds for dataitems:
 
 ##### Read
 
-Click on `SHOW` to view a data item's details.
+Click `SHOW` to view a data item's details.
 
 ![Dataitem read](../images/console/dataitems-read.png)
 
@@ -142,11 +142,11 @@ On the right side, all versions of the resource are listed, with the current one
 
 From the menu on top, you can `EDIT`, `DELETE`, `INSPECT` or `EXPORT` the current data item. For the first two options, you will find specific sections in this document.
 
-The `INSPECTOR` button will show a dialog containing the data item in JSON format.
+The `INSPECTOR` button will show a dialog containing the resource in JSON format.
 
 ![Dataitems inspector](../images/console/dataitems-inspector.png)
 
-The `EXPORT` button will download the displayed information as a yaml file.
+The `EXPORT` button will download the resource's information as a yaml file.
 
 ##### Update
 
