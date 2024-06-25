@@ -14,7 +14,7 @@
         <link rel="prev" href="../resources/">
       
       
-        <link rel="next" href="../kubernetes-resources/">
+        <link rel="next" href="../models/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -735,11 +735,11 @@
         <li class="md-nav__item">
   <a href="#managing-data-with-sdk" class="md-nav__link">
     <span class="md-ellipsis">
-      Managing data with SDk
+      Managing data with SDK
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Managing data with SDk">
+    <nav class="md-nav" aria-label="Managing data with SDK">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -899,23 +899,23 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dataitems" class="md-nav__link">
+  <a href="#data-items_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Dataitems
+      Data items
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Dataitems">
+    <nav class="md-nav" aria-label="Data items">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#dataitem-management-via-sdk" class="md-nav__link">
+  <a href="#data-item-management-via-sdk" class="md-nav__link">
     <span class="md-ellipsis">
-      Dataitem Management via SDK
+      Data item management via SDK
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Dataitem Management via SDK">
+    <nav class="md-nav" aria-label="Data item management via SDK">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1063,6 +1063,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ML Models
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2825,11 +2846,11 @@
         <li class="md-nav__item">
   <a href="#managing-data-with-sdk" class="md-nav__link">
     <span class="md-ellipsis">
-      Managing data with SDk
+      Managing data with SDK
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Managing data with SDk">
+    <nav class="md-nav" aria-label="Managing data with SDK">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2989,23 +3010,23 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dataitems" class="md-nav__link">
+  <a href="#data-items_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Dataitems
+      Data items
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Dataitems">
+    <nav class="md-nav" aria-label="Data items">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#dataitem-management-via-sdk" class="md-nav__link">
+  <a href="#data-item-management-via-sdk" class="md-nav__link">
     <span class="md-ellipsis">
-      Dataitem Management via SDK
+      Data item management via SDK
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Dataitem Management via SDK">
+    <nav class="md-nav" aria-label="Data item management via SDK">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3205,18 +3226,18 @@
 <li>(Metadata) <strong><code>Name</code></strong>: name of the artifact</li>
 <li>(Metadata) <strong><code>Description</code></strong>: a human-readable description of the artifact</li>
 <li>(Metadata) <strong><code>Version</code></strong>: version of the artifact</li>
-<li>(Metadata) <strong><code>Labels</code></strong>: a list of labels</li>
+<li>(Metadata) <strong><code>Labels</code></strong>: list of labels</li>
 <li>(Spec) <strong><code>Source path</code></strong>: local path to the artifact, used in case of upload into remote storage</li>
 </ul>
 <h5 id="read">Read</h5>
-<p>Click on <code>SHOW</code> to view an artifact's details.</p>
+<p>Click <code>SHOW</code> to view an artifact's details.</p>
 <p><img alt="Artifact details" src="../../images/console/artifact-read.png" /></p>
 <p>On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.</p>
 <p><img alt="Artifacts version" src="../../images/console/artifacts-version.png" /></p>
 <p>From the menu on top, you can <code>EDIT</code>, <code>DELETE</code>, <code>INSPECT</code> or <code>EXPORT</code> the current artifact. For the first two options, you will find specific sections in this document.</p>
-<p>The <code>INSPECTOR</code> button will show a dialog containing the artifact in JSON format.</p>
+<p>The <code>INSPECTOR</code> button will show a dialog containing the resource in JSON format.</p>
 <p><img alt="Artifact inspector" src="../../images/console/artifact-inspector.png" /></p>
-<p>The <code>EXPORT</code> button will download the displayed information as a yaml file.</p>
+<p>The <code>EXPORT</code> button will download the resource's information as a yaml file.</p>
 <h5 id="update">Update</h5>
 <p>You can update an artifact by clicking <code>EDIT</code>. Greyed-out fields may not be updated.</p>
 <p><img alt="Artifact edit" src="../../images/console/artifact-edit.png" /></p>
@@ -3251,7 +3272,7 @@
 <li>(Metadata) <strong><code>Description</code></strong>: a human-readable description</li>
 <li>(Metadata) <strong><code>Version</code></strong>: version of the data item</li>
 <li>(Metadata) <strong><code>Updated</code></strong>: date of last modification</li>
-<li>(Metadata) <strong><code>Labels</code></strong>: a list of labels</li>
+<li>(Metadata) <strong><code>Labels</code></strong>: list of labels</li>
 <li>(Spec) <strong><code>Source path</code></strong>: local path of the data item, used in case of upload into remote storage</li>
 </ul>
 <h6 id="kind">Kind</h6>
@@ -3261,38 +3282,38 @@
 <li><strong><code>table</code></strong>: indicates that the data item points to a table. The optional parameter is the schema of the table in <a href="https://specs.frictionlessdata.io/table-schema/">table_schema</a> format.</li>
 </ul>
 <h5 id="read_1">Read</h5>
-<p>Click on <code>SHOW</code> to view a data item's details.</p>
+<p>Click <code>SHOW</code> to view a data item's details.</p>
 <p><img alt="Dataitem read" src="../../images/console/dataitems-read.png" /></p>
 <p>Based on the <code>kind</code>, there may be a <strong><code>schema</code></strong>, indicating that the dataitem point to a table.</p>
 <p>On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.</p>
 <p><img alt="Dataitems version" src="../../images/console/dataitems-version.png" /></p>
 <p>From the menu on top, you can <code>EDIT</code>, <code>DELETE</code>, <code>INSPECT</code> or <code>EXPORT</code> the current data item. For the first two options, you will find specific sections in this document.</p>
-<p>The <code>INSPECTOR</code> button will show a dialog containing the data item in JSON format.</p>
+<p>The <code>INSPECTOR</code> button will show a dialog containing the resource in JSON format.</p>
 <p><img alt="Dataitems inspector" src="../../images/console/dataitems-inspector.png" /></p>
-<p>The <code>EXPORT</code> button will download the displayed information as a yaml file.</p>
+<p>The <code>EXPORT</code> button will download the resource's information as a yaml file.</p>
 <h5 id="update_1">Update</h5>
 <p>You can update a data item by clicking <code>EDIT</code>. Greyed-out fields may not be updated.</p>
 <p><img alt="Dataitems edit" src="../../images/console/dataitems-edit.png" /></p>
 <h5 id="delete_1">Delete</h5>
 <p>You can delete a data item from either its detail page or the list of data items, by clicking <code>DELETE</code>.</p>
 <p><img alt="Dataitems delete" src="../../images/console/dataitems-delete.png" /></p>
-<h2 id="managing-data-with-sdk">Managing data with SDk</h2>
+<h2 id="managing-data-with-sdk">Managing data with SDK</h2>
 <h3 id="artifacts_1">Artifacts</h3>
 <p>Artifacts (ARTIFACT) are (binary) objects stored in one of the artifact stores of the platform, and available to every process, module and component as files (or data streams).
 Artifacts can be created and managed as <em>entities</em> with the SDK CRUD methods. This can be done directly from the package or through the <code>Project</code> object.
-To manage artifacts, you need to have <code>digitalhub_core</code> layer installed.</p>
+To manage artifacts, you need to have the <code>digitalhub_core</code> layer installed.</p>
 <p>In the first section, we will see how to create, read, update and delete artifacts.
 In the second section, we will see what can be done with the <code>Artifact</code> object.</p>
 <h4 id="artifact-management-via-sdk">Artifact Management via SDK</h4>
-<p>An <code>artifact</code> is created entity can be managed with the following methods.</p>
+<p>An <code>artifact</code> can be managed with the following methods.</p>
 <ul>
-<li><strong><code>new_artifact</code></strong>: create a new artifact</li>
-<li><strong><code>get_artifact</code></strong>: get an artifact</li>
-<li><strong><code>update_artifact</code></strong>: update an artifact</li>
-<li><strong><code>delete_artifact</code></strong>: delete an artifact</li>
-<li><strong><code>list_artifacts</code></strong>: list all artifacts</li>
+<li><a href="#create_2"><strong><code>new_artifact</code></strong></a>: create a new artifact</li>
+<li><a href="#read_2"><strong><code>get_artifact</code></strong></a>: get an artifact</li>
+<li><a href="#update_2"><strong><code>update_artifact</code></strong></a>: update an artifact</li>
+<li><a href="#delete_2"><strong><code>delete_artifact</code></strong></a>: delete an artifact</li>
+<li><a href="#list"><strong><code>list_artifacts</code></strong></a>: list all artifacts</li>
 </ul>
-<p>This is done in two ways. The first is through the SDK and the second is through the <code>Project</code> object.
+<p>This is done in two ways. The first is through the SDK and the second is through the <code>Artifact</code> object.
 Example:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
 
@@ -3312,14 +3333,14 @@ Example:</p>
 <p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete an artifact. It focus on managing artifacts from library. If you want to manage artifacts from the project, you can use the <code>Project</code> object and avoid to specify the <code>project</code> parameter.</p>
 <h5 id="create_2">Create</h5>
 <p>To create an artifact you can use the <code>new_artifact()</code> method.</p>
-<p>The mandatory parameters are:</p>
+<p>Mandatory parameters are:</p>
 <ul>
 <li><strong><code>project</code></strong>: the project in which the artifact will be created</li>
 <li><strong><code>name</code></strong>: the name of the artifact</li>
 <li><strong><code>kind</code></strong>: the kind of the artifact</li>
 <li><strong><code>path</code></strong>: the remote path where the artifact is stored</li>
 </ul>
-<p>The optional parameters are:</p>
+<p>Optional parameters are:</p>
 <ul>
 <li><strong><code>uuid</code></strong>: the uuid of the artifact (this is automatically generated if not provided). <strong>Must</strong> be a valid uuid v4.</li>
 <li><strong><code>description</code></strong>: the description of the artifact</li>
@@ -3336,13 +3357,13 @@ Example:</p>
                            <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-artifact.ext&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h5 id="read_2">Read</h5>
-<p>To read an artifact you can use the <code>get_artifact()</code> or <code>import_artifact()</code> methods. The first one searches for the artifact into the backend, the second one load it from a local yaml.</p>
+<p>To read an artifact you can use the <code>get_artifact()</code> or <code>import_artifact()</code> methods. The first one searches for the artifact into the backend, the second one loads it from a local yaml.</p>
 <h6 id="get">Get</h6>
-<p>The mandatory parameters are:</p>
+<p>Mandatory parameters are:</p>
 <ul>
 <li><strong><code>project</code></strong>: the project in which the artifact will be created</li>
 </ul>
-<p>The optional parameters are:</p>
+<p>Optional parameters are:</p>
 <ul>
 <li><strong><code>entity_name</code></strong>: to use the name of the artifact as identifier. It returns the latest version of the artifact</li>
 <li><strong><code>entity_id</code></strong>: to use the uuid of the artifact as identifier. It returns the specified version of the artifact</li>
@@ -3356,7 +3377,7 @@ Example:</p>
                            <span class="n">entity_id</span><span class="o">=</span><span class="s2">&quot;uuid-of-my-artifact&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h6 id="import">Import</h6>
-<p>The mandatory parameters are:</p>
+<p>Mandatory parameters are:</p>
 <ul>
 <li><strong><code>file</code></strong>: file path to the artifact yaml</li>
 </ul>
@@ -3365,11 +3386,11 @@ Example:</p>
 </code></pre></div>
 <h5 id="update_2">Update</h5>
 <p>To update an artifact you can use the <code>update_artifact()</code> method.</p>
-<p>The mandatory parameters are:</p>
+<p>Mandatory parameters are:</p>
 <ul>
 <li><strong><code>artifact</code></strong>: artifact object to be updated</li>
 </ul>
-<p>The optional parameters are:</p>
+<p>Optional parameters are:</p>
 <ul>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
@@ -3385,11 +3406,11 @@ Example:</p>
 </code></pre></div>
 <h5 id="delete_2">Delete</h5>
 <p>To delete an artifact you can use the <code>delete_artifact()</code> method.</p>
-<p>The mandatory parameters are:</p>
+<p>Mandatory parameters are:</p>
 <ul>
 <li><strong><code>project</code></strong>: the project in which the artifact will be created</li>
 </ul>
-<p>The optional parameters are:</p>
+<p>Optional parameters are:</p>
 <ul>
 <li><strong><code>entity_name</code></strong>: to use the name of the artifact as identifier</li>
 <li><strong><code>entity_id</code></strong>: to use the uuid of the artifact as identifier</li>
@@ -3407,11 +3428,11 @@ Example:</p>
 </code></pre></div>
 <h5 id="list">List</h5>
 <p>To list all artifacts you can use the <code>list_artifacts()</code> method.</p>
-<p>The mandatory parameters are:</p>
+<p>Mandatory parameters are:</p>
 <ul>
 <li><strong><code>project</code></strong>: the project in which the artifact will be created</li>
 </ul>
-<p>The optional parameters are:</p>
+<p>Optional parameters are:</p>
 <ul>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
@@ -3455,22 +3476,22 @@ The method accepts the following parameters:</p>
 <li><strong><code>source</code></strong>: local path of the artifact to be uploaded</li>
 <li><strong><code>target</code></strong>: remote path of the artifact to be uploaded (eg. <code>s3://my-bucket/my-artifact.ext</code>). By default, it is used the <code>spec</code> <code>path</code></li>
 </ul>
-<h3 id="dataitems">Dataitems</h3>
+<h3 id="data-items_1">Data items</h3>
 <p>Data items (DATAITEM) are data objects which contain a dataset of a given type, stored in an addressable repository and accessible to every component able to understand the type (kind) and the source (path). Do note that data items could be stored in the artifact store as artifacts, but that is not a dependency or a requirement.
 Dataitems can be created and managed as <em>entities</em> with the SDK CRUD methods. This can be done directly from the package or through the <code>Project</code> object.
-To manage dataitems, you need to have <code>digitalhub_data</code> layer installed.</p>
+To manage dataitems, you need to have the <code>digitalhub_data</code> layer installed.</p>
 <p>In the first section, we will see how to create, read, update and delete dataitems.
 In the second section, we will see what can be done with the <code>Dataitem</code> object.</p>
-<h4 id="dataitem-management-via-sdk">Dataitem Management via SDK</h4>
-<p>An <code>dataitem</code> is created entity can be managed with the following methods.</p>
+<h4 id="data-item-management-via-sdk">Data item management via SDK</h4>
+<p>A <code>data item</code> can be managed with the following methods.</p>
 <ul>
-<li><strong><code>new_dataitem</code></strong>: create a new dataitem</li>
-<li><strong><code>get_dataitem</code></strong>: get a dataitem</li>
-<li><strong><code>update_dataitem</code></strong>: update a dataitem</li>
-<li><strong><code>delete_dataitem</code></strong>: delete a dataitem</li>
-<li><strong><code>list_dataitems</code></strong>: list all dataitems</li>
+<li><a href="#create_3"><strong><code>new_dataitem</code></strong></a>: create a new data item</li>
+<li><a href="#read_3"><strong><code>get_dataitem</code></strong></a>: get a data item</li>
+<li><a href="#update_3"><strong><code>update_dataitem</code></strong></a>: update a data item</li>
+<li><a href="#delete_3"><strong><code>delete_dataitem</code></strong></a>: delete a data item</li>
+<li><a href="#list_1"><strong><code>list_dataitems</code></strong></a>: list all data items</li>
 </ul>
-<p>This is done in two ways. The first is through the SDK and the second is through the <code>Project</code> object.
+<p>This is done in two ways. The first is through the SDK and the second is through the <code>Dataitem</code> object.
 Example:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
 
@@ -3487,23 +3508,23 @@ Example:</p>
                                 <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dataitem&quot;</span><span class="p">,</span>
                                 <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-dataitem.ext&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a dataitem. It focus on managing dataitems from library. If you want to manage dataitems from the project, you can use the <code>Project</code> object and avoid to specify the <code>project</code> parameter.</p>
+<p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a data item, focusing on managing data items through its library. If you want to manage data items from the project, you can use the <code>Project</code> object and avoid having to specify the <code>project</code> parameter.</p>
 <h5 id="create_3">Create</h5>
-<p>To create a dataitem you can use the <code>new_dataitem()</code> method.</p>
-<p>The mandatory parameters are:</p>
+<p>To create a data item you can use the <code>new_dataitem()</code> method.</p>
+<p>Mandatory parameters are:</p>
 <ul>
-<li><strong><code>project</code></strong>: the project in which the dataitem will be created</li>
-<li><strong><code>name</code></strong>: the name of the dataitem</li>
-<li><strong><code>kind</code></strong>: the kind of the dataitem</li>
-<li><strong><code>path</code></strong>: the remote path where the dataitem is stored</li>
+<li><strong><code>project</code></strong>: project in which the data item will be created</li>
+<li><strong><code>name</code></strong>: name of the data item</li>
+<li><strong><code>kind</code></strong>: kind of the data item</li>
+<li><strong><code>path</code></strong>: remote path where the data item is stored</li>
 </ul>
-<p>The optional parameters are:</p>
+<p>Optional parameters are:</p>
 <ul>
-<li><strong><code>uuid</code></strong>: the uuid of the dataitem (this is automatically generated if not provided). <strong>Must</strong> be a valid uuid v4.</li>
-<li><strong><code>description</code></strong>: the description of the dataitem</li>
-<li><strong><code>source</code></strong>: the remote source of the dataitem (git repository)</li>
-<li><strong><code>labels</code></strong>: the labels of the dataitem</li>
-<li><strong><code>embedded</code></strong>: whether the dataitem is embedded or not. If <code>True</code>, the dataitem is embedded (all the spec details are expressed) in the project. If <code>False</code>, the dataitem is not embedded in the project</li>
+<li><strong><code>uuid</code></strong>: uuid of the data item (this is automatically generated if not provided). <strong>Must</strong> be a valid uuid v4.</li>
+<li><strong><code>description</code></strong>: description of the data item</li>
+<li><strong><code>source</code></strong>: remote source of the data item (git repository)</li>
+<li><strong><code>labels</code></strong>: list of labels</li>
+<li><strong><code>embedded</code></strong>: whether the data item is embedded or not. If <code>True</code>, the data item is embedded (all the spec details are expressed) in the project. If <code>False</code>, the data item is not embedded in the project.</li>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the <em>spec</em> constructor</li>
 </ul>
 <p>Example:</p>
@@ -3513,16 +3534,16 @@ Example:</p>
                            <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-dataitem.ext&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h5 id="read_3">Read</h5>
-<p>To read a dataitem you can use the <code>get_dataitem()</code> or <code>import_dataitem()</code> methods. The first one searches for the dataitem into the backend, the second one load it from a local yaml.</p>
+<p>To read a data item you can use the <code>get_dataitem()</code> or <code>import_dataitem()</code> methods. The first one searches for the data item into the backend, the second one load it from a local yaml.</p>
 <h6 id="get_1">Get</h6>
-<p>The mandatory parameters are:</p>
+<p>Mandatory parameters are:</p>
 <ul>
-<li><strong><code>project</code></strong>: the project in which the dataitem will be created</li>
+<li><strong><code>project</code></strong>: the project in which the data item will be created</li>
 </ul>
-<p>The optional parameters are:</p>
+<p>Optional parameters are:</p>
 <ul>
-<li><strong><code>entity_name</code></strong>: to use the name of the dataitem as identifier. It returns the latest version of the dataitem</li>
-<li><strong><code>entity_id</code></strong>: to use the uuid of the dataitem as identifier. It returns the specified version of the dataitem</li>
+<li><strong><code>entity_name</code></strong>: to use the name of the data item as identifier. It returns the latest version of the data item.</li>
+<li><strong><code>entity_id</code></strong>: to use the uuid of the data item as identifier. It returns the specified version of the data item.</li>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
 <p>Example:</p>
@@ -3533,7 +3554,7 @@ Example:</p>
                            <span class="n">entity_id</span><span class="o">=</span><span class="s2">&quot;uuid-of-my-dataitem&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h6 id="import_1">Import</h6>
-<p>The mandatory parameters are:</p>
+<p>Mandatory parameters are:</p>
 <ul>
 <li><strong><code>file</code></strong>: file path to the dataitem yaml</li>
 </ul>
@@ -3541,12 +3562,12 @@ Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">import_dataitem</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;./some-path/my-dataitem.yaml&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h5 id="update_3">Update</h5>
-<p>To update a dataitem you can use the <code>update_dataitem()</code> method.</p>
-<p>The mandatory parameters are:</p>
+<p>To update a data item you can use the <code>update_dataitem()</code> method.</p>
+<p>Mandatory parameters are:</p>
 <ul>
-<li><strong><code>dataitem</code></strong>: dataitem object to be updated</li>
+<li><strong><code>dataitem</code></strong>: data item object to be updated</li>
 </ul>
-<p>The optional parameters are:</p>
+<p>Optional parameters are:</p>
 <ul>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
@@ -3561,16 +3582,16 @@ Example:</p>
 <span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">update_dataitem</span><span class="p">(</span><span class="n">dataitem</span><span class="o">=</span><span class="n">dataitem</span><span class="p">)</span>
 </code></pre></div>
 <h5 id="delete_3">Delete</h5>
-<p>To delete a dataitem you can use the <code>delete_dataitem()</code> method.</p>
-<p>The mandatory parameters are:</p>
+<p>To delete a data item you can use the <code>delete_dataitem()</code> method.</p>
+<p>Mandatory parameters are:</p>
 <ul>
-<li><strong><code>project</code></strong>: the project in which the dataitem will be created</li>
+<li><strong><code>project</code></strong>: the project in which the data item will be created</li>
 </ul>
-<p>The optional parameters are:</p>
+<p>Optional parameters are:</p>
 <ul>
-<li><strong><code>entity_name</code></strong>: to use the name of the dataitem as identifier</li>
-<li><strong><code>entity_id</code></strong>: to use the uuid of the dataitem as identifier</li>
-<li><strong><code>delete_all_versions</code></strong>: if <code>True</code>, all versions of the dataitem will be deleted. Its mutually exclusive with the <code>entity_id</code> parameter</li>
+<li><strong><code>entity_name</code></strong>: to use the name of the data item as identifier</li>
+<li><strong><code>entity_id</code></strong>: to use the uuid of the data item as identifier</li>
+<li><strong><code>delete_all_versions</code></strong>: if <code>True</code>, all versions of the data item will be deleted. Its mutually exclusive with the <code>entity_id</code> parameter</li>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
 <p>Example:</p>
@@ -3583,12 +3604,12 @@ Example:</p>
                    <span class="n">entity_id</span><span class="o">=</span><span class="n">dataitem</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
 </code></pre></div>
 <h5 id="list_1">List</h5>
-<p>To list all dataitems you can use the <code>list_dataitems()</code> method.</p>
-<p>The mandatory parameters are:</p>
+<p>To list all data items you can use the <code>list_dataitems()</code> method.</p>
+<p>Mandatory parameters are:</p>
 <ul>
-<li><strong><code>project</code></strong>: the project in which the dataitem will be created</li>
+<li><strong><code>project</code></strong>: the project in which the data item will be created</li>
 </ul>
-<p>The optional parameters are:</p>
+<p>Optional parameters are:</p>
 <ul>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
@@ -3596,19 +3617,19 @@ Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">dataitems</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">list_dataitems</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="dataitem-object">Dataitem object</h4>
-<p>The <code>Dataitem</code> object is built using the <code>new_dataitem()</code> method. There are several variations of the <code>Dataitem</code> object based on the <code>kind</code> of the dataitem. The SDK supports the following kinds:</p>
+<p>The <code>Dataitem</code> object is built using the <code>new_dataitem()</code> method. There are several variations of the <code>Dataitem</code> object based on the <code>kind</code> of the data item. The SDK supports the following kinds:</p>
 <ul>
-<li><strong><code>dataitem</code></strong>: represents a generic dataitem</li>
-<li><strong><code>table</code></strong>: represents a table dataitem</li>
+<li><strong><code>dataitem</code></strong>: represents a generic data item</li>
+<li><strong><code>table</code></strong>: represents a table data item</li>
 </ul>
 <p>For each different kind, the <code>Dataitem</code> object has a different set of methods and different <code>spec</code>, <code>status</code> and <code>metadata</code>.</p>
-<p>To create a specific dataitem, you must use the desired <code>kind</code> in the <code>new_dataitem()</code> method.
-All the <code>Dataitem</code> kinds have a <code>save()</code> and an <code>export()</code> method to save and export the <em>entity</em> dataitem into backend or locally as yaml.</p>
+<p>To create a specific data item, you must use the desired <code>kind</code> in the <code>new_dataitem()</code> method.
+All the <code>Dataitem</code> kinds have a <code>save()</code> and an <code>export()</code> method to save and export the <em>entity</em> data item into backend or locally as yaml.</p>
 <h5 id="dataitem">Dataitem</h5>
-<p>The <code>dataitem</code> kind indicates that the dataitem is a generic dataitem.
-There are no specific <code>spec</code> parameters nor specific method exposed. It acts as a generic dataitem.</p>
+<p>The <code>dataitem</code> kind indicates that the data item is a generic data item.
+There are no specific <code>spec</code> parameters nor specific method exposed. It acts as a generic data item.</p>
 <h5 id="table">Table</h5>
-<p>The <code>table</code> kind indicates that the dataitem point to a table.
+<p>The <code>table</code> kind indicates that the data item point to a table.
 The optional <code>spec</code> parameters are:</p>
 <ul>
 <li><strong><code>schema</code></strong>: the schema of the table in <a href="https://specs.frictionlessdata.io/table-schema/">table_schema</a> format</li>
@@ -3616,7 +3637,7 @@ The optional <code>spec</code> parameters are:</p>
 <p>The <code>table</code> kind also has the following methods:</p>
 <ul>
 <li><strong><code>as_df()</code></strong>: to collect the data in a pandas dataframe</li>
-<li><strong><code>write_df()</code></strong>: to write the dataitem as parquet</li>
+<li><strong><code>write_df()</code></strong>: to write the data item as parquet</li>
 </ul>
 <h6 id="read-table">Read table</h6>
 <p>The <code>as_df()</code> method returns the data in a pandas dataframe.
@@ -3626,10 +3647,10 @@ The method accepts the following parameters:</p>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the pandas <code>read_parquet</code> or <code>read_csv</code> method</li>
 </ul>
 <h6 id="write-table">Write table</h6>
-<p>The <code>write_df()</code> method writes the dataitem as parquet.
+<p>The <code>write_df()</code> method writes the data item as parquet.
 The method accepts the following parameters:</p>
 <ul>
-<li><strong><code>target_path</code></strong>: the path of the target parquet file. If not provided, the target path will created by the SDK and the dataitem will be stored in the default store</li>
+<li><strong><code>target_path</code></strong>: the path of the target parquet file. If not provided, the target path will created by the SDK and the data item will be stored in the default store</li>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the pandas <code>to_parquet</code> method</li>
 </ul>
 
