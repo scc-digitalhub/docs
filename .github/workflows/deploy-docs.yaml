@@ -27,7 +27,7 @@ jobs:
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
           git add --all
-          git commit -m "Workflow docs - Current"
+          git commit -m "Workflow docs - Current" --allow-empty
           git push
   deploy-versioned:
     needs: deploy-current
@@ -61,5 +61,5 @@ jobs:
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
           git add --all
-          git commit -m "Workflow docs - Versioned"
+          git commit -m "Workflow docs - Versioned" --allow-empty
           git push
