@@ -27,7 +27,7 @@ The following parameters are mandatory:
 
 - **`name`**: name of the project
 - **`description`**: a human-readable description of the project
-- **`labels`**: a list of string labels
+- **`labels`**: a list of labels
 
 `Save` and the project will appear in the home page.
 
