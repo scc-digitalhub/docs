@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -508,11 +508,53 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#managing-functions-with-ui" class="md-nav__link">
+  <a href="#managing-functions-with-the-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      Managing Functions with UI
+      Managing functions with the UI
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Managing functions with the UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -527,7 +569,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create" class="md-nav__link">
+  <a href="#create_1" class="md-nav__link">
     <span class="md-ellipsis">
       Create
     </span>
@@ -536,7 +578,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#read" class="md-nav__link">
+  <a href="#read_1" class="md-nav__link">
     <span class="md-ellipsis">
       Read
     </span>
@@ -569,7 +611,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#update" class="md-nav__link">
+  <a href="#update_1" class="md-nav__link">
     <span class="md-ellipsis">
       Update
     </span>
@@ -578,7 +620,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#delete" class="md-nav__link">
+  <a href="#delete_1" class="md-nav__link">
     <span class="md-ellipsis">
       Delete
     </span>
@@ -788,7 +830,7 @@
         
   
   <span class="md-ellipsis">
-    Pipelines
+    Workflows
   </span>
   
 
@@ -2328,11 +2370,53 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#managing-functions-with-ui" class="md-nav__link">
+  <a href="#managing-functions-with-the-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      Managing Functions with UI
+      Managing functions with the UI
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Managing functions with the UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2347,7 +2431,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create" class="md-nav__link">
+  <a href="#create_1" class="md-nav__link">
     <span class="md-ellipsis">
       Create
     </span>
@@ -2356,7 +2440,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#read" class="md-nav__link">
+  <a href="#read_1" class="md-nav__link">
     <span class="md-ellipsis">
       Read
     </span>
@@ -2389,7 +2473,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#update" class="md-nav__link">
+  <a href="#update_1" class="md-nav__link">
     <span class="md-ellipsis">
       Update
     </span>
@@ -2398,7 +2482,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#delete" class="md-nav__link">
+  <a href="#delete_1" class="md-nav__link">
     <span class="md-ellipsis">
       Delete
     </span>
@@ -2478,13 +2562,52 @@
 
 
 <h1 id="functions-and-runtimes">Functions and Runtimes</h1>
-<p><strong>Functions</strong> are the logical description of something that the platform may execute and track for you. Function may represent a code to run as a job, an ML model inference to be used as batch procedure or as a service, a data validation, etc.</p>
-<p>In the platform we perform <strong>actions</strong> over functions (also referred to as "tasks"), such as job execution, deploy, container image build. A single action execution is called <strong>run</strong>, and the platform keeps track of these executions, keeping metadata about function version, operation parameters, and runtime parameters for a single execution. </p>
+<p><strong>Functions</strong> are the logical description of something that the platform may execute and track for you. A function may represent code to run as a job, an ML model inference to be used as batch procedure or as a service, a data validation, etc.</p>
+<p>In the platform we perform <strong>actions</strong> over functions (also referred to as "tasks"), such as job execution, deploy, container image build. A single action execution is called <strong>run</strong>, and the platform keeps track of these runs, with metadata about function version, operation parameters, and runtime parameters for a single execution. </p>
 <p>They are associated with a given runtime, which implements the actual execution and determines which actions are available. Examples are dbt, nefertem, mlrun, etc.</p>
 <p>Runtimes are the entities responsible for the actual execution of a given run. They are highly specialized components which can translate the representation of a given execution, as expressed in the run, into an actual execution operation performed via libraries, code, external tools etc.</p>
 <p>TODO: detail</p>
-<h2 id="managing-functions-with-ui">Managing Functions with UI</h2>
-<p>TODO</p>
+<h2 id="managing-functions-with-the-ui">Managing functions with the UI</h2>
+<p>Functions can be created and managed as <em>entities</em> from the console. You can access them from the dashboard or the left menu. You can:</p>
+<ul>
+<li><code>create</code> a new function</li>
+<li><code>expand</code> a function to see its 5 latest versions</li>
+<li><code>show</code> the details of a function</li>
+<li><code>edit</code> a function</li>
+<li><code>delete</code> a function</li>
+<li><code>filter</code> functions by name and kind</li>
+</ul>
+<p><img alt="Function list" src="../../images/console/function-list.png" /></p>
+<h3 id="create">Create</h3>
+<p>Click <code>CREATE</code> and a form will be shown:</p>
+<p><img alt="Function form" src="../../images/console/function-form.png" /></p>
+<p>Mandatory fields are:</p>
+<ul>
+<li><strong><code>Name</code></strong>: name and identifier of the function</li>
+<li><strong><code>Kind</code></strong>: kind of function</li>
+</ul>
+<p>Metadata fields are optional and may be updated later.</p>
+<ul>
+<li><strong><code>Description</code></strong>: a human-readable description</li>
+<li><strong><code>Labels</code></strong>: list of labels</li>
+<li><strong><code>Name</code></strong>: name of the function</li>
+<li><strong><code>Embedded</code></strong>: flag for embedded metadata</li>
+<li><strong><code>Versioning</code></strong>: version of the function</li>
+<li><strong><code>Openmetadata</code></strong>: flag to publish metadata</li>
+<li><strong><code>Audit</code></strong>: author of creation and modification</li>
+</ul>
+<p><code>Spec</code> fields will change depending on the function's kind.</p>
+<h3 id="read">Read</h3>
+<p>Click <code>SHOW</code> to view a function's details.</p>
+<p><img alt="Function read" src="../../images/console/function-read.png" /></p>
+<p>On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.</p>
+<p>The <code>INSPECTOR</code> button will show a dialog containing the resource in JSON format.</p>
+<p><img alt="Function inspector" src="../../images/console/function-inspector.png" /></p>
+<p>The <code>EXPORT</code> button will download the resource's information as a yaml file.</p>
+<h3 id="update">Update</h3>
+<p>You can update a function by clicking <code>EDIT</code>. Greyed-out fields may not be updated.</p>
+<h3 id="delete">Delete</h3>
+<p>You can delete a function from either its detail page or the list of functions, by clicking <code>DELETE</code>.</p>
 <h2 id="managing-functions-with-sdk">Managing Functions with SDK</h2>
 <p>In the following sections, we will see how to create, read, update and delete functions and what can be done with the <code>Function</code> object through the SDK.</p>
 <p>You can manage the <code>Function</code> entity with the following methods:</p>
@@ -2495,7 +2618,7 @@
 <li><strong><code>delete_function</code></strong>: delete a function</li>
 <li><strong><code>list_functions</code></strong>: list all functions</li>
 </ul>
-<p>The can be done through the SDK, or through the <code>Project</code> object.</p>
+<p>This can be done through the SDK, or through the <code>Project</code> object.</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
 
@@ -2512,7 +2635,7 @@
     <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;function-kind&quot;</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="create">Create</h3>
+<h3 id="create_1">Create</h3>
 <p>To create a function you can use the <code>new_function()</code> method.</p>
 <p>Mandatory parameters are:</p>
 <ul>
@@ -2534,7 +2657,7 @@
                            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;function-kind&quot;</span><span class="p">,</span>
                            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="read">Read</h3>
+<h3 id="read_1">Read</h3>
 <p>To read a function you can use the <code>get_function()</code> or <code>import_function()</code> methods. The first one searches for the function in the back-end, the second one loads it from a local yaml file.</p>
 <h4 id="get">Get</h4>
 <p>Mandatory parameters are:</p>
@@ -2562,7 +2685,7 @@
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">import_function</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;my-function.yaml&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="update">Update</h3>
+<h3 id="update_1">Update</h3>
 <p>To update a function, use the <code>update_function()</code> method.</p>
 <p>Mandatory parameters are:</p>
 <ul>
@@ -2576,7 +2699,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">update_function</span><span class="p">(</span><span class="n">function</span><span class="o">=</span><span class="n">function</span><span class="p">,</span>
                               <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="delete">Delete</h3>
+<h3 id="delete_1">Delete</h3>
 <p>To delete a function, use the <code>delete_function()</code> method.</p>
 <p>Mandatory parameters are:</p>
 <ul>
@@ -2709,7 +2832,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>

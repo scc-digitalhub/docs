@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -591,16 +591,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#artifact-management-via-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Artifact Management via UI
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Artifact Management via UI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#create" class="md-nav__link">
     <span class="md-ellipsis">
       Create
@@ -641,11 +631,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#data-items" class="md-nav__link">
     <span class="md-ellipsis">
@@ -654,16 +639,6 @@
   </a>
   
     <nav class="md-nav" aria-label="Data items">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data-item-management-via-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Data item management via UI
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Data item management via UI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -714,11 +689,6 @@
       Delete
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1142,7 +1112,7 @@
         
   
   <span class="md-ellipsis">
-    Pipelines
+    Workflows
   </span>
   
 
@@ -2702,16 +2672,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#artifact-management-via-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Artifact Management via UI
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Artifact Management via UI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#create" class="md-nav__link">
     <span class="md-ellipsis">
       Create
@@ -2752,11 +2712,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#data-items" class="md-nav__link">
     <span class="md-ellipsis">
@@ -2765,16 +2720,6 @@
   </a>
   
     <nav class="md-nav" aria-label="Data items">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data-item-management-via-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Data item management via UI
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Data item management via UI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2825,11 +2770,6 @@
       Delete
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -3210,9 +3150,8 @@
 <li><code>filter</code> artifacts by name and kind</li>
 </ul>
 <p><img alt="Artifact list" src="../../images/console/artifacts-list.png" /></p>
-<h4 id="artifact-management-via-ui">Artifact Management via UI</h4>
 <p>Here we analyze how to <a href="#create">create</a>, <a href="#read">read</a>, <a href="#update">update</a> and <a href="#delete">delete</a> Artifacts using the UI, similarly to what is done with the SDK.</p>
-<h5 id="create">Create</h5>
+<h4 id="create">Create</h4>
 <p>Click <code>CREATE</code> and a form will be shown:</p>
 <p><img alt="Artifact form" src="../../images/console/artifacts-form.png" /></p>
 <p>Mandatory fields are:</p>
@@ -3229,21 +3168,17 @@
 <li>(Metadata) <strong><code>Labels</code></strong>: list of labels</li>
 <li>(Spec) <strong><code>Source path</code></strong>: local path to the artifact, used in case of upload into remote storage</li>
 </ul>
-<h5 id="read">Read</h5>
+<h4 id="read">Read</h4>
 <p>Click <code>SHOW</code> to view an artifact's details.</p>
 <p><img alt="Artifact details" src="../../images/console/artifact-read.png" /></p>
 <p>On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.</p>
-<p><img alt="Artifacts version" src="../../images/console/artifacts-version.png" /></p>
-<p>From the menu on top, you can <code>EDIT</code>, <code>DELETE</code>, <code>INSPECT</code> or <code>EXPORT</code> the current artifact. For the first two options, you will find specific sections in this document.</p>
 <p>The <code>INSPECTOR</code> button will show a dialog containing the resource in JSON format.</p>
 <p><img alt="Artifact inspector" src="../../images/console/artifact-inspector.png" /></p>
 <p>The <code>EXPORT</code> button will download the resource's information as a yaml file.</p>
-<h5 id="update">Update</h5>
+<h4 id="update">Update</h4>
 <p>You can update an artifact by clicking <code>EDIT</code>. Greyed-out fields may not be updated.</p>
-<p><img alt="Artifact edit" src="../../images/console/artifact-edit.png" /></p>
-<h5 id="delete">Delete</h5>
+<h4 id="delete">Delete</h4>
 <p>You can delete an artifact from either its detail page or the list of artifacts, by clicking <code>DELETE</code>.</p>
-<p><img alt="Artifact delete" src="../../images/console/artifact-delete.png" /></p>
 <h3 id="data-items">Data items</h3>
 <p>Data items can be created and managed as <em>entities</em> with the console. You can access them from the dashboard or the left menu. You can:</p>
 <ul>
@@ -3255,9 +3190,8 @@
 <li><code>filter</code> data items by name and kind</li>
 </ul>
 <p><img alt="Dataitem list" src="../../images/console/dataitems-list.png" /></p>
-<h4 id="data-item-management-via-ui">Data item management via UI</h4>
 <p>Here we analyze how to <a href="#create_1">create</a>, <a href="#read_1">read</a>, <a href="#update_1">update</a> and <a href="#delete_1">delete</a> data items using the UI, similarly to what is done with the SDK.</p>
-<h5 id="create_1">Create</h5>
+<h4 id="create_1">Create</h4>
 <p>Click <code>CREATE</code> and a form will be shown:</p>
 <p><img alt="Dataitem form" src="../../images/console/dataitems-form.png" /></p>
 <p>Mandatory fields are:</p>
@@ -3275,28 +3209,24 @@
 <li>(Metadata) <strong><code>Labels</code></strong>: list of labels</li>
 <li>(Spec) <strong><code>Source path</code></strong>: local path of the data item, used in case of upload into remote storage</li>
 </ul>
-<h6 id="kind">Kind</h6>
+<h5 id="kind">Kind</h5>
 <p>There are 2 possible kinds for dataitems:</p>
 <ul>
 <li><strong><code>Dataitem</code></strong>: indicates it is a generic data item. There are no specific attributes in the creation page.</li>
 <li><strong><code>table</code></strong>: indicates that the data item points to a table. The optional parameter is the schema of the table in <a href="https://specs.frictionlessdata.io/table-schema/">table_schema</a> format.</li>
 </ul>
-<h5 id="read_1">Read</h5>
+<h4 id="read_1">Read</h4>
 <p>Click <code>SHOW</code> to view a data item's details.</p>
 <p><img alt="Dataitem read" src="../../images/console/dataitems-read.png" /></p>
 <p>Based on the <code>kind</code>, there may be a <strong><code>schema</code></strong>, indicating that the dataitem point to a table.</p>
 <p>On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.</p>
-<p><img alt="Dataitems version" src="../../images/console/dataitems-version.png" /></p>
-<p>From the menu on top, you can <code>EDIT</code>, <code>DELETE</code>, <code>INSPECT</code> or <code>EXPORT</code> the current data item. For the first two options, you will find specific sections in this document.</p>
 <p>The <code>INSPECTOR</code> button will show a dialog containing the resource in JSON format.</p>
 <p><img alt="Dataitems inspector" src="../../images/console/dataitems-inspector.png" /></p>
 <p>The <code>EXPORT</code> button will download the resource's information as a yaml file.</p>
-<h5 id="update_1">Update</h5>
+<h4 id="update_1">Update</h4>
 <p>You can update a data item by clicking <code>EDIT</code>. Greyed-out fields may not be updated.</p>
-<p><img alt="Dataitems edit" src="../../images/console/dataitems-edit.png" /></p>
-<h5 id="delete_1">Delete</h5>
+<h4 id="delete_1">Delete</h4>
 <p>You can delete a data item from either its detail page or the list of data items, by clicking <code>DELETE</code>.</p>
-<p><img alt="Dataitems delete" src="../../images/console/dataitems-delete.png" /></p>
 <h2 id="managing-data-with-sdk">Managing data with SDK</h2>
 <h3 id="artifacts_1">Artifacts</h3>
 <p>Artifacts (ARTIFACT) are (binary) objects stored in one of the artifact stores of the platform, and available to every process, module and component as files (or data streams).
@@ -3330,7 +3260,7 @@ Example:</p>
                                 <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span>
                                 <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-artifact.ext&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete an artifact. It focus on managing artifacts from library. If you want to manage artifacts from the project, you can use the <code>Project</code> object and avoid to specify the <code>project</code> parameter.</p>
+<p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete an artifact, focusing on managing artifacts through the library. If you want to manage artifacts from the project, you can use the <code>Project</code> object and avoid having to specify the <code>project</code> parameter.</p>
 <h5 id="create_2">Create</h5>
 <p>To create an artifact you can use the <code>new_artifact()</code> method.</p>
 <p>Mandatory parameters are:</p>
@@ -3367,7 +3297,7 @@ Example:</p>
 <ul>
 <li><strong><code>entity_name</code></strong>: to use the name of the artifact as identifier. It returns the latest version of the artifact</li>
 <li><strong><code>entity_id</code></strong>: to use the uuid of the artifact as identifier. It returns the specified version of the artifact</li>
-<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
 </ul>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
@@ -3392,7 +3322,7 @@ Example:</p>
 </ul>
 <p>Optional parameters are:</p>
 <ul>
-<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
 </ul>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
@@ -3408,14 +3338,14 @@ Example:</p>
 <p>To delete an artifact you can use the <code>delete_artifact()</code> method.</p>
 <p>Mandatory parameters are:</p>
 <ul>
-<li><strong><code>project</code></strong>: the project in which the artifact will be created</li>
+<li><strong><code>project</code></strong>: the project in which the artifact exists</li>
 </ul>
 <p>Optional parameters are:</p>
 <ul>
 <li><strong><code>entity_name</code></strong>: to use the name of the artifact as identifier</li>
 <li><strong><code>entity_id</code></strong>: to use the uuid of the artifact as identifier</li>
-<li><strong><code>delete_all_versions</code></strong>: if <code>True</code>, all versions of the artifact will be deleted. Its mutually exclusive with the <code>entity_id</code> parameter</li>
-<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
+<li><strong><code>delete_all_versions</code></strong>: if <code>True</code>, all versions of the artifact will be deleted. Mutually exclusive with the <code>entity_id</code> parameter.</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
 </ul>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
@@ -3430,11 +3360,11 @@ Example:</p>
 <p>To list all artifacts you can use the <code>list_artifacts()</code> method.</p>
 <p>Mandatory parameters are:</p>
 <ul>
-<li><strong><code>project</code></strong>: the project in which the artifact will be created</li>
+<li><strong><code>project</code></strong>: the project containing the artifacts</li>
 </ul>
 <p>Optional parameters are:</p>
 <ul>
-<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
 </ul>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">artifacts</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">list_artifacts</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
@@ -3464,7 +3394,7 @@ The method returns the path of the downloaded artifact.</p>
 The method returns the path of the downloaded artifact.
 The method accepts the following parameters:</p>
 <ul>
-<li><strong><code>target</code></strong>: remote path of the artifact to be downloaded (eg. <code>s3://my-bucket/my-artifact.ext</code>). By default, it is used the <code>spec</code> <code>path</code></li>
+<li><strong><code>target</code></strong>: remote path of the artifact to be downloaded (eg. <code>s3://my-bucket/my-artifact.ext</code>). By default, uses the <code>spec</code> <code>path</code>.</li>
 <li><strong><code>dst</code></strong>: local path where the artifact will be downloaded. By default, it is in the current working directory</li>
 <li><strong><code>overwrite</code></strong>: if <code>True</code>, the target path will be overwritten if it already exists</li>
 </ul>
@@ -3474,7 +3404,7 @@ The method returns the path of the uploaded artifact.
 The method accepts the following parameters:</p>
 <ul>
 <li><strong><code>source</code></strong>: local path of the artifact to be uploaded</li>
-<li><strong><code>target</code></strong>: remote path of the artifact to be uploaded (eg. <code>s3://my-bucket/my-artifact.ext</code>). By default, it is used the <code>spec</code> <code>path</code></li>
+<li><strong><code>target</code></strong>: remote path of the artifact to be uploaded (eg. <code>s3://my-bucket/my-artifact.ext</code>). By default, uses the <code>spec</code> <code>path</code>.</li>
 </ul>
 <h3 id="data-items_1">Data items</h3>
 <p>Data items (DATAITEM) are data objects which contain a dataset of a given type, stored in an addressable repository and accessible to every component able to understand the type (kind) and the source (path). Do note that data items could be stored in the artifact store as artifacts, but that is not a dependency or a requirement.
@@ -3508,7 +3438,7 @@ Example:</p>
                                 <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dataitem&quot;</span><span class="p">,</span>
                                 <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-dataitem.ext&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a data item, focusing on managing data items through its library. If you want to manage data items from the project, you can use the <code>Project</code> object and avoid having to specify the <code>project</code> parameter.</p>
+<p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a data item, focusing on managing data items through the library. If you want to manage data items from the project, you can use the <code>Project</code> object and avoid having to specify the <code>project</code> parameter.</p>
 <h5 id="create_3">Create</h5>
 <p>To create a data item you can use the <code>new_dataitem()</code> method.</p>
 <p>Mandatory parameters are:</p>
@@ -3544,7 +3474,7 @@ Example:</p>
 <ul>
 <li><strong><code>entity_name</code></strong>: to use the name of the data item as identifier. It returns the latest version of the data item.</li>
 <li><strong><code>entity_id</code></strong>: to use the uuid of the data item as identifier. It returns the specified version of the data item.</li>
-<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
 </ul>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
@@ -3569,7 +3499,7 @@ Example:</p>
 </ul>
 <p>Optional parameters are:</p>
 <ul>
-<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
 </ul>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
@@ -3585,14 +3515,14 @@ Example:</p>
 <p>To delete a data item you can use the <code>delete_dataitem()</code> method.</p>
 <p>Mandatory parameters are:</p>
 <ul>
-<li><strong><code>project</code></strong>: the project in which the data item will be created</li>
+<li><strong><code>project</code></strong>: the project in which the data item exists</li>
 </ul>
 <p>Optional parameters are:</p>
 <ul>
 <li><strong><code>entity_name</code></strong>: to use the name of the data item as identifier</li>
 <li><strong><code>entity_id</code></strong>: to use the uuid of the data item as identifier</li>
 <li><strong><code>delete_all_versions</code></strong>: if <code>True</code>, all versions of the data item will be deleted. Its mutually exclusive with the <code>entity_id</code> parameter</li>
-<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
 </ul>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
@@ -3607,11 +3537,11 @@ Example:</p>
 <p>To list all data items you can use the <code>list_dataitems()</code> method.</p>
 <p>Mandatory parameters are:</p>
 <ul>
-<li><strong><code>project</code></strong>: the project in which the data item will be created</li>
+<li><strong><code>project</code></strong>: the project containing the data items</li>
 </ul>
 <p>Optional parameters are:</p>
 <ul>
-<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
 </ul>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">dataitems</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">list_dataitems</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
@@ -3695,7 +3625,7 @@ The method accepts the following parameters:</p>
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>

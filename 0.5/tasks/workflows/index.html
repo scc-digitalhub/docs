@@ -18,11 +18,11 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
-        <title>Pipelines - Digital Hub</title>
+        <title>Workflows - Digital Hub</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pipelines" class="md-skip">
+        <a href="#workflows" class="md-skip">
           Skip to content
         </a>
       
@@ -191,7 +191,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Pipelines
+              Workflows
             
           </span>
         </div>
@@ -618,15 +618,237 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Workflows
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Pipelines
+    Workflows
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#managing-workflows-with-the-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing workflows with the UI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing workflows with the UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-management-via-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow management via SDK
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflow management via SDK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    <span class="md-ellipsis">
+      List
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow object
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflow object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kfp" class="md-nav__link">
+    <span class="md-ellipsis">
+      kfp
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="kfp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#as-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      As file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2156,6 +2378,206 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#managing-workflows-with-the-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing workflows with the UI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing workflows with the UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-management-via-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow management via SDK
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflow management via SDK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    <span class="md-ellipsis">
+      List
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow object
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflow object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kfp" class="md-nav__link">
+    <span class="md-ellipsis">
+      kfp
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="kfp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#as-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      As file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2169,8 +2591,221 @@
                   
 
 
-<h1 id="pipelines">Pipelines</h1>
-<p>TODO</p>
+<h1 id="workflows">Workflows</h1>
+<h2 id="managing-workflows-with-the-ui">Managing workflows with the UI</h2>
+<p>Workflows can be created and managed as <em>entities</em> from the console. You can access them from the dashboard or the left menu. You can:</p>
+<ul>
+<li><code>create</code> a new workflow</li>
+<li><code>expand</code> a workflow to see its 5 latest versions</li>
+<li><code>show</code> the details of a workflow</li>
+<li><code>edit</code> a workflow</li>
+<li><code>delete</code> a workflow</li>
+<li><code>filter</code> workflows by name and kind</li>
+</ul>
+<p><img alt="Workflow list" src="../../images/console/workflow-list.png" /></p>
+<p>We will now see how to <a href="#create">create</a>, <a href="#read">read</a>, <a href="#update">update</a> and <a href="#delete">delete</a> workflows using the UI, similarly to what is done with the SDK.</p>
+<h3 id="create">Create</h3>
+<p>Click <code>CREATE</code> and a form will be shown:</p>
+<p><img alt="Workflow form" src="../../images/console/workflow-form.png" /></p>
+<p>Mandatory fields are:</p>
+<ul>
+<li><strong><code>Name</code></strong>: name and identifier of the workflow</li>
+<li><strong><code>Kind</code></strong>: kind of workflow</li>
+</ul>
+<p>Metadata fields are optional and may be updated later.</p>
+<ul>
+<li><strong><code>Description</code></strong>: a human-readable description</li>
+<li><strong><code>Labels</code></strong>: list of labels</li>
+<li><strong><code>Name</code></strong>: name of the function</li>
+<li><strong><code>Embedded</code></strong>: flag for embedded metadata</li>
+<li><strong><code>Versioning</code></strong>: version of the function</li>
+<li><strong><code>Openmetadata</code></strong>: flag to publish metadata</li>
+<li><strong><code>Audit</code></strong>: author of creation and modification</li>
+</ul>
+<p>In case of a <code>kfp</code> workflow, the <code>fields.sourceCode.source.title</code> field is mandatory as well.</p>
+<h3 id="read">Read</h3>
+<p>Click <code>SHOW</code> to view a workflow's details.</p>
+<p><img alt="Workflow read" src="../../images/console/workflow-read.png" /></p>
+<p>On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.</p>
+<p>The <code>INSPECTOR</code> button will show a dialog containing the resource in JSON format.</p>
+<p><img alt="Workflow inspector" src="../../images/console/workflow-inspector.png" /></p>
+<p>The <code>EXPORT</code> button will download the resource's information as a yaml file.</p>
+<h3 id="update">Update</h3>
+<p>You can update a workflow by clicking <code>EDIT</code>. Greyed-out fields may not be updated.</p>
+<h3 id="delete">Delete</h3>
+<p>You can delete a workflow from either its detail page or the list of workflows, by clicking <code>DELETE</code>.</p>
+<h2 id="workflow-management-via-sdk">Workflow management via SDK</h2>
+<p>A <code>workflow</code> can be managed with the following methods.</p>
+<ul>
+<li><a href="#create_1"><strong><code>new_workflow</code></strong></a>: create a new workflow</li>
+<li><a href="#read_1"><strong><code>get_workflow</code></strong></a>: get a workflow</li>
+<li><a href="#update_1"><strong><code>update_workflow</code></strong></a>: update a workflow</li>
+<li><a href="#delete_1"><strong><code>delete_workflow</code></strong></a>: delete a workflow</li>
+<li><a href="#list"><strong><code>list_workflows</code></strong></a>: list all workflows</li>
+</ul>
+<p>This is done in two ways. The first is through the SDK and the second is through the <code>Workflow</code> object.
+Example:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
+
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
+
+<span class="c1">## From library</span>
+<span class="n">workflow</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_workflow</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-workflow&quot;</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-workflow.ext&quot;</span><span class="p">)</span>
+
+<span class="c1">## From project</span>
+<span class="n">workflow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_workflow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-workflow&quot;</span><span class="p">,</span>
+                                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span>
+                                <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-workflow.ext&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a workflow, focusing on managing workflows through the library. If you want to manage workflows from the project, you can use the <code>Project</code> object and avoid having to specify the <code>project</code> parameter.</p>
+<h3 id="create_1">Create</h3>
+<p>To create a workflow you can use the <code>new_workflow()</code> method.</p>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>project</code></strong>: the project in which the workflow will be created</li>
+<li><strong><code>name</code></strong>: name of the workflow</li>
+<li><strong><code>kind</code></strong>: kind of the workflow</li>
+<li><strong><code>path</code></strong>: remote path where the workflow is stored</li>
+</ul>
+<p>Optional parameters are:</p>
+<ul>
+<li><strong><code>uuid</code></strong>: uuid of the workflow (this is automatically generated if not provided). <strong>Must</strong> be a valid uuid v4.</li>
+<li><strong><code>description</code></strong>: description of the workflow</li>
+<li><strong><code>source</code></strong>: remote source of the workflow (git repository)</li>
+<li><strong><code>labels</code></strong>: labels of the workflow</li>
+<li><strong><code>embedded</code></strong>: whether the workflow is embedded or not. If <code>True</code>, the workflow is embedded (all the spec details are expressed) in the project. If <code>False</code>, the workflow is not embedded in the project</li>
+<li><strong><code>src_path</code></strong>: local path of the workflow, used in case of upload into remote storage</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the <em>spec</em> constructor</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">workflow</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_workflow</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-workflow&quot;</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-workflow.ext&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="read_1">Read</h3>
+<p>To read a workflow you can use the <code>get_workflow()</code> or <code>import_workflow()</code> methods. The first one searches for the workflow into the backend, the second one loads it from a local yaml.</p>
+<h4 id="get">Get</h4>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>project</code></strong>: the project in which the workflow will be created</li>
+</ul>
+<p>Optional parameters are:</p>
+<ul>
+<li><strong><code>entity_name</code></strong>: to use the name of the workflow as identifier. It returns the latest version of the workflow</li>
+<li><strong><code>entity_id</code></strong>: to use the uuid of the workflow as identifier. It returns the specified version of the workflow</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">workflow</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_workflow</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">entity_name</span><span class="o">=</span><span class="s2">&quot;my-workflow&quot;</span><span class="p">)</span>
+
+<span class="n">workflow</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_workflow</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">entity_id</span><span class="o">=</span><span class="s2">&quot;uuid-of-my-workflow&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="import">Import</h4>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>file</code></strong>: file path to the workflow yaml</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">workflow</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">import_workflow</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;./some-path/my-workflow.yaml&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="update_1">Update</h3>
+<p>To update a workflow you can use the <code>update_workflow()</code> method.</p>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>workflow</code></strong>: workflow object to be updated</li>
+</ul>
+<p>Optional parameters are:</p>
+<ul>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">workflow</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_workflow</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-workflow&quot;</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-workflow.ext&quot;</span><span class="p">)</span>
+
+<span class="n">workflow</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;My new description&quot;</span>
+
+<span class="n">workflow</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">update_workflow</span><span class="p">(</span><span class="n">workflow</span><span class="o">=</span><span class="n">workflow</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="delete_1">Delete</h3>
+<p>To delete a workflow you can use the <code>delete_workflow()</code> method.</p>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>project</code></strong>: the project in which the workflow exists</li>
+</ul>
+<p>Optional parameters are:</p>
+<ul>
+<li><strong><code>entity_name</code></strong>: to use the name of the workflow as identifier</li>
+<li><strong><code>entity_id</code></strong>: to use the uuid of the workflow as identifier</li>
+<li><strong><code>delete_all_versions</code></strong>: if <code>True</code>, all versions of the workflow will be deleted. Mutually exclusive with the <code>entity_id</code> parameter.</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">workflow</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_workflow</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-workflow&quot;</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;workflow&quot;</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-workflow.ext&quot;</span><span class="p">)</span>
+
+<span class="n">dh</span><span class="o">.</span><span class="n">delete_workflow</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                   <span class="n">entity_id</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="list">List</h3>
+<p>To list all workflows you can use the <code>list_workflows()</code> method.</p>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>project</code></strong>: the project containing the workflows</li>
+</ul>
+<p>Optional parameters are:</p>
+<ul>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">workflows</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">list_workflows</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="workflow-object">Workflow object</h2>
+<p>The <code>Workflow</code> object is built using the <code>new_workflow()</code> method. There are several variations of the <code>Workflow</code> object based on the <code>kind</code> of the workflow. The SDK supports the following kinds:</p>
+<ul>
+<li><strong><code>kfp</code></strong>: represents a generic workflow</li>
+</ul>
+<p>For each different kind, the <code>Workflow</code> object has a different set of methods and different <code>spec</code>, <code>status</code> and <code>metadata</code>.
+All the <code>Workflow</code> kinds have a <code>save()</code> and an <code>export()</code> method to save and export the <em>entity</em> workflow into backend or locally as yaml.</p>
+<p>To create a specific workflow, you must use the desired <code>kind</code> in the <code>new_workflow()</code> method.</p>
+<h5 id="kfp">kfp</h5>
+<p>The <code>kfp</code> kind indicates that the workflow is a generic workflow.
+There are no specific <code>spec</code> parameters.</p>
+<p>The <code>kfp</code> kind has the following methods:</p>
+<ul>
+<li><strong><code>as_file()</code></strong>: collects the workflow into a local temporary file</li>
+<li><strong><code>download()</code></strong>: downloads the workflow into a specified path</li>
+<li><strong><code>upload()</code></strong>: uploads the workflow to a specified path</li>
+</ul>
+<h6 id="as-file">As file</h6>
+<p>The <code>as_file()</code> method returns the workflow as a temporary file. The file <strong>is not</strong> automatically deleted when the program ends.
+The method returns the path of the downloaded workflow.</p>
+<h6 id="download">Download</h6>
+<p>The <code>download()</code> method downloads the workflow into a specified path.
+The method returns the path of the downloaded workflow.
+The method accepts the following parameters:</p>
+<ul>
+<li><strong><code>target</code></strong>: remote path of the workflow to be downloaded (eg. <code>s3://my-bucket/my-workflow.ext</code>). By default, uses the <code>spec</code> <code>path</code>.</li>
+<li><strong><code>dst</code></strong>: local path where the workflow will be downloaded. By default, it is in the current working directory</li>
+<li><strong><code>overwrite</code></strong>: if <code>True</code>, the target path will be overwritten if it already exists</li>
+</ul>
+<h6 id="upload">Upload</h6>
+<p>The <code>upload()</code> method uploads the workflow to a specified path.
+The method returns the path of the uploaded workflow.
+The method accepts the following parameters:</p>
+<ul>
+<li><strong><code>source</code></strong>: local path of the workflow to be uploaded</li>
+<li><strong><code>target</code></strong>: remote path of the workflow to be uploaded (eg. <code>s3://my-bucket/my-workflow.ext</code>). By default, uses the <code>spec</code> <code>path</code>.</li>
+</ul>
 
 
 
@@ -2213,7 +2848,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>
