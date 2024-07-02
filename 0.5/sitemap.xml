@@ -206,6 +206,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://docs/user/tasks/jobs-runs/</loc>
+         <lastmod>2024-07-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://docs/user/tasks/kubernetes-resources/</loc>
          <lastmod>2024-07-02</lastmod>
          <changefreq>daily</changefreq>
