@@ -1,8 +1,8 @@
 # Functions and Runtimes
 
-**Functions** are the logical description of something that the platform may execute and track for you. Function may represent a code to run as a job, an ML model inference to be used as batch procedure or as a service, a data validation, etc.
+**Functions** are the logical description of something that the platform may execute and track for you. A function may represent code to run as a job, an ML model inference to be used as batch procedure or as a service, a data validation, etc.
 
-In the platform we perform **actions** over functions (also referred to as "tasks"), such as job execution, deploy, container image build. A single action execution is called **run**, and the platform keeps track of these executions, keeping metadata about function version, operation parameters, and runtime parameters for a single execution. 
+In the platform we perform **actions** over functions (also referred to as "tasks"), such as job execution, deploy, container image build. A single action execution is called **run**, and the platform keeps track of these runs, with metadata about function version, operation parameters, and runtime parameters for a single execution. 
 
 They are associated with a given runtime, which implements the actual execution and determines which actions are available. Examples are dbt, nefertem, mlrun, etc.
 
@@ -10,9 +10,63 @@ Runtimes are the entities responsible for the actual execution of a given run. T
 
 TODO: detail
 
-## Managing Functions with UI
+## Managing functions with the UI
 
-TODO
+Functions can be created and managed as *entities* from the console. You can access them from the dashboard or the left menu. You can:
+
+- `create` a new function
+- `expand` a function to see its 5 latest versions
+- `show` the details of a function
+- `edit` a function
+- `delete` a function
+- `filter` functions by name and kind
+
+![Function list](../images/console/function-list.png)
+
+### Create
+
+Click `CREATE` and a form will be shown:
+
+![Function form](../images/console/function-form.png)
+
+Mandatory fields are:
+
+- **`Name`**: name and identifier of the function
+- **`Kind`**: kind of function
+
+Metadata fields are optional and may be updated later.
+
+- **`Description`**: a human-readable description
+- **`Labels`**: list of labels
+- **`Name`**: name of the function
+- **`Embedded`**: flag for embedded metadata
+- **`Versioning`**: version of the function
+- **`Openmetadata`**: flag to publish metadata
+- **`Audit`**: author of creation and modification
+
+`Spec` fields will change depending on the function's kind.
+
+### Read
+
+Click `SHOW` to view a function's details.
+
+![Function read](../images/console/function-read.png)
+
+On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.
+
+The `INSPECTOR` button will show a dialog containing the resource in JSON format.
+
+![Function inspector](../images/console/function-inspector.png)
+
+The `EXPORT` button will download the resource's information as a yaml file.
+
+### Update
+
+You can update a function by clicking `EDIT`. Greyed-out fields may not be updated.
+
+### Delete
+
+You can delete a function from either its detail page or the list of functions, by clicking `DELETE`.
 
 ## Managing Functions with SDK
 
@@ -26,7 +80,7 @@ You can manage the `Function` entity with the following methods:
 - **`delete_function`**: delete a function
 - **`list_functions`**: list all functions
 
-The can be done through the SDK, or through the `Project` object.
+This can be done through the SDK, or through the `Project` object.
 
 Example:
 

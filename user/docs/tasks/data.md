@@ -29,11 +29,9 @@ Artifacts can be created and managed as *entities* with the console. You can acc
 
 ![Artifact list](../images/console/artifacts-list.png)
 
-#### Artifact Management via UI
-
 Here we analyze how to [create](#create), [read](#read), [update](#update) and [delete](#delete) Artifacts using the UI, similarly to what is done with the SDK.
 
-##### Create
+#### Create
 
 Click `CREATE` and a form will be shown:
 
@@ -53,7 +51,7 @@ Other fields are optional and may be updated later.
 - (Metadata) **`Labels`**: list of labels
 - (Spec) **`Source path`**: local path to the artifact, used in case of upload into remote storage
 
-##### Read
+#### Read
 
 Click `SHOW` to view an artifact's details.
 
@@ -61,27 +59,19 @@ Click `SHOW` to view an artifact's details.
 
 On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.
 
-![Artifacts version](../images/console/artifacts-version.png)
-
-From the menu on top, you can `EDIT`, `DELETE`, `INSPECT` or `EXPORT` the current artifact. For the first two options, you will find specific sections in this document.
-
 The `INSPECTOR` button will show a dialog containing the resource in JSON format.
 
 ![Artifact inspector](../images/console/artifact-inspector.png)
 
 The `EXPORT` button will download the resource's information as a yaml file.
 
-##### Update
+#### Update
 
 You can update an artifact by clicking `EDIT`. Greyed-out fields may not be updated.
 
-![Artifact edit](../images/console/artifact-edit.png)
-
-##### Delete
+#### Delete
 
 You can delete an artifact from either its detail page or the list of artifacts, by clicking `DELETE`.
-
-![Artifact delete](../images/console/artifact-delete.png)
 
 ### Data items
 
@@ -96,11 +86,9 @@ Data items can be created and managed as *entities* with the console. You can ac
 
 ![Dataitem list](../images/console/dataitems-list.png)
 
-#### Data item management via UI
-
 Here we analyze how to [create](#create_1), [read](#read_1), [update](#update_1) and [delete](#delete_1) data items using the UI, similarly to what is done with the SDK.
 
-##### Create
+#### Create
 
 Click `CREATE` and a form will be shown:
 
@@ -121,14 +109,14 @@ Other fields are optional and may be updated later:
 - (Metadata) **`Labels`**: list of labels
 - (Spec) **`Source path`**: local path of the data item, used in case of upload into remote storage
 
-###### Kind
+##### Kind
 
 There are 2 possible kinds for dataitems:
 
 - **`Dataitem`**: indicates it is a generic data item. There are no specific attributes in the creation page.
 - **`table`**: indicates that the data item points to a table. The optional parameter is the schema of the table in [table_schema](https://specs.frictionlessdata.io/table-schema/) format.
 
-##### Read
+#### Read
 
 Click `SHOW` to view a data item's details.
 
@@ -138,27 +126,19 @@ Based on the `kind`, there may be a **`schema`**, indicating that the dataitem p
 
 On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.
 
-![Dataitems version](../images/console/dataitems-version.png)
-
-From the menu on top, you can `EDIT`, `DELETE`, `INSPECT` or `EXPORT` the current data item. For the first two options, you will find specific sections in this document.
-
 The `INSPECTOR` button will show a dialog containing the resource in JSON format.
 
 ![Dataitems inspector](../images/console/dataitems-inspector.png)
 
 The `EXPORT` button will download the resource's information as a yaml file.
 
-##### Update
+#### Update
 
 You can update a data item by clicking `EDIT`. Greyed-out fields may not be updated.
 
-![Dataitems edit](../images/console/dataitems-edit.png)
-
-##### Delete
+#### Delete
 
 You can delete a data item from either its detail page or the list of data items, by clicking `DELETE`.
-
-![Dataitems delete](../images/console/dataitems-delete.png)
 
 ## Managing data with SDK
 
@@ -201,7 +181,7 @@ artifact = project.new_artifact(name="my-artifact",
                                 path="s3://my-bucket/my-artifact.ext")
 ```
 
-The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete an artifact. It focus on managing artifacts from library. If you want to manage artifacts from the project, you can use the `Project` object and avoid to specify the `project` parameter.
+The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete an artifact, focusing on managing artifacts through the library. If you want to manage artifacts from the project, you can use the `Project` object and avoid having to specify the `project` parameter.
 
 ##### Create
 
@@ -247,7 +227,7 @@ Optional parameters are:
 
 - **`entity_name`**: to use the name of the artifact as identifier. It returns the latest version of the artifact
 - **`entity_id`**: to use the uuid of the artifact as identifier. It returns the specified version of the artifact
-- **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
+- **`kwargs`**: keyword arguments passed to the client that communicates with the backend
 
 Example:
 
@@ -281,7 +261,7 @@ Mandatory parameters are:
 
 Optional parameters are:
 
-- **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
+- **`kwargs`**: keyword arguments passed to the client that communicates with the backend
 
 Example:
 
@@ -302,14 +282,14 @@ To delete an artifact you can use the `delete_artifact()` method.
 
 Mandatory parameters are:
 
-- **`project`**: the project in which the artifact will be created
+- **`project`**: the project in which the artifact exists
 
 Optional parameters are:
 
 - **`entity_name`**: to use the name of the artifact as identifier
 - **`entity_id`**: to use the uuid of the artifact as identifier
-- **`delete_all_versions`**: if `True`, all versions of the artifact will be deleted. Its mutually exclusive with the `entity_id` parameter
-- **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
+- **`delete_all_versions`**: if `True`, all versions of the artifact will be deleted. Mutually exclusive with the `entity_id` parameter.
+- **`kwargs`**: keyword arguments passed to the client that communicates with the backend
 
 Example:
 
@@ -329,11 +309,11 @@ To list all artifacts you can use the `list_artifacts()` method.
 
 Mandatory parameters are:
 
-- **`project`**: the project in which the artifact will be created
+- **`project`**: the project containing the artifacts
 
 Optional parameters are:
 
-- **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
+- **`kwargs`**: keyword arguments passed to the client that communicates with the backend
 
 Example:
 
@@ -374,7 +354,7 @@ The `download()` method downloads the artifact into a specified path.
 The method returns the path of the downloaded artifact.
 The method accepts the following parameters:
 
-- **`target`**: remote path of the artifact to be downloaded (eg. `s3://my-bucket/my-artifact.ext`). By default, it is used the `spec` `path`
+- **`target`**: remote path of the artifact to be downloaded (eg. `s3://my-bucket/my-artifact.ext`). By default, uses the `spec` `path`.
 - **`dst`**: local path where the artifact will be downloaded. By default, it is in the current working directory
 - **`overwrite`**: if `True`, the target path will be overwritten if it already exists
 
@@ -385,7 +365,7 @@ The method returns the path of the uploaded artifact.
 The method accepts the following parameters:
 
 - **`source`**: local path of the artifact to be uploaded
-- **`target`**: remote path of the artifact to be uploaded (eg. `s3://my-bucket/my-artifact.ext`). By default, it is used the `spec` `path`
+- **`target`**: remote path of the artifact to be uploaded (eg. `s3://my-bucket/my-artifact.ext`). By default, uses the `spec` `path`.
 
 
 ### Data items
@@ -427,7 +407,7 @@ dataitem = project.new_dataitem(name="my-dataitem",
                                 path="s3://my-bucket/my-dataitem.ext")
 ```
 
-The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a data item, focusing on managing data items through its library. If you want to manage data items from the project, you can use the `Project` object and avoid having to specify the `project` parameter.
+The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a data item, focusing on managing data items through the library. If you want to manage data items from the project, you can use the `Project` object and avoid having to specify the `project` parameter.
 
 ##### Create
 
@@ -472,7 +452,7 @@ Optional parameters are:
 
 - **`entity_name`**: to use the name of the data item as identifier. It returns the latest version of the data item.
 - **`entity_id`**: to use the uuid of the data item as identifier. It returns the specified version of the data item.
-- **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
+- **`kwargs`**: keyword arguments passed to the client that communicates with the backend
 
 Example:
 
@@ -506,7 +486,7 @@ Mandatory parameters are:
 
 Optional parameters are:
 
-- **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
+- **`kwargs`**: keyword arguments passed to the client that communicates with the backend
 
 Example:
 
@@ -527,14 +507,14 @@ To delete a data item you can use the `delete_dataitem()` method.
 
 Mandatory parameters are:
 
-- **`project`**: the project in which the data item will be created
+- **`project`**: the project in which the data item exists
 
 Optional parameters are:
 
 - **`entity_name`**: to use the name of the data item as identifier
 - **`entity_id`**: to use the uuid of the data item as identifier
 - **`delete_all_versions`**: if `True`, all versions of the data item will be deleted. Its mutually exclusive with the `entity_id` parameter
-- **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
+- **`kwargs`**: keyword arguments passed to the client that communicates with the backend
 
 Example:
 
@@ -554,11 +534,11 @@ To list all data items you can use the `list_dataitems()` method.
 
 Mandatory parameters are:
 
-- **`project`**: the project in which the data item will be created
+- **`project`**: the project containing the data items
 
 Optional parameters are:
 
-- **`kwargs`**: keyword arguments passed to the client that comunicate with the backend
+- **`kwargs`**: keyword arguments passed to the client that communicates with the backend
 
 Example:
 
