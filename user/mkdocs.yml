@@ -26,6 +26,7 @@ nav:
       - "tasks/kubernetes-resources.md"
       - "tasks/secrets.md"
       - "tasks/workflows.md"
+      - "tasks/jobs-runs.md"
     #   - "tasks/git.md"
   - Components:
       - "components/dashboard.md"
