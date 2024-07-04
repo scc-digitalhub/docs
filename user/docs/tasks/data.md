@@ -45,10 +45,13 @@ Mandatory fields are:
 
 Other fields are optional and may be updated later.
 
-- (Metadata) **`Name`**: name of the artifact
 - (Metadata) **`Description`**: a human-readable description of the artifact
-- (Metadata) **`Version`**: version of the artifact
 - (Metadata) **`Labels`**: list of labels
+- (Metadata) **`Name`**: name of the artifact
+- (Metadata) **`Embedded`**: flag for embedded metadata
+- (Metadata) **`Versioning`**: version of the function
+- (Metadata) **`Openmetadata`**: flag to publish metadata
+- (Metadata) **`Audit`**: author of creation and modification
 - (Spec) **`Source path`**: local path to the artifact, used in case of upload into remote storage
 
 #### Read
@@ -102,11 +105,13 @@ Mandatory fields are:
 
 Other fields are optional and may be updated later:
 
-- (Metadata) **`Name`**: name of the data item
 - (Metadata) **`Description`**: a human-readable description
-- (Metadata) **`Version`**: version of the data item
-- (Metadata) **`Updated`**: date of last modification
 - (Metadata) **`Labels`**: list of labels
+- (Metadata) **`Name`**: name of the data item
+- (Metadata) **`Embedded`**: flag for embedded metadata
+- (Metadata) **`Versioning`**: version of the function
+- (Metadata) **`Openmetadata`**: flag to publish metadata
+- (Metadata) **`Audit`**: author of creation and modification
 - (Spec) **`Source path`**: local path of the data item, used in case of upload into remote storage
 
 ##### Kind
