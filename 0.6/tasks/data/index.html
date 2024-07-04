@@ -1,0 +1,3661 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="http://docs/user/tasks/data/">
+      
+      
+        <link rel="prev" href="../resources/">
+      
+      
+        <link rel="next" href="../models/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+    
+    
+      
+        <title>Data and transformations - Digital Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/portal_selection.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/colors.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="orange" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-and-transformations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+
+
+  
+
+
+<!-- Header -->
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../.."
+      title="Digital Hub"
+      class="md-header__button md-logo"
+      aria-label="Digital Hub"
+      data-md-component="logo"
+    >
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Digital Hub
+          </span>
+          <div class="dropdown">
+            <button class="dd-button">
+              <span>0.6</span>
+              <span class="dd-arrow">&#9660;</span>
+            </button>
+            <div class="dd-options-container">
+              
+                
+                
+              
+              
+                
+                  <div class="dd-content">
+                    
+                      <a href="https://scc-digitalhub.github.io/docs">current</a>
+                    
+                  </div>
+                
+              
+                
+              
+                
+                  <div class="dd-content">
+                    
+                    <a href="https://scc-digitalhub.github.io/docs/0.5">0.5</a>
+                    
+                  </div>
+                
+              
+                
+                  <div class="dd-content">
+                    
+                    <a href="https://scc-digitalhub.github.io/docs/0.4">0.4</a>
+                    
+                  </div>
+                
+              
+                
+                  <div class="dd-content">
+                    
+                    <a href="https://scc-digitalhub.github.io/docs/0.3">0.3</a>
+                    
+                  </div>
+                
+              
+                
+                  <div class="dd-content">
+                    
+                    <a href="https://scc-digitalhub.github.io/docs/0.2">0.2</a>
+                    
+                  </div>
+                
+              
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dd-button">
+              <span>User</span>
+              <span class="dd-arrow">&#9660;</span>
+            </button>
+            <div class="dd-options-container">
+              <div class="dd-content">
+                
+                  <a href="https://scc-digitalhub.github.io/docs/0.6/dev">Dev</a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Data and transformations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette toggle -->
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="orange" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+
+    <!-- User preference: color palette -->
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!-- Repository information -->
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Digital Hub" class="md-nav__button md-logo" aria-label="Digital Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Digital Hub
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview and architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quick Start
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Concepts and Tasks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Concepts and Tasks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functions and Runtimes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workspaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workspaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Management with KRM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Data and transformations
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Data and transformations
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#manipulating-data-via-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manipulating data via UI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manipulating data via UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artifacts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Artifacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data items
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data items">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kind" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kind
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-data-with-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing data with SDK
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing data with SDK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#artifacts_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artifacts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Artifacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#artifact-management-via-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artifact Management via SDK
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Artifact Management via SDK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    <span class="md-ellipsis">
+      List
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifact-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artifact object
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Artifact object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#artifact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artifact
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Artifact">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#as-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      As file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-items_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data items
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data items">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-item-management-via-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data item management via SDK
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data item management via SDK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      List
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataitem-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataitem object
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dataitem object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataitem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataitem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ML Models
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Kubernetes Resources for Runs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secrets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secret Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jobs-runs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jobs and runs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Components
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Components
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/dashboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Landing Page
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/dh_console/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Digital Hub Core UI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/resourcemanager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes Resource Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/mlrun/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MLRun
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/nuclio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nuclio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/kubeflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KubeFlow Pipelines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Interactive Workspaces
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            Interactive Workspaces
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/jupyter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jupyter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/dremio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dremio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/sqlpad/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQLPad
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/grafana/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Grafana
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visual Studio Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Scenarios
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Scenarios
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Extract-Transform-Load
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Extract-Transform-Load
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/etl/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ETL scenario introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/etl/collect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Collect the data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/etl/process/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Process the data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/etl/pipeline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/etl/expose/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Expose datasets as API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/etl/streamlit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visualize data with Streamlit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ML model training
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            ML model training
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/ml/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ML scenario introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/ml/training/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Training the model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/ml/deploy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploy and expose the model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DBT transformation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            DBT transformation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/etl-core/scenario/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ETL with digitalhub-core and DBT scenario introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Nefertem validation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            Nefertem validation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/validation/scenario/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation with digitalhub-core and Nefertem scenario introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dremio transformation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            Dremio transformation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/dremio_grafana/scenario/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data transformation and usage with Dremio and Grafana
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API via PostgREST
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            API via PostgREST
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/postgrest/intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PostgREST scenario introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/postgrest/data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Insert data into the database
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/postgrest/postgrest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Expose data with PostgREST
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Administration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Administration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Platform Administration Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Platform Authentication and Access Control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Platform Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Runtimes reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Runtimes reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Runtime
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DBT
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            DBT
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/dbt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DBT runtime
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Nefertem
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            Nefertem
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/nefertem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nefertem runtime
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_4" id="__nav_9_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Container
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            Container
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container runtime
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_5" id="__nav_9_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MLRun
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_5">
+            <span class="md-nav__icon md-icon"></span>
+            MLRun
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/mlrun/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mlrun runtime
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_6" id="__nav_9_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Pipelines
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_6">
+            <span class="md-nav__icon md-icon"></span>
+            Pipelines
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/kfp_pipelines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KFP Pipelines Runtime
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#manipulating-data-via-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manipulating data via UI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manipulating data via UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artifacts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Artifacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data items
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data items">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kind" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kind
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-data-with-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing data with SDK
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing data with SDK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#artifacts_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artifacts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Artifacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#artifact-management-via-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artifact Management via SDK
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Artifact Management via SDK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    <span class="md-ellipsis">
+      List
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#artifact-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artifact object
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Artifact object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#artifact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Artifact
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Artifact">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#as-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      As file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-items_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data items
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data items">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-item-management-via-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data item management via SDK
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data item management via SDK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Read">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Import
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      List
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataitem-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataitem object
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dataitem object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataitem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataitem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="data-and-transformations">Data and transformations</h1>
+<p>The platform supports data of different types to be stored and operated by the underlying storage subsystems.</p>
+<p>Digital Hub natively supports two types of storages:</p>
+<ul>
+<li><em>persistence</em> object storage (datalake S3 Minio), which manages immutable data in the form of files.</li>
+<li><em>operational</em> relational data storage (PostgreSQL database), which is used for efficient querying of mutable data. <em>Postgres</em> is rich with extensions, most notably for geo-spatial and time-series data.</li>
+</ul>
+<p>The data is represented in the platform as entities of different types, depending on its usage and format. More specifically, we distinguish:</p>
+<ul>
+<li><em>data items</em>, which represent immutable data sets resulting from different transformation operations and are ready for use in differerent types of analysis. Data items are enriched with metadata (versions, lineage, stats, profiling, schema, ...) and unique keys and managed and persisted to the datalake directly by the platform in the form of <em>Parquet</em> files. It is possible to treat tabular data (items of <code>table</code> kind) as, for example, <em>DataFrames</em>, using conventional libraries.</li>
+<li><em>artifacts</em>, which represent arbitrary files, not limited to tabular format, stored to the datalake with some extra metadata.</li>
+</ul>
+<p>Each data entity may be accessed and manipulated by the platform via UI or using the API, for example with SDK.</p>
+<h2 id="manipulating-data-via-ui">Manipulating data via UI</h2>
+<h3 id="artifacts">Artifacts</h3>
+<p>Artifacts can be created and managed as <em>entities</em> with the console. You can access them from the dashboard or the left menu. You can:</p>
+<ul>
+<li><code>create</code> a new artifact</li>
+<li><code>expand</code> an artifact to see its 5 latest versions</li>
+<li><code>show</code> the details of an artifact</li>
+<li><code>edit</code> an artifact</li>
+<li><code>delete</code> an artifact</li>
+<li><code>filter</code> artifacts by name and kind</li>
+</ul>
+<p><img alt="Artifact list" src="../../images/console/artifacts-list.png" /></p>
+<p>Here we analyze how to <a href="#create">create</a>, <a href="#read">read</a>, <a href="#update">update</a> and <a href="#delete">delete</a> Artifacts using the UI, similarly to what is done with the SDK.</p>
+<h4 id="create">Create</h4>
+<p>Click <code>CREATE</code> and a form will be shown:</p>
+<p><img alt="Artifact form" src="../../images/console/artifacts-form.png" /></p>
+<p>Mandatory fields are:</p>
+<ul>
+<li><strong><code>Name</code></strong>: name and identifier of the artifact</li>
+<li><strong><code>Kind</code></strong>: kind of the artifact</li>
+<li>(Spec) <strong><code>Path</code></strong>: remote path where the artifact is stored</li>
+</ul>
+<p>Other fields are optional and may be updated later.</p>
+<ul>
+<li>(Metadata) <strong><code>Name</code></strong>: name of the artifact</li>
+<li>(Metadata) <strong><code>Description</code></strong>: a human-readable description of the artifact</li>
+<li>(Metadata) <strong><code>Version</code></strong>: version of the artifact</li>
+<li>(Metadata) <strong><code>Labels</code></strong>: list of labels</li>
+<li>(Spec) <strong><code>Source path</code></strong>: local path to the artifact, used in case of upload into remote storage</li>
+</ul>
+<h4 id="read">Read</h4>
+<p>Click <code>SHOW</code> to view an artifact's details.</p>
+<p><img alt="Artifact details" src="../../images/console/artifact-read.png" /></p>
+<p>On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.</p>
+<p>The <code>INSPECTOR</code> button will show a dialog containing the resource in JSON format.</p>
+<p><img alt="Artifact inspector" src="../../images/console/artifact-inspector.png" /></p>
+<p>The <code>EXPORT</code> button will download the resource's information as a yaml file.</p>
+<h4 id="update">Update</h4>
+<p>You can update an artifact by clicking <code>EDIT</code>. Greyed-out fields may not be updated.</p>
+<h4 id="delete">Delete</h4>
+<p>You can delete an artifact from either its detail page or the list of artifacts, by clicking <code>DELETE</code>.</p>
+<h3 id="data-items">Data items</h3>
+<p>Data items can be created and managed as <em>entities</em> with the console. You can access them from the dashboard or the left menu. You can:</p>
+<ul>
+<li><code>create</code> a new data item</li>
+<li><code>expand</code> a data item and see its 5 latest versions</li>
+<li><code>show</code> the details of a data item</li>
+<li><code>edit</code> a data item</li>
+<li><code>delete</code> a data item</li>
+<li><code>filter</code> data items by name and kind</li>
+</ul>
+<p><img alt="Dataitem list" src="../../images/console/dataitems-list.png" /></p>
+<p>Here we analyze how to <a href="#create_1">create</a>, <a href="#read_1">read</a>, <a href="#update_1">update</a> and <a href="#delete_1">delete</a> data items using the UI, similarly to what is done with the SDK.</p>
+<h4 id="create_1">Create</h4>
+<p>Click <code>CREATE</code> and a form will be shown:</p>
+<p><img alt="Dataitem form" src="../../images/console/dataitems-form.png" /></p>
+<p>Mandatory fields are:</p>
+<ul>
+<li><strong><code>Name</code></strong>: name of the dataitem</li>
+<li><strong><code>Kind</code></strong>: kind of the dataitem</li>
+<li>(Spec) <strong><code>Path</code></strong>: remote path where the data item is stored</li>
+</ul>
+<p>Other fields are optional and may be updated later:</p>
+<ul>
+<li>(Metadata) <strong><code>Name</code></strong>: name of the data item</li>
+<li>(Metadata) <strong><code>Description</code></strong>: a human-readable description</li>
+<li>(Metadata) <strong><code>Version</code></strong>: version of the data item</li>
+<li>(Metadata) <strong><code>Updated</code></strong>: date of last modification</li>
+<li>(Metadata) <strong><code>Labels</code></strong>: list of labels</li>
+<li>(Spec) <strong><code>Source path</code></strong>: local path of the data item, used in case of upload into remote storage</li>
+</ul>
+<h5 id="kind">Kind</h5>
+<p>There are 2 possible kinds for dataitems:</p>
+<ul>
+<li><strong><code>Dataitem</code></strong>: indicates it is a generic data item. There are no specific attributes in the creation page.</li>
+<li><strong><code>table</code></strong>: indicates that the data item points to a table. The optional parameter is the schema of the table in <a href="https://specs.frictionlessdata.io/table-schema/">table_schema</a> format.</li>
+</ul>
+<h4 id="read_1">Read</h4>
+<p>Click <code>SHOW</code> to view a data item's details.</p>
+<p><img alt="Dataitem read" src="../../images/console/dataitems-read.png" /></p>
+<p>Based on the <code>kind</code>, there may be a <strong><code>schema</code></strong>, indicating that the dataitem point to a table.</p>
+<p>On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.</p>
+<p>The <code>INSPECTOR</code> button will show a dialog containing the resource in JSON format.</p>
+<p><img alt="Dataitems inspector" src="../../images/console/dataitems-inspector.png" /></p>
+<p>The <code>EXPORT</code> button will download the resource's information as a yaml file.</p>
+<h4 id="update_1">Update</h4>
+<p>You can update a data item by clicking <code>EDIT</code>. Greyed-out fields may not be updated.</p>
+<h4 id="delete_1">Delete</h4>
+<p>You can delete a data item from either its detail page or the list of data items, by clicking <code>DELETE</code>.</p>
+<h2 id="managing-data-with-sdk">Managing data with SDK</h2>
+<h3 id="artifacts_1">Artifacts</h3>
+<p>Artifacts (ARTIFACT) are (binary) objects stored in one of the artifact stores of the platform, and available to every process, module and component as files (or data streams).
+Artifacts can be created and managed as <em>entities</em> with the SDK CRUD methods. This can be done directly from the package or through the <code>Project</code> object.
+To manage artifacts, you need to have the <code>digitalhub_core</code> layer installed.</p>
+<p>In the first section, we will see how to create, read, update and delete artifacts.
+In the second section, we will see what can be done with the <code>Artifact</code> object.</p>
+<h4 id="artifact-management-via-sdk">Artifact Management via SDK</h4>
+<p>An <code>artifact</code> can be managed with the following methods.</p>
+<ul>
+<li><a href="#create_2"><strong><code>new_artifact</code></strong></a>: create a new artifact</li>
+<li><a href="#read_2"><strong><code>get_artifact</code></strong></a>: get an artifact</li>
+<li><a href="#update_2"><strong><code>update_artifact</code></strong></a>: update an artifact</li>
+<li><a href="#delete_2"><strong><code>delete_artifact</code></strong></a>: delete an artifact</li>
+<li><a href="#list"><strong><code>list_artifacts</code></strong></a>: list all artifacts</li>
+</ul>
+<p>This is done in two ways. The first is through the SDK and the second is through the <code>Artifact</code> object.
+Example:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
+
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
+
+<span class="c1">## From library</span>
+<span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-artifact&quot;</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-artifact.ext&quot;</span><span class="p">)</span>
+
+<span class="c1">## From project</span>
+<span class="n">artifact</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-artifact&quot;</span><span class="p">,</span>
+                                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span>
+                                <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-artifact.ext&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete an artifact, focusing on managing artifacts through the library. If you want to manage artifacts from the project, you can use the <code>Project</code> object and avoid having to specify the <code>project</code> parameter.</p>
+<h5 id="create_2">Create</h5>
+<p>To create an artifact you can use the <code>new_artifact()</code> method.</p>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>project</code></strong>: the project in which the artifact will be created</li>
+<li><strong><code>name</code></strong>: the name of the artifact</li>
+<li><strong><code>kind</code></strong>: the kind of the artifact</li>
+<li><strong><code>path</code></strong>: the remote path where the artifact is stored</li>
+</ul>
+<p>Optional parameters are:</p>
+<ul>
+<li><strong><code>uuid</code></strong>: the uuid of the artifact (this is automatically generated if not provided). <strong>Must</strong> be a valid uuid v4.</li>
+<li><strong><code>description</code></strong>: the description of the artifact</li>
+<li><strong><code>source</code></strong>: the remote source of the artifact (git repository)</li>
+<li><strong><code>labels</code></strong>: the labels of the artifact</li>
+<li><strong><code>embedded</code></strong>: whether the artifact is embedded or not. If <code>True</code>, the artifact is embedded (all the spec details are expressed) in the project. If <code>False</code>, the artifact is not embedded in the project</li>
+<li><strong><code>src_path</code></strong>: local path of the artifact, used in case of upload into remote storage</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the <em>spec</em> constructor</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-artifact&quot;</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-artifact.ext&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="read_2">Read</h5>
+<p>To read an artifact you can use the <code>get_artifact()</code> or <code>import_artifact()</code> methods. The first one searches for the artifact into the backend, the second one loads it from a local yaml.</p>
+<h6 id="get">Get</h6>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>project</code></strong>: the project in which the artifact will be created</li>
+</ul>
+<p>Optional parameters are:</p>
+<ul>
+<li><strong><code>entity_name</code></strong>: to use the name of the artifact as identifier. It returns the latest version of the artifact</li>
+<li><strong><code>entity_id</code></strong>: to use the uuid of the artifact as identifier. It returns the specified version of the artifact</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">entity_name</span><span class="o">=</span><span class="s2">&quot;my-artifact&quot;</span><span class="p">)</span>
+
+<span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">entity_id</span><span class="o">=</span><span class="s2">&quot;uuid-of-my-artifact&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h6 id="import">Import</h6>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>file</code></strong>: file path to the artifact yaml</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">import_artifact</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;./some-path/my-artifact.yaml&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="update_2">Update</h5>
+<p>To update an artifact you can use the <code>update_artifact()</code> method.</p>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>artifact</code></strong>: artifact object to be updated</li>
+</ul>
+<p>Optional parameters are:</p>
+<ul>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-artifact&quot;</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-artifact.ext&quot;</span><span class="p">)</span>
+
+<span class="n">artifact</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;My new description&quot;</span>
+
+<span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">update_artifact</span><span class="p">(</span><span class="n">artifact</span><span class="o">=</span><span class="n">artifact</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="delete_2">Delete</h5>
+<p>To delete an artifact you can use the <code>delete_artifact()</code> method.</p>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>project</code></strong>: the project in which the artifact exists</li>
+</ul>
+<p>Optional parameters are:</p>
+<ul>
+<li><strong><code>entity_name</code></strong>: to use the name of the artifact as identifier</li>
+<li><strong><code>entity_id</code></strong>: to use the uuid of the artifact as identifier</li>
+<li><strong><code>delete_all_versions</code></strong>: if <code>True</code>, all versions of the artifact will be deleted. Mutually exclusive with the <code>entity_id</code> parameter.</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-artifact&quot;</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-artifact.ext&quot;</span><span class="p">)</span>
+
+<span class="n">dh</span><span class="o">.</span><span class="n">delete_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                   <span class="n">entity_id</span><span class="o">=</span><span class="n">artifact</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="list">List</h5>
+<p>To list all artifacts you can use the <code>list_artifacts()</code> method.</p>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>project</code></strong>: the project containing the artifacts</li>
+</ul>
+<p>Optional parameters are:</p>
+<ul>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">artifacts</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">list_artifacts</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="artifact-object">Artifact object</h4>
+<p>The <code>Artifact</code> object is built using the <code>new_artifact()</code> method. There are several variations of the <code>Artifact</code> object based on the <code>kind</code> of the artifact. The SDK supports the following kinds:</p>
+<ul>
+<li><strong><code>artifact</code></strong>: represents a generic artifact</li>
+</ul>
+<p>For each different kind, the <code>Artifact</code> object has a different set of methods and different <code>spec</code>, <code>status</code> and <code>metadata</code>.
+All the <code>Artifact</code> kinds have a <code>save()</code> and an <code>export()</code> method to save and export the <em>entity</em> artifact into backend or locally as yaml.</p>
+<p>To create a specific artifact, you must use the desired <code>kind</code> in the <code>new_artifact()</code> method.</p>
+<h5 id="artifact">Artifact</h5>
+<p>The <code>artifact</code> kind indicates that the artifact is a generic artifact.
+There are no specific <code>spec</code> parameters.</p>
+<p>The <code>artifact</code> kind has the following methods:</p>
+<ul>
+<li><strong><code>as_file()</code></strong>: collects the artifact into a local temporary file</li>
+<li><strong><code>download()</code></strong>: downloads the artifact into a specified path</li>
+<li><strong><code>upload()</code></strong>: uploads the artifact to a specified path</li>
+</ul>
+<h6 id="as-file">As file</h6>
+<p>The <code>as_file()</code> method returns the artifact as a temporary file. The file <strong>is not</strong> automatically deleted when the program ends.
+The method returns the path of the downloaded artifact.</p>
+<h6 id="download">Download</h6>
+<p>The <code>download()</code> method downloads the artifact into a specified path.
+The method returns the path of the downloaded artifact.
+The method accepts the following parameters:</p>
+<ul>
+<li><strong><code>target</code></strong>: remote path of the artifact to be downloaded (eg. <code>s3://my-bucket/my-artifact.ext</code>). By default, uses the <code>spec</code> <code>path</code>.</li>
+<li><strong><code>dst</code></strong>: local path where the artifact will be downloaded. By default, it is in the current working directory</li>
+<li><strong><code>overwrite</code></strong>: if <code>True</code>, the target path will be overwritten if it already exists</li>
+</ul>
+<h6 id="upload">Upload</h6>
+<p>The <code>upload()</code> method uploads the artifact to a specified path.
+The method returns the path of the uploaded artifact.
+The method accepts the following parameters:</p>
+<ul>
+<li><strong><code>source</code></strong>: local path of the artifact to be uploaded</li>
+<li><strong><code>target</code></strong>: remote path of the artifact to be uploaded (eg. <code>s3://my-bucket/my-artifact.ext</code>). By default, uses the <code>spec</code> <code>path</code>.</li>
+</ul>
+<h3 id="data-items_1">Data items</h3>
+<p>Data items (DATAITEM) are data objects which contain a dataset of a given type, stored in an addressable repository and accessible to every component able to understand the type (kind) and the source (path). Do note that data items could be stored in the artifact store as artifacts, but that is not a dependency or a requirement.
+Dataitems can be created and managed as <em>entities</em> with the SDK CRUD methods. This can be done directly from the package or through the <code>Project</code> object.
+To manage dataitems, you need to have the <code>digitalhub_data</code> layer installed.</p>
+<p>In the first section, we will see how to create, read, update and delete dataitems.
+In the second section, we will see what can be done with the <code>Dataitem</code> object.</p>
+<h4 id="data-item-management-via-sdk">Data item management via SDK</h4>
+<p>A <code>data item</code> can be managed with the following methods.</p>
+<ul>
+<li><a href="#create_3"><strong><code>new_dataitem</code></strong></a>: create a new data item</li>
+<li><a href="#read_3"><strong><code>get_dataitem</code></strong></a>: get a data item</li>
+<li><a href="#update_3"><strong><code>update_dataitem</code></strong></a>: update a data item</li>
+<li><a href="#delete_3"><strong><code>delete_dataitem</code></strong></a>: delete a data item</li>
+<li><a href="#list_1"><strong><code>list_dataitems</code></strong></a>: list all data items</li>
+</ul>
+<p>This is done in two ways. The first is through the SDK and the second is through the <code>Dataitem</code> object.
+Example:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
+
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
+
+<span class="c1">## From library</span>
+<span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-dataitem&quot;</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dataitem&quot;</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-dataitem.ext&quot;</span><span class="p">)</span>
+
+<span class="c1">## From project</span>
+<span class="n">dataitem</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-dataitem&quot;</span><span class="p">,</span>
+                                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dataitem&quot;</span><span class="p">,</span>
+                                <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-dataitem.ext&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a data item, focusing on managing data items through the library. If you want to manage data items from the project, you can use the <code>Project</code> object and avoid having to specify the <code>project</code> parameter.</p>
+<h5 id="create_3">Create</h5>
+<p>To create a data item you can use the <code>new_dataitem()</code> method.</p>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>project</code></strong>: project in which the data item will be created</li>
+<li><strong><code>name</code></strong>: name of the data item</li>
+<li><strong><code>kind</code></strong>: kind of the data item</li>
+<li><strong><code>path</code></strong>: remote path where the data item is stored</li>
+</ul>
+<p>Optional parameters are:</p>
+<ul>
+<li><strong><code>uuid</code></strong>: uuid of the data item (this is automatically generated if not provided). <strong>Must</strong> be a valid uuid v4.</li>
+<li><strong><code>description</code></strong>: description of the data item</li>
+<li><strong><code>source</code></strong>: remote source of the data item (git repository)</li>
+<li><strong><code>labels</code></strong>: list of labels</li>
+<li><strong><code>embedded</code></strong>: whether the data item is embedded or not. If <code>True</code>, the data item is embedded (all the spec details are expressed) in the project. If <code>False</code>, the data item is not embedded in the project.</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the <em>spec</em> constructor</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-dataitem&quot;</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dataitem&quot;</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-dataitem.ext&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="read_3">Read</h5>
+<p>To read a data item you can use the <code>get_dataitem()</code> or <code>import_dataitem()</code> methods. The first one searches for the data item into the backend, the second one load it from a local yaml.</p>
+<h6 id="get_1">Get</h6>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>project</code></strong>: the project in which the data item will be created</li>
+</ul>
+<p>Optional parameters are:</p>
+<ul>
+<li><strong><code>entity_name</code></strong>: to use the name of the data item as identifier. It returns the latest version of the data item.</li>
+<li><strong><code>entity_id</code></strong>: to use the uuid of the data item as identifier. It returns the specified version of the data item.</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">entity_name</span><span class="o">=</span><span class="s2">&quot;my-dataitem&quot;</span><span class="p">)</span>
+
+<span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">entity_id</span><span class="o">=</span><span class="s2">&quot;uuid-of-my-dataitem&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h6 id="import_1">Import</h6>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>file</code></strong>: file path to the dataitem yaml</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">import_dataitem</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;./some-path/my-dataitem.yaml&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="update_3">Update</h5>
+<p>To update a data item you can use the <code>update_dataitem()</code> method.</p>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>dataitem</code></strong>: data item object to be updated</li>
+</ul>
+<p>Optional parameters are:</p>
+<ul>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-dataitem&quot;</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dataitem&quot;</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-dataitem.ext&quot;</span><span class="p">)</span>
+
+<span class="n">dataitem</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;My new description&quot;</span>
+
+<span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">update_dataitem</span><span class="p">(</span><span class="n">dataitem</span><span class="o">=</span><span class="n">dataitem</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="delete_3">Delete</h5>
+<p>To delete a data item you can use the <code>delete_dataitem()</code> method.</p>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>project</code></strong>: the project in which the data item exists</li>
+</ul>
+<p>Optional parameters are:</p>
+<ul>
+<li><strong><code>entity_name</code></strong>: to use the name of the data item as identifier</li>
+<li><strong><code>entity_id</code></strong>: to use the uuid of the data item as identifier</li>
+<li><strong><code>delete_all_versions</code></strong>: if <code>True</code>, all versions of the data item will be deleted. Its mutually exclusive with the <code>entity_id</code> parameter</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-dataitem&quot;</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dataitem&quot;</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-dataitem.ext&quot;</span><span class="p">)</span>
+
+<span class="n">dh</span><span class="o">.</span><span class="n">delete_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                   <span class="n">entity_id</span><span class="o">=</span><span class="n">dataitem</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="list_1">List</h5>
+<p>To list all data items you can use the <code>list_dataitems()</code> method.</p>
+<p>Mandatory parameters are:</p>
+<ul>
+<li><strong><code>project</code></strong>: the project containing the data items</li>
+</ul>
+<p>Optional parameters are:</p>
+<ul>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">dataitems</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">list_dataitems</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="dataitem-object">Dataitem object</h4>
+<p>The <code>Dataitem</code> object is built using the <code>new_dataitem()</code> method. There are several variations of the <code>Dataitem</code> object based on the <code>kind</code> of the data item. The SDK supports the following kinds:</p>
+<ul>
+<li><strong><code>dataitem</code></strong>: represents a generic data item</li>
+<li><strong><code>table</code></strong>: represents a table data item</li>
+</ul>
+<p>For each different kind, the <code>Dataitem</code> object has a different set of methods and different <code>spec</code>, <code>status</code> and <code>metadata</code>.</p>
+<p>To create a specific data item, you must use the desired <code>kind</code> in the <code>new_dataitem()</code> method.
+All the <code>Dataitem</code> kinds have a <code>save()</code> and an <code>export()</code> method to save and export the <em>entity</em> data item into backend or locally as yaml.</p>
+<h5 id="dataitem">Dataitem</h5>
+<p>The <code>dataitem</code> kind indicates that the data item is a generic data item.
+There are no specific <code>spec</code> parameters nor specific method exposed. It acts as a generic data item.</p>
+<h5 id="table">Table</h5>
+<p>The <code>table</code> kind indicates that the data item point to a table.
+The optional <code>spec</code> parameters are:</p>
+<ul>
+<li><strong><code>schema</code></strong>: the schema of the table in <a href="https://specs.frictionlessdata.io/table-schema/">table_schema</a> format</li>
+</ul>
+<p>The <code>table</code> kind also has the following methods:</p>
+<ul>
+<li><strong><code>as_df()</code></strong>: to collect the data in a pandas dataframe</li>
+<li><strong><code>write_df()</code></strong>: to write the data item as parquet</li>
+</ul>
+<h6 id="read-table">Read table</h6>
+<p>The <code>as_df()</code> method returns the data in a pandas dataframe.
+The method accepts the following parameters:</p>
+<ul>
+<li><strong><code>format</code></strong>: the format of the data. If not provided, the format will be inferred from the file extension. We support <strong>ONLY</strong> parquet or csv.</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the pandas <code>read_parquet</code> or <code>read_csv</code> method</li>
+</ul>
+<h6 id="write-table">Write table</h6>
+<p>The <code>write_df()</code> method writes the data item as parquet.
+The method accepts the following parameters:</p>
+<ul>
+<li><strong><code>target_path</code></strong>: the path of the target parquet file. If not provided, the target path will created by the SDK and the data item will be stored in the default store</li>
+<li><strong><code>kwargs</code></strong>: keyword arguments passed to the pandas <code>to_parquet</code> method</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+<footer class="md-footer">
+  
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-copyright">
+          </div>
+                
+      </div>
+    </div>
+  </footer>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>
