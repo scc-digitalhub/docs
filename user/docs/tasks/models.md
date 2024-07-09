@@ -1,6 +1,6 @@
 # ML Models
 
-## Model management via UI
+## Management via UI
 
 Models can be created and managed as *entities* with the console. You can access them from the dashboard or the left menu. You can:
 
@@ -49,7 +49,7 @@ You can update a model by clicking `EDIT`. Greyed-out fields may not be updated.
 
 You can delete a model from either its detail page or the list of models, by clicking `DELETE`.
 
-## Model management via SDK
+## Management via SDK
 
 A `model` can be managed with the following methods.
 
@@ -90,7 +90,7 @@ Mandatory parameters are:
 - **`project`**: the project in which the model will be created
 - **`name`**: name of the model
 - **`kind`**: kind of the model
-- **`path`**: remote path where the model is stored
+- **`path`**: remote path where the model is stored. If you instead upload the model at the bottom of the form, this will be the path to where it will be stored.
 
 Optional parameters are:
 
@@ -230,7 +230,7 @@ All the `Model` kinds have a `save()` and an `export()` method to save and expor
 
 To create a specific model, you must use the desired `kind` in the `new_model()` method.
 
-##### Model
+##### Kind: model
 
 The `model` kind indicates that the model is a generic model.
 There are no specific `spec` parameters.

@@ -1,6 +1,6 @@
 # Workflows
 
-## Managing workflows with the UI
+## Management via UI
 
 Workflows can be created and managed as *entities* from the console. You can access them from the dashboard or the left menu. You can:
 
@@ -60,7 +60,7 @@ You can update a workflow by clicking `EDIT`. Greyed-out fields may not be updat
 
 You can delete a workflow from either its detail page or the list of workflows, by clicking `DELETE`.
 
-## Workflow management via SDK
+## Management via SDK
 
 A `workflow` can be managed with the following methods.
 
@@ -241,7 +241,7 @@ All the `Workflow` kinds have a `save()` and an `export()` method to save and ex
 
 To create a specific workflow, you must use the desired `kind` in the `new_workflow()` method.
 
-##### kfp
+##### Kind: kfp
 
 The `kfp` kind indicates that the workflow is a generic workflow.
 There are no specific `spec` parameters.

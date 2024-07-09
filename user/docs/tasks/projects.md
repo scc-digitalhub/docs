@@ -3,7 +3,7 @@
 A *project* represents a data and AI application and is a container for different entities (code, assets, configuration, ...) that form the application. It is the context in which you can run functions and manage models, data, and artifacts.
 Projects may be created and managed from the UI, but also by using DH Core's API, for example via Python SDK.
 
-## Managing Projects via UI
+## Management via UI
 
 In the following sections we document project management via the `Core Console` UI.
 
@@ -77,7 +77,7 @@ You can delete a project from the `Configuration` page, by clicking `Delete`. Yo
 
 ![Update conf](../images/console/project-delete.png)
 
-## Managing Projects via SDK
+## Management via SDK
 
 In the following sections we document the project CRUD methods available in the SDK and the methods exposed by the `Project` entity.
 

@@ -14,22 +14,22 @@ The data is represented in the platform as entities of different types, dependin
 
 Each data entity may be accessed and manipulated by the platform via UI or using the API, for example with SDK.
 
-## Manipulating data via UI
+## Management via UI
 
 ### Artifacts
 
-Artifacts can be created and managed as *entities* with the console. You can access them from the dashboard or the left menu. You can:
+Artifacts can be managed as *entities* from the UI. You can access them from the dashboard or the left menu. You can:
 
 - `create` a new artifact
+- `filter` artifacts by name and kind
 - `expand` an artifact to see its 5 latest versions
 - `show` the details of an artifact
 - `edit` an artifact
 - `delete` an artifact
-- `filter` artifacts by name and kind
 
 ![Artifact list](../images/console/artifacts-list.png)
 
-Here we analyze how to [create](#create), [read](#read), [update](#update) and [delete](#delete) Artifacts using the UI, similarly to what is done with the SDK.
+Here we analyze how to [create](#create), [read](#read), [update](#update) and [delete](#delete) artifacts using the UI, similarly to what can be done through the SDK.
 
 #### Create
 
@@ -41,7 +41,7 @@ Mandatory fields are:
 
 - **`Name`**: name and identifier of the artifact
 - **`Kind`**: kind of the artifact
-- (Spec) **`Path`**: remote path where the artifact is stored
+- (Spec) **`Path`**: remote path where the artifact is stored. If you instead upload the artifact at the bottom of the form, this will be the path to where it will be stored.
 
 Other fields are optional and may be updated later.
 
@@ -89,7 +89,7 @@ Data items can be created and managed as *entities* with the console. You can ac
 
 ![Dataitem list](../images/console/dataitems-list.png)
 
-Here we analyze how to [create](#create_1), [read](#read_1), [update](#update_1) and [delete](#delete_1) data items using the UI, similarly to what is done with the SDK.
+Here we analyze how to [create](#create_1), [read](#read_1), [update](#update_1) and [delete](#delete_1) data items using the UI, similarly to what can be done through the SDK.
 
 #### Create
 
@@ -101,7 +101,7 @@ Mandatory fields are:
 
 - **`Name`**: name of the dataitem
 - **`Kind`**: kind of the dataitem
-- (Spec) **`Path`**: remote path where the data item is stored
+- (Spec) **`Path`**: remote path where the data item is stored. If you instead upload the data item at the bottom of the form, this will be the path to where it will be stored.
 
 Other fields are optional and may be updated later:
 
@@ -145,7 +145,7 @@ You can update a data item by clicking `EDIT`. Greyed-out fields may not be upda
 
 You can delete a data item from either its detail page or the list of data items, by clicking `DELETE`.
 
-## Managing data with SDK
+## Management via SDK
 
 ### Artifacts
 
@@ -156,7 +156,7 @@ To manage artifacts, you need to have the `digitalhub_core` layer installed.
 In the first section, we will see how to create, read, update and delete artifacts.
 In the second section, we will see what can be done with the `Artifact` object.
 
-#### Artifact Management via SDK
+#### Artifact management via SDK
 
 An `artifact` can be managed with the following methods.
 
@@ -337,7 +337,7 @@ All the `Artifact` kinds have a `save()` and an `export()` method to save and ex
 
 To create a specific artifact, you must use the desired `kind` in the `new_artifact()` method.
 
-##### Artifact
+##### Kind: artifact
 
 The `artifact` kind indicates that the artifact is a generic artifact.
 There are no specific `spec` parameters.
@@ -563,12 +563,12 @@ For each different kind, the `Dataitem` object has a different set of methods an
 To create a specific data item, you must use the desired `kind` in the `new_dataitem()` method.
 All the `Dataitem` kinds have a `save()` and an `export()` method to save and export the *entity* data item into backend or locally as yaml.
 
-##### Dataitem
+##### Kind: dataitem
 
 The `dataitem` kind indicates that the data item is a generic data item.
 There are no specific `spec` parameters nor specific method exposed. It acts as a generic data item.
 
-##### Table
+##### Kind: table
 
 The `table` kind indicates that the data item point to a table.
 The optional `spec` parameters are:
