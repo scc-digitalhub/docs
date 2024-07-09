@@ -76,7 +76,7 @@ nav:
           - "runtimes/nefertem.md"
       - Container:
           - "runtimes/container.md"
-      - MLRun:
-          - "runtimes/mlrun.md"
+    #   - MLRun:
+    #       - "runtimes/mlrun.md"
       - Pipelines:
           - "runtimes/kfp_pipelines.md"
