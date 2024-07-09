@@ -14,7 +14,7 @@
         <link rel="prev" href="../secrets/">
       
       
-        <link rel="next" href="../jobs-runs/">
+        <link rel="next" href="../../components/dashboard/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -663,13 +663,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#managing-workflows-with-the-ui" class="md-nav__link">
+  <a href="#management-via-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      Managing workflows with the UI
+      Management via UI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Managing workflows with the UI">
+    <nav class="md-nav" aria-label="Management via UI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -714,13 +714,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#workflow-management-via-sdk" class="md-nav__link">
+  <a href="#management-via-sdk" class="md-nav__link">
     <span class="md-ellipsis">
-      Workflow management via SDK
+      Management via SDK
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Workflow management via SDK">
+    <nav class="md-nav" aria-label="Management via SDK">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -808,13 +808,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kfp" class="md-nav__link">
+  <a href="#kind-kfp" class="md-nav__link">
     <span class="md-ellipsis">
-      kfp
+      Kind: kfp
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="kfp">
+    <nav class="md-nav" aria-label="Kind: kfp">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -858,27 +858,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../jobs-runs/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Jobs and runs
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -2348,13 +2327,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#managing-workflows-with-the-ui" class="md-nav__link">
+  <a href="#management-via-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      Managing workflows with the UI
+      Management via UI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Managing workflows with the UI">
+    <nav class="md-nav" aria-label="Management via UI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2399,13 +2378,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#workflow-management-via-sdk" class="md-nav__link">
+  <a href="#management-via-sdk" class="md-nav__link">
     <span class="md-ellipsis">
-      Workflow management via SDK
+      Management via SDK
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Workflow management via SDK">
+    <nav class="md-nav" aria-label="Management via SDK">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2493,13 +2472,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#kfp" class="md-nav__link">
+  <a href="#kind-kfp" class="md-nav__link">
     <span class="md-ellipsis">
-      kfp
+      Kind: kfp
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="kfp">
+    <nav class="md-nav" aria-label="Kind: kfp">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2555,7 +2534,7 @@
 
 
 <h1 id="workflows">Workflows</h1>
-<h2 id="managing-workflows-with-the-ui">Managing workflows with the UI</h2>
+<h2 id="management-via-ui">Management via UI</h2>
 <p>Workflows can be created and managed as <em>entities</em> from the console. You can access them from the dashboard or the left menu. You can:</p>
 <ul>
 <li><code>create</code> a new workflow</li>
@@ -2597,7 +2576,7 @@
 <p>You can update a workflow by clicking <code>EDIT</code>. Greyed-out fields may not be updated.</p>
 <h3 id="delete">Delete</h3>
 <p>You can delete a workflow from either its detail page or the list of workflows, by clicking <code>DELETE</code>.</p>
-<h2 id="workflow-management-via-sdk">Workflow management via SDK</h2>
+<h2 id="management-via-sdk">Management via SDK</h2>
 <p>A <code>workflow</code> can be managed with the following methods.</p>
 <ul>
 <li><a href="#create_1"><strong><code>new_workflow</code></strong></a>: create a new workflow</li>
@@ -2740,7 +2719,7 @@ Example:</p>
 <p>For each different kind, the <code>Workflow</code> object has a different set of methods and different <code>spec</code>, <code>status</code> and <code>metadata</code>.
 All the <code>Workflow</code> kinds have a <code>save()</code> and an <code>export()</code> method to save and export the <em>entity</em> workflow into backend or locally as yaml.</p>
 <p>To create a specific workflow, you must use the desired <code>kind</code> in the <code>new_workflow()</code> method.</p>
-<h5 id="kfp">kfp</h5>
+<h5 id="kind-kfp">Kind: kfp</h5>
 <p>The <code>kfp</code> kind indicates that the workflow is a generic workflow.
 There are no specific <code>spec</code> parameters.</p>
 <p>The <code>kfp</code> kind has the following methods:</p>

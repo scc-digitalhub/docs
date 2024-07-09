@@ -516,13 +516,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#managing-functions-with-the-ui" class="md-nav__link">
+  <a href="#management-via-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      Managing functions with the UI
+      Management via UI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Managing functions with the UI">
+    <nav class="md-nav" aria-label="Management via UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -565,19 +575,57 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#managing-functions-with-sdk" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#runs" class="md-nav__link">
     <span class="md-ellipsis">
-      Managing Functions with SDK
+      Runs
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Managing Functions with SDK">
+    <nav class="md-nav" aria-label="Runs">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#create_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-and-manage" class="md-nav__link">
+    <span class="md-ellipsis">
+      View and manage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#management-via-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Management via SDK
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Management via SDK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_2" class="md-nav__link">
     <span class="md-ellipsis">
       Create
     </span>
@@ -839,27 +887,6 @@
   
   <span class="md-ellipsis">
     Workflows
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../jobs-runs/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Jobs and runs
   </span>
   
 
@@ -2333,13 +2360,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#managing-functions-with-the-ui" class="md-nav__link">
+  <a href="#management-via-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      Managing functions with the UI
+      Management via UI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Managing functions with the UI">
+    <nav class="md-nav" aria-label="Management via UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2382,19 +2419,57 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#managing-functions-with-sdk" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#runs" class="md-nav__link">
     <span class="md-ellipsis">
-      Managing Functions with SDK
+      Runs
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Managing Functions with SDK">
+    <nav class="md-nav" aria-label="Runs">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#create_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-and-manage" class="md-nav__link">
+    <span class="md-ellipsis">
+      View and manage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#management-via-sdk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Management via SDK
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Management via SDK">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create_2" class="md-nav__link">
     <span class="md-ellipsis">
       Create
     </span>
@@ -2534,10 +2609,11 @@ produces a datastt appyling the function defined as SQL code. The runtime in thi
 with respect to the function definition and execution is the following:</p>
 <ul>
 <li>define a new function providing its name, runtime, definition (e.g., source code), and configuration (e.g., dependencies). The function definition is saved by the project. Each change to the function spec creates a new function version so that the executions of different function versions are independently tracked.</li>
-<li>execute a task over the function providing the configuration of the task (e.g., the K8S resources needed for the execution), the execution parameters and inputs (if any). This creates a new task specification and a new run instances tracked by the platform. </li>
+<li>execute a task over the function providing the configuration of the task (e.g., the K8S resources needed for the execution), the execution parameters and inputs (if any). This creates a new task specification and a new run instance tracked by the platform. </li>
 </ul>
 <p>The definition and execution of the functions may be performed either via UI or via Python SDK.</p>
-<h2 id="managing-functions-with-the-ui">Managing functions with the UI</h2>
+<h2 id="management-via-ui">Management via UI</h2>
+<h3 id="functions">Functions</h3>
 <p>Functions can be created and managed as <em>entities</em> from the console. You can access them from the dashboard or the left menu. You can:</p>
 <ul>
 <li><code>create</code> a new function</li>
@@ -2548,7 +2624,8 @@ with respect to the function definition and execution is the following:</p>
 <li><code>filter</code> functions by name and kind</li>
 </ul>
 <p><img alt="Function list" src="../../images/console/function-list.png" /></p>
-<h3 id="create">Create</h3>
+<p>Here we analyze how to <a href="#create">create</a>, <a href="#read">read</a>, <a href="#update">update</a> and <a href="#delete">delete</a> functions using the UI, similarly to what can be done through the SDK.</p>
+<h4 id="create">Create</h4>
 <p>Click <code>CREATE</code> and a form will be shown:</p>
 <p><img alt="Function form" src="../../images/console/function-form.png" /></p>
 <p>Mandatory fields are:</p>
@@ -2567,19 +2644,37 @@ with respect to the function definition and execution is the following:</p>
 <li><strong><code>Audit</code></strong>: author of creation and modification</li>
 </ul>
 <p><code>Spec</code> fields will change depending on the function's kind.</p>
-<h3 id="read">Read</h3>
+<h4 id="read">Read</h4>
 <p>Click <code>SHOW</code> to view a function's details.</p>
 <p><img alt="Function read" src="../../images/console/function-read.png" /></p>
+<p>Tabs next to <code>SUMMARY</code> will change depending on the function's <code>kind</code>. Some of them allow you to create runs, but we will see this in a <a href="#runs">later section</a>.</p>
 <p>On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.</p>
 <p>The <code>INSPECTOR</code> button will show a dialog containing the resource in JSON format.</p>
 <p><img alt="Function inspector" src="../../images/console/function-inspector.png" /></p>
 <p>The <code>EXPORT</code> button will download the resource's information as a yaml file.</p>
-<h3 id="update">Update</h3>
+<h4 id="update">Update</h4>
 <p>You can update a function by clicking <code>EDIT</code>. Greyed-out fields may not be updated.</p>
-<h3 id="delete">Delete</h3>
+<h4 id="delete">Delete</h4>
 <p>You can delete a function from either its detail page or the list of functions, by clicking <code>DELETE</code>.</p>
-<h2 id="managing-functions-with-sdk">Managing Functions with SDK</h2>
-<p>In the following sections, we will see how to create, read, update and delete functions and what can be done with the <code>Function</code> object through the SDK.</p>
+<h3 id="runs">Runs</h3>
+<h4 id="create_1">Create</h4>
+<p>A run represents the execution of a task through a function. As such, the starting point to create a run is the function it is based on. Select one of the functions you created. You will notice multiple tabs at the top, next to <code>SUMMARY</code>. These tabs may differ depending on the function's <code>kind</code>.</p>
+<p><img alt="Function build tab" src="../../images/console/function-build-tab.png" /></p>
+<p>Click <code>CREATE</code> to create a new run. You will start a 3-steps process to create a run.</p>
+<p>The <strong>first</strong> step will ask for parameters that depend on the function's <code>kind</code> and the task you are creating the run for, but will generally also ask if you wish to configure resources to allocate, environment variables, secrets, volumes and node modules.</p>
+<p>The <strong>second</strong> step will ask, if applicable, to specify inputs, outputs and parameters.</p>
+<p>The <strong>third</strong> step will simply present a recap.</p>
+<p><img alt="Run create" src="../../images/console/run-create.png" /></p>
+<h4 id="view-and-manage">View and manage</h4>
+<p>By going through a function's tabs, you can access the corresponding runs, but you may also access all runs from the <em>Runs</em> section in the left menu (also available as <em>Jobs and runs</em> in the dashboard).</p>
+<p>You can filter runs by name, kind and status.</p>
+<p><img alt="Run list" src="../../images/console/run-list.png" /></p>
+<p>Click on a run to view its details.</p>
+<p><img alt="Run overview" src="../../images/console/run-overview.png" /></p>
+<p>From here, click on <code>LOGS</code> to view its logs.</p>
+<p><img alt="Run logs" src="../../images/console/run-logs.png" /></p>
+<h2 id="management-via-sdk">Management via SDK</h2>
+<p>In the following sections, we will see how to create, read, update and delete functions and what can be done with the <a href="#function-object"><code>Function</code> object</a> through the SDK, including how to <a href="#run">create <code>Run</code> objects</a>.</p>
 <p>You can manage the <code>Function</code> entity with the following methods:</p>
 <ul>
 <li><strong><code>new_function</code></strong>: create a new function</li>
@@ -2605,7 +2700,7 @@ with respect to the function definition and execution is the following:</p>
     <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;function-kind&quot;</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="create_1">Create</h3>
+<h3 id="create_2">Create</h3>
 <p>To create a function you can use the <code>new_function()</code> method.</p>
 <p>Mandatory parameters are:</p>
 <ul>

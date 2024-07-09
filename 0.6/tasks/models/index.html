@@ -600,13 +600,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#model-management-via-ui" class="md-nav__link">
+  <a href="#management-via-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      Model management via UI
+      Management via UI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Model management via UI">
+    <nav class="md-nav" aria-label="Management via UI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -651,13 +651,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#model-management-via-sdk" class="md-nav__link">
+  <a href="#management-via-sdk" class="md-nav__link">
     <span class="md-ellipsis">
-      Model management via SDK
+      Management via SDK
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Model management via SDK">
+    <nav class="md-nav" aria-label="Management via SDK">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -745,13 +745,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#model" class="md-nav__link">
+  <a href="#kind-model" class="md-nav__link">
     <span class="md-ellipsis">
-      Model
+      Kind: model
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Model">
+    <nav class="md-nav" aria-label="Kind: model">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -854,27 +854,6 @@
   
   <span class="md-ellipsis">
     Workflows
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../jobs-runs/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Jobs and runs
   </span>
   
 
@@ -2348,13 +2327,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#model-management-via-ui" class="md-nav__link">
+  <a href="#management-via-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      Model management via UI
+      Management via UI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Model management via UI">
+    <nav class="md-nav" aria-label="Management via UI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2399,13 +2378,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#model-management-via-sdk" class="md-nav__link">
+  <a href="#management-via-sdk" class="md-nav__link">
     <span class="md-ellipsis">
-      Model management via SDK
+      Management via SDK
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Model management via SDK">
+    <nav class="md-nav" aria-label="Management via SDK">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2493,13 +2472,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#model" class="md-nav__link">
+  <a href="#kind-model" class="md-nav__link">
     <span class="md-ellipsis">
-      Model
+      Kind: model
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Model">
+    <nav class="md-nav" aria-label="Kind: model">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2555,7 +2534,7 @@
 
 
 <h1 id="ml-models">ML Models</h1>
-<h2 id="model-management-via-ui">Model management via UI</h2>
+<h2 id="management-via-ui">Management via UI</h2>
 <p>Models can be created and managed as <em>entities</em> with the console. You can access them from the dashboard or the left menu. You can:</p>
 <ul>
 <li><code>create</code> a new model</li>
@@ -2587,7 +2566,7 @@
 <p>You can update a model by clicking <code>EDIT</code>. Greyed-out fields may not be updated.</p>
 <h3 id="delete">Delete</h3>
 <p>You can delete a model from either its detail page or the list of models, by clicking <code>DELETE</code>.</p>
-<h2 id="model-management-via-sdk">Model management via SDK</h2>
+<h2 id="management-via-sdk">Management via SDK</h2>
 <p>A <code>model</code> can be managed with the following methods.</p>
 <ul>
 <li><a href="#create_1"><strong><code>new_model</code></strong></a>: create a new model</li>
@@ -2621,7 +2600,7 @@ Example:</p>
 <li><strong><code>project</code></strong>: the project in which the model will be created</li>
 <li><strong><code>name</code></strong>: name of the model</li>
 <li><strong><code>kind</code></strong>: kind of the model</li>
-<li><strong><code>path</code></strong>: remote path where the model is stored</li>
+<li><strong><code>path</code></strong>: remote path where the model is stored. If you instead upload the model at the bottom of the form, this will be the path to where it will be stored.</li>
 </ul>
 <p>Optional parameters are:</p>
 <ul>
@@ -2730,7 +2709,7 @@ Example:</p>
 <p>For each different kind, the <code>Model</code> object has a different set of methods and different <code>spec</code>, <code>status</code> and <code>metadata</code>.
 All the <code>Model</code> kinds have a <code>save()</code> and an <code>export()</code> method to save and export the <em>entity</em> model into backend or locally as yaml.</p>
 <p>To create a specific model, you must use the desired <code>kind</code> in the <code>new_model()</code> method.</p>
-<h5 id="model">Model</h5>
+<h5 id="kind-model">Kind: model</h5>
 <p>The <code>model</code> kind indicates that the model is a generic model.
 There are no specific <code>spec</code> parameters.</p>
 <p>The <code>model</code> kind has the following methods:</p>
