@@ -2,7 +2,7 @@
 
 While core tools of the platform are already up and running after installation, other components have to be individually deployed. This is easily and quickly done by creating workspaces in *Coder*, by using templates.
 
-Open your browser and go to the address of the Coder instance of the Digital Hub platform which should have been provided to you. You will need to sign in and will then be directed to the *Workspaces* page.
+Open your browser and go to the address of the Coder instance of the platform which should have been provided to you. You will need to sign in and will then be directed to the *Workspaces* page.
 
 Access the *Templates* tab at the top. Available templates are listed.
 

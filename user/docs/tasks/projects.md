@@ -1,11 +1,11 @@
 # Projects
 
-A Digital Hub *project* represents a data and AI application and is a container for different entities (code, assets, configuration, ...) that form the application. It is the context in which you can run functions and manage models, data, and artifacts.
+A *project* represents a data and AI application and is a container for different entities (code, assets, configuration, ...) that form the application. It is the context in which you can run functions and manage models, data, and artifacts.
 Projects may be created and managed from the UI, but also by using DH Core's API, for example via Python SDK.
 
 ## Managing Projects via UI
 
-In the following sections we document project management via the `Digital Hub Console` UI.
+In the following sections we document project management via the `Core Console` UI.
 
 Here we detail how to [create](#create), [read](#read), [update](#update) and [delete](#delete) projects using the UI, similarly to SDK usage.
 

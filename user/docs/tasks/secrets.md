@@ -3,7 +3,7 @@
 Working with different operations may implu the usage of a sensitive values, such as external API credentials,
 storage credentials, etc. 
 
-In order to avoid embedding the credentials in the code of functions, Digital Hub supports an explicit management
+In order to avoid embedding the credentials in the code of functions, the platform supports an explicit management
 of credentials as secrets. This operation exploits the underlying secret management subsystem, such as Kubernetes Secret Manager.
 
 Besides the secrets managed natively by the platform to integrate e.g., default storage credentials, it is possible to 
@@ -14,11 +14,11 @@ At the level of the project the secrets are represented as key-value pairs. The 
 provider, and currently only Kubernetes Secret Manager is supported. Each project has its own Kubernetes secret, where 
 all the key-value pairs are stored.
 
-To create a new secret value it is possible to use Digital Hub UI console or directly via API, e.g., using the SDK. 
+To create a new secret value it is possible to use the Core UI console or directly via API, e.g., using the SDK. 
 
 ## Creating and Managing Secrets via UI
 
-Digital Hub console can be used to manage project secrets. To create a new one, it is necessary to provide 
+Core console can be used to manage project secrets. To create a new one, it is necessary to provide 
 a secret key and a value to be stored. 
 
 ![Create project secret](../images/console/secrets-create.png)

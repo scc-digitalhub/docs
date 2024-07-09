@@ -108,7 +108,7 @@ Go to your Coder instance, go to the dashboard and access Nuclio. You will notic
 
 On the left, if you wish, set *Authentication* to *Basic* and choose *Username* and *Password*.
 
-In the middle, set any *Name* you want. *Host* must use the same domain as the other components of the Digital Hub. For example, if you access Coder at `coder.my-digitalhub-instance.it`, the *Host* field should use a value like `demo-etl-api.my-digitalhub-instance.it`.
+In the middle, set any *Name* you want. *Host* must use the same domain as the other components of the platform. For example, if you access Coder at `coder.my-digitalhub-instance.it`, the *Host* field should use a value like `demo-etl-api.my-digitalhub-instance.it`.
 
 On the right, under *Primary*, you must enter the name of the function, in this case `demo-etl-api`.
 

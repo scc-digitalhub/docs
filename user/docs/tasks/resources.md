@@ -29,7 +29,7 @@ For each deployment KRM shows its name and availability of instances. In the dep
 
 ### Managing Persistent Volume Claims
 
-In certain cases, the operations developed with the Digital Hub may require more substantial disk space, e.g., for training / producing significant amounts of data. In this case, it is possible to attach to the tasks the corresponding Persistent Volume Claim (PVC) references. To create a new PVC for the use of the pipeline or Job, KRM provides the corresponding interface.
+In certain cases, the operations developed with the platform may require more substantial disk space, e.g., for training / producing significant amounts of data. In this case, it is possible to attach to the tasks the corresponding Persistent Volume Claim (PVC) references. To create a new PVC for the use of the pipeline or Job, KRM provides the corresponding interface.
 
 Accessing `Persistent Volume Claims` menu, it is possible to list and manage the PVCs of the platform. 
 

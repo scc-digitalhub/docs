@@ -2,7 +2,7 @@
 
 The platform supports data of different types to be stored and operated by the underlying storage subsystems.
 
-Digital Hub natively supports two types of storages:
+Specifically, the platform natively supports two types of storages:
 
 - *persistence* object storage (datalake S3 Minio), which manages immutable data in the form of files.
 - *operational* relational data storage (PostgreSQL database), which is used for efficient querying of mutable data. *Postgres* is rich with extensions, most notably for geo-spatial and time-series data.
