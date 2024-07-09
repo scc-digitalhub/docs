@@ -728,7 +728,7 @@
         
   
   <span class="md-ellipsis">
-    Digital Hub Core UI
+    Core UI
   </span>
   
 
@@ -2281,7 +2281,7 @@
 <p>Right now, the API is only accessible from within the environment. To make it accessible from outside, we'll need to create an API gateway.</p>
 <p>Go to your Coder instance, go to the dashboard and access Nuclio. You will notice a <code>demo-etl</code> project, which we created earlier. When you access it, you will see the <code>demo-etl-api</code> function listed, but click on the <em>API GATEWAYS</em> tab on top instead. Then, click on <em>NEW API GATEWAY</em>.</p>
 <p>On the left, if you wish, set <em>Authentication</em> to <em>Basic</em> and choose <em>Username</em> and <em>Password</em>.</p>
-<p>In the middle, set any <em>Name</em> you want. <em>Host</em> must use the same domain as the other components of the Digital Hub. For example, if you access Coder at <code>coder.my-digitalhub-instance.it</code>, the <em>Host</em> field should use a value like <code>demo-etl-api.my-digitalhub-instance.it</code>.</p>
+<p>In the middle, set any <em>Name</em> you want. <em>Host</em> must use the same domain as the other components of the platform. For example, if you access Coder at <code>coder.my-digitalhub-instance.it</code>, the <em>Host</em> field should use a value like <code>demo-etl-api.my-digitalhub-instance.it</code>.</p>
 <p>On the right, under <em>Primary</em>, you must enter the name of the function, in this case <code>demo-etl-api</code>.</p>
 <p><img alt="Nuclio APIGW image" src="../../../images/scenario-etl/nuclio-apigw.png" /></p>
 <p><em>Save</em> and, after a few moments, you will be able to call the API at the address you entered in <em>Host</em>! If you set <em>Authentication</em> to <em>Basic</em>, don't forget that you have to provide the credentials.</p>
