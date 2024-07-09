@@ -2097,7 +2097,7 @@
             
   
   <span class="md-ellipsis">
-    MLRun
+    Pipelines
   </span>
   
 
@@ -2106,72 +2106,6 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_9_5">
-            <span class="md-nav__icon md-icon"></span>
-            MLRun
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../runtimes/mlrun/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Mlrun runtime
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_9_6" id="__nav_9_6_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Pipelines
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9_6">
             <span class="md-nav__icon md-icon"></span>
             Pipelines
           </label>
@@ -2282,7 +2216,7 @@
 <li>Use <strong>DH Core</strong> UI to manage your data science and ML project and start with management activities, such as creating data items, defining and executing different functions and operations. Please note that these tasks may be done directly with the DH Core Python SDK from your interactive environment. See how to use <a href="../components/dh_console/">DH Console</a> for the management operations.</li>
 <li>To see and manage the relevant Kubernetes resources (e.g., services, jobs, secrets), as well as custom resources of the platform (e.g., databases, S3 buckets, data services), use <strong>Kubernetes Resource Manager</strong>. The operations and the functionality of the tool are described in the <a href="../tasks/resources/">Resource Management with KRM</a> section of the documentation.</li>
 <li>Use <strong>Minio</strong> browser to navigate your datalake, upload and manage the files. The datalake is based on S3 protocol and can be used also programmatically. See the <a href="../tasks/data/">Data and Transformations</a> section on how the data abstraction layer is defined and implemented.</li>
-<li>If you perform ML task with the MLRun runtime or directly with the MLRun subsystem of the platform, <strong>MLRun</strong> UI provides you the information of the data, models, jobs and services operated with MLRun. See <a href="../components/mlrun/">MLRun</a> documentation on how to use MLRun directly or the information about <a href="../runtimes/mlrun/">MLRun Runtime</a> if you want to use MLRun operations through DHCore.</li>
+<li>If you perform ML task with the Python runtime, you can prepare data, create and log ML Models using DH Core (see, e.g., <a href="../runtimes/python/">Python Runtime</a> if you want to use MLRun operations through DHCore).  Alternatively, it is possible to use MLRun subsystem of the platform, <strong>MLRun</strong> UI provides you the information of the data, models, jobs and services operated with MLRun. See <a href="../components/mlrun/">MLRun</a> documentation on how to use MLRun directly.</li>
 <li>Use <strong>Nuclio</strong> Serverless platform to deploy and expose functions as services within the platform. Nuclio is also used by MLRun to serve its ML Models as run-time operations. See <a href="../components/nuclio/">Nuclio</a> documentation on how to use Nuclio in different scenarios.</li>
 <li>It is possible to organize the data and ML operations in complex pipelines. Currently the platform relies on <strong>Kubeflow Pipelines</strong> component for this purpose, orchestrating the activities as single Kubernetes Jobs. See more on this in the corresponding <a href="../tasks/workflows/">Pipelines</a> section.</li>
 </ul>
