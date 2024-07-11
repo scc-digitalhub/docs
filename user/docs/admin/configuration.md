@@ -1,7 +1,9 @@
 # Platform Configuration
 
-TODO
+Work in progress...
+
+<!-- TODO
 
 - domain
 - ingres control
-- ...
+- ... -->

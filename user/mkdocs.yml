@@ -62,10 +62,6 @@ nav:
           - "scenarios/postgrest/intro.md"
           - "scenarios/postgrest/data.md"
           - "scenarios/postgrest/postgrest.md"
-  - Administration:
-      - "admin/overview.md"
-      - "admin/authentication.md"
-      - "admin/configuration.md"
   - Runtimes reference:
       - Python:
           - "runtimes/python.md"
@@ -79,3 +75,8 @@ nav:
     #       - "runtimes/mlrun.md"
       - Pipelines:
           - "runtimes/kfp_pipelines.md"
+  - Administration:
+      - "admin/overview.md"
+      - "admin/authentication.md"
+      - "admin/configuration.md"
+  
