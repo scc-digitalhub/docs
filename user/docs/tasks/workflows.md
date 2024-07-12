@@ -42,7 +42,7 @@ Metadata fields are optional and may be updated later.
 - **`Openmetadata`**: flag to publish metadata
 - **`Audit`**: author of creation and modification
 
-In case of a `kfp` workflow, the `fields.sourceCode.source.title` field is mandatory as well.
+In case of a `kfp` workflow, the source code and handler fields are required as well.
 
 ### Read
 
@@ -57,6 +57,11 @@ The `INSPECTOR` button will show a dialog containing the resource in JSON format
 ![Workflow inspector](../images/console/workflow-inspector.png)
 
 The `EXPORT` button will download the resource's information as a yaml file.
+
+In case of ``kfp`` workflows, the executions of the workflow instances can be monitored with the corresponding DAG viewer.
+
+![Workflow run](../images/scenario-etl/pipeline.png)
+
 
 ### Update
 
@@ -84,16 +89,10 @@ import digitalhub as dh
 
 project = dh.get_or_create_project("my-project")
 
-## From library
-workflow = dh.new_workflow(project="my-project",
-                           name="my-workflow",
-                           kind="workflow",
-                           path="s3://my-bucket/my-workflow.ext")
-
-## From project
 workflow = project.new_workflow(name="my-workflow",
-                                kind="workflow",
-                                path="s3://my-bucket/my-workflow.ext")
+                           kind="kfp",
+                           source={"source": "src/pipeline.py"}, 
+                           handler="pipeline")
 ```
 
 The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a workflow, focusing on managing workflows through the library. If you want to manage workflows from the project, you can use the `Project` object and avoid having to specify the `project` parameter.
@@ -104,28 +103,26 @@ To create a workflow you can use the `new_workflow()` method.
 
 Mandatory parameters are:
 
-- **`project`**: the project in which the workflow will be created
 - **`name`**: name of the workflow
-- **`kind`**: kind of the workflow
-- **`path`**: remote path where the workflow is stored
+- **`kind`**: kind of the workflow runtime (e.g., ``kfp``)
+- **source**: source code specification (e.g., file reference)
+- **handler**: name of the pipeline method
 
 Optional parameters are:
 
 - **`uuid`**: uuid of the workflow (this is automatically generated if not provided). **Must** be a valid uuid v4.
 - **`description`**: description of the workflow
-- **`source`**: remote source of the workflow (git repository)
 - **`labels`**: labels of the workflow
 - **`embedded`**: whether the workflow is embedded or not. If `True`, the workflow is embedded (all the spec details are expressed) in the project. If `False`, the workflow is not embedded in the project
-- **`src_path`**: local path of the workflow, used in case of upload into remote storage
 - **`kwargs`**: keyword arguments passed to the *spec* constructor
 
 Example:
 
 ```python
-workflow = dh.new_workflow(project="my-project",
-                           name="my-workflow",
-                           kind="workflow",
-                           path="s3://my-bucket/my-workflow.ext")
+workflow = project.new_workflow(name="my-workflow",
+                           kind="kfp",
+                           source={"source": "src/pipeline.py"}, 
+                           handler="pipeline")
 ```
 
 ### Read
@@ -183,8 +180,9 @@ Example:
 ```python
 workflow = dh.new_workflow(project="my-project",
                            name="my-workflow",
-                           kind="workflow",
-                           path="s3://my-bucket/my-workflow.ext")
+                           kind="kfp",
+                           source={"source": "src/pipeline.py"}, 
+                           handler="pipeline")
 
 workflow.metadata.description = "My new description"
 
@@ -209,11 +207,6 @@ Optional parameters are:
 Example:
 
 ```python
-workflow = dh.new_workflow(project="my-project",
-                           name="my-workflow",
-                           kind="workflow",
-                           path="s3://my-bucket/my-workflow.ext")
-
 dh.delete_workflow(project="my-project",
                    entity_id=workflow.id)
 ```
@@ -240,44 +233,9 @@ workflows = dh.list_workflows(project="my-project")
 
 The `Workflow` object is built using the `new_workflow()` method. There are several variations of the `Workflow` object based on the `kind` of the workflow. The SDK supports the following kinds:
 
-- **`kfp`**: represents a generic workflow
+- **`kfp`**: represents a workflow implemented with thr Kbeflow Pipleines runtime.
 
 For each different kind, the `Workflow` object has a different set of methods and different `spec`, `status` and `metadata`.
 All the `Workflow` kinds have a `save()` and an `export()` method to save and export the *entity* workflow into backend or locally as yaml.
 
 To create a specific workflow, you must use the desired `kind` in the `new_workflow()` method.
-
-##### Kind: kfp
-
-The `kfp` kind indicates that the workflow is a generic workflow.
-There are no specific `spec` parameters.
-
-The `kfp` kind has the following methods:
-
-- **`as_file()`**: collects the workflow into a local temporary file
-- **`download()`**: downloads the workflow into a specified path
-- **`upload()`**: uploads the workflow to a specified path
-
-###### As file
-
-The `as_file()` method returns the workflow as a temporary file. The file **is not** automatically deleted when the program ends.
-The method returns the path of the downloaded workflow.
-
-###### Download
-
-The `download()` method downloads the workflow into a specified path.
-The method returns the path of the downloaded workflow.
-The method accepts the following parameters:
-
-- **`target`**: remote path of the workflow to be downloaded (eg. `s3://my-bucket/my-workflow.ext`). By default, uses the `spec` `path`.
-- **`dst`**: local path where the workflow will be downloaded. By default, it is in the current working directory
-- **`overwrite`**: if `True`, the target path will be overwritten if it already exists
-
-###### Upload
-
-The `upload()` method uploads the workflow to a specified path.
-The method returns the path of the uploaded workflow.
-The method accepts the following parameters:
-
-- **`source`**: local path of the workflow to be uploaded
-- **`target`**: remote path of the workflow to be uploaded (eg. `s3://my-bucket/my-workflow.ext`). By default, uses the `spec` `path`.

@@ -1,10 +1,8 @@
 # ETL scenario introduction
 
-Here we explore a proper, realistic scenario. We collect some data regarding traffic, analyze and transform it, then expose the resulting dataset.
+Here we explore a simple yet realistic scenario. We collect some data regarding traffic, analyze and transform it, then expose the resulting dataset.
 
 Access Jupyter from your Coder instance and create a new notebook. If a Jupyter workspace isn't already available, create one from its template.
-
-Open a new notebook using the **`Python 3 (ipykernel)`** kernel.
 
 We'll now start writing code. Copy the snippets of code from here and paste them in your notebook, then execute them with *Shift+Enter*. After running, Jupyter will create a new code cell.
 
@@ -16,23 +14,16 @@ First, we initialize our environment and create a project.
 
 Import required libraries:
 ``` python
-import mlrun
+import digitalhub as dh
 import pandas as pd
 import requests
 import os
 ```
 
-Load environment variables for MLRun:
-``` python
-ENV_FILE = ".mlrun.env"
-if os.path.exists(ENV_FILE):
-    mlrun.set_env_from_file(ENV_FILE)
-```
-
-Create a MLRun project:
+Create a project:
 ``` python
 PROJECT = "demo-etl"
-project = mlrun.get_or_create_project(PROJECT, "./")
+project = dh.get_or_create_project(PROJECT)
 ```
 
 Check that the project has been created successfully:

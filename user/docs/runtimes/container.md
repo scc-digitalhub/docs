@@ -50,7 +50,7 @@ import digitalhub as dh
 
 project = dh.get_or_create_project('my_project')
 function = dh.new_function(
-    kind='dbt',
+    kind='container,
     name='my_function',
     image="hello-world:latest"
 )
