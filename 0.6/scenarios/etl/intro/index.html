@@ -2186,27 +2186,21 @@
 
 
 <h1 id="etl-scenario-introduction">ETL scenario introduction</h1>
-<p>Here we explore a proper, realistic scenario. We collect some data regarding traffic, analyze and transform it, then expose the resulting dataset.</p>
+<p>Here we explore a simple yet realistic scenario. We collect some data regarding traffic, analyze and transform it, then expose the resulting dataset.</p>
 <p>Access Jupyter from your Coder instance and create a new notebook. If a Jupyter workspace isn't already available, create one from its template.</p>
-<p>Open a new notebook using the <strong><code>Python 3 (ipykernel)</code></strong> kernel.</p>
 <p>We'll now start writing code. Copy the snippets of code from here and paste them in your notebook, then execute them with <em>Shift+Enter</em>. After running, Jupyter will create a new code cell.</p>
 <p>The notebook file covering this scenario, as well as files for individual functions, are available in the <code>documentation/examples/etl</code> path within the repository of this documentation.</p>
 <h2 id="set-up">Set-up</h2>
 <p>First, we initialize our environment and create a project.</p>
 <p>Import required libraries:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">mlrun</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">os</span>
 </code></pre></div></p>
-<p>Load environment variables for MLRun:
-<div class="highlight"><pre><span></span><code><span class="n">ENV_FILE</span> <span class="o">=</span> <span class="s2">&quot;.mlrun.env&quot;</span>
-<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ENV_FILE</span><span class="p">):</span>
-    <span class="n">mlrun</span><span class="o">.</span><span class="n">set_env_from_file</span><span class="p">(</span><span class="n">ENV_FILE</span><span class="p">)</span>
-</code></pre></div></p>
-<p>Create a MLRun project:
+<p>Create a project:
 <div class="highlight"><pre><span></span><code><span class="n">PROJECT</span> <span class="o">=</span> <span class="s2">&quot;demo-etl&quot;</span>
-<span class="n">project</span> <span class="o">=</span> <span class="n">mlrun</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="n">PROJECT</span><span class="p">,</span> <span class="s2">&quot;./&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="n">PROJECT</span><span class="p">)</span>
 </code></pre></div></p>
 <p>Check that the project has been created successfully:
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>

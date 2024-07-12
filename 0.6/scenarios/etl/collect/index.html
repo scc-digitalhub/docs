@@ -2120,31 +2120,41 @@
 <p>Define a function for downloading data as-is and persisting it in the data-lake:
 <div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">&quot;src/download-data.py&quot;</span>
 
-<span class="kn">import</span> <span class="nn">mlrun</span>
+<span class="kn">from</span> <span class="nn">digitalhub_runtime_python</span> <span class="kn">import</span> <span class="n">handler</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="nd">@mlrun</span><span class="o">.</span><span class="n">handler</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dataset&quot;</span><span class="p">])</span>
-<span class="k">def</span> <span class="nf">downloader</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="n">mlrun</span><span class="o">.</span><span class="n">DataItem</span><span class="p">):</span>
+<span class="nd">@handler</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dataset&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">downloader</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
     <span class="c1"># read and rewrite to normalize and export as data</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">as_df</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">as_df</span><span class="p">(</span><span class="n">file_format</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span>
 </code></pre></div></p>
-<p>Register the function in MLRun:
-<div class="highlight"><pre><span></span><code><span class="n">project</span><span class="o">.</span><span class="n">set_function</span><span class="p">(</span><span class="s2">&quot;src/download-data.py&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;download-data&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="s2">&quot;mlrun/mlrun&quot;</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;downloader&quot;</span><span class="p">)</span>
+<p>Register the function in Core:
+<div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+                         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;download-data&quot;</span><span class="p">,</span>
+                         <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+                         <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_9&quot;</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;src/download-data.py&quot;</span><span class="p">,</span> <span class="s2">&quot;handler&quot;</span><span class="p">:</span> <span class="s2">&quot;downloader&quot;</span><span class="p">})</span>
 </code></pre></div></p>
-<p>Then, execute it (locally) as a test. Note that it may take a few minutes.
-<div class="highlight"><pre><span></span><code><span class="n">project</span><span class="o">.</span><span class="n">run_function</span><span class="p">(</span><span class="s2">&quot;download-data&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span><span class="n">URL</span><span class="p">},</span> <span class="n">local</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<p>This code creates a new function definition that uses Python runtime (versione 3.9) pointing to the create file and the handler method that should be called.</p>
+<p>For the function to be executed, we need to pass it a reference to the data item. Let us create and register the corresponding data item:
+<div class="highlight"><pre><span></span><code><span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?lang=it&amp;timezone=Europe</span><span class="si">%2F</span><span class="s2">Rome&amp;use_labels=true&amp;delimiter=%3B&quot;</span>
+<span class="n">di</span><span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;url_data_item&quot;</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="p">,</span><span class="n">path</span><span class="o">=</span><span class="n">URL</span><span class="p">)</span>
 </code></pre></div></p>
-<p>The result will be saved as an artifact in the data store, versioned and addressable with a unique key. By default, this key follows the format <code>&lt;function-name&gt;-&lt;handler&gt;-&lt;output&gt;</code>.</p>
-<p>Write this key into a variable, so we can read the artifact:
-<div class="highlight"><pre><span></span><code><span class="n">DF_KEY</span> <span class="o">=</span> <span class="s1">&#39;store://datasets/demo-etl/download-data-downloader_dataset&#39;</span>
+<p>It is also possible to see the data item directly in the Core UI. </p>
+<p>Then, execute the function (locally) as a single job. Note that it may take a few minutes.
+<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;url&#39;</span><span class="p">:</span><span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">},</span> <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;dataset&quot;</span><span class="p">},</span> <span class="n">local_execution</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div></p>
+<p>Note that the <code>inputs</code> map should contain the references to the project entities (e.g., artifacts, dataitems, etc), while in order to pass literal values to the function execution it is necessary to use <code>parameters</code> map.</p>
+<p>The result will be saved as an artifact in the data store, versioned and addressable with a unique key. The name of the artifact will be defined according to the mapping specified in <code>outputs</code> map: it maps the handler outputs (see the <code>@handler</code> annotation and its output definition) to the expected name.</p>
+<p>To get the value of the artifact we can refer to it by the output name:
+<div class="highlight"><pre><span></span><code><span class="n">dataset_di</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="n">entity_name</span><span class="o">=</span><span class="s1">&#39;dataset&#39;</span><span class="p">)</span>
 </code></pre></div></p>
 <p>Load the data item and then into a data frame:
-<div class="highlight"><pre><span></span><code><span class="n">di</span> <span class="o">=</span> <span class="n">mlrun</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="n">DF_KEY</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">di</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">dataset_df</span> <span class="o">=</span> <span class="n">dataset_di</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span>
 </code></pre></div></p>
-<p>Run <code>df.head()</code> and, if it prints a few records, you can confirm that the data was properly stored. It's time to process this data.</p>
+<p>Run <code>dataset_df.head()</code> and, if it prints a few records, you can confirm that the data was properly stored. It's time to process this data.</p>
 
 
 

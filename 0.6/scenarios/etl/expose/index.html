@@ -2171,27 +2171,20 @@
 <p>We define an exposing function to make the data reachable via REST API:
 <div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s1">&#39;src/api.py&#39;</span>
 
-<span class="kn">import</span> <span class="nn">mlrun</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
-<span class="n">DF_URL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DF_URL&quot;</span><span class="p">]</span>
-<span class="n">df</span> <span class="o">=</span> <span class="kc">None</span>
-
 
 <span class="k">def</span> <span class="nf">init_context</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">df</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;retrieve data from </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">DF_URL</span><span class="p">))</span>
-    <span class="n">di</span> <span class="o">=</span> <span class="n">mlrun</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="n">DF_URL</span><span class="p">)</span>
+    <span class="n">di</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="n">entity_name</span><span class="o">=</span><span class="s1">&#39;dataset-measures&#39;</span><span class="p">)</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">di</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span>
-
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s2">&quot;df&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-    <span class="k">global</span> <span class="n">df</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">df</span>
+
     <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">context</span><span class="o">.</span><span class="n">Response</span><span class="p">(</span>
-            <span class="n">body</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{},</span> <span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">500</span>
-        <span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
 
     <span class="c1"># mock REST api</span>
     <span class="n">method</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">method</span>
@@ -2231,25 +2224,28 @@
 
     <span class="n">res</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">json</span><span class="p">,</span> <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="n">page</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="n">pageSize</span><span class="p">,</span> <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">total</span><span class="p">}</span>
 
-    <span class="k">return</span> <span class="n">context</span><span class="o">.</span><span class="n">Response</span><span class="p">(</span>
-        <span class="n">body</span><span class="o">=</span><span class="n">res</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{},</span> <span class="n">content_type</span><span class="o">=</span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">200</span>
-    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
 </code></pre></div></p>
 <p>Register the function:
-<div class="highlight"><pre><span></span><code><span class="n">api_fn</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">set_function</span><span class="p">(</span><span class="s2">&quot;src/api.py&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;api&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;nuclio&quot;</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="s2">&quot;mlrun/mlrun&quot;</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="s1">&#39;handler&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">api_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+                         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;api&quot;</span><span class="p">,</span>
+                         <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+                         <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_9&quot;</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;src/api.py&quot;</span><span class="p">,</span> <span class="s2">&quot;handler&quot;</span><span class="p">:</span> <span class="s2">&quot;handler&quot;</span><span class="p">,</span> <span class="s2">&quot;init_function&quot;</span><span class="p">:</span> <span class="s2">&quot;init_context&quot;</span><span class="p">})</span>
 </code></pre></div></p>
-<p>Configure the function for deployment:
-<div class="highlight"><pre><span></span><code><span class="n">DF_KEY</span> <span class="o">=</span> <span class="s1">&#39;store://datasets/demo-etl/process-measures-process_dataset-measures&#39;</span>
-<span class="n">api_fn</span><span class="o">.</span><span class="n">set_env</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;DF_URL&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">DF_KEY</span><span class="p">)</span>
-<span class="n">api_fn</span><span class="o">.</span><span class="n">with_requests</span><span class="p">(</span><span class="n">mem</span><span class="o">=</span><span class="s1">&#39;64M&#39;</span><span class="p">,</span><span class="n">cpu</span><span class="o">=</span><span class="s2">&quot;250m&quot;</span><span class="p">)</span>
-<span class="n">api_fn</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">replicas</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">project</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<p>Please note that other than defining the handler method, it is possible to define the <code>init_function</code> to define the preparatory steps.</p>
+<p>Deploy the function (perform <code>serve</code> action):
+<div class="highlight"><pre><span></span><code><span class="n">run_serve_model</span> <span class="o">=</span> <span class="n">api_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">)</span>
 </code></pre></div></p>
-<p>Deploy (may take a few minutes):
-<div class="highlight"><pre><span></span><code><span class="n">api_fn</span><span class="o">.</span><span class="n">deploy</span><span class="p">()</span>
+<p>Wait till the deployment is complete and the necessary pods and services are up and running.
+<div class="highlight"><pre><span></span><code><span class="n">run_serve_model</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
 </code></pre></div></p>
+<p>When done, the status of the run contains the <code>service</code> element with the internal service URL to be used.</p>
+<div class="highlight"><pre><span></span><code><span class="n">SERVICE_URL</span> <span class="o">=</span> <span class="n">run_serve_model</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;service&#39;</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">]</span>
+</code></pre></div>
 <p>Invoke the API and print its results:
-<div class="highlight"><pre><span></span><code><span class="n">res</span> <span class="o">=</span> <span class="n">api_fn</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="s2">&quot;/?page=5&amp;size=10&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">SERVICE_URL</span><span class="si">}</span><span class="s1">/?page=5&amp;size=10&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 </code></pre></div></p>
 <p>You can also use <em>pandas</em> to load the result in a data frame:
@@ -2258,12 +2254,16 @@
 </code></pre></div></p>
 <h2 id="create-an-api-gateway">Create an API gateway</h2>
 <p>Right now, the API is only accessible from within the environment. To make it accessible from outside, we'll need to create an API gateway.</p>
-<p>Go to your Coder instance, go to the dashboard and access Nuclio. You will notice a <code>demo-etl</code> project, which we created earlier. When you access it, you will see the <code>demo-etl-api</code> function listed, but click on the <em>API GATEWAYS</em> tab on top instead. Then, click on <em>NEW API GATEWAY</em>.</p>
-<p>On the left, if you wish, set <em>Authentication</em> to <em>Basic</em> and choose <em>Username</em> and <em>Password</em>.</p>
-<p>In the middle, set any <em>Name</em> you want. <em>Host</em> must use the same domain as the other components of the platform. For example, if you access Coder at <code>coder.my-digitalhub-instance.it</code>, the <em>Host</em> field should use a value like <code>demo-etl-api.my-digitalhub-instance.it</code>.</p>
-<p>On the right, under <em>Primary</em>, you must enter the name of the function, in this case <code>demo-etl-api</code>.</p>
-<p><img alt="Nuclio APIGW image" src="../../../images/scenario-etl/nuclio-apigw.png" /></p>
-<p><em>Save</em> and, after a few moments, you will be able to call the API at the address you entered in <em>Host</em>! If you set <em>Authentication</em> to <em>Basic</em>, don't forget that you have to provide the credentials.</p>
+<p>Go to the Kubernetes Resource Manager component (available from dashboard) and go to the API Gateways section. To expose a service it is necessary to define</p>
+<ul>
+<li>name of the gateway</li>
+<li>the service to expose</li>
+<li>the endpoint where to publish</li>
+<li>and the authentication method (right now only no authentication or basic authentication are available). in case of basic authentication it is necessary to specify  <em>Username</em> and <em>Password</em>.</li>
+</ul>
+<p>The platform by default support exposing the methods at the subdomains of <code>services.&lt;platform-domain&gt;</code>, where platform-domain is the domain of the platform instance. </p>
+<p><img alt="KRM APIGW image" src="../../../images/scenario-etl/apigw-krm.png" /></p>
+<p><em>Save</em> and, after a few moments, you will be able to call the API at the address you defined! If you set <em>Authentication</em> to <em>Basic</em>, don't forget that you have to provide the credentials.</p>
 
 
 
