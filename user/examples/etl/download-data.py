@@ -1,10 +1,10 @@
 
-import mlrun
+from digitalhub_runtime_python import handler
 import pandas as pd
 import requests
 
-@mlrun.handler(outputs=["dataset"])
-def downloader(context, url: mlrun.DataItem):  
+@handler(outputs=["dataset"])
+def downloader(project, url):
     # read and rewrite to normalize and export as data
-    df = url.as_df(format='csv',sep=";")
+    df = url.as_df(file_format='csv',sep=";")
     return df
