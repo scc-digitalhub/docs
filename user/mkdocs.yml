@@ -35,11 +35,11 @@ nav:
       - "components/nuclio.md"
       - "components/kubeflow.md"
       - Interactive Workspaces:
-        - "components/jupyter.md"
-        - "components/dremio.md"
-        - "components/sqlpad.md"
-        - "components/grafana.md"
-        - "components/vscode.md"
+          - "components/jupyter.md"
+          - "components/dremio.md"
+          - "components/sqlpad.md"
+          - "components/grafana.md"
+          - "components/vscode.md"
   - Scenarios:
       - Extract-Transform-Load:
           - "scenarios/etl/intro.md"
@@ -63,20 +63,12 @@ nav:
           - "scenarios/postgrest/data.md"
           - "scenarios/postgrest/postgrest.md"
   - Runtimes reference:
-      - Python:
-          - "runtimes/python.md"
-      - DBT:
-          - "runtimes/dbt.md"
-      - Nefertem:
-          - "runtimes/nefertem.md"
-      - Container:
-          - "runtimes/container.md"
-    #   - MLRun:
-    #       - "runtimes/mlrun.md"
-      - Pipelines:
-          - "runtimes/kfp_pipelines.md"
+      - Python: "runtimes/python.md"
+      - DBT: "runtimes/dbt.md"
+      - Nefertem: "runtimes/nefertem.md"
+      - Container: "runtimes/container.md"
+      - Pipelines: "runtimes/kfp_pipelines.md"
   - Administration:
       - "admin/overview.md"
       - "admin/authentication.md"
       - "admin/configuration.md"
-  
