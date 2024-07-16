@@ -25,7 +25,7 @@ Mandatory fields are:
 
 - **`Name`**: name and identifier of the model
 - **`Kind`**: kind of the model
-- (Spec) **`Path`**: remote path where the model is stored
+- (Spec) **`Path`**: remote path where the model is stored. If you instead upload the model at the bottom of the form, this will be the path to where it will be stored.
 
 ### Read
 
