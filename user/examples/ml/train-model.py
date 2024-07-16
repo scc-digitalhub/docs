@@ -1,9 +1,3 @@
-# Training the model
-
-Let us define the training function. 
-
-``` python
-%%writefile train-model.py
 
 import pandas as pd
 from sklearn.datasets import load_breast_cancer
@@ -42,25 +36,3 @@ def train(project, di):
             framework="sckit-learn",
             metrics=metrics
     )
-```
-
-The function takes the analysis dataset as input, creates an SVC model with the scikit-learn framework and logs the model with its metrics.
-
-Let us register it:
-``` python
-train_fn = project.new_function(
-                         name="train",
-                         kind="python",
-                         python_version="PYTHON3_9",
-                         source={"source": "train-model.py", "handler": "train"},
-                         requirements=["scikit-learn==1.2.2"])
-```
-
-and run it locally:
-``` python
-train_run = train_fn.run(action="job", inputs={"di": gen_data_run.outputs()["dataset"].key}, local_execution=False)
-```
-
-As a result, a new model is registered in the Core and may be used by different inference operations.
-
-Lastly, we'll deploy and test the model.

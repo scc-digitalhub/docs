@@ -1,42 +1,90 @@
 # Deploy and expose the model
 
-Deploying a model is as easy as defining a serverless function, providing the model reference and then deploying.
+Deploying a model is as easy as defining a serverless function: we should define the inference operation and the initialization
+operation where the model is loaded.
 
 Create a model serving function and provide the model:
 ``` python
-serving_fn = mlrun.new_function("serving", image="mlrun/mlrun", kind="serving")
-serving_fn.add_model('cancer-classifier',model_path=trainer_run.outputs["model"], class_name='mlrun.frameworks.sklearn.SklearnModelServer')
+%%writefile "serve_model.py"
+
+from pickle import load
+import pandas as pd
+import json
+
+def init(context):
+    # Qua ti setti il nome del modello che vuoi caricare
+    model_name = "cancer_classifier"
+
+    # prendi l'entity model sulla base del nome
+    model = context.project.get_model(entity_name=model_name)
+    path = model.download()
+    with open(path, "rb") as f:
+        svc_model = load(f)
+    
+    # settare model nel context di nuclio (non su project che è il context nostro)
+    setattr(context, "model", svc_model)
+
+def serve(context, event):
+
+    # Sostanzialmente invochiamo la funzione con una chiamata REST
+    # Nel body della richiesta mandi l'inference input
+    
+    if isinstance(event.body, bytes):
+        body = json.loads(event.body)
+    else:
+        body = event.body
+    context.logger.info(f"Received event: {body}")
+    inference_input = body["inference_input"]
+    
+    data = json.loads(inference_input)
+    pdf = pd.json_normalize(data)
+
+    result = context.model.predict(pdf)
+
+    # Convert the result to a pandas DataFrame, reset the index, and convert to a list
+    jsonstr = str(result.tolist())
+    return json.loads(jsonstr)
 ```
 
-Deploy (it may take several minutes):
+Register ir and deploy:
 ``` python
-project.deploy_function(serving_fn)
+func = project.new_function(name="serve_model",
+                            kind="python",
+                            python_version="PYTHON3_9",
+                            base_image = "python:3.9",
+                            source={
+                                 "source": "serve_model.py",
+                                 "handler": "serve",
+                                 "init_function": "init"},
+                            requirements=["scikit-learn==1.2.2"])
+
+serve_run = func.run(action="serve")
 ```
 
-You can now test the endpoint:
+You can now test the endpoint (using e.g., X_test):
 ``` python
-my_data = {"inputs"
-           :[[
-               1.371e+01, 2.083e+01, 9.020e+01, 5.779e+02, 1.189e-01, 1.645e-01,
-               9.366e-02, 5.985e-02, 2.196e-01, 7.451e-02, 5.835e-01, 1.377e+00,
-               3.856e+00, 5.096e+01, 8.805e-03, 3.029e-02, 2.488e-02, 1.448e-02,
-               1.486e-02, 5.412e-03, 1.706e+01, 2.814e+01, 1.106e+02, 8.970e+02,
-               1.654e-01, 3.682e-01, 2.678e-01, 1.556e-01, 3.196e-01, 1.151e-01]
-            ]
-}
-serving_fn.invoke("/v2/models/cancer-classifier/infer", body=my_data)
+import requests
+
+SERVICE_URL = serve_run.refresh().status.to_dict()["service"]["url"]
+
+with requests.post(f'http://{SERVICE_URL}', json={"inference_input":X_test.to_json(orient='records')}) as r:
+    res = r.json()
+print(res)
 ```
 
 ## Create an API gateway
 
-To make the API accessible from outside, we'll need to create an API gateway in Nuclio.
+Right now, the API is only accessible from within the environment. To make it accessible from outside, we'll need to create an API gateway.
 
-Go to your Coder instance, go to the dashboard and access Nuclio. You will notice a `demo-ml` project, which we created earlier. When you access it, you will see the `demo-ml-serving` function listed, but click on the *API GATEWAYS* tab on top instead. Then, click on *NEW API GATEWAY*.
+Go to the Kubernetes Resource Manager component (available from dashboard) and go to the API Gateways section. To expose a service it is necessary to define
 
-On the left, if you wish, set *Authentication* to *Basic* and choose *Username* and *Password*.
+- name of the gateway
+- the service to expose
+- the endpoint where to publish
+- and the authentication method (right now only no authentication or basic authentication are available). in case of basic authentication it is necessary to specify  *Username* and *Password*.
 
-In the middle, set any *Name* you want. *Host* must use the same domain as the other components of the platform. For example, if you access Coder at `coder.my-digitalhub-instance.it`, the *Host* field should use a value like `demo-ml.my-digitalhub-instance.it`.
+The platform by default support exposing the methods at the subdomains of ``services.<platform-domain>``, where platform-domain is the domain of the platform instance. 
 
-On the right, under *Primary*, you must enter the name of the function, in this case `demo-ml-serving`.
+![KRM APIGW image](../../images/scenario-etl/apigw-krm.png)
 
-*Save* and, after a few moments, you will be able to call the API at the address you entered in *Host*! If you set *Authentication* to *Basic*, don't forget that you have to provide the credentials.
+*Save* and, after a few moments, you will be able to call the API at the address you defined! If you set *Authentication* to *Basic*, don't forget that you have to provide the credentials.

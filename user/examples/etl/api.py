@@ -7,7 +7,6 @@ def init_context(context):
     di = context.project.get_dataitem(entity_name='dataset-measures')
     df = di.as_df()
     setattr(context, "df", df)
-    context.logger.info('Reading dataset-measures', df.head())
 
 def handler(context, event):
     df = context.df
