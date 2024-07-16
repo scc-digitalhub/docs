@@ -1961,23 +1961,18 @@
 
 
 <h1 id="ml-scenario-introduction">ML scenario introduction</h1>
-<p>This is a scenario that comes as an official tutorial of MLRun. In fact, its related notebook can be found in your Jupyter instance: <code>/tutorial/01-mlrun-basics.ipynb</code>. However, we skip a number of cells to keep it concise and to the point, while preserving the same functionality.</p>
-<p>To run this notebook, use the <strong><code>Python 3 (ipykernel)</code></strong> kernel. To do this, select <code>kernel</code> in the top bar and <code>change kernel</code> in the dropdown menu. A new window will open, where you can select the desired kernel.</p>
+<p>This notebook provides a quick overview of developing and deploying machine learning applications using the functionalities of the platform.</p>
 <p>The resulting edited notebook, as well as a file for the function we will create, are available in the <code>documentation/examples/ml</code> path within the repository of this documentation.</p>
 <p>We will prepare data, train a model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook.</p>
 <h2 id="set-up">Set-up</h2>
 <p>Let's initialize our working environment. Import required libraries:
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">mlrun</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">os</span>
 </code></pre></div></p>
-<p>Load environment variables for MLRun:
-<div class="highlight"><pre><span></span><code><span class="n">ENV_FILE</span> <span class="o">=</span> <span class="s2">&quot;.mlrun.env&quot;</span>
-<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ENV_FILE</span><span class="p">):</span>
-    <span class="n">mlrun</span><span class="o">.</span><span class="n">set_env_from_file</span><span class="p">(</span><span class="n">ENV_FILE</span><span class="p">)</span>
-</code></pre></div></p>
-<p>Create a MLRun project:
+<p>Create a project:
 <div class="highlight"><pre><span></span><code><span class="n">PROJECT</span> <span class="o">=</span> <span class="s2">&quot;demo-ml&quot;</span>
-<span class="n">project</span> <span class="o">=</span> <span class="n">mlrun</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="n">PROJECT</span><span class="p">,</span> <span class="s2">&quot;./&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="n">PROJECT</span><span class="p">)</span>
 </code></pre></div></p>
 <h2 id="generate-data">Generate data</h2>
 <p>Define the following function, which generates the dataset as required by the model:
@@ -1986,31 +1981,36 @@
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
 
-<span class="kn">import</span> <span class="nn">mlrun</span>
+<span class="kn">from</span> <span class="nn">digitalhub_runtime_python</span> <span class="kn">import</span> <span class="n">handler</span>
 
-
-<span class="nd">@mlrun</span><span class="o">.</span><span class="n">handler</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dataset&quot;</span><span class="p">,</span> <span class="s2">&quot;label_column&quot;</span><span class="p">])</span>
+<span class="nd">@handler</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dataset&quot;</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">breast_cancer_generator</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A function which generates the breast cancer dataset</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">breast_cancer</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
     <span class="n">breast_cancer_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
         <span class="n">data</span><span class="o">=</span><span class="n">breast_cancer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">breast_cancer</span><span class="o">.</span><span class="n">feature_names</span>
     <span class="p">)</span>
-    <span class="n">breast_cancer_labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">breast_cancer</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">])</span>
+    <span class="n">breast_cancer_labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">breast_cancer</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">])</span>
     <span class="n">breast_cancer_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
         <span class="p">[</span><span class="n">breast_cancer_dataset</span><span class="p">,</span> <span class="n">breast_cancer_labels</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
     <span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">breast_cancer_dataset</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span>
+    <span class="k">return</span> <span class="n">breast_cancer_dataset</span>
 </code></pre></div></p>
 <p>Register it:
-<div class="highlight"><pre><span></span><code><span class="n">data_gen_fn</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">set_function</span><span class="p">(</span><span class="s2">&quot;data-prep.py&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;data-prep&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="s2">&quot;mlrun/mlrun&quot;</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;breast_cancer_generator&quot;</span><span class="p">)</span>
-<span class="n">project</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">data_gen_fn</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+                         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;data-prep&quot;</span><span class="p">,</span>
+                         <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+                         <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_9&quot;</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;data-prep.py&quot;</span><span class="p">,</span> <span class="s2">&quot;handler&quot;</span><span class="p">:</span> <span class="s2">&quot;breast_cancer_generator&quot;</span><span class="p">})</span>
 </code></pre></div></p>
 <p>Run it locally:
-<div class="highlight"><pre><span></span><code><span class="n">gen_data_run</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">run_function</span><span class="p">(</span><span class="s2">&quot;data-prep&quot;</span><span class="p">,</span> <span class="n">local</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">gen_data_run</span> <span class="o">=</span> <span class="n">data_gen_fn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;dataset&quot;</span><span class="p">},</span> <span class="n">local_execution</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div></p>
-<p>You can view the state of the execution with <code>gen_data_run.state()</code> or its output with <code>gen_data_run.outputs</code>. You can see a few records from the output artifact:
-<div class="highlight"><pre><span></span><code><span class="n">gen_data_run</span><span class="o">.</span><span class="n">artifact</span><span class="p">(</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<p>You can view the state of the execution with <code>gen_data_run.status</code> or its output with <code>gen_data_run.outputs()</code>. You can see a few records from the output artifact:
+<div class="highlight"><pre><span></span><code><span class="n">gen_data_run</span><span class="o">.</span><span class="n">outputs</span><span class="p">()[</span><span class="s2">&quot;dataset&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div></p>
 <p>We will now proceed to training a model.</p>
 
