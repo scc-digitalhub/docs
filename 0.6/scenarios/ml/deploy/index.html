@@ -1957,7 +1957,7 @@ operation where the model is loaded.</p>
     <span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;cancer_classifier&quot;</span>
 
     <span class="c1"># prendi l&#39;entity model sulla base del nome</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="n">entity_name</span><span class="o">=</span><span class="n">model_name</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
     <span class="n">path</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">svc_model</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>

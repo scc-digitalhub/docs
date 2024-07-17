@@ -1924,7 +1924,7 @@
 <p>Note that the <code>inputs</code> map should contain the references to the project entities (e.g., artifacts, dataitems, etc), while in order to pass literal values to the function execution it is necessary to use <code>parameters</code> map.</p>
 <p>The result will be saved as an artifact in the data store, versioned and addressable with a unique key. The name of the artifact will be defined according to the mapping specified in <code>outputs</code> map: it maps the handler outputs (see the <code>@handler</code> annotation and its output definition) to the expected name.</p>
 <p>To get the value of the artifact we can refer to it by the output name:
-<div class="highlight"><pre><span></span><code><span class="n">dataset_di</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="n">entity_name</span><span class="o">=</span><span class="s1">&#39;dataset&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">dataset_di</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="s1">&#39;dataset&#39;</span><span class="p">)</span>
 </code></pre></div></p>
 <p>Load the data item and then into a data frame:
 <div class="highlight"><pre><span></span><code><span class="n">dataset_df</span> <span class="o">=</span> <span class="n">dataset_di</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span>
