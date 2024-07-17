@@ -35,7 +35,7 @@ process_run = process_func.run(action="job", inputs={'di': dataset_di.key}, outp
 
 The results has been saved as an artifact in the data store:
 ``` python
-spire_di = project.get_dataitem(entity_name='dataset-spire')
+spire_di = project.get_dataitem('dataset-spire')
 spire_df = spire_di.as_df()
 ```
 
@@ -121,7 +121,7 @@ process_measures_run = process_measures_func.run(action="job", inputs={'di': dat
 
 Inspect the resulting data artifact:
 ``` python
-measures_di = project.get_dataitem(entity_name='dataset-measures')
+measures_di = project.get_dataitem('dataset-measures')
 measures_df = measures_di.as_df()
 measures_df.head()
 ```

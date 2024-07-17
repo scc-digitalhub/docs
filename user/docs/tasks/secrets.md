@@ -38,7 +38,7 @@ print(secret0)
 
 To read the value of an existing secret
 ```python
-secret0 = project.get_secret(entity_name="somesecret")
+secret0 = project.get_secret("somesecret")
 print(secret0.read_secret_value())
 ```
 

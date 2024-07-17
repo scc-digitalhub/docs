@@ -53,7 +53,7 @@ The result will be saved as an artifact in the data store, versioned and address
 
 To get the value of the artifact we can refer to it by the output name:
 ``` python
-dataset_di = project.get_dataitem(entity_name='dataset')
+dataset_di = project.get_dataitem('dataset')
 ```
 
 Load the data item and then into a data frame:

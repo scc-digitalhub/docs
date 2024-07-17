@@ -9,7 +9,7 @@ import os
 
 
 def init_context(context):
-    di = context.project.get_dataitem(entity_name='dataset-measures')
+    di = context.project.get_dataitem('dataset-measures')
     df = di.as_df()
     setattr(context, "df", df)
 

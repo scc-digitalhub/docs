@@ -16,7 +16,7 @@ def init(context):
     model_name = "cancer_classifier"
 
     # prendi l'entity model sulla base del nome
-    model = context.project.get_model(entity_name=model_name)
+    model = context.project.get_model(model_name)
     path = model.download()
     with open(path, "rb") as f:
         svc_model = load(f)
