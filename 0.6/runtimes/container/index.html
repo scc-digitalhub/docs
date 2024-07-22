@@ -2194,7 +2194,7 @@
 <td>kind</td>
 <td>str</td>
 <td>Kind of the object</td>
-<td>required (must be <code>python</code>)</td>
+<td>required (must be <code>container</code>)</td>
 </tr>
 <tr>
 <td>uuid</td>
@@ -2227,6 +2227,12 @@
 <td>True</td>
 </tr>
 <tr>
+<td>image</td>
+<td>str</td>
+<td>The image to use</td>
+<td>None</td>
+</tr>
+<tr>
 <td>base_image</td>
 <td>str</td>
 <td>The base container image</td>
@@ -2251,7 +2257,7 @@
 
 <span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s1">&#39;my_project&#39;</span><span class="p">)</span>
 <span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
-    <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;dbt&#39;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;container&#39;</span><span class="p">,</span>
     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_function&#39;</span><span class="p">,</span>
     <span class="n">image</span><span class="o">=</span><span class="s2">&quot;hello-world:latest&quot;</span>
 <span class="p">)</span>
@@ -2279,7 +2285,7 @@
 <tr>
 <td>action</td>
 <td>str</td>
-<td>Task action. Must be one of: <li><code>job</code></li><li><code>serve</code></li><li><code>build</code></li></td>
+<td>Task action. Must be one of: <li><code>job</code></li><li><code>deploy</code></li><li><code>build</code></li><li><code>build</code></li></td>
 <td>required</td>
 <td></td>
 </tr>
