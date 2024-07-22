@@ -31,12 +31,13 @@ he syntax for creating a `Function` is the same as the [new_function](../entitie
 | --- | --- | --- | --- |
 | project | str | Project name | required (if creating from library) |
 | name | str | Name that identifies the object | required |
-| kind | str | Kind of the object | required (must be `python`) |
+| kind | str | Kind of the object | required (must be `container`) |
 | uuid | str | ID of the object in form of UUID | None |
 | description | str | Description of the object | None |
 | git_source | str | Remote git source for object | None |
 | labels | list[str] | List of labels | None |
 | embedded | bool | Flag to determine if object must be embedded in project | True |
+| image | str | The image to use | None |
 | base_image | str | The base container image | None (required if task is `build`) |
 | command | str | The command to run inside the container | None |
 | args | list[str] | The arguments to pass to the command | None |
@@ -48,7 +49,7 @@ import digitalhub as dh
 
 project = dh.get_or_create_project('my_project')
 function = dh.new_function(
-    kind='dbt',
+    kind='container',
     name='my_function',
     image="hello-world:latest"
 )
@@ -67,7 +68,7 @@ The Container runtime introduces three task's kinds:
 
 | Name | Type | Description | Default | Kind specific |
 | --- | --- | --- | --- | --- |
-| action | str | Task action. Must be one of: <li>`job`</li><li>`serve`</li><li>`build`</li> | required | |
+| action | str | Task action. Must be one of: <li>`job`</li><li>`deploy`</li><li>`build`</li><li>`build`</li> | required | |
 | [node_selector](../tasks/kubernetes-resources.md#node_selector) | list[dict] | Node selector | None | |
 | [volumes](../tasks/kubernetes-resources.md#volumes) | list[dict] | List of volumes | None | |
 | [resources](../tasks/kubernetes-resources.md#resources) | dict | Resources restrictions | None | |

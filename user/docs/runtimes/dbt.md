@@ -53,7 +53,7 @@ The DBT runtime introduces a function of kind `dbt` that allows you to execute s
 | --- | --- | --- | --- |
 | project | str | Project name | required (if creating from library) |
 | name | str | Name that identifies the object | required |
-| kind | str | Kind of the object | required (must be `python`) |
+| kind | str | Kind of the object | required (must be `dbt`) |
 | uuid | str | ID of the object in form of UUID | None |
 | description | str | Description of the object | None |
 | git_source | str | Remote git source for object | None |
