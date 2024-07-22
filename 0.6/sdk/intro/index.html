@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/admin/overview/">
+        <link rel="canonical" href="http://docs/user/sdk/intro/">
       
       
-        <link rel="prev" href="../../sdk/intro/">
+        <link rel="prev" href="../../runtimes/kfp_pipelines/">
       
       
-        <link rel="next" href="../authentication/">
+        <link rel="next" href="../../admin/overview/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Platform Administration Overview - Digital Hub</title>
+        <title>Python SDK Reference - Digital Hub</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#platform-administration-overview" class="md-skip">
+        <a href="#python-sdk-reference" class="md-skip">
           Skip to content
         </a>
       
@@ -199,7 +199,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Platform Administration Overview
+              Python SDK Reference
             
           </span>
         </div>
@@ -1740,19 +1740,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
@@ -1766,75 +1766,10 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             SDK Reference
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../sdk/intro/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Python SDK Reference
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Administration
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_10">
-            <span class="md-nav__icon md-icon"></span>
-            Administration
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1858,12 +1793,77 @@
         
   
   <span class="md-ellipsis">
-    Platform Administration Overview
+    Python SDK Reference
   </span>
   
 
       </a>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Administration
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Administration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../admin/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Platform Administration Overview
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1876,7 +1876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../authentication/" class="md-nav__link">
+      <a href="../../admin/authentication/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1897,7 +1897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../configuration/" class="md-nav__link">
+      <a href="../../admin/configuration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1951,12 +1951,11 @@
                   
 
 
-<h1 id="platform-administration-overview">Platform Administration Overview</h1>
-<p>When deployed in production environment, the platform setup requires additional steps for its secure and efficient use. In this 
-section we consider several aspects that are required for the platform production setup. </p>
+<h1 id="python-sdk-reference">Python SDK Reference</h1>
+<p>Python SDK provides the functionality of the Core API and allows for working with the platform entities directly from interactive workspaces or your prefered development environment.</p>
+<p>See here the SDK documentation (refer to the version corresponding to the version of the platform):</p>
 <ul>
-<li><a href="../authentication/">Authentication and Access Control</a></li>
-<li><a href="../configuration/">Platform Configuration</a></li>
+<li><a href="https://scc-digitalhub.github.io/sdk-docs">SDK Reference</a></li>
 </ul>
 
 
