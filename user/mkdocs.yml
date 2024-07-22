@@ -68,6 +68,9 @@ nav:
       - Nefertem: "runtimes/nefertem.md"
       - Container: "runtimes/container.md"
       - Pipelines: "runtimes/kfp_pipelines.md"
+
+  - SDK Reference:
+      - "sdk/intro.md"
   - Administration:
       - "admin/overview.md"
       - "admin/authentication.md"
