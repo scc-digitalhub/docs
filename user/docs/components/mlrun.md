@@ -6,6 +6,8 @@
 - Develop ML models, train and deploy them
 - Track performance and detect problems
 
+Currently, the version 1.4.1 is supported by the platform.
+
 !!! info "How to access"
 
     MLRun may be accessed from the [dashboard](dashboard.md). From its interface, you will be able to monitor projects and workflows.
@@ -13,4 +15,4 @@
 
 ## Resources
 
-- [Official documentation](https://docs.mlrun.org/en/latest/)
+- [Official documentation](https://docs.mlrun.org/en/v1.4.1/)
