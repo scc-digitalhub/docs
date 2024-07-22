@@ -199,7 +199,7 @@ Adopting MLOps means embracing the complete lifecycle of ML models, from data pr
 The platform integrates a suite of tools aimed at covering the full span of operations, enabling ML engineers to not only train and deploy models, but also manage complex pipelines, operations and services.
 
 
-![MLRun](architecture/images/mlops.png)
+![ML Ops](architecture/images/mlops.png)
 
 ### MLOps: Interactive workspaces
 

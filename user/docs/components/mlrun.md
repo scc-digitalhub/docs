@@ -6,7 +6,7 @@
 - Develop ML models, train and deploy them
 - Track performance and detect problems
 
-Currently, the version 1.4.1 is supported by the platform.
+Currently, the version 1.6.1 is supported by the platform.
 
 !!! info "How to access"
 
