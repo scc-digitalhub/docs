@@ -59,18 +59,21 @@ The DBT runtime introduces a function of kind `dbt` that allows you to execute s
 | git_source | str | Remote git source for object | None |
 | labels | list[str] | List of labels | None |
 | embedded | bool | Flag to determine if object must be embedded in project | True |
-| [source](./dbt.md#source) | dict | Source code details | required |
+| [code_src](#source) | str | URI pointer to source code | None |
+| code | str | Source code (plain text)| None |
+| base64 | str | Source code (base64 encoded)| None |
+| handler | str | Function entrypoint | None |
+| lang | str | Source code language (hint)| None |
 
 ##### Source
 
-The **`source`** parameter must be a dictionary containing reference to the sql query to be executed. The parameter is structured as a dictionary with the following keys:
+Source code can be specified with `code_src` as an URI. It can have three different type of schema:
 
-- **`source`**: the source URI to the code. It accepts the following values:
-    1. **git+***https://repo-host/repo-owner/repo.git#indication-where-to-checkout*: the code is fetched from a git repository. The link points to the root of the repository, the fragment is as simple indication of the branch, tag or commit to checkout. The runtime will clone the repository and checkout the indicated branch, tag or commit.
-    2. **zip+***s3://path-to-some-code.zip*: the code is fetched from a zip file in the *minio* digitalhub instance. The link points to the path to the zip file. The runtime will download the zip file and extract it. It fails if the zip file is not valid.
-- **`code`**: the python string code
-- **`base64`**: the base64 encoded code
-- **`lang`**: the language of the code use in the console higlihter
+| schema | value | description |
+| --- | --- | --- |
+| None | "path/to/file.ext" | Local file path |
+| git+https | "git+https://github.com/some-user/some-repo" | Remote git repository |
+| zip+s3 | "zip+s3://some-bucket/some-key.zip" | Remote zip s3 archive |
 
 #### Function example
 

@@ -24,7 +24,7 @@ The python runtime execution workflow follows roughly these steps:
 1. Define somewhere a [python function](./python.md#python-function-definition).
 2. Create a `Function` object in the platform and execute the function's `run()` method.
 3. The runtime collects the [inputs](./python.md#run) specified in the function as SDK objects (`Dataitem`, `Artifact`, `Model`).
-4. It fetches the function [source code](./python.md#source-code) and import the function handler.
+4. It fetches the function [source code](./python.md#source) and import the function handler.
 5. It [composes](./python.md#parameters-composition) the parameters for the handler function.
 6. It executes the function and map the outputs as SDK objects or as simple results.
 
@@ -139,18 +139,6 @@ sdk_function.run(inputs={"di": sdk_dataitem.key},
                           "other_result": "named_other_result"})
 ```
 
-### Source code
-
-Once you have defined your function, you can store your code in several ways. You will then refernce the source code according to a specific `Function` parameter as shown in the following table:
-
-| Format | Parameter | Type | Example |
-| --- | --- | --- | --- |
-| local file path | code_src | `str` | "path/to/file.py" |
-| remote git repository | code_src | `str` | "git+https://github.com/some-user/some-repo" |
-| zip s3 archive | code_src | `str` | "zip+s3://some-bucket/some-key.zip" |
-| base64 encoded string | base64 | `str` | "encodedstring" |
-| string | code | `str` | "def func():\n   return \"hello world\"" |
-
 ### Function
 
 The python runtime introduces a function of kind `python`.
@@ -167,17 +155,26 @@ The python runtime introduces a function of kind `python`.
 | git_source | str | Remote git source for object | None |
 | labels | list[str] | List of labels | None |
 | embedded | bool | Flag to determine if object must be embedded in project | True |
-| code_src | str | Pointer to source code | None |
+| [code_src](#source) | str | URI pointer to source code | None |
 | code | str | Source code (plain text)| None |
 | base64 | str | Source code (base64 encoded)| None |
 | handler | str | Function entrypoint | None |
-| init_function | str | Init function for remote nuclio execution | None |
 | lang | str | Source code language (hint)| None |
-| source | dict | Source code details as dictionary | None |
-| python_version | str | Python version to use, must be one of: <li>`PYTHON3_9`</li><li>`PYTHON3_10`</li> | None |
+| init_function | str | Init function for remote nuclio execution | None |
+| python_version | str | Python version to use, must be one of: <li>`PYTHON3_9`</li><li>`PYTHON3_10`</li><li>`PYTHON3_11`</li> | None |
 | image | str | Image where the function will be executed | None |
 | base_image | str | Base image used to build the image where the function will be executed | None (required when using `build` task) |
 | requirements | list | Requirements list to be installed in the image where the function will be executed | None |
+
+##### Source
+
+Source code can be specified with `code_src` as an URI. It can have three different type of schema:
+
+| schema | value | description |
+| --- | --- | --- |
+| None | "path/to/file.ext" | Local file path |
+| git+https | "git+https://github.com/some-user/some-repo" | Remote git repository |
+| zip+s3 | "zip+s3://some-bucket/some-key.zip" | Remote zip s3 archive |
 
 #### Function example
 
@@ -197,10 +194,8 @@ function = project.new_function(name="python-function",
 function = dh.new_function(project="my-project",
                            name="python-function",
                            kind="python",
-                           source={
-                              "source": "main.py",
-                              "handler": "function",
-                           }
+                           code_src="main.py",
+                           handler="function",
                            python_version="PYTHON3_9")
 ```
 

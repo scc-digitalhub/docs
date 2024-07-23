@@ -6,7 +6,7 @@ KEYS = ['00:00-01:00', '01:00-02:00', '02:00-03:00', '03:00-04:00', '04:00-05:00
 COLUMNS=['data','codice spira']
 
 @handler(outputs=["dataset-measures"])
-def process(project, di):
+def process(di):
     df = di.as_df()
     rdf = df[COLUMNS+KEYS]
     ls = []

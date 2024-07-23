@@ -83,23 +83,23 @@ The kfp runtime introduces a function of kind `kfp`.
 | git_source | str | Remote git source for object | None |
 | labels | list[str] | List of labels | None |
 | embedded | bool | Flag to determine if object must be embedded in project | True |
-| [source](#source) | dict | Source code details as dictionary | None |
-| handler | str | Function pipeline name | None |
+| [code_src](#source) | str | URI pointer to source code | None |
+| code | str | Source code (plain text)| None |
+| base64 | str | Source code (base64 encoded)| None |
+| handler | str | Function entrypoint | None |
+| lang | str | Source code language (hint)| None |
 | image | str | Image where the workflow will be executed | None |
 | tag | str | Tag of the image where the workflow will be executed | None |
 
 ##### Source
 
-Its possible to define the source code of the workflow as as dictionary.
+Source code can be specified with `code_src` as an URI. It can have three different type of schema:
 
-| Parameter | Type | Example | Description |
-| --- | --- | --- | --- |
-| source | str | "path/to/file.py" | Local file path |
-| source | str | "git+https://github.com/some-user/some-repo" | Remote git repository |
-| source | str | "zip+s3://some-bucket/some-key.zip" | Remote zip s3 archive |
-| base64 | str | "encodedstring" | Base64 encoded string |
-| code | str | "def func():\n   return \"hello world\"" | Code string |
-| handler | str | "handler" | Handler pipeline name |
+| schema | value | description |
+| --- | --- | --- |
+| None | "path/to/file.ext" | Local file path |
+| git+https | "git+https://github.com/some-user/some-repo" | Remote git repository |
+| zip+s3 | "zip+s3://some-bucket/some-key.zip" | Remote zip s3 archive |
 
 #### Workflow example
 

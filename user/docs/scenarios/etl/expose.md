@@ -1,12 +1,9 @@
 # Expose datasets as API
 
 We define an exposing function to make the data reachable via REST API:
+
 ``` python
 %%writefile 'src/api.py'
-
-import pandas as pd
-import os
-
 
 def init_context(context):
     di = context.project.get_dataitem('dataset-measures')
@@ -15,7 +12,7 @@ def init_context(context):
 
 def handler(context, event):
     df = context.df
-    
+
     if df is None:
         return ""
 
@@ -61,23 +58,27 @@ def handler(context, event):
 ```
 
 Register the function:
+
 ``` python
 api_func = project.new_function(
                          name="api",
                          kind="python",
                          python_version="PYTHON3_9",
-                         source={"source": "src/api.py", "handler": "handler", "init_function": "init_context"})
+                         code_src="src/api.py",
+                         handler="handler",
+                         init_function="init_context")
 ```
 
 Please note that other than defining the handler method, it is possible to define the ``init_function`` to define the preparatory steps.
 
-
 Deploy the function (perform ``serve`` action):
+
 ``` python
 run_serve_model = api_func.run(action="serve")
 ```
 
 Wait till the deployment is complete and the necessary pods and services are up and running.
+
 ``` python
 run_serve_model.refresh()
 ```
@@ -88,8 +89,8 @@ When done, the status of the run contains the ``service`` element with the inter
 SERVICE_URL = run_serve_model.status['service']['url']
 ```
 
-
 Invoke the API and print its results:
+
 ``` python
 with requests.get(f'{SERVICE_URL}/?page=5&size=10') as r:
     res = r.json()
@@ -97,6 +98,7 @@ print(res)
 ```
 
 You can also use *pandas* to load the result in a data frame:
+
 ``` python
 rdf = pd.read_json(res['data'], orient='records')
 rdf.head()
@@ -113,7 +115,7 @@ Go to the Kubernetes Resource Manager component (available from dashboard) and g
 - the endpoint where to publish
 - and the authentication method (right now only no authentication or basic authentication are available). in case of basic authentication it is necessary to specify  *Username* and *Password*.
 
-The platform by default support exposing the methods at the subdomains of ``services.<platform-domain>``, where platform-domain is the domain of the platform instance. 
+The platform by default support exposing the methods at the subdomains of ``services.<platform-domain>``, where platform-domain is the domain of the platform instance.
 
 ![KRM APIGW image](../../images/scenario-etl/apigw-krm.png)
 

@@ -30,13 +30,14 @@ st.line_chart(rdf, x="codice spira", y="1200-1300")
 
 ## Launch app
 
-In a new code cell, run the following to install Streamlit in the workspace. It's actually not code: the `!` at the beginning tells Jupyter to run the contents as a shell command.
+In a new code cell, run the following to install Streamlit in the workspace. Note that if you want to run a shell command from Jupyter cell, prepone it with `!`. If you want to install a package in the workspace, prepone `pip install` with `%`.
 
 ```sh
-!pip install streamlit
+%pip install streamlit
 ```
 
 Similarly, run the following command. This will start hosting the Streamlit web app, so the cell will remain running. The `browser.gatherUsageStats` flag is set to `false` because, otherwise, Streamlit will automatically gather usage stats and print a warning about it.
+
 ```sh
 !streamlit run streamlit-app.py --browser.gatherUsageStats false
 ```
@@ -90,6 +91,7 @@ Streamlit apps can be run as Docker containers. For this section, we will run th
 Download the `result.json` file obtained previously on your machine, as we will need its data for the app. Also download the `streamlit-app.py` file.
 
 Create a file named `Dockerfile` and paste the following contents in it:
+
 ``` Dockerfile
 FROM python:3.9-slim
 
@@ -117,16 +119,19 @@ ENTRYPOINT ["streamlit", "run", "streamlit-app.py", "--browser.gatherUsageStats=
 The Dockerfile describes how the image for the container will be built. In short, it installs the required libraries, copies the files you downloaded, then launches the Streamlit script.
 
 Make sure the three files are in the same directory, then open a shell in it and run the following, which builds the Docker image:
+
 ``` shell
 docker build -t streamlit .
 ```
 
 Once it's finished, you can verify the image exists with:
+
 ``` shell
 docker images
 ```
 
 Now, run a container:
+
 ``` shell
 docker run -p 8501:8501 --name streamlit-app streamlit
 ```
@@ -138,6 +143,7 @@ docker run -p 8501:8501 --name streamlit-app streamlit
 Open your browser and visit `localhost:8501` to view the data!
 
 To stop the container, simply press *Ctrl+C*, then run the following to remove the container:
+
 ``` shell
 docker rm -f streamlit-app
 ```

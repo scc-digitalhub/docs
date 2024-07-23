@@ -1,8 +1,3 @@
-
-import pandas as pd
-import os
-
-
 def init_context(context):
     di = context.project.get_dataitem('dataset-measures')
     df = di.as_df()
@@ -10,7 +5,7 @@ def init_context(context):
 
 def handler(context, event):
     df = context.df
-    
+
     if df is None:
         return ""
 

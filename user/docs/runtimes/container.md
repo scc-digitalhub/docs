@@ -37,12 +37,27 @@ he syntax for creating a `Function` is the same as the [new_function](../entitie
 | git_source | str | Remote git source for object | None |
 | labels | list[str] | List of labels | None |
 | embedded | bool | Flag to determine if object must be embedded in project | True |
+| [code_src](#source) | str | URI pointer to source code | None |
+| code | str | Source code (plain text)| None |
+| base64 | str | Source code (base64 encoded)| None |
+| handler | str | Function entrypoint | None |
+| lang | str | Source code language (hint)| None |
 | image | str | The image to use | None |
 | base_image | str | The base container image | None (required if task is `build`) |
 | command | str | The command to run inside the container | None |
 | args | list[str] | The arguments to pass to the command | None |
 
-For example:
+##### Source
+
+Source code can be specified with `code_src` as an URI. It can have three different type of schema:
+
+| schema | value | description |
+| --- | --- | --- |
+| None | "path/to/file.ext" | Local file path |
+| git+https | "git+https://github.com/some-user/some-repo" | Remote git repository |
+| zip+s3 | "zip+s3://some-bucket/some-key.zip" | Remote zip s3 archive |
+
+#### Function example
 
 ```python
 import digitalhub as dh

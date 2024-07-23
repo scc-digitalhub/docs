@@ -81,14 +81,14 @@ We create the function from the project object:
 ``` python
 function = project.new_function(name="function-dbt",
                                 kind="dbt",
-                                source={"code": sql})
+                                code=sql)
 ```
 
 The parameters are:
 
 - `name` is the identifier of the function.
 - `kind` is the type of the function. **Must be `dbt`**.
-- `source` contains the code that is the SQL we'll execute in the function. Must have key `code` and value the SQL code.query that
+- `code` contains the code that is the SQL we'll execute in the function.
 
 ## Run the function
 
@@ -124,6 +124,6 @@ We can now explore the results of the function.
 We can fetch the output table and explore it with `pandas`.
 
 ``` python
-df = run.outputs()[0]['department-60'].as_df()
+df = run.output('department-60').as_df()
 df.head()
 ```

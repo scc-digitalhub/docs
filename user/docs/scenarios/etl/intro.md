@@ -13,6 +13,7 @@ The notebook file covering this scenario, as well as files for individual functi
 First, we initialize our environment and create a project.
 
 Import required libraries:
+
 ``` python
 import digitalhub as dh
 import pandas as pd
@@ -21,12 +22,14 @@ import os
 ```
 
 Create a project:
+
 ``` python
 PROJECT = "demo-etl"
 project = dh.get_or_create_project(PROJECT)
 ```
 
 Check that the project has been created successfully:
+
 ``` python
 print(project)
 ```
@@ -36,11 +39,14 @@ print(project)
 Let's take a look at the data we will work with, which is available in CSV (Comma-Separated Values) format at a remote API.
 
 Set the URL to the data and the file name:
+
 ``` python
 URL = "https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?lang=it&timezone=Europe%2FRome&use_labels=true&delimiter=%3B"
 filename = "rilevazione-flusso-veicoli-tramite-spire-anno-2023.csv"
 ```
+
 Download the file and save it locally:
+
 ``` python
 with requests.get(URL) as r:
     with open(filename, "wb") as f:
@@ -48,6 +54,7 @@ with requests.get(URL) as r:
 ```
 
 Use *pandas* to read the file into a dataframe:
+
 ``` python
 df = pd.read_csv(filename, sep=";")
 ```

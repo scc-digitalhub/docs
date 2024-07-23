@@ -1,6 +1,7 @@
 # Workflow
 
 We define a simple workflow, which will execute all the ETL steps we have seen so far by putting their functions together:
+
 ``` python
 %%writefile "src/pipeline.py"
 
@@ -15,7 +16,7 @@ def pipeline(url):
             inputs={"url": url},
             outputs={"dataset": "dataset"},
         )
-        
+
         process_spire = pc.step(
             name="process-spire",
             function="process-spire",
@@ -34,11 +35,13 @@ def pipeline(url):
 Here in the definition we use a simple DSL to represent the execution of our functions as steps of the workflow. The DSL ``step`` method generates a KFP step that internally makes the remote execution of the corresponding job. Note that the syntax for step is similar to that of function execution.
 
 Register the workflow:
+
 ``` python
-workflow = project.new_workflow(name="pipeline", kind="kfp", source={"source": "src/pipeline.py"}, handler="pipeline")
+workflow = project.new_workflow(name="pipeline", kind="kfp", code_src="src/pipeline.py", handler="pipeline")
 ```
 
 And run it, this time remotely, passing the URL key as a parameter:
+
 ``` python
 workflow.run(parameters={"url": di.key})
 ```
@@ -46,6 +49,5 @@ workflow.run(parameters={"url": di.key})
 It is possible to monitor the execution in the Core console:
 
 ![Pipeline image](../../images/scenario-etl/pipeline.png)
-
 
 The next section will describe how to expose this newly obtained dataset as a REST API.
