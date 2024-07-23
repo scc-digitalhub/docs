@@ -1722,7 +1722,28 @@
         
   
   <span class="md-ellipsis">
-    Expose data with PostgREST
+    Create PostgREST service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/postgrest/apigw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Expose service externally
   </span>
   
 
@@ -2318,55 +2339,65 @@
 </ul>
 <p><img alt="KRM S3 policy create image" src="../../images/krm/krm_s3_user_create.png" /></p>
 <h3 id="managing-postgrest-data-services-with-krm">Managing PostgREST Data Services with KRM</h3>
-<p>Using KRM it is possible to instantiate and deploy new PostgREST Data services. A PostgREST service exposes
-a set of PostgreSQL tables as API, allowing for querying the information and even modifying it.</p>
-<p>Accessing <code>PostgREST Data Services</code> menu it is possible to list, create, and delete data service instances.</p>
+<p>You can deploy new PostgREST data services through KRM. A PostgREST service exposes a set of PostgreSQL tables through a REST API, allowing to query and even modify them.</p>
+<p>Access <code>PostgREST Data Services</code> on the left menu.</p>
 <p><img alt="KRM PostgREST image" src="../../images/krm/krm_postgrest.png" /></p>
-<p>To create a new data service, it is necessary to provide the information about the exposed schema and tables,
-the DB access information, and the role with which the service operates. This latter may be specified either as an
-existing users with the appropriate permissions or may be created if the DB access information is sufficient for 
-that operation. More specifically, it is necessary to provide the following information:</p>
+<p>When creating a new PostgREST service, fields are as follows:</p>
 <ul>
-<li>name of the resource.</li>
-<li>name of the DB schema to expose.</li>
-<li>the existing DB user (role) on behalf of which the service will operate OR the list of DB permissions to enable for this service and list of exposed DB tables. In this case the user will be created (if the connection information allows for it).</li>
-<li>Connection information with cluster DB host and port (optional), name of the database, DB username / password OR, alternatively, DB secret to use in order to extract the connection credentials. In this later case the secret should contain elements <code>USERNAME</code> and <code>PASSWORD</code>, or alternatively <code>POSTGRES_URL</code> with the full connection information.</li>
+<li>Name of the resource</li>
+<li>Schema to expose</li>
+<li>Existing DB user (role) on behalf of which the service will operate <strong>OR</strong> the list of actions to enable and the list of tables which will be exposed and on which these actions may be performed. The user will be created automatically for this second option.</li>
+<li>Connection information.<ul>
+<li>If you choose not to provide an existing secret, <strong>Host</strong>, <strong>Database</strong>, <strong>User</strong> and <strong>Password</strong> are required.</li>
+<li>If you decide to use a secret, you must provide the <strong>secret's name</strong>. Two possible configurations are valid:<ul>
+<li>If the secret contains <code>POSTGRES_URL</code> (the full connection string, as <code>postgresql://user:password@host:port/database</code>), all other connection fields will be ignored.</li>
+<li>If the secret contains <code>USERNAME</code> and <code>PASSWORD</code>, <strong>Host</strong> and <strong>Database</strong> must be provided, or the resource will enter an error state.</li>
 </ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Port is optional and defaults to <code>5432</code> if not provided.</p>
+<p>Extra connection parameters may be provided in the format <code>param1=value1&amp;param2=value2</code>. For example, to disable SSL: <code>sslmode=disable</code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Connection information</p>
-<p>Please note that in order to create a new role that will be used by the service to access the data, the user specified with the connection information
-should have sufficient privileges to perform the operation. By default, the owner/writer/readers users created by the Postgres operator do not have this permission.</p>
+<p>Please note that when no existing DB user is specified, the user specified in the <em>Connection</em> section must have sufficient privileges to manage roles. By default, the owner/writer/reader users created by the Postgres operator do not have this permission.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Schema exposure</p>
-<p>PostgREST exposes all the tables and views in the schema specified in the configuration. In order to have a better control over the exposed data, it is 
-recommended to create a separate schema (e.g., 'api') and provide the access to the data via views / stored procedures. To accomplish this, it is possible
-to use SQLPad to create schemas and views.</p>
+<p>PostgREST exposes all tables and views in the specified schema. In order to have better control over the exposed data, it is 
+recommended to create a separate schema (e.g., <code>api</code>) and provide access to data through views or stored procedures. You can use <strong>SQLPad</strong> to do this.</p>
 </div>
 <p><img alt="KRM PostgREST create image" src="../../images/krm/krm_postgrest_create.png" /></p>
-<p>This will result in a deployment of PostgREST microservice connected to the specified database and exposing PostgREST API over the specified schema and tables. 
-See <a href="https://postgrest.org/en/stable/">here</a> for further details.</p>
+<p>Check out <a href="https://postgrest.org/en/stable/">the official documentation</a> for more information on PostgREST.</p>
 <h3 id="managing-dremio-data-services-with-krm">Managing Dremio Data Services with KRM</h3>
-<p>Using KRM it is possible to instantiate and deploy new Dremio Data services that expose the data presented in Dremio views as API.</p>
-<p>Accessing <code>Dremio Data Services</code> menu it is possible to list, create, and delete data service instances.</p>
+<p>You can deploy new Dremio data services through KRM. A Dremio data service exposes Dremio data through a REST API.</p>
+<p>Access <code>Dremio Data Services</code> on the left menu.</p>
 <p><img alt="KRM Dremio image" src="../../images/krm/krm_dremio.png" /></p>
-<p>To create a new data service, provide the following:</p>
+<p>To create a new service, provide the following:</p>
 <ul>
-<li>name of the resource</li>
-<li>list of exposed virtual datasets</li>
-<li>Connection information with dremio host and port (optional), Dremio username / password OR, alternatively, a secret to use in order to extract the connection credentials. In this later case the secret should contain elements <code>USER</code> and <code>PASSWORD</code>.</li>
+<li>Name of the resource</li>
+<li>List of virtual datasets to expose</li>
+<li>Connection information.<ul>
+<li><strong>Host</strong> is required.</li>
+<li><em>Port</em> is optional and will default to <code>32010</code> if not provided.</li>
+<li><strong>User</strong> and <strong>Password</strong> are required, unless you choose to use a secret, in which case the <strong>secret's name</strong> must be provided. The secret should contain <code>USER</code> and <code>PASSWORD</code>.</li>
+<li><em>Extra connection parameters</em> are optional and may be provided in the format <code>param1=value1&amp;param2=value2</code>. For example, to disable certificate verification: <code>useEncryption=false&amp;disableCertificateVerification=true</code>.</li>
+</ul>
+</li>
 </ul>
 <p><img alt="KRM Dremio create image" src="../../images/krm/krm_dremio_create.png" /></p>
-<p>This will result in a deployment of Dremio REST microservice connected to the specified database and exposing a simple REST API over the specified datasets. </p>
+<p>A Dremio REST service will be deployed, connected to the specified Dremio instance and exposing a simple REST API over the listed datasets. </p>
 <h3 id="exposing-services-externally">Exposing services externally</h3>
 <p>Various APIs and services (e.g., PostgREST or Dremio data services, Nuclio serverless functions) may be exposed externally, outside of the platform, on a public domain of the platform. Using KRM, the operation amounts to defining a new API gateway resource that will be transformed into the corresponding ingress routing specification. </p>
 <p><img alt="KRM API gateway create image" src="../../images/krm/krm_apigw.png" /></p>
 <p>To create a new API gateway, provide the following:</p>
 <ul>
-<li>name of the gateway</li>
-<li>Kubernetes service to be exposed (select it from the dropdown list and the port will automatically be provided)</li>
-<li>host and relative path to be exposed. The host defines the full domain name to be exposed. By default it refers to the 'services' subdomain, e.g., <code>myservice.services.example.com</code> where <code>example.com</code> corresponds to the platform domain.</li>
-<li>authentication information. Currently, services may be unprotected (<code>None</code>) or protected with <code>Basic</code> authentication, specifying username and password.</li>
+<li><strong>Name</strong> of the gateway. This is merely an identifier for Kubernetes.</li>
+<li>Kubernetes <strong>service</strong> to be exposed (select it from the dropdown list and <strong>port</strong> will automatically be provided).</li>
+<li><strong>Host</strong> defines the full domain name under which the service will be exposed. By default, it refers to the <code>services</code> subdomain. If your instance of the platform is found in the <code>example.com</code> domain, this field's value could be <code>myservice.services.example.com</code>.</li>
+<li>Relative <strong>path</strong> to expose the service on.</li>
+<li><strong>Authentication</strong> information. Currently, services may be unprotected (<code>None</code>) or protected with <code>Basic</code> authentication, specifying username and password.</li>
 </ul>
 <h2 id="defining-and-managing-crd-schemas">Defining and Managing CRD Schemas</h2>
 <p>To have a valid representation of the CRs in the system, it is necessary to have a JSON specification schema for each CRDs. Normally, such schema is

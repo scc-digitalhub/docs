@@ -1629,7 +1629,28 @@
         
   
   <span class="md-ellipsis">
-    Expose data with PostgREST
+    Create PostgREST service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apigw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Expose service externally
   </span>
   
 
@@ -2055,8 +2076,8 @@
 <p><img alt="Create DB" src="../../../images/postgrest-scenario/create-db.png" /></p>
 <p>Click <em>Save</em>. You should now see your database listed.</p>
 <h2 id="add-users-to-database">Add users to database</h2>
-<p>Click <em>Show</em> on your database's entry and then <em>Add user</em> on the bottom. We will create two users: PostgREST needs one to authenticate and another to assume its role when the API is called.</p>
-<p>Create the first one as follows:</p>
+<p>PostgREST needs a user to authenticate and a user to assume its role when the API is called. These can be separate users, but for our purposes, we will create just one to fill both roles.
+Click <em>Show</em> on your database's entry and then <em>Add user</em> on the bottom. Enter values as follows:</p>
 <ul>
 <li><code>Name</code>: An identifier for Kubernetes. Type <code>db-owner</code>.</li>
 <li><code>Role</code>: The actual name on the database. Type <code>owner</code>.</li>
@@ -2064,16 +2085,12 @@
 <li><code>Secret name</code>: The secret to authenticate the user. Type <code>owner</code>.</li>
 </ul>
 <p><img alt="Create user" src="../../../images/postgrest-scenario/create-user.png" /></p>
-<p>Add a second user. This one will only be able to read data.</p>
-<ul>
-<li><code>Name</code>: An identifier for Kubernetes. Type <code>db-reader</code>.</li>
-<li><code>Role</code>: The actual name on the database. Type <code>reader</code>.</li>
-<li><code>Privileges</code>: Indicates what privileges the user will have. Pick <code>Reader</code>.</li>
-<li><code>Secret name</code>: The secret to authenticate the user. Type <code>reader</code>.</li>
-</ul>
 <h2 id="retrieve-postgres_url">Retrieve POSTGRES_URL</h2>
-<p>Together with the users, two secrets have also been created. Go to <strong>Secrets</strong> on the left menu; the list should contain two secrets with names referring the users you created.</p>
-<p>Look for the owner's secret, click <em>Show</em> and then <em>Decode</em> on the <code>POSTGRES_URL</code> entry. It will automatically copy the connection string to the clipboard. Write this down somewhere, as we will use it to log into the database and insert some data.</p>
+<p>Together with the user, a secret has also been created. Go to <strong>Secrets</strong> on the left menu; the list should contain a secret with a name referring the user you created. Find it and click <em>Show</em>.</p>
+<p>Write down the following information somewhere, as we will need it later:
+- <em>Name</em> of the secret
+- Value of <code>POSTGRES_URL</code> (click on <em>Decode</em> to obtain it)
+- Value of <code>ROLE</code></p>
 <p><img alt="Secret" src="../../../images/postgrest-scenario/secret.png" /></p>
 
 

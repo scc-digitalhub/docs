@@ -14,7 +14,7 @@
         <link rel="prev" href="../data/">
       
       
-        <link rel="next" href="../../../runtimes/python/">
+        <link rel="next" href="../apigw/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Expose data with PostgREST - Digital Hub</title>
+        <title>Create PostgREST service - Digital Hub</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#expose-data-with-postgrest" class="md-skip">
+        <a href="#create-postgrest-service" class="md-skip">
           Skip to content
         </a>
       
@@ -199,7 +199,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Expose data with PostgREST
+              Create PostgREST service
             
           </span>
         </div>
@@ -1571,7 +1571,7 @@
           
   
   <span class="md-ellipsis">
-    Expose data with PostgREST
+    Create PostgREST service
   </span>
   
 
@@ -1582,7 +1582,7 @@
         
   
   <span class="md-ellipsis">
-    Expose data with PostgREST
+    Create PostgREST service
   </span>
   
 
@@ -1625,6 +1625,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apigw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Expose service externally
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2025,21 +2046,11 @@
                   
 
 
-<h1 id="expose-data-with-postgrest">Expose data with PostgREST</h1>
+<h1 id="create-postgrest-service">Create PostgREST service</h1>
 <p>We will go back to KRM to create a PostgREST service and expose the database's table via API.</p>
 <h2 id="inspect-users-secrets">Inspect users' secrets</h2>
-<p>There are a number of parameters we need to configure PostgREST. Similarly to what you did in the first stage of the scenario, go to <strong>Secrets</strong> on the left and look for the two secrets, belonging to the <em>owner</em> and <em>reader</em> users you created.</p>
-<p>You will need the following properties, so write them down somewhere for convenience:</p>
-<p>For the <strong>owner</strong>:</p>
-<ul>
-<li>The <em>Name</em> of the secret.</li>
-<li><em>DATABASE_NAME</em></li>
-<li><em>HOST</em></li>
-</ul>
-<p>For the <strong>reader</strong>:</p>
-<ul>
-<li><em>ROLE</em></li>
-</ul>
+<p>We need some parameters to configure PostgREST. Similarly to what you did in the first stage of the scenario, go to <strong>Secrets</strong> on the left and look for the two secrets, belonging to the <em>owner</em> and <em>reader</em> users you created.</p>
+<p>For the <strong>owner</strong>, you will need the <em>Name</em> of the secret. For the <strong>reader</strong>, you will need the content of the <em>ROLE</em> field.</p>
 <h2 id="creating-the-postgrest-service">Creating the PostgREST service</h2>
 <p>Click <strong>PostgREST Data Services</strong> on the left and then <em>Create</em>.</p>
 <p>Fill the first few fields as follows:</p>
@@ -2047,17 +2058,13 @@
 <li><code>Name</code>: Anything you'd like, it's once again an identifier for Kubernetes.</li>
 <li><code>Schema</code>: <code>public</code></li>
 <li>Toggle on <code>With existing DB user</code>.</li>
-<li><code>Existing DB user name</code>: Value of the <strong>reader</strong>'s secret <em>ROLE</em>.</li>
+<li><code>Existing DB user name</code>: Value of <em>ROLE</em> in the owner's secret.</li>
 </ul>
 <p>Under <em>Connection</em>, fill the fields as follows:</p>
 <ul>
-<li><code>DB Host</code>: Value of the <strong>owner</strong>'s secret <em>HOST</em>.</li>
-<li><code>DB Port</code>: <code>5432</code>. In case the host's value contains the port, remove it from there (delete the <code>:</code> symbol) and put it here.</li>
-<li><code>Database name</code>: Value of the <strong>owner</strong>'s secret <em>DATABASE_NAME</em>.</li>
-<li>Toggle on <code>With existing secret</code>.</li>
-<li><code>Secret name</code>: The <em>Name</em> of the <strong>owner</strong>'s secret.</li>
+<li><code>Secret name</code>: <em>Name</em> of the owner's secret.</li>
 </ul>
-<p>When you hit <em>Save</em>, the PostgREST instance will be launched!</p>
+<p>When you hit <em>Save</em>, the PostgREST instance will be launched.</p>
 <p><img alt="Create PostgREST" src="../../../images/postgrest-scenario/create-postgrest.png" /></p>
 
 

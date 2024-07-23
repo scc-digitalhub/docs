@@ -176,6 +176,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://docs/user/scenarios/postgrest/apigw/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://docs/user/scenarios/postgrest/data/</loc>
          <lastmod>2024-07-23</lastmod>
          <changefreq>daily</changefreq>

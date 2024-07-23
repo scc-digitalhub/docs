@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/runtimes/container/">
+        <link rel="canonical" href="http://docs/user/scenarios/postgrest/apigw/">
       
       
-        <link rel="prev" href="../nefertem/">
+        <link rel="prev" href="../postgrest/">
       
       
-        <link rel="next" href="../kfp_pipelines/">
+        <link rel="next" href="../../../runtimes/python/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
     
     
       
-        <title>Container - Digital Hub</title>
+        <title>Expose service externally - Digital Hub</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/portal_selection.css">
+      <link rel="stylesheet" href="../../../../stylesheets/portal_selection.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/colors.css">
+      <link rel="stylesheet" href="../../../../stylesheets/colors.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#container-runtime" class="md-skip">
+        <a href="#expose-service-externally" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
 
     <!-- Link to home -->
     <a
-      href="../.."
+      href="../../.."
       title="Digital Hub"
       class="md-header__button md-logo"
       aria-label="Digital Hub"
@@ -199,7 +199,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Container
+              Expose service externally
             
           </span>
         </div>
@@ -314,7 +314,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Digital Hub" class="md-nav__button md-logo" aria-label="Digital Hub" data-md-component="logo">
+    <a href="../../.." title="Digital Hub" class="md-nav__button md-logo" aria-label="Digital Hub" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -332,7 +332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -352,7 +352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/" class="md-nav__link">
+      <a href="../../../architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -372,7 +372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quickstart/" class="md-nav__link">
+      <a href="../../../quickstart/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -392,7 +392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/" class="md-nav__link">
+      <a href="../../../installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -449,7 +449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/projects/" class="md-nav__link">
+      <a href="../../../tasks/projects/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -470,7 +470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/functions/" class="md-nav__link">
+      <a href="../../../tasks/functions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -491,7 +491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/workspaces/" class="md-nav__link">
+      <a href="../../../tasks/workspaces/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -512,7 +512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/resources/" class="md-nav__link">
+      <a href="../../../tasks/resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -533,7 +533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/data/" class="md-nav__link">
+      <a href="../../../tasks/data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/models/" class="md-nav__link">
+      <a href="../../../tasks/models/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -575,7 +575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/kubernetes-resources/" class="md-nav__link">
+      <a href="../../../tasks/kubernetes-resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -596,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/secrets/" class="md-nav__link">
+      <a href="../../../tasks/secrets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -617,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/workflows/" class="md-nav__link">
+      <a href="../../../tasks/workflows/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -682,7 +682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dashboard/" class="md-nav__link">
+      <a href="../../../components/dashboard/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -703,7 +703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dh_console/" class="md-nav__link">
+      <a href="../../../components/dh_console/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -724,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/resourcemanager/" class="md-nav__link">
+      <a href="../../../components/resourcemanager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -745,7 +745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/mlrun/" class="md-nav__link">
+      <a href="../../../components/mlrun/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -766,7 +766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/nuclio/" class="md-nav__link">
+      <a href="../../../components/nuclio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -787,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/kubeflow/" class="md-nav__link">
+      <a href="../../../components/kubeflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -845,7 +845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/jupyter/" class="md-nav__link">
+      <a href="../../../components/jupyter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -866,7 +866,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dremio/" class="md-nav__link">
+      <a href="../../../components/dremio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -887,7 +887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/sqlpad/" class="md-nav__link">
+      <a href="../../../components/sqlpad/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -908,7 +908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/grafana/" class="md-nav__link">
+      <a href="../../../components/grafana/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -929,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/vscode/" class="md-nav__link">
+      <a href="../../../components/vscode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -962,19 +962,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -988,7 +988,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Scenarios
@@ -1039,7 +1039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/intro/" class="md-nav__link">
+      <a href="../../etl/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1060,7 +1060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/collect/" class="md-nav__link">
+      <a href="../../etl/collect/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1081,7 +1081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/process/" class="md-nav__link">
+      <a href="../../etl/process/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1102,7 +1102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/pipeline/" class="md-nav__link">
+      <a href="../../etl/pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1123,7 +1123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/expose/" class="md-nav__link">
+      <a href="../../etl/expose/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1144,7 +1144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/streamlit/" class="md-nav__link">
+      <a href="../../etl/streamlit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1210,7 +1210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/ml/intro/" class="md-nav__link">
+      <a href="../../ml/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1231,7 +1231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/ml/training/" class="md-nav__link">
+      <a href="../../ml/training/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1252,7 +1252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/ml/deploy/" class="md-nav__link">
+      <a href="../../ml/deploy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1318,7 +1318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl-core/scenario/" class="md-nav__link">
+      <a href="../../etl-core/scenario/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1384,7 +1384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/validation/scenario/" class="md-nav__link">
+      <a href="../../validation/scenario/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1450,7 +1450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/dremio_grafana/scenario/" class="md-nav__link">
+      <a href="../../dremio_grafana/scenario/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1476,19 +1476,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" checked>
         
           
           <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
@@ -1502,7 +1502,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_6">
             <span class="md-nav__icon md-icon"></span>
             API via PostgREST
@@ -1516,7 +1516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/intro/" class="md-nav__link">
+      <a href="../intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1537,7 +1537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/data/" class="md-nav__link">
+      <a href="../data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1558,147 +1558,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/postgrest/" class="md-nav__link">
+      <a href="../postgrest/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Create PostgREST service
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/apigw/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Expose service externally
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Runtimes reference
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8">
-            <span class="md-nav__icon md-icon"></span>
-            Runtimes reference
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../python/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Python
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dbt/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    DBT
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../nefertem/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Nefertem
   </span>
   
 
@@ -1724,151 +1588,89 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Container
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Container
+    Expose service externally
   </span>
   
 
       </a>
       
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
   
   
   
     
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
       
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to" class="md-nav__link">
-    <span class="md-ellipsis">
-      HOW TO
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="HOW TO">
-      <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#function" class="md-nav__link">
-    <span class="md-ellipsis">
-      Function
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Function">
-      <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#function-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Function parameters
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Function parameters">
-      <ul class="md-nav__list">
+          
         
-          <li class="md-nav__item">
-  <a href="#source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Source
-    </span>
-  </a>
-  
-</li>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
         
-      </ul>
-    </nav>
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
   
-</li>
+  <span class="md-ellipsis">
+    Runtimes reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-          <li class="md-nav__item">
-  <a href="#function-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Function example
-    </span>
-  </a>
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Runtimes reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
-</li>
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../runtimes/python/" class="md-nav__link">
         
-      </ul>
-    </nav>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#task" class="md-nav__link">
-    <span class="md-ellipsis">
-      Task
-    </span>
-  </a>
+  <span class="md-ellipsis">
+    Python
+  </span>
   
-    <nav class="md-nav" aria-label="Task">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#task-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Task parameters
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#snippet-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Snippet example
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
+
+      </a>
     </li>
   
 
@@ -1881,7 +1683,70 @@
   
   
     <li class="md-nav__item">
-      <a href="../kfp_pipelines/" class="md-nav__link">
+      <a href="../../../runtimes/dbt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DBT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../runtimes/nefertem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nefertem
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../runtimes/container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../runtimes/kfp_pipelines/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1946,7 +1811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sdk/intro/" class="md-nav__link">
+      <a href="../../../sdk/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2011,7 +1876,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../admin/overview/" class="md-nav__link">
+      <a href="../../../admin/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2032,7 +1897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../admin/authentication/" class="md-nav__link">
+      <a href="../../../admin/authentication/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2053,7 +1918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../admin/configuration/" class="md-nav__link">
+      <a href="../../../admin/configuration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2094,119 +1959,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to" class="md-nav__link">
-    <span class="md-ellipsis">
-      HOW TO
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="HOW TO">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function" class="md-nav__link">
-    <span class="md-ellipsis">
-      Function
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Function">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Function parameters
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Function parameters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Source
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#function-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Function example
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#task" class="md-nav__link">
-    <span class="md-ellipsis">
-      Task
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Task">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#task-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Task parameters
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#snippet-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Snippet example
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2220,315 +1972,20 @@
                   
 
 
-<h1 id="container-runtime">Container runtime</h1>
-<p>The <strong>Container runtime</strong> allows you to create deployments, jobs and services on Kubernetes.</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<p>Python version and libraries:</p>
+<h1 id="expose-service-externally">Expose service externally</h1>
+<p>Finally, we make the PostgREST service available externally. Access <em>API Gateways</em> on the left menu and click <code>CREATE</code>.</p>
+<p>Fill the fields as follows:</p>
 <ul>
-<li><code>python &gt;= 3.9</code></li>
-<li><code>digitalhub-runtime-container</code></li>
+<li><strong>Name</strong>: name of the gateway. This is merely an identifier for Kubernetes.</li>
+<li><strong>Service</strong>: select the one referring to the PostgREST service you created. Its name may be something like <code>postgrest-my-postgrest</code>. <strong>Port</strong> will automatically be filled.</li>
+<li><strong>Host</strong>: full domain name under which the service will be exposed. By default, it refers to the <code>services</code> subdomain. If your instance of the platform is found in the <code>example.com</code> domain, this field's value could be <code>pgrest.services.example.com</code>.</li>
+<li><strong>Path</strong>: Leave the default <code>/</code>.</li>
+<li><strong>Authentication</strong>: <code>None</code>.</li>
 </ul>
-<p>The package is available on PyPI:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>digitalhub-runtime-container
-</code></pre></div>
-<h2 id="how-to">HOW TO</h2>
-<p>With the Container runtime you can launch pods and services on Kubernetes. It is built having <strong>remote online execution</strong> capabilities.</p>
-<h3 id="function">Function</h3>
-<p>The Container runtime introduces a function of kind <code>container</code> that allows you to deploy deployments, jobs and services on Kubernetes.</p>
-<p>he syntax for creating a <code>Function</code> is the same as the <a href="../entities/functions/crud.md">new_function</a> method.</p>
-<h4 id="function-parameters">Function parameters</h4>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>project</td>
-<td>str</td>
-<td>Project name</td>
-<td>required (if creating from library)</td>
-</tr>
-<tr>
-<td>name</td>
-<td>str</td>
-<td>Name that identifies the object</td>
-<td>required</td>
-</tr>
-<tr>
-<td>kind</td>
-<td>str</td>
-<td>Kind of the object</td>
-<td>required (must be <code>container</code>)</td>
-</tr>
-<tr>
-<td>uuid</td>
-<td>str</td>
-<td>ID of the object in form of UUID</td>
-<td>None</td>
-</tr>
-<tr>
-<td>description</td>
-<td>str</td>
-<td>Description of the object</td>
-<td>None</td>
-</tr>
-<tr>
-<td>git_source</td>
-<td>str</td>
-<td>Remote git source for object</td>
-<td>None</td>
-</tr>
-<tr>
-<td>labels</td>
-<td>list[str]</td>
-<td>List of labels</td>
-<td>None</td>
-</tr>
-<tr>
-<td>embedded</td>
-<td>bool</td>
-<td>Flag to determine if object must be embedded in project</td>
-<td>True</td>
-</tr>
-<tr>
-<td><a href="#source">code_src</a></td>
-<td>str</td>
-<td>URI pointer to source code</td>
-<td>None</td>
-</tr>
-<tr>
-<td>code</td>
-<td>str</td>
-<td>Source code (plain text)</td>
-<td>None</td>
-</tr>
-<tr>
-<td>base64</td>
-<td>str</td>
-<td>Source code (base64 encoded)</td>
-<td>None</td>
-</tr>
-<tr>
-<td>handler</td>
-<td>str</td>
-<td>Function entrypoint</td>
-<td>None</td>
-</tr>
-<tr>
-<td>lang</td>
-<td>str</td>
-<td>Source code language (hint)</td>
-<td>None</td>
-</tr>
-<tr>
-<td>image</td>
-<td>str</td>
-<td>The image to use</td>
-<td>None</td>
-</tr>
-<tr>
-<td>base_image</td>
-<td>str</td>
-<td>The base container image</td>
-<td>None (required if task is <code>build</code>)</td>
-</tr>
-<tr>
-<td>command</td>
-<td>str</td>
-<td>The command to run inside the container</td>
-<td>None</td>
-</tr>
-<tr>
-<td>args</td>
-<td>list[str]</td>
-<td>The arguments to pass to the command</td>
-<td>None</td>
-</tr>
-</tbody>
-</table>
-<h5 id="source">Source</h5>
-<p>Source code can be specified with <code>code_src</code> as an URI. It can have three different type of schema:</p>
-<table>
-<thead>
-<tr>
-<th>schema</th>
-<th>value</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>None</td>
-<td>"path/to/file.ext"</td>
-<td>Local file path</td>
-</tr>
-<tr>
-<td>git+https</td>
-<td>"git+https://github.com/some-user/some-repo"</td>
-<td>Remote git repository</td>
-</tr>
-<tr>
-<td>zip+s3</td>
-<td>"zip+s3://some-bucket/some-key.zip"</td>
-<td>Remote zip s3 archive</td>
-</tr>
-</tbody>
-</table>
-<h4 id="function-example">Function example</h4>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
-
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s1">&#39;my_project&#39;</span><span class="p">)</span>
-<span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
-    <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;container&#39;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_function&#39;</span><span class="p">,</span>
-    <span class="n">image</span><span class="o">=</span><span class="s2">&quot;hello-world:latest&quot;</span>
-<span class="p">)</span>
-</code></pre></div>
-<h3 id="task">Task</h3>
-<p>The Container runtime introduces three task's kinds:</p>
-<ul>
-<li><code>job</code>: to deploy a job</li>
-<li><code>deploy</code>: to deploy a deployment</li>
-<li><code>serve</code>: to deploy a service</li>
-<li><code>build</code>: to build a docker image</li>
-</ul>
-<h4 id="task-parameters">Task parameters</h4>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-<th>Default</th>
-<th>Kind specific</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>action</td>
-<td>str</td>
-<td>Task action. Must be one of: <li><code>job</code></li><li><code>deploy</code></li><li><code>build</code></li><li><code>build</code></li></td>
-<td>required</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../../tasks/kubernetes-resources/#node_selector">node_selector</a></td>
-<td>list[dict]</td>
-<td>Node selector</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../../tasks/kubernetes-resources/#volumes">volumes</a></td>
-<td>list[dict]</td>
-<td>List of volumes</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../../tasks/kubernetes-resources/#resources">resources</a></td>
-<td>dict</td>
-<td>Resources restrictions</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../../tasks/kubernetes-resources/#affinity">affinity</a></td>
-<td>dict</td>
-<td>Affinity</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../../tasks/kubernetes-resources/#tolerations">tolerations</a></td>
-<td>list[dict]</td>
-<td>Tolerations</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../../tasks/kubernetes-resources/#envs">envs</a></td>
-<td>list[dict]</td>
-<td>Env variables</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="../../tasks/kubernetes-resources/#secrets">secrets</a></td>
-<td>list[str]</td>
-<td>List of secret names</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>backoff_limit</td>
-<td>int</td>
-<td>Backoff limit</td>
-<td>None</td>
-<td><code>job</code></td>
-</tr>
-<tr>
-<td>schedule</td>
-<td>str</td>
-<td>Schedule for the job</td>
-<td>None</td>
-<td><code>job</code></td>
-</tr>
-<tr>
-<td>instructions</td>
-<td>list[str]</td>
-<td>Build instructions to be executed as RUN instructions in Dockerfile.<br>Example: <code>apt install git -y</code></td>
-<td>None</td>
-<td><code>build</code></td>
-</tr>
-<tr>
-<td>replicas</td>
-<td>int</td>
-<td>Number of replicas</td>
-<td>None</td>
-<td><code>deploy</code>, <code>serve</code></td>
-</tr>
-<tr>
-<td>service_port</td>
-<td>list[dict]</td>
-<td>Service port where to expose the service. Must be: [{port: port, target_port: target_port}, ...]</td>
-<td><code>NodePort</code></td>
-<td><code>serve</code></td>
-</tr>
-<tr>
-<td>service_type</td>
-<td>str</td>
-<td>Service type. Must be one of: <li><code>ClusterIP</code></li><li><code>LoadBalancer</code></li><li><code>NodePort</code></li></td>
-<td><code>NodePort</code></td>
-<td><code>serve</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="snippet-example">Snippet example</h2>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
-
-<span class="n">proj</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;project-container&quot;</span><span class="p">)</span>
-
-<span class="c1"># Run container</span>
-<span class="n">func_cont</span> <span class="o">=</span> <span class="n">proj</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;function-container&quot;</span><span class="p">,</span>
-                              <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">,</span>
-                              <span class="n">image</span><span class="o">=</span><span class="s2">&quot;hello-world:latest&quot;</span><span class="p">)</span>
-<span class="n">run_cont</span> <span class="o">=</span> <span class="n">func_cont</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;job&quot;</span><span class="p">)</span>
-
-
-<span class="c1"># Serve stremlit service</span>
-<span class="n">func_serve</span> <span class="o">=</span> <span class="n">proj</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;function-serve&quot;</span><span class="p">,</span>
-                               <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">,</span>
-                               <span class="n">image</span><span class="o">=</span><span class="s2">&quot;ghcr.io/scc-digitalhub/digitalhub-core-streamlit:latest&quot;</span><span class="p">)</span>
-<span class="n">run_serve</span> <span class="o">=</span> <span class="n">func_serve</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span>
-                           <span class="n">service_ports</span><span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8085</span><span class="p">,</span> <span class="s2">&quot;target_port&quot;</span><span class="p">:</span> <span class="mi">8501</span><span class="p">}],</span>
-                           <span class="n">service_type</span><span class="o">=</span><span class="s2">&quot;NodePort&quot;</span><span class="p">)</span>
-</code></pre></div>
+<p><img alt="Create APIGW" src="../../../images/postgrest-scenario/create-apigw.png" /></p>
+<p>Save and the API gateway will be created. You can try a simple query like the following, even in your browser, to view its results (remember to change domain according to your case):
+<div class="highlight"><pre><span></span><code>https://pgrest.services.example.com/readings?limit=3
+</code></pre></div></p>
 
 
 
@@ -2568,10 +2025,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>
