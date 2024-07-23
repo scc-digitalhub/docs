@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.76a95c52.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -2430,25 +2430,65 @@ You will then refernce the source code according to a specific <code>Function</c
 <td>True</td>
 </tr>
 <tr>
-<td><a href="./#source">source</a></td>
-<td>dict</td>
-<td>Source code details</td>
-<td>required</td>
+<td><a href="#source">code_src</a></td>
+<td>str</td>
+<td>URI pointer to source code</td>
+<td>None</td>
+</tr>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>Source code (plain text)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>base64</td>
+<td>str</td>
+<td>Source code (base64 encoded)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>str</td>
+<td>Function entrypoint</td>
+<td>None</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>str</td>
+<td>Source code language (hint)</td>
+<td>None</td>
 </tr>
 </tbody>
 </table>
 <h5 id="source">Source</h5>
-<p>The <strong><code>source</code></strong> parameter must be a dictionary containing reference to the sql query to be executed. The parameter is structured as a dictionary with the following keys:</p>
-<ul>
-<li><strong><code>source</code></strong>: the source URI to the code. It accepts the following values:<ol>
-<li><strong>git+</strong><em>https://repo-host/repo-owner/repo.git#indication-where-to-checkout</em>: the code is fetched from a git repository. The link points to the root of the repository, the fragment is as simple indication of the branch, tag or commit to checkout. The runtime will clone the repository and checkout the indicated branch, tag or commit.</li>
-<li><strong>zip+</strong><em>s3://path-to-some-code.zip</em>: the code is fetched from a zip file in the <em>minio</em> digitalhub instance. The link points to the path to the zip file. The runtime will download the zip file and extract it. It fails if the zip file is not valid.</li>
-</ol>
-</li>
-<li><strong><code>code</code></strong>: the python string code</li>
-<li><strong><code>base64</code></strong>: the base64 encoded code</li>
-<li><strong><code>lang</code></strong>: the language of the code use in the console higlihter</li>
-</ul>
+<p>Source code can be specified with <code>code_src</code> as an URI. It can have three different type of schema:</p>
+<table>
+<thead>
+<tr>
+<th>schema</th>
+<th>value</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>"path/to/file.ext"</td>
+<td>Local file path</td>
+</tr>
+<tr>
+<td>git+https</td>
+<td>"git+https://github.com/some-user/some-repo"</td>
+<td>Remote git repository</td>
+</tr>
+<tr>
+<td>zip+s3</td>
+<td>"zip+s3://some-bucket/some-key.zip"</td>
+<td>Remote zip s3 archive</td>
+</tr>
+</tbody>
+</table>
 <h4 id="function-example">Function example</h4>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
 

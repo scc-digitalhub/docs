@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.76a95c52.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1753,15 +1753,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#source-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      Source code
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#function" class="md-nav__link">
     <span class="md-ellipsis">
       Function
@@ -1777,6 +1768,21 @@
       Function parameters
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Function parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2240,15 +2246,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#source-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      Source code
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#function" class="md-nav__link">
     <span class="md-ellipsis">
       Function
@@ -2264,6 +2261,21 @@
       Function parameters
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Function parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2386,7 +2398,7 @@ The python runtime execution workflow follows roughly these steps:</p>
 <li>Define somewhere a <a href="./#python-function-definition">python function</a>.</li>
 <li>Create a <code>Function</code> object in the platform and execute the function's <code>run()</code> method.</li>
 <li>The runtime collects the <a href="./#run">inputs</a> specified in the function as SDK objects (<code>Dataitem</code>, <code>Artifact</code>, <code>Model</code>).</li>
-<li>It fetches the function <a href="./#source-code">source code</a> and import the function handler.</li>
+<li>It fetches the function <a href="./#source">source code</a> and import the function handler.</li>
 <li>It <a href="./#parameters-composition">composes</a> the parameters for the handler function.</li>
 <li>It executes the function and map the outputs as SDK objects or as simple results.</li>
 </ol>
@@ -2486,50 +2498,6 @@ Ther are some rules you need to follow:</p>
                  <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="s2">&quot;named_result&quot;</span><span class="p">,</span>
                           <span class="s2">&quot;other_result&quot;</span><span class="p">:</span> <span class="s2">&quot;named_other_result&quot;</span><span class="p">})</span>
 </code></pre></div>
-<h3 id="source-code">Source code</h3>
-<p>Once you have defined your function, you can store your code in several ways. You will then refernce the source code according to a specific <code>Function</code> parameter as shown in the following table:</p>
-<table>
-<thead>
-<tr>
-<th>Format</th>
-<th>Parameter</th>
-<th>Type</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>local file path</td>
-<td>code_src</td>
-<td><code>str</code></td>
-<td>"path/to/file.py"</td>
-</tr>
-<tr>
-<td>remote git repository</td>
-<td>code_src</td>
-<td><code>str</code></td>
-<td>"git+https://github.com/some-user/some-repo"</td>
-</tr>
-<tr>
-<td>zip s3 archive</td>
-<td>code_src</td>
-<td><code>str</code></td>
-<td>"zip+s3://some-bucket/some-key.zip"</td>
-</tr>
-<tr>
-<td>base64 encoded string</td>
-<td>base64</td>
-<td><code>str</code></td>
-<td>"encodedstring"</td>
-</tr>
-<tr>
-<td>string</td>
-<td>code</td>
-<td><code>str</code></td>
-<td>"def func():\n   return \"hello world\""</td>
-</tr>
-</tbody>
-</table>
 <h3 id="function">Function</h3>
 <p>The python runtime introduces a function of kind <code>python</code>.</p>
 <h4 id="function-parameters">Function parameters</h4>
@@ -2592,9 +2560,9 @@ Ther are some rules you need to follow:</p>
 <td>True</td>
 </tr>
 <tr>
-<td>code_src</td>
+<td><a href="#source">code_src</a></td>
 <td>str</td>
-<td>Pointer to source code</td>
+<td>URI pointer to source code</td>
 <td>None</td>
 </tr>
 <tr>
@@ -2616,27 +2584,21 @@ Ther are some rules you need to follow:</p>
 <td>None</td>
 </tr>
 <tr>
-<td>init_function</td>
-<td>str</td>
-<td>Init function for remote nuclio execution</td>
-<td>None</td>
-</tr>
-<tr>
 <td>lang</td>
 <td>str</td>
 <td>Source code language (hint)</td>
 <td>None</td>
 </tr>
 <tr>
-<td>source</td>
-<td>dict</td>
-<td>Source code details as dictionary</td>
+<td>init_function</td>
+<td>str</td>
+<td>Init function for remote nuclio execution</td>
 <td>None</td>
 </tr>
 <tr>
 <td>python_version</td>
 <td>str</td>
-<td>Python version to use, must be one of: <li><code>PYTHON3_9</code></li><li><code>PYTHON3_10</code></li></td>
+<td>Python version to use, must be one of: <li><code>PYTHON3_9</code></li><li><code>PYTHON3_10</code></li><li><code>PYTHON3_11</code></li></td>
 <td>None</td>
 </tr>
 <tr>
@@ -2659,6 +2621,34 @@ Ther are some rules you need to follow:</p>
 </tr>
 </tbody>
 </table>
+<h5 id="source">Source</h5>
+<p>Source code can be specified with <code>code_src</code> as an URI. It can have three different type of schema:</p>
+<table>
+<thead>
+<tr>
+<th>schema</th>
+<th>value</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>"path/to/file.ext"</td>
+<td>Local file path</td>
+</tr>
+<tr>
+<td>git+https</td>
+<td>"git+https://github.com/some-user/some-repo"</td>
+<td>Remote git repository</td>
+</tr>
+<tr>
+<td>zip+s3</td>
+<td>"zip+s3://some-bucket/some-key.zip"</td>
+<td>Remote zip s3 archive</td>
+</tr>
+</tbody>
+</table>
 <h4 id="function-example">Function example</h4>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub_core</span> <span class="k">as</span> <span class="nn">dh</span>
 
@@ -2675,10 +2665,8 @@ Ther are some rules you need to follow:</p>
 <span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
                            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;python-function&quot;</span><span class="p">,</span>
                            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
-                           <span class="n">source</span><span class="o">=</span><span class="p">{</span>
-                              <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;main.py&quot;</span><span class="p">,</span>
-                              <span class="s2">&quot;handler&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span>
-                           <span class="p">}</span>
+                           <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;main.py&quot;</span><span class="p">,</span>
+                           <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;function&quot;</span><span class="p">,</span>
                            <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_9&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="task">Task</h3>

@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.76a95c52.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -2008,12 +2008,8 @@
 
 
 <h1 id="expose-datasets-as-api">Expose datasets as API</h1>
-<p>We define an exposing function to make the data reachable via REST API:
+<p>We define an exposing function to make the data reachable via REST API:</p>
 <div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s1">&#39;src/api.py&#39;</span>
-
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">os</span>
-
 
 <span class="k">def</span> <span class="nf">init_context</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="n">di</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="s1">&#39;dataset-measures&#39;</span><span class="p">)</span>
@@ -2065,33 +2061,35 @@
     <span class="n">res</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">json</span><span class="p">,</span> <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="n">page</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="n">pageSize</span><span class="p">,</span> <span class="s2">&quot;total&quot;</span><span class="p">:</span> <span class="n">total</span><span class="p">}</span>
 
     <span class="k">return</span> <span class="n">res</span>
-</code></pre></div></p>
-<p>Register the function:
+</code></pre></div>
+<p>Register the function:</p>
 <div class="highlight"><pre><span></span><code><span class="n">api_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
                          <span class="n">name</span><span class="o">=</span><span class="s2">&quot;api&quot;</span><span class="p">,</span>
                          <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
                          <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_9&quot;</span><span class="p">,</span>
-                         <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;src/api.py&quot;</span><span class="p">,</span> <span class="s2">&quot;handler&quot;</span><span class="p">:</span> <span class="s2">&quot;handler&quot;</span><span class="p">,</span> <span class="s2">&quot;init_function&quot;</span><span class="p">:</span> <span class="s2">&quot;init_context&quot;</span><span class="p">})</span>
-</code></pre></div></p>
+                         <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/api.py&quot;</span><span class="p">,</span>
+                         <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;handler&quot;</span><span class="p">,</span>
+                         <span class="n">init_function</span><span class="o">=</span><span class="s2">&quot;init_context&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p>Please note that other than defining the handler method, it is possible to define the <code>init_function</code> to define the preparatory steps.</p>
-<p>Deploy the function (perform <code>serve</code> action):
+<p>Deploy the function (perform <code>serve</code> action):</p>
 <div class="highlight"><pre><span></span><code><span class="n">run_serve_model</span> <span class="o">=</span> <span class="n">api_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">)</span>
-</code></pre></div></p>
-<p>Wait till the deployment is complete and the necessary pods and services are up and running.
+</code></pre></div>
+<p>Wait till the deployment is complete and the necessary pods and services are up and running.</p>
 <div class="highlight"><pre><span></span><code><span class="n">run_serve_model</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>When done, the status of the run contains the <code>service</code> element with the internal service URL to be used.</p>
 <div class="highlight"><pre><span></span><code><span class="n">SERVICE_URL</span> <span class="o">=</span> <span class="n">run_serve_model</span><span class="o">.</span><span class="n">status</span><span class="p">[</span><span class="s1">&#39;service&#39;</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">]</span>
 </code></pre></div>
-<p>Invoke the API and print its results:
+<p>Invoke the API and print its results:</p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">SERVICE_URL</span><span class="si">}</span><span class="s1">/?page=5&amp;size=10&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
-</code></pre></div></p>
-<p>You can also use <em>pandas</em> to load the result in a data frame:
+</code></pre></div>
+<p>You can also use <em>pandas</em> to load the result in a data frame:</p>
 <div class="highlight"><pre><span></span><code><span class="n">rdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">)</span>
 <span class="n">rdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="create-an-api-gateway">Create an API gateway</h2>
 <p>Right now, the API is only accessible from within the environment. To make it accessible from outside, we'll need to create an API gateway.</p>
 <p>Go to the Kubernetes Resource Manager component (available from dashboard) and go to the API Gateways section. To expose a service it is necessary to define</p>
@@ -2101,7 +2099,7 @@
 <li>the endpoint where to publish</li>
 <li>and the authentication method (right now only no authentication or basic authentication are available). in case of basic authentication it is necessary to specify  <em>Username</em> and <em>Password</em>.</li>
 </ul>
-<p>The platform by default support exposing the methods at the subdomains of <code>services.&lt;platform-domain&gt;</code>, where platform-domain is the domain of the platform instance. </p>
+<p>The platform by default support exposing the methods at the subdomains of <code>services.&lt;platform-domain&gt;</code>, where platform-domain is the domain of the platform instance.</p>
 <p><img alt="KRM APIGW image" src="../../../images/scenario-etl/apigw-krm.png" /></p>
 <p><em>Save</em> and, after a few moments, you will be able to call the API at the address you defined! If you set <em>Authentication</em> to <em>Basic</em>, don't forget that you have to provide the credentials.</p>
 

@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.76a95c52.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -1953,11 +1953,10 @@
 
 <h1 id="process-the-data">Process the data</h1>
 <p>Raw data, as ingested from the remote API, is usually not suitable for consumption. We'll define a set of functions to process it.</p>
-<p>Define a function to derive the dataset, group information about spires (<code>id</code>, <code>geolocation</code>, <code>address</code>, <code>name</code>...) and save the result in the store:
+<p>Define a function to derive the dataset, group information about spires (<code>id</code>, <code>geolocation</code>, <code>address</code>, <code>name</code>...) and save the result in the store:</p>
 <div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">&quot;src/process-spire.py&quot;</span>
 
 <span class="kn">from</span> <span class="nn">digitalhub_runtime_python</span> <span class="kn">import</span> <span class="n">handler</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">KEYS</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;codice spira&#39;</span><span class="p">,</span><span class="s1">&#39;longitudine&#39;</span><span class="p">,</span><span class="s1">&#39;latitudine&#39;</span><span class="p">,</span><span class="s1">&#39;Livello&#39;</span><span class="p">,</span><span class="s1">&#39;tipologia&#39;</span><span class="p">,</span><span class="s1">&#39;codice&#39;</span><span class="p">,</span><span class="s1">&#39;codice arco&#39;</span><span class="p">,</span><span class="s1">&#39;codice via&#39;</span><span class="p">,</span><span class="s1">&#39;Nome via&#39;</span><span class="p">,</span> <span class="s1">&#39;stato&#39;</span><span class="p">,</span><span class="s1">&#39;direzione&#39;</span><span class="p">,</span><span class="s1">&#39;angolo&#39;</span><span class="p">,</span><span class="s1">&#39;geopoint&#39;</span><span class="p">]</span>
 
@@ -1965,23 +1964,23 @@
 <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">di</span><span class="p">):</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">di</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span>
     <span class="n">sdf</span><span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;codice spira&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[</span><span class="n">KEYS</span><span class="p">]</span>
-
     <span class="k">return</span> <span class="n">sdf</span>
-</code></pre></div></p>
-<p>Register the function in Core:
+</code></pre></div>
+<p>Register the function in Core:</p>
 <div class="highlight"><pre><span></span><code><span class="n">process_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
                          <span class="n">name</span><span class="o">=</span><span class="s2">&quot;process-spire&quot;</span><span class="p">,</span>
                          <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
                          <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_9&quot;</span><span class="p">,</span>
-                         <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;src/process-spire.py&quot;</span><span class="p">,</span> <span class="s2">&quot;handler&quot;</span><span class="p">:</span> <span class="s2">&quot;process&quot;</span><span class="p">})</span>
-</code></pre></div></p>
-<p>Run it locally:
+                         <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/process-spire.py&quot;</span><span class="p">,</span>
+                         <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;process&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Run it locally:</p>
 <div class="highlight"><pre><span></span><code><span class="n">process_run</span> <span class="o">=</span> <span class="n">process_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;di&#39;</span><span class="p">:</span> <span class="n">dataset_di</span><span class="o">.</span><span class="n">key</span><span class="p">},</span> <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;dataset-spire&#39;</span><span class="p">:</span> <span class="s1">&#39;dataset-spire&#39;</span><span class="p">},</span> <span class="n">local_execution</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div></p>
-<p>The results has been saved as an artifact in the data store:
+</code></pre></div>
+<p>The results has been saved as an artifact in the data store:</p>
 <div class="highlight"><pre><span></span><code><span class="n">spire_di</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="s1">&#39;dataset-spire&#39;</span><span class="p">)</span>
 <span class="n">spire_df</span> <span class="o">=</span> <span class="n">spire_di</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>Now you can view the results with <code>spire_df.head()</code>.</p>
 <p>Let's transform the data. We will extract a new data frame, where each record contains the identifier of the spire and how much traffic it detected on a specific date and time slot.</p>
 <p>A record that looks like this:</p>
@@ -2047,12 +2046,12 @@
 </tr>
 </tbody>
 </table>
-<p>Load the data item into a data frame and remove all columns except for date, spire identifier and recorded values for each time slot:
+<p>Load the data item into a data frame and remove all columns except for date, spire identifier and recorded values for each time slot:</p>
 <div class="highlight"><pre><span></span><code><span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;00:00-01:00&#39;</span><span class="p">,</span> <span class="s1">&#39;01:00-02:00&#39;</span><span class="p">,</span> <span class="s1">&#39;02:00-03:00&#39;</span><span class="p">,</span> <span class="s1">&#39;03:00-04:00&#39;</span><span class="p">,</span> <span class="s1">&#39;04:00-05:00&#39;</span><span class="p">,</span> <span class="s1">&#39;05:00-06:00&#39;</span><span class="p">,</span> <span class="s1">&#39;06:00-07:00&#39;</span><span class="p">,</span> <span class="s1">&#39;07:00-08:00&#39;</span><span class="p">,</span> <span class="s1">&#39;08:00-09:00&#39;</span><span class="p">,</span> <span class="s1">&#39;09:00-10:00&#39;</span><span class="p">,</span> <span class="s1">&#39;10:00-11:00&#39;</span><span class="p">,</span> <span class="s1">&#39;11:00-12:00&#39;</span><span class="p">,</span> <span class="s1">&#39;12:00-13:00&#39;</span><span class="p">,</span> <span class="s1">&#39;13:00-14:00&#39;</span><span class="p">,</span> <span class="s1">&#39;14:00-15:00&#39;</span><span class="p">,</span> <span class="s1">&#39;15:00-16:00&#39;</span><span class="p">,</span> <span class="s1">&#39;16:00-17:00&#39;</span><span class="p">,</span> <span class="s1">&#39;17:00-18:00&#39;</span><span class="p">,</span> <span class="s1">&#39;18:00-19:00&#39;</span><span class="p">,</span> <span class="s1">&#39;19:00-20:00&#39;</span><span class="p">,</span> <span class="s1">&#39;20:00-21:00&#39;</span><span class="p">,</span> <span class="s1">&#39;21:00-22:00&#39;</span><span class="p">,</span> <span class="s1">&#39;22:00-23:00&#39;</span><span class="p">,</span> <span class="s1">&#39;23:00-24:00&#39;</span><span class="p">]</span>
 <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="s1">&#39;codice spira&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">keys</span>
 <span class="n">rdf</span> <span class="o">=</span> <span class="n">dataset_df</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
-</code></pre></div></p>
-<p>Derive dataset for recorded traffic within each time slot for each spire:
+</code></pre></div>
+<p>Derive dataset for recorded traffic within each time slot for each spire:</p>
 <div class="highlight"><pre><span></span><code><span class="n">ls</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys</span><span class="p">:</span>
@@ -2064,9 +2063,9 @@
     <span class="n">ls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vdf</span><span class="p">)</span>
 
 <span class="n">edf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">ls</span><span class="p">)</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>You can verify with <code>edf.head()</code> that the derived dataset matches our goal.</p>
-<p>Let's put this into a function:
+<p>Let's put this into a function:</p>
 <div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">&quot;src/process-measures.py&quot;</span>
 
 <span class="kn">from</span> <span class="nn">digitalhub_runtime_python</span> <span class="kn">import</span> <span class="n">handler</span>
@@ -2088,22 +2087,23 @@
         <span class="n">ls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xdf</span><span class="p">[[</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;codice spira&#39;</span><span class="p">,</span><span class="s1">&#39;value&#39;</span><span class="p">]])</span>
     <span class="n">edf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">ls</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">edf</span>
-</code></pre></div></p>
-<p>Register it:
+</code></pre></div>
+<p>Register it:</p>
 <div class="highlight"><pre><span></span><code><span class="n">process_measures_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
                          <span class="n">name</span><span class="o">=</span><span class="s2">&quot;process-measures&quot;</span><span class="p">,</span>
                          <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
                          <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_9&quot;</span><span class="p">,</span>
-                         <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;src/process-measures.py&quot;</span><span class="p">,</span> <span class="s2">&quot;handler&quot;</span><span class="p">:</span> <span class="s2">&quot;process&quot;</span><span class="p">})</span>
-</code></pre></div></p>
-<p>Run it locally:
+                         <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/process-measures.py&quot;</span><span class="p">,</span>
+                         <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;process&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Run it locally:</p>
 <div class="highlight"><pre><span></span><code><span class="n">process_measures_run</span> <span class="o">=</span> <span class="n">process_measures_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;di&#39;</span><span class="p">:</span> <span class="n">dataset_di</span><span class="o">.</span><span class="n">key</span><span class="p">},</span> <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;dataset-measures&#39;</span><span class="p">:</span> <span class="s1">&#39;dataset-measures&#39;</span><span class="p">},</span> <span class="n">local_execution</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div></p>
-<p>Inspect the resulting data artifact:
+</code></pre></div>
+<p>Inspect the resulting data artifact:</p>
 <div class="highlight"><pre><span></span><code><span class="n">measures_di</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="s1">&#39;dataset-measures&#39;</span><span class="p">)</span>
 <span class="n">measures_df</span> <span class="o">=</span> <span class="n">measures_di</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span>
 <span class="n">measures_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>Now that we have defined three functions to collect data, process it and extract information, let's put them in a pipeline.</p>
 
 

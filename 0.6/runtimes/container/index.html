@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.76a95c52.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -1775,6 +1775,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Function parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function example
+    </span>
+  </a>
+  
 </li>
         
       </ul>
@@ -2091,6 +2115,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Function parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function example
+    </span>
+  </a>
+  
 </li>
         
       </ul>
@@ -2227,6 +2275,36 @@
 <td>True</td>
 </tr>
 <tr>
+<td><a href="#source">code_src</a></td>
+<td>str</td>
+<td>URI pointer to source code</td>
+<td>None</td>
+</tr>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>Source code (plain text)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>base64</td>
+<td>str</td>
+<td>Source code (base64 encoded)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>handler</td>
+<td>str</td>
+<td>Function entrypoint</td>
+<td>None</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>str</td>
+<td>Source code language (hint)</td>
+<td>None</td>
+</tr>
+<tr>
 <td>image</td>
 <td>str</td>
 <td>The image to use</td>
@@ -2252,7 +2330,35 @@
 </tr>
 </tbody>
 </table>
-<p>For example:</p>
+<h5 id="source">Source</h5>
+<p>Source code can be specified with <code>code_src</code> as an URI. It can have three different type of schema:</p>
+<table>
+<thead>
+<tr>
+<th>schema</th>
+<th>value</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>None</td>
+<td>"path/to/file.ext"</td>
+<td>Local file path</td>
+</tr>
+<tr>
+<td>git+https</td>
+<td>"git+https://github.com/some-user/some-repo"</td>
+<td>Remote git repository</td>
+</tr>
+<tr>
+<td>zip+s3</td>
+<td>"zip+s3://some-bucket/some-key.zip"</td>
+<td>Remote zip s3 archive</td>
+</tr>
+</tbody>
+</table>
+<h4 id="function-example">Function example</h4>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
 
 <span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s1">&#39;my_project&#39;</span><span class="p">)</span>

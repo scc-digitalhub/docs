@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.76a95c52.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -2130,13 +2130,13 @@ Our function will be an SQL query that selects all the employees of department 6
 <p>We create the function from the project object:</p>
 <div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;function-dbt&quot;</span><span class="p">,</span>
                                 <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dbt&quot;</span><span class="p">,</span>
-                                <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="n">sql</span><span class="p">})</span>
+                                <span class="n">code</span><span class="o">=</span><span class="n">sql</span><span class="p">)</span>
 </code></pre></div>
 <p>The parameters are:</p>
 <ul>
 <li><code>name</code> is the identifier of the function.</li>
 <li><code>kind</code> is the type of the function. <strong>Must be <code>dbt</code></strong>.</li>
-<li><code>source</code> contains the code that is the SQL we'll execute in the function. Must have key <code>code</code> and value the SQL code.query that</li>
+<li><code>code</code> contains the code that is the SQL we'll execute in the function.</li>
 </ul>
 <h2 id="run-the-function">Run the function</h2>
 <p>We can now run the function and see the results. To do this we use the <code>run</code> method of the function. To the method, we pass:</p>
@@ -2159,7 +2159,7 @@ Our function will be an SQL query that selects all the employees of department 6
 <h2 id="explore-the-results">Explore the results</h2>
 <p>We can now explore the results of the function.
 We can fetch the output table and explore it with <code>pandas</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">outputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;department-60&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="s1">&#39;department-60&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div>
 

@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.76a95c52.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -2492,15 +2492,33 @@ When you define the steps inside the pipeline, you specify also inputs, outputs,
 <td>True</td>
 </tr>
 <tr>
-<td><a href="#source">source</a></td>
-<td>dict</td>
-<td>Source code details as dictionary</td>
+<td><a href="#source">code_src</a></td>
+<td>str</td>
+<td>URI pointer to source code</td>
+<td>None</td>
+</tr>
+<tr>
+<td>code</td>
+<td>str</td>
+<td>Source code (plain text)</td>
+<td>None</td>
+</tr>
+<tr>
+<td>base64</td>
+<td>str</td>
+<td>Source code (base64 encoded)</td>
 <td>None</td>
 </tr>
 <tr>
 <td>handler</td>
 <td>str</td>
-<td>Function pipeline name</td>
+<td>Function entrypoint</td>
+<td>None</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>str</td>
+<td>Source code language (hint)</td>
 <td>None</td>
 </tr>
 <tr>
@@ -2518,52 +2536,30 @@ When you define the steps inside the pipeline, you specify also inputs, outputs,
 </tbody>
 </table>
 <h5 id="source">Source</h5>
-<p>Its possible to define the source code of the workflow as as dictionary.</p>
+<p>Source code can be specified with <code>code_src</code> as an URI. It can have three different type of schema:</p>
 <table>
 <thead>
 <tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Example</th>
-<th>Description</th>
+<th>schema</th>
+<th>value</th>
+<th>description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>source</td>
-<td>str</td>
-<td>"path/to/file.py"</td>
+<td>None</td>
+<td>"path/to/file.ext"</td>
 <td>Local file path</td>
 </tr>
 <tr>
-<td>source</td>
-<td>str</td>
+<td>git+https</td>
 <td>"git+https://github.com/some-user/some-repo"</td>
 <td>Remote git repository</td>
 </tr>
 <tr>
-<td>source</td>
-<td>str</td>
+<td>zip+s3</td>
 <td>"zip+s3://some-bucket/some-key.zip"</td>
 <td>Remote zip s3 archive</td>
-</tr>
-<tr>
-<td>base64</td>
-<td>str</td>
-<td>"encodedstring"</td>
-<td>Base64 encoded string</td>
-</tr>
-<tr>
-<td>code</td>
-<td>str</td>
-<td>"def func():\n   return \"hello world\""</td>
-<td>Code string</td>
-</tr>
-<tr>
-<td>handler</td>
-<td>str</td>
-<td>"handler"</td>
-<td>Handler pipeline name</td>
 </tr>
 </tbody>
 </table>
