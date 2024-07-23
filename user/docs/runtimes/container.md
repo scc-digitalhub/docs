@@ -92,7 +92,7 @@ The Container runtime introduces three task's kinds:
 | [envs](../tasks/kubernetes-resources.md#envs) | list[dict] | Env variables | None | |
 | [secrets](../tasks/kubernetes-resources.md#secrets) | list[str] | List of secret names | None | |
 | backoff_limit | int | Backoff limit | None | `job` |
-| schedule | str | Backoff limit | None | `job` |
+| schedule | str | Schedule for the job | None | `job` |
 | instructions | list[str] | Build instructions to be executed as RUN instructions in Dockerfile.<br>Example: `apt install git -y` | None | `build` |
 | replicas | int | Number of replicas | None | `deploy`, `serve` |
 | service_port| list[dict] | Service port where to expose the service. Must be: [{port: port, target_port: target_port}, ...] | `NodePort` | `serve` |
