@@ -62,6 +62,7 @@ nav:
           - "scenarios/postgrest/intro.md"
           - "scenarios/postgrest/data.md"
           - "scenarios/postgrest/postgrest.md"
+          - "scenarios/postgrest/apigw.md"
   - Runtimes reference:
       - Python: "runtimes/python.md"
       - DBT: "runtimes/dbt.md"
