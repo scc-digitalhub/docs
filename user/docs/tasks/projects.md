@@ -1,13 +1,87 @@
 # Projects
 
-A project in Core is the context in which you can run functions and manage data and artifacts.
-Projects can be created and managed from the UI or from the SDK.
+A *project* represents a data and AI application and is a container for different entities (code, assets, configuration, ...) that form the application. It is the context in which you can run functions and manage models, data, and artifacts.
+Projects may be created and managed from the UI, but also by using DH Core's API, for example via Python SDK.
 
-## Managing Projects via SDK
+## Management via UI
+
+In the following sections we document project management via the `Core Console` UI.
+
+Here we detail how to [create](#create), [read](#read), [update](#update) and [delete](#delete) projects using the UI, similarly to SDK usage.
+
+### Create
+
+A project is created by clicking `CREATE A NEW PROJECT` in the console's home page.
+
+![Project list](../images/console/project-list.png)
+
+A form asking for the project's details is then shown:
+
+![Project form](../images/console/project-form.png)
+
+The following parameters are mandatory:
+
+- **`name`**: name of the project, also acts as identifier of the project
+
+`Metadata` parameters are optional and may be changed later:
+
+- **`name`**: name of the project
+- **`description`**: a human-readable description of the project
+- **`labels`**: list of labels
+
+`Save` and the project will appear in the home page.
+
+### Read
+
+All projects present in the database are listed in the home page. Each tile shows:
+
+- Identifier of the project
+- Name of the project (hidden if same as identifier)
+- Description
+- Date of creation
+- Date of last modification
+
+![Project tile](../images/console/project-tile.png)
+
+Click on the tile to access the project's dashboard:
+
+![Project dashboard](../images/console/dashboard-prj.png)
+
+This dashboard shows a summary of the resources associated with the project and allows you to access the management of these resources.
+
+- **`Jobs and runs`**: list and status of performed runs
+- **`Models`**: number and list of latest models
+- **`Functions and code`**: number and list of latest functions
+- **`Data items`**: number and list of latest data items
+- **`Artifacts`**: number and list of latest artifacts
+
+You can return to the list of projects at any time by clicking *Projects* at the bottom of the left menu, or switch directly to a specific project by using the drop-down menu in the upper left of the interface.
+
+![Project drop-down](../images/console/root-project.png)
+
+### Update
+
+To update a project's `Metadata`, first click `Configuration` in the left menu.
+
+![Configuration](../images/console/configuration.png)
+
+Click `Edit` in the top right and the edit form for `Metadata` properties will be shown. In the example below, a label was added.
+
+![Update conf](../images/console/update-prj.png)
+
+When you're done updating the project, click *Save*.
+
+### Delete
+
+You can delete a project from the `Configuration` page, by clicking `Delete`. You will be asked to confirm by entering the project's identifier.
+
+![Update conf](../images/console/project-delete.png)
+
+## Management via SDK
 
 In the following sections we document the project CRUD methods available in the SDK and the methods exposed by the `Project` entity.
 
-### CRUD
+### Basic Operations
 
 Here we analyze how to create, read, update and delete projects using the SDK.
 
@@ -22,7 +96,7 @@ The other parameters are optional:
 - **`context`**: path where project can export yaml files locally
 - **`description`**: a human readable description of the project
 - **`source`**: a Git repository URL where lies the project code
-- **`labels`**: a list of labels
+- **`labels`**: list of labels
 - **`local`**: a boolean value, if `True` the project will be managed without *Core backend*. Defaults to `False`
 - **`config`**: a dictionary containing the project configuration like user and password for basic auth or a bearer token
 - **`setup_kwargs`**: a dictionary containing the project hook setup arguments
@@ -54,6 +128,26 @@ The format of the dictionary for bearer token must be as this:
     "access_token": "token"
 }
 ```
+
+In case you try to get a project without from the backend with invalid credentials, an exception will be raised.
+Because the backend client is a Singleton object, it will autoconfigure credentials at startup, so the only way to setup proper credentials once it fails to connect is to use the SDK method `set_dhub_env()`.
+The method accepts the following optional parameters:
+
+- **`endpoint`**: the endpoint of the backend
+- **`user`**: the user for basic auth
+- **`password`**: the password for basic auth
+- **`token`**: the auth token
+
+Example:
+
+```python
+dh.set_dhub_env(
+    endpoint="https://some-digitalhub:8080",
+    token="token"
+)
+```
+
+Note that the `set_dhub_env()` method ovverrides the environment variables and (if already instantiated) the credentials attributes of the backend client.
 
 ##### Setup kwargs
 
@@ -232,7 +326,7 @@ Note that the filename must have the `.yaml` extension. The project will be expo
 
 According to the SDK digitalhub layer installed, the `Project` class exposes CRUD methods for a variety of entities.
 
-#### Entities CRUD
+#### Entity Management Operations
 
 The project acts as context for other entities as mentioned in the introduction. With a `Project` object, you can create, read, update and delete these entities. The methods exposed are basically five for all entities, and are:
 
@@ -264,85 +358,3 @@ The entity handled by the `Project` class in the data layer (`digitalhub_data`) 
 The entity handled by the `Project` class in the ml layer (`digitalhub_ml`) are:
 
 - **`models`**
-
-## Managing Projects via UI
-
-In the following sections we document the Project management through UI available using the  `Digital Hub Console`.
-
-### CRUD
-
-Here we analyze how to Create, Read, Update and Delete Projects using the UI, similarly to what happens with the SDK
-
-#### Create
-
-A project is created pressing the button `CREATE` in the Homepage od the Console.
-
-![Project create](../images/console/project-create.png)
-
-After pressing the button, the dialog asking the Project's parameter is shown:
-
-![Project form](../images/console/project-form.png)
-
- It has the following mandatory parameters:
-
-- **`name`**: the name of the project, it is also the identifier of the project 
-- **`description`**: a human readable description of the project
-
-The other `Metadata` parameters are optional and mutable after the creation:
-
-- **`name`**: the name of the project
-- **`description`**: a human readable description of the project
-- **`updated`**: the date of the last modification made to the project
-- **`labels`**: a list of labels (strings)
-
-Pressing on the `Save` button, the project is added to the list of the projects in Homepage
-#### Read
-
-In the Home Page are listed all the projects present in the database. The tile shows:
-
-- **`name`**: the name of the project
-- **`id`**: the identifier of the project
-- **`created`**: the date of the creation of the project
-- **`updated`**: the date of the last modification made to the project
-
-On the bottom the button for `Open` and enter in the Project and the `Delete`
-
-![Project form](../images/console/project-tile.png)
-
-Clicking on the `Open` button, the following Dashboard is shown
-
-![Dashboard](../images/console/dashboard-prj.png)
-
-This dashboard reports a summary of the resources associated with the project and a series
-of features to access the management of these resources.
- 
-- **`Artifacts`**: the number and the list of the last Artifacts created
-- **`Data items`**: the number and the list of the last Data items created
-- **`Functions and code`**: the number and the list of the last Functions created
-- **`Jobs and runs`**: the status and list of runs performed
-
-From any page of the dashboard it is possible to change the project by selecting from the menu at the top of the bar
-
-![Dashboard](../images/console/root-project.png)
-
-#### Update
-
-You can update a project `Metadata` pressing the button `Configuration` in the side Menubar.
-
-![Configuration](../images/console/configuration.png)
-
-Pressing the `Edit` button on the top right of the page the form for editing the `Metadata` values of the project is shown.
-In the example below, the labels `test` and `prj1` are added
-
-![Update conf](../images/console/update-prj.png)
-After the modification, pressing Save the new configuration is stored
-
-#### Delete
-
-You can delete a project from the `Home page`  and from the `Configuration` pressing the `Delete` button.
-For confirm the choice of deleting, insert the name of the project in the dialog
-
-![Update conf](../images/console/project-delete.png)
-
-
-

@@ -32,7 +32,5 @@ kubectl --namespace digitalhub get pods
 Once installed, you should see the references (URLs) for the different tools of the platform.
 
 ## Install with MS Azure
-TODO
 
-## Install with OpenStack
-TODO
+Documentation in progress...

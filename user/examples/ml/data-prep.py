@@ -1,11 +1,9 @@
-
 import pandas as pd
 from sklearn.datasets import load_breast_cancer
 
-import mlrun
+from digitalhub_runtime_python import handler
 
-
-@mlrun.handler(outputs=["dataset", "label_column"])
+@handler(outputs=["dataset"])
 def breast_cancer_generator():
     """
     A function which generates the breast cancer dataset
@@ -19,4 +17,4 @@ def breast_cancer_generator():
         [breast_cancer_dataset, breast_cancer_labels], axis=1
     )
 
-    return breast_cancer_dataset, "label"
+    return breast_cancer_dataset

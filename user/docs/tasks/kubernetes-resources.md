@@ -1,24 +1,33 @@
-# Setting up Kubernetes Resources for tasks
+# Using Kubernetes Resources for Runs
 
-With Digitalhub SDK you can manage Kubernetes resources for your tasks. When you run a function you can require some Kubernetes resources for the task.
+With SDK you can manage Kubernetes resources for your tasks. When you run a function you can require some Kubernetes resources for the task. Resources and data are specified in the `function.run()` method.
 
-## Resources available and data injection
+| Name | Type | Description | Default |
+| --- | --- | --- | --- |
+| [node_selector](./kubernetes-resources.md#node_selector) | list[dict] | Node selector | None |
+| [volumes](./kubernetes-resources.md#volumes) | list[dict] | List of volumes | None |
+| [resources](./kubernetes-resources.md#resources) | dict | Resources restrictions | None |
+| [affinity](./kubernetes-resources.md#affinity) | dict | Affinity | None |
+| [tolerations](./kubernetes-resources.md#tolerations) | list[dict] | Tolerations | None |
+| [envs](./kubernetes-resources.md#envs) | list[dict] | Env variables | None |
+| [secrets](./kubernetes-resources.md#secrets) | list[str] | List of secret names | None |
 
-With Digitalhub SDK you request mainly these Kubernetes resources:
+## Node_selector
 
-- **Volumes** (pvc, configmap, secret)
-- **Hardware resources** (cpu, memory, gpu)
+You can request a node selector for the container being launched by the task by passing the selector as a dictionary with the `node_selector` task parameters.
 
-In addition you can inject into the task's container:
-
-- **Secrets**
-- **Environment variables**
+```python
+node_selector = {
+    "key": "Node selector key.",
+    "value": "Node selector value."
+}
+```
 
 ## Volumes
 
-With SDK you can request four types of volumes:
+With SDK you can request three types of volumes:
 
-- **Persistent volume claims (pvc)**
+- **Persistent volume claims (PVC)**
 - **ConfigMap**
 - **Secret**
 
@@ -36,8 +45,6 @@ volumes = [{
             "claim_name": "pvc-name-on-k8s",
             }
 }]
-
-function.run(volumes=volumes)
 ```
 
 ### ConfigMap
@@ -54,8 +61,6 @@ volumes = [{
             "name": "config-map-name-on-k8s"
         }
 }]
-
-function.run(volumes=volumes)
 ```
 
 ### Secret
@@ -72,13 +77,11 @@ volumes = [{
             "secret_name": "secret-name-on-k8s"
         }
 }]
-
-function.run(volumes=volumes)
 ```
 
-## Hardware resources
+## Resources
 
-You can request a specific amount of hardware resources (cpu, memory, gpu) for the task, declared thorugh the `resources` task parameter; `resources` must be a list of Resource objects represented as a dictionary.
+You can request a specific amount of hardware resources (cpu, memory, gpu) for the task, declared thorugh the `resources` task parameter; `resources` must be a map of Resource objects represented as a dictionary.
 At the moment Digitalhub SDK supports:
 
 - **CPU**
@@ -92,26 +95,25 @@ You need to declare the resource type as `cpu`, request and/or limit specificati
 
 ```python
 
-resources = [{
-    "resource_type": "cpu",
-    "requests": "12",
-    "limits": "16"
-}]
-
-function.run(resources=resources)
+resources = {
+    "cpu": {
+        "requests": "12",
+        "limits": "16"
+    }
+}
 ```
 
 ### RAM memory
 
 You can request a specific amount of RAM memory for the task.
-You need to declare the resource type as `memory`, request and/or limit specifications.
+You need to declare the resource type as `mem`, request and/or limit specifications.
 
 ```python
-resources = [{
-    "resource_type": "memory",
-    "requests": "64Gi"
-}]
-function.run(resources=resources)
+resources = {
+    "mem"{
+        "requests": "64Gi",
+    }
+}
 ```
 
 ### GPU
@@ -124,44 +126,52 @@ Here is an example that uses the `tolerations` parameter:
 
 ```python
 
-resources = [{
-    "resource_type": "gpu",
-    "limits": "1"
-}]
+resources = {
+    "gpu": {
+        "limits": "1"
+    }
+}
 toleration = [{
     "key": "nvidia.com/gpu",
     "operator": "Equal",
     "value": "v100",
     "effect": "NoSchedule"
 }]
-function.run(resources=resources, tolerations=toleration)
 ```
 
-## Values injection
-
-You can ask the backend to inject values into the container being launched by the task.
-You can inject:
-
-- **Secrets**
-- **Environment variables**
-
-### Secrets
+## Secrets
 
 You can request a secret injection into the container being launched by the task by passing the reference to the backend with the `secrets` task parameters.
 
 ```python
 secrets = ["my-secret"]
-function.run(secrets=secrets)
 ```
 
-### Environment variables
+## Envs
 
-You can request an environment variable injection into the container being launched by the task by passing the reference to the backend with the `env` task parameters.
+You can request an environment variable injection into the container being launched by the task by passing the reference to the backend with the `envs` task parameters.
 
 ```python
 env = [{
     "name": "env-name",
     "value": "value"
 }]
-function.run(env=env)
 ```
+
+## Tolerations
+
+Kubernetes requires you to specify tolerations if you want to use GPU.
+
+```python
+toleration = [{
+    "key": "nvidia.com/gpu",
+    "operator": "Equal",
+    "value": "v100",
+    "effect": "NoSchedule",
+    "toleration_seconds": 300
+}]
+```
+
+## Affinity
+
+Please see [Kubernetes documentation](https://kubernetes.io/docs/home/).

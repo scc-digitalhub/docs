@@ -103,7 +103,7 @@ We can now run the function and see the results. To do this we use the `run` met
 ```python
 run = function.run("validate",
                    framework="frictionless",
-                   inputs=[{"employees": di.key}])
+                   inputs={"employees": di.key})
 ```
 
 We can check the status of the run:

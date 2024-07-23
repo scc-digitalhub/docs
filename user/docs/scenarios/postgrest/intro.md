@@ -16,9 +16,8 @@ Click *Save*. You should now see your database listed.
 
 ## Add users to database
 
-Click *Show* on your database's entry and then *Add user* on the bottom. We will create two users: PostgREST needs one to authenticate and another to assume its role when the API is called.
-
-Create the first one as follows:
+PostgREST needs a user to authenticate and a user to assume its role when the API is called. These can be separate users, but for our purposes, we will create just one to fill both roles.
+Click *Show* on your database's entry and then *Add user* on the bottom. Enter values as follows:
 
 - `Name`: An identifier for Kubernetes. Type `db-owner`.
 - `Role`: The actual name on the database. Type `owner`.
@@ -27,17 +26,13 @@ Create the first one as follows:
 
 ![Create user](../../images/postgrest-scenario/create-user.png)
 
-Add a second user. This one will only be able to read data.
-
-- `Name`: An identifier for Kubernetes. Type `db-reader`.
-- `Role`: The actual name on the database. Type `reader`.
-- `Privileges`: Indicates what privileges the user will have. Pick `Reader`.
-- `Secret name`: The secret to authenticate the user. Type `reader`.
-
 ## Retrieve POSTGRES_URL
 
-Together with the users, two secrets have also been created. Go to **Secrets** on the left menu; the list should contain two secrets with names referring the users you created.
+Together with the user, a secret has also been created. Go to **Secrets** on the left menu; the list should contain a secret with a name referring the user you created. Find it and click *Show*.
 
-Look for the owner's secret, click *Show* and then *Decode* on the `POSTGRES_URL` entry. It will automatically copy the connection string to the clipboard. Write this down somewhere, as we will use it to log into the database and insert some data.
+Write down the following information somewhere, as we will need it later:
+- *Name* of the secret
+- Value of `POSTGRES_URL` (click on *Decode* to obtain it)
+- Value of `ROLE`
 
 ![Secret](../../images/postgrest-scenario/secret.png)

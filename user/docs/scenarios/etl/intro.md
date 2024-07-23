@@ -1,10 +1,8 @@
 # ETL scenario introduction
 
-Here we explore a proper, realistic scenario. We collect some data regarding traffic, analyze and transform it, then expose the resulting dataset.
+Here we explore a simple yet realistic scenario. We collect some data regarding traffic, analyze and transform it, then expose the resulting dataset.
 
 Access Jupyter from your Coder instance and create a new notebook. If a Jupyter workspace isn't already available, create one from its template.
-
-Open a new notebook using the **`Python 3 (ipykernel)`** kernel.
 
 We'll now start writing code. Copy the snippets of code from here and paste them in your notebook, then execute them with *Shift+Enter*. After running, Jupyter will create a new code cell.
 
@@ -15,27 +13,23 @@ The notebook file covering this scenario, as well as files for individual functi
 First, we initialize our environment and create a project.
 
 Import required libraries:
+
 ``` python
-import mlrun
+import digitalhub as dh
 import pandas as pd
 import requests
 import os
 ```
 
-Load environment variables for MLRun:
-``` python
-ENV_FILE = ".mlrun.env"
-if os.path.exists(ENV_FILE):
-    mlrun.set_env_from_file(ENV_FILE)
-```
+Create a project:
 
-Create a MLRun project:
 ``` python
 PROJECT = "demo-etl"
-project = mlrun.get_or_create_project(PROJECT, "./")
+project = dh.get_or_create_project(PROJECT)
 ```
 
 Check that the project has been created successfully:
+
 ``` python
 print(project)
 ```
@@ -45,11 +39,14 @@ print(project)
 Let's take a look at the data we will work with, which is available in CSV (Comma-Separated Values) format at a remote API.
 
 Set the URL to the data and the file name:
+
 ``` python
 URL = "https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?lang=it&timezone=Europe%2FRome&use_labels=true&delimiter=%3B"
 filename = "rilevazione-flusso-veicoli-tramite-spire-anno-2023.csv"
 ```
+
 Download the file and save it locally:
+
 ``` python
 with requests.get(URL) as r:
     with open(filename, "wb") as f:
@@ -57,6 +54,7 @@ with requests.get(URL) as r:
 ```
 
 Use *pandas* to read the file into a dataframe:
+
 ``` python
 df = pd.read_csv(filename, sep=";")
 ```

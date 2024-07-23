@@ -1,101 +1,103 @@
 # Container runtime
 
-The Container runtime allows you to deploy deployments, jobs and services on Kubernetes.
+The **Container runtime** allows you to create deployments, jobs and services on Kubernetes.
 
 ## Prerequisites
 
-Python libraries:
+Python version and libraries:
 
-- python 3.9 or 3.10
-- digitalhub sdk
+- `python >= 3.9`
+- `digitalhub-runtime-container`
 
-Install digitalhub sdk and collect digitalhub container modules:
+The package is available on PyPI:
 
 ```bash
-pip install digitalhub
-git clone https://github.com/scc-digitalhub/digitalhub-sdk.git
-pip install digitalhub-sdk/core/modules/container/ --no-deps
+python -m pip install digitalhub-runtime-container
 ```
 
-## Function
+## HOW TO
+
+With the Container runtime you can launch pods and services on Kubernetes. It is built having **remote online execution** capabilities.
+
+### Function
 
 The Container runtime introduces a function of kind `container` that allows you to deploy deployments, jobs and services on Kubernetes.
 
-### Container function parameters
+he syntax for creating a `Function` is the same as the [new_function](../entities/functions/crud.md) method.
 
-When you create a function of kind `container`, you must specify the following mandatory parameters:
+#### Function parameters
 
-- **`project`**: the project name with which the function is associated. **Only** if you do not use the project context to create the function, e.g. `project.new_function()`.
-- **`name`**: the name of the function
-- **`kind`**: the kind of the function, **must** be `container`
-- **`image`**: the container image to deploy
+| Name | Type | Description | Default |
+| --- | --- | --- | --- |
+| project | str | Project name | required (if creating from library) |
+| name | str | Name that identifies the object | required |
+| kind | str | Kind of the object | required (must be `container`) |
+| uuid | str | ID of the object in form of UUID | None |
+| description | str | Description of the object | None |
+| git_source | str | Remote git source for object | None |
+| labels | list[str] | List of labels | None |
+| embedded | bool | Flag to determine if object must be embedded in project | True |
+| [code_src](#source) | str | URI pointer to source code | None |
+| code | str | Source code (plain text)| None |
+| base64 | str | Source code (base64 encoded)| None |
+| handler | str | Function entrypoint | None |
+| lang | str | Source code language (hint)| None |
+| image | str | The image to use | None |
+| base_image | str | The base container image | None (required if task is `build`) |
+| command | str | The command to run inside the container | None |
+| args | list[str] | The arguments to pass to the command | None |
 
-Optionally, you can specify the following parameters:
+##### Source
 
-- **`uuid`**: the uuid of the function (this is automatically generated if not provided). **Must** be a valid uuid v4.
-- **`description`**: the description of the function
-- **`labels`**: the labels of the function
-- **`git_source`**: the remote source of the function (git repository)
-- **`embedded`**: whether the function is embedded or not. If `True`, the function is embedded (all the details are expressed) in the project. If `False`, the function is not embedded in the project.
-- **`base_image`**: the base container image.
-- **`command`**: the command to run inside the container.
-- **`args`**: the arguments to pass to the entrypoint.
+Source code can be specified with `code_src` as an URI. It can have three different type of schema:
 
-For example:
+| schema | value | description |
+| --- | --- | --- |
+| None | "path/to/file.ext" | Local file path |
+| git+https | "git+https://github.com/some-user/some-repo" | Remote git repository |
+| zip+s3 | "zip+s3://some-bucket/some-key.zip" | Remote zip s3 archive |
+
+#### Function example
 
 ```python
 import digitalhub as dh
 
 project = dh.get_or_create_project('my_project')
 function = dh.new_function(
-    kind='dbt',
+    kind='container',
     name='my_function',
     image="hello-world:latest"
 )
 ```
 
-## Task
+### Task
 
 The Container runtime introduces three task's kinds:
 
 - `job`: to deploy a job
 - `deploy`: to deploy a deployment
 - `serve`: to deploy a service
+- `build`: to build a docker image
 
-### Run and task parameters
+#### Task parameters
 
-When you want to execute a task, you **must** pass the following mandatory parameters to the function method `run()`:
+| Name | Type | Description | Default | Kind specific |
+| --- | --- | --- | --- | --- |
+| action | str | Task action. Must be one of: <li>`job`</li><li>`deploy`</li><li>`build`</li><li>`build`</li> | required | |
+| [node_selector](../tasks/kubernetes-resources.md#node_selector) | list[dict] | Node selector | None | |
+| [volumes](../tasks/kubernetes-resources.md#volumes) | list[dict] | List of volumes | None | |
+| [resources](../tasks/kubernetes-resources.md#resources) | dict | Resources restrictions | None | |
+| [affinity](../tasks/kubernetes-resources.md#affinity) | dict | Affinity | None | |
+| [tolerations](../tasks/kubernetes-resources.md#tolerations) | list[dict] | Tolerations | None | |
+| [envs](../tasks/kubernetes-resources.md#envs) | list[dict] | Env variables | None | |
+| [secrets](../tasks/kubernetes-resources.md#secrets) | list[str] | List of secret names | None | |
+| backoff_limit | int | Backoff limit | None | `job` |
+| schedule | str | Schedule for the job | None | `job` |
+| instructions | list[str] | Build instructions to be executed as RUN instructions in Dockerfile.<br>Example: `apt install git -y` | None | `build` |
+| replicas | int | Number of replicas | None | `deploy`, `serve` |
+| service_port| list[dict] | Service port where to expose the service. Must be: [{port: port, target_port: target_port}, ...] | `NodePort` | `serve` |
+| service_type| str | Service type. Must be one of: <li>`ClusterIP`</li><li>`LoadBalancer`</li><li>`NodePort`</li> | `NodePort` | `serve` |
 
-- **`action`**: the action to perform. Can be `job`, `deploy` or `serve`.
-
-As optional, you can pass the following task parameters specific for remote execution:
-
-- **`node_selector`**: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.
-- **`volumes`**: a list of volumes
-- **`resources`**: a list of resources (CPU, memory, GPU)
-- **`labels`**: a list of labels to attach to kubernetes resources
-- **`affinity`**: node affinity
-- **`tolerations`**: tolerations
-- **`env`**: environment variables to inject in the container
-- **`secrets`**: list of secrets to inject in the container
-- **`backoff_limit`**: the number of retries when a job fails.
-- **`schedule`**: the schedule of the job as a cron expression
-- **`replicas`**: the number of replicas of the deployment
-
-For the `serve` action, you can also pass the following task parameters:
-
-- **`service_ports`**: a list of ports to expose
-- **`service_type`**: the type of service
-
-For example:
-
-```python
-run = function.run(action='job')
-```
-
-## Notes
-
-The Container runtime does not support local execution.
 
 ## Snippet example
 

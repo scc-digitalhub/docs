@@ -1,25 +1,13 @@
-
-import mlrun
-import pandas as pd
-import os
-
-DF_URL = os.environ["DF_URL"]
-df = None
-
-
 def init_context(context):
-    global df
-    context.logger.info("retrieve data from {}".format(DF_URL))
-    di = mlrun.run.get_dataitem(DF_URL)
+    di = context.project.get_dataitem('dataset-measures')
     df = di.as_df()
-
+    setattr(context, "df", df)
 
 def handler(context, event):
-    global df
+    df = context.df
+
     if df is None:
-        return context.Response(
-            body="", headers={}, content_type="application/json", status_code=500
-        )
+        return ""
 
     # mock REST api
     method = event.method
@@ -59,6 +47,4 @@ def handler(context, event):
 
     res = {"data": json, "page": page, "size": pageSize, "total": total}
 
-    return context.Response(
-        body=res, headers={}, content_type="application/json", status_code=200
-    )
+    return res

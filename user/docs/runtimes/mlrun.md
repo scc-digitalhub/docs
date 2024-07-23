@@ -34,7 +34,7 @@ When you create a function of kind `mlrun`, you need to specify the following ma
 - **`project`**: the project name with which the function is associated. **Only** if you do not use the project context to create the function, e.g. `project.new_function()`.
 - **`name`**: the name of the function
 - **`kind`**: the kind of the function, **must** be `mlrun`
-- **`source`**: the source dictionary that contains the code, encoded code or path to code to be executed by mlrun
+- **`source`**: the source dictionary that contains the code, encoded code or path to code to be executed by mlrun. See section below
 
 Optionally, you can specify the following parameters:
 
@@ -44,7 +44,18 @@ Optionally, you can specify the following parameters:
 - **`git_source`**: the remote source of the function (git repository)
 - **`embedded`**: whether the function is embedded or not. If `True`, the function is embedded (all the details are expressed) in the project. If `False`, the function is not embedded in the project.
 
-For example:
+#### Source
+
+The **`source`** parameter must be a dictionary containing reference to the sql query to be executed. The parameter is structured as a dictionary with the following keys:
+
+- **`source`**: the source URI to the code. It accepts the following values:
+    1. **git+***https://repo-host/repo-owner/repo.git#indication-where-to-checkout*: the code is fetched from a git repository. The link points to the root of the repository, the fragment is as simple indication of the branch, tag or commit to checkout. The runtime will clone the repository and checkout the indicated branch, tag or commit.
+    2. **zip+***s3://path-to-some-code.zip*: the code is fetched from a zip file in the *minio* digitalhub instance. The link points to the path to the zip file. The runtime will download the zip file and extract it. It fails if the zip file is not valid.
+- **`code`**: the python string code
+- **`base64`**: the base64 encoded code
+- **`lang`**: the language of the code use in the console higlihter
+
+Example:
 
 ```python
 import digitalhub as dh
@@ -73,8 +84,8 @@ When you want to execute a task of kind `job`, you need to pass the following ma
 
 The following parameters are optional, but usually you need to pass them:
 
-- **`inputs`**: the list of referenced items used in the mlrun function.
-- **`outputs`**: a list referenced items produced by the mlrun function.
+- **`inputs`**: the dictionary of referenced items used in the mlrun function.
+- **`outputs`**: a dictionary of referenced items produced by the mlrun function.
 - **`parameters`**: a dictionary of parameters to pass to the mlrun function `mlrun.run_function()`
 - **`values`**: a list of output values that are not `artifacts`, `dataitems` or `models`
 
@@ -82,8 +93,7 @@ As optional, you can pass the following task parameters specific for remote exec
 
 - **`node_selector`**: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.
 - **`volumes`**: a list of volumes
-- **`resources`**: a list of resources (CPU, memory, GPU)
-- **`labels`**: a list of labels to attach to kubernetes resources
+- **`resources`**: a map of resources (CPU, memory, GPU)
 - **`affinity`**: node affinity
 - **`tolerations`**: tolerations
 - **`env`**: environment variables to inject in the container
@@ -92,13 +102,13 @@ As optional, you can pass the following task parameters specific for remote exec
 - **`schedule`**: the schedule of the job as a cron expression
 - **`replicas`**: the number of replicas of the deployment
 
-For example:
+Example:
 
 ```python
 run = function.run(
     action='job',
-    inputs=[{"mlrun-input-param-name": my_dataitem.key}],
-    outputs=[{"mlrun-input-param-name": "my-output-name"}],
+    inputs={"mlrun-input-param-name": my_dataitem.key},
+    outputs={"mlrun-input-param-name": "my-output-name"},
     parameters={"inputs": {"key": "value"}},
     values=["simple-mlrun-output-value-name"]
 )
@@ -139,8 +149,8 @@ downloader_function = project.new_function(name="mlrun-downloader",
 
 # Run function
 downloader_run = downloader_function.run("job",
-                                         inputs=[{"url": dataitem.key}],
-                                         outputs=[{"dataset": "dataset"}])
+                                         inputs={"url": dataitem.key},
+                                         outputs={"dataset": "dataset"})
 
 # Run refresh
 downloader_run.refresh()

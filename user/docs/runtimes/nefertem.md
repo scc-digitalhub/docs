@@ -75,7 +75,20 @@ When you want to execute a task of kind `validate`, you need to pass the followi
 
 - **`action`**: the action to perform. This must be `validate`.
 - **`framework`**: the Nefertem framework to be used.
-- **`inputs`**: the list of nefertem resources referenced in the constraint mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
+- **`inputs`**: the dictionary of nefertem resources referenced in the constraint mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
+
+As optional, you can pass the following task parameters specific for remote execution:
+
+- **`node_selector`**: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.
+- **`volumes`**: a list of volumes
+- **`resources`**: a map of resources (CPU, memory, GPU)
+- **`affinity`**: node affinity
+- **`tolerations`**: tolerations
+- **`env`**: environment variables to inject in the container
+- **`secrets`**: list of secrets to inject in the container
+- **`backoff_limit`**: the number of retries when a job fails.
+- **`schedule`**: the schedule of the job as a cron expression
+- **`replicas`**: the number of replicas of the deployment
 
 As optional, you can pass the following task parameters specific for remote execution:
 
@@ -96,7 +109,7 @@ For example:
 ```python
 run = function.run("validate",
                    framework="frictionless",
-                   inputs=[{"employees": di.key}])
+                   inputs={"employees": di.key})
 ```
 
 ### Profile task parameters
@@ -105,7 +118,20 @@ When you want to execute a task of kind `profile`, you need to pass the followin
 
 - **`action`**: the action to perform. This must be `profile`.
 - **`framework`**: the Nefertem framework to be used.
-- **`inputs`**: the list of nefertem resources referenced mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
+- **`inputs`**: the dictionary of nefertem resources referenced mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
+
+As optional, you can pass the following task parameters specific for remote execution:
+
+- **`node_selector`**: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.
+- **`volumes`**: a list of volumes
+- **`resources`**: a map of resources (CPU, memory, GPU)
+- **`affinity`**: node affinity
+- **`tolerations`**: tolerations
+- **`env`**: environment variables to inject in the container
+- **`secrets`**: list of secrets to inject in the container
+- **`backoff_limit`**: the number of retries when a job fails.
+- **`schedule`**: the schedule of the job as a cron expression
+- **`replicas`**: the number of replicas of the deployment
 
 As optional, you can pass the following task parameters specific for remote execution:
 
@@ -126,7 +152,7 @@ For example:
 ```python
 run = function.run("profile",
                    framework="frictionless",
-                   inputs=[{"employees": di.key}])
+                   inputs={"employees": di.key})
 ```
 
 ### Infer task parameters
@@ -135,7 +161,20 @@ When you want to execute a task of kind `infer`, you need to pass the following 
 
 - **`action`**: the action to perform. This must be `infer`.
 - **`framework`**: the Nefertem framework to be used.
-- **`inputs`**: the list of nefertem resources referenced mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
+- **`inputs`**: the dictionary of nefertem resources referenced mapped to some dataitem keys. The corresponding dataitem objects must be present in the backend, whether it's local or Core backend.
+
+As optional, you can pass the following task parameters specific for remote execution:
+
+- **`node_selector`**: a list of node selectors. The runtime will select the nodes to which the task will be scheduled.
+- **`volumes`**: a list of volumes
+- **`resources`**: a map of resources (CPU, memory, GPU)
+- **`affinity`**: node affinity
+- **`tolerations`**: tolerations
+- **`env`**: environment variables to inject in the container
+- **`secrets`**: list of secrets to inject in the container
+- **`backoff_limit`**: the number of retries when a job fails.
+- **`schedule`**: the schedule of the job as a cron expression
+- **`replicas`**: the number of replicas of the deployment
 
 As optional, you can pass the following task parameters specific for remote execution:
 
@@ -156,7 +195,7 @@ For example:
 ```python
 run = function.run("infer",
                    framework="frictionless",
-                   inputs=[{"employees": di.key}])
+                   inputs={"employees": di.key})
 ```
 
 ## Runtime workflow
@@ -217,7 +256,7 @@ function = project.new_function(name="function-nefertem",
 # Run validate task
 run = function.run("validate",
                    framework="frictionless",
-                   inputs=[{"employees": di.key}])
+                   inputs={"employees": di.key})
 
 # Refresh run
 run.refresh()

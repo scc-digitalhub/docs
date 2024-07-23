@@ -10,7 +10,7 @@
 
 !!! info "How to access"
 
-    Jupyter may be launched from [Coder, using its template](/docs/components/deploying-components). It will ask for the *CPU cores*, *GB of memory* and *GB of disk space* you wish to dedicate to it. Depending on the computation you need, lower values may turn out to be insufficient, but cores and memory may be changed even while the workspace is running.
+    Jupyter may be launched from [Coder, using its template](../tasks/workspaces.md). It will ask for the *CPU cores*, *GB of memory* and *GB of disk space* you wish to dedicate to it. Depending on the computation you need, lower values may turn out to be insufficient, but cores and memory may be changed even while the workspace is running.
     After launching it from Coder you can access Jupyter Notebook on [jupyter-notebook UI (http://nodeipaddress:30040)](http://nodeipaddress:30040).
 
 ## Writing a simple notebook

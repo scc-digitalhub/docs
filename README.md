@@ -1,4 +1,4 @@
-Repository for the documentation of the Digital Hub. The documentation features two portals, aimed at different audiences: `user` and `dev`.
+Repository for the documentation of the platform. The documentation features two portals, aimed at different audiences: `user` and `dev`.
 
 To create a new page (the example refers to the `user` portal, but the process for `dev` is equivalent):
 

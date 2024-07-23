@@ -29,7 +29,7 @@ For each deployment KRM shows its name and availability of instances. In the dep
 
 ### Managing Persistent Volume Claims
 
-In certain cases, the operations developed with the Digital Hub may require more substantial disk space, e.g., for training / producing significant amounts of data. In this case, it is possible to attach to the tasks the corresponding Persistent Volume Claim (PVC) references. To create a new PVC for the use of the pipeline or Job, KRM provides the corresponding interface.
+In certain cases, the operations developed with the platform may require more substantial disk space, e.g., for training / producing significant amounts of data. In this case, it is possible to attach to the tasks the corresponding Persistent Volume Claim (PVC) references. To create a new PVC for the use of the pipeline or Job, KRM provides the corresponding interface.
 
 Accessing `Persistent Volume Claims` menu, it is possible to list and manage the PVCs of the platform. 
 
@@ -96,58 +96,97 @@ In the Database details view it is possible also to configure the DB users that 
 
 ![KRM Postgres user create image](../images/krm/krm_postgres_user_create.png)
 
+### Managing S3 resources with KRM
+
+If supported by the deployment, using Minio S3 operator (http://github.com/scc-digitalhub/minio-operator/) it is possible to create new S3 buckets, policies, and create/associate users to them.
+
+Accessing `S3 Buckets` menu of the KRM, it is possible to list, create, and delete S3 buckets, policies, and users.
+
+![KRM S3 buckets image](../images/krm/krm_s3.png)
+
+To create a new Bucket, provide the following:
+
+- name of the bucket to create
+- optional quota for the bucket
+
+![KRM S3 bucket create image](../images/krm/krm_s3_bucket_create.png)
+
+In the S3 Policies tab view it is possible also to configure the S3 policies. To create a new policy, it is necessary to specify:
+
+- name of the associated resource
+- name of the policy to be created
+- standard S3 policy spec in JSON format.
+
+![KRM S3 policy create image](../images/krm/krm_s3_policy_create.png)
+
+In the S3 Users tab view it is possible also to configure the S3 users. To create a new user, it is necessary to specify:
+
+- name of the associated resource
+- access key for the user to be created
+- secret key for the user
+- list of policies to associate to the user.
+
+![KRM S3 policy create image](../images/krm/krm_s3_user_create.png)
+
 ### Managing PostgREST Data Services with KRM
 
-Using KRM it is possible to instantiate and deploy new PostgREST Data services. A PostgREST service exposes
-a set of PostgreSQL tables as API, allowing for querying the information and even modifying it.
+You can deploy new PostgREST data services through KRM. A PostgREST service exposes a set of PostgreSQL tables through a REST API, allowing to query and even modify them.
 
-Accessing `PostgREST Data Services` menu it is possible to list, create, and delete data service instances.
+Access `PostgREST Data Services` on the left menu.
 
 ![KRM PostgREST image](../images/krm/krm_postgrest.png)
 
-To create a new data service, it is necessary to provide the information about the exposed schema and tables,
-the DB access information, and the role with which the service operates. This latter may be specified either as an
-existing users with the appropriate permissions or may be created if the DB access information is sufficient for 
-that operation. More specifically, it is necessary to provide the following information:
+When creating a new PostgREST service, fields are as follows:
 
-- name of the resource.
-- name of the DB schema to expose.
-- the existing DB user (role) on behalf of which the service will operate OR the list of DB permissions to enable for this service and list of exposed DB tables. In this case the user will be created (if the connection information allows for it).
-- Connection information with cluster DB host and port (optional), name of the database, DB username / password OR, alternatively, DB secret to use in order to extract the connection credentials. In this later case the secret should contain elements `USERNAME` and `PASSWORD`, or alternatively `POSTGRES_URL` with the full connection information.
+- Name of the resource
+- Schema to expose
+- Existing DB user (role) on behalf of which the service will operate **OR** the list of actions to enable and the list of tables which will be exposed and on which these actions may be performed. The user will be created automatically for this second option.
+- Connection information.
+    - If you choose not to provide an existing secret, **Host**, **Database**, **User** and **Password** are required.
+    - If you decide to use a secret, you must provide the **secret's name**. Two possible configurations are valid:
+        - If the secret contains `POSTGRES_URL` (the full connection string, as `postgresql://user:password@host:port/database`), all other connection fields will be ignored.
+        - If the secret contains `USERNAME` and `PASSWORD`, **Host** and **Database** must be provided, or the resource will enter an error state.
+
+Port is optional and defaults to `5432` if not provided.
+
+Extra connection parameters may be provided in the format `param1=value1&param2=value2`. For example, to disable SSL: `sslmode=disable`.
 
 !!! warning "Connection information"
 
-    Please note that in order to create a new role that will be used by the service to access the data, the user specified with the connection information
-    should have sufficient privileges to perform the operation. By default, the owner/writer/readers users created by the Postgres operator do not have this permission.
+    Please note that when no existing DB user is specified, the user specified in the *Connection* section must have sufficient privileges to manage roles. By default, the owner/writer/reader users created by the Postgres operator do not have this permission.
 
 !!! warning "Schema exposure"
-    PostgREST exposes all the tables and views in the schema specified in the configuration. In order to have a better control over the exposed data, it is 
-    recommended to create a separate schema (e.g., 'api') and provide the access to the data via views / stored procedures. To accomplish this, it is possible
-    to use SQLPad to create schemas and views.
+    PostgREST exposes all tables and views in the specified schema. In order to have better control over the exposed data, it is 
+    recommended to create a separate schema (e.g., `api`) and provide access to data through views or stored procedures. You can use **SQLPad** to do this.
 
 
 ![KRM PostgREST create image](../images/krm/krm_postgrest_create.png)
-
-This will result in a deployment of PostgREST microservice connected to the specified database and exposing PostgREST API over the specified schema and tables. 
-See [here](https://postgrest.org/en/stable/) for further details.
+ 
+Check out [the official documentation](https://postgrest.org/en/stable/) for more information on PostgREST.
 
 ### Managing Dremio Data Services with KRM
 
-Using KRM it is possible to instantiate and deploy new Dremio Data services that expose the data presented in Dremio views as API.
+You can deploy new Dremio data services through KRM. A Dremio data service exposes Dremio data through a REST API.
 
-Accessing `Dremio Data Services` menu it is possible to list, create, and delete data service instances.
+Access `Dremio Data Services` on the left menu.
 
 ![KRM Dremio image](../images/krm/krm_dremio.png)
 
-To create a new data service, provide the following:
+To create a new service, provide the following:
 
-- name of the resource
-- list of exposed virtual datasets
-- Connection information with dremio host and port (optional), Dremio username / password OR, alternatively, a secret to use in order to extract the connection credentials. In this later case the secret should contain elements `USER` and `PASSWORD`.
+- Name of the resource
+- List of virtual datasets to expose
+- Connection information.
+    - **Host** is required.
+    - *Port* is optional and will default to `32010` if not provided.
+    - **User** and **Password** are required, unless you choose to use a secret, in which case the **secret's name** must be provided. The secret should contain `USER` and `PASSWORD`.
+    - *Extra connection parameters* are optional and may be provided in the format `param1=value1&param2=value2`. For example, to disable certificate verification: `useEncryption=false&disableCertificateVerification=true`.
+
+If you instantiated Dremio through Coder, the value of **Host** is the value of *Arrow Flight Endpoint*, stripped of `:` and port. **User** is `admin` and **Password** is the value you entered when creating the workspace.
 
 ![KRM Dremio create image](../images/krm/krm_dremio_create.png)
 
-This will result in a deployment of Dremio REST microservice connected to the specified database and exposing a simple REST API over the specified datasets. 
+A Dremio REST service will be deployed, connected to the specified Dremio instance and exposing a simple REST API over the listed datasets. 
 
 ### Exposing services externally
 
@@ -157,10 +196,11 @@ Various APIs and services (e.g., PostgREST or Dremio data services, Nuclio serve
 
 To create a new API gateway, provide the following:
 
-- name of the gateway
-- Kubernetes service to be exposed (select it from the dropdown list and the port will automatically be provided)
-- host and relative path to be exposed. The host defines the full domain name to be exposed. By default it refers to the 'services' subdomain, e.g., ``myservice.services.example.com`` where ``example.com`` corresponds to the platform domain.
-- authentication information. Currently, services may be unprotected (``None``) or protected with ``Basic`` authentication, specifying username and password.
+- **Name** of the gateway. This is merely an identifier for Kubernetes.
+- Kubernetes **service** to be exposed (select it from the dropdown list and **port** will automatically be provided).
+- **Host** defines the full domain name under which the service will be exposed. By default, it refers to the `services` subdomain. If your instance of the platform is found in the `example.com` domain, this field's value could be `myservice.services.example.com`.
+- Relative **path** to expose the service on.
+- **Authentication** information. Currently, services may be unprotected (``None``) or protected with ``Basic`` authentication, specifying username and password.
 
 ## Defining and Managing CRD Schemas
 

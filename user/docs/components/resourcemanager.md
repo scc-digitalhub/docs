@@ -14,7 +14,7 @@ Instructions on how to install and start an instance can be found on the [reposi
 
 ## Standard Kubernetes Resources
 
-With KRM you can control the main Kubernetes resources (e.g., services, deployments), manage Persistent Volume Claims, and access the secrets.Click the corresponding button in the left menu, and view the details of one item by clicking its *Show* button. 
+With KRM you can control the main Kubernetes resources (e.g., services, deployments), manage Persistent Volume Claims, and access secrets. Click the corresponding button in the left menu, and view the details of one item by clicking its *Show* button.
 
 ## Custom resources
 
@@ -22,4 +22,4 @@ Custom resources can be viewed, created, edited and deleted through the use of t
 
 If you don't see a specific kind of custom resource listed to the left, it means neither Kubernetes nor KRM contain a schema for it. A schema is required so that the application may understand and describe the related resources.
 
-If some resources already exist, they will be immediately be visible.
+If some resources already exist, they will immediately be visible.

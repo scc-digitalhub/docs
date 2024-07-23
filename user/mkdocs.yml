@@ -13,28 +13,33 @@ extra_css:
 nav:
   - "index.md"
   - "architecture.md"
+  - "quickstart.md"
   - "installation.md"
-  - "core.md"
-  - "dh_console.md"
-  - Components:
-      - "components/deploying-components.md"
-      - "components/dashboard.md"
-      - "components/jupyter.md"
-      - "components/dremio.md"
-      - "components/mlrun.md"
-      - "components/sqlpad.md"
-      - "components/grafana.md"
-      - "components/vscode.md"
-      - "components/resourcemanager.md"
-  - Tasks:
+  #- "core.md"
+  - Concepts and Tasks:
       - "tasks/projects.md"
-      - "tasks/artifacts.md"
-      - "tasks/dataitems.md"
+      - "tasks/functions.md"
       - "tasks/workspaces.md"
       - "tasks/resources.md"
       - "tasks/data.md"
-      - "tasks/git.md"
+      - "tasks/models.md"
       - "tasks/kubernetes-resources.md"
+      - "tasks/secrets.md"
+      - "tasks/workflows.md"
+    #   - "tasks/git.md"
+  - Components:
+      - "components/dashboard.md"
+      - "components/dh_console.md"
+      - "components/resourcemanager.md"
+      - "components/mlrun.md"
+      - "components/nuclio.md"
+      - "components/kubeflow.md"
+      - Interactive Workspaces:
+          - "components/jupyter.md"
+          - "components/dremio.md"
+          - "components/sqlpad.md"
+          - "components/grafana.md"
+          - "components/vscode.md"
   - Scenarios:
       - Extract-Transform-Load:
           - "scenarios/etl/intro.md"
@@ -57,12 +62,17 @@ nav:
           - "scenarios/postgrest/intro.md"
           - "scenarios/postgrest/data.md"
           - "scenarios/postgrest/postgrest.md"
-  - Runtimes documentation:
-      - Container:
-          - "runtimes/container.md"
-      - DBT:
-          - "runtimes/dbt.md"
-      - Mlrun:
-          - "runtimes/mlrun.md"
-      - Nefertem:
-          - "runtimes/nefertem.md"
+          - "scenarios/postgrest/apigw.md"
+  - Runtimes reference:
+      - Python: "runtimes/python.md"
+      - DBT: "runtimes/dbt.md"
+      - Nefertem: "runtimes/nefertem.md"
+      - Container: "runtimes/container.md"
+      - Pipelines: "runtimes/kfp_pipelines.md"
+
+  - SDK Reference:
+      - "sdk/intro.md"
+  - Administration:
+      - "admin/overview.md"
+      - "admin/authentication.md"
+      - "admin/configuration.md"
