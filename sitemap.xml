@@ -11,17 +11,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>http://docs/user/core/</loc>
-         <lastmod>2024-07-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>http://docs/user/dh_console/</loc>
-         <lastmod>2024-07-23</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>http://docs/user/installation/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>http://docs/user/quickstart/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>http://docs/user/admin/authentication/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>http://docs/user/admin/configuration/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>http://docs/user/admin/overview/</loc>
          <lastmod>2024-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -31,7 +41,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>http://docs/user/components/deploying-components/</loc>
+         <loc>http://docs/user/components/dh_console/</loc>
          <lastmod>2024-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -51,7 +61,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://docs/user/components/kubeflow/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://docs/user/components/mlrun/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>http://docs/user/components/nuclio/</loc>
          <lastmod>2024-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -81,12 +101,22 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://docs/user/runtimes/kfp_pipelines/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://docs/user/runtimes/mlrun/</loc>
          <lastmod>2024-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://docs/user/runtimes/nefertem/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>http://docs/user/runtimes/python/</loc>
          <lastmod>2024-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -146,6 +176,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://docs/user/scenarios/postgrest/apigw/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://docs/user/scenarios/postgrest/data/</loc>
          <lastmod>2024-07-23</lastmod>
          <changefreq>daily</changefreq>
@@ -166,6 +201,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>http://docs/user/sdk/intro/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>http://docs/user/tasks/artifacts/</loc>
          <lastmod>2024-07-23</lastmod>
          <changefreq>daily</changefreq>
@@ -181,12 +221,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>http://docs/user/tasks/git/</loc>
+         <loc>http://docs/user/tasks/functions/</loc>
          <lastmod>2024-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>http://docs/user/tasks/kubernetes-resources/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>http://docs/user/tasks/models/</loc>
          <lastmod>2024-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -197,6 +242,16 @@
     </url>
     <url>
          <loc>http://docs/user/tasks/resources/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>http://docs/user/tasks/secrets/</loc>
+         <lastmod>2024-07-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>http://docs/user/tasks/workflows/</loc>
          <lastmod>2024-07-23</lastmod>
          <changefreq>daily</changefreq>
     </url>
