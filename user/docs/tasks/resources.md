@@ -182,6 +182,7 @@ To create a new service, provide the following:
     - **User** and **Password** are required, unless you choose to use a secret, in which case the **secret's name** must be provided. The secret should contain `USER` and `PASSWORD`.
     - *Extra connection parameters* are optional and may be provided in the format `param1=value1&param2=value2`. For example, to disable certificate verification: `useEncryption=false&disableCertificateVerification=true`.
 
+If you instantiated Dremio through Coder, the value of **Host** is the value of *Arrow Flight Endpoint*, stripped of `:` and port. **User** is `admin` and **Password** is the value you entered when creating the workspace.
 
 ![KRM Dremio create image](../images/krm/krm_dremio_create.png)
 
