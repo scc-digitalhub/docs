@@ -2098,27 +2098,23 @@
 <li><a href="https://minikube.sigs.k8s.io/docs/start/">Minikube</a></li>
 </ul>
 <h3 id="installation">Installation</h3>
-<ol>
-<li>Start minikube (change 192.168.49.0 if your network setup is different):
+<p>1) Start minikube (change 192.168.49.0 if your network setup is different):
 <div class="highlight"><pre><span></span><code><span class="w">    </span>minikube<span class="w"> </span>start<span class="w"> </span>--insecure-registry<span class="w"> </span><span class="s2">&quot;192.168.49.0/24&quot;</span><span class="w"> </span>--memory<span class="w"> </span><span class="m">12288</span><span class="w"> </span>--cpus<span class="w"> </span><span class="m">4</span>
-</code></pre></div></li>
-<li>Get minikube external IP:
+</code></pre></div>
+2) Get minikube external IP:
 <div class="highlight"><pre><span></span><code><span class="w">    </span>minikube<span class="w"> </span>ip
-</code></pre></div></li>
-<li>Change the IP in  'global.registry.url' and 'global.externalHostAddress' properties in values file (<em>chart/digitalhub/values.yaml</em>) with the one obtained in the previous step. </li>
-</ol>
-<p>There are two main ways to do this step:
-- Cloning the repo at https://github.com/scc-digitalhub/digitalhub and editing the values file. Use this method if you want to vastly customize your installation.
+</code></pre></div>
+3) Change the IP in  'global.registry.url' and 'global.externalHostAddress' properties in values file (<em>chart/digitalhub/values.yaml</em>) with the one obtained in the previous step. </p>
+<p>There are two main ways to do this step:<br />
+- Cloning the repo at https://github.com/scc-digitalhub/digitalhub and editing the values file. Use this method if you want to vastly customize your installation.<br />
 - Setting the specific values with the installation command, useful if you want to edit a low number of values. </p>
 <p>The two options will be covered in the installation step.  </p>
-<ol>
-<li>Add Digitalhub repository:
+<p>4) Add Digitalhub repository:
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>digitalhub<span class="w"> </span>https://scc-digitalhub.github.io/digitalhub/
-</code></pre></div></li>
-<li>Install DigitalHub with Helm:
+</code></pre></div>
+5) Install DigitalHub with Helm:
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>upgrade<span class="w"> </span>digitalhub<span class="w"> </span>digitalhub/digitalhub<span class="w"> </span>-n<span class="w"> </span>digitalhub<span class="w"> </span>--install<span class="w"> </span>--create-namespace<span class="w"> </span>--timeout<span class="w"> </span>15m0s
-</code></pre></div></li>
-</ol>
+</code></pre></div></p>
 <p>If you want to install Digitalhub with your values, you can do so by applying small changes to the previous command.</p>
 <p>Install Digitalhub with your values file:
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>upgrade<span class="w"> </span>digitalhub<span class="w"> </span>digitalhub/digitalhub<span class="w"> </span>-n<span class="w"> </span>digitalhub<span class="w"> </span>--install<span class="w"> </span>--create-namespace<span class="w"> </span>--values<span class="w"> </span>PATH_TO_VALUES_FILE<span class="w"> </span>--timeout<span class="w"> </span>15m0s
@@ -2126,15 +2122,11 @@
 Install Digitalhub setting specific values:
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>upgrade<span class="w"> </span>digitalhub<span class="w"> </span>digitalhub/digitalhub<span class="w"> </span>-n<span class="w"> </span>digitalhub<span class="w"> </span>--install<span class="w"> </span>--create-namespace<span class="w"> </span>--set<span class="w"> </span>global.registry.url<span class="o">=</span><span class="s2">&quot;MINIKUBE_IP_ADDRESS&quot;</span><span class="w"> </span>--set<span class="w"> </span>global.externalHostAddress<span class="o">=</span><span class="s2">&quot;MINIKUBE_IP_ADDRESS&quot;</span><span class="w"> </span>--timeout<span class="w"> </span>15m0s
 </code></pre></div></p>
-<ol>
-<li>Wait until all pods are in Running or Completed state
+<p>6) Wait until all pods are in Running or Completed state
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>--namespace<span class="w"> </span>digitalhub<span class="w"> </span>get<span class="w"> </span>pods
-</code></pre></div></li>
-</ol>
+</code></pre></div></p>
 <p>Once installed, you should see the references (URLs) for the different tools of the platform.</p>
-<ol>
-<li>After the installation process you can still edit the platform with the values file if you need to make some changes/adjustments.</li>
-</ol>
+<p>7) After the installation process you can still edit the platform with the values file if you need to make some changes/adjustments.</p>
 <p>Upgrading Digitalhub with your values file:
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>upgrade<span class="w"> </span>digitalhub<span class="w"> </span>digitalhub/digitalhub<span class="w"> </span>-n<span class="w"> </span>digitalhub<span class="w"> </span>--values<span class="w"> </span>PATH_TO_VALUES_FILE<span class="w"> </span>--timeout<span class="w"> </span>15m0s
 </code></pre></div>
