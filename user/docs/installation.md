@@ -34,8 +34,40 @@ helm upgrade digitalhub digitalhub/digitalhub -n digitalhub --install --create-n
 kubectl --namespace digitalhub get pods
 ```
 
-Once installed, you should see the references (URLs) for the different tools of the platform.
+Once installed, you should see the references (URLs) for the different tools of the platform, similar to the example below:
+```
+##########################################################
+#   _____   _       _           _ _     _       _        #
+#  (____ \ (_)     (_)_        | | |   | |     | |       #
+#   _   \ \ _  ____ _| |_  ____| | |__ | |_   _| | _     #
+#  | |   | | |/ _  | |  _)/ _  | |  __)| | | | | || \    #
+#  | |__/ /| ( ( | | | |_( ( | | | |   | | |_| | |_) )   #
+#  |_____/ |_|\_|| |_|\___)_||_|_|_|   |_|\____|____/    #
+#            (_____|                                     #
+#                                                        #
+##########################################################
 
+Digitalhub has been installed. Check its status by running:
+  kubectl --namespace digitalhub get pods
+
+Digitalhub componet URLs:
+  - Dashboard: http://192.168.76.2:30110
+  - Jupyter: http://192.168.76.2:30040 (Create jupyter workspace from template in the coder dashboard before use)
+  - Dremio: http://192.168.76.2:30120 (Create dremio workspace from template in the coder dashboard before use)
+  - Sqlpad: http://192.168.76.2:30140 (Create sqlpad workspace from template in the coder dashboard before use)
+  - Grafana: http://192.168.76.2:30130 (Create grafana workspace from template in the coder dashboard before use)
+  - Vscode: http://192.168.76.2:30190 (Create vscode workspace from template in the coder dashboard before use)
+  - Docker Registry: http://192.168.76.2:30150
+  - Nuclio: http://192.168.76.2:30050
+  - MLRun API: http://192.168.76.2:30070
+  - MLRun UI: http://192.168.76.2:30060
+  - Minio API: http://192.168.76.2:30080 (Username: minio Password: minio123)
+  - Minio UI: http://192.168.76.2:30090 (Username: minio Password: minio123)
+  - KubeFlow: http://192.168.76.2:30100
+  - Coder: http://192.168.76.2:30170 (Username: test@digitalhub.test Password: Test12456@!)
+  - Core: http://192.168.76.2:30180
+  - Kubernetes Resource Manager: http://192.168.76.2:30160
+```
 ## Install with MS Azure
 
 Documentation in progress...
