@@ -2150,6 +2150,13 @@ Digitalhub componet URLs:
 <p><strong>A note for Windows, Darwin and WSL users</strong>  </p>
 <p>As of now, due to the limitations of Minikube it is not possible to access your applications directly while using one of the OS mentioned above.  </p>
 <p>You can still access your apps from browser, but you will have to use the <code>kubectl port-forward</code> command.  </p>
+<p>For example, if you wish to expose the core service, you can use:
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>digitalhub<span class="w"> </span>port-forward<span class="w"> </span>service/digitalhub-core<span class="w"> </span><span class="m">30180</span>:8080
+</code></pre></div>
+This will allow you to access core by typing <code>localhost:30180</code> in your browser.</p>
+<p>The full list of services can be checked using this command:
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>digitalhub<span class="w"> </span>get<span class="w"> </span>services
+</code></pre></div></p>
 <p>Please consult the official <a href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_port-forward/">Kubernetes documentation</a> for more details.</p>
 <h2 id="install-with-ms-azure">Install with MS Azure</h2>
 <p>Documentation in progress...</p>
