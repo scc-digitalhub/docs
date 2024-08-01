@@ -26,7 +26,7 @@ helm repo add digitalhub https://scc-digitalhub.github.io/digitalhub/
 
 Replace the two placeholders called `MINIKUBE_IP_ADDRESS` in the command below with the output of the previous command, `minikube ip`
 ```sh
-helm upgrade digitalhub digitalhub/digitalhub -n digitalhub --install --create-namespace --set global.registry.url="MINIKUBE_IP_ADDRESS" --set global.externalHostAddress="MINIKUBE_IP_ADDRESS" --timeout 15m0s
+helm upgrade digitalhub digitalhub/digitalhub -n digitalhub --install --create-namespace --set global.registry.url="MINIKUBE_IP_ADDRESS" --set global.externalHostAddress="MINIKUBE_IP_ADDRESS" --timeout 45m0s
 ```
 
 5) Wait until all pods are in Running or Completed state
@@ -67,7 +67,17 @@ Digitalhub componet URLs:
   - Coder: http://192.168.76.2:30170 (Username: test@digitalhub.test Password: Test12456@!)
   - Core: http://192.168.76.2:30180
   - Kubernetes Resource Manager: http://192.168.76.2:30160
-```
+```  
+
+**A note for Windows, Darwin and WSL users**  
+
+As of now, due to the limitations of Minikube it is not possible to access your applications directly while using one of the OS mentioned above.  
+
+You can still access your apps from browser, but you will have to use the `kubectl port-forward` command.  
+
+Please consult the official [Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) for more details.
+
+
 ## Install with MS Azure
 
 Documentation in progress...
