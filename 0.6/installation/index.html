@@ -2109,7 +2109,7 @@
 </code></pre></div></p>
 <p>4) Install DigitalHub with Helm.</p>
 <p>Replace the two placeholders called <code>MINIKUBE_IP_ADDRESS</code> in the command below with the output of the previous command, <code>minikube ip</code>
-<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>upgrade<span class="w"> </span>digitalhub<span class="w"> </span>digitalhub/digitalhub<span class="w"> </span>-n<span class="w"> </span>digitalhub<span class="w"> </span>--install<span class="w"> </span>--create-namespace<span class="w"> </span>--set<span class="w"> </span>global.registry.url<span class="o">=</span><span class="s2">&quot;MINIKUBE_IP_ADDRESS&quot;</span><span class="w"> </span>--set<span class="w"> </span>global.externalHostAddress<span class="o">=</span><span class="s2">&quot;MINIKUBE_IP_ADDRESS&quot;</span><span class="w"> </span>--timeout<span class="w"> </span>15m0s
+<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>upgrade<span class="w"> </span>digitalhub<span class="w"> </span>digitalhub/digitalhub<span class="w"> </span>-n<span class="w"> </span>digitalhub<span class="w"> </span>--install<span class="w"> </span>--create-namespace<span class="w"> </span>--set<span class="w"> </span>global.registry.url<span class="o">=</span><span class="s2">&quot;MINIKUBE_IP_ADDRESS&quot;</span><span class="w"> </span>--set<span class="w"> </span>global.externalHostAddress<span class="o">=</span><span class="s2">&quot;MINIKUBE_IP_ADDRESS&quot;</span><span class="w"> </span>--timeout<span class="w"> </span>45m0s
 </code></pre></div></p>
 <p>5) Wait until all pods are in Running or Completed state
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>--namespace<span class="w"> </span>digitalhub<span class="w"> </span>get<span class="w"> </span>pods
@@ -2147,6 +2147,10 @@ Digitalhub componet URLs:
   - Core: http://192.168.76.2:30180
   - Kubernetes Resource Manager: http://192.168.76.2:30160
 </code></pre></div></p>
+<p><strong>A note for Windows, Darwin and WSL users</strong>  </p>
+<p>As of now, due to the limitations of Minikube it is not possible to access your applications directly while using one of the OS mentioned above.  </p>
+<p>You can still access your apps from browser, but you will have to use the <code>kubectl port-forward</code> command.  </p>
+<p>Please consult the official <a href="https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/">Kubernetes documentation</a> for more details.</p>
 <h2 id="install-with-ms-azure">Install with MS Azure</h2>
 <p>Documentation in progress...</p>
 
