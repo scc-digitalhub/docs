@@ -75,7 +75,7 @@ As of now, due to the limitations of Minikube it is not possible to access your 
 
 You can still access your apps from browser, but you will have to use the `kubectl port-forward` command.  
 
-Please consult the official [Kubernetes documentation](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) for more details.
+Please consult the official [Kubernetes documentation](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_port-forward/) for more details.
 
 
 ## Install with MS Azure
