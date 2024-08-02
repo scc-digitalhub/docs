@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
     
     
       
@@ -2098,25 +2098,66 @@
 <li><a href="https://minikube.sigs.k8s.io/docs/start/">Minikube</a></li>
 </ul>
 <h3 id="installation">Installation</h3>
-<ol>
-<li>Start minikube (change 192.168.49.0 if your network setup is different):
+<p>1) Start minikube (change 192.168.49.0 if your network setup is different):
 <div class="highlight"><pre><span></span><code><span class="w">    </span>minikube<span class="w"> </span>start<span class="w"> </span>--insecure-registry<span class="w"> </span><span class="s2">&quot;192.168.49.0/24&quot;</span><span class="w"> </span>--memory<span class="w"> </span><span class="m">12288</span><span class="w"> </span>--cpus<span class="w"> </span><span class="m">4</span>
-</code></pre></div></li>
-<li>Get minikube external IP:
-<div class="highlight"><pre><span></span><code><span class="w">    </span>minikube<span class="w"> </span>ip
-</code></pre></div></li>
-<li>Change the IP in  'global.registry.url' and 'global.externalHostAddress' properties in values file (<em>chart/digitalhub/values.yaml</em>) with the one obtained in the previous step.</li>
-<li>Add Digitalhub repository:
+</code></pre></div></p>
+<p>2) Add Digitalhub repository:
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>digitalhub<span class="w"> </span>https://scc-digitalhub.github.io/digitalhub/
-</code></pre></div></li>
-<li>Install DigitalHub with Helm:
-<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>upgrade<span class="w"> </span>digitalhub<span class="w"> </span>digitalhub/digitalhub<span class="w"> </span>-n<span class="w"> </span>digitalhub<span class="w"> </span>--install<span class="w"> </span>--create-namespace<span class="w"> </span>--timeout<span class="w"> </span>15m0s
-</code></pre></div></li>
-<li>Wait until all pods are in Running or Completed state
+</code></pre></div></p>
+<p>3) Get minikube external IP:
+<div class="highlight"><pre><span></span><code><span class="w">    </span>minikube<span class="w"> </span>ip
+</code></pre></div></p>
+<p>4) Install DigitalHub with Helm.</p>
+<p>Replace the two placeholders called <code>MINIKUBE_IP_ADDRESS</code> in the command below with the output of the previous command, <code>minikube ip</code>
+<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>upgrade<span class="w"> </span>digitalhub<span class="w"> </span>digitalhub/digitalhub<span class="w"> </span>-n<span class="w"> </span>digitalhub<span class="w"> </span>--install<span class="w"> </span>--create-namespace<span class="w"> </span>--set<span class="w"> </span>global.registry.url<span class="o">=</span><span class="s2">&quot;MINIKUBE_IP_ADDRESS&quot;</span><span class="w"> </span>--set<span class="w"> </span>global.externalHostAddress<span class="o">=</span><span class="s2">&quot;MINIKUBE_IP_ADDRESS&quot;</span><span class="w"> </span>--timeout<span class="w"> </span>45m0s
+</code></pre></div></p>
+<p>5) Wait until all pods are in Running or Completed state
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>--namespace<span class="w"> </span>digitalhub<span class="w"> </span>get<span class="w"> </span>pods
-</code></pre></div></li>
-</ol>
-<p>Once installed, you should see the references (URLs) for the different tools of the platform.</p>
+</code></pre></div></p>
+<p>Once installed, you should see the references (URLs) for the different tools of the platform, similar to the example below:
+<div class="highlight"><pre><span></span><code>##########################################################
+#   _____   _       _           _ _     _       _        #
+#  (____ \ (_)     (_)_        | | |   | |     | |       #
+#   _   \ \ _  ____ _| |_  ____| | |__ | |_   _| | _     #
+#  | |   | | |/ _  | |  _)/ _  | |  __)| | | | | || \    #
+#  | |__/ /| ( ( | | | |_( ( | | | |   | | |_| | |_) )   #
+#  |_____/ |_|\_|| |_|\___)_||_|_|_|   |_|\____|____/    #
+#            (_____|                                     #
+#                                                        #
+##########################################################
+
+Digitalhub has been installed. Check its status by running:
+  kubectl --namespace digitalhub get pods
+
+Digitalhub componet URLs:
+  - Dashboard: http://192.168.76.2:30110
+  - Jupyter: http://192.168.76.2:30040 (Create jupyter workspace from template in the coder dashboard before use)
+  - Dremio: http://192.168.76.2:30120 (Create dremio workspace from template in the coder dashboard before use)
+  - Sqlpad: http://192.168.76.2:30140 (Create sqlpad workspace from template in the coder dashboard before use)
+  - Grafana: http://192.168.76.2:30130 (Create grafana workspace from template in the coder dashboard before use)
+  - Vscode: http://192.168.76.2:30190 (Create vscode workspace from template in the coder dashboard before use)
+  - Docker Registry: http://192.168.76.2:30150
+  - Nuclio: http://192.168.76.2:30050
+  - MLRun API: http://192.168.76.2:30070
+  - MLRun UI: http://192.168.76.2:30060
+  - Minio API: http://192.168.76.2:30080 (Username: minio Password: minio123)
+  - Minio UI: http://192.168.76.2:30090 (Username: minio Password: minio123)
+  - KubeFlow: http://192.168.76.2:30100
+  - Coder: http://192.168.76.2:30170 (Username: test@digitalhub.test Password: Test12456@!)
+  - Core: http://192.168.76.2:30180
+  - Kubernetes Resource Manager: http://192.168.76.2:30160
+</code></pre></div></p>
+<p><strong>A note for Windows, Darwin and WSL users</strong>  </p>
+<p>As of now, due to the limitations of Minikube it is not possible to access your applications directly while using one of the OS mentioned above.  </p>
+<p>You can still access your apps from browser, but you will have to use the <code>kubectl port-forward</code> command.  </p>
+<p>For example, if you wish to expose the core service, you can use:
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>digitalhub<span class="w"> </span>port-forward<span class="w"> </span>service/digitalhub-core<span class="w"> </span><span class="m">30180</span>:8080
+</code></pre></div>
+This will allow you to access core by typing <code>localhost:30180</code> in your browser.</p>
+<p>The full list of services can be checked using this command:
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>digitalhub<span class="w"> </span>get<span class="w"> </span>services
+</code></pre></div></p>
+<p>Please consult the official <a href="https://kubernetes.io/docs/reference/kubectl/generated/kubectl_port-forward/">Kubernetes documentation</a> for more details.</p>
 <h2 id="install-with-ms-azure">Install with MS Azure</h2>
 <p>Documentation in progress...</p>
 
