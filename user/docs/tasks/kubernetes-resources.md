@@ -4,13 +4,14 @@ With SDK you can manage Kubernetes resources for your tasks. When you run a func
 
 | Name | Type | Description | Default |
 | --- | --- | --- | --- |
-| [node_selector](./kubernetes-resources.md#node_selector) | list[dict] | Node selector | None |
-| [volumes](./kubernetes-resources.md#volumes) | list[dict] | List of volumes | None |
-| [resources](./kubernetes-resources.md#resources) | dict | Resources restrictions | None |
-| [affinity](./kubernetes-resources.md#affinity) | dict | Affinity | None |
-| [tolerations](./kubernetes-resources.md#tolerations) | list[dict] | Tolerations | None |
-| [envs](./kubernetes-resources.md#envs) | list[dict] | Env variables | None |
-| [secrets](./kubernetes-resources.md#secrets) | list[str] | List of secret names | None |
+| [node_selector](#node_selector) | list[dict] | Node selector | None |
+| [volumes](#volumes) | list[dict] | List of volumes | None |
+| [resources](#resources) | dict | Resources restrictions | None |
+| [affinity](#affinity) | dict | Affinity | None |
+| [tolerations](#tolerations) | list[dict] | Tolerations | None |
+| [envs](#envs) | list[dict] | Env variables | None |
+| [secrets](#secrets) | list[str] | List of secret names | None |
+| [profile](#profile) | str | Profile template | None | |
 
 ## Node_selector
 
@@ -25,11 +26,10 @@ node_selector = {
 
 ## Volumes
 
-With SDK you can request three types of volumes:
+With SDK you can request the following types of volumes:
 
 - **Persistent volume claims (PVC)**
 - **ConfigMap**
-- **Secret**
 
 ### Persistent volume claims (PVC)
 
@@ -59,22 +59,6 @@ volumes = [{
         "mount_path": "/data",
         "spec": {
             "name": "config-map-name-on-k8s"
-        }
-}]
-```
-
-### Secret
-
-You can ask for a secret to be mounted on the container being launched by the task.
-You need to declare the volume type as `secret`, a name for the Secret for the user (e.g., `my-secret`), the mount path on the container and a spec with the name of the Secret on Kubernetes (e.g., `secret-name-on-k8s`).
-
-```python
-volumes = [{
-        "volume_type": "secret",
-        "name": "my-secret",
-        "mount_path": "/data",
-        "spec": {
-            "secret_name": "secret-name-on-k8s"
         }
 }]
 ```
@@ -122,7 +106,7 @@ You can request a specific amount of GPU for the task.
 You need to declare the resource type as `gpu`, request and/or limit specifications. There could be administation-specific requirements for requesting a GPU. You may need to use `tolerations` or `affinity` parameters to request the GPU. Both of these parameters are described in the [Kubernetes documentation](https://kubernetes.io/docs/home/).
 Other times you may need to specify a list of labels with the `labels` parameter.
 
-Here is an example that uses the `tolerations` parameter:
+Here is an example for the digitahub in FBK that uses the `tolerations` parameter:
 
 ```python
 
@@ -175,3 +159,7 @@ toleration = [{
 ## Affinity
 
 Please see [Kubernetes documentation](https://kubernetes.io/docs/home/).
+
+## Profile
+
+Profile template.

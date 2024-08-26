@@ -11,7 +11,7 @@ KRM navigation menu provides access to different types of resources. This includ
 
 KRM allows for accessing and managing the standard K8S resources relevant for the DigitalHub platform: space (through Persistent Volume Claims), services and deployments, and secrets.
 
-### Listing K8S Services 
+### Listing K8S Services
 
 Accessing the `Services` menu of the KRM, it is possible to list the (subset of) services deployed on Kubernetes relevant to DigitalHub.
 
@@ -19,7 +19,7 @@ Accessing the `Services` menu of the KRM, it is possible to list the (subset of)
 
 For each service KRM shows its name, type (e.g., Coder workspace type), exposed port type and value. In the service details view it is possible to access other metadata, such as labels, creation timestamps. version, etc.
 
-### Listing K8S Deployments 
+### Listing K8S Deployments
 
 Accessing the `Deployments` menu of the KRM, it is possible to list the (subset of) deployments on Kubernetes relevant to DigitalHub.
 
@@ -31,7 +31,7 @@ For each deployment KRM shows its name and availability of instances. In the dep
 
 In certain cases, the operations developed with the platform may require more substantial disk space, e.g., for training / producing significant amounts of data. In this case, it is possible to attach to the tasks the corresponding Persistent Volume Claim (PVC) references. To create a new PVC for the use of the pipeline or Job, KRM provides the corresponding interface.
 
-Accessing `Persistent Volume Claims` menu, it is possible to list and manage the PVCs of the platform. 
+Accessing `Persistent Volume Claims` menu, it is possible to list and manage the PVCs of the platform.
 
 ![KRM PVCs image](../images/krm/krm_pvcs.png)
 
@@ -54,7 +54,7 @@ To create a new PVC, provide the following:
 
 ![KRM PVC Create image](../images/krm/krm_pvc_create.png)
 
-### Listing K8S Secrets 
+### Listing K8S Secrets
 
 Accessing the `Secrets` menu of the KRM, it is possible to list the (subset of) secrets on Kubernetes relevant to DigitalHub.
 
@@ -81,9 +81,9 @@ To create a new Database, provide the following:
 
 - name of the database to create
 - whether to drop the DB on resource deletion
-- Comma-separated list of PostgreSQL extensions to enable (e.g., timescale and/or postgis) as supported by the platform deployment (optional). 
-- Comma-separated list of schemas to create in DB (optional) 
-- Name of the master role for the DB access management (optional) 
+- Comma-separated list of PostgreSQL extensions to enable (e.g., timescale and/or postgis) as supported by the platform deployment (optional).
+- Comma-separated list of schemas to create in DB (optional)
+- Name of the master role for the DB access management (optional)
 
 ![KRM Postgres create image](../images/krm/krm_postgres_create.png)
 
@@ -156,12 +156,12 @@ Extra connection parameters may be provided in the format `param1=value1&param2=
     Please note that when no existing DB user is specified, the user specified in the *Connection* section must have sufficient privileges to manage roles. By default, the owner/writer/reader users created by the Postgres operator do not have this permission.
 
 !!! warning "Schema exposure"
-    PostgREST exposes all tables and views in the specified schema. In order to have better control over the exposed data, it is 
+    PostgREST exposes all tables and views in the specified schema. In order to have better control over the exposed data, it is
     recommended to create a separate schema (e.g., `api`) and provide access to data through views or stored procedures. You can use **SQLPad** to do this.
 
 
 ![KRM PostgREST create image](../images/krm/krm_postgrest_create.png)
- 
+
 Check out [the official documentation](https://postgrest.org/en/stable/) for more information on PostgREST.
 
 ### Managing Dremio Data Services with KRM
@@ -186,11 +186,11 @@ If you instantiated Dremio through Coder, the value of **Host** is the value of 
 
 ![KRM Dremio create image](../images/krm/krm_dremio_create.png)
 
-A Dremio REST service will be deployed, connected to the specified Dremio instance and exposing a simple REST API over the listed datasets. 
+A Dremio REST service will be deployed, connected to the specified Dremio instance and exposing a simple REST API over the listed datasets.
 
 ### Exposing services externally
 
-Various APIs and services (e.g., PostgREST or Dremio data services, Nuclio serverless functions) may be exposed externally, outside of the platform, on a public domain of the platform. Using KRM, the operation amounts to defining a new API gateway resource that will be transformed into the corresponding ingress routing specification. 
+Various APIs and services (e.g., PostgREST or Dremio data services, Nuclio serverless functions) may be exposed externally, outside of the platform, on a public domain of the platform. Using KRM, the operation amounts to defining a new API gateway resource that will be transformed into the corresponding ingress routing specification.
 
 ![KRM API gateway create image](../images/krm/krm_apigw.png)
 

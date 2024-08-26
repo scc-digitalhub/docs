@@ -74,7 +74,6 @@ nav:
   - Runtimes reference:
       - Python: "runtimes/python.md"
       - DBT: "runtimes/dbt.md"
-      - Nefertem: "runtimes/nefertem.md"
       - Container: "runtimes/container.md"
       - Pipelines: "runtimes/kfp_pipelines.md"
 
