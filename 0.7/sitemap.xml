@@ -171,11 +171,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>http://docs/user/scenarios/ml/training/</loc>
-         <lastmod>2024-08-26</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>http://docs/user/scenarios/mlmlflow/deploy/</loc>
          <lastmod>2024-08-26</lastmod>
          <changefreq>daily</changefreq>
