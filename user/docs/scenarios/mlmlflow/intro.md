@@ -85,7 +85,7 @@ train_fn = project.new_function(
 
 and run it locally:
 ``` python
-train_run = train_fn.run(action="job", inputs={"di": gen_data_run.outputs()["dataset"].key}, local_execution=True)
+train_run = train_fn.run(action="job", local_execution=True)
 ```
 
 As a result, a new model is registered in the Core and may be used by different inference operations:

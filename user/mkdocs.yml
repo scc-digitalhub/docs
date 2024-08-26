@@ -60,7 +60,6 @@ nav:
           - "scenarios/mlmlflow/deploy.md"
       - "MLOps: Custom ML model training":
           - "scenarios/ml/intro.md"
-          - "scenarios/ml/training.md"
           - "scenarios/ml/deploy.md"
       - Dremio transformation:
           - "scenarios/dremio_grafana/scenario.md"

@@ -1,10 +1,10 @@
-# Generic ML scenario introduction
+# Custom ML scenario introduction
 
-This scenario provides a quick overview of developing and deploying generic machine learning applications using the functionalities of the platform. 
+This scenario provides a quick overview of developing and deploying generic machine learning applications using the functionalities of the platform. For this purpose, we use ML algorithms for the time series management provided by the [Darts](https://unit8co.github.io/darts/) framework.
 
 The resulting edited notebook, as well as a file for the function we will create, are available in the `documentation/examples/ml` path within the repository of this documentation.
 
-We will prepare data, train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook.
+We will train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook.
 
 ## Set-up
 
@@ -23,51 +23,86 @@ PROJECT = "demo-ml"
 project = dh.get_or_create_project(PROJECT)
 ```
 
-## Generate data
+# Training the model
 
-Define the following function, which generates the dataset as required by the model:
+Let us define the training function. For the sake of simplicity, we use predefined "Air Passengers" dataset of Darts.
+
 ``` python
-%%writefile data-prep.py
+%%writefile "train-model.py"
 
-import pandas as pd
-from sklearn.datasets import load_breast_cancer
 
 from digitalhub_runtime_python import handler
 
-@handler(outputs=["dataset"])
-def breast_cancer_generator():
-    """
-    A function which generates the breast cancer dataset
-    """
-    breast_cancer = load_breast_cancer()
-    breast_cancer_dataset = pd.DataFrame(
-        data=breast_cancer.data, columns=breast_cancer.feature_names
+import pandas as pd
+import numpy as np
+
+from darts import TimeSeries
+from darts.datasets import AirPassengersDataset
+from darts.models import NBEATSModel
+from darts.metrics import mape, smape, mae
+
+from zipfile import ZipFile
+
+@handler()
+def train_model(project):
+    series = AirPassengersDataset().load()
+    train, val = series[:-36], series[-36:]
+
+    model = NBEATSModel(
+        input_chunk_length=24,
+        output_chunk_length=12,
+        n_epochs=200,
+        random_state=0
     )
-    breast_cancer_labels = pd.DataFrame(data=breast_cancer.target, columns=["target"])
-    breast_cancer_dataset = pd.concat(
-        [breast_cancer_dataset, breast_cancer_labels], axis=1
+    model.fit(train)
+    pred = model.predict(n=36)
+
+    model.save("predictor_model.pt")
+    with ZipFile("predictor_model.pt.zip", "w") as z:
+        z.write("predictor_model.pt")
+        z.write("predictor_model.pt.ckpt")
+    metrics = {
+        "mape": mape(series, pred),
+        "smape": smape(series, pred),
+        "mae": mae(series, pred)
+    }
+    
+    project.log_model(
+        name="darts_model", 
+        kind="model", 
+        source="predictor_model.pt.zip", 
+        algorithm="darts.models.NBEATSModel",
+        framework="darts",
+        metrics=metrics
     )
-
-    return breast_cancer_dataset
 ```
 
-Register it:
+In this code we create a NBEATS DL model, store it locally zipping the content, extract some metrics, and log the model to the platform
+with a generic ``model`` kind.
+
+Let us register it:
 ``` python
-data_gen_fn = project.new_function(
-                         name="data-prep",
-                         kind="python",
-                         python_version="PYTHON3_9",
-                         source={"source": "data-prep.py", "handler": "breast_cancer_generator"})
+train_fn = project.new_function(
+     name="train-darts",
+     kind="python",
+     python_version="PYTHON3_9",
+     source={"source": "train-model.py", "handler": "train_model"},
+     requirements=["darts==0.30.0"])
 ```
 
-Run it locally:
+and run it locally:
 ``` python
-gen_data_run = data_gen_fn.run(action="job", outputs={"dataset": "dataset"}, local_execution=True)
+train_run = train_fn.run(action="job", local_execution=True)
 ```
 
-You can view the state of the execution with `gen_data_run.status` or its output with `gen_data_run.outputs()`. You can see a few records from the output artifact:
+If we want to run the function on Kubernetes, it is better to build it first as there are specific custom dependencies.
 ``` python
-gen_data_run.outputs()["dataset"].as_df().head()
+build_run = train_fn.run(action="build", local_execution=False)
 ```
 
-We will now proceed to training a model.
+In this way the function image will be created and associated with the function.
+
+As a result of train execution, a new model is registered in the Core and may be used by different inference operations.
+
+Lastly, we'll deploy and test the model.
+
