@@ -665,15 +665,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#secret" class="md-nav__link">
-    <span class="md-ellipsis">
-      Secret
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -752,6 +743,15 @@
   <a href="#affinity" class="md-nav__link">
     <span class="md-ellipsis">
       Affinity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Profile
     </span>
   </a>
   
@@ -2087,27 +2087,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/nefertem/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Nefertem
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../runtimes/container/" class="md-nav__link">
         
   
@@ -2385,15 +2364,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#secret" class="md-nav__link">
-    <span class="md-ellipsis">
-      Secret
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -2477,6 +2447,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Profile
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2505,45 +2484,51 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="./#node_selector">node_selector</a></td>
+<td><a href="#node_selector">node_selector</a></td>
 <td>list[dict]</td>
 <td>Node selector</td>
 <td>None</td>
 </tr>
 <tr>
-<td><a href="./#volumes">volumes</a></td>
+<td><a href="#volumes">volumes</a></td>
 <td>list[dict]</td>
 <td>List of volumes</td>
 <td>None</td>
 </tr>
 <tr>
-<td><a href="./#resources">resources</a></td>
+<td><a href="#resources">resources</a></td>
 <td>dict</td>
 <td>Resources restrictions</td>
 <td>None</td>
 </tr>
 <tr>
-<td><a href="./#affinity">affinity</a></td>
+<td><a href="#affinity">affinity</a></td>
 <td>dict</td>
 <td>Affinity</td>
 <td>None</td>
 </tr>
 <tr>
-<td><a href="./#tolerations">tolerations</a></td>
+<td><a href="#tolerations">tolerations</a></td>
 <td>list[dict]</td>
 <td>Tolerations</td>
 <td>None</td>
 </tr>
 <tr>
-<td><a href="./#envs">envs</a></td>
+<td><a href="#envs">envs</a></td>
 <td>list[dict]</td>
 <td>Env variables</td>
 <td>None</td>
 </tr>
 <tr>
-<td><a href="./#secrets">secrets</a></td>
+<td><a href="#secrets">secrets</a></td>
 <td>list[str]</td>
 <td>List of secret names</td>
+<td>None</td>
+</tr>
+<tr>
+<td><a href="#profile">profile</a></td>
+<td>str</td>
+<td>Profile template</td>
 <td>None</td>
 </tr>
 </tbody>
@@ -2556,11 +2541,10 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="volumes">Volumes</h2>
-<p>With SDK you can request three types of volumes:</p>
+<p>With SDK you can request the following types of volumes:</p>
 <ul>
 <li><strong>Persistent volume claims (PVC)</strong></li>
 <li><strong>ConfigMap</strong></li>
-<li><strong>Secret</strong></li>
 </ul>
 <h3 id="persistent-volume-claims-pvc">Persistent volume claims (PVC)</h3>
 <p>You can ask for a persistent volume claim (pvc) to be mounted on the container being launched by the task.
@@ -2583,18 +2567,6 @@ You need to declare the volume type as <code>config_map</code>, a name for the C
         <span class="s2">&quot;mount_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/data&quot;</span><span class="p">,</span>
         <span class="s2">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span>
             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;config-map-name-on-k8s&quot;</span>
-        <span class="p">}</span>
-<span class="p">}]</span>
-</code></pre></div>
-<h3 id="secret">Secret</h3>
-<p>You can ask for a secret to be mounted on the container being launched by the task.
-You need to declare the volume type as <code>secret</code>, a name for the Secret for the user (e.g., <code>my-secret</code>), the mount path on the container and a spec with the name of the Secret on Kubernetes (e.g., <code>secret-name-on-k8s</code>).</p>
-<div class="highlight"><pre><span></span><code><span class="n">volumes</span> <span class="o">=</span> <span class="p">[{</span>
-        <span class="s2">&quot;volume_type&quot;</span><span class="p">:</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my-secret&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;mount_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/data&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;secret_name&quot;</span><span class="p">:</span> <span class="s2">&quot;secret-name-on-k8s&quot;</span>
         <span class="p">}</span>
 <span class="p">}]</span>
 </code></pre></div>
@@ -2629,7 +2601,7 @@ You need to declare the resource type as <code>mem</code>, request and/or limit 
 <p>You can request a specific amount of GPU for the task.
 You need to declare the resource type as <code>gpu</code>, request and/or limit specifications. There could be administation-specific requirements for requesting a GPU. You may need to use <code>tolerations</code> or <code>affinity</code> parameters to request the GPU. Both of these parameters are described in the <a href="https://kubernetes.io/docs/home/">Kubernetes documentation</a>.
 Other times you may need to specify a list of labels with the <code>labels</code> parameter.</p>
-<p>Here is an example that uses the <code>tolerations</code> parameter:</p>
+<p>Here is an example for the digitahub in FBK that uses the <code>tolerations</code> parameter:</p>
 <div class="highlight"><pre><span></span><code><span class="n">resources</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;gpu&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;limits&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
@@ -2665,6 +2637,8 @@ Other times you may need to specify a list of labels with the <code>labels</code
 </code></pre></div>
 <h2 id="affinity">Affinity</h2>
 <p>Please see <a href="https://kubernetes.io/docs/home/">Kubernetes documentation</a>.</p>
+<h2 id="profile">Profile</h2>
+<p>Profile template.</p>
 
 
 

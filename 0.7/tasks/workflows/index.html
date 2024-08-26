@@ -728,90 +728,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Management via SDK">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#read_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Read
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Read">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
-    <span class="md-ellipsis">
-      Get
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#import" class="md-nav__link">
-    <span class="md-ellipsis">
-      Import
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#update_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Update
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Delete
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#list" class="md-nav__link">
-    <span class="md-ellipsis">
-      List
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#workflow-object" class="md-nav__link">
-    <span class="md-ellipsis">
-      Workflow object
-    </span>
-  </a>
-  
 </li>
       
     </ul>
@@ -2102,27 +2018,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/nefertem/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Nefertem
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../runtimes/container/" class="md-nav__link">
         
   
@@ -2421,90 +2316,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Management via SDK">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#read_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Read
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Read">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#get" class="md-nav__link">
-    <span class="md-ellipsis">
-      Get
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#import" class="md-nav__link">
-    <span class="md-ellipsis">
-      Import
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#update_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Update
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Delete
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#list" class="md-nav__link">
-    <span class="md-ellipsis">
-      List
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#workflow-object" class="md-nav__link">
-    <span class="md-ellipsis">
-      Workflow object
-    </span>
-  </a>
-  
 </li>
       
     </ul>
@@ -2523,9 +2334,9 @@
 
 
 <h1 id="workflows">Workflows</h1>
-<p>Workflows allow for organizing the single operations in a advanced management pipelines, to perform a series operation of data processing, ML model training and serving, etc. Workflows represent long-running procedures defined as Directed Acyclic Graphs (DAGs) where each node is a single unit of work performed by the platform (e.g., as a Kubernetes Job). </p>
-<p>As in case of functions, it is possible for the platform to have different workflow runtimes. Currently, the only workflow runtime implemented is the one based on Kubeflow Pipelines infrastructure. See <a href="../../runtimes/kfp_pipelines/">KFP Runtime</a> for further details about how the workflow is defined and executed with the Kubeflow Pipelines component of the platform. </p>
-<p>Similarly, to functions the workflows may be managed via console UI or via Python SDK. </p>
+<p>Workflows allow for organizing the single operations in a advanced management pipelines, to perform a series operation of data processing, ML model training and serving, etc. Workflows represent long-running procedures defined as Directed Acyclic Graphs (DAGs) where each node is a single unit of work performed by the platform (e.g., as a Kubernetes Job).</p>
+<p>As in case of functions, it is possible for the platform to have different workflow runtimes. Currently, the only workflow runtime implemented is the one based on Kubeflow Pipelines infrastructure. See <a href="../../runtimes/kfp_pipelines/">KFP Runtime</a> for further details about how the workflow is defined and executed with the Kubeflow Pipelines component of the platform.</p>
+<p>Similarly, to functions the workflows may be managed via console UI or via Python SDK.</p>
 <h2 id="management-via-ui">Management via UI</h2>
 <p>Workflows can be created and managed as <em>entities</em> from the console. You can access them from the dashboard or the left menu. You can:</p>
 <ul>
@@ -2571,136 +2382,8 @@
 <h3 id="delete">Delete</h3>
 <p>You can delete a workflow from either its detail page or the list of workflows, by clicking <code>DELETE</code>.</p>
 <h2 id="management-via-sdk">Management via SDK</h2>
-<p>A <code>workflow</code> can be managed with the following methods.</p>
-<ul>
-<li><a href="#create_1"><strong><code>new_workflow</code></strong></a>: create a new workflow</li>
-<li><a href="#read_1"><strong><code>get_workflow</code></strong></a>: get a workflow</li>
-<li><a href="#update_1"><strong><code>update_workflow</code></strong></a>: update a workflow</li>
-<li><a href="#delete_1"><strong><code>delete_workflow</code></strong></a>: delete a workflow</li>
-<li><a href="#list"><strong><code>list_workflows</code></strong></a>: list all workflows</li>
-</ul>
-<p>This is done in two ways. The first is through the SDK and the second is through the <code>Workflow</code> object.
-Example:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
-
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
-
-<span class="n">workflow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_workflow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-workflow&quot;</span><span class="p">,</span>
-                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;kfp&quot;</span><span class="p">,</span>
-                           <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;src/pipeline.py&quot;</span><span class="p">},</span> 
-                           <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;pipeline&quot;</span><span class="p">)</span>
-</code></pre></div>
-<p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a workflow, focusing on managing workflows through the library. If you want to manage workflows from the project, you can use the <code>Project</code> object and avoid having to specify the <code>project</code> parameter.</p>
-<h3 id="create_1">Create</h3>
-<p>To create a workflow you can use the <code>new_workflow()</code> method.</p>
-<p>Mandatory parameters are:</p>
-<ul>
-<li><strong><code>name</code></strong>: name of the workflow</li>
-<li><strong><code>kind</code></strong>: kind of the workflow runtime (e.g., <code>kfp</code>)</li>
-<li><strong>source</strong>: source code specification (e.g., file reference)</li>
-<li><strong>handler</strong>: name of the pipeline method</li>
-</ul>
-<p>Optional parameters are:</p>
-<ul>
-<li><strong><code>uuid</code></strong>: uuid of the workflow (this is automatically generated if not provided). <strong>Must</strong> be a valid uuid v4.</li>
-<li><strong><code>description</code></strong>: description of the workflow</li>
-<li><strong><code>labels</code></strong>: labels of the workflow</li>
-<li><strong><code>embedded</code></strong>: whether the workflow is embedded or not. If <code>True</code>, the workflow is embedded (all the spec details are expressed) in the project. If <code>False</code>, the workflow is not embedded in the project</li>
-<li><strong><code>kwargs</code></strong>: keyword arguments passed to the <em>spec</em> constructor</li>
-</ul>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">workflow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_workflow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-workflow&quot;</span><span class="p">,</span>
-                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;kfp&quot;</span><span class="p">,</span>
-                           <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;src/pipeline.py&quot;</span><span class="p">},</span> 
-                           <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;pipeline&quot;</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="read_1">Read</h3>
-<p>To read a workflow you can use the <code>get_workflow()</code> or <code>import_workflow()</code> methods. The first one searches for the workflow into the backend, the second one loads it from a local yaml.</p>
-<h4 id="get">Get</h4>
-<p>Mandatory parameters are:</p>
-<ul>
-<li><strong><code>project</code></strong>: the project in which the workflow will be created</li>
-</ul>
-<p>Optional parameters are:</p>
-<ul>
-<li><strong><code>entity_name</code></strong>: to use the name of the workflow as identifier. It returns the latest version of the workflow</li>
-<li><strong><code>entity_id</code></strong>: to use the uuid of the workflow as identifier. It returns the specified version of the workflow</li>
-<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
-</ul>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">workflow</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_workflow</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">entity_name</span><span class="o">=</span><span class="s2">&quot;my-workflow&quot;</span><span class="p">)</span>
-
-<span class="n">workflow</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_workflow</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">entity_id</span><span class="o">=</span><span class="s2">&quot;uuid-of-my-workflow&quot;</span><span class="p">)</span>
-</code></pre></div>
-<h4 id="import">Import</h4>
-<p>Mandatory parameters are:</p>
-<ul>
-<li><strong><code>file</code></strong>: file path to the workflow yaml</li>
-</ul>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">workflow</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">import_workflow</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;./some-path/my-workflow.yaml&quot;</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="update_1">Update</h3>
-<p>To update a workflow you can use the <code>update_workflow()</code> method.</p>
-<p>Mandatory parameters are:</p>
-<ul>
-<li><strong><code>workflow</code></strong>: workflow object to be updated</li>
-</ul>
-<p>Optional parameters are:</p>
-<ul>
-<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
-</ul>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">workflow</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_workflow</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-workflow&quot;</span><span class="p">,</span>
-                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;kfp&quot;</span><span class="p">,</span>
-                           <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;src/pipeline.py&quot;</span><span class="p">},</span> 
-                           <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;pipeline&quot;</span><span class="p">)</span>
-
-<span class="n">workflow</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;My new description&quot;</span>
-
-<span class="n">workflow</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">update_workflow</span><span class="p">(</span><span class="n">workflow</span><span class="o">=</span><span class="n">workflow</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="delete_1">Delete</h3>
-<p>To delete a workflow you can use the <code>delete_workflow()</code> method.</p>
-<p>Mandatory parameters are:</p>
-<ul>
-<li><strong><code>project</code></strong>: the project in which the workflow exists</li>
-</ul>
-<p>Optional parameters are:</p>
-<ul>
-<li><strong><code>entity_name</code></strong>: to use the name of the workflow as identifier</li>
-<li><strong><code>entity_id</code></strong>: to use the uuid of the workflow as identifier</li>
-<li><strong><code>delete_all_versions</code></strong>: if <code>True</code>, all versions of the workflow will be deleted. Mutually exclusive with the <code>entity_id</code> parameter.</li>
-<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
-</ul>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">dh</span><span class="o">.</span><span class="n">delete_workflow</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                   <span class="n">entity_id</span><span class="o">=</span><span class="n">workflow</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-</code></pre></div>
-<h3 id="list">List</h3>
-<p>To list all workflows you can use the <code>list_workflows()</code> method.</p>
-<p>Mandatory parameters are:</p>
-<ul>
-<li><strong><code>project</code></strong>: the project containing the workflows</li>
-</ul>
-<p>Optional parameters are:</p>
-<ul>
-<li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the backend</li>
-</ul>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">workflows</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">list_workflows</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="workflow-object">Workflow object</h2>
-<p>The <code>Workflow</code> object is built using the <code>new_workflow()</code> method. There are several variations of the <code>Workflow</code> object based on the <code>kind</code> of the workflow. The SDK supports the following kinds:</p>
-<ul>
-<li><strong><code>kfp</code></strong>: represents a workflow implemented with thr Kbeflow Pipleines runtime.</li>
-</ul>
-<p>For each different kind, the <code>Workflow</code> object has a different set of methods and different <code>spec</code>, <code>status</code> and <code>metadata</code>.
-All the <code>Workflow</code> kinds have a <code>save()</code> and an <code>export()</code> method to save and export the <em>entity</em> workflow into backend or locally as yaml.</p>
-<p>To create a specific workflow, you must use the desired <code>kind</code> in the <code>new_workflow()</code> method.</p>
+<p>Workflows can be created and managed as <em>entities</em> with the SDK CRUD methods.
+Check the <a href="https://scc-digitalhub.github.io/sdk-docs/objects/workflow/entity/">SDK Workflows documentation</a> for more information.</p>
 
 
 

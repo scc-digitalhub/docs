@@ -2078,27 +2078,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/nefertem/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Nefertem
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../runtimes/container/" class="md-nav__link">
         
   
@@ -2491,7 +2470,7 @@
 <p>For each deployment KRM shows its name and availability of instances. In the deployment details view it is possible to access other metadata, such as labels, creation timestamps. version, etc.</p>
 <h3 id="managing-persistent-volume-claims">Managing Persistent Volume Claims</h3>
 <p>In certain cases, the operations developed with the platform may require more substantial disk space, e.g., for training / producing significant amounts of data. In this case, it is possible to attach to the tasks the corresponding Persistent Volume Claim (PVC) references. To create a new PVC for the use of the pipeline or Job, KRM provides the corresponding interface.</p>
-<p>Accessing <code>Persistent Volume Claims</code> menu, it is possible to list and manage the PVCs of the platform. </p>
+<p>Accessing <code>Persistent Volume Claims</code> menu, it is possible to list and manage the PVCs of the platform.</p>
 <p><img alt="KRM PVCs image" src="../../images/krm/krm_pvcs.png" /></p>
 <p>For each PVC, you can see the status (Pending or Bound) of the PVC, the name of the volume (if specified), the storage class and the size in <em>Gi</em>. The details view provides further metadata regarding the PVC.</p>
 <p>It is also possible to delete the PVC and create new ones.</p>
@@ -2524,9 +2503,9 @@
 <ul>
 <li>name of the database to create</li>
 <li>whether to drop the DB on resource deletion</li>
-<li>Comma-separated list of PostgreSQL extensions to enable (e.g., timescale and/or postgis) as supported by the platform deployment (optional). </li>
-<li>Comma-separated list of schemas to create in DB (optional) </li>
-<li>Name of the master role for the DB access management (optional) </li>
+<li>Comma-separated list of PostgreSQL extensions to enable (e.g., timescale and/or postgis) as supported by the platform deployment (optional).</li>
+<li>Comma-separated list of schemas to create in DB (optional)</li>
+<li>Name of the master role for the DB access management (optional)</li>
 </ul>
 <p><img alt="KRM Postgres create image" src="../../images/krm/krm_postgres_create.png" /></p>
 <p>In the Database details view it is possible also to configure the DB users that can access and operate the Database (create, edit, view, delete). To create a new user, it is necessary to specify:</p>
@@ -2589,7 +2568,7 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Schema exposure</p>
-<p>PostgREST exposes all tables and views in the specified schema. In order to have better control over the exposed data, it is 
+<p>PostgREST exposes all tables and views in the specified schema. In order to have better control over the exposed data, it is
 recommended to create a separate schema (e.g., <code>api</code>) and provide access to data through views or stored procedures. You can use <strong>SQLPad</strong> to do this.</p>
 </div>
 <p><img alt="KRM PostgREST create image" src="../../images/krm/krm_postgrest_create.png" /></p>
@@ -2612,9 +2591,9 @@ recommended to create a separate schema (e.g., <code>api</code>) and provide acc
 </ul>
 <p>If you instantiated Dremio through Coder, the value of <strong>Host</strong> is the value of <em>Arrow Flight Endpoint</em>, stripped of <code>:</code> and port. <strong>User</strong> is <code>admin</code> and <strong>Password</strong> is the value you entered when creating the workspace.</p>
 <p><img alt="KRM Dremio create image" src="../../images/krm/krm_dremio_create.png" /></p>
-<p>A Dremio REST service will be deployed, connected to the specified Dremio instance and exposing a simple REST API over the listed datasets. </p>
+<p>A Dremio REST service will be deployed, connected to the specified Dremio instance and exposing a simple REST API over the listed datasets.</p>
 <h3 id="exposing-services-externally">Exposing services externally</h3>
-<p>Various APIs and services (e.g., PostgREST or Dremio data services, Nuclio serverless functions) may be exposed externally, outside of the platform, on a public domain of the platform. Using KRM, the operation amounts to defining a new API gateway resource that will be transformed into the corresponding ingress routing specification. </p>
+<p>Various APIs and services (e.g., PostgREST or Dremio data services, Nuclio serverless functions) may be exposed externally, outside of the platform, on a public domain of the platform. Using KRM, the operation amounts to defining a new API gateway resource that will be transformed into the corresponding ingress routing specification.</p>
 <p><img alt="KRM API gateway create image" src="../../images/krm/krm_apigw.png" /></p>
 <p>To create a new API gateway, provide the following:</p>
 <ul>

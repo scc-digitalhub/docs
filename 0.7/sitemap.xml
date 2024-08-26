@@ -231,17 +231,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>http://docs/user/tasks/artifacts/</loc>
-         <lastmod>2024-08-26</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>http://docs/user/tasks/data/</loc>
-         <lastmod>2024-08-26</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>http://docs/user/tasks/dataitems/</loc>
          <lastmod>2024-08-26</lastmod>
          <changefreq>daily</changefreq>
     </url>
