@@ -46,7 +46,7 @@ def serve(context, event):
     return json.loads(jsonstr)
 ```
 
-Register ir and deploy:
+Register it and deploy:
 ``` python
 func = project.new_function(name="serve_model",
                             kind="python",

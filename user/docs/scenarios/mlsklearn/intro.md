@@ -1,8 +1,8 @@
-# Generic ML scenario introduction
+# Scikit-learn ML scenario introduction
 
-This scenario provides a quick overview of developing and deploying generic machine learning applications using the functionalities of the platform. 
+This scenario provides a quick overview of developing and deploying a scikit-learn machine learning application using the functionalities of the platform.
 
-The resulting edited notebook, as well as a file for the function we will create, are available in the `documentation/examples/ml` path within the repository of this documentation.
+The resulting edited notebook, as well as a file for the function we will create, are available in the `documentation/examples/mlsklearn` path within the repository of this documentation.
 
 We will prepare data, train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook.
 
@@ -14,8 +14,6 @@ import digitalhub as dh
 import pandas as pd
 import os
 ```
-
-
 
 Create a project:
 ``` python

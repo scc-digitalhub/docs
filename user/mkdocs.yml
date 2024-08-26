@@ -26,6 +26,7 @@ nav:
       - "tasks/kubernetes-resources.md"
       - "tasks/secrets.md"
       - "tasks/workflows.md"
+      - "tasks/run-resources.md"
     #   - "tasks/git.md"
   - Components:
       - "components/dashboard.md"
@@ -48,16 +49,23 @@ nav:
           - "scenarios/etl/pipeline.md"
           - "scenarios/etl/expose.md"
           - "scenarios/etl/streamlit.md"
-      - ML model training:
+      - DBT transformation:
+          - "scenarios/etl-core/scenario.md"
+      - "MLOps: Scikit-learn ML models":
+          - "scenarios/mlsklearn/intro.md"
+          - "scenarios/mlsklearn/training.md"
+          - "scenarios/mlsklearn/deploy.md"
+      - "MLOps: MLflow ML models":
+          - "scenarios/mlmlflow/intro.md"
+          - "scenarios/mlmlflow/deploy.md"
+      - "MLOps: Custom ML model training":
           - "scenarios/ml/intro.md"
           - "scenarios/ml/training.md"
           - "scenarios/ml/deploy.md"
-      - DBT transformation:
-          - "scenarios/etl-core/scenario.md"
-      - Nefertem validation:
-          - "scenarios/validation/scenario.md"
       - Dremio transformation:
           - "scenarios/dremio_grafana/scenario.md"
+      - Nefertem validation:
+          - "scenarios/validation/scenario.md"
       - API via PostgREST:
           - "scenarios/postgrest/intro.md"
           - "scenarios/postgrest/data.md"
