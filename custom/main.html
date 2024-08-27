@@ -79,17 +79,23 @@
           </div>
           <div class="dropdown">
             <button class="dd-button">
-              <span>{{ config.extra.current_portal }}</span>
+              <span>{{ config.extra.portal_name }}</span>
               <span class="dd-arrow">&#9660;</span>
             </button>
             <div class="dd-options-container">
-              <div class="dd-content">
-                {% if config.extra.docs_version == 'current' %}
-                  <a href="{{ config.extra.site }}{{ config.extra.other_portal_path }}">{{ config.extra.other_portal }}</a>
-                {% else %}
-                  <a href="{{ config.extra.site }}/{{ config.extra.docs_version }}{{ config.extra.other_portal_path }}">{{ config.extra.other_portal }}</a>
-                {% endif %}
-              </div>
+              {% if config.extra.portals is defined and config.extra.portals != None %}
+                <div class="dd-content">
+                  {% for portal in config.extra.portals %}
+                    {% if portal.name != config.extra.portal_name %}
+                      {% if config.extra.docs_version == 'current' %}
+                        <a href="{{ config.extra.site }}{{ portal.path }}">{{ portal.name }}</a>
+                      {% else %}
+                        <a href="{{ config.extra.site }}/{{ config.extra.docs_version }}{{ portal.path }}">{{ portal.name }}</a>
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
             </div>
           </div>
         </div>
