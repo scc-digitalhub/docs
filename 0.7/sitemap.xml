@@ -106,16 +106,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>http://docs/user/runtimes/mlrun/</loc>
-         <lastmod>2024-08-28</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>http://docs/user/runtimes/nefertem/</loc>
-         <lastmod>2024-08-28</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>http://docs/user/runtimes/python/</loc>
          <lastmod>2024-08-28</lastmod>
          <changefreq>daily</changefreq>
@@ -212,11 +202,6 @@
     </url>
     <url>
          <loc>http://docs/user/scenarios/postgrest/postgrest/</loc>
-         <lastmod>2024-08-28</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>http://docs/user/scenarios/validation/scenario/</loc>
          <lastmod>2024-08-28</lastmod>
          <changefreq>daily</changefreq>
     </url>

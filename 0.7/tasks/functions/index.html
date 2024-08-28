@@ -1788,7 +1788,7 @@
             
   
   <span class="md-ellipsis">
-    Nefertem validation
+    API via PostgREST
   </span>
   
 
@@ -1797,72 +1797,6 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_7">
-            <span class="md-nav__icon md-icon"></span>
-            Nefertem validation
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../scenarios/validation/scenario/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Validation with digitalhub-core and Nefertem scenario introduction
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_8" >
-        
-          
-          <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    API via PostgREST
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_8">
             <span class="md-nav__icon md-icon"></span>
             API via PostgREST
           </label>
@@ -2419,7 +2353,7 @@
 <h1 id="functions-and-runtimes">Functions and Runtimes</h1>
 <p><strong>Functions</strong> are the logical description of something that the platform may execute and track for you. A function may represent code to run as a job, an ML model inference to be used as batch procedure or as a service, a data validation, etc.</p>
 <p>In the platform we perform <strong>actions</strong> over functions (also referred to as "tasks"), such as job execution, deploy, container image build. A single action execution is called <strong>run</strong>, and the platform keeps track of these runs, with metadata about function version, operation parameters, and runtime parameters for a single execution.</p>
-<p>They are associated with a given <strong>runtime</strong>, which implements the actual execution and determines which actions are available. Examples are DBT, Nefertem, Python, etc. Runtimes  are highly specialized components which can translate the representation of a given execution, as expressed in the run, into an actual execution operation performed via libraries, code, external tools etc.</p>
+<p>They are associated with a given <strong>runtime</strong>, which implements the actual execution and determines which actions are available. Examples are DBT, Container, Python, etc. Runtimes  are highly specialized components which can translate the representation of a given execution, as expressed in the run, into an actual execution operation performed via libraries, code, external tools etc.</p>
 <p>Runtimes define the key point of extension of the platform: new runtimes may be added in order to implement the low-level logic of "translating" the high level operation definition into an executable run. For example, DBT runtime allows for defining the transformation as a task that, given the input table reference,
 produces a datastt appyling the function defined as SQL code. The runtime in this case is responsible for converting the specification and the references to a dedicated Kubernetes Job that runs DBT transformation and stores the corresponding dataset.</p>
 <p>The set of the supported runtimes is documented in Runtimes References section. Independently of the specific runtime implementation, the flow of actions
