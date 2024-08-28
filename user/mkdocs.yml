@@ -61,8 +61,6 @@ nav:
           - "scenarios/ml/deploy.md"
       - Dremio transformation:
           - "scenarios/dremio_grafana/scenario.md"
-      - Nefertem validation:
-          - "scenarios/validation/scenario.md"
       - API via PostgREST:
           - "scenarios/postgrest/intro.md"
           - "scenarios/postgrest/data.md"

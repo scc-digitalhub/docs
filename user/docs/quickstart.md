@@ -23,7 +23,6 @@ Start exploring the platform through a series of tutorials aiming at explaining 
 - Create your first [data management pipeline](./scenarios/etl/intro.md), from data exploration to automated data ETL procedure running on the platform.
 - Perform [DBT data transformation](./scenarios//etl-core/scenario.md) and store the data in a database.
 - [Train a simple ML Model](./scenarios/ml/intro.md) and deploy it as a service with Nuclio serverless.
-- Validate the dataset using [Nefertem Validation Framework](./scenarios/validation/scenario.md).
 - Use Dremio distributed query engine to [organize data and visualize with Grafana](./scenarios/dremio_grafana/scenario.md).
 - Store data in DB to perform efficient and complex queries and [expose the data as REST API](./scenarios/postgrest/intro.md).
 
