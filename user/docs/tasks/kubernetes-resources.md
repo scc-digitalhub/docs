@@ -11,7 +11,7 @@ With SDK you can manage Kubernetes resources for your tasks. When you run a func
 | [tolerations](#tolerations) | list[dict] | Tolerations | None |
 | [envs](#envs) | list[dict] | Env variables | None |
 | [secrets](#secrets) | list[str] | List of secret names | None |
-| [profile](#profile) | str | Profile template | None | |
+| [profile](#profile) | str | Profile template | None |
 
 ## Node_selector
 
@@ -136,7 +136,7 @@ secrets = ["my-secret"]
 You can request an environment variable injection into the container being launched by the task by passing the reference to the backend with the `envs` task parameters.
 
 ```python
-env = [{
+envs = [{
     "name": "env-name",
     "value": "value"
 }]
