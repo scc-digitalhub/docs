@@ -24,7 +24,6 @@ nav:
       - "tasks/kubernetes-resources.md"
       - "tasks/secrets.md"
       - "tasks/workflows.md"
-      - "tasks/run-resources.md"
     #   - "tasks/git.md"
   - Components:
       - "components/dashboard.md"
@@ -56,6 +55,8 @@ nav:
       - "MLOps: MLflow ML models":
           - "scenarios/mlmlflow/intro.md"
           - "scenarios/mlmlflow/deploy.md"
+      - "MLOps: Large Language Models":
+          - "scenarios/mlllm/llm.md"
       - "MLOps: Custom ML model training":
           - "scenarios/ml/intro.md"
           - "scenarios/ml/deploy.md"
