@@ -28,4 +28,3 @@ Start exploring the platform through a series of tutorials aiming at explaining 
 - [Work with LLM Model](./scenarios/mlllm/llm.md) and deploy it as a service with the serverless platform.
 - Use Dremio distributed query engine to [organize data and visualize with Grafana](./scenarios/dremio_grafana/scenario.md).
 - Store data in DB to perform efficient and complex queries and [expose the data as REST API](./scenarios/postgrest/intro.md).
-

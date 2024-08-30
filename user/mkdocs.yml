@@ -72,6 +72,7 @@ nav:
       - DBT: "runtimes/dbt.md"
       - Container: "runtimes/container.md"
       - Pipelines: "runtimes/kfp_pipelines.md"
+      - Modelserve: "runtimes/modelserve.md"
 
   - SDK Reference:
       - "sdk/intro.md"
