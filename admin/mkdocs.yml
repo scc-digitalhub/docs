@@ -1,0 +1,29 @@
+INHERIT: ../base.yml
+site_url: http://docs/admin
+
+extra:
+  portal_name: Admin
+
+extra_css:
+  - !ENV [OTHERS_STYLESHEETS_PORTAL_SELECTION, "../stylesheets/portal_selection.css"]
+  - !ENV [OTHERS_STYLESHEETS_COLORS, "../stylesheets/colors.css"]
+
+nav:
+  - "index.md"
+  - Configuration:
+      - "configuration.md"
+      - "upgrading.md"
+      - "ingress.md"
+  - Authentication:
+      - "authentication.md"
+      - "authentication/coder.md"
+      - "authentication/core.md"
+      - "authentication/dashboard.md"
+      - "authentication/krm.md"
+      - "authentication/minio.md"
+      - OAuth2 Proxy:
+          - "authentication/kubeflow.md"
+          - "authentication/nuclio.md"
+  - Charts:
+      - Core:
+          - "charts/core/templates.md"

@@ -76,7 +76,3 @@ nav:
 
   - SDK Reference:
       - "sdk/intro.md"
-  - Administration:
-      - "admin/overview.md"
-      - "admin/authentication.md"
-      - "admin/configuration.md"
