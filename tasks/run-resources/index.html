@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/tasks/secrets/">
+        <link rel="canonical" href="http://docs/user/tasks/run-resources/">
       
       
-        <link rel="prev" href="../kubernetes-resources/">
-      
-      
-        <link rel="next" href="../workflows/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Secret Management - Digital Hub</title>
+        <title>Configuring resource-critical executions - Digital Hub</title>
       
     
     
@@ -78,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#secret-management" class="md-skip">
+        <a href="#configuring-resource-critical-executions" class="md-skip">
           Skip to content
         </a>
       
@@ -203,7 +199,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Secret Management
+              Configuring resource-critical executions
             
           </span>
         </div>
@@ -413,19 +409,19 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -439,7 +435,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Concepts and Tasks
@@ -597,30 +593,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Secret Management
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../secrets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -629,44 +605,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#creating-and-managing-secrets-via-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating and Managing Secrets via UI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#managing-secrets-via-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Managing Secrets via SDK
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2078,32 +2016,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#creating-and-managing-secrets-via-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating and Managing Secrets via UI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#managing-secrets-via-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Managing Secrets via SDK
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2117,26 +2029,22 @@
                   
 
 
-<h1 id="secret-management">Secret Management</h1>
-<p>Working with different operations may implu the usage of a sensitive values, such as external API credentials,
-storage credentials, etc.</p>
-<p>In order to avoid embedding the credentials in the code of functions, the platform supports an explicit management
-of credentials as secrets. This operation exploits the underlying secret management subsystem, such as Kubernetes Secret Manager.</p>
-<p>Besides the secrets managed natively by the platform to integrate e.g., default storage credentials, it is possible to
-define custom secrets at the level of a single project. The project secrets are managed as any other project-related entities,
-such as functions, dataitems, etc.</p>
-<p>At the level of the project the secrets are represented as key-value pairs. The management of secrets is delegated to a secret
-provider, and currently only Kubernetes Secret Manager is supported. Each project has its own Kubernetes secret, where
-all the key-value pairs are stored.</p>
-<p>To create a new secret value it is possible to use the Core UI console or directly via API, e.g., using the SDK.</p>
-<h2 id="creating-and-managing-secrets-via-ui">Creating and Managing Secrets via UI</h2>
-<p>Core console can be used to manage project secrets. To create a new one, it is necessary to provide
-a secret key and a value to be stored.</p>
-<p><img alt="Create project secret" src="../../images/console/secrets-create.png" /></p>
-<p>The entries may be then deleted and updated, as well as their metadata.</p>
-<h2 id="managing-secrets-via-sdk">Managing Secrets via SDK</h2>
-<p>Secrets can be created and managed as <em>entities</em> with the SDK CRUD methods.
-Check the <a href="https://scc-digitalhub.github.io/sdk-docs/objects/secret/entity/">SDK Secrets documentation</a> for more information.</p>
+<h1 id="configuring-resource-critical-executions">Configuring resource-critical executions</h1>
+<p>When it come to execution of AI tasks, either batch jobs or model serving, it is important to be able to
+allocate an appropriate set of resources, such as memory, GPU, node types, etc.</p>
+<p>For this purpose the platform relies on the standard Kubernetes functionality and resource definitions. More specifically,
+the run configuration may have a specific requirements for</p>
+<ul>
+<li>node selection</li>
+<li>volumes (Persistent Volume Claims and Config Maps)</li>
+<li>HW resources in terms of CPU and memory requests and limits, numbers of GPUs</li>
+<li>Kubernetes affinity definition and/or toleration properties</li>
+<li>Additional secrets and environment variables to be associated with the execution</li>
+</ul>
+<p>In the platform, these requirements may be defined in two ways.</p>
+<p>First, it is possible to configure them explictly when defining the function run, either via Core UI or via SDK. Please note that it is possible to describe only some of these properties, leaving the rest blank without constraints. All the defaults are managed by the underlying Kubernetes deployment.</p>
+<p>Second, it is possible to rely on a set of preconfigured HW profiles defined by the platform deployment. The mechanism of profiles is described in the administration section of the documentation and is managed by the platform admins. The profile allow for abstracting the platform users from the underlying complexity. Each profile corresponds to a specific resource configuration that defines a combination of requirements. For example, the profile may define a specific type of GPU, memory, and CPUs to be used. In this case it is sufficient to specify the corresponding profile name in the run execution configuration to allocate the corresponding resources.</p>
+<p>Please note that the requirements defined in the template have priority over those defined by the user and are not overwritten.</p>
 
 
 

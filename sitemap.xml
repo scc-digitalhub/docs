@@ -17,18 +17,6 @@
          <lastmod>2024-09-03</lastmod>
     </url>
     <url>
-         <loc>http://docs/user/admin/authentication/</loc>
-         <lastmod>2024-09-03</lastmod>
-    </url>
-    <url>
-         <loc>http://docs/user/admin/configuration/</loc>
-         <lastmod>2024-09-03</lastmod>
-    </url>
-    <url>
-         <loc>http://docs/user/admin/overview/</loc>
-         <lastmod>2024-09-03</lastmod>
-    </url>
-    <url>
          <loc>http://docs/user/components/dashboard/</loc>
          <lastmod>2024-09-03</lastmod>
     </url>
@@ -85,11 +73,7 @@
          <lastmod>2024-09-03</lastmod>
     </url>
     <url>
-         <loc>http://docs/user/runtimes/mlrun/</loc>
-         <lastmod>2024-09-03</lastmod>
-    </url>
-    <url>
-         <loc>http://docs/user/runtimes/nefertem/</loc>
+         <loc>http://docs/user/runtimes/modelserve/</loc>
          <lastmod>2024-09-03</lastmod>
     </url>
     <url>
@@ -137,7 +121,27 @@
          <lastmod>2024-09-03</lastmod>
     </url>
     <url>
-         <loc>http://docs/user/scenarios/ml/training/</loc>
+         <loc>http://docs/user/scenarios/mlllm/llm/</loc>
+         <lastmod>2024-09-03</lastmod>
+    </url>
+    <url>
+         <loc>http://docs/user/scenarios/mlmlflow/deploy/</loc>
+         <lastmod>2024-09-03</lastmod>
+    </url>
+    <url>
+         <loc>http://docs/user/scenarios/mlmlflow/intro/</loc>
+         <lastmod>2024-09-03</lastmod>
+    </url>
+    <url>
+         <loc>http://docs/user/scenarios/mlsklearn/deploy/</loc>
+         <lastmod>2024-09-03</lastmod>
+    </url>
+    <url>
+         <loc>http://docs/user/scenarios/mlsklearn/intro/</loc>
+         <lastmod>2024-09-03</lastmod>
+    </url>
+    <url>
+         <loc>http://docs/user/scenarios/mlsklearn/training/</loc>
          <lastmod>2024-09-03</lastmod>
     </url>
     <url>
@@ -157,23 +161,11 @@
          <lastmod>2024-09-03</lastmod>
     </url>
     <url>
-         <loc>http://docs/user/scenarios/validation/scenario/</loc>
-         <lastmod>2024-09-03</lastmod>
-    </url>
-    <url>
          <loc>http://docs/user/sdk/intro/</loc>
          <lastmod>2024-09-03</lastmod>
     </url>
     <url>
-         <loc>http://docs/user/tasks/artifacts/</loc>
-         <lastmod>2024-09-03</lastmod>
-    </url>
-    <url>
          <loc>http://docs/user/tasks/data/</loc>
-         <lastmod>2024-09-03</lastmod>
-    </url>
-    <url>
-         <loc>http://docs/user/tasks/dataitems/</loc>
          <lastmod>2024-09-03</lastmod>
     </url>
     <url>
@@ -194,6 +186,10 @@
     </url>
     <url>
          <loc>http://docs/user/tasks/resources/</loc>
+         <lastmod>2024-09-03</lastmod>
+    </url>
+    <url>
+         <loc>http://docs/user/tasks/run-resources/</loc>
          <lastmod>2024-09-03</lastmod>
     </url>
     <url>

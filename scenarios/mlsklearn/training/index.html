@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/tasks/secrets/">
+        <link rel="canonical" href="http://docs/user/scenarios/mlsklearn/training/">
       
       
-        <link rel="prev" href="../kubernetes-resources/">
+        <link rel="prev" href="../intro/">
       
       
-        <link rel="next" href="../workflows/">
+        <link rel="next" href="../deploy/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
     
     
       
-        <title>Secret Management - Digital Hub</title>
+        <title>Training the model - Digital Hub</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35f28582.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/portal_selection.css">
+      <link rel="stylesheet" href="../../../stylesheets/portal_selection.css">
     
-      <link rel="stylesheet" href="../../stylesheets/colors.css">
+      <link rel="stylesheet" href="../../../stylesheets/colors.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#secret-management" class="md-skip">
+        <a href="#training-the-model" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
 
     <!-- Link to home -->
     <a
-      href="../.."
+      href="../../.."
       title="Digital Hub"
       class="md-header__button md-logo"
       aria-label="Digital Hub"
@@ -203,7 +203,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Secret Management
+              Training the model
             
           </span>
         </div>
@@ -318,7 +318,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Digital Hub" class="md-nav__button md-logo" aria-label="Digital Hub" data-md-component="logo">
+    <a href="../../.." title="Digital Hub" class="md-nav__button md-logo" aria-label="Digital Hub" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -336,7 +336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -356,7 +356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/" class="md-nav__link">
+      <a href="../../../architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -376,7 +376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quickstart/" class="md-nav__link">
+      <a href="../../../quickstart/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -396,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/" class="md-nav__link">
+      <a href="../../../installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -413,19 +413,19 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -439,7 +439,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Concepts and Tasks
@@ -453,7 +453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/" class="md-nav__link">
+      <a href="../../../tasks/projects/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -474,7 +474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../functions/" class="md-nav__link">
+      <a href="../../../tasks/functions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -495,7 +495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workspaces/" class="md-nav__link">
+      <a href="../../../tasks/workspaces/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -516,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/" class="md-nav__link">
+      <a href="../../../tasks/resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -537,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data/" class="md-nav__link">
+      <a href="../../../tasks/data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -558,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../models/" class="md-nav__link">
+      <a href="../../../tasks/models/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -579,7 +579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/" class="md-nav__link">
+      <a href="../../../tasks/kubernetes-resources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -597,30 +597,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Secret Management
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../tasks/secrets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -629,44 +609,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#creating-and-managing-secrets-via-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating and Managing Secrets via UI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#managing-secrets-via-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Managing Secrets via SDK
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -679,7 +621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workflows/" class="md-nav__link">
+      <a href="../../../tasks/workflows/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -744,7 +686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dashboard/" class="md-nav__link">
+      <a href="../../../components/dashboard/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -765,7 +707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dh_console/" class="md-nav__link">
+      <a href="../../../components/dh_console/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -786,7 +728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/resourcemanager/" class="md-nav__link">
+      <a href="../../../components/resourcemanager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -807,7 +749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/mlrun/" class="md-nav__link">
+      <a href="../../../components/mlrun/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -828,7 +770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/nuclio/" class="md-nav__link">
+      <a href="../../../components/nuclio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -849,7 +791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/kubeflow/" class="md-nav__link">
+      <a href="../../../components/kubeflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -907,7 +849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/jupyter/" class="md-nav__link">
+      <a href="../../../components/jupyter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -928,7 +870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dremio/" class="md-nav__link">
+      <a href="../../../components/dremio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -949,7 +891,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/sqlpad/" class="md-nav__link">
+      <a href="../../../components/sqlpad/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -970,7 +912,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/grafana/" class="md-nav__link">
+      <a href="../../../components/grafana/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -991,7 +933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/vscode/" class="md-nav__link">
+      <a href="../../../components/vscode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1024,19 +966,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -1050,7 +992,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Scenarios
@@ -1101,7 +1043,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/intro/" class="md-nav__link">
+      <a href="../../etl/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1122,7 +1064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/collect/" class="md-nav__link">
+      <a href="../../etl/collect/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1143,7 +1085,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/process/" class="md-nav__link">
+      <a href="../../etl/process/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1164,7 +1106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/pipeline/" class="md-nav__link">
+      <a href="../../etl/pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1185,7 +1127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/expose/" class="md-nav__link">
+      <a href="../../etl/expose/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1206,7 +1148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/streamlit/" class="md-nav__link">
+      <a href="../../etl/streamlit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1272,7 +1214,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl-core/scenario/" class="md-nav__link">
+      <a href="../../etl-core/scenario/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1298,19 +1240,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" checked>
         
           
           <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
@@ -1324,7 +1266,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_3">
             <span class="md-nav__icon md-icon"></span>
             MLOps: Scikit-learn ML models
@@ -1338,7 +1280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlsklearn/intro/" class="md-nav__link">
+      <a href="../intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1356,10 +1298,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../scenarios/mlsklearn/training/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1368,6 +1319,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1380,7 +1332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlsklearn/deploy/" class="md-nav__link">
+      <a href="../deploy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1446,7 +1398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlmlflow/intro/" class="md-nav__link">
+      <a href="../../mlmlflow/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1467,7 +1419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlmlflow/deploy/" class="md-nav__link">
+      <a href="../../mlmlflow/deploy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1533,7 +1485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlllm/llm/" class="md-nav__link">
+      <a href="../../mlllm/llm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1599,7 +1551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/ml/intro/" class="md-nav__link">
+      <a href="../../ml/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1620,7 +1572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/ml/deploy/" class="md-nav__link">
+      <a href="../../ml/deploy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1686,7 +1638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/dremio_grafana/scenario/" class="md-nav__link">
+      <a href="../../dremio_grafana/scenario/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1752,7 +1704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/intro/" class="md-nav__link">
+      <a href="../../postgrest/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1773,7 +1725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/data/" class="md-nav__link">
+      <a href="../../postgrest/data/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1794,7 +1746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/postgrest/" class="md-nav__link">
+      <a href="../../postgrest/postgrest/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1815,7 +1767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/apigw/" class="md-nav__link">
+      <a href="../../postgrest/apigw/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1888,7 +1840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/python/" class="md-nav__link">
+      <a href="../../../runtimes/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1909,7 +1861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/dbt/" class="md-nav__link">
+      <a href="../../../runtimes/dbt/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1930,7 +1882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/container/" class="md-nav__link">
+      <a href="../../../runtimes/container/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1951,7 +1903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/kfp_pipelines/" class="md-nav__link">
+      <a href="../../../runtimes/kfp_pipelines/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1972,7 +1924,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/modelserve/" class="md-nav__link">
+      <a href="../../../runtimes/modelserve/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2037,7 +1989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sdk/intro/" class="md-nav__link">
+      <a href="../../../sdk/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2078,32 +2030,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#creating-and-managing-secrets-via-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating and Managing Secrets via UI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#managing-secrets-via-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Managing Secrets via SDK
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2117,26 +2043,68 @@
                   
 
 
-<h1 id="secret-management">Secret Management</h1>
-<p>Working with different operations may implu the usage of a sensitive values, such as external API credentials,
-storage credentials, etc.</p>
-<p>In order to avoid embedding the credentials in the code of functions, the platform supports an explicit management
-of credentials as secrets. This operation exploits the underlying secret management subsystem, such as Kubernetes Secret Manager.</p>
-<p>Besides the secrets managed natively by the platform to integrate e.g., default storage credentials, it is possible to
-define custom secrets at the level of a single project. The project secrets are managed as any other project-related entities,
-such as functions, dataitems, etc.</p>
-<p>At the level of the project the secrets are represented as key-value pairs. The management of secrets is delegated to a secret
-provider, and currently only Kubernetes Secret Manager is supported. Each project has its own Kubernetes secret, where
-all the key-value pairs are stored.</p>
-<p>To create a new secret value it is possible to use the Core UI console or directly via API, e.g., using the SDK.</p>
-<h2 id="creating-and-managing-secrets-via-ui">Creating and Managing Secrets via UI</h2>
-<p>Core console can be used to manage project secrets. To create a new one, it is necessary to provide
-a secret key and a value to be stored.</p>
-<p><img alt="Create project secret" src="../../images/console/secrets-create.png" /></p>
-<p>The entries may be then deleted and updated, as well as their metadata.</p>
-<h2 id="managing-secrets-via-sdk">Managing Secrets via SDK</h2>
-<p>Secrets can be created and managed as <em>entities</em> with the SDK CRUD methods.
-Check the <a href="https://scc-digitalhub.github.io/sdk-docs/objects/secret/entity/">SDK Secrets documentation</a> for more information.</p>
+<h1 id="training-the-model">Training the model</h1>
+<p>Let us define the training function. </p>
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="n">train</span><span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">py</span>
+
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="kn">from</span> <span class="nn">digitalhub_runtime_python</span> <span class="kn">import</span> <span class="n">handler</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span> 
+<span class="kn">from</span> <span class="nn">pickle</span> <span class="kn">import</span> <span class="n">dump</span>
+<span class="kn">import</span> <span class="nn">sklearn.metrics</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="nd">@handler</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dataset&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">project</span><span class="p">,</span> <span class="n">di</span><span class="p">):</span>
+
+    <span class="n">df_cancer</span> <span class="o">=</span> <span class="n">di</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">df_cancer</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;target&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">df_cancer</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">svc_model</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">()</span>
+    <span class="n">svc_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_predict</span> <span class="o">=</span> <span class="n">svc_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;model/cancer_classifier.pkl&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">dump</span><span class="p">(</span><span class="n">svc_model</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;f1_score&quot;</span><span class="p">:</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">),</span>
+        <span class="s2">&quot;accuracy&quot;</span><span class="p">:</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">),</span>
+        <span class="s2">&quot;precision&quot;</span><span class="p">:</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">),</span>
+        <span class="s2">&quot;recall&quot;</span><span class="p">:</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_predict</span><span class="p">),</span>
+    <span class="p">}</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cancer_classifier&quot;</span><span class="p">,</span> 
+            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;sklearn&quot;</span><span class="p">,</span> 
+            <span class="n">source</span><span class="o">=</span><span class="s2">&quot;./model/&quot;</span><span class="p">,</span> 
+            <span class="n">metrics</span><span class="o">=</span><span class="n">metrics</span>
+    <span class="p">)</span>
+</code></pre></div>
+<p>The function takes the analysis dataset as input, creates an SVC model with the scikit-learn framework and logs the model with its metrics.</p>
+<p>Let us register it:
+<div class="highlight"><pre><span></span><code><span class="n">train_fn</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+                         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
+                         <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+                         <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_9&quot;</span><span class="p">,</span>
+                         <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;train-model.py&quot;</span><span class="p">,</span> <span class="s2">&quot;handler&quot;</span><span class="p">:</span> <span class="s2">&quot;train&quot;</span><span class="p">},</span>
+                         <span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;scikit-learn==1.2.2&quot;</span><span class="p">])</span>
+</code></pre></div></p>
+<p>and run it locally:
+<div class="highlight"><pre><span></span><code><span class="n">train_run</span> <span class="o">=</span> <span class="n">train_fn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;di&quot;</span><span class="p">:</span> <span class="n">gen_data_run</span><span class="o">.</span><span class="n">outputs</span><span class="p">()[</span><span class="s2">&quot;dataset&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">key</span><span class="p">},</span> <span class="n">local_execution</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div></p>
+<p>As a result, a new model is registered in the Core and may be used by different inference operations:</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s2">&quot;cancer_classifier&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span>
+</code></pre></div>
+<p>Lastly, we'll deploy and test the model.</p>
 
 
 
@@ -2176,10 +2144,10 @@ Check the <a href="https://scc-digitalhub.github.io/sdk-docs/objects/secret/enti
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56dfad97.min.js"></script>
       
     
   </body>
