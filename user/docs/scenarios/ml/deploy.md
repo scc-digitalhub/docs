@@ -5,30 +5,36 @@ operation where the model is loaded.
 
 Create a model serving function and provide the model:
 ``` python
-%%writefile "serve_model.py"
+%%writefile "serve_darts_model.py"
 
-from pickle import load
-import pandas as pd
+from darts.models import NBEATSModel
+from zipfile import ZipFile
+from darts import TimeSeries
 import json
+import pandas as pd
 
 def init(context):
-    # Qua ti setti il nome del modello che vuoi caricare
-    model_name = "cancer_classifier"
+    model_name = "darts_model"
 
-    # prendi l'entity model sulla base del nome
     model = context.project.get_model(model_name)
     path = model.download()
-    with open(path, "rb") as f:
-        svc_model = load(f)
+    local_path_model = "extracted_model/"
+
+    with ZipFile(path, 'r') as zip_ref:
+        zip_ref.extractall(local_path_model)
     
-    # settare model nel context di nuclio (non su project che è il context nostro)
-    setattr(context, "model", svc_model)
+    input_chunk_length = 24
+    output_chunk_length = 12
+    name_model_local = local_path_model +"predictor_model.pt"
+    mm = NBEATSModel(
+            input_chunk_length,
+            output_chunk_length
+    ).load(name_model_local)
+
+    setattr(context, "model", mm)
 
 def serve(context, event):
 
-    # Sostanzialmente invochiamo la funzione con una chiamata REST
-    # Nel body della richiesta mandi l'inference input
-    
     if isinstance(event.body, bytes):
         body = json.loads(event.body)
     else:
@@ -36,38 +42,61 @@ def serve(context, event):
     context.logger.info(f"Received event: {body}")
     inference_input = body["inference_input"]
     
-    data = json.loads(inference_input)
-    pdf = pd.json_normalize(data)
+    pdf = pd.DataFrame(inference_input)
+    pdf['date'] = pd.to_datetime(pdf['date'], unit='ms')
 
-    result = context.model.predict(pdf)
-
+    ts = TimeSeries.from_dataframe(
+        pdf,
+        time_col="date",
+        value_cols="value"
+    )
+    
+    output_chunk_length = 12
+    result = context.model.predict(n=output_chunk_length*2, series=ts)
     # Convert the result to a pandas DataFrame, reset the index, and convert to a list
-    jsonstr = str(result.tolist())
+    jsonstr = result.pd_dataframe().reset_index().to_json(orient='records')
     return json.loads(jsonstr)
 ```
 
-Register ir and deploy:
+Register it:
 ``` python
-func = project.new_function(name="serve_model",
+func = project.new_function(name="serve_darts_model",
                             kind="python",
                             python_version="PYTHON3_9",
                             base_image = "python:3.9",
                             source={
-                                 "source": "serve_model.py",
+                                 "source": "serve_darts_model.py",
                                  "handler": "serve",
                                  "init_function": "init"},
-                            requirements=["scikit-learn==1.2.2"])
-
-serve_run = func.run(action="serve")
+                           requirements=["darts==0.30.0"])
 ```
 
-You can now test the endpoint (using e.g., X_test):
+Given the dependencies, it is better to have the image ready, using ``build`` action of the function:
+``` python 
+run_build_model_serve = func.run(action="build", instructions=["pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu","pip3 install darts==0.30.0"])
+```
+
+Now we can deploy the function:
+``` python 
+run_serve = func.run(action="serve")
+```
+
+You can now test the endpoint:
 ``` python
 import requests
+import json 
+from datetime import datetime
 
-SERVICE_URL = serve_run.refresh().status.to_dict()["service"]["url"]
+series = AirPassengersDataset().load()
+val = series[-24:]
+json_value = json.loads(val.to_json())
 
-with requests.post(f'http://{SERVICE_URL}', json={"inference_input":X_test.to_json(orient='records')}) as r:
+data = map(lambda x, y: {"value": x[0], "date": datetime.timestamp(datetime.strptime(y, "%Y-%m-%dT%H:%M:%S.%f"))*1000}, json_value["data"], json_value["index"])
+inference_input = list(data)
+
+SERVICE_URL = run_serve.refresh().status.to_dict()["service"]["url"]
+
+with requests.post(f'http://{SERVICE_URL}', json={"inference_input":inference_input}) as r:
     res = r.json()
 print(res)
 ```

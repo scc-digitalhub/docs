@@ -5,6 +5,7 @@ Let us define the training function.
 ``` python
 %%writefile train-model.py
 
+
 import pandas as pd
 from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
@@ -13,6 +14,7 @@ from digitalhub_runtime_python import handler
 from sklearn.svm import SVC 
 from pickle import dump
 import sklearn.metrics
+import os
 
 @handler(outputs=["dataset"])
 def train(project, di):
@@ -25,7 +27,10 @@ def train(project, di):
     svc_model.fit(X_train, y_train)
     y_predict = svc_model.predict(X_test)
     
-    with open("cancer_classifier.pkl", "wb") as f:
+    if not os.path.exists("model"):
+        os.makedirs("model")
+    
+    with open("model/cancer_classifier.pkl", "wb") as f:
         dump(svc_model, f, protocol=5)
 
     metrics = {
@@ -36,10 +41,8 @@ def train(project, di):
     }
     project.log_model(
             name="cancer_classifier", 
-            kind="model", 
-            source_path="cancer_classifier.pkl", 
-            algorithm="SVC",
-            framework="sckit-learn",
+            kind="sklearn", 
+            source="./model/", 
             metrics=metrics
     )
 ```
@@ -61,6 +64,11 @@ and run it locally:
 train_run = train_fn.run(action="job", inputs={"di": gen_data_run.outputs()["dataset"].key}, local_execution=False)
 ```
 
-As a result, a new model is registered in the Core and may be used by different inference operations.
+As a result, a new model is registered in the Core and may be used by different inference operations:
+
+```python
+model = project.get_model("cancer_classifier")
+model.spec.path
+```
 
 Lastly, we'll deploy and test the model.

@@ -1,6 +1,6 @@
 Repository for the documentation of the platform. The documentation features two portals, aimed at different audiences: `user` and `dev`.
 
-To create a new page (the example refers to the `user` portal, but the process for `dev` is equivalent):
+To create a new page (the following example refers to the `user` portal, but the process for `dev` is equivalent):
 
 - Write a *.md* file within `user/docs`
 - Add it to the `nav` element in `/user/mkdocs.yml`
@@ -35,3 +35,77 @@ The `current` version of the documentation reflects the most up-to-date state of
 Publishing a new branch will generate another documentation portal, named after the branch, under `/docs/<branch_name>`. Further pushes to this branch will update the corresponding portal.
 
 Keep in mind that the toolbar containing the version drop-down menu is generated alongside the documentation. This means that the toolbar in the portal for a specific version of the docs will not include links to newer versions, unless it was updated after their creation.
+
+## Adding a portal
+
+The documentation can feature multiple portals, such as `User` and `Dev`, aimed at different purposes, which can be accessed from a drop-down menu in the toolbar.
+
+If you wish to add another portal, follow the steps below. This example will configure a new portal, called `Example`, available under the `/example` sub-path.
+
+At root level, create a new directory named `example`. Inside, create a `mkdocs.yml` file, and a directory called `docs`, with an `index.md` file within, as follows:
+
+```
+example/
+├── mkdocs.yml
+└── docs/
+    └── index.md
+```
+
+The contents of `mkdocs.yml` should be:
+
+``` yaml
+INHERIT: ../base.yml
+site_url: http://docs/example
+
+extra:
+  portal_name: Example
+
+extra_css:
+  - !ENV [OTHERS_STYLESHEETS_PORTAL_SELECTION, "../stylesheets/portal_selection.css"]
+  - !ENV [OTHERS_STYLESHEETS_COLORS, "../stylesheets/colors.css"]
+
+nav:
+  - "index.md"
+```
+
+Of course, you can add more *.md* files to expand your documentation.
+
+Next, you must edit the `base.yml` file (found at the root), to expand the `extra.portals` list with your new portal. Note that `name` must be the same as `portal_name`, and `path` must be the same as the directory you created (prefixed with `/`).
+
+``` yaml
+extra:
+  # [...]
+  portals:
+    - name: User
+      path: ""
+    - name: Dev
+      path: "/dev"
+    - name: Example    # Same as portal_name
+      path: "/example" # Same as directory's name, prefixed with /
+```
+
+Finally, you must update the `.github/workflows/deploy-docs.yaml` file, which defines the GitHub workflow, where some commands must be added.
+There are two jobs defined within, `deploy-current` and `deploy-versioned`, and in each of them two commands must be added, to generate and to package the docs.
+
+It may seem complicated, but all you have to do is duplicate the equivalent `dev` commands and adapt them for your new portal. The example below highlights these sections.
+
+``` sh
+# Within deploy-current...
+cd user && mkdocs build && cd ..
+cd dev && mkdocs build && cd ..
+cd example && mkdocs build && cd .. # new line
+mv user/site ./site
+mv dev/site site/dev
+mv example/site site/example # new line
+
+# Within deploy-versioned...
+cd user && mkdocs build && cd ..
+cd dev && mkdocs build && cd ..
+cd example && mkdocs build && cd .. # new line
+mkdir ./site
+mv user/site site/${{ github.ref_name }}
+mv dev/site site/${{ github.ref_name }}/dev
+mv example/site site/${{ github.ref_name }}/example # new line
+```
+
+Once you commit these changes, your new portal will be available.

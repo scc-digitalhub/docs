@@ -1,38 +1,46 @@
 
-import pandas as pd
-from sklearn.datasets import load_breast_cancer
-from sklearn.model_selection import train_test_split
 
 from digitalhub_runtime_python import handler
-from sklearn.svm import SVC 
-from pickle import dump
-import sklearn.metrics
 
-@handler(outputs=["dataset"])
-def train(project, di):
+import pandas as pd
+import numpy as np
 
-    df_cancer = di.as_df()
-    X = df_cancer.drop(['target'],axis=1)
-    y = df_cancer['target']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, random_state=5)
-    svc_model = SVC()
-    svc_model.fit(X_train, y_train)
-    y_predict = svc_model.predict(X_test)
-    
-    with open("cancer_classifier.pkl", "wb") as f:
-        dump(svc_model, f, protocol=5)
+from darts import TimeSeries
+from darts.datasets import AirPassengersDataset
+from darts.models import NBEATSModel
+from darts.metrics import mape, smape, mae
 
+from zipfile import ZipFile
+
+@handler()
+def train_model(project):
+    series = AirPassengersDataset().load()
+    train, val = series[:-36], series[-36:]
+
+    model = NBEATSModel(
+        input_chunk_length=24,
+        output_chunk_length=12,
+        n_epochs=200,
+        random_state=0
+    )
+    model.fit(train)
+    pred = model.predict(n=36)
+
+    model.save("predictor_model.pt")
+    with ZipFile("predictor_model.pt.zip", "w") as z:
+        z.write("predictor_model.pt")
+        z.write("predictor_model.pt.ckpt")
     metrics = {
-        "f1_score": sklearn.metrics.f1_score(y_test, y_predict),
-        "accuracy": sklearn.metrics.accuracy_score(y_test, y_predict),
-        "precision": sklearn.metrics.precision_score(y_test, y_predict),
-        "recall": sklearn.metrics.recall_score(y_test, y_predict),
+        "mape": mape(series, pred),
+        "smape": smape(series, pred),
+        "mae": mae(series, pred)
     }
+    
     project.log_model(
-            name="cancer_classifier", 
-            kind="model", 
-            source_path="cancer_classifier.pkl", 
-            algorithm="SVC",
-            framework="sckit-learn",
-            metrics=metrics
+        name="darts_model", 
+        kind="sklearn", 
+        source="predictor_model.pt.zip", 
+        algorithm="darts.models.NBEATSModel",
+        framework="darts",
+        metrics=metrics
     )

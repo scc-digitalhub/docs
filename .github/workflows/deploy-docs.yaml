@@ -37,8 +37,8 @@ jobs:
       DOCS_VERSION: ${{ github.ref_name }}
       USER_STYLESHEETS_PORTAL_SELECTION: ../stylesheets/portal_selection.css
       USER_STYLESHEETS_COLORS: ../stylesheets/colors.css
-      DEV_STYLESHEETS_PORTAL_SELECTION: ../../stylesheets/portal_selection.css
-      DEV_STYLESHEETS_COLORS: ../../stylesheets/colors.css
+      OTHERS_STYLESHEETS_PORTAL_SELECTION: ../../stylesheets/portal_selection.css
+      OTHERS_STYLESHEETS_COLORS: ../../stylesheets/colors.css
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -51,9 +51,11 @@ jobs:
           export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|sed 's/origin\///g'|sed 's/HEAD//g'|sed 's/main/current/g'|sed 's/gh-pages//g'|xargs|sed 's/ /,/g')
           cd user && mkdocs build && cd ..
           cd dev && mkdocs build && cd ..
+          cd admin && mkdocs build && cd ..
           mkdir ./site
           mv user/site site/${{ github.ref_name }}
           mv dev/site site/${{ github.ref_name }}/dev
+          mv admin/site site/${{ github.ref_name }}/admin
       - run: |
           git checkout gh-pages
           cp -r site/* .

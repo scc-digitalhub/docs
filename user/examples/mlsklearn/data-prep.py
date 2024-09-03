@@ -1,3 +1,4 @@
+
 import pandas as pd
 from sklearn.datasets import load_breast_cancer
 
@@ -12,7 +13,7 @@ def breast_cancer_generator():
     breast_cancer_dataset = pd.DataFrame(
         data=breast_cancer.data, columns=breast_cancer.feature_names
     )
-    breast_cancer_labels = pd.DataFrame(data=breast_cancer.target, columns=["label"])
+    breast_cancer_labels = pd.DataFrame(data=breast_cancer.target, columns=["target"])
     breast_cancer_dataset = pd.concat(
         [breast_cancer_dataset, breast_cancer_labels], axis=1
     )

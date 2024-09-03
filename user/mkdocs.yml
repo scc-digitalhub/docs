@@ -2,9 +2,7 @@ INHERIT: ../base.yml
 site_url: http://docs/user
 
 extra:
-  current_portal: User
-  other_portal: Dev
-  other_portal_path: "/dev"
+  portal_name: User
 
 extra_css:
   - !ENV [USER_STYLESHEETS_PORTAL_SELECTION, "stylesheets/portal_selection.css"]
@@ -48,14 +46,20 @@ nav:
           - "scenarios/etl/pipeline.md"
           - "scenarios/etl/expose.md"
           - "scenarios/etl/streamlit.md"
-      - ML model training:
-          - "scenarios/ml/intro.md"
-          - "scenarios/ml/training.md"
-          - "scenarios/ml/deploy.md"
       - DBT transformation:
           - "scenarios/etl-core/scenario.md"
-      - Nefertem validation:
-          - "scenarios/validation/scenario.md"
+      - "MLOps: Scikit-learn ML models":
+          - "scenarios/mlsklearn/intro.md"
+          - "scenarios/mlsklearn/training.md"
+          - "scenarios/mlsklearn/deploy.md"
+      - "MLOps: MLflow ML models":
+          - "scenarios/mlmlflow/intro.md"
+          - "scenarios/mlmlflow/deploy.md"
+      - "MLOps: Large Language Models":
+          - "scenarios/mlllm/llm.md"
+      - "MLOps: Custom ML model training":
+          - "scenarios/ml/intro.md"
+          - "scenarios/ml/deploy.md"
       - Dremio transformation:
           - "scenarios/dremio_grafana/scenario.md"
       - API via PostgREST:
@@ -66,13 +70,9 @@ nav:
   - Runtimes reference:
       - Python: "runtimes/python.md"
       - DBT: "runtimes/dbt.md"
-      - Nefertem: "runtimes/nefertem.md"
       - Container: "runtimes/container.md"
       - Pipelines: "runtimes/kfp_pipelines.md"
+      - Modelserve: "runtimes/modelserve.md"
 
   - SDK Reference:
       - "sdk/intro.md"
-  - Administration:
-      - "admin/overview.md"
-      - "admin/authentication.md"
-      - "admin/configuration.md"
