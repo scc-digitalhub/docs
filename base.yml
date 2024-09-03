@@ -16,6 +16,8 @@ extra:
       path: ""
     - name: Dev
       path: "/dev"
+    - name: Admin
+      path: "/admin"
 
 theme:
   name: material
