@@ -21,14 +21,14 @@ jobs:
           mv user/site ./site
           mv dev/site site/dev
       - run: |
-          git checkout gh-pages
+          git checkout -b gh-pages
           cp -r site/* .
           rm -r site
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
           git add --all
           git commit -m "Workflow docs - Current" --allow-empty
-          git push
+          git push -u origin gh-pages
   deploy-versioned:
     needs: deploy-current
     if: github.ref_name != 'main' && github.ref_name != 'gh-pages'
