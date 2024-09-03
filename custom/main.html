@@ -54,10 +54,8 @@
           </span>
           <div class="dropdown">
             <button class="dd-button">
-              <span>{{ config.extra.docs_version }}</span>
+              <span class="dd-text">{{ config.extra.docs_version }}</span>
               <span class="dd-arrow">&#9660;</span>
-            </button>
-            <div class="dd-options-container">
               {% if config.extra.versions is defined and config.extra.versions != None %}
                 {% set versionsString = config.extra.versions|string %}
                 {% set versions = versionsString.split(',') %}
@@ -66,37 +64,31 @@
               {% endif %}
               {% for version in versions|reverse %}
                 {% if version != config.extra.docs_version|string %}
-                  <div class="dd-content">
-                    {% if version == 'current' %}
-                      <a href="{{ config.extra.site }}">{{ version }}</a>
-                    {% else %}
+                  {% if version == 'current' %}
+                    <a href="{{ config.extra.site }}">{{ version }}</a>
+                  {% else %}
                     <a href="{{ config.extra.site }}/{{ version }}">{{ version }}</a>
-                    {% endif %}
-                  </div>
+                  {% endif %}
                 {% endif %}
               {% endfor %}
-            </div>
+            </button>
           </div>
           <div class="dropdown">
             <button class="dd-button">
-              <span>{{ config.extra.portal_name }}</span>
+              <span class="dd-text">{{ config.extra.portal_name }}</span>
               <span class="dd-arrow">&#9660;</span>
-            </button>
-            <div class="dd-options-container">
               {% if config.extra.portals is defined and config.extra.portals != None %}
-                <div class="dd-content">
-                  {% for portal in config.extra.portals %}
-                    {% if portal.name != config.extra.portal_name %}
-                      {% if config.extra.docs_version == 'current' %}
-                        <a href="{{ config.extra.site }}{{ portal.path }}">{{ portal.name }}</a>
-                      {% else %}
-                        <a href="{{ config.extra.site }}/{{ config.extra.docs_version }}{{ portal.path }}">{{ portal.name }}</a>
-                      {% endif %}
+                {% for portal in config.extra.portals %}
+                  {% if portal.name != config.extra.portal_name %}
+                    {% if config.extra.docs_version == 'current' %}
+                      <a href="{{ config.extra.site }}{{ portal.path }}">{{ portal.name }}</a>
+                    {% else %}
+                      <a href="{{ config.extra.site }}/{{ config.extra.docs_version }}{{ portal.path }}">{{ portal.name }}</a>
                     {% endif %}
-                  {% endfor %}
-                </div>
+                  {% endif %}
+                {% endfor %}
               {% endif %}
-            </div>
+            </button>
           </div>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
