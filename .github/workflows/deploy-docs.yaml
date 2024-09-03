@@ -18,10 +18,8 @@ jobs:
           export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|sed 's/origin\///g'|sed 's/HEAD//g'|sed 's/main/current/g'|sed 's/gh-pages//g'|xargs|sed 's/ /,/g')
           cd user && mkdocs build && cd ..
           cd dev && mkdocs build && cd ..
-          cd admin && mkdocs build && cd ..
           mv user/site ./site
           mv dev/site site/dev
-          mv admin/site site/admin
       - run: |
           git checkout gh-pages
           cp -r site/* .
