@@ -37,8 +37,8 @@ jobs:
       DOCS_VERSION: ${{ github.ref_name }}
       USER_STYLESHEETS_PORTAL_SELECTION: ../stylesheets/portal_selection.css
       USER_STYLESHEETS_COLORS: ../stylesheets/colors.css
-      DEV_STYLESHEETS_PORTAL_SELECTION: ../../stylesheets/portal_selection.css
-      DEV_STYLESHEETS_COLORS: ../../stylesheets/colors.css
+      OTHERS_STYLESHEETS_PORTAL_SELECTION: ../../stylesheets/portal_selection.css
+      OTHERS_STYLESHEETS_COLORS: ../../stylesheets/colors.css
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
