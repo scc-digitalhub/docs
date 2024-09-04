@@ -2,16 +2,11 @@ INHERIT: ../base.yml
 site_url: http://docs/dev
 
 extra:
-  current_portal: Dev
-  other_portal: User
-  other_portal_path: ""
+  portal_name: Dev
 
 extra_css:
-  - !ENV [
-      DEV_STYLESHEETS_PORTAL_SELECTION,
-      "../stylesheets/portal_selection.css",
-    ]
-  - !ENV [DEV_STYLESHEETS_COLORS, "../stylesheets/colors.css"]
+  - !ENV [OTHERS_STYLESHEETS_PORTAL_SELECTION, "../stylesheets/portal_selection.css"]
+  - !ENV [OTHERS_STYLESHEETS_COLORS, "../stylesheets/colors.css"]
 
 nav:
   - "index.md"
