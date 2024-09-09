@@ -2140,30 +2140,30 @@
 <p>LLM implementation relies on the <a href="https://kserve.github.io/website/latest/modelserving/v1beta1/llm/huggingface/">KServe LLM runtime</a> and therefore supports one of the corresponding LLM tasks:</p>
 <ul>
 <li>Text Generation</li>
-<li>Text2Text Generation </li>
+<li>Text2Text Generation</li>
 <li>Fill Mask</li>
 <li>Text (Sequence) Classification</li>
 <li>Token Classification</li>
 </ul>
-<p>Based on the type of the task the API of the exposed service may differ. Generative models (text generation and text2text generation) use OpenAI's <a href="https://platform.openai.com/docs/api-reference/completions">Completion</a> and <a href="https://platform.openai.com/docs/api-reference/chat">Chat Completion</a> API. </p>
+<p>Based on the type of the task the API of the exposed service may differ. Generative models (text generation and text2text generation) use OpenAI's <a href="https://platform.openai.com/docs/api-reference/completions">Completion</a> and <a href="https://platform.openai.com/docs/api-reference/chat">Chat Completion</a> API.</p>
 <p>The other types of tasks like token classification, sequence classification, fill mask are served using KServe's Open Inference Protocol v2 API.</p>
 <h2 id="exposing-predefined-text-classification-models">Exposing Predefined Text Classification Models</h2>
 <p>In case of predefined HuggingFace non-generative model it is possible to use <code>huggingfaceserve</code> runtime to expose the corresponding inference  API. For this purpose it is necessary to define the <code>huggingfaceserve</code> function definition (via UI or SDK) providing the name of the exposed model and the URI of the model in the following form</p>
 <p><code>huggingface://&lt;id of the huggingface model&gt;</code></p>
-<p>For example <code>huggingface://distilbert/distilbert-base-uncased-finetuned-sst-2-english</code>. </p>
+<p>For example <code>huggingface://distilbert/distilbert-base-uncased-finetuned-sst-2-english</code>.</p>
 <p>When using SDK, this may be accomplished as follows.</p>
-<p>First, import necessary libraries
+<p>First, import necessary libraries</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">os</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>Create a project to host the functions and executions</p>
 <div class="highlight"><pre><span></span><code><span class="n">PROJECT</span> <span class="o">=</span> <span class="s2">&quot;llm&quot;</span>
 <span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="n">PROJECT</span><span class="p">)</span>
 </code></pre></div>
 <p>Create the serving function definition:</p>
-<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm_classification&quot;</span><span class="p">,</span> 
+<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm_classification&quot;</span><span class="p">,</span>
                                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;huggingfaceserve&quot;</span><span class="p">,</span>
                                    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
                                    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;huggingface://distilbert/distilbert-base-uncased-finetuned-sst-2-english&quot;</span>
@@ -2193,32 +2193,32 @@ to specify the HW requirements as described in the  <a href="../../../tasks/kube
 </code></pre></div>
 <p>Here the classification LLM service API follows the Open Inference protocol API and the expected result should have the following form:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="s1">&#39;model_name&#39;</span><span class="p">:</span> <span class="s1">&#39;mymodel&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;model_version&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> 
-    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;cab30aa5-c10f-4233-94e2-14e4bc8fbf6f&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;parameters&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> 
+    <span class="s1">&#39;model_name&#39;</span><span class="p">:</span> <span class="s1">&#39;mymodel&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;model_version&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;cab30aa5-c10f-4233-94e2-14e4bc8fbf6f&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;parameters&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
     <span class="s1">&#39;outputs&#39;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;output-0&#39;</span><span class="p">,</span> <span class="s1">&#39;shape&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;datatype&#39;</span><span class="p">:</span> <span class="s1">&#39;INT64&#39;</span><span class="p">,</span> <span class="s1">&#39;parameters&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]}</span>
         <span class="p">]}</span>
 </code></pre></div>
-<p>As in case of other services (ML model services or Serverless functions), it is possible to expose the service using the KRM API gateway functionality. </p>
+<p>As in case of other services (ML model services or Serverless functions), it is possible to expose the service using the KRM API gateway functionality.</p>
 <h2 id="exposing-predefined-text-generation-models">Exposing Predefined Text Generation Models</h2>
 <p>In case of predefined HuggingFace ngenerative model it is possible to use <code>huggingfaceserve</code> runtime to expose the OpenAI compatible API. For this purpose it is necessary to define the <code>huggingfaceserve</code> function definition (via UI or SDK) providing the name of the exposed model and the URI of the model in the following form</p>
 <p><code>huggingface://&lt;id of the huggingface model&gt;</code></p>
-<p>For example <code>huggingface://meta-llama/meta-llama-3-8b-instruct</code>. </p>
+<p>For example <code>huggingface://meta-llama/meta-llama-3-8b-instruct</code>.</p>
 <p>When using SDK, this may be accomplished as follows.</p>
-<p>First, import necessary libraries
+<p>First, import necessary libraries</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">os</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>Create a project to host the functions and executions</p>
 <div class="highlight"><pre><span></span><code><span class="n">PROJECT</span> <span class="o">=</span> <span class="s2">&quot;llm&quot;</span>
 <span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="n">PROJECT</span><span class="p">)</span>
 </code></pre></div>
 <p>Create the serving function definition:</p>
-<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm_generation&quot;</span><span class="p">,</span> 
+<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm_generation&quot;</span><span class="p">,</span>
                                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;huggingfaceserve&quot;</span><span class="p">,</span>
                                    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
                                    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;huggingface://meta-llama/meta-llama-3-8b-instruct&quot;</span>
@@ -2228,8 +2228,8 @@ to specify the HW requirements as described in the  <a href="../../../tasks/kube
 <div class="highlight"><pre><span></span><code><span class="n">llm_run</span> <span class="o">=</span> <span class="n">llm_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;template-a100&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Please note that in case of protected models (like, e.g., llama models) it is necessary to path the HuggingFace token. For example,</p>
-<div class="highlight"><pre><span></span><code><span class="n">llm_run</span> <span class="o">=</span> <span class="n">llm_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> 
-                           <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;template-a100&quot;</span><span class="p">,</span> 
+<div class="highlight"><pre><span></span><code><span class="n">llm_run</span> <span class="o">=</span> <span class="n">llm_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span>
+                           <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;template-a100&quot;</span><span class="p">,</span>
                            <span class="n">envs</span> <span class="o">=</span> <span class="p">[{</span>
                                 <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;HF_TOKEN&quot;</span><span class="p">,</span>
                                 <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;HUGGINGFACE TOKEN&gt;&quot;</span>
@@ -2272,11 +2272,11 @@ to specify the HW requirements as described in the <a href="../../../tasks/kuber
 </code></pre></div>
 <p>In case of chat requests:</p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;http://</span><span class="si">{</span><span class="n">SERVICE_URL</span><span class="si">}</span><span class="s1">/openai/v1/chat/completions&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">MODEL_NAME</span><span class="p">,</span> 
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">MODEL_NAME</span><span class="p">,</span>
     <span class="s2">&quot;messages&quot;</span><span class="p">:[</span>
         <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;system&quot;</span><span class="p">,</span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="s2">&quot;You are an assistant that speaks like Shakespeare.&quot;</span><span class="p">},</span>
         <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span><span class="s2">&quot;user&quot;</span><span class="p">,</span><span class="s2">&quot;content&quot;</span><span class="p">:</span><span class="s2">&quot;Write a poem about colors&quot;</span><span class="p">}</span>
-    <span class="p">],</span> 
+    <span class="p">],</span>
     <span class="s2">&quot;max_tokens&quot;</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span>
     <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
@@ -2307,18 +2307,18 @@ to specify the HW requirements as described in the <a href="../../../tasks/kuber
 <span class="w">     </span><span class="nt">&quot;prompt_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span>
 <span class="w">     </span><span class="nt">&quot;total_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">67</span>
 <span class="w">   </span><span class="p">}</span>
-<span class="w"> </span><span class="p">}</span><span class="w">    </span>
+<span class="w"> </span><span class="p">}</span>
 </code></pre></div>
-<p>As in case of other services (ML model services or Serverless functions), it is possible to expose the service using the KRM API gateway functionality. </p>
+<p>As in case of other services (ML model services or Serverless functions), it is possible to expose the service using the KRM API gateway functionality.</p>
 <h2 id="fine-tuned-llm-model">Fine-tuned LLM model</h2>
 <p>when it comes to custom LLM model, it is possible to create HuggingFace-based fine tuned model, log it and then serve it from the model path.</p>
 <p>When using SDK, this may be accomplished as follows.</p>
-<p>First, import necessary libraries
+<p>First, import necessary libraries</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">os</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>Create a project to host the functions and executions</p>
 <div class="highlight"><pre><span></span><code><span class="n">PROJECT</span> <span class="o">=</span> <span class="s2">&quot;llm&quot;</span>
 <span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="n">PROJECT</span><span class="p">)</span>
@@ -2382,11 +2382,11 @@ to specify the HW requirements as described in the <a href="../../../tasks/kuber
     <span class="n">tokenizer</span><span class="o">.</span><span class="n">save_pretrained</span><span class="p">(</span><span class="n">save_dir</span><span class="p">)</span>
 
     <span class="n">project</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span>
-            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;test_llm_model&quot;</span><span class="p">,</span> 
-            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;huggingface&quot;</span><span class="p">,</span> 
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;test_llm_model&quot;</span><span class="p">,</span>
+            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;huggingface&quot;</span><span class="p">,</span>
             <span class="n">base_model</span><span class="o">=</span><span class="s2">&quot;google-bert/bert-base-cased&quot;</span><span class="p">,</span>
             <span class="n">source</span><span class="o">=</span><span class="n">save_dir</span>
-    <span class="p">)</span>    
+    <span class="p">)</span>
 </code></pre></div>
 <p>Register the function and execute it:</p>
 <div class="highlight"><pre><span></span><code><span class="n">train_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
@@ -2398,10 +2398,10 @@ to specify the HW requirements as described in the <a href="../../../tasks/kuber
                          <span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;evaluate&quot;</span><span class="p">,</span> <span class="s2">&quot;transformers[torch]&quot;</span><span class="p">,</span> <span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="s2">&quot;torchvision&quot;</span><span class="p">,</span> <span class="s2">&quot;accelerate&quot;</span><span class="p">]</span>
                         <span class="p">)</span>
 
-<span class="n">train_run</span><span class="o">=</span><span class="n">train_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>  <span class="n">local_execution</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;template-a100&quot;</span><span class="p">)</span>                        
+<span class="n">train_run</span><span class="o">=</span><span class="n">train_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>  <span class="n">local_execution</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;template-a100&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Create the serving function definition:</p>
-<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm_classification&quot;</span><span class="p">,</span> 
+<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm_classification&quot;</span><span class="p">,</span>
                                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;huggingfaceserve&quot;</span><span class="p">,</span>
                                    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
                                    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://datalake/llm/model/test_llm_model/f8026820-2471-4497-97f5-8e6d49baac5f/&quot;</span>
@@ -2431,15 +2431,15 @@ to specify the HW requirements as described in the  <a href="../../../tasks/kube
 </code></pre></div>
 <p>Here the classification LLM service API follows the Open Inference protocol API and the expected result should have the following form:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="s1">&#39;model_name&#39;</span><span class="p">:</span> <span class="s1">&#39;mymodel&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;model_version&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> 
-    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;cab30aa5-c10f-4233-94e2-14e4bc8fbf6f&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;parameters&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> 
+    <span class="s1">&#39;model_name&#39;</span><span class="p">:</span> <span class="s1">&#39;mymodel&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;model_version&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;cab30aa5-c10f-4233-94e2-14e4bc8fbf6f&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;parameters&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
     <span class="s1">&#39;outputs&#39;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;output-0&#39;</span><span class="p">,</span> <span class="s1">&#39;shape&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;datatype&#39;</span><span class="p">:</span> <span class="s1">&#39;INT64&#39;</span><span class="p">,</span> <span class="s1">&#39;parameters&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">]}</span>
         <span class="p">]}</span>
 </code></pre></div>
-<p>As in case of other services (ML model services or Serverless functions), it is possible to expose the service using the KRM API gateway functionality. </p>
+<p>As in case of other services (ML model services or Serverless functions), it is possible to expose the service using the KRM API gateway functionality.</p>
 
 
 
