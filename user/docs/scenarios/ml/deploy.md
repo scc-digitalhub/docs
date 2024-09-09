@@ -4,6 +4,7 @@ Deploying a model is as easy as defining a serverless function: we should define
 operation where the model is loaded.
 
 Create a model serving function and provide the model:
+
 ``` python
 %%writefile "serve_darts_model.py"
 
@@ -22,7 +23,7 @@ def init(context):
 
     with ZipFile(path, 'r') as zip_ref:
         zip_ref.extractall(local_path_model)
-    
+
     input_chunk_length = 24
     output_chunk_length = 12
     name_model_local = local_path_model +"predictor_model.pt"
@@ -41,7 +42,7 @@ def serve(context, event):
         body = event.body
     context.logger.info(f"Received event: {body}")
     inference_input = body["inference_input"]
-    
+
     pdf = pd.DataFrame(inference_input)
     pdf['date'] = pd.to_datetime(pdf['date'], unit='ms')
 
@@ -50,7 +51,7 @@ def serve(context, event):
         time_col="date",
         value_cols="value"
     )
-    
+
     output_chunk_length = 12
     result = context.model.predict(n=output_chunk_length*2, series=ts)
     # Convert the result to a pandas DataFrame, reset the index, and convert to a list
@@ -59,32 +60,35 @@ def serve(context, event):
 ```
 
 Register it:
+
 ``` python
 func = project.new_function(name="serve_darts_model",
                             kind="python",
                             python_version="PYTHON3_9",
                             base_image = "python:3.9",
-                            source={
-                                 "source": "serve_darts_model.py",
-                                 "handler": "serve",
-                                 "init_function": "init"},
-                           requirements=["darts==0.30.0"])
+                            code_src="serve_darts_model.py",
+                            handler="serve",
+                            init_function="init",
+                            requirements=["darts==0.30.0"])
 ```
 
 Given the dependencies, it is better to have the image ready, using ``build`` action of the function:
-``` python 
+
+``` python
 run_build_model_serve = func.run(action="build", instructions=["pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu","pip3 install darts==0.30.0"])
 ```
 
 Now we can deploy the function:
-``` python 
+
+``` python
 run_serve = func.run(action="serve")
 ```
 
 You can now test the endpoint:
+
 ``` python
 import requests
-import json 
+import json
 from datetime import datetime
 
 series = AirPassengersDataset().load()
@@ -112,7 +116,7 @@ Go to the Kubernetes Resource Manager component (available from dashboard) and g
 - the endpoint where to publish
 - and the authentication method (right now only no authentication or basic authentication are available). in case of basic authentication it is necessary to specify  *Username* and *Password*.
 
-The platform by default support exposing the methods at the subdomains of ``services.<platform-domain>``, where platform-domain is the domain of the platform instance. 
+The platform by default support exposing the methods at the subdomains of ``services.<platform-domain>``, where platform-domain is the domain of the platform instance.
 
 ![KRM APIGW image](../../images/scenario-etl/apigw-krm.png)
 

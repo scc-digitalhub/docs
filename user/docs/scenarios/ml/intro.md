@@ -9,21 +9,19 @@ We will train a generic model and expose it as a service. Access Jupyter from yo
 ## Set-up
 
 Let's initialize our working environment. Import required libraries:
+
 ``` python
 import digitalhub as dh
-import pandas as pd
-import os
 ```
 
-
-
 Create a project:
+
 ``` python
 PROJECT = "demo-ml"
 project = dh.get_or_create_project(PROJECT)
 ```
 
-# Training the model
+## Training the model
 
 Let us define the training function. For the sake of simplicity, we use predefined "Air Passengers" dataset of Darts.
 
@@ -66,11 +64,11 @@ def train_model(project):
         "smape": smape(series, pred),
         "mae": mae(series, pred)
     }
-    
+
     project.log_model(
-        name="darts_model", 
-        kind="model", 
-        source="predictor_model.pt.zip", 
+        name="darts_model",
+        kind="model",
+        source="predictor_model.pt.zip",
         algorithm="darts.models.NBEATSModel",
         framework="darts",
         metrics=metrics
@@ -81,23 +79,26 @@ In this code we create a NBEATS DL model, store it locally zipping the content, 
 with a generic ``model`` kind.
 
 Let us register it:
+
 ``` python
-train_fn = project.new_function(
-     name="train-darts",
-     kind="python",
-     python_version="PYTHON3_9",
-     source={"source": "train-model.py", "handler": "train_model"},
-     requirements=["darts==0.30.0"])
+train_fn = project.new_function(name="train-darts",
+                                kind="python",
+                                python_version="PYTHON3_9",
+                                code_src="train-model.py",
+                                handler="train_model",
+                                requirements=["darts==0.30.0"])
 ```
 
 and run it locally:
+
 ``` python
 train_run = train_fn.run(action="job", local_execution=True)
 ```
 
 If we want to run the function on Kubernetes, it is better to build it first as there are specific custom dependencies.
+
 ``` python
-build_run = train_fn.run(action="build", local_execution=False)
+build_run = train_fn.run(action="build")
 ```
 
 In this way the function image will be created and associated with the function.
@@ -105,4 +106,3 @@ In this way the function image will be created and associated with the function.
 As a result of train execution, a new model is registered in the Core and may be used by different inference operations.
 
 Lastly, we'll deploy and test the model.
-

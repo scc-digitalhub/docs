@@ -5,12 +5,12 @@ With the platform it is possible to create and serve LLM HuggingFace-compatible-
 LLM implementation relies on the [KServe LLM runtime](https://kserve.github.io/website/latest/modelserving/v1beta1/llm/huggingface/) and therefore supports one of the corresponding LLM tasks:
 
 - Text Generation
-- Text2Text Generation 
+- Text2Text Generation
 - Fill Mask
 - Text (Sequence) Classification
 - Token Classification
 
-Based on the type of the task the API of the exposed service may differ. Generative models (text generation and text2text generation) use OpenAI's [Completion](https://platform.openai.com/docs/api-reference/completions) and [Chat Completion](https://platform.openai.com/docs/api-reference/chat) API. 
+Based on the type of the task the API of the exposed service may differ. Generative models (text generation and text2text generation) use OpenAI's [Completion](https://platform.openai.com/docs/api-reference/completions) and [Chat Completion](https://platform.openai.com/docs/api-reference/chat) API.
 
 The other types of tasks like token classification, sequence classification, fill mask are served using KServe's Open Inference Protocol v2 API.
 
@@ -20,11 +20,12 @@ In case of predefined HuggingFace non-generative model it is possible to use ``h
 
 ``huggingface://<id of the huggingface model>``
 
-For example ``huggingface://distilbert/distilbert-base-uncased-finetuned-sst-2-english``. 
+For example ``huggingface://distilbert/distilbert-base-uncased-finetuned-sst-2-english``.
 
 When using SDK, this may be accomplished as follows.
 
 First, import necessary libraries
+
 ``` python
 import digitalhub as dh
 import pandas as pd
@@ -42,7 +43,7 @@ project = dh.get_or_create_project(PROJECT)
 Create the serving function definition:
 
 ``` python
-llm_function = project.new_function("llm_classification", 
+llm_function = project.new_function("llm_classification",
                                    kind="huggingfaceserve",
                                    model_name="mymodel",
                                    path="huggingface://distilbert/distilbert-base-uncased-finetuned-sst-2-english"
@@ -83,17 +84,16 @@ Here the classification LLM service API follows the Open Inference protocol API 
 
 ``` python
 {
-    'model_name': 'mymodel', 
-    'model_version': None, 
-    'id': 'cab30aa5-c10f-4233-94e2-14e4bc8fbf6f', 
-    'parameters': None, 
+    'model_name': 'mymodel',
+    'model_version': None,
+    'id': 'cab30aa5-c10f-4233-94e2-14e4bc8fbf6f',
+    'parameters': None,
     'outputs': [
         {'name': 'output-0', 'shape': [2], 'datatype': 'INT64', 'parameters': None, 'data': [1, 0]}
         ]}
 ```
 
-As in case of other services (ML model services or Serverless functions), it is possible to expose the service using the KRM API gateway functionality. 
-
+As in case of other services (ML model services or Serverless functions), it is possible to expose the service using the KRM API gateway functionality.
 
 ## Exposing Predefined Text Generation Models
 
@@ -101,11 +101,12 @@ In case of predefined HuggingFace ngenerative model it is possible to use ``hugg
 
 ``huggingface://<id of the huggingface model>``
 
-For example ``huggingface://meta-llama/meta-llama-3-8b-instruct``. 
+For example ``huggingface://meta-llama/meta-llama-3-8b-instruct``.
 
 When using SDK, this may be accomplished as follows.
 
 First, import necessary libraries
+
 ``` python
 import digitalhub as dh
 import pandas as pd
@@ -123,7 +124,7 @@ project = dh.get_or_create_project(PROJECT)
 Create the serving function definition:
 
 ``` python
-llm_function = project.new_function("llm_generation", 
+llm_function = project.new_function("llm_generation",
                                    kind="huggingfaceserve",
                                    model_name="mymodel",
                                    path="huggingface://meta-llama/meta-llama-3-8b-instruct"
@@ -139,8 +140,8 @@ llm_run = llm_function.run(action="serve", profile="template-a100")
 Please note that in case of protected models (like, e.g., llama models) it is necessary to path the HuggingFace token. For example,
 
 ``` python
-llm_run = llm_function.run(action="serve", 
-                           profile="template-a100", 
+llm_run = llm_function.run(action="serve",
+                           profile="template-a100",
                            envs = [{
                                 "name": "HF_TOKEN",
                                 "value": "<HUGGINGFACE TOKEN>"
@@ -194,11 +195,11 @@ In case of chat requests:
 
 ``` python
 with requests.post(f'http://{SERVICE_URL}/openai/v1/chat/completions', json={
-    "model": MODEL_NAME, 
+    "model": MODEL_NAME,
     "messages":[
         {"role":"system","content":"You are an assistant that speaks like Shakespeare."},
         {"role":"user","content":"Write a poem about colors"}
-    ], 
+    ],
     "max_tokens":30,
     "stream": False}) as r:
     res = r.json()
@@ -206,7 +207,6 @@ print(res)
 ```
 
 Expected output:
-
 
 ``` json
  {
@@ -233,10 +233,10 @@ Expected output:
      "prompt_tokens": 37,
      "total_tokens": 67
    }
- }    
+ }
 ```
 
-As in case of other services (ML model services or Serverless functions), it is possible to expose the service using the KRM API gateway functionality. 
+As in case of other services (ML model services or Serverless functions), it is possible to expose the service using the KRM API gateway functionality.
 
 ## Fine-tuned LLM model
 
@@ -245,6 +245,7 @@ when it comes to custom LLM model, it is possible to create HuggingFace-based fi
 When using SDK, this may be accomplished as follows.
 
 First, import necessary libraries
+
 ``` python
 import digitalhub as dh
 import pandas as pd
@@ -276,28 +277,28 @@ from digitalhub_runtime_python import handler
 def train(project):
     tokenizer = AutoTokenizer.from_pretrained("google-bert/bert-base-cased")
     metric = evaluate.load("accuracy")
-    
+
     def tokenize_function(examples):
         return tokenizer(examples["text"], padding="max_length", truncation=True)
-    
+
     def compute_metrics(eval_pred):
         logits, labels = eval_pred
         predictions = np.argmax(logits, axis=-1)
         return metric.compute(predictions=predictions, references=labels)
-    
-    
+
+
     dataset = load_dataset("yelp_review_full")
     tokenized_datasets = dataset.map(tokenize_function, batched=True)
-    
+
     model = AutoModelForSequenceClassification.from_pretrained("google-bert/bert-base-cased", num_labels=5)
-    
+
     training_args = TrainingArguments(output_dir="test_trainer")
-    
+
     small_train_dataset = tokenized_datasets["train"].shuffle(seed=42).select(range(1000))
     small_eval_dataset = tokenized_datasets["test"].shuffle(seed=42).select(range(1000))
-    
+
     training_args = TrainingArguments(output_dir="test_trainer", eval_strategy="epoch")
-    
+
     trainer = Trainer(
         model=model,
         args=training_args,
@@ -305,31 +306,31 @@ def train(project):
         eval_dataset=small_eval_dataset,
         compute_metrics=compute_metrics,
     )
-    
+
     trainer.train()
 
     save_model = "model"
     if not os.path.exists(save_model):
         os.makedirs(save_model)
-    
+
     save_dir = "model"
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
-    
+
     trainer.save_model(save_dir)
     tokenizer.save_pretrained(save_dir)
 
     project.log_model(
-            name="test_llm_model", 
-            kind="huggingface", 
+            name="test_llm_model",
+            kind="huggingface",
             base_model="google-bert/bert-base-cased",
             source=save_dir
-    )    
+    )
 ```
 
 Register the function and execute it:
 
-``` python 
+``` python
 train_func = project.new_function(
                          name="train_model",
                          kind="python",
@@ -339,13 +340,13 @@ train_func = project.new_function(
                          requirements=["evaluate", "transformers[torch]", "torch", "torchvision", "accelerate"]
                         )
 
-train_run=train_func.run(action="job",  local_execution=False, profile="template-a100")                        
+train_run=train_func.run(action="job",  local_execution=False, profile="template-a100")
 ```
 
 Create the serving function definition:
 
 ``` python
-llm_function = project.new_function("llm_classification", 
+llm_function = project.new_function("llm_classification",
                                    kind="huggingfaceserve",
                                    model_name="mymodel",
                                    path="s3://datalake/llm/model/test_llm_model/f8026820-2471-4497-97f5-8e6d49baac5f/"
@@ -386,13 +387,13 @@ Here the classification LLM service API follows the Open Inference protocol API 
 
 ``` python
 {
-    'model_name': 'mymodel', 
-    'model_version': None, 
-    'id': 'cab30aa5-c10f-4233-94e2-14e4bc8fbf6f', 
-    'parameters': None, 
+    'model_name': 'mymodel',
+    'model_version': None,
+    'id': 'cab30aa5-c10f-4233-94e2-14e4bc8fbf6f',
+    'parameters': None,
     'outputs': [
         {'name': 'output-0', 'shape': [2], 'datatype': 'INT64', 'parameters': None, 'data': [4, 0]}
         ]}
 ```
 
-As in case of other services (ML model services or Serverless functions), it is possible to expose the service using the KRM API gateway functionality. 
+As in case of other services (ML model services or Serverless functions), it is possible to expose the service using the KRM API gateway functionality.
