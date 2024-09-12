@@ -46,7 +46,7 @@ serve_run.refresh().status
 When the attribute `service` appears, the model is ready to be used.
 
 ```python
-serve_run.invoke(model_name="mlflow_model", json=test_input)
+serve_run.invoke(model_name="mlflow_model", json=json).json()
 ```
 
 Please note that the MLFLow model serving exposes also the Open API specification under ``/v2/docs`` path.

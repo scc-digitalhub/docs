@@ -42,7 +42,7 @@ serve_run.refresh().status
 When the attribute `service` appears, the model is ready to be used.
 
 ```python
-serve_run.invoke(model_name="sklearn_model", json=test_input)
+serve_run.invoke(model_name="sklearn_model", json=json).json()
 ```
 
 Please note that the scikit-learn model serving exposes also the Open API specification under ``/docs`` path.

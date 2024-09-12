@@ -89,19 +89,11 @@ train_fn = project.new_function(name="train-darts",
                                 requirements=["darts==0.30.0"])
 ```
 
-and run it locally:
+and run it:
 
 ``` python
-train_run = train_fn.run(action="job", local_execution=True)
+train_run = train_fn.run(action="job")
 ```
-
-If we want to run the function on Kubernetes, it is better to build it first as there are specific custom dependencies.
-
-``` python
-build_run = train_fn.run(action="build")
-```
-
-In this way the function image will be created and associated with the function.
 
 As a result of train execution, a new model is registered in the Core and may be used by different inference operations.
 
