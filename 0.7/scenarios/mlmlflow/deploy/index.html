@@ -2132,7 +2132,7 @@ is created from MLFlow run artifact path, besides the <code>model</code> folder 
 <div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span>
 </code></pre></div>
 <p>When the attribute <code>service</code> appears, the model is ready to be used.</p>
-<div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mlflow_model&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">test_input</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mlflow_model&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <p>Please note that the MLFLow model serving exposes also the Open API specification under <code>/v2/docs</code> path.</p>
 <h2 id="create-an-api-gateway">Create an API gateway</h2>
