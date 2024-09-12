@@ -2118,7 +2118,7 @@ operation where the model is loaded.</p>
     <span class="n">path</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
     <span class="n">local_path_model</span> <span class="o">=</span> <span class="s2">&quot;extracted_model/&quot;</span>
 
-    <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
         <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">local_path_model</span><span class="p">)</span>
 
     <span class="n">input_chunk_length</span> <span class="o">=</span> <span class="mi">24</span>
@@ -2159,7 +2159,6 @@ operation where the model is loaded.</p>
 <div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;serve_darts_model&quot;</span><span class="p">,</span>
                             <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
                             <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_9&quot;</span><span class="p">,</span>
-                            <span class="n">base_image</span> <span class="o">=</span> <span class="s2">&quot;python:3.9&quot;</span><span class="p">,</span>
                             <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;serve_darts_model.py&quot;</span><span class="p">,</span>
                             <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span>
                             <span class="n">init_function</span><span class="o">=</span><span class="s2">&quot;init&quot;</span><span class="p">,</span>
@@ -2171,10 +2170,13 @@ operation where the model is loaded.</p>
 <p>Now we can deploy the function:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run_serve</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>You can now test the endpoint:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">json</span>
+<p>Install locally the dependencies:</p>
+<div class="highlight"><pre><span></span><code><span class="o">%</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">darts</span><span class="o">==</span><span class="mf">0.30.0</span>
+</code></pre></div>
+<p>Create a test input:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">darts.datasets</span> <span class="kn">import</span> <span class="n">AirPassengersDataset</span>
 
 <span class="n">series</span> <span class="o">=</span> <span class="n">AirPassengersDataset</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
 <span class="n">val</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="mi">24</span><span class="p">:]</span>
@@ -2182,12 +2184,13 @@ operation where the model is loaded.</p>
 
 <span class="n">data</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timestamp</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%S.</span><span class="si">%f</span><span class="s2">&quot;</span><span class="p">))</span><span class="o">*</span><span class="mi">1000</span><span class="p">},</span> <span class="n">json_value</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">],</span> <span class="n">json_value</span><span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">])</span>
 <span class="n">inference_input</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-<span class="n">SERVICE_URL</span> <span class="o">=</span> <span class="n">run_serve</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s2">&quot;service&quot;</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">]</span>
-
-<span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;http://</span><span class="si">{</span><span class="n">SERVICE_URL</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;inference_input&quot;</span><span class="p">:</span><span class="n">inference_input</span><span class="p">})</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="n">json</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;inference_input&quot;</span><span class="p">:</span> <span class="n">inference_input</span><span class="p">}</span>
+</code></pre></div>
+<p>Refresh the run until <code>service</code> attribute is available in <code>status</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">run_serve</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span>
+</code></pre></div>
+<p>And finally test the endpoint:</p>
+<div class="highlight"><pre><span></span><code><span class="n">run_serve</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <h2 id="create-an-api-gateway">Create an API gateway</h2>
 <p>Right now, the API is only accessible from within the environment. To make it accessible from outside, we'll need to create an API gateway.</p>
