@@ -21,7 +21,7 @@ def init(context):
     path = model.download()
     local_path_model = "extracted_model/"
 
-    with ZipFile(path, 'r') as zip_ref:
+    with ZipFile(path[0], 'r') as zip_ref:
         zip_ref.extractall(local_path_model)
 
     input_chunk_length = 24
@@ -65,7 +65,6 @@ Register it:
 func = project.new_function(name="serve_darts_model",
                             kind="python",
                             python_version="PYTHON3_9",
-                            base_image = "python:3.9",
                             code_src="serve_darts_model.py",
                             handler="serve",
                             init_function="init",
@@ -84,12 +83,18 @@ Now we can deploy the function:
 run_serve = func.run(action="serve")
 ```
 
-You can now test the endpoint:
+Install locally the dependencies:
 
 ``` python
-import requests
+% pip install darts==0.30.0
+```
+
+Create a test input:
+
+``` python
 import json
 from datetime import datetime
+from darts.datasets import AirPassengersDataset
 
 series = AirPassengersDataset().load()
 val = series[-24:]
@@ -97,12 +102,19 @@ json_value = json.loads(val.to_json())
 
 data = map(lambda x, y: {"value": x[0], "date": datetime.timestamp(datetime.strptime(y, "%Y-%m-%dT%H:%M:%S.%f"))*1000}, json_value["data"], json_value["index"])
 inference_input = list(data)
+json = {"inference_input": inference_input}
+```
 
-SERVICE_URL = run_serve.refresh().status.to_dict()["service"]["url"]
+Refresh the run until `service` attribute is available in `status`:
 
-with requests.post(f'http://{SERVICE_URL}', json={"inference_input":inference_input}) as r:
-    res = r.json()
-print(res)
+``` python
+run_serve.refresh().status
+```
+
+And finally test the endpoint:
+
+``` python
+run_serve.invoke(method="POST", json=json).json()
 ```
 
 ## Create an API gateway
