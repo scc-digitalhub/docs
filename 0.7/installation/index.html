@@ -713,6 +713,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tasks/code-source/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code source
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2218,9 +2239,9 @@ Digitalhub componet URLs:
   - Core: http://192.168.76.2:30180
   - Kubernetes Resource Manager: http://192.168.76.2:30160
 </code></pre></div></p>
-<p><strong>A note for Windows, Darwin and WSL users</strong>  </p>
-<p>As of now, due to the limitations of Minikube it is not possible to access your applications directly while using one of the OS mentioned above.  </p>
-<p>You can still access your apps from browser, but you will have to use the <code>kubectl port-forward</code> command.  </p>
+<p><strong>A note for Windows, Darwin and WSL users</strong></p>
+<p>As of now, due to the limitations of Minikube it is not possible to access your applications directly while using one of the OS mentioned above.</p>
+<p>You can still access your apps from browser, but you will have to use the <code>kubectl port-forward</code> command.</p>
 <p>For example, if you wish to expose the core service, you can use:
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>digitalhub<span class="w"> </span>port-forward<span class="w"> </span>service/digitalhub-core<span class="w"> </span><span class="m">30180</span>:8080
 </code></pre></div>
