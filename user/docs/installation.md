@@ -1,6 +1,6 @@
 ## Installation on minikube
 
-### Prerequisites 
+### Prerequisites
 - [Helm](https://helm.sh/docs/intro/install/)
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
 - [Minikube](https://minikube.sigs.k8s.io/docs/start/)
@@ -67,24 +67,24 @@ Digitalhub componet URLs:
   - Coder: http://192.168.76.2:30170 (Username: test@digitalhub.test Password: Test12456@!)
   - Core: http://192.168.76.2:30180
   - Kubernetes Resource Manager: http://192.168.76.2:30160
-```  
+```
 
-**A note for Windows, Darwin and WSL users**  
+**A note for Windows, Darwin and WSL users**
 
-As of now, due to the limitations of Minikube it is not possible to access your applications directly while using one of the OS mentioned above.  
+As of now, due to the limitations of Minikube it is not possible to access your applications directly while using one of the OS mentioned above.
 
-You can still access your apps from browser, but you will have to use the `kubectl port-forward` command.  
+You can still access your apps from browser, but you will have to use the `kubectl port-forward` command.
 
 For example, if you wish to expose the core service, you can use:
 ```sh
 kubectl -n digitalhub port-forward service/digitalhub-core 30180:8080
-```  
+```
 This will allow you to access core by typing `localhost:30180` in your browser.
 
 The full list of services can be checked using this command:
 ```sh
 kubectl -n digitalhub get services
-```  
+```
 
 Please consult the official [Kubernetes documentation](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_port-forward/) for more details.
 
