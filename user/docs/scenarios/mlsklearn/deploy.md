@@ -7,7 +7,7 @@ Register it and deploy:
 ``` python
 func = project.new_function(name="serve_sklearnmodel",
                             kind="sklearnserve",
-                            path=model.spec.path)
+                            path=model.spec.path + + 'model/cancer_classifier.pkl')
 
 serve_run = func.run(action="serve")
 ```
