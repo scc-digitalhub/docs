@@ -2143,12 +2143,10 @@
 <p>The resulting edited notebook, as well as a file for the function we will create, are available in the <code>documentation/examples/ml</code> path within the repository of this documentation.</p>
 <p>We will train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook.</p>
 <h2 id="set-up">Set-up</h2>
-<p>Let's initialize our working environment. Import required libraries:</p>
+<p>First, import necessary libraries and create a project to host the functions and executions</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
-</code></pre></div>
-<p>Create a project:</p>
-<div class="highlight"><pre><span></span><code><span class="n">PROJECT</span> <span class="o">=</span> <span class="s2">&quot;demo-ml&quot;</span>
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="n">PROJECT</span><span class="p">)</span>
+
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;demo-ml&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="training-the-model">Training the model</h2>
 <p>Let us define the training function. For the sake of simplicity, we use predefined "Air Passengers" dataset of Darts.</p>

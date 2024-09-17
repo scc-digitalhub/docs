@@ -2164,12 +2164,10 @@
 <p>Install the necessary libraries:</p>
 <div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">mlflow</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span><span class="o">==</span><span class="mf">1.5.0</span>
 </code></pre></div>
-<p>Let's initialize our working environment. Import required libraries:</p>
+<p>Then, import necessary libraries and create a project to host the functions and executions</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
-</code></pre></div>
-<p>Create a project:</p>
-<div class="highlight"><pre><span></span><code><span class="n">PROJECT</span> <span class="o">=</span> <span class="s2">&quot;demo-ml&quot;</span>
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="n">PROJECT</span><span class="p">)</span>
+
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;demo-ml&quot;</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="generate-data">Generate data</h2>
 <p>For the sake of simplicity, we use the predefined IRIS dataset.</p>
