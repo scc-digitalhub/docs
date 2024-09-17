@@ -7,7 +7,6 @@ Register it and deploy:
 ``` python
 func = project.new_function(name="serve_sklearnmodel",
                             kind="sklearnserve",
-                            model_name="sklearn_model",
                             path=model.spec.path)
 
 serve_run = func.run(action="serve")
@@ -42,7 +41,7 @@ serve_run.refresh().status
 When the attribute `service` appears, the model is ready to be used.
 
 ```python
-serve_run.invoke(model_name="sklearn_model", json=json).json()
+serve_run.invoke(json=json).json()
 ```
 
 Please note that the scikit-learn model serving exposes also the Open API specification under ``/docs`` path.

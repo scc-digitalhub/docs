@@ -8,17 +8,12 @@ We will train a generic model and expose it as a service. Access Jupyter from yo
 
 ## Set-up
 
-Let's initialize our working environment. Import required libraries:
+First, import necessary libraries and create a project to host the functions and executions
 
-``` python
+```python
 import digitalhub as dh
-```
 
-Create a project:
-
-``` python
-PROJECT = "demo-ml"
-project = dh.get_or_create_project(PROJECT)
+project = dh.get_or_create_project("demo-ml")
 ```
 
 ## Training the model

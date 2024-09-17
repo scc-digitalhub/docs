@@ -86,7 +86,7 @@ run_serve = func.run(action="serve")
 Install locally the dependencies:
 
 ``` python
-% pip install darts==0.30.0
+%pip install darts==0.30.0
 ```
 
 Create a test input:

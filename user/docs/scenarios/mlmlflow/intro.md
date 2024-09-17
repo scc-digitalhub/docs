@@ -14,17 +14,12 @@ Install the necessary libraries:
 %pip install mlflow scikit-learn==1.5.0
 ```
 
-Let's initialize our working environment. Import required libraries:
+Then, import necessary libraries and create a project to host the functions and executions
 
-``` python
+```python
 import digitalhub as dh
-```
 
-Create a project:
-
-``` python
-PROJECT = "demo-ml"
-project = dh.get_or_create_project(PROJECT)
+project = dh.get_or_create_project("demo-ml")
 ```
 
 ## Generate data
