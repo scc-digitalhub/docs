@@ -18,10 +18,10 @@ def init(context):
     model_name = "darts_model"
 
     model = context.project.get_model(model_name)
-    path = model.download()
+    path = model.download() + "/" +  model.status.files[0]["path"]
     local_path_model = "extracted_model/"
 
-    with ZipFile(path[0], 'r') as zip_ref:
+    with ZipFile(path, 'r') as zip_ref:
         zip_ref.extractall(local_path_model)
 
     input_chunk_length = 24
