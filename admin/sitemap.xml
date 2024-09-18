@@ -2,54 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>http://docs/admin/</loc>
-         <lastmod>2024-09-17</lastmod>
+         <lastmod>2024-09-18</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/authentication/</loc>
-         <lastmod>2024-09-17</lastmod>
+         <lastmod>2024-09-18</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/configuration/</loc>
-         <lastmod>2024-09-17</lastmod>
+         <lastmod>2024-09-18</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/ingress/</loc>
-         <lastmod>2024-09-17</lastmod>
+         <lastmod>2024-09-18</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/upgrading/</loc>
-         <lastmod>2024-09-17</lastmod>
+         <lastmod>2024-09-18</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/authentication/coder/</loc>
-         <lastmod>2024-09-17</lastmod>
+         <lastmod>2024-09-18</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/authentication/core/</loc>
-         <lastmod>2024-09-17</lastmod>
+         <lastmod>2024-09-18</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/authentication/dashboard/</loc>
-         <lastmod>2024-09-17</lastmod>
+         <lastmod>2024-09-18</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/authentication/krm/</loc>
-         <lastmod>2024-09-17</lastmod>
+         <lastmod>2024-09-18</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/authentication/kubeflow/</loc>
-         <lastmod>2024-09-17</lastmod>
+         <lastmod>2024-09-18</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/authentication/minio/</loc>
-         <lastmod>2024-09-17</lastmod>
+         <lastmod>2024-09-18</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/authentication/nuclio/</loc>
-         <lastmod>2024-09-17</lastmod>
+         <lastmod>2024-09-18</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/charts/core/templates/</loc>
-         <lastmod>2024-09-17</lastmod>
+         <lastmod>2024-09-18</lastmod>
     </url>
 </urlset>
