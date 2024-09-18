@@ -11,7 +11,7 @@ Register it and deploy:
 func = project.new_function(name="serve_mlflowmodel",
                             kind="mlflowserve",
                             model_name="mlflow_model",
-                            path=model.spec.path + 'model')
+                            path=model.spec.path + 'model/')
 
 serve_run = func.run(action="serve")
 ```

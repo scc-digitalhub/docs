@@ -78,7 +78,7 @@ Let us register it:
 ``` python
 train_fn = project.new_function(name="train-darts",
                                 kind="python",
-                                python_version="PYTHON3_9",
+                                python_version="PYTHON3_10",
                                 code_src="train-model.py",
                                 handler="train_model",
                                 requirements=["darts==0.30.0"])

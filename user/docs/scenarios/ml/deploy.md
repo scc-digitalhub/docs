@@ -64,7 +64,7 @@ Register it:
 ``` python
 func = project.new_function(name="serve_darts_model",
                             kind="python",
-                            python_version="PYTHON3_9",
+                            python_version="PYTHON3_10",
                             code_src="serve_darts_model.py",
                             handler="serve",
                             init_function="init",
