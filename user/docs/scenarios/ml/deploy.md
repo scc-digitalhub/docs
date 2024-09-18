@@ -18,7 +18,7 @@ def init(context):
     model_name = "darts_model"
 
     model = context.project.get_model(model_name)
-    path = model.download() + "/" +  model.status.files[0]["path"]
+    path = model.download()
     local_path_model = "extracted_model/"
 
     with ZipFile(path, 'r') as zip_ref:
