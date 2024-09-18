@@ -2136,7 +2136,7 @@ operation where the model is loaded.</p>
     <span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;darts_model&quot;</span>
 
     <span class="n">model</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">download</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span>  <span class="n">model</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;path&quot;</span><span class="p">]</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
     <span class="n">local_path_model</span> <span class="o">=</span> <span class="s2">&quot;extracted_model/&quot;</span>
 
     <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
