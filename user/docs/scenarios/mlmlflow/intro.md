@@ -9,21 +9,17 @@ We will prepare data, train a generic model and expose it as a service. Access J
 ## Set-up
 
 Install the necessary libraries:
+
 ``` python
 %pip install mlflow scikit-learn==1.5.0
 ```
 
-Let's initialize our working environment. Import required libraries:
-``` python
-import digitalhub as dh
-import pandas as pd
-import os
-```
+Then, import necessary libraries and create a project to host the functions and executions
 
-Create a project:
-``` python
-PROJECT = "demo-ml"
-project = dh.get_or_create_project(PROJECT)
+```python
+import digitalhub as dh
+
+project = dh.get_or_create_project("demo-ml")
 ```
 
 ## Generate data
@@ -32,7 +28,7 @@ For the sake of simplicity, we use the predefined IRIS dataset.
 
 ## Training the model
 
-Let us define the training function. 
+Let us define the training function.
 
 ``` python
 %%writefile train-model.py
@@ -59,7 +55,7 @@ def train(project):
 
     # utility to map mlflow run artifacts to model metadata
     model_params = from_mlflow_run(run_id)
-    
+
     project.log_model(
         name="model-mlflow",
         kind="mlflow",
@@ -71,19 +67,21 @@ The function creates an SVC model with the scikit-learn framework. Note that her
 we use the autologging functionality of MLFlow and then construct the necessary model metadata out of the tracked MLFlow model.
 Specifically, MLFlow creates a series of artifacts that describe the model and the corresponding model files, as well as additional files representing the model properties and metrics.
 
-We then log the model of ``mlflow`` kind using the extract metadata as kwargs.  
- 
+We then log the model of ``mlflow`` kind using the extract metadata as kwargs.
+
 Let us register it:
+
 ``` python
-train_fn = project.new_function(
-                         name="train",
-                         kind="python",
-                         python_version="PYTHON3_9",
-                         source={"source": "train-model.py", "handler": "train"},
-                         requirements=["scikit-learn==1.5.0", "mlflow==2.15.1"])
+train_fn = project.new_function(name="train",
+                                kind="python",
+                                python_version="PYTHON3_9",
+                                code_src="train-model.py",
+                                handler="train",
+                                requirements=["scikit-learn==1.5.0", "mlflow==2.15.1"])
 ```
 
 and run it locally:
+
 ``` python
 train_run = train_fn.run(action="job", local_execution=True)
 ```

@@ -3,36 +3,45 @@
 Deploying a scikit-learn model is easy: ``sklearnserve`` runtime supports this functionality out of the box. It is sufficient to specify the path to the model artifact and optionally the name of the model to expose.
 
 Register it and deploy:
+
 ``` python
 func = project.new_function(name="serve_sklearnmodel",
                             kind="sklearnserve",
-                            model_name="testmodel",
-                            path=model.spec.path)
+                            path=model.spec.path + 'model/cancer_classifier.pkl')
 
 serve_run = func.run(action="serve")
 ```
 
-You can now test the endpoint (using e.g., X_test):
+You can now create a dataset for testing the endpoint:
+
 ``` python
-import requests
+import numpy as np
 
-SERVICE_URL = serve_run.refresh().status.to_dict()["service"]["url"]
-MODEL_NAME = "testmodel"
-
-test_input = X_test.head(2).to_numpy().tolist()
-
-with requests.post(f'http://{SERVICE_URL}/v2/models/{MODEL_NAME}/infer', json={
+data = np.random.rand(2, 30).tolist()
+json = {
     "inputs": [
         {
         "name": "input-0",
         "shape": [2, 30],
         "datatype": "FP32",
-        "data": test_input
+        "data": data
         }
     ]
-}) as r:
-    res = r.json()
-print(res)
+}
+```
+
+Finally, you can test the endpoint. To do so, you need to refresh the serve run. This is needed because the backend monitors the deployment every minute and the model status, where the endpoint is exposed, is updated after a minute.
+
+You can check the model status this way:
+
+``` python
+serve_run.refresh().status
+```
+
+When the attribute `service` appears, the model is ready to be used.
+
+```python
+serve_run.invoke(json=json).json()
 ```
 
 Please note that the scikit-learn model serving exposes also the Open API specification under ``/docs`` path.
@@ -48,7 +57,7 @@ Go to the Kubernetes Resource Manager component (available from dashboard) and g
 - the endpoint where to publish
 - and the authentication method (right now only no authentication or basic authentication are available). in case of basic authentication it is necessary to specify  *Username* and *Password*.
 
-The platform by default support exposing the methods at the subdomains of ``services.<platform-domain>``, where platform-domain is the domain of the platform instance. 
+The platform by default support exposing the methods at the subdomains of ``services.<platform-domain>``, where platform-domain is the domain of the platform instance.
 
 ![KRM APIGW image](../../images/scenario-etl/apigw-krm.png)
 

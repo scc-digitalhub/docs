@@ -8,22 +8,18 @@ We will prepare data, train a generic model and expose it as a service. Access J
 
 ## Set-up
 
-Let's initialize our working environment. Import required libraries:
-``` python
-import digitalhub as dh
-import pandas as pd
-import os
-```
+First, import necessary libraries and create a project to host the functions and executions
 
-Create a project:
-``` python
-PROJECT = "demo-ml"
-project = dh.get_or_create_project(PROJECT)
+```python
+import digitalhub as dh
+
+project = dh.get_or_create_project("demo-ml")
 ```
 
 ## Generate data
 
 Define the following function, which generates the dataset as required by the model:
+
 ``` python
 %%writefile data-prep.py
 
@@ -50,22 +46,25 @@ def breast_cancer_generator():
 ```
 
 Register it:
+
 ``` python
-data_gen_fn = project.new_function(
-                         name="data-prep",
-                         kind="python",
-                         python_version="PYTHON3_9",
-                         source={"source": "data-prep.py", "handler": "breast_cancer_generator"})
+data_gen_fn = project.new_function(name="data-prep",
+                                   kind="python",
+                                   python_version="PYTHON3_9",
+                                   code_src="data-prep.py",
+                                   handler="breast_cancer_generator")
 ```
 
 Run it locally:
+
 ``` python
 gen_data_run = data_gen_fn.run(action="job", outputs={"dataset": "dataset"}, local_execution=True)
 ```
 
 You can view the state of the execution with `gen_data_run.status` or its output with `gen_data_run.outputs()`. You can see a few records from the output artifact:
+
 ``` python
-gen_data_run.outputs()["dataset"].as_df().head()
+gen_data_run.output("dataset").as_df().head()
 ```
 
 We will now proceed to training a model.
