@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/tasks/secrets/">
+        <link rel="canonical" href="http://docs/user/tasks/code-source/">
       
       
-        <link rel="prev" href="../kubernetes-resources/">
+        <link rel="prev" href="../workflows/">
       
       
-        <link rel="next" href="../workflows/">
+        <link rel="next" href="../../components/dashboard/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Secret Management - Digital Hub</title>
+        <title>Code source - Digital Hub</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#secret-management" class="md-skip">
+        <a href="#code-source" class="md-skip">
           Skip to content
         </a>
       
@@ -203,7 +203,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Secret Management
+              Code source
             
           </span>
         </div>
@@ -597,30 +597,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Secret Management
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../secrets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -629,44 +609,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#creating-and-managing-secrets-via-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating and Managing Secrets via UI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#managing-secrets-via-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Managing Secrets via SDK
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -697,10 +639,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../code-source/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Code source
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -709,6 +671,149 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#code-source-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code source definition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code source definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plain-text-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plain text source
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base64-encoded-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base64 encoded source
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-source-uri" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code source URI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code source URI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-file-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local file path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-git-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remote git repository
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Remote git repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Credentials
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-and-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      User and password
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-zip-s3-archive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remote zip s3 archive
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handler" class="md-nav__link">
+    <span class="md-ellipsis">
+      Handler
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2106,18 +2211,123 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#creating-and-managing-secrets-via-ui" class="md-nav__link">
+  <a href="#code-source-definition" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating and Managing Secrets via UI
+      Code source definition
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code source definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plain-text-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plain text source
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#base64-encoded-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base64 encoded source
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-source-uri" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code source URI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Code source URI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-file-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local file path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-git-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remote git repository
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Remote git repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      Credentials
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-and-password" class="md-nav__link">
+    <span class="md-ellipsis">
+      User and password
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remote-zip-s3-archive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remote zip s3 archive
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#managing-secrets-via-sdk" class="md-nav__link">
+  <a href="#handler" class="md-nav__link">
     <span class="md-ellipsis">
-      Managing Secrets via SDK
+      Handler
     </span>
   </a>
   
@@ -2138,26 +2348,150 @@
                   
 
 
-<h1 id="secret-management">Secret Management</h1>
-<p>Working with different operations may implu the usage of a sensitive values, such as external API credentials,
-storage credentials, etc.</p>
-<p>In order to avoid embedding the credentials in the code of functions, the platform supports an explicit management
-of credentials as secrets. This operation exploits the underlying secret management subsystem, such as Kubernetes Secret Manager.</p>
-<p>Besides the secrets managed natively by the platform to integrate e.g., default storage credentials, it is possible to
-define custom secrets at the level of a single project. The project secrets are managed as any other project-related entities,
-such as functions, dataitems, etc.</p>
-<p>At the level of the project the secrets are represented as key-value pairs. The management of secrets is delegated to a secret
-provider, and currently only Kubernetes Secret Manager is supported. Each project has its own Kubernetes secret, where
-all the key-value pairs are stored.</p>
-<p>To create a new secret value it is possible to use the Core UI console or directly via API, e.g., using the SDK.</p>
-<h2 id="creating-and-managing-secrets-via-ui">Creating and Managing Secrets via UI</h2>
-<p>Core console can be used to manage project secrets. To create a new one, it is necessary to provide
-a secret key and a value to be stored.</p>
-<p><img alt="Create project secret" src="../../images/console/secrets-create.png" /></p>
-<p>The entries may be then deleted and updated, as well as their metadata.</p>
-<h2 id="managing-secrets-via-sdk">Managing Secrets via SDK</h2>
-<p>Secrets can be created and managed as <em>entities</em> with the SDK CRUD methods.
-Check the <a href="https://scc-digitalhub.github.io/sdk-docs/objects/secret/entity/">SDK Secrets documentation</a> for more information.</p>
+<h1 id="code-source">Code source</h1>
+<p>In several runtime objects, it is possible to execute a program (e.g. a function, a query or a workflow) written in a source. This source can be a single code file, a plain text string or a base64 encoded string, a zip archive or a git repository.
+Beside the source, you need also to define a <a href="#handler"><code>handler</code></a>, which is the entrypoint of the code.</p>
+<h2 id="code-source-definition">Code source definition</h2>
+<p>In the SDK, there are three different types of source code:</p>
+<ul>
+<li><a href="#plain-text-source"><code>code</code></a> which is a plain string source.</li>
+<li><a href="#base64-encoded-source"><code>base64</code></a> which is a base64 encoded string source.</li>
+<li><a href="#code-source-uri"><code>code_src</code></a> which is a code source URI.</li>
+</ul>
+<h3 id="plain-text-source">Plain text source</h3>
+<p>You can define a plain text source using the <code>code</code> parameter.</p>
+<p>Here follow an example of a plain text source with the <a href="../../runtimes/python/">Python runtime</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">from digitalhub_runtime_python import handler</span>
+
+<span class="s2">@handler(outputs=[&quot;filtered&quot;])</span>
+<span class="s2">def myfunction(di: Dataitem, col1: str):</span>
+<span class="s2">    df = di.as_df()</span>
+<span class="s2">    df = df[[&quot;col1&quot;]]</span>
+<span class="s2">    return df</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">func</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                       <span class="n">name</span><span class="o">=</span><span class="s2">&quot;python-function&quot;</span><span class="p">,</span>
+                       <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+                       <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_9&quot;</span><span class="p">,</span>
+                       <span class="n">code</span><span class="o">=</span><span class="n">my_code</span><span class="p">,</span>
+                       <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;myfunction&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>In this case the function will execute the code in the <code>my_code</code> variable.</p>
+<h3 id="base64-encoded-source">Base64 encoded source</h3>
+<p>You can define a base64 encoded source using the <code>base64</code> parameter.</p>
+<p>Here follow an example of a base64 encoded source with the <a href="../../runtimes/python/">Python runtime</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Same function as above encoded in base64</span>
+<span class="n">base64_code</span> <span class="o">=</span> <span class="s2">&quot;ZnJvbSBkaWdpdGFsaHViX3J1bnRpbWVfcHl0aG9uIGltcG9ydCBoYW5kbGVyCgpAaGFuZGxlcihvdXRwdXRzPVsiZmlsdGVyZWQiXSkKZGVmIG15ZnVuY3Rpb24oZGk6IERhdGFpdGVtLCBjb2wxOiBzdHIpOgogICAgZGYgPSBkaS5hc19kZigpCiAgICBkZiA9IGRmW1siY29sMSJdXQogICAgcmV0dXJuIGRm&quot;</span>
+
+<span class="n">func</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                       <span class="n">name</span><span class="o">=</span><span class="s2">&quot;python-function&quot;</span><span class="p">,</span>
+                       <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+                       <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_9&quot;</span><span class="p">,</span>
+                       <span class="n">base64</span><span class="o">=</span><span class="n">base64_code</span><span class="p">,</span>
+                       <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;myfunction&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>In this case the function will execute the code in the <code>base64_code</code> variable.</p>
+<h3 id="code-source-uri">Code source URI</h3>
+<p>You can define a code source URI using the <code>code_src</code> parameter.
+We support the following types of URIs:</p>
+<ul>
+<li><a href="#local-file-path">Local file path</a></li>
+<li><a href="#remote-git-repository">Git repository</a></li>
+<li><a href="#remote-zip-s3-archive">S3 zip archive</a></li>
+</ul>
+<h4 id="local-file-path">Local file path</h4>
+<p>The local file path can be specified with the <code>path/to/file.ext</code> format.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_code</span> <span class="o">=</span> <span class="s2">&quot;src/my-func.py&quot;</span>
+
+<span class="n">func</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                       <span class="n">name</span><span class="o">=</span><span class="s2">&quot;python-function&quot;</span><span class="p">,</span>
+                       <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+                       <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_9&quot;</span><span class="p">,</span>
+                       <span class="n">code_src</span><span class="o">=</span><span class="n">my_code</span><span class="p">,</span>
+                       <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;myfunction&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>In this case the function will import the code in the <code>src/my-func.py</code> file, encodes it in base64 and then executes it. If the file is not found, the function will raise an exception.</p>
+<h4 id="remote-git-repository">Remote git repository</h4>
+<p>The remote git repository can be specified with the <code>git+https://repo-host.com/some-user/some-repo</code> format.
+The anteposition <code>git+</code> is required, the rest of the URL is the repository URL.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_repo</span> <span class="o">=</span> <span class="s2">&quot;git+https://repo-host/some-user/some-repo&quot;</span>
+
+<span class="n">func</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                       <span class="n">name</span><span class="o">=</span><span class="s2">&quot;python-function&quot;</span><span class="p">,</span>
+                       <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+                       <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_9&quot;</span><span class="p">,</span>
+                       <span class="n">code_src</span><span class="o">=</span><span class="n">my_repo</span><span class="p">,</span>
+                       <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;path:function&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>When a git repository is specified, the function try to clone the repository and execute the code in the specified in the <code>handler</code> entrypoint (See below). If the repository does not exist, the function will raise an exception.</p>
+<h5 id="credentials">Credentials</h5>
+<p>You may need credentials to access the repository. The credentials can be specified in three environment variables: <code>GIT_TOKEN</code>, <code>GIT_USER</code>and <code>GIT_PASSWORD</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You <strong>must</strong> set the env variable <strong>before</strong> defining the function. Token auth is recommended and takes precedence over basic auth. Please also verify that the repo provider supports basic auth.</p>
+</div>
+<h6 id="token">Token</h6>
+<p>The token is a plain string. It will be passed in the URL according to the git provider.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># GitHub token</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GIT_TOKEN&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;github_pat_...&quot;</span>
+
+<span class="c1"># GitLab token</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GIT_TOKEN&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;glpat...&quot;</span>
+
+<span class="c1"># function definition</span>
+</code></pre></div>
+<h6 id="user-and-password">User and password</h6>
+<p>User and password are plain strings.</p>
+<div class="highlight"><pre><span></span><code><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GIT_USER&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;some-user&quot;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GIT_PASSWORD&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;some-password&quot;</span>
+
+<span class="c1"># function definition</span>
+</code></pre></div>
+<h4 id="remote-zip-s3-archive">Remote zip s3 archive</h4>
+<p>The remote zip s3 archive can be specified with the <code>zip+s3://some-bucket/some-key.zip</code> format. The anteposition <code>zip+</code> is required, the rest of the URL is an S3 URL in the form <code>s3://some-bucket/some-key.zip</code>.
+The code source is archived in a zip file, which is unpacked at runtime.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_archive</span> <span class="o">=</span> <span class="s2">&quot;zip+s3://some-bucket/some-key.zip&quot;</span>
+
+<span class="n">func</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+                       <span class="n">name</span><span class="o">=</span><span class="s2">&quot;python-function&quot;</span><span class="p">,</span>
+                       <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+                       <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_9&quot;</span><span class="p">,</span>
+                       <span class="n">code_src</span><span class="o">=</span><span class="n">my_archive</span><span class="p">,</span>
+                       <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;path:function&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="handler">Handler</h2>
+<p>The <code>handler</code> parameter is the entrypoint of the code. There are some rules to follow when defining it.</p>
+<p>If the source code is:</p>
+<ul>
+<li><a href="#plain-text-source">Plain text</a></li>
+<li><a href="#base64-encoded-source">Base64 encoded</a></li>
+<li><a href="#local-file-path">Local file path</a></li>
+</ul>
+<p>Then the entrypoint should be the <strong>function name</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_code</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">def myfunction():</span>
+<span class="s2">    ...</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">func</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="o">...</span><span class="p">,</span>
+                       <span class="n">code</span><span class="o">=</span><span class="n">my_code</span><span class="p">,</span>
+                       <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;myfunction&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>If the source code is:</p>
+<ul>
+<li><a href="#remote-zip-s3-archive">S3 zip archive</a></li>
+<li><a href="#remote-git-repository">Git repository</a></li>
+</ul>
+<p>Then the entrypoint should be the path to the file where the code is stored (expressed with <code>.</code> separator) and the name of the function separated by a <code>:</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">my_code</span> <span class="o">=</span> <span class="s2">&quot;git+https://repo-host/some-user/some-repo&quot;</span>
+
+<span class="n">func</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="o">...</span><span class="p">,</span>
+                       <span class="n">code_src</span><span class="o">=</span><span class="n">my_code</span><span class="p">,</span>
+                       <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;src.subdir.etc:myfunction&quot;</span><span class="p">)</span>
+</code></pre></div>
 
 
 

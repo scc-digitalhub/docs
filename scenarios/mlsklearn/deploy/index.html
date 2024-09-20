@@ -635,6 +635,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tasks/code-source/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code source
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2101,35 +2122,35 @@
 
 <h1 id="deploy-and-expose-the-model">Deploy and expose the model</h1>
 <p>Deploying a scikit-learn model is easy: <code>sklearnserve</code> runtime supports this functionality out of the box. It is sufficient to specify the path to the model artifact and optionally the name of the model to expose.</p>
-<p>Register it and deploy:
+<p>Register it and deploy:</p>
 <div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;serve_sklearnmodel&quot;</span><span class="p">,</span>
                             <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;sklearnserve&quot;</span><span class="p">,</span>
-                            <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;testmodel&quot;</span><span class="p">,</span>
-                            <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+                            <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;model/cancer_classifier.pkl&#39;</span><span class="p">)</span>
 
 <span class="n">serve_run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">)</span>
-</code></pre></div></p>
-<p>You can now test the endpoint (using e.g., X_test):
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+</code></pre></div>
+<p>You can now create a dataset for testing the endpoint:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">SERVICE_URL</span> <span class="o">=</span> <span class="n">serve_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s2">&quot;service&quot;</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">]</span>
-<span class="n">MODEL_NAME</span> <span class="o">=</span> <span class="s2">&quot;testmodel&quot;</span>
-
-<span class="n">test_input</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-
-<span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;http://</span><span class="si">{</span><span class="n">SERVICE_URL</span><span class="si">}</span><span class="s1">/v2/models/</span><span class="si">{</span><span class="n">MODEL_NAME</span><span class="si">}</span><span class="s1">/infer&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">json</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;input-0&quot;</span><span class="p">,</span>
         <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
         <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;FP32&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">test_input</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span>
         <span class="p">}</span>
     <span class="p">]</span>
-<span class="p">})</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
-</code></pre></div></p>
+<span class="p">}</span>
+</code></pre></div>
+<p>Finally, you can test the endpoint. To do so, you need to refresh the serve run. This is needed because the backend monitors the deployment every minute and the model status, where the endpoint is exposed, is updated after a minute.</p>
+<p>You can check the model status this way:</p>
+<div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span>
+</code></pre></div>
+<p>When the attribute <code>service</code> appears, the model is ready to be used.</p>
+<div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</code></pre></div>
 <p>Please note that the scikit-learn model serving exposes also the Open API specification under <code>/docs</code> path.</p>
 <h2 id="create-an-api-gateway">Create an API gateway</h2>
 <p>Right now, the API is only accessible from within the environment. To make it accessible from outside, we'll need to create an API gateway.</p>
@@ -2140,7 +2161,7 @@
 <li>the endpoint where to publish</li>
 <li>and the authentication method (right now only no authentication or basic authentication are available). in case of basic authentication it is necessary to specify  <em>Username</em> and <em>Password</em>.</li>
 </ul>
-<p>The platform by default support exposing the methods at the subdomains of <code>services.&lt;platform-domain&gt;</code>, where platform-domain is the domain of the platform instance. </p>
+<p>The platform by default support exposing the methods at the subdomains of <code>services.&lt;platform-domain&gt;</code>, where platform-domain is the domain of the platform instance.</p>
 <p><img alt="KRM APIGW image" src="../../../images/scenario-etl/apigw-krm.png" /></p>
 <p><em>Save</em> and, after a few moments, you will be able to call the API at the address you defined! If you set <em>Authentication</em> to <em>Basic</em>, don't forget that you have to provide the credentials.</p>
 
