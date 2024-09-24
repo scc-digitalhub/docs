@@ -4,9 +4,7 @@ Here we explore a simple yet realistic scenario. We collect some data regarding 
 
 Access Jupyter from your Coder instance and create a new notebook. If a Jupyter workspace isn't already available, create one from its template.
 
-We'll now start writing code. Copy the snippets of code from here and paste them in your notebook, then execute them with *Shift+Enter*. After running, Jupyter will create a new code cell.
-
-The notebook file covering this scenario, as well as files for individual functions, are available in the `documentation/examples/etl` path within the repository of this documentation.
+Copy the snippets of code from here and paste them in your notebook, then execute them with *Shift+Enter*. After running, Jupyter will create a new code cell. Alternatively, the final notebook for this scenario can be found in the `user/examples/etl` path within the repository of this documentation, together with any additional related files.
 
 ## Set-up
 

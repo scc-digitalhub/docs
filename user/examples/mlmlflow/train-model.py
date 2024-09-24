@@ -21,7 +21,7 @@ def train(project):
 
     # utility to map mlflow run artifacts to model metadata
     model_params = from_mlflow_run(run_id)
-    
+
     project.log_model(
         name="model-mlflow",
         kind="mlflow",

@@ -2,9 +2,7 @@
 
 This scenario provides a quick overview of developing and deploying a machine learning application based on model tracked with MLFlow framework using the functionalities of the platform.
 
-The resulting edited notebook, as well as a file for the function we will create, are available in the `documentation/examples/mlmlflow` path within the repository of this documentation.
-
-We will prepare data, train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook.
+We will prepare data, train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook. Alternatively, you can find the final notebook file for this scenario in the `user/examples/mlmlflow` path within the repository of this documentation, together with any additional related files.
 
 ## Set-up
 

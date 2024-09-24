@@ -2,13 +2,7 @@
 
 Here we explore a proper, realistic scenario. We collect some data regarding organizations, analyze and transform it, then expose the resulting dataset.
 
-Access Jupyter from your Coder instance and create a new notebook. If a Jupyter workspace isn't already available, create one from its template.
-
-Open a new notebook using the **`digitalhub-core`** kernel.
-
-We'll now start writing code. Copy the snippets of code from here and paste them in your notebook, then execute them with *Shift+Enter*. After running, Jupyter will create a new code cell.
-
-The notebook file covering this scenario, as well as files for individual functions, is available in the `documentation/examples/etl-core` path within the repository of this documentation, or in the path `tutorials/08-dbt-demo.ipynb` of the Jupyter instance.
+Access Jupyter from your Coder instance and create a new notebook. Alternatively, the final notebook for this scenario can be found in the `user/examples/etl-core` path within the repository of this documentation.
 
 ## Setup
 

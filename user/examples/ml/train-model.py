@@ -35,11 +35,11 @@ def train_model(project):
         "smape": smape(series, pred),
         "mae": mae(series, pred)
     }
-    
+
     project.log_model(
-        name="darts_model", 
-        kind="sklearn", 
-        source="predictor_model.pt.zip", 
+        name="darts_model",
+        kind="model",
+        source="predictor_model.pt.zip",
         algorithm="darts.models.NBEATSModel",
         framework="darts",
         metrics=metrics

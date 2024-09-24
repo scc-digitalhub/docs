@@ -2,9 +2,7 @@
 
 This scenario provides a quick overview of developing and deploying generic machine learning applications using the functionalities of the platform. For this purpose, we use ML algorithms for the time series management provided by the [Darts](https://unit8co.github.io/darts/) framework.
 
-The resulting edited notebook, as well as a file for the function we will create, are available in the `documentation/examples/ml` path within the repository of this documentation.
-
-We will train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook.
+We will train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook. Alternatively, you can find the final notebook file for this scenario in the `user/examples/ml` path within the repository of this documentation, together with any additional related files.
 
 ## Set-up
 
