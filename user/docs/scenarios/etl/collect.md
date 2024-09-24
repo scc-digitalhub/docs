@@ -28,7 +28,7 @@ Register the function in Core:
 func = project.new_function(
                          name="download-data",
                          kind="python",
-                         python_version="PYTHON3_9",
+                         python_version="PYTHON3_10",
                          code_src="src/download-data.py",
                          handler="downloader")
 ```

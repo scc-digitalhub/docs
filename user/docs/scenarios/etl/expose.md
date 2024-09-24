@@ -63,7 +63,7 @@ Register the function:
 api_func = project.new_function(
                          name="api",
                          kind="python",
-                         python_version="PYTHON3_9",
+                         python_version="PYTHON3_10",
                          code_src="src/api.py",
                          handler="handler",
                          init_function="init_context")
@@ -86,7 +86,7 @@ run_serve_model.refresh()
 When done, the status of the run contains the ``service`` element with the internal service URL to be used.
 
 ``` python
-SERVICE_URL = run_serve_model.status['service']['url']
+SERVICE_URL = f"http://{run_serve_model.status.to_dict()['service']['url']}"
 ```
 
 Invoke the API and print its results:

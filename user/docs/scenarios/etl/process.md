@@ -24,7 +24,7 @@ Register the function in Core:
 process_func = project.new_function(
                          name="process-spire",
                          kind="python",
-                         python_version="PYTHON3_9",
+                         python_version="PYTHON3_10",
                          code_src="src/process-spire.py",
                          handler="process")
 ```
@@ -117,7 +117,7 @@ Register it:
 process_measures_func = project.new_function(
                          name="process-measures",
                          kind="python",
-                         python_version="PYTHON3_9",
+                         python_version="PYTHON3_10",
                          code_src="src/process-measures.py",
                          handler="process")
 ```
