@@ -1,10 +1,11 @@
 
+
 import pandas as pd
 from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
 
 from digitalhub_runtime_python import handler
-from sklearn.svm import SVC 
+from sklearn.svm import SVC
 from pickle import dump
 import sklearn.metrics
 import os
@@ -19,10 +20,10 @@ def train(project, di):
     svc_model = SVC()
     svc_model.fit(X_train, y_train)
     y_predict = svc_model.predict(X_test)
-    
+
     if not os.path.exists("model"):
         os.makedirs("model")
-    
+
     with open("model/cancer_classifier.pkl", "wb") as f:
         dump(svc_model, f, protocol=5)
 
@@ -33,8 +34,8 @@ def train(project, di):
         "recall": sklearn.metrics.recall_score(y_test, y_predict),
     }
     project.log_model(
-            name="cancer_classifier", 
-            kind="sklearn", 
-            source="./model/", 
+            name="cancer_classifier",
+            kind="sklearn",
+            source="./model/",
             metrics=metrics
     )
