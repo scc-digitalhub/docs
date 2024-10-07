@@ -9,7 +9,7 @@ They are associated with a given **runtime**, which implements the actual execut
 Runtimes define the key point of extension of the platform: new runtimes may be added in order to implement the low-level logic of "translating" the high level operation definition into an executable run. For example, DBT runtime allows for defining the transformation as a task that, given the input table reference,
 produces a datastt appyling the function defined as SQL code. The runtime in this case is responsible for converting the specification and the references to a dedicated Kubernetes Job that runs DBT transformation and stores the corresponding dataset.
 
-The set of the supported runtimes is documented in Runtimes References section. Independently of the specific runtime implementation, the flow of actions
+The set of the supported runtimes is documented in [Runtimes References section](../runtimes/python.md). Independently of the specific runtime implementation, the flow of actions
 with respect to the function definition and execution is the following:
 
 - define a new function providing its name, runtime, definition (e.g., source code), and configuration (e.g., dependencies). The function definition is saved by the project. Each change to the function spec creates a new function version so that the executions of different function versions are independently tracked.
