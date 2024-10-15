@@ -48,7 +48,7 @@ Register it:
 ``` python
 data_gen_fn = project.new_function(name="data-prep",
                                    kind="python",
-                                   python_version="PYTHON3_9",
+                                   python_version="PYTHON3_10",
                                    code_src="data-prep.py",
                                    handler="breast_cancer_generator")
 ```

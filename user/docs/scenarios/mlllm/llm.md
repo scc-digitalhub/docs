@@ -319,7 +319,7 @@ Register the function and execute it:
 ```python
 train_func = project.new_function(name="train_model",
                                   kind="python",
-                                  python_version="PYTHON3_9",
+                                  python_version="PYTHON3_10",
                                   code_src="src/train_model.py",
                                   handler="train",
                                   requirements=["evaluate", "transformers[torch]", "torch", "torchvision", "accelerate"])

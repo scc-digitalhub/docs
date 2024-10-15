@@ -54,7 +54,7 @@ Let us register it:
 ``` python
 train_fn = project.new_function(name="train",
                                 kind="python",
-                                python_version="PYTHON3_9",
+                                python_version="PYTHON3_10",
                                 code_src="train-model.py",
                                 handler="train",
                                 requirements=["scikit-learn==1.2.2"])
