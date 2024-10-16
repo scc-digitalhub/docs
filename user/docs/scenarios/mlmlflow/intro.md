@@ -35,7 +35,7 @@ Let us define the training function.
 
 from digitalhub_runtime_python import handler
 
-from digitalhub_ml.entities.utils import from_mlflow_run
+from digitalhub_ml import from_mlflow_run
 import mlflow
 
 from sklearn import datasets, svm
