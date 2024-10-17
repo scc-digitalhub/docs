@@ -536,6 +536,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#share" class="md-nav__link">
+    <span class="md-ellipsis">
+      Share
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#delete" class="md-nav__link">
     <span class="md-ellipsis">
       Delete
@@ -2185,6 +2194,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#share" class="md-nav__link">
+    <span class="md-ellipsis">
+      Share
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#delete" class="md-nav__link">
     <span class="md-ellipsis">
       Delete
@@ -2227,7 +2245,6 @@
 Projects may be created and managed from the UI, but also by using DH Core's API, for example via Python SDK.</p>
 <h2 id="management-via-ui">Management via UI</h2>
 <p>In the following sections we document project management via the <code>Core Console</code> UI.</p>
-<p>Here we detail how to <a href="#create">create</a>, <a href="#read">read</a>, <a href="#update">update</a> and <a href="#delete">delete</a> projects using the UI, similarly to SDK usage.</p>
 <h3 id="create">Create</h3>
 <p>A project is created by clicking <code>CREATE A NEW PROJECT</code> in the console's home page.</p>
 <p><img alt="Project list" src="../../images/console/project-list.png" /></p>
@@ -2272,9 +2289,12 @@ Projects may be created and managed from the UI, but also by using DH Core's API
 <p>Click <code>Edit</code> in the top right and the edit form for <code>Metadata</code> properties will be shown. In the example below, a label was added.</p>
 <p><img alt="Update conf" src="../../images/console/update-prj.png" /></p>
 <p>When you're done updating the project, click <em>Save</em>.</p>
+<h3 id="share">Share</h3>
+<p>To allow other users to view and interact with the project, you must share it with them. From the <code>Configuration</code> page, click <code>Share</code> in the upper right.</p>
+<p><img alt="Share project" src="../../images/console/project-share.png" /></p>
 <h3 id="delete">Delete</h3>
 <p>You can delete a project from the <code>Configuration</code> page, by clicking <code>Delete</code>. You will be asked to confirm by entering the project's identifier.</p>
-<p><img alt="Update conf" src="../../images/console/project-delete.png" /></p>
+<p><img alt="Delete conf" src="../../images/console/project-delete.png" /></p>
 <h2 id="management-via-sdk">Management via SDK</h2>
 <p>Projects can be created and managed as <em>entities</em> with the SDK.
 Check the <a href="https://scc-digitalhub.github.io/sdk-docs/objects/project/entity/">SDK Project documentation</a> for more information.</p>
