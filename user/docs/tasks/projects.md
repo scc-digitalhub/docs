@@ -7,8 +7,6 @@ Projects may be created and managed from the UI, but also by using DH Core's API
 
 In the following sections we document project management via the `Core Console` UI.
 
-Here we detail how to [create](#create), [read](#read), [update](#update) and [delete](#delete) projects using the UI, similarly to SDK usage.
-
 ### Create
 
 A project is created by clicking `CREATE A NEW PROJECT` in the console's home page.
@@ -71,11 +69,17 @@ Click `Edit` in the top right and the edit form for `Metadata` properties will b
 
 When you're done updating the project, click *Save*.
 
+### Share
+
+To allow other users to view and interact with the project, you must share it with them. From the `Configuration` page, click `Share` in the upper right.
+
+![Share project](../images/console/project-share.png)
+
 ### Delete
 
 You can delete a project from the `Configuration` page, by clicking `Delete`. You will be asked to confirm by entering the project's identifier.
 
-![Update conf](../images/console/project-delete.png)
+![Delete conf](../images/console/project-delete.png)
 
 ## Management via SDK
 
