@@ -38,7 +38,7 @@ Create the serving function definition:
 llm_function = project.new_function("llm_classification",
                                     kind="huggingfaceserve",
                                     model_name="mymodel",
-                                    path="huggingface://distilbert/ distilbert-base-uncased-finetuned-sst-2-english")
+                                    path="huggingface://distilbert/distilbert-base-uncased-finetuned-sst-2-english")
 ```
 
 Serve the model:
