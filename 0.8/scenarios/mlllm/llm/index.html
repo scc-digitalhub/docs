@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.41">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
@@ -2188,7 +2188,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm_classification&quot;</span><span class="p">,</span>
                                     <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;huggingfaceserve&quot;</span><span class="p">,</span>
                                     <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
-                                    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;huggingface://distilbert/ distilbert-base-uncased-finetuned-sst-2-english&quot;</span><span class="p">)</span>
+                                    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;huggingface://distilbert/distilbert-base-uncased-finetuned-sst-2-english&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Serve the model:</p>
 <div class="highlight"><pre><span></span><code><span class="n">llm_run</span> <span class="o">=</span> <span class="n">llm_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;template-a100&quot;</span><span class="p">)</span>
