@@ -2155,10 +2155,10 @@ is created from MLFlow run artifact path, besides the <code>model</code> folder 
 <span class="p">}</span>
 </code></pre></div>
 <p>Finally, you can test the endpoint. To do so, you need to refresh the serve run. This is needed because the backend monitors the deployment every minute and the model status, where the endpoint is exposed, is updated after a minute.</p>
-<p>You can check the model status this way:</p>
-<div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span>
+<p>Refresh the run until <code>service</code> attribute is available in <code>status</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">service</span>
 </code></pre></div>
-<p>When the attribute <code>service</code> appears, the model is ready to be used.</p>
+<p>The model is ready to be used.</p>
 <div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mlflow_model&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <p>Please note that the MLFLow model serving exposes also the Open API specification under <code>/v2/docs</code> path.</p>
