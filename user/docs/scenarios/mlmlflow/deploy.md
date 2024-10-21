@@ -37,13 +37,13 @@ json={
 
 Finally, you can test the endpoint. To do so, you need to refresh the serve run. This is needed because the backend monitors the deployment every minute and the model status, where the endpoint is exposed, is updated after a minute.
 
-You can check the model status this way:
+Refresh the run until `service` attribute is available in `status`:
 
 ``` python
-serve_run.refresh().status
+serve_run.refresh().status.service
 ```
 
-When the attribute `service` appears, the model is ready to be used.
+The model is ready to be used.
 
 ```python
 serve_run.invoke(model_name="mlflow_model", json=json).json()

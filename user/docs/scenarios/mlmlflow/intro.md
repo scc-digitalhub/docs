@@ -17,7 +17,7 @@ Then, import necessary libraries and create a project to host the functions and 
 ```python
 import digitalhub as dh
 
-project = dh.get_or_create_project("demo-ml")
+project = dh.get_or_create_project("demo-mlflow")
 ```
 
 ## Generate data
@@ -33,7 +33,7 @@ Let us define the training function.
 
 from digitalhub_runtime_python import handler
 
-from digitalhub_ml.entities.utils import from_mlflow_run
+from digitalhub import from_mlflow_run
 import mlflow
 
 from sklearn import datasets, svm
