@@ -156,7 +156,7 @@ There is no need for “executable” code: the framework will provide the engin
 
 ![Faas](architecture/images/faas.png)
 
-The platform adopts Nuclio as the serverless platform, and supports Python, Java and Go as programming languages.
+The platform relies on a built-in serverless platform, and supports Python functions as well as a set of ML model formats for serving.
 
 ### DataOps: Batch jobs and workflows
 
@@ -210,7 +210,7 @@ The platform adopts JupyterLab, along with ML a range of frameworks, as interact
 
 Datasets are usually pre-processed by domain experts to define and extract features.
 
-By adopting a full-fledged feature store (via MLRun), the platform lets developers:
+By adopting a full-fledged feature store (under development), the platform lets developers:
 
 * easily define features during training
 * re-use them during serving

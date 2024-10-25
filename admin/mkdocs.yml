@@ -24,7 +24,6 @@ nav:
       - "authentication/minio.md"
       - OAuth2 Proxy:
           - "authentication/kubeflow.md"
-          - "authentication/nuclio.md"
   - Charts:
       - Core:
           - "charts/core/templates.md"

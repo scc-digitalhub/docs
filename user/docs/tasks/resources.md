@@ -190,7 +190,7 @@ A Dremio REST service will be deployed, connected to the specified Dremio instan
 
 ### Exposing services externally
 
-Various APIs and services (e.g., PostgREST or Dremio data services, Nuclio serverless functions) may be exposed externally, outside of the platform, on a public domain of the platform. Using KRM, the operation amounts to defining a new API gateway resource that will be transformed into the corresponding ingress routing specification.
+Various APIs and services (e.g., PostgREST or Dremio data services, serverless functions) may be exposed externally, outside of the platform, on a public domain of the platform. Using KRM, the operation amounts to defining a new API gateway resource that will be transformed into the corresponding ingress routing specification.
 
 ![KRM API gateway create image](../images/krm/krm_apigw.png)
 

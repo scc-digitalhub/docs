@@ -30,8 +30,6 @@ nav:
       - "components/dashboard.md"
       - "components/dh_console.md"
       - "components/resourcemanager.md"
-      - "components/mlrun.md"
-      - "components/nuclio.md"
       - "components/kubeflow.md"
       - Interactive Workspaces:
           - "components/jupyter.md"

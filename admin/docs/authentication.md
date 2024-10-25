@@ -12,4 +12,3 @@ This section will show how to set an authentication for the following:
 - [Kubernetes Resource Manager](authentication/krm.md)
 - [Kubeflow](authentication/kubeflow.md)
 - [Minio](authentication/minio.md)
-- [Nuclio](authentication/nuclio.md)
