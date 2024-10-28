@@ -121,3 +121,5 @@ We can fetch the output table and explore it with `pandas`.
 df = run.output('department-60').as_df()
 df.head()
 ```
+
+In the next section, we will see how to convert this example in a workflow.
