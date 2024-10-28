@@ -49,6 +49,7 @@ nav:
           - "scenarios/etl/streamlit.md"
       - DBT transformation:
           - "scenarios/etl-core/scenario.md"
+          - "scenarios/etl-core/pipeline.md"
       - "MLOps: Scikit-learn ML models":
           - "scenarios/mlsklearn/intro.md"
           - "scenarios/mlsklearn/training.md"
