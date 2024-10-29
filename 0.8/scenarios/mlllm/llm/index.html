@@ -2153,6 +2153,7 @@
 </ul>
 <p>Based on the type of the task the API of the exposed service may differ. Generative models (text generation and text2text generation) use OpenAI's <a href="https://platform.openai.com/docs/api-reference/completions">Completion</a> and <a href="https://platform.openai.com/docs/api-reference/chat">Chat Completion</a> API.</p>
 <p>The other types of tasks like token classification, sequence classification, fill mask are served using KServe's Open Inference Protocol v2 API.</p>
+<p>You can find the final notebook file for this scenario in the <a href="https://github.com/scc-digitalhub/digitalhub-tutorials/tree/main/s5-llm">tutorial repository</a>.</p>
 <h2 id="exposing-predefined-text-classification-models">Exposing Predefined Text Classification Models</h2>
 <p>In case of predefined HuggingFace non-generative model it is possible to use <code>huggingfaceserve</code> runtime to expose the corresponding inference  API. For this purpose it is necessary to define the <code>huggingfaceserve</code> function definition (via UI or SDK) providing the name of the exposed model and the URI of the model in the following form</p>
 <p><code>huggingface://&lt;id of the huggingface model&gt;</code></p>
