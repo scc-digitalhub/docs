@@ -2,214 +2,214 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>http://docs/user/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/architecture/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/installation/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/quickstart/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/dashboard/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/dh_console/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/dremio/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/grafana/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/jupyter/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/kubeflow/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/mlrun/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/nuclio/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/resourcemanager/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/sqlpad/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/vscode/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/container/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/dbt/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/kfp_pipelines/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/modelserve/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/python/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/dremio_grafana/scenario/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/etl/collect/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/etl/expose/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/etl/intro/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/etl/pipeline/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/etl/process/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/etl/streamlit/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/etl-core/pipeline/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/etl-core/scenario/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/ml/deploy/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/ml/intro/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/mlllm/llm/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/mlmlflow/deploy/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/mlmlflow/intro/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/mlsklearn/deploy/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/mlsklearn/intro/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/mlsklearn/training/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/postgrest/apigw/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/postgrest/data/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/postgrest/intro/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/scenarios/postgrest/postgrest/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/sdk/intro/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/code-source/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/data/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/functions/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/kubernetes-resources/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/models/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/projects/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/resources/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/run-resources/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/secrets/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/workflows/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/workspaces/</loc>
-         <lastmod>2024-10-29</lastmod>
+         <lastmod>2024-10-30</lastmod>
     </url>
 </urlset>
