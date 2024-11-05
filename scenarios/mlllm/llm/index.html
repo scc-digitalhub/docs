@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
@@ -776,48 +776,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../components/mlrun/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MLRun
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../components/nuclio/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Nuclio
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../components/kubeflow/" class="md-nav__link">
         
   
@@ -848,10 +806,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_7" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_5" >
         
           
-          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -862,8 +820,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
             <span class="md-nav__icon md-icon"></span>
             Interactive Workspaces
           </label>
@@ -2195,6 +2153,7 @@
 </ul>
 <p>Based on the type of the task the API of the exposed service may differ. Generative models (text generation and text2text generation) use OpenAI's <a href="https://platform.openai.com/docs/api-reference/completions">Completion</a> and <a href="https://platform.openai.com/docs/api-reference/chat">Chat Completion</a> API.</p>
 <p>The other types of tasks like token classification, sequence classification, fill mask are served using KServe's Open Inference Protocol v2 API.</p>
+<p>You can find the final notebook file for this scenario in the <a href="https://github.com/scc-digitalhub/digitalhub-tutorials/tree/main/s5-llm">tutorial repository</a>.</p>
 <h2 id="exposing-predefined-text-classification-models">Exposing Predefined Text Classification Models</h2>
 <p>In case of predefined HuggingFace non-generative model it is possible to use <code>huggingfaceserve</code> runtime to expose the corresponding inference  API. For this purpose it is necessary to define the <code>huggingfaceserve</code> function definition (via UI or SDK) providing the name of the exposed model and the URI of the model in the following form</p>
 <p><code>huggingface://&lt;id of the huggingface model&gt;</code></p>

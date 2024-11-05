@@ -11,14 +11,14 @@
         <link rel="canonical" href="http://docs/user/components/kubeflow/">
       
       
-        <link rel="prev" href="../nuclio/">
+        <link rel="prev" href="../resourcemanager/">
       
       
         <link rel="next" href="../jupyter/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
@@ -773,48 +773,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../mlrun/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MLRun
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../nuclio/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Nuclio
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -906,10 +864,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_7" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_5" >
         
           
-          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -920,8 +878,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
             <span class="md-nav__icon md-icon"></span>
             Interactive Workspaces
           </label>
@@ -2167,11 +2125,7 @@
 
 <h1 id="kubeflow-pipelines">KubeFlow Pipelines</h1>
 <p><a href="https://www.kubeflow.org/docs/components/pipelines">Kubeflow Pipelines</a> makes part of the Kubeflow platform and allows for organizing workflows out of single tasks performed as Kubernetes Jobs via Argo Workflows. Kubeflow Pipelines comes with its own DSL specification on top of Python, which is compiled into a workflow definition ready for execution in Kubernetes. In this way wach task, its resources, dependencies, etc may be configured indipendently; the management and tracking is performed by the Kubeflow Pipelines component, equipped also with the Web-based UI for monitoring.  </p>
-<p>The platform used Kubeflow pipelines to</p>
-<ul>
-<li>implement the composite pipelines through its Core orchestrator component and UI</li>
-<li>support MLRun pipelines. </li>
-</ul>
+<p>The platform used Kubeflow pipelines to implement the composite pipelines through its Core orchestrator component and UI.</p>
 <p>Currently, version v1 of the Kubeflow Pipelines is used for the compatibility purposes. The definition of the KFP workflows is provided in the corresponding <a href="../../runtimes/kfp_pipelines/">KFP Runtime</a> section.</p>
 <div class="admonition info">
 <p class="admonition-title">How to access</p>

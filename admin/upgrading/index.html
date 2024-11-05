@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
@@ -713,27 +713,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../authentication/nuclio/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Nuclio
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -830,11 +809,143 @@
   
   
     <li class="md-nav__item">
-      <a href="../charts/core/templates/" class="md-nav__link">
+      <a href="../charts/core/keystore/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Core templates
+    Keystore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Kubeflow Pipelines
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Kubeflow Pipelines
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../charts/kfp/mysql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Kubernetes Resource Manager
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Kubernetes Resource Manager
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../charts/krm/roles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    KRM roles
   </span>
   
 
@@ -909,6 +1020,15 @@
 <span class="w">      </span><span class="c1"># In order to upgrade the templates, you will need to create and set here a Coder Token.</span>
 <span class="w">      </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 </code></pre></div>
+<p><strong>Upgrading from Digitalhub 0.7 to 0.8</strong></p>
+<p>This section is aimed only for environments with an already running instance of Digitalhub. </p>
+<p>Due to the removal of MLRun, the upgrading process needs some extra steps.</p>
+<p>Follow this guide to upgrade your installation while keeping your existing environment stable:</p>
+<p>1) Clone the <a href="https://github.com/scc-digitalhub/digitalhub">repository of Digitalhub</a>. You will need to apply some CRDS manually.</p>
+<p>2) Apply the CRDS inside the folder <code>digitalhub/charts/kubeflow-pipelines/crds</code> in your namespace. Most of the CRDS are the same as the one applied with the MLRun chart, but some are not and are needed for the standalone installation of Kubeflow Pipelines.</p>
+<p>3) The MLRun chart included a MySql depolyment, but, although the Kubeflow Pipelines chart uses the same approach, the MySql version used (8.0.26) is greater then the one installed with MLRun, therefore it is necessary to remove the existing MySql deployment and the associated PVC.</p>
+<p>If your environment, instead of the embedded one, used an external deployment of MySql with a version compatible with 8.0.26, you can choose to keep it setting the values accordingly. Please, check the <a href="../charts/kfp/mysql/">MySql configuration guide for KFP</a> for more details.</p>
+<p>4) You can now upgrade to Digitalhub 0.8.0. After the installation, make sure that the crds inside <code>digitalhub/charts/kubeflow-pipelines/crds</code> have been all correctly applied.</p>
 
 
 

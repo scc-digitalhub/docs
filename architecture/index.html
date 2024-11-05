@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
@@ -1071,48 +1071,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../components/mlrun/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MLRun
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../components/nuclio/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Nuclio
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../components/kubeflow/" class="md-nav__link">
         
   
@@ -1143,10 +1101,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_7" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_5" >
         
           
-          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1157,8 +1115,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
             <span class="md-nav__icon md-icon"></span>
             Interactive Workspaces
           </label>
@@ -2758,7 +2716,7 @@ Also with native integration with external tools via ODBC, JDBC, Arrow Flight</p
 <p>Modern serverless platforms enable developers to fully focus on writing business code, by implementing functions which will eventually be executed by the compute layer.</p>
 <p>There is no need for “executable” code: the framework will provide the engine which will transform bare functions into applications.</p>
 <p><img alt="Faas" src="images/faas.png" /></p>
-<p>The platform adopts Nuclio as the serverless platform, and supports Python, Java and Go as programming languages.</p>
+<p>The platform relies on a built-in serverless platform, and supports Python functions as well as a set of ML model formats for serving.</p>
 <h3 id="dataops-batch-jobs-and-workflows">DataOps: Batch jobs and workflows</h3>
 <p>By registering functions as jobs we can easily execute them programmatically, based on triggers, or as batch operations dispatched to Kubernetes.</p>
 <p>We can thus define workflows as pipelines composing functions, by connecting inputs and outputs in a DAG:</p>
@@ -2796,7 +2754,7 @@ Also with native integration with external tools via ODBC, JDBC, Arrow Flight</p
 The platform adopts JupyterLab, along with ML a range of frameworks, as interactive compute environment, delivering a pre-configured, fully adaptable workspace for ML tasks.</p>
 <h3 id="mlops-data-and-features">MLOps: Data and features</h3>
 <p>Datasets are usually pre-processed by domain experts to define and extract features.</p>
-<p>By adopting a full-fledged feature store (via MLRun), the platform lets developers:</p>
+<p>By adopting a full-fledged feature store (under development), the platform lets developers:</p>
 <ul>
 <li>easily define features during training</li>
 <li>re-use them during serving</li>
