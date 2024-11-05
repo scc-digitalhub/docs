@@ -24,7 +24,10 @@ nav:
       - "authentication/minio.md"
       - OAuth2 Proxy:
           - "authentication/kubeflow.md"
-          - "authentication/nuclio.md"
   - Charts:
       - Core:
-          - "charts/core/templates.md"
+          - "charts/core/keystore.md"
+      - Kubeflow Pipelines:
+          - "charts/kfp/mysql.md"
+      - Kubernetes Resource Manager:
+          - "charts/krm/roles.md"

@@ -8,20 +8,50 @@ In order to collect the initial data and make it accessible to Dremio, we will f
 
 !!! note "Collect the data"
 
-    The process of collecting data is only summarized here, as it is already described in depth in the [ETL scenario introduction](../etl/intro.md) and [Collect the data](../etl/collect.md) pages.
+    The process of collecting data is the same as described in the [ETL scenario introduction](../etl/intro.md) and [Collect the data](../etl/collect.md) pages.
 
 * Access Jupyter from your Coder instance and create a new notebook using the **`Python 3 (ipykernel)`** kernel
 * Set up the environment and create a project named `demo-etl`
-* Set the URL to the data:
+``` python
+import digitalhub as dh
+import os
+```
+``` python
+PROJECT = "demo-etl"
+project = dh.get_or_create_project(PROJECT)
+```
 
+* Create the `src` folder, define the download function and register it
+``` python
+new_folder = 'src'
+if not os.path.exists(new_folder):
+    os.makedirs(new_folder)
+```
+``` python
+%%writefile "src/download-data.py"
+
+from digitalhub_runtime_python import handler
+
+@handler(outputs=["dataset"])
+def downloader(url):
+    # read and rewrite to normalize and export as data
+    df = url.as_df(file_format='csv',sep=";")
+    return df
+```
+``` python
+func = project.new_function(
+                         name="download-data",
+                         kind="python",
+                         python_version="PYTHON3_10",
+                         code_src="src/download-data.py",
+                         handler="downloader")
+```
+
+* Set the URL and execute the function:
 ``` python
 URL = "https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?lang=it&timezone=Europe%2FRome&use_labels=true&delimiter=%3B"
 di= project.new_dataitem(name="url_data_item",kind="table",path=URL)
 ```
-
-* Create the `src` folder, define the download function and register it
-* Execute it locally and wait for its completion:
-
 ``` python
 run = func.run(action="job", inputs={'url':di.key}, outputs={"dataset": "dataset"}, local_execution=True)
 ```

@@ -58,9 +58,6 @@ Digitalhub componet URLs:
   - Grafana: http://192.168.76.2:30130 (Create grafana workspace from template in the coder dashboard before use)
   - Vscode: http://192.168.76.2:30190 (Create vscode workspace from template in the coder dashboard before use)
   - Docker Registry: http://192.168.76.2:30150
-  - Nuclio: http://192.168.76.2:30050
-  - MLRun API: http://192.168.76.2:30070
-  - MLRun UI: http://192.168.76.2:30060
   - Minio API: http://192.168.76.2:30080 (Username: minio Password: minio123)
   - Minio UI: http://192.168.76.2:30090 (Username: minio Password: minio123)
   - KubeFlow: http://192.168.76.2:30100

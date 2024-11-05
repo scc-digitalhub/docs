@@ -34,8 +34,8 @@ Since Grafana relies on time-series information to provide its monitoring featur
 You can recover these values by launching a *SQLPad* workspace, accessing its *Terminal* (from the bottom above the logs in Coder) and typing `env`, which will list all the names and values of the environment variables of the tool.
 
 - `Host`: value of `SQLPAD_CONNECTIONS__pg__host`
-- `Database`: value of `SQLPAD_CONNECTIONS__pg__name` (should be `mlrun`)
-- `User`: value of `SQLPAD_CONNECTIONS__pg__username` (should be `mlrun`)
+- `Database`: value of `SQLPAD_CONNECTIONS__pg__name` 
+- `User`: value of `SQLPAD_CONNECTIONS__pg__username` 
 - `Password`: value of `SQLPAD_CONNECTIONS__pg__password`
 
 Once you have set these parameters, click *Save & test* at the bottom, and a green notification confirming database connection was successful should appear. You can click on *Explore view* to try running some SQL queries on the available tables.

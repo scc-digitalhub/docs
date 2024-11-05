@@ -9,7 +9,5 @@ The landing page is a central access point to reach a number of tools that are a
 - *Coder*, Tool for managing interactive workspaces
 - *DH Core Console*, UI for the platform management
 - *KRM*, or Kubernetes Resource Manager, is the tool for organizing and managing standard and custom Kubernetes resources
-- *MLRun*, a framework for MLOps
-- *Nuclio*, a platform for serverless functions
 - *Kubeflow*, a tool for ML pipelines on Kubernetes
 - *MinIO*, an S3-compatible object datalake UI

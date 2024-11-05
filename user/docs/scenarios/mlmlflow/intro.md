@@ -2,7 +2,7 @@
 
 This scenario provides a quick overview of developing and deploying a machine learning application based on model tracked with MLFlow framework using the functionalities of the platform.
 
-We will prepare data, train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook. Alternatively, you can find the final notebook file for this scenario in the `user/examples/mlmlflow` path within the repository of this documentation, together with any additional related files.
+We will prepare data, train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook. Alternatively, you can find the final notebook file for this scenario in the [tutorial repository](https://github.com/scc-digitalhub/digitalhub-tutorials/tree/main/s4-mlflow).
 
 ## Set-up
 
@@ -17,7 +17,7 @@ Then, import necessary libraries and create a project to host the functions and 
 ```python
 import digitalhub as dh
 
-project = dh.get_or_create_project("demo-ml")
+project = dh.get_or_create_project("demo-mlflow")
 ```
 
 ## Generate data
