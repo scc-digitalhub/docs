@@ -40,10 +40,16 @@ Register the workflow:
 workflow = project.new_workflow(name="pipeline", kind="kfp", code_src="src/pipeline.py", handler="pipeline")
 ```
 
-And run it, this time remotely, passing the URL key as a parameter:
+You **MUST** build the workflow before running it:
 
 ``` python
-workflow.run(parameters={"url": di.key})
+run_build = workflow.run("build", wait=True)
+```
+
+Once the workflow is built, you can run it, passing the URL key as a parameter:
+
+``` python
+workflow.run("pipeline", parameters={"url": di.key}, wait=True)
 ```
 
 It is possible to monitor the execution in the Core console:
