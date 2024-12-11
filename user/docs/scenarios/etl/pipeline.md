@@ -40,12 +40,13 @@ Register the workflow:
 workflow = project.new_workflow(name="pipeline", kind="kfp", code_src="src/pipeline.py", handler="pipeline")
 ```
 
-You **MUST** build the workflow before running it:
+You **MUST** build the workflow before running it. This is necessary to compose the Argo descriptor which will be used to execute the workflow:
 
 ``` python
 run_build = workflow.run("build", wait=True)
 ```
 
+The Argo descriptor is saved as encoded base64 string into the workflow spec under the *build* attribute.
 Once the workflow is built, you can run it, passing the URL key as a parameter:
 
 ``` python

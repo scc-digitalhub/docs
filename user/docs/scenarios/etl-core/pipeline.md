@@ -20,12 +20,13 @@ Register the workflow:
 workflow = proj.new_workflow(name="pipeline_dbt", kind="kfp", code_src="src/dbt_ci_pipeline.py", handler="myhandler")
 ```
 
-You **MUST** build the workflow before running it:
+You **MUST** build the workflow before running it. This is necessary to compose the Argo descriptor which will be used to execute the workflow:
 
 ``` python
 run_build = workflow.run("build", wait=True)
 ```
 
+The Argo descriptor is saved as encoded base64 string into the workflow spec under the *build* attribute.
 Once the workflow is built, you can run it, passing the URL key as a parameter:
 
 ``` python
