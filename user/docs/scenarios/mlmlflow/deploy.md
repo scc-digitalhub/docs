@@ -7,18 +7,18 @@ is created from MLFlow run artifact path, besides the ``model`` folder it may co
 
 Register it and deploy:
 
-``` python
+```python
 func = project.new_function(name="serve_mlflowmodel",
                             kind="mlflowserve",
-                            model_name="mlflow_model",
+                            model_name=model.name,
                             path=model.spec.path + 'model/')
 
-serve_run = func.run(action="serve")
+serve_run = func.run("serve", wait=True)
 ```
 
 You can now create a dataset for testing the endpoint:
 
-``` python
+```python
 from sklearn import datasets
 
 iris = datasets.load_iris()
@@ -35,18 +35,10 @@ json={
 }
 ```
 
-Finally, you can test the endpoint. To do so, you need to refresh the serve run. This is needed because the backend monitors the deployment every minute and the model status, where the endpoint is exposed, is updated after a minute.
-
-Refresh the run until `service` attribute is available in `status`:
-
-``` python
-serve_run.refresh().status.service
-```
-
-The model is ready to be used.
+Finally, you can test the endpoint. When the model is ready to be used, invoke the endpoint:
 
 ```python
-serve_run.invoke(model_name="mlflow_model", json=json).json()
+serve_run.invoke(model_name=model.name, json=json).json()
 ```
 
 Please note that the MLFLow model serving exposes also the Open API specification under ``/v2/docs`` path.

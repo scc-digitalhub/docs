@@ -2,7 +2,7 @@
 
 We define an exposing function to make the data reachable via REST API:
 
-``` python
+```python
 %%writefile 'src/api.py'
 
 def init_context(context):
@@ -59,47 +59,45 @@ def handler(context, event):
 
 Register the function:
 
-``` python
-api_func = project.new_function(
-                         name="api",
-                         kind="python",
-                         python_version="PYTHON3_10",
-                         code_src="src/api.py",
-                         handler="handler",
-                         init_function="init_context")
+```python
+api_func = project.new_function(name="api",
+                                kind="python",
+                                python_version="PYTHON3_10",
+                                code_src="src/api.py",
+                                handler="handler",
+                                init_function="init_context")
 ```
 
 Please note that other than defining the handler method, it is possible to define the ``init_function`` to define the preparatory steps.
 
 Deploy the function (perform ``serve`` action):
 
-``` python
-run_serve_model = api_func.run(action="serve")
+```python
+run_serve_model = api_func.run("serve", wait=True)
 ```
 
 Wait till the deployment is complete and the necessary pods and services are up and running.
 
-``` python
+```python
 run_serve_model.refresh()
 ```
 
 When done, the status of the run contains the ``service`` element with the internal service URL to be used.
 
-``` python
-SERVICE_URL = f"http://{run_serve_model.status.to_dict()['service']['url']}"
+```python
+svc_url = f"http://{run_serve_model.status.service['url']}/?page=5&size=10"
 ```
 
 Invoke the API and print its results:
 
-``` python
-with requests.get(f'{SERVICE_URL}/?page=5&size=10') as r:
-    res = r.json()
+```python
+res = run_serve_model.invoke(url=svc_url).json()
 print(res)
 ```
 
 You can also use *pandas* to load the result in a data frame:
 
-``` python
+```python
 rdf = pd.read_json(res['data'], orient='records')
 rdf.head()
 ```

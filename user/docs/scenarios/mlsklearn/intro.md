@@ -11,15 +11,22 @@ First, import necessary libraries and create a project to host the functions and
 ```python
 import digitalhub as dh
 
-project = dh.get_or_create_project("demo-ml")
+project = dh.get_or_create_project("project-ml-ci")
+```
+
+Create folder for source code:
+
+```python
+from pathlib import Path
+Path("src").mkdir(exist_ok=True)
 ```
 
 ## Generate data
 
 Define the following function, which generates the dataset as required by the model:
 
-``` python
-%%writefile data-prep.py
+```python
+%%writefile "src/data-prep.py"
 
 import pandas as pd
 from sklearn.datasets import load_breast_cancer
@@ -45,23 +52,23 @@ def breast_cancer_generator():
 
 Register it:
 
-``` python
+```python
 data_gen_fn = project.new_function(name="data-prep",
                                    kind="python",
                                    python_version="PYTHON3_10",
-                                   code_src="data-prep.py",
+                                   code_src="src/data-prep.py",
                                    handler="breast_cancer_generator")
 ```
 
 Run it locally:
 
-``` python
-gen_data_run = data_gen_fn.run(action="job", outputs={"dataset": "dataset"}, local_execution=True)
+```python
+gen_data_run = data_gen_fn.run("job", local_execution=True)
 ```
 
 You can view the state of the execution with `gen_data_run.status` or its output with `gen_data_run.outputs()`. You can see a few records from the output artifact:
 
-``` python
+```python
 gen_data_run.output("dataset").as_df().head()
 ```
 

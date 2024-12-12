@@ -12,22 +12,22 @@ In order to collect the initial data and make it accessible to Dremio, we will f
 
 * Access Jupyter from your Coder instance and create a new notebook using the **`Python 3 (ipykernel)`** kernel
 * Set up the environment and create a project named `demo-etl`
-``` python
+```python
 import digitalhub as dh
 import os
 ```
-``` python
+```python
 PROJECT = "demo-etl"
 project = dh.get_or_create_project(PROJECT)
 ```
 
 * Create the `src` folder, define the download function and register it
-``` python
+```python
 new_folder = 'src'
 if not os.path.exists(new_folder):
     os.makedirs(new_folder)
 ```
-``` python
+```python
 %%writefile "src/download-data.py"
 
 from digitalhub_runtime_python import handler
@@ -38,7 +38,7 @@ def downloader(url):
     df = url.as_df(file_format='csv',sep=";")
     return df
 ```
-``` python
+```python
 func = project.new_function(
                          name="download-data",
                          kind="python",
@@ -48,11 +48,11 @@ func = project.new_function(
 ```
 
 * Set the URL and execute the function:
-``` python
+```python
 URL = "https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?lang=it&timezone=Europe%2FRome&use_labels=true&delimiter=%3B"
 di= project.new_dataitem(name="url_data_item",kind="table",path=URL)
 ```
-``` python
+```python
 run = func.run(action="job", inputs={'url':di.key}, outputs={"dataset": "dataset"}, local_execution=True)
 ```
 

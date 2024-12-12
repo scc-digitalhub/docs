@@ -6,14 +6,14 @@ We can take this one step further and visualize our data in a graph using [Strea
 
 From the Jupyter notebook you've been using, write the result of the API call to a file:
 
-``` python
+```python
 with open("result.json", "w") as file:
     file.write(res['data'])
 ```
 
 Create the script that Streamlit will run:
 
-``` python
+```python
 %%writefile 'streamlit-app.py'
 
 import pandas as pd

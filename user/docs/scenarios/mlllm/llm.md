@@ -46,7 +46,7 @@ llm_function = project.new_function("llm_classification",
 Serve the model:
 
 ```python
-llm_run = llm_function.run(action="serve", profile="template-a100")
+llm_run = llm_function.run(action="serve", profile="template-a100", wait=True)
 ```
 
 Please note the use of the ``profile`` parameter. As the LLM models require specific hardware (GPU in particular), it is necessary
@@ -123,7 +123,7 @@ llm_function = project.new_function("llm_generation",
 Serve the model:
 
 ```python
-llm_run = llm_function.run(action="serve", profile="template-a100")
+llm_run = llm_function.run(action="serve", profile="template-a100", wait=True)
 ```
 
 Please note that in case of protected models (like, e.g., llama models) it is necessary to path the HuggingFace token. For example,
@@ -326,7 +326,7 @@ train_func = project.new_function(name="train_model",
                                   handler="train",
                                   requirements=["evaluate", "transformers[torch]", "torch", "torchvision", "accelerate"])
 
-train_run=train_func.run(action="job", profile="template-a100")
+train_run=train_func.run(action="job", profile="template-a100", wait=True)
 ```
 
 Create the serving function definition:
@@ -341,7 +341,7 @@ llm_function = project.new_function("llm_classification",
 Serve the model:
 
 ```python
-llm_run = llm_function.run(action="serve", profile="template-a100")
+llm_run = llm_function.run(action="serve", profile="template-a100", wait=True)
 ```
 
 Please note the use of the ``profile`` parameter. As the LLM models require specific hardware (GPU in particular), it is necessary

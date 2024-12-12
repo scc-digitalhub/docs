@@ -16,13 +16,13 @@ import digitalhub as dh
 
 Create a project:
 
-``` python
-project = dh.get_or_create_project("project-dbt")
+```python
+project = dh.get_or_create_project("project-dbt-ci")
 ```
 
 Check that the project has been created successfully:
 
-``` python
+```python
 print(project)
 ```
 
@@ -40,7 +40,7 @@ We can now create a dataitem to represent the data source that we want to operat
 To create the dataitem, we call the `new_dataitem` method of the project object. We pass the following mandatory parameters:
 
 ```python
-di = project.new_dataitem(name="employees",
+di = project.new_dataitem(name="employees-dbt",
                           kind="table",
                           path=url)
 ```
@@ -58,7 +58,7 @@ Please note that the dataitem is not the data itself, but contains a reference t
 We can now set up the function that operates a tranformation on data with DBT.
 Our function will be an SQL query that selects all the employees of department 60.
 
-``` python
+```python
 sql = """
 WITH tab AS (
     SELECT  *
@@ -66,13 +66,13 @@ WITH tab AS (
 )
 SELECT  *
 FROM    tab
-WHERE   tab."DEPARTMENT_ID" = '60'
+WHERE   tab."DEPARTMENT_ID" = '50'
 """
 ```
 
 We create the function from the project object:
 
-``` python
+```python
 function = project.new_function(name="function-dbt",
                                 kind="dbt",
                                 code=sql)
@@ -90,12 +90,13 @@ We can now run the function and see the results. To do this we use the `run` met
 
 - the task we want to run (in this case, `transform`)
 - the inputs map the refereced table in the DBT query (`{{ ref('employees') }}`) to one of our dataitems key. The Runtime will fetch the data and use dem as reference for the query.
-- the output map the output table name. The name of the output table will be `department-60` and will be the sql query table name result and the output dataitem name.
+- the output map the output table name. The name of the output table will be `department-50` and will be the sql query table name result and the output dataitem name.
 
-``` python
+```python
 run = function.run("transform",
                    inputs={"employees": di.key},
-                   outputs={"output_table": "department-60"})
+                   outputs={"output_table": "department-50"},
+                   wait=True)
 ```
 
 We can check the status of the run:
@@ -117,8 +118,8 @@ Note that calling `run.refresh()` will update the run object with the latest inf
 We can now explore the results of the function.
 We can fetch the output table and explore it with `pandas`.
 
-``` python
-df = run.output('department-60').as_df()
+```python
+df = run.output('department-50').as_df()
 df.head()
 ```
 

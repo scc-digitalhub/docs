@@ -9,7 +9,8 @@ We will now insert some data into the database we created earlier. Copy the snip
 The notebook file is available in the `documentation/examples/postgrest` path within the repository of this documentation.
 
 Import required libraries:
-``` python
+
+```python
 import os
 from sqlalchemy import create_engine
 import pandas as pd
@@ -17,12 +18,14 @@ import requests
 ```
 
 Connect to the database. You will need the value of **POSTGRES_URL** you got from the owner's secret in the first stage of the scenario.
-``` python
+
+```python
 engine = create_engine('postgresql://owner-UrN9ct:88aX8tLFJ95qYU7@database-postgres-cluster/mydb')
 ```
 
 Download a CSV file and parse it (may take a few minutes):
-``` python
+
+```python
 URL = "https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?lang=it&timezone=Europe%2FRome&use_labels=true&delimiter=%3B"
 filename = "rilevazione-flusso-veicoli-tramite-spire-anno-2023.csv"
 
@@ -34,12 +37,12 @@ df = pd.read_csv(filename, sep=";")
 ```
 
 The following will create a table and insert the dataframe into it. If it fails, resources allocated to the Jupyter workspace may be insufficient. The table will be created automatically, or replaced if it already exists.
-``` python
+```python
 df.to_sql("readings", engine, if_exists="replace")
 ```
 
 Run a test select query to check data has been successfully inserted:
-``` python
+```python
 select = "SELECT * FROM readings LIMIT 3"
 select_df = pd.read_sql(select,con=engine)
 select_df.head()

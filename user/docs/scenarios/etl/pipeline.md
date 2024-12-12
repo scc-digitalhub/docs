@@ -2,7 +2,7 @@
 
 We define a simple workflow, which will execute all the ETL steps we have seen so far by putting their functions together:
 
-``` python
+```python
 %%writefile "src/pipeline.py"
 
 from digitalhub_runtime_kfp.dsl import pipeline_context
@@ -36,20 +36,23 @@ Here in the definition we use a simple DSL to represent the execution of our fun
 
 Register the workflow:
 
-``` python
-workflow = project.new_workflow(name="pipeline", kind="kfp", code_src="src/pipeline.py", handler="pipeline")
+```python
+workflow = project.new_workflow(name="pipeline",
+                                kind="kfp",
+                                code_src="src/pipeline.py",
+                                handler="pipeline")
 ```
 
 You **MUST** build the workflow before running it. This is necessary to compose the Argo descriptor which will be used to execute the workflow:
 
-``` python
+```python
 run_build = workflow.run("build", wait=True)
 ```
 
 The Argo descriptor is saved as encoded base64 string into the workflow spec under the *build* attribute.
 Once the workflow is built, you can run it, passing the URL key as a parameter:
 
-``` python
+```python
 workflow.run("pipeline", parameters={"url": di.key}, wait=True)
 ```
 
