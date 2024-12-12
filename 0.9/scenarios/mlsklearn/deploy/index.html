@@ -2116,9 +2116,9 @@
 <p>Register it and deploy:</p>
 <div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;serve_sklearnmodel&quot;</span><span class="p">,</span>
                             <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;sklearnserve&quot;</span><span class="p">,</span>
-                            <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;model/cancer_classifier.pkl&#39;</span><span class="p">)</span>
+                            <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;cancer_classifier.pkl&#39;</span><span class="p">)</span>
 
-<span class="n">serve_run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">)</span>
+<span class="n">serve_run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>You can now create a dataset for testing the endpoint:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -2135,11 +2135,8 @@
     <span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Finally, you can test the endpoint. To do so, you need to refresh the serve run. This is needed because the backend monitors the deployment every minute and the model status, where the endpoint is exposed, is updated after a minute.</p>
-<p>You can check the model status this way:</p>
-<div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span>
-</code></pre></div>
-<p>When the attribute <code>service</code> appears, the model is ready to be used.</p>
+<p>Finally, you can test the endpoint. To do so, you need to refresh the serve run. This is needed because the backend monitors the deployment every minute and the model status, where the endpoint is exposed, is updated after a minute.
+When the model is ready, invoke the endpoint:</p>
 <div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <p>Please note that the scikit-learn model serving exposes also the Open API specification under <code>/docs</code> path.</p>
