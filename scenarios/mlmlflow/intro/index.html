@@ -2155,7 +2155,7 @@
 <div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">mlflow</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span><span class="o">==</span><span class="mf">1.5.0</span>
 </code></pre></div>
 <p>Then, import necessary libraries and create a project to host the functions and executions</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
 <span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;demo-mlflow&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -2165,16 +2165,16 @@
 <p>Let us define the training function.</p>
 <div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="n">train</span><span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">py</span>
 
-<span class="kn">from</span> <span class="nn">digitalhub_runtime_python</span> <span class="kn">import</span> <span class="n">handler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_runtime_python</span><span class="w"> </span><span class="kn">import</span> <span class="n">handler</span>
 
-<span class="kn">from</span> <span class="nn">digitalhub</span> <span class="kn">import</span> <span class="n">from_mlflow_run</span>
-<span class="kn">import</span> <span class="nn">mlflow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="kn">import</span> <span class="n">from_mlflow_run</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">mlflow</span>
 
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">svm</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">svm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridSearchCV</span>
 
 <span class="nd">@handler</span><span class="p">()</span>
-<span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
     <span class="n">mlflow</span><span class="o">.</span><span class="n">sklearn</span><span class="o">.</span><span class="n">autolog</span><span class="p">(</span><span class="n">log_datasets</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>

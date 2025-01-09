@@ -2115,12 +2115,12 @@
 <p>We define an exposing function to make the data reachable via REST API:</p>
 <div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s1">&#39;src/api.py&#39;</span>
 
-<span class="k">def</span> <span class="nf">init_context</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">init_context</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="n">di</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">project</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="s1">&#39;dataset-measures&#39;</span><span class="p">)</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">di</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span>
     <span class="nb">setattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s2">&quot;df&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">df</span>
 
     <span class="k">if</span> <span class="n">df</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
