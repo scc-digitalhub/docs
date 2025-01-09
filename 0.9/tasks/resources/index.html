@@ -2360,12 +2360,12 @@
 </div>
 <p>To create a new PVC, provide the following:</p>
 <ul>
-<li>name of the resource</li>
-<li>Disk space requeste</li>
-<li>Storage class name (select one of the available in your deployment)</li>
-<li>(Optional) name of the volume</li>
-<li>Access modes (standard K8S values)</li>
-<li>PVC mode (Filesystem or Block)</li>
+<li><em>Name</em>: Name of the resource</li>
+<li><em>Space</em>: Disk space request</li>
+<li><em>Storage class name</em>: Storage class name (select one of the available in your deployment)</li>
+<li><em>Volume</em>: Name of the volume (<strong>Important!</strong> Can be specified only if a volume already exists, otherwise, the PVC cannot be bound.)</li>
+<li><em>Access modes</em>: Access modes (standard K8S values)</li>
+<li><em>Mode</em>: PVC mode (Filesystem or Block)</li>
 </ul>
 <p><img alt="KRM PVC Create image" src="../../images/krm/krm_pvc_create.png" /></p>
 <h3 id="listing-k8s-secrets">Listing K8S Secrets</h3>

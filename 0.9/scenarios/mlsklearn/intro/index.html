@@ -2134,25 +2134,25 @@
 <p>We will prepare data, train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook. Alternatively, you can find the final notebook file for this scenario in the <a href="https://github.com/scc-digitalhub/digitalhub-tutorials/tree/main/s3-scikit-learn">tutorial repository</a>.</p>
 <h2 id="set-up">Set-up</h2>
 <p>First, import necessary libraries and create a project to host the functions and executions</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
 <span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;project-ml-ci&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Create folder for source code:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="generate-data">Generate data</h2>
 <p>Define the following function, which generates the dataset as required by the model:</p>
 <div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">&quot;src/data-prep.py&quot;</span>
 
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_breast_cancer</span>
 
-<span class="kn">from</span> <span class="nn">digitalhub_runtime_python</span> <span class="kn">import</span> <span class="n">handler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_runtime_python</span><span class="w"> </span><span class="kn">import</span> <span class="n">handler</span>
 
 <span class="nd">@handler</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dataset&quot;</span><span class="p">])</span>
-<span class="k">def</span> <span class="nf">breast_cancer_generator</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">breast_cancer_generator</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A function which generates the breast cancer dataset</span>
 <span class="sd">    &quot;&quot;&quot;</span>

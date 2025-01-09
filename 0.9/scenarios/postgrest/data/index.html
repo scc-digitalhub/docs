@@ -2061,10 +2061,10 @@
 <p>We will now insert some data into the database we created earlier. Copy the snippets of code from here and paste them in your notebook, then execute them with <em>Shift+Enter</em>. After running, Jupyter will create a new code cell.</p>
 <p>The notebook file is available in the <code>documentation/examples/postgrest</code> path within the repository of this documentation.</p>
 <p>Import required libraries:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">requests</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 </code></pre></div>
 <p>Connect to the database. You will need the value of <strong>POSTGRES_URL</strong> you got from the owner's secret in the first stage of the scenario.</p>
 <div class="highlight"><pre><span></span><code><span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;postgresql://owner-UrN9ct:88aX8tLFJ95qYU7@database-postgres-cluster/mydb&#39;</span><span class="p">)</span>

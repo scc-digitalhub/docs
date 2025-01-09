@@ -2213,8 +2213,8 @@
 <li>Access Jupyter from your Coder instance and create a new notebook using the <strong><code>Python 3 (ipykernel)</code></strong> kernel</li>
 <li>
 <p>Set up the environment and create a project named <code>demo-etl</code>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">digitalhub</span> <span class="k">as</span> <span class="nn">dh</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">PROJECT</span> <span class="o">=</span> <span class="s2">&quot;demo-etl&quot;</span>
 <span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="n">PROJECT</span><span class="p">)</span>
@@ -2228,10 +2228,10 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">&quot;src/download-data.py&quot;</span>
 
-<span class="kn">from</span> <span class="nn">digitalhub_runtime_python</span> <span class="kn">import</span> <span class="n">handler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_runtime_python</span><span class="w"> </span><span class="kn">import</span> <span class="n">handler</span>
 
 <span class="nd">@handler</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dataset&quot;</span><span class="p">])</span>
-<span class="k">def</span> <span class="nf">downloader</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">downloader</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
     <span class="c1"># read and rewrite to normalize and export as data</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">as_df</span><span class="p">(</span><span class="n">file_format</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span>
