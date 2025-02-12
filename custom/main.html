@@ -54,7 +54,11 @@
           </span>
           <div class="dropdown">
             <button class="dd-button">
-              <span class="dd-text">{{ config.extra.docs_version }}</span>
+              {% set docsVersion = config.extra.docs_version|string %}
+              {% if docsVersion.startswith('v:') %}
+                {% set docsVersion = docsVersion[2:] %}
+              {% endif %}
+              <span class="dd-text">{{ docsVersion }}</span>
               <span class="dd-arrow">&#9660;</span>
               {% if config.extra.versions is defined and config.extra.versions != None %}
                 {% set versionsString = config.extra.versions|string %}
@@ -62,8 +66,8 @@
               {% else %}
                 {% set versions = ['current'] %}
               {% endif %}
-              {% for version in versions|reverse %}
-                {% if version != config.extra.docs_version|string %}
+              {% for version in versions %}
+                {% if version != docsVersion|string %}
                   {% if version == 'current' %}
                     <a href="{{ config.extra.site }}">{{ version }}</a>
                   {% else %}
@@ -80,10 +84,10 @@
               {% if config.extra.portals is defined and config.extra.portals != None %}
                 {% for portal in config.extra.portals %}
                   {% if portal.name != config.extra.portal_name %}
-                    {% if config.extra.docs_version == 'current' %}
+                    {% if docsVersion == 'current' %}
                       <a href="{{ config.extra.site }}{{ portal.path }}">{{ portal.name }}</a>
                     {% else %}
-                      <a href="{{ config.extra.site }}/{{ config.extra.docs_version }}{{ portal.path }}">{{ portal.name }}</a>
+                      <a href="{{ config.extra.site }}/{{ docsVersion }}{{ portal.path }}">{{ portal.name }}</a>
                     {% endif %}
                   {% endif %}
                 {% endfor %}
