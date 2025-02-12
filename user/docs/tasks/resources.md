@@ -45,12 +45,12 @@ It is also possible to delete the PVC and create new ones.
 
 To create a new PVC, provide the following:
 
-- name of the resource
-- Disk space requeste
-- Storage class name (select one of the available in your deployment)
-- (Optional) name of the volume
-- Access modes (standard K8S values)
-- PVC mode (Filesystem or Block)
+- *Name*: Name of the resource
+- *Space*: Disk space request
+- *Storage class name*: Storage class name (select one of the available in your deployment)
+- *Volume*: Name of the volume (**Important!** Can be specified only if a volume already exists, otherwise, the PVC cannot be bound.)
+- *Access modes*: Access modes (standard K8S values)
+- *Mode*: PVC mode (Filesystem or Block)
 
 ![KRM PVC Create image](../images/krm/krm_pvc_create.png)
 

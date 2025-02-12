@@ -5,8 +5,8 @@ operation where the model is loaded.
 
 Create a model serving function and provide the model:
 
-``` python
-%%writefile "serve_darts_model.py"
+```python
+%%writefile "src/serve_darts_model.py"
 
 from darts.models import NBEATSModel
 from zipfile import ZipFile
@@ -61,37 +61,38 @@ def serve(context, event):
 
 Register it:
 
-``` python
+```python
 func = project.new_function(name="serve_darts_model",
                             kind="python",
                             python_version="PYTHON3_10",
-                            code_src="serve_darts_model.py",
+                            code_src="src/serve_darts_model.py",
                             handler="serve",
-                            init_function="init",
-                            requirements=["darts==0.30.0"])
+                            init_function="init")
 ```
 
 Given the dependencies, it is better to have the image ready, using ``build`` action of the function:
 
-``` python
-run_build_model_serve = func.run(action="build", instructions=["pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu","pip3 install darts==0.30.0"])
+```python
+run_build_model_serve = func.run("build",
+                                 instructions=["pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu","pip3 install darts patsy scikit-learn"],
+                                 wait=True)
 ```
 
 Now we can deploy the function:
 
-``` python
-run_serve = func.run(action="serve")
+```python
+serve_run = func.run("serve", wait=True)
 ```
 
 Install locally the dependencies:
 
-``` python
+```python
 %pip install darts==0.30.0
 ```
 
 Create a test input:
 
-``` python
+```python
 import json
 from datetime import datetime
 from darts.datasets import AirPassengersDataset
@@ -101,20 +102,13 @@ val = series[-24:]
 json_value = json.loads(val.to_json())
 
 data = map(lambda x, y: {"value": x[0], "date": datetime.timestamp(datetime.strptime(y, "%Y-%m-%dT%H:%M:%S.%f"))*1000}, json_value["data"], json_value["index"])
-inference_input = list(data)
-json = {"inference_input": inference_input}
-```
-
-Refresh the run until `service` attribute is available in `status`:
-
-``` python
-run_serve.refresh().status
+inputs = {"inference_input": list(data)}
 ```
 
 And finally test the endpoint:
 
-``` python
-run_serve.invoke(method="POST", json=json).json()
+```python
+serve_run.invoke(json=inputs).json()
 ```
 
 ## Create an API gateway

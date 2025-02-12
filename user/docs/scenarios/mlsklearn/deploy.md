@@ -4,17 +4,17 @@ Deploying a scikit-learn model is easy: ``sklearnserve`` runtime supports this f
 
 Register it and deploy:
 
-``` python
+```python
 func = project.new_function(name="serve_sklearnmodel",
                             kind="sklearnserve",
-                            path=model.spec.path + 'model/cancer_classifier.pkl')
+                            path=model.spec.path + 'cancer_classifier.pkl')
 
-serve_run = func.run(action="serve")
+serve_run = func.run("serve", wait=True)
 ```
 
 You can now create a dataset for testing the endpoint:
 
-``` python
+```python
 import numpy as np
 
 data = np.random.rand(2, 30).tolist()
@@ -31,14 +31,7 @@ json = {
 ```
 
 Finally, you can test the endpoint. To do so, you need to refresh the serve run. This is needed because the backend monitors the deployment every minute and the model status, where the endpoint is exposed, is updated after a minute.
-
-You can check the model status this way:
-
-``` python
-serve_run.refresh().status
-```
-
-When the attribute `service` appears, the model is ready to be used.
+When the model is ready, invoke the endpoint:
 
 ```python
 serve_run.invoke(json=json).json()

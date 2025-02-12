@@ -15,7 +15,7 @@ jobs:
       - run: |
           git fetch --prune --unshallow --tags
           git checkout main
-          export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|sed 's/origin\///g'|sed 's/HEAD//g'|sed 's/main/current/g'|sed 's/gh-pages//g'|xargs|sed 's/ /,/g')
+          export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|python versions_string.py)
           cd user && mkdocs build && cd ..
           cd dev && mkdocs build && cd ..
           cd admin && mkdocs build && cd ..
@@ -36,7 +36,7 @@ jobs:
     if: github.ref_name != 'main' && github.ref_name != 'gh-pages'
     runs-on: ubuntu-latest
     env:
-      DOCS_VERSION: ${{ github.ref_name }}
+      DOCS_VERSION: v:${{ github.ref_name }}
       USER_STYLESHEETS_PORTAL_SELECTION: ../stylesheets/portal_selection.css
       USER_STYLESHEETS_COLORS: ../stylesheets/colors.css
       OTHERS_STYLESHEETS_PORTAL_SELECTION: ../../stylesheets/portal_selection.css
@@ -50,7 +50,7 @@ jobs:
       - run: |
           git fetch --prune --unshallow --tags
           git checkout ${{ github.ref_name }}
-          export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|sed 's/origin\///g'|sed 's/HEAD//g'|sed 's/main/current/g'|sed 's/gh-pages//g'|xargs|sed 's/ /,/g')
+          export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|python versions_string.py)
           cd user && mkdocs build && cd ..
           cd dev && mkdocs build && cd ..
           cd admin && mkdocs build && cd ..

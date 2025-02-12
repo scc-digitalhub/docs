@@ -6,10 +6,11 @@ We will prepare data, train a generic model and expose it as a service. Access J
 
 ## Set-up
 
-Install the necessary libraries:
+Create folder for source code:
 
-``` python
-%pip install mlflow scikit-learn==1.5.0
+```python
+from pathlib import Path
+Path("src").mkdir(exist_ok=True)
 ```
 
 Then, import necessary libraries and create a project to host the functions and executions
@@ -17,7 +18,7 @@ Then, import necessary libraries and create a project to host the functions and 
 ```python
 import digitalhub as dh
 
-project = dh.get_or_create_project("demo-mlflow")
+project = dh.get_or_create_project("project-mlflow-model-ci")
 ```
 
 ## Generate data
@@ -28,18 +29,17 @@ For the sake of simplicity, we use the predefined IRIS dataset.
 
 Let us define the training function.
 
-``` python
-%%writefile train-model.py
+```python
+%%writefile "src/train-model.py"
 
 from digitalhub_runtime_python import handler
-
 from digitalhub import from_mlflow_run
 import mlflow
 
 from sklearn import datasets, svm
 from sklearn.model_selection import GridSearchCV
 
-@handler()
+@handler(outputs=["model"])
 def train(project):
     mlflow.sklearn.autolog(log_datasets=True)
 
@@ -54,11 +54,9 @@ def train(project):
     # utility to map mlflow run artifacts to model metadata
     model_params = from_mlflow_run(run_id)
 
-    project.log_model(
-        name="model-mlflow",
-        kind="mlflow",
-        **model_params
-)
+    return project.log_model(name="model-mlflow",
+                             kind="mlflow",
+                             **model_params)
 ```
 
 The function creates an SVC model with the scikit-learn framework. Note that here
@@ -69,25 +67,25 @@ We then log the model of ``mlflow`` kind using the extract metadata as kwargs.
 
 Let us register it:
 
-``` python
+```python
 train_fn = project.new_function(name="train",
                                 kind="python",
                                 python_version="PYTHON3_10",
-                                code_src="train-model.py",
+                                code_src="src/train-model.py",
                                 handler="train",
-                                requirements=["scikit-learn==1.5.0", "mlflow==2.15.1"])
+                                requirements=["scikit-learn", "mlflow"])
 ```
 
 and run it locally:
 
-``` python
-train_run = train_fn.run(action="job", local_execution=True)
+```python
+train_model_run = train_fn.run(action="job", wait=True)
 ```
 
 As a result, a new model is registered in the Core and may be used by different inference operations:
 
 ```python
-model = project.get_model("model-mlflow")
+model = train_model_run.output("model-mlflow")
 model.spec.path
 ```
 

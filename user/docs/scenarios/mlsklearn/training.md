@@ -2,8 +2,8 @@
 
 Let us define the training function.
 
-``` python
-%%writefile train-model.py
+```python
+%%writefile "src/train-model.py"
 
 
 import pandas as pd
@@ -16,7 +16,7 @@ from pickle import dump
 import sklearn.metrics
 import os
 
-@handler(outputs=["dataset"])
+@handler(outputs=["model"])
 def train(project, di):
 
     df_cancer = di.as_df()
@@ -39,37 +39,37 @@ def train(project, di):
         "precision": sklearn.metrics.precision_score(y_test, y_predict),
         "recall": sklearn.metrics.recall_score(y_test, y_predict),
     }
-    project.log_model(
-            name="cancer_classifier",
-            kind="sklearn",
-            source="./model/",
-            metrics=metrics
-    )
+    return project.log_model(name="cancer_classifier",
+                             kind="sklearn",
+                             source="./model/",
+                             metrics=metrics)
 ```
 
 The function takes the analysis dataset as input, creates an SVC model with the scikit-learn framework and logs the model with its metrics.
 
 Let us register it:
 
-``` python
+```python
 train_fn = project.new_function(name="train",
                                 kind="python",
                                 python_version="PYTHON3_10",
-                                code_src="train-model.py",
+                                code_src="src/train-model.py",
                                 handler="train",
                                 requirements=["scikit-learn==1.2.2"])
 ```
 
 and run it locally:
 
-``` python
-train_run = train_fn.run(action="job", inputs={"di": gen_data_run.output("dataset").key})
+```python
+train_run = train_fn.run(action="job",
+                         inputs={"di": gen_data_run.output("dataset").key},
+                         local_execution=True)
 ```
 
 As a result, a new model is registered in the Core and may be used by different inference operations:
 
 ```python
-model = project.get_model("cancer_classifier")
+model = train_run.output("model")
 model.spec.path
 ```
 

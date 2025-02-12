@@ -1,6 +1,6 @@
 # Core UI
 
-The Core console is a front-end application backed by the  Core API. It provides a management interface 
+The Core console is a front-end application backed by the Core API. It provides a management interface 
 for the organization and operations over the Data Science [Projects](../tasks/projects.md) and the associated entities, such as:
 
 - **functions** of various runtimes (see the [Functions and Runtimes](../tasks/functions.md) section for details), as well as their executions (runs) grouped by the corresponding operations (tasks)

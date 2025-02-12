@@ -11,15 +11,24 @@ First, import necessary libraries and create a project to host the functions and
 ```python
 import digitalhub as dh
 
-project = dh.get_or_create_project("demo-ml")
+project = dh.get_or_create_project("project-cml-darts-ci")
+```
+
+## Create dir for the code
+
+Create a directory for the code:
+
+```python
+from pathlib import Path
+Path("src").mkdir(exist_ok=True)
 ```
 
 ## Training the model
 
 Let us define the training function. For the sake of simplicity, we use predefined "Air Passengers" dataset of Darts.
 
-``` python
-%%writefile "train-model.py"
+```python
+%%writefile "src/train-model.py"
 
 
 from digitalhub_runtime_python import handler
@@ -73,19 +82,26 @@ with a generic ``model`` kind.
 
 Let us register it:
 
-``` python
+```python
 train_fn = project.new_function(name="train-darts",
                                 kind="python",
                                 python_version="PYTHON3_10",
-                                code_src="train-model.py",
-                                handler="train_model",
-                                requirements=["darts==0.30.0"])
+                                code_src="src/train-model.py"
+                                handler="train_model")
 ```
 
-and run it:
+and run it with build instruction:
 
-``` python
-train_run = train_fn.run(action="job")
+```python
+train_build = train_fn.run("build",
+                           instructions=["pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu","pip3 install darts patsy scikit-learn"],
+                           wait=True)
+```
+
+Once the build is completed, launch the training.
+
+```python
+train_run = train_fn.run("job", wait=True)
 ```
 
 As a result of train execution, a new model is registered in the Core and may be used by different inference operations.
