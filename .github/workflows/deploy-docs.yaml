@@ -15,7 +15,7 @@ jobs:
       - run: |
           git fetch --prune --unshallow --tags
           git checkout main
-          export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|sed 's/origin\///g'|sed 's/HEAD//g'|sed 's/main/current/g'|sed 's/gh-pages//g'|xargs|sed 's/ /,/g')
+          export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|sed 's/origin\///g'|sed 's/origin//g'|sed 's/HEAD//g'|sed 's/main/current/g'|sed 's/gh-pages//g'|xargs|sed 's/ /,/g')
           cd user && mkdocs build && cd ..
           cd dev && mkdocs build && cd ..
           cd admin && mkdocs build && cd ..
