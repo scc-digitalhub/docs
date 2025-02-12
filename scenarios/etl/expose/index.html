@@ -129,12 +129,63 @@
           </span>
           <div class="dropdown">
             <button class="dd-button">
+              
+              
               <span class="dd-text">current</span>
               <span class="dd-arrow">&#9660;</span>
               
                 
+                
               
               
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.9">0.9</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.8">0.8</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.7">0.7</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.6">0.6</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.5">0.5</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.4">0.4</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.3">0.3</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.2">0.2</a>
+                  
                 
               
             </button>
@@ -634,6 +685,28 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tasks/cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using the platform externally
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -730,6 +803,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../components/cli_commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CLI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../components/resourcemanager/" class="md-nav__link">
         
   
@@ -783,10 +878,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_6" >
         
           
-          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -798,8 +893,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
             Interactive Workspaces
           </label>
@@ -2184,27 +2279,25 @@
     <span class="k">return</span> <span class="n">res</span>
 </code></pre></div>
 <p>Register the function:</p>
-<div class="highlight"><pre><span></span><code><span class="n">api_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
-                         <span class="n">name</span><span class="o">=</span><span class="s2">&quot;api&quot;</span><span class="p">,</span>
-                         <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
-                         <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_10&quot;</span><span class="p">,</span>
-                         <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/api.py&quot;</span><span class="p">,</span>
-                         <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;handler&quot;</span><span class="p">,</span>
-                         <span class="n">init_function</span><span class="o">=</span><span class="s2">&quot;init_context&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">api_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;api&quot;</span><span class="p">,</span>
+                                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+                                <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_10&quot;</span><span class="p">,</span>
+                                <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/api.py&quot;</span><span class="p">,</span>
+                                <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;handler&quot;</span><span class="p">,</span>
+                                <span class="n">init_function</span><span class="o">=</span><span class="s2">&quot;init_context&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Please note that other than defining the handler method, it is possible to define the <code>init_function</code> to define the preparatory steps.</p>
 <p>Deploy the function (perform <code>serve</code> action):</p>
-<div class="highlight"><pre><span></span><code><span class="n">run_serve_model</span> <span class="o">=</span> <span class="n">api_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">run_serve_model</span> <span class="o">=</span> <span class="n">api_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Wait till the deployment is complete and the necessary pods and services are up and running.</p>
 <div class="highlight"><pre><span></span><code><span class="n">run_serve_model</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
 </code></pre></div>
 <p>When done, the status of the run contains the <code>service</code> element with the internal service URL to be used.</p>
-<div class="highlight"><pre><span></span><code><span class="n">SERVICE_URL</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">run_serve_model</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s1">&#39;service&#39;</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">svc_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">run_serve_model</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">service</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/?page=5&amp;size=10&quot;</span>
 </code></pre></div>
 <p>Invoke the API and print its results:</p>
-<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">SERVICE_URL</span><span class="si">}</span><span class="s1">/?page=5&amp;size=10&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">res</span> <span class="o">=</span> <span class="n">run_serve_model</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">svc_url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 </code></pre></div>
 <p>You can also use <em>pandas</em> to load the result in a data frame:</p>

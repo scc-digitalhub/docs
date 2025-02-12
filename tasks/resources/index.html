@@ -129,12 +129,63 @@
           </span>
           <div class="dropdown">
             <button class="dd-button">
+              
+              
               <span class="dd-text">current</span>
               <span class="dd-arrow">&#9660;</span>
               
                 
+                
               
               
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.9">0.9</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.8">0.8</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.7">0.7</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.6">0.6</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.5">0.5</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.4">0.4</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.3">0.3</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.2">0.2</a>
+                  
                 
               
             </button>
@@ -795,6 +846,28 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using the platform externally
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -891,6 +964,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../../components/cli_commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CLI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../components/resourcemanager/" class="md-nav__link">
         
   
@@ -944,10 +1039,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_6" >
         
           
-          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -959,8 +1054,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
             Interactive Workspaces
           </label>
@@ -2377,12 +2472,12 @@
 </div>
 <p>To create a new PVC, provide the following:</p>
 <ul>
-<li>name of the resource</li>
-<li>Disk space requeste</li>
-<li>Storage class name (select one of the available in your deployment)</li>
-<li>(Optional) name of the volume</li>
-<li>Access modes (standard K8S values)</li>
-<li>PVC mode (Filesystem or Block)</li>
+<li><em>Name</em>: Name of the resource</li>
+<li><em>Space</em>: Disk space request</li>
+<li><em>Storage class name</em>: Storage class name (select one of the available in your deployment)</li>
+<li><em>Volume</em>: Name of the volume (<strong>Important!</strong> Can be specified only if a volume already exists, otherwise, the PVC cannot be bound.)</li>
+<li><em>Access modes</em>: Access modes (standard K8S values)</li>
+<li><em>Mode</em>: PVC mode (Filesystem or Block)</li>
 </ul>
 <p><img alt="KRM PVC Create image" src="../../images/krm/krm_pvc_create.png" /></p>
 <h3 id="listing-k8s-secrets">Listing K8S Secrets</h3>

@@ -129,12 +129,63 @@
           </span>
           <div class="dropdown">
             <button class="dd-button">
+              
+              
               <span class="dd-text">current</span>
               <span class="dd-arrow">&#9660;</span>
               
                 
+                
               
               
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.9">0.9</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.8">0.8</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.7">0.7</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.6">0.6</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.5">0.5</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.4">0.4</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.3">0.3</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.2">0.2</a>
+                  
                 
               
             </button>
@@ -634,6 +685,28 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tasks/cli/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using the platform externally
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -730,6 +803,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../components/cli_commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CLI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../components/resourcemanager/" class="md-nav__link">
         
   
@@ -783,10 +878,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_6" >
         
           
-          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -798,8 +893,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
             Interactive Workspaces
           </label>
@@ -2135,10 +2230,10 @@ is created from MLFlow run artifact path, besides the <code>model</code> folder 
 <p>Register it and deploy:</p>
 <div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;serve_mlflowmodel&quot;</span><span class="p">,</span>
                             <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;mlflowserve&quot;</span><span class="p">,</span>
-                            <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mlflow_model&quot;</span><span class="p">,</span>
+                            <span class="n">model_name</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
                             <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;model/&#39;</span><span class="p">)</span>
 
-<span class="n">serve_run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">)</span>
+<span class="n">serve_run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>You can now create a dataset for testing the endpoint:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span>
@@ -2156,12 +2251,8 @@ is created from MLFlow run artifact path, besides the <code>model</code> folder 
     <span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Finally, you can test the endpoint. To do so, you need to refresh the serve run. This is needed because the backend monitors the deployment every minute and the model status, where the endpoint is exposed, is updated after a minute.</p>
-<p>Refresh the run until <code>service</code> attribute is available in <code>status</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">service</span>
-</code></pre></div>
-<p>The model is ready to be used.</p>
-<div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mlflow_model&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<p>Finally, you can test the endpoint. When the model is ready to be used, invoke the endpoint:</p>
+<div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <p>Please note that the MLFLow model serving exposes also the Open API specification under <code>/v2/docs</code> path.</p>
 <h2 id="create-an-api-gateway">Create an API gateway</h2>
