@@ -92,6 +92,11 @@
                   {% endif %}
                 {% endfor %}
               {% endif %}
+              {% if docsVersion == 'current' %}
+                <a href="{{ config.extra.sdk_site }}">SDK</a>
+              {% else %}
+                <a href="{{ config.extra.sdk_site }}/{{ docsVersion }}">SDK</a>
+              {% endif %}
             </button>
           </div>
         </div>

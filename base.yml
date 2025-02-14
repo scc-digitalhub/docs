@@ -9,6 +9,7 @@ site_name: Digital Hub
 
 extra:
   site: https://scc-digitalhub.github.io/docs
+  sdk_site: https://scc-digitalhub.github.io/sdk-docs
   docs_version: !ENV [DOCS_VERSION, 'current']
   versions: !ENV [VERSIONS]
   portals:
