@@ -1,11 +1,11 @@
-Repository for the documentation of the platform. The documentation features two portals, aimed at different audiences: `user` and `dev`.
+Repository for the documentation of the platform. The documentation features multiple portals, aimed at different audiences (`user`, `dev`, ...).
 
-To create a new page (the following example refers to the `user` portal, but the process for `dev` is equivalent):
+To create a new page (the following example refers to the `user` portal, but the process for others is equivalent):
 
 - Write a *.md* file within `user/docs`
 - Add it to the `nav` element in `/user/mkdocs.yml`
 
-Commit your changes to the `main` branch and the website will automatically be updated within a couple minutes.
+Commit your changes and the website will automatically be updated within a couple minutes.
 
 ## Test locally
 
@@ -19,7 +19,7 @@ pip install mkdocs-material
 
 Remove `custom_dir: ../custom/` from `base.yml` (this file concerns CSS, so things like colours will be different). If not removed, you may receive an error when performing the next step. Make sure not to include this change in your later commit.
 
-Run the following from the `/user` (or `/dev`) directory:
+Run the following from the `/user` (or equivalent for whichever portal you're testing) directory:
 ```sh
 mkdocs serve
 ```
@@ -33,8 +33,6 @@ Different versions of the documentation may be available at once.
 The `current` version of the documentation reflects the most up-to-date state of the `main` branch, and is updated when new commits to `main` are made. It can be found under `/docs`.
 
 Publishing a new branch will generate another documentation portal, named after the branch, under `/docs/<branch_name>`. Further pushes to this branch will update the corresponding portal.
-
-Keep in mind that the toolbar containing the version drop-down menu is generated alongside the documentation. This means that the toolbar in the portal for a specific version of the docs will not include links to newer versions, unless it was updated after their creation.
 
 ## Adding a portal
 
@@ -84,28 +82,29 @@ extra:
       path: "/example" # Same as directory's name, prefixed with /
 ```
 
-Finally, you must update the `.github/workflows/deploy-docs.yaml` file, which defines the GitHub workflow, where some commands must be added.
-There are two jobs defined within, `deploy-current` and `deploy-versioned`, and in each of them two commands must be added, to generate and to package the docs.
+Finally, you must update the `.github/workflows/update-docs.yaml` file, which defines the GitHub workflow, where some commands must be added.
 
 It may seem complicated, but all you have to do is duplicate the equivalent `dev` commands and adapt them for your new portal. The example below highlights these sections.
 
 ``` sh
-# Within deploy-current...
+# First here...
+git checkout $v
+cd user && mkdocs build && cd ..
+cd dev && mkdocs build && cd ..
+cd example && mkdocs build && cd .. # new line
+mkdir -p ./site
+mv user/site site/$v
+mv dev/site site/$v/dev
+mv example/site site/$v/example # new line
+
+# and then a few lines later...
+git checkout main
 cd user && mkdocs build && cd ..
 cd dev && mkdocs build && cd ..
 cd example && mkdocs build && cd .. # new line
 mv user/site ./site
 mv dev/site site/dev
 mv example/site site/example # new line
-
-# Within deploy-versioned...
-cd user && mkdocs build && cd ..
-cd dev && mkdocs build && cd ..
-cd example && mkdocs build && cd .. # new line
-mkdir ./site
-mv user/site site/${{ github.ref_name }}
-mv dev/site site/${{ github.ref_name }}/dev
-mv example/site site/${{ github.ref_name }}/example # new line
 ```
 
 Once you commit these changes, your new portal will be available.
