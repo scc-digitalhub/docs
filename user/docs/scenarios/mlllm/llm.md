@@ -46,7 +46,7 @@ llm_function = project.new_function("llm_classification",
 Serve the model:
 
 ```python
-llm_run = llm_function.run(action="serve", profile="template-a100", wait=True)
+llm_run = llm_function.run(action="serve", profile="1xa100", wait=True)
 ```
 
 Please note the use of the ``profile`` parameter. As the LLM models require specific hardware (GPU in particular), it is necessary
@@ -123,7 +123,7 @@ llm_function = project.new_function("llm_generation",
 Serve the model:
 
 ```python
-llm_run = llm_function.run(action="serve", profile="template-a100", wait=True)
+llm_run = llm_function.run(action="serve", profile="1xa100", wait=True)
 ```
 
 Please note that in case of protected models (like, e.g., llama models) it is necessary to path the HuggingFace token. For example,
@@ -131,9 +131,14 @@ Please note that in case of protected models (like, e.g., llama models) it is ne
 ```python
 hf_token = "<HUGGINGFACE TOKEN>"
 llm_run = llm_function.run(action="serve",
-                           profile="template-a100",
-                           envs = [{"name": "HF_TOKEN", "value": hf_token}])
+                           profile="1xa100",
+                           envs = [{"name": "HF_TOKEN", "value": hf_token}],
+                           wait=True)
 ```
+
+!!! Warning "Deployment time"
+    Mind that when requesting a GPU node for the service, it may take some time for the service to start,
+    in some cases up to 10 minutes.
 
 As in case of classification models, the LLM models require specific hardware (GPU in particular), it is necessary
 to specify the HW requirements as described in the [Configuring Kubernetes executions](../../tasks/kubernetes-resources.md) section. In particular, it is possible to rely on the predefined resource templates of the platform deployment.
@@ -326,7 +331,7 @@ train_func = project.new_function(name="train_model",
                                   handler="train",
                                   requirements=["evaluate", "transformers[torch]", "torch", "torchvision", "accelerate"])
 
-train_run=train_func.run(action="job", profile="template-a100", wait=True)
+train_run=train_func.run(action="job", profile="1xa100", wait=True)
 ```
 
 Create the serving function definition:
@@ -341,7 +346,7 @@ llm_function = project.new_function("llm_classification",
 Serve the model:
 
 ```python
-llm_run = llm_function.run(action="serve", profile="template-a100", wait=True)
+llm_run = llm_function.run(action="serve", profile="1xa100", wait=True)
 ```
 
 Please note the use of the ``profile`` parameter. As the LLM models require specific hardware (GPU in particular), it is necessary
