@@ -1,8 +1,12 @@
 # Using the platform externally
 
-A command-line interface (CLI) is available, allowing access to certain functionalities of the platform remotely. It can be used to set up the environment and install the python packages.
+A command-line interface (CLI) is available, allowing access to certain functionalities of the platform remotely. It can be used to set up the environment and install the Python packages.
 
-In-detail descriptions of available commands can be found in [this dedicated section](../components/cli_commands.md).
+## CLI installation
+
+Download the latest version of the CLI for your OS from its [releases page on GitHub](https://github.com/scc-digitalhub/digitalhub-cli/releases). Extract the archive and open a console in the path of the `dhcli` file.
+
+## CLI usage
 
 The standard use flow of the CLI is as follows:
 
@@ -23,3 +27,5 @@ The standard use flow of the CLI is as follows:
 ``` sh
 ./dhcli init
 ```
+
+In-detail descriptions of available commands can be found in [this dedicated section](../components/cli_commands.md).
