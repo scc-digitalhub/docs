@@ -710,6 +710,18 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Using the platform externally
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -720,6 +732,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cli-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLI installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLI usage
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2161,6 +2210,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cli-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLI installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLI usage
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2176,8 +2251,10 @@
 
 
 <h1 id="using-the-platform-externally">Using the platform externally</h1>
-<p>A command-line interface (CLI) is available, allowing access to certain functionalities of the platform remotely. It can be used to set up the environment and install the python packages.</p>
-<p>In-detail descriptions of available commands can be found in <a href="../../components/cli_commands/">this dedicated section</a>.</p>
+<p>A command-line interface (CLI) is available, allowing access to certain functionalities of the platform remotely. It can be used to set up the environment and install the Python packages.</p>
+<h2 id="cli-installation">CLI installation</h2>
+<p>Download the latest version of the CLI for your OS from its <a href="https://github.com/scc-digitalhub/digitalhub-cli/releases">releases page on GitHub</a>. Extract the archive and open a console in the path of the <code>dhcli</code> file.</p>
+<h2 id="cli-usage">CLI usage</h2>
 <p>The standard use flow of the CLI is as follows:</p>
 <ol>
 <li>Register your instance's configuration. This creates a <code>.dhcore.ini</code> file in your home directory (or, if not possible, in the current one), where the configuration will be stored, to be used and updated by subsequent commands.</li>
@@ -2194,6 +2271,7 @@
 </ol>
 <div class="highlight"><pre><span></span><code>./dhcli<span class="w"> </span>init
 </code></pre></div>
+<p>In-detail descriptions of available commands can be found in <a href="../../components/cli_commands/">this dedicated section</a>.</p>
 
 
 
