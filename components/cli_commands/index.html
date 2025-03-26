@@ -860,6 +860,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#register" class="md-nav__link">
     <span class="md-ellipsis">
       register
@@ -867,8 +877,17 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
+  <a href="#list-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      list-env
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#use" class="md-nav__link">
     <span class="md-ellipsis">
       use
@@ -876,8 +895,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#login" class="md-nav__link">
     <span class="md-ellipsis">
       login
@@ -885,8 +904,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#refresh" class="md-nav__link">
     <span class="md-ellipsis">
       refresh
@@ -894,8 +913,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#remove" class="md-nav__link">
     <span class="md-ellipsis">
       remove
@@ -903,13 +922,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#init" class="md-nav__link">
     <span class="md-ellipsis">
       init
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2253,6 +2277,16 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#register" class="md-nav__link">
     <span class="md-ellipsis">
       register
@@ -2260,8 +2294,17 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
+  <a href="#list-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      list-env
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#use" class="md-nav__link">
     <span class="md-ellipsis">
       use
@@ -2269,8 +2312,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#login" class="md-nav__link">
     <span class="md-ellipsis">
       login
@@ -2278,8 +2321,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#refresh" class="md-nav__link">
     <span class="md-ellipsis">
       refresh
@@ -2287,8 +2330,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#remove" class="md-nav__link">
     <span class="md-ellipsis">
       remove
@@ -2296,13 +2339,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#init" class="md-nav__link">
     <span class="md-ellipsis">
       init
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2324,55 +2372,61 @@
 
 <h1 id="cli">CLI</h1>
 <p>The Command-Line Interface (CLI) is a simple tool that offers a number of functionalities to set the platform up.</p>
-<h2 id="register"><code>register</code></h2>
+<h2 id="commands">Commands</h2>
+<p>Available commands and their parameters are listed here. When you provide <em>optional</em> parameters, make sure they are listed <strong>before</strong> <em>mandatory</em> ones.</p>
+<h3 id="register"><code>register</code></h3>
 <p><code>register</code> takes the following parameters:</p>
 <ul>
 <li><code>-n name</code> (Optional)</li>
-<li><code>core endpoint</code></li>
+<li><code>core_endpoint</code></li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>./dhcli<span class="w"> </span>register<span class="w"> </span>-n<span class="w"> </span>example<span class="w"> </span>http://localhost:8080
+<p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>register<span class="w"> </span>-n<span class="w"> </span>example<span class="w"> </span>http://localhost:8080
 </code></pre></div>
 It will create a <code>.dhcore.ini</code> file (if it doesn't already exist) in the user's home directory, or, if not possible, in the current one. A section will be appended, using the provided name (or, if missing, the one returned by the endpoint), containing the environment's configuration. This environment will be set as default, unless one is already set.</p>
-<h2 id="use"><code>use</code></h2>
+<h3 id="list-env"><code>list-env</code></h3>
+<p><code>list-env</code> lists available environments. It takes no parameters.</p>
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>list-env
+</code></pre></div>
+<h3 id="use"><code>use</code></h3>
 <p><code>use</code> takes the following parameters:</p>
 <ul>
 <li><code>environment</code></li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>./dhcli<span class="w"> </span>use<span class="w"> </span>example
+<p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>use<span class="w"> </span>example
 </code></pre></div>
 This will set the default environment.</p>
-<h2 id="login"><code>login</code></h2>
+<h3 id="login"><code>login</code></h3>
 <p><code>login</code> is to be used after registering an environment with the <code>register</code> command. It takes the following parameters:</p>
 <ul>
 <li><code>environment</code> (Optional)</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>./dhcli<span class="w"> </span>login<span class="w"> </span>example
+<p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>login<span class="w"> </span>example
 </code></pre></div>
 It will read the corresponding section from the configuration file and start the log in procedure. It will update this section with the access token obtained. If no environment is specified, it will use the default one.</p>
-<h2 id="refresh"><code>refresh</code></h2>
+<h3 id="refresh"><code>refresh</code></h3>
 <p><code>refresh</code> is to be used after the <code>login</code> command, to update <code>access_token</code> and <code>refresh_token</code>. It takes the following parameters:</p>
 <ul>
 <li><code>environment</code> (Optional)</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>./dhcli<span class="w"> </span>refresh<span class="w"> </span>example
+<p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>refresh<span class="w"> </span>example
 </code></pre></div>
 If no environment is specified, it will use the default one.</p>
-<h2 id="remove"><code>remove</code></h2>
+<h3 id="remove"><code>remove</code></h3>
 <p><code>remove</code> takes the following parameters:</p>
 <ul>
 <li><code>environment</code></li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>./dhcli<span class="w"> </span>remove<span class="w"> </span>example
+<p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>remove<span class="w"> </span>example
 </code></pre></div>
 It will remove the section from the configuration file.</p>
-<h2 id="init"><code>init</code></h2>
-<p><code>init</code> takes the following parameters:</p>
+<h3 id="init"><code>init</code></h3>
+<p><code>init</code> is used to install the platform's Python packages; therefore, Python must be installed. It takes the following parameters:</p>
 <ul>
 <li><code>environment</code> (Optional)</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>./dhcli<span class="w"> </span>init<span class="w"> </span>example
+<p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>init<span class="w"> </span>example
 </code></pre></div>
-It will install the python package through pip, matching core's minor version as indicated in the specified environment. If no environment is specified, it will use the default one.</p>
+It will match core's minor version as indicated in the specified environment. If no environment is specified, it will use the default one.</p>
 
 
 
