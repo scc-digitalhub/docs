@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="http://docs/admin/charts/core/keystore/">
+        <link rel="canonical" href="http://docs/admin/charts/core/sts/">
       
       
-        <link rel="prev" href="../../../authentication/kubeflow/">
+        <link rel="prev" href="../keystore/">
       
       
-        <link rel="next" href="../sts/">
+        <link rel="next" href="../../krm/roles/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Keystore - Digital Hub</title>
+        <title>STS - Digital Hub</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#keystore" class="md-skip">
+        <a href="#sts" class="md-skip">
           Skip to content
         </a>
       
@@ -228,7 +228,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Keystore
+              STS
             
           </span>
         </div>
@@ -854,6 +854,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../keystore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Keystore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -866,31 +889,20 @@
         
       
       
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
   
   
   <span class="md-ellipsis">
-    Keystore
+    STS
     
   </span>
   
 
-      </a>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../sts/" class="md-nav__link">
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -901,6 +913,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#credentials-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Credentials duration
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1130,6 +1171,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#credentials-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Credentials duration
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1144,18 +1202,18 @@
 
 
 
-<h1 id="keystore">Keystore</h1>
-<p>To set up a Keystore for Core, add the following section to your <code>values.yaml</code> file and configure the following fields:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">core</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">keystore</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">existingSecret</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;keystore-secret&quot;</span><span class="w"> </span><span class="c1"># Name of the secret containing the keystore</span>
-<span class="w">      </span><span class="nt">keyName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;keystore.jwks&quot;</span><span class="w">    </span><span class="c1"># Name of the key in your keystore secret, should correspond to the keystore file name</span>
-<span class="w">    </span><span class="nt">keystoreKid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w">  </span><span class="c1"># Specify the key that the keystore should pick</span>
-<span class="w">    </span><span class="nt">keystorePath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/etc/keystore&quot;</span><span class="w"> </span><span class="c1"># Path where your keystore will be saved</span>
-</code></pre></div>
-<p>In this example, a Keystore will be created in the path <code>/etc/keystore/keystore.jwks</code> from a secret called <code>keystore-secret</code>.
-The key of the secret, <code>keystore.jwks</code>, must contain the base64 encoded keystore.</p>
+<h1 id="sts">STS</h1>
+<p><strong>WARNING: this feature cannot be used locally as it depends on an Authentication Provider that should be installed in your environment.</strong></p>
+<p>STS allows you to work with temporary credentials to do operations with Core to the Postgres database and the Minio bucket, avoiding the use of persistent ones and reducing the risk of a security breach.</p>
+<p>To activate STS, set <code>core.sts.enabled</code> to <code>true</code>.
+The values to activate Postgres and Minio credentials are, respectively, <code>core.sts.db.enabled</code> (set to <code>true</code> if activated) and <code>core.sts.minio.enabled</code> (set to <code>true</code> if activated).</p>
+<h3 id="credentials-duration">Credentials duration</h3>
+<p>You can set the duration of the temporary credentials in two ways.</p>
+<ul>
+<li>Setting <code>core.sts.credentials.duration</code> to the time (in seconds) you desire will set the same time for the Postgres and Minio ones</li>
+<li>If you wish to set them case by case, leave <code>core.sts.credentials.duration</code> as an empty string and set the time of <code>core.sts.credentials.minio.duration</code> and <code>core.sts.credentials.db.duration</code></li>
+</ul>
+<p><strong>NOTICE: currently, the time limit cannot be major than 28800.</strong></p>
 
 
 
