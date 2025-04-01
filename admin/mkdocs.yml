@@ -27,7 +27,9 @@ nav:
   - Charts:
       - Core:
           - "charts/core/keystore.md"
-      - Kubeflow Pipelines:
-          - "charts/kfp/mysql.md"
+          - "charts/core/sts.md"
       - Kubernetes Resource Manager:
           - "charts/krm/roles.md"
+  - External components:
+      - Solr:
+          - "components/solr/basicauth.md"
