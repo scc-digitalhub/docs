@@ -6,6 +6,15 @@ A command-line interface (CLI) is available, allowing access to certain function
 
 Download the latest version of the CLI for your OS from its [releases page on GitHub](https://github.com/scc-digitalhub/digitalhub-cli/releases). Extract the archive and open a console in the path of the `dhcli` file.
 
+### MacOS
+
+On MacOS, it can be installed using Homebrew Tap:
+
+``` sh
+brew tap scc-digitalhub/digitalhub-cli https://github.com/scc-digitalhub/digitalhub-cli
+brew install dhcli
+```
+
 ## CLI usage
 
 The standard use flow of the CLI is as follows:
