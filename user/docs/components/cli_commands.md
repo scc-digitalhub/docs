@@ -2,9 +2,17 @@
 
 The Command-Line Interface (CLI) is a simple tool that offers a number of functionalities to set the platform up.
 
+## Installation
+
+Please refer to [this section](../tasks/cli.md#cli-installation) to install the CLI.
+
 ## Commands
 
 Available commands and their parameters are listed here. When you provide *optional* parameters, make sure they are listed **before** *mandatory* ones.
+
+!!! info "Run commands"
+
+    Depending on the shell you are using, you may have to run the CLI with `./dhcli`.
 
 ### `register`
 `register` takes the following parameters:
