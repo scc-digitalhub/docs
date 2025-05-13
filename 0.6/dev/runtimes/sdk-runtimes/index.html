@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -125,7 +125,7 @@
           </span>
           <div class="dropdown">
             <button class="dd-button">
-              <span class="dd-text">0.6</span>
+              <span class="dd-text">v:0.6</span>
               <span class="dd-arrow">&#9660;</span>
               
                 
@@ -134,27 +134,7 @@
               
                 
                   
-                    <a href="https://scc-digitalhub.github.io/docs">current</a>
-                  
-                
-              
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs/0.7">0.7</a>
-                  
-                
-              
-                
-              
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs/0.5">0.5</a>
-                  
-                
-              
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs/0.4">0.4</a>
+                    <a href="https://scc-digitalhub.github.io/docs/0.2">0.2</a>
                   
                 
               
@@ -166,7 +146,55 @@
               
                 
                   
-                    <a href="https://scc-digitalhub.github.io/docs/0.2">0.2</a>
+                    <a href="https://scc-digitalhub.github.io/docs/0.4">0.4</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.5">0.5</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.6">0.6</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.7">0.7</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.8">0.8</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.9">0.9</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.10">0.10</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.11">0.11</a>
+                  
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs">current</a>
                   
                 
               
@@ -180,7 +208,7 @@
                 
                   
                     
-                      <a href="https://scc-digitalhub.github.io/docs/0.6">User</a>
+                      <a href="https://scc-digitalhub.github.io/docs/v:0.6">User</a>
                     
                   
                 
@@ -329,8 +357,10 @@
       <a href="../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Introduction
+    
   </span>
   
 
@@ -349,6 +379,7 @@
     
     
     
+    
     <li class="md-nav__item md-nav__item--nested">
       
         
@@ -361,8 +392,10 @@
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
     Tasks
+    
   </span>
   
 
@@ -386,8 +419,10 @@
       <a href="../../tasks/rm-custom-views/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     KRM - Custom views
+    
   </span>
   
 
@@ -499,6 +534,7 @@
                   
 
 
+
 <h1 id="digitalhub-core-sdk-runtime-implementation">Digitalhub-core SDK runtime implementation</h1>
 <p>On the <code>digitalhub</code> sdk side, to implement a new runtime it is required to define a new package that includes:</p>
 <ul>
@@ -580,19 +616,19 @@ The Params object models how the arguments must be provided (e.g. code must be a
 <div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Dbt Function specification module.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">from</span> <span class="nn">digitalhub_core.entities.functions.spec</span> <span class="kn">import</span> <span class="n">FunctionParams</span><span class="p">,</span> <span class="n">FunctionSpec</span>
-<span class="kn">from</span> <span class="nn">digitalhub_core.utils.exceptions</span> <span class="kn">import</span> <span class="n">EntityError</span>
-<span class="kn">from</span> <span class="nn">digitalhub_core.utils.generic_utils</span> <span class="kn">import</span> <span class="n">decode_string</span><span class="p">,</span> <span class="n">encode_string</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_core.entities.functions.spec</span><span class="w"> </span><span class="kn">import</span> <span class="n">FunctionParams</span><span class="p">,</span> <span class="n">FunctionSpec</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_core.utils.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">EntityError</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_core.utils.generic_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">decode_string</span><span class="p">,</span> <span class="n">encode_string</span>
 
 
-<span class="k">class</span> <span class="nc">FunctionSpecDbt</span><span class="p">(</span><span class="n">FunctionSpec</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FunctionSpecDbt</span><span class="p">(</span><span class="n">FunctionSpec</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Specification for a Function Dbt.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">source</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">sql</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -619,7 +655,7 @@ The Params object models how the arguments must be provided (e.g. code must be a
         <span class="bp">self</span><span class="o">.</span><span class="n">sql</span> <span class="o">=</span> <span class="n">encode_string</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">FunctionParamsDbt</span><span class="p">(</span><span class="n">FunctionParams</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FunctionParamsDbt</span><span class="p">(</span><span class="n">FunctionParams</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function Dbt parameters model.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -631,12 +667,12 @@ The Params object models how the arguments must be provided (e.g. code must be a
 <div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Dbt Function status module.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">from</span> <span class="nn">digitalhub_core.entities.functions.status</span> <span class="kn">import</span> <span class="n">FunctionStatus</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_core.entities.functions.status</span><span class="w"> </span><span class="kn">import</span> <span class="n">FunctionStatus</span>
 
 
-<span class="k">class</span> <span class="nc">FunctionStatusDbt</span><span class="p">(</span><span class="n">FunctionStatus</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FunctionStatusDbt</span><span class="p">(</span><span class="n">FunctionStatus</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function Dbt status.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -645,11 +681,11 @@ The Params object models how the arguments must be provided (e.g. code must be a
 <div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Dbt Function metadata module.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">from</span> <span class="nn">digitalhub_core.entities.functions.metadata</span> <span class="kn">import</span> <span class="n">FunctionMetadata</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_core.entities.functions.metadata</span><span class="w"> </span><span class="kn">import</span> <span class="n">FunctionMetadata</span>
 
-<span class="k">class</span> <span class="nc">FunctionMetadataDbt</span><span class="p">(</span><span class="n">FunctionMetadata</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FunctionMetadataDbt</span><span class="p">(</span><span class="n">FunctionMetadata</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Function Dbt metadata.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -659,16 +695,16 @@ The Params object models how the arguments must be provided (e.g. code must be a
 <div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Task Transform specification module.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">from</span> <span class="nn">digitalhub_core.entities.tasks.spec</span> <span class="kn">import</span> <span class="n">TaskParams</span><span class="p">,</span> <span class="n">TaskSpec</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_core.entities.tasks.spec</span><span class="w"> </span><span class="kn">import</span> <span class="n">TaskParams</span><span class="p">,</span> <span class="n">TaskSpec</span>
 
 
-<span class="k">class</span> <span class="nc">TaskSpecTransform</span><span class="p">(</span><span class="n">TaskSpec</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TaskSpecTransform</span><span class="p">(</span><span class="n">TaskSpec</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Task Transform specification.&quot;&quot;&quot;</span>
 
 
-<span class="k">class</span> <span class="nc">TaskParamsTransform</span><span class="p">(</span><span class="n">TaskParams</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TaskParamsTransform</span><span class="p">(</span><span class="n">TaskParams</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    TaskParamsTransform model.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -681,16 +717,16 @@ You must do the same for status and metadata.</p>
 <div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Run specification module.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">from</span> <span class="nn">digitalhub_core.entities.runs.spec</span> <span class="kn">import</span> <span class="n">RunParams</span><span class="p">,</span> <span class="n">RunSpec</span>
-<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_core.entities.runs.spec</span><span class="w"> </span><span class="kn">import</span> <span class="n">RunParams</span><span class="p">,</span> <span class="n">RunSpec</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
 
 
-<span class="k">class</span> <span class="nc">RunSpecDbt</span><span class="p">(</span><span class="n">RunSpec</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RunSpecDbt</span><span class="p">(</span><span class="n">RunSpec</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Run Dbt specification.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">task_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -713,14 +749,14 @@ You must do the same for status and metadata.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">transform_spec</span> <span class="o">=</span> <span class="n">transform_spec</span>
 
 
-<span class="k">class</span> <span class="nc">DataitemList</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DataitemList</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Dataitem list model.&quot;&quot;&quot;</span>
 
     <span class="n">dataitems</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;List of dataitem names.&quot;&quot;&quot;</span>
 
 
-<span class="k">class</span> <span class="nc">RunParamsDbt</span><span class="p">(</span><span class="n">RunParams</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RunParamsDbt</span><span class="p">(</span><span class="n">RunParams</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Run Dbt parameters.&quot;&quot;&quot;</span>
 
     <span class="n">inputs</span><span class="p">:</span> <span class="n">DataitemList</span>
@@ -739,19 +775,19 @@ You must do the same for status and metadata.</p>
 <div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Run status module.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">from</span> <span class="nn">digitalhub_core.entities.runs.status</span> <span class="kn">import</span> <span class="n">RunStatus</span>
-<span class="kn">from</span> <span class="nn">digitalhub_data.entities.dataitems.crud</span> <span class="kn">import</span> <span class="n">get_dataitem_from_key</span>
-<span class="kn">from</span> <span class="nn">digitalhub_data.entities.runs.results</span> <span class="kn">import</span> <span class="n">RunResultsData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_core.entities.runs.status</span><span class="w"> </span><span class="kn">import</span> <span class="n">RunStatus</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_data.entities.dataitems.crud</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_dataitem_from_key</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_data.entities.runs.results</span><span class="w"> </span><span class="kn">import</span> <span class="n">RunResultsData</span>
 
 
-<span class="k">class</span> <span class="nc">RunStatusDbt</span><span class="p">(</span><span class="n">RunStatus</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RunStatusDbt</span><span class="p">(</span><span class="n">RunStatus</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Run Dbt status.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">state</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">message</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -780,7 +816,7 @@ You must do the same for status and metadata.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="n">results</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span> <span class="o">=</span> <span class="n">outputs</span>
 
-    <span class="k">def</span> <span class="nf">get_results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Get results.</span>
 
@@ -800,21 +836,21 @@ You must do the same for status and metadata.</p>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># Imports</span>
 
-<span class="k">class</span> <span class="nc">RuntimeDbt</span><span class="p">(</span><span class="n">Runtime</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RuntimeDbt</span><span class="p">(</span><span class="n">Runtime</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Runtime Dbt class.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">allowed_actions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;transform&quot;</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="o">...</span>
 
-    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">run</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">run</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Build run spec.</span>
 
@@ -839,7 +875,7 @@ You must do the same for status and metadata.</p>
             <span class="o">**</span><span class="n">run</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;spec&quot;</span><span class="p">,</span> <span class="p">{}),</span>
         <span class="p">}</span>
 
-    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">run</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">run</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Run function.</span>
 
@@ -856,7 +892,7 @@ You must do the same for status and metadata.</p>
         <span class="c1"># Handle execution of functions</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">_get_executable</span><span class="p">(</span><span class="n">action</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_executable</span><span class="p">(</span><span class="n">action</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Select function according to action.</span>
 
@@ -886,17 +922,17 @@ To the run() method we pass a run dictionary representation. This method parses 
 </ul>
 <p><em>Runtime registry</em> goes in the package top level <code>__init__.py</code> file. The sdk uses a specific object to import the new classes.
 The <code>__init__.py</code> will look like this:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">digitalhub_core.runtimes.registry</span> <span class="kn">import</span> <span class="n">RuntimeRegistry</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_core.runtimes.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">RuntimeRegistry</span>
 
 <span class="n">registry</span> <span class="o">=</span> <span class="n">RuntimeRegistry</span><span class="p">()</span>
 <span class="n">registry</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;digitalhub_data_dbt.runtimes.runtime&quot;</span><span class="p">,</span> <span class="s2">&quot;RuntimeDbt&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>The registries for statuses and specs are located into a registries.py file in the entities directory.
 It will look like this:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">from</span> <span class="nn">digitalhub_core.entities._base.spec</span> <span class="kn">import</span> <span class="n">SpecRegistry</span>
-<span class="kn">from</span> <span class="nn">digitalhub_core.entities._base.status</span> <span class="kn">import</span> <span class="n">StatusRegistry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_core.entities._base.spec</span><span class="w"> </span><span class="kn">import</span> <span class="n">SpecRegistry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_core.entities._base.status</span><span class="w"> </span><span class="kn">import</span> <span class="n">StatusRegistry</span>
 
 <span class="n">status_registry</span> <span class="o">=</span> <span class="n">StatusRegistry</span><span class="p">()</span>
 <span class="n">status_registry</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;dbt&quot;</span><span class="p">,</span> <span class="s2">&quot;digitalhub_core.entities.functions.status&quot;</span><span class="p">,</span> <span class="s2">&quot;FunctionStatus&quot;</span><span class="p">)</span>
@@ -949,10 +985,12 @@ It will look like this:</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>
