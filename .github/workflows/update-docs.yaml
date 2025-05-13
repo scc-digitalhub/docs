@@ -46,18 +46,18 @@ jobs:
                 cd dev && mkdocs build && cd ..
                 cd admin && mkdocs build && cd ..
                 mkdir -p ./site
-                mv user/site site/$v
-                mv dev/site site/$v/dev
-                mv admin/site site/$v/admin
+                [ ! -d user/site ] || mv user/site site/$v
+                [ ! -d dev/site ] || mv dev/site site/$v/dev
+                [ ! -d admin/site ] || mv admin/site site/$v/admin
               else
                 echo "Special behaviour for main"
                 git checkout main
                 cd user && mkdocs build && cd ..
                 cd dev && mkdocs build && cd ..
                 cd admin && mkdocs build && cd ..
-                mv user/site ./site
-                mv dev/site site/dev
-                mv admin/site site/admin
+                [ ! -d user/site ] || mv user/site ./site
+                [ ! -d dev/site ] || mv dev/site site/dev
+                [ ! -d admin/site ] || mv admin/site site/admin
               fi
             fi
           done
