@@ -11,7 +11,7 @@ development process and operations to the whole application life-cycle, from exp
 - **Execute**. Delegate the code execution, image preparation, run-time operations and services to the underlying Kubernetes-based execution infrastructure, Serverless platform, and pipeline execution automation environment.
 - **Integrate**. Build new AI services and expose your data in a standard and interoperable manner, to facilitate the integration within different applications, systems, business intelligence tools and visualizations.
 
-To support this functionality, the platform relies on scalable Kubernetes platform and its extensions (operators) as well as on the modular architecture and functinality model that allows for dealing with arbitrary jobs, functions, frameworks and solutions without affecting your development workflow. The underlying methodology and management approach aim at facilitating the re-use, reproducability, and portability of the solution among different contexts and settings.
+To support this functionality, the platform relies on scalable Kubernetes platform and its extensions (operators) as well as on the modular architecture and functionality model that allows for dealing with arbitrary jobs, functions, frameworks and solutions without affecting your development workflow. The underlying methodology and management approach aim at facilitating the re-use, reproducibility, and portability of the solution among different contexts and settings.
 
 ## Interested?
 
