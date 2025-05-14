@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/runtimes/python/">
+        <link rel="canonical" href="http://docs/user/components/cli/">
       
       
-        <link rel="prev" href="../../scenarios/postgrest/apigw/">
+        <link rel="prev" href="../dh_console/">
       
       
-        <link rel="next" href="../dbt/">
+        <link rel="next" href="../resourcemanager/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Python - Digital Hub</title>
+        <title>CLI - Digital Hub</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#python" class="md-skip">
+        <a href="#cli" class="md-skip">
           Skip to content
         </a>
       
@@ -234,7 +234,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Python
+              CLI
             
           </span>
         </div>
@@ -729,20 +729,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -758,7 +758,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Components
@@ -772,7 +772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dashboard/" class="md-nav__link">
+      <a href="../dashboard/" class="md-nav__link">
         
   
   
@@ -795,7 +795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dh_console/" class="md-nav__link">
+      <a href="../dh_console/" class="md-nav__link">
         
   
   
@@ -815,10 +815,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../components/cli/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    CLI
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -829,6 +851,77 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      MacOS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLI usage
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -841,7 +934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/resourcemanager/" class="md-nav__link">
+      <a href="../resourcemanager/" class="md-nav__link">
         
   
   
@@ -864,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/kubeflow/" class="md-nav__link">
+      <a href="../kubeflow/" class="md-nav__link">
         
   
   
@@ -927,7 +1020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/jupyter/" class="md-nav__link">
+      <a href="../jupyter/" class="md-nav__link">
         
   
   
@@ -950,7 +1043,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dremio/" class="md-nav__link">
+      <a href="../dremio/" class="md-nav__link">
         
   
   
@@ -973,7 +1066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/sqlpad/" class="md-nav__link">
+      <a href="../sqlpad/" class="md-nav__link">
         
   
   
@@ -996,7 +1089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/grafana/" class="md-nav__link">
+      <a href="../grafana/" class="md-nav__link">
         
   
   
@@ -1019,7 +1112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/vscode/" class="md-nav__link">
+      <a href="../vscode/" class="md-nav__link">
         
   
   
@@ -1968,20 +2061,20 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -1997,7 +2090,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Runtimes reference
@@ -2008,32 +2101,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Python
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../runtimes/python/" class="md-nav__link">
         
   
   
@@ -2044,35 +2115,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#management-with-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Management with SDK
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2085,7 +2127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dbt/" class="md-nav__link">
+      <a href="../../runtimes/dbt/" class="md-nav__link">
         
   
   
@@ -2108,7 +2150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../container/" class="md-nav__link">
+      <a href="../../runtimes/container/" class="md-nav__link">
         
   
   
@@ -2131,7 +2173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kfp_pipelines/" class="md-nav__link">
+      <a href="../../runtimes/kfp_pipelines/" class="md-nav__link">
         
   
   
@@ -2154,7 +2196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modelserve/" class="md-nav__link">
+      <a href="../../runtimes/modelserve/" class="md-nav__link">
         
   
   
@@ -2344,9 +2386,51 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#management-with-sdk" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
-      Management with SDK
+      Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      MacOS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLI usage
     </span>
   </a>
   
@@ -2368,10 +2452,41 @@
 
 
 
-<h1 id="python">Python</h1>
-<p>The <strong>python runtime</strong> allows you to run generic python function within the platform.</p>
-<h2 id="management-with-sdk">Management with SDK</h2>
-<p>Check the <a href="https://scc-digitalhub.github.io/sdk-docs/runtimes/python/">SDK python runtime documentation</a> for more information.</p>
+<h1 id="cli">CLI</h1>
+<p>A command-line interface (CLI) is available, allowing access to certain functionalities of the platform remotely.</p>
+<h2 id="installation">Installation</h2>
+<h3 id="linux">Linux</h3>
+<p>Download the CLI for your OS and architecture from the <a href="https://github.com/scc-digitalhub/digitalhub-cli/releases">releases page</a>. Extract the archive to find the <code>dhcli</code> file, open a shell and access this path. Run <code>dhcli -h</code> for a list of available commands.</p>
+<h3 id="macos">MacOS</h3>
+<p>Download the CLI for your OS and architecture from the <a href="https://github.com/scc-digitalhub/digitalhub-cli/releases">releases page</a>. Extract the archive to find the <code>dhcli</code> file, open a terminal and access this path. Run <code>./dhcli -h</code> for a list of available commands.</p>
+<p>Alternatively, the CLI can be installed using <em>Homebrew Tap</em>:</p>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>tap<span class="w"> </span>scc-digitalhub/digitalhub-cli<span class="w"> </span>https://github.com/scc-digitalhub/digitalhub-cli
+brew<span class="w"> </span>install<span class="w"> </span>dhcli
+</code></pre></div>
+<h3 id="windows">Windows</h3>
+<p>Download the CLI for your OS and architecture from the <a href="https://github.com/scc-digitalhub/digitalhub-cli/releases">releases page</a>. Extract the archive to find the <code>dhcli.exe</code> file, open the <em>command prompt</em> and access this path. Run <code>./dhcli -h</code> for a list of available commands.</p>
+<h2 id="cli-usage">CLI usage</h2>
+<div class="admonition info">
+<p class="admonition-title">Run commands</p>
+<p>Depending on the shell you are using, you may have to run the CLI with <code>./dhcli</code>.</p>
+</div>
+<p>The standard use flow of the CLI is as follows:</p>
+<ol>
+<li>Register your instance's configuration. This creates a <code>.dhcore.ini</code> file in your home directory (or, if not possible, in the current one), where the configuration will be stored, to be used and updated by subsequent commands.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>register<span class="w"> </span>http://localhost:8080
+</code></pre></div>
+<ol>
+<li>Log in. This will open a tab in your Internet browser, where you will have to carry out the log in procedure.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>login
+</code></pre></div>
+<ol>
+<li>If you wish to install the python packages, <code>init</code> will do so, matching the platform's version.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>init
+</code></pre></div>
+<p>In-detail descriptions of available commands can be found in <a href="../../cli/commands/">this dedicated section</a>.</p>
 
 
 
