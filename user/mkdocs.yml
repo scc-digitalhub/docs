@@ -25,12 +25,11 @@ nav:
       - "tasks/secrets.md"
       - "tasks/workflows.md"
       - "tasks/code-source.md"
-      - "tasks/cli.md"
     #   - "tasks/git.md"
   - Components:
       - "components/dashboard.md"
       - "components/dh_console.md"
-      - "components/cli_commands.md"
+      - "components/cli.md"
       - "components/resourcemanager.md"
       - "components/kubeflow.md"
       - Interactive Workspaces:
@@ -78,3 +77,6 @@ nav:
 
   - SDK Reference:
       - "sdk/intro.md"
+
+  - CLI Reference:
+      - "cli/commands.md"
