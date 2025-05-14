@@ -28,6 +28,7 @@ nav:
       - Core:
           - "charts/core/keystore.md"
           - "charts/core/sts.md"
+          - "charts/core/templates.md"
       - Kubernetes Resource Manager:
           - "charts/krm/roles.md"
   - External components:
