@@ -122,7 +122,7 @@ Now you can create resources with your template and profile from Core.
 ## Supported fields
 
 The following is a list of all the fields that you can set in the Profile section.
-You can find an in depth explanation of how to set these fields in the documentation about [Kubernetes Resources](../../../../user/docs/tasks/kubernetes-resources.md)
+You can find an in depth explanation of how to set these fields in the documentation about [Kubernetes Resources](https://scc-digitalhub.github.io/docs/0.11/tasks/kubernetes-resources/)
 
 |      Field      | Format |
 | --------------- | ------ |
