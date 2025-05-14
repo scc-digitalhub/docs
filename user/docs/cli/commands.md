@@ -103,6 +103,7 @@ The `resource` positional parameter can accept any value (to support future upda
 
 ### `list`
 `list` returns a list of resources of the specified type. It takes the following parameters:
+
 - `-e environment` *Optional*
 - `-o output_format` *Optional*. Accepts `short`, `json`, `yaml`. Defaults to `short`.
 - `-p project` *Optional* (ignored) for projects, **mandatory** otherwise.
@@ -132,6 +133,7 @@ dhcli list -o yaml -p my-project artifacts > output.yaml
 
 ### `get`
 `get` returns the details of a single resource. It takes the following parameters:
+
 - `-e environment` *Optional*
 - `-o output_format` *Optional*. Accepts `short`, `json`, `yaml`. Defaults to `short`.
 - `-p project` *Optional* (ignored) for projects, **mandatory** otherwise.
