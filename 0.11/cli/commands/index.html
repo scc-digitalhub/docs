@@ -2674,14 +2674,16 @@ It will match core's minor version as indicated in the specified environment. If
 <h4 id="resource-types">Resource types</h4>
 <p>The <code>resource</code> positional parameter can accept any value (to support future updates), but if an invalid one is specified, the CLI will forward the error returned by core. This parameter is used in building the endpoint of the URL for the API call to core's back-end, therefore, it is possible to specify aliases for a resource in the <code>config.json</code> file.</p>
 <h3 id="list"><code>list</code></h3>
-<p><code>list</code> returns a list of resources of the specified type. It takes the following parameters:
-- <code>-e environment</code> <em>Optional</em>
-- <code>-o output_format</code> <em>Optional</em>. Accepts <code>short</code>, <code>json</code>, <code>yaml</code>. Defaults to <code>short</code>.
-- <code>-p project</code> <em>Optional</em> (ignored) for projects, <strong>mandatory</strong> otherwise.
-- <code>-n name</code> <em>Optional</em>. If present, will return all versions of specified resource. If missing, will return the latest version of all matching resources.
-- <code>-k kind</code> <em>Optional</em>
-- <code>-s state</code> <em>Optional</em>
-- <code>resource</code> <strong>Mandatory</strong></p>
+<p><code>list</code> returns a list of resources of the specified type. It takes the following parameters:</p>
+<ul>
+<li><code>-e environment</code> <em>Optional</em></li>
+<li><code>-o output_format</code> <em>Optional</em>. Accepts <code>short</code>, <code>json</code>, <code>yaml</code>. Defaults to <code>short</code>.</li>
+<li><code>-p project</code> <em>Optional</em> (ignored) for projects, <strong>mandatory</strong> otherwise.</li>
+<li><code>-n name</code> <em>Optional</em>. If present, will return all versions of specified resource. If missing, will return the latest version of all matching resources.</li>
+<li><code>-k kind</code> <em>Optional</em></li>
+<li><code>-s state</code> <em>Optional</em></li>
+<li><code>resource</code> <strong>Mandatory</strong></li>
+</ul>
 <p><code>output_format</code> determines how the output will be formatted. The default value, <code>short</code>, is meant to be used to quickly check resources in the terminal, while <code>json</code> and <code>yaml</code> will format the output accordingly, making it ideal to write to file.</p>
 <p>List all projects:</p>
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>list<span class="w"> </span>projects
@@ -2693,13 +2695,15 @@ It will match core's minor version as indicated in the specified environment. If
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>list<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>artifacts<span class="w"> </span>&gt;<span class="w"> </span>output.yaml
 </code></pre></div></p>
 <h3 id="get"><code>get</code></h3>
-<p><code>get</code> returns the details of a single resource. It takes the following parameters:
-- <code>-e environment</code> <em>Optional</em>
-- <code>-o output_format</code> <em>Optional</em>. Accepts <code>short</code>, <code>json</code>, <code>yaml</code>. Defaults to <code>short</code>.
-- <code>-p project</code> <em>Optional</em> (ignored) for projects, <strong>mandatory</strong> otherwise.
-- <code>-n name</code> <em>Optional</em> (ignored) if <code>id</code> is missing, <strong>mandatory</strong> otherwise. Will return latest version of specified resource.
-- <code>resource</code> <strong>Mandatory</strong>
-- <code>id</code> <em>Optional</em> if <code>-n name</code> is missing, <strong>mandatory</strong> otherwise.</p>
+<p><code>get</code> returns the details of a single resource. It takes the following parameters:</p>
+<ul>
+<li><code>-e environment</code> <em>Optional</em></li>
+<li><code>-o output_format</code> <em>Optional</em>. Accepts <code>short</code>, <code>json</code>, <code>yaml</code>. Defaults to <code>short</code>.</li>
+<li><code>-p project</code> <em>Optional</em> (ignored) for projects, <strong>mandatory</strong> otherwise.</li>
+<li><code>-n name</code> <em>Optional</em> (ignored) if <code>id</code> is missing, <strong>mandatory</strong> otherwise. Will return latest version of specified resource.</li>
+<li><code>resource</code> <strong>Mandatory</strong></li>
+<li><code>id</code> <em>Optional</em> if <code>-n name</code> is missing, <strong>mandatory</strong> otherwise.</li>
+</ul>
 <p>Similarly to the <code>list</code> command, <code>output_format</code> determines how the output will be formatted. The default value, <code>short</code>, is meant to be used to quickly check resources in the terminal, while <code>json</code> and <code>yaml</code> will format the output accordingly, making it ideal to write to file.</p>
 <p>Get project:</p>
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>get<span class="w"> </span>projects<span class="w"> </span>my-project
