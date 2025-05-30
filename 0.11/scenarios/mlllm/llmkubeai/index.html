@@ -2583,7 +2583,7 @@ Normally embedding models do not require extra resources. However,  further para
 </ul>
 <p>For example to deploy a model from HuggingFace, the following procedure may be used:</p>
 <div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm&quot;</span><span class="p">,</span>
-                                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;kubeai&quot;</span><span class="p">,</span>
+                                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;kubeai-text&quot;</span><span class="p">,</span>
                                     <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;embedding&quot;</span><span class="p">,</span>
                                     <span class="n">url</span><span class="o">=</span><span class="s2">&quot;hf://BAAI/bge-small-en-v1.5&quot;</span><span class="p">,</span>
                                     <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;Infinity&quot;</span><span class="p">,</span>
