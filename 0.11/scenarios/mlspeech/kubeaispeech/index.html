@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/components/jupyter/">
+        <link rel="canonical" href="http://docs/user/scenarios/mlspeech/kubeaispeech/">
       
       
-        <link rel="prev" href="../kubeai/">
+        <link rel="prev" href="../../mlllm/llmkubeai/">
       
       
-        <link rel="next" href="../dremio/">
+        <link rel="next" href="../../ml/intro/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>Jupyter - Digital Hub</title>
+        <title>Managing Speech-to-Text Models with KubeAI Runtime - Digital Hub</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/portal_selection.css">
+      <link rel="stylesheet" href="../../../../stylesheets/portal_selection.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/colors.css">
+      <link rel="stylesheet" href="../../../../stylesheets/colors.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#jupyter" class="md-skip">
+        <a href="#managing-speech-to-text-models-with-kubeai-runtime" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
 
     <!-- Link to home -->
     <a
-      href="../.."
+      href="../../.."
       title="Digital Hub"
       class="md-header__button md-logo"
       aria-label="Digital Hub"
@@ -234,7 +234,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Jupyter
+              Managing Speech-to-Text Models with KubeAI Runtime
             
           </span>
         </div>
@@ -349,7 +349,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Digital Hub" class="md-nav__button md-logo" aria-label="Digital Hub" data-md-component="logo">
+    <a href="../../.." title="Digital Hub" class="md-nav__button md-logo" aria-label="Digital Hub" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -367,7 +367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -389,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/" class="md-nav__link">
+      <a href="../../../architecture/" class="md-nav__link">
         
   
   
@@ -411,7 +411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quickstart/" class="md-nav__link">
+      <a href="../../../quickstart/" class="md-nav__link">
         
   
   
@@ -433,7 +433,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/" class="md-nav__link">
+      <a href="../../../installation/" class="md-nav__link">
         
   
   
@@ -495,7 +495,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/projects/" class="md-nav__link">
+      <a href="../../../tasks/projects/" class="md-nav__link">
         
   
   
@@ -518,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/functions/" class="md-nav__link">
+      <a href="../../../tasks/functions/" class="md-nav__link">
         
   
   
@@ -541,7 +541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/workspaces/" class="md-nav__link">
+      <a href="../../../tasks/workspaces/" class="md-nav__link">
         
   
   
@@ -564,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/resources/" class="md-nav__link">
+      <a href="../../../tasks/resources/" class="md-nav__link">
         
   
   
@@ -587,7 +587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/data/" class="md-nav__link">
+      <a href="../../../tasks/data/" class="md-nav__link">
         
   
   
@@ -610,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/models/" class="md-nav__link">
+      <a href="../../../tasks/models/" class="md-nav__link">
         
   
   
@@ -633,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/kubernetes-resources/" class="md-nav__link">
+      <a href="../../../tasks/kubernetes-resources/" class="md-nav__link">
         
   
   
@@ -656,7 +656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/secrets/" class="md-nav__link">
+      <a href="../../../tasks/secrets/" class="md-nav__link">
         
   
   
@@ -679,7 +679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/workflows/" class="md-nav__link">
+      <a href="../../../tasks/workflows/" class="md-nav__link">
         
   
   
@@ -702,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tasks/code-source/" class="md-nav__link">
+      <a href="../../../tasks/code-source/" class="md-nav__link">
         
   
   
@@ -729,20 +729,20 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -758,7 +758,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Components
@@ -772,7 +772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dashboard/" class="md-nav__link">
+      <a href="../../../components/dashboard/" class="md-nav__link">
         
   
   
@@ -795,7 +795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dh_console/" class="md-nav__link">
+      <a href="../../../components/dh_console/" class="md-nav__link">
         
   
   
@@ -818,7 +818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
+      <a href="../../../components/cli/" class="md-nav__link">
         
   
   
@@ -841,7 +841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resourcemanager/" class="md-nav__link">
+      <a href="../../../components/resourcemanager/" class="md-nav__link">
         
   
   
@@ -864,7 +864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubeflow/" class="md-nav__link">
+      <a href="../../../components/kubeflow/" class="md-nav__link">
         
   
   
@@ -887,7 +887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubeai/" class="md-nav__link">
+      <a href="../../../components/kubeai/" class="md-nav__link">
         
   
   
@@ -907,20 +907,20 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_7" >
         
           
           <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
@@ -936,7 +936,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_7">
             <span class="md-nav__icon md-icon"></span>
             Interactive Workspaces
@@ -947,32 +947,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Jupyter
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../components/jupyter/" class="md-nav__link">
         
   
   
@@ -983,44 +961,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#writing-a-simple-notebook" class="md-nav__link">
-    <span class="md-ellipsis">
-      Writing a simple notebook
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1033,7 +973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dremio/" class="md-nav__link">
+      <a href="../../../components/dremio/" class="md-nav__link">
         
   
   
@@ -1056,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sqlpad/" class="md-nav__link">
+      <a href="../../../components/sqlpad/" class="md-nav__link">
         
   
   
@@ -1079,7 +1019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../grafana/" class="md-nav__link">
+      <a href="../../../components/grafana/" class="md-nav__link">
         
   
   
@@ -1102,7 +1042,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vscode/" class="md-nav__link">
+      <a href="../../../components/vscode/" class="md-nav__link">
         
   
   
@@ -1137,20 +1077,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -1166,7 +1106,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Scenarios
@@ -1220,7 +1160,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/intro/" class="md-nav__link">
+      <a href="../../etl/intro/" class="md-nav__link">
         
   
   
@@ -1243,7 +1183,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/collect/" class="md-nav__link">
+      <a href="../../etl/collect/" class="md-nav__link">
         
   
   
@@ -1266,7 +1206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/process/" class="md-nav__link">
+      <a href="../../etl/process/" class="md-nav__link">
         
   
   
@@ -1289,7 +1229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/pipeline/" class="md-nav__link">
+      <a href="../../etl/pipeline/" class="md-nav__link">
         
   
   
@@ -1312,7 +1252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/expose/" class="md-nav__link">
+      <a href="../../etl/expose/" class="md-nav__link">
         
   
   
@@ -1335,7 +1275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/streamlit/" class="md-nav__link">
+      <a href="../../etl/streamlit/" class="md-nav__link">
         
   
   
@@ -1406,7 +1346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl-core/scenario/" class="md-nav__link">
+      <a href="../../etl-core/scenario/" class="md-nav__link">
         
   
   
@@ -1429,7 +1369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl-core/pipeline/" class="md-nav__link">
+      <a href="../../etl-core/pipeline/" class="md-nav__link">
         
   
   
@@ -1500,7 +1440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlsklearn/intro/" class="md-nav__link">
+      <a href="../../mlsklearn/intro/" class="md-nav__link">
         
   
   
@@ -1523,7 +1463,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlsklearn/training/" class="md-nav__link">
+      <a href="../../mlsklearn/training/" class="md-nav__link">
         
   
   
@@ -1546,7 +1486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlsklearn/deploy/" class="md-nav__link">
+      <a href="../../mlsklearn/deploy/" class="md-nav__link">
         
   
   
@@ -1617,7 +1557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlmlflow/intro/" class="md-nav__link">
+      <a href="../../mlmlflow/intro/" class="md-nav__link">
         
   
   
@@ -1640,7 +1580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlmlflow/deploy/" class="md-nav__link">
+      <a href="../../mlmlflow/deploy/" class="md-nav__link">
         
   
   
@@ -1711,7 +1651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlllm/llm/" class="md-nav__link">
+      <a href="../../mlllm/llm/" class="md-nav__link">
         
   
   
@@ -1734,7 +1674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlllm/llmkubeai/" class="md-nav__link">
+      <a href="../../mlllm/llmkubeai/" class="md-nav__link">
         
   
   
@@ -1762,20 +1702,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" checked>
         
           
           <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
@@ -1791,7 +1731,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_6">
             <span class="md-nav__icon md-icon"></span>
             MLOps: Speech to Text
@@ -1802,10 +1742,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../scenarios/mlspeech/kubeaispeech/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Managing Speech-to-Text Models with KubeAI Runtime
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1816,6 +1778,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#exposing-speech-to-text-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exposing Speech-to-Text Models
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1876,7 +1867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/ml/intro/" class="md-nav__link">
+      <a href="../../ml/intro/" class="md-nav__link">
         
   
   
@@ -1899,7 +1890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/ml/deploy/" class="md-nav__link">
+      <a href="../../ml/deploy/" class="md-nav__link">
         
   
   
@@ -1970,7 +1961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/dremio_grafana/scenario/" class="md-nav__link">
+      <a href="../../dremio_grafana/scenario/" class="md-nav__link">
         
   
   
@@ -2041,7 +2032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/intro/" class="md-nav__link">
+      <a href="../../postgrest/intro/" class="md-nav__link">
         
   
   
@@ -2064,7 +2055,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/data/" class="md-nav__link">
+      <a href="../../postgrest/data/" class="md-nav__link">
         
   
   
@@ -2087,7 +2078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/postgrest/" class="md-nav__link">
+      <a href="../../postgrest/postgrest/" class="md-nav__link">
         
   
   
@@ -2110,7 +2101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/apigw/" class="md-nav__link">
+      <a href="../../postgrest/apigw/" class="md-nav__link">
         
   
   
@@ -2188,7 +2179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/python/" class="md-nav__link">
+      <a href="../../../runtimes/python/" class="md-nav__link">
         
   
   
@@ -2211,7 +2202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/dbt/" class="md-nav__link">
+      <a href="../../../runtimes/dbt/" class="md-nav__link">
         
   
   
@@ -2234,7 +2225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/container/" class="md-nav__link">
+      <a href="../../../runtimes/container/" class="md-nav__link">
         
   
   
@@ -2257,7 +2248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/kfp_pipelines/" class="md-nav__link">
+      <a href="../../../runtimes/kfp_pipelines/" class="md-nav__link">
         
   
   
@@ -2280,7 +2271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/modelserve/" class="md-nav__link">
+      <a href="../../../runtimes/modelserve/" class="md-nav__link">
         
   
   
@@ -2350,7 +2341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sdk/intro/" class="md-nav__link">
+      <a href="../../../sdk/intro/" class="md-nav__link">
         
   
   
@@ -2420,7 +2411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cli/commands/" class="md-nav__link">
+      <a href="../../../cli/commands/" class="md-nav__link">
         
   
   
@@ -2470,18 +2461,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#writing-a-simple-notebook" class="md-nav__link">
+  <a href="#exposing-speech-to-text-models" class="md-nav__link">
     <span class="md-ellipsis">
-      Writing a simple notebook
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
+      Exposing Speech-to-Text Models
     </span>
   </a>
   
@@ -2503,28 +2485,54 @@
 
 
 
-<h1 id="jupyter">Jupyter</h1>
-<p><a href="https://jupyter.org/">Jupyter</a> is a web-based environment for interactive computing, ideal for testing and prototyping. Some of its main features are:</p>
+<h1 id="managing-speech-to-text-models-with-kubeai-runtime">Managing Speech-to-Text Models with KubeAI Runtime</h1>
+<p>To support the speech-to-text scenario within the platform it is possible to use the KubeAI runtime when the <a href="https://www.kubeai.org/">KubeAI</a> operator is
+enabled. </p>
+<p>To accomplish this, it is possible to use the KubeAI-supported runtime, namely <a href="https://github.com/SYSTRAN/faster-whisper">FasterWhisper</a>.</p>
+<p>For details about the specification, see the corresponding section of <a href="../../../runtimes/modelserve/">Modelserve</a> reference.</p>
+<h2 id="exposing-speech-to-text-models">Exposing Speech-to-Text  Models</h2>
+<p>To expose the  speech-to-text  model, it is possible to use Core UI or Python SDK. To define the corresponding function, the following parameters should be specified:</p>
 <ul>
-<li>Several programming languages supported: <em>Python</em>, <em>R</em>, <em>Julia</em>, <em>C++</em>, <em>Scala</em>...</li>
-<li>Collaborative development environment</li>
-<li>Mix code snippets with markdown-based documentation, charts and graphs</li>
+<li>model name</li>
+<li>model URL. Currently the model can be loaded either from HuggingFace (<code>hf://</code> prefix) or from S3 storage of the platform (<code>s3://</code>)).</li>
 </ul>
-<div class="admonition info">
-<p class="admonition-title">How to access</p>
-<p>Jupyter may be launched from <a href="../../tasks/workspaces/">Coder, using its template</a>. It will ask for the <em>CPU cores</em>, <em>GB of memory</em> and <em>GB of disk space</em> you wish to dedicate to it. Depending on the computation you need, lower values may turn out to be insufficient, but cores and memory may be changed even while the workspace is running.
-After launching it from Coder you can access Jupyter Notebook on <a href="http://nodeipaddress:30040">jupyter-notebook UI (http://nodeipaddress:30040)</a>.</p>
+<p>To serve the text speech-to-text model, the function should be run with the <code>serve</code> action, specifying additional parameters. In particular, it may be necessary to specify the HW profile to use with number of processors or resource specification, and further parameters and arguments accepted by the KubeAI model specification:</p>
+<ul>
+<li><code>args</code>: command-line arguments to pass to the engine</li>
+<li><code>env</code>: custom environment values (key-value pair)</li>
+<li><code>secrets</code>: project secrets to pass the values </li>
+<li><code>files</code>: extra file specifications for the deployment</li>
+<li><code>scaling</code>: scaling specification as of KubeAI documentation</li>
+<li><code>caching_profile</code>: cache profile as of KubeAI documentation.</li>
+</ul>
+<p>For example to deploy a model from HuggingFace, the following procedure may be used:</p>
+<div class="highlight"><pre><span></span><code><span class="n">audio_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;audio&quot;</span><span class="p">,</span>
+                                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;kubeai-speech&quot;</span><span class="p">,</span>
+                                    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;audiomodel&quot;</span><span class="p">,</span>
+                                    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;hf://Systran/faster-whisper-medium.en&quot;</span><span class="p">)</span>
+
+
+<span class="n">run</span> <span class="o">=</span> <span class="n">audio_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">)</span>                                    
+</code></pre></div>
+<p>Once deployed, the model is available and it is possible to call the OpenAI-compatible API from within the platform (<code>/openai/v1/transcriptions</code> endpoint):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">KUBEAI_ENDPOINT</span><span class="si">}</span><span class="s2">/openai/v1&quot;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="n">audio_file</span><span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;kubeai.mp4&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+
+<span class="n">transcription</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">audio</span><span class="o">.</span><span class="n">transcriptions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;audiomodel-123zxc&quot;</span><span class="p">,</span> 
+    <span class="n">file</span><span class="o">=</span><span class="n">audio_file</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">transcription</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+<p>By default, the <code>KUBEAI_ENDPOINT</code> is <code>kubeai</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Model name</p>
+<p>Please note how the model name is defined: it is composed of the name of the model as specified in the function and a random value: <code>&lt;model_name&gt;-&lt;run_id&gt;</code>.
+The name of the generated model as well as the endpoint information can be seen in the run specification (see <code>openai</code> and <code>service</code> section)</p>
 </div>
-<h2 id="writing-a-simple-notebook">Writing a simple notebook</h2>
-<p>When you open Jupyter, the <em>Launcher</em> tab should appear, from which you can create a <em>Python 3</em> notebook. Once clicked, you can already start writing code.
-Alternatively, you can also create a notebook by right-clicking within the <em>File Browser</em> to the left and choosing <em>New Notebook</em>.</p>
-<p>Type some simple code, like <code>print('Hello world!')</code> and press <em>Shift+Enter</em>. Jupyter displays the result of the computation immediately under the code cell and creates a new one.</p>
-<p><img alt="Jupyter image" src="../../images/jupyter.png" /></p>
-<p>You can change the type of a cell by clicking on the drop-down button (<em>Code</em>) at the top of your notebook. By choosing <em>Markdown</em>, you can alternate code and its documentation.</p>
-<h2 id="resources">Resources</h2>
-<ul>
-<li><a href="https://jupyterlab.readthedocs.io/en/latest/">Official documentation</a></li>
-</ul>
 
 
 
@@ -2556,10 +2564,10 @@ Alternatively, you can also create a notebook by right-clicking within the <em>F
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>
