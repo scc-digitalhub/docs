@@ -94,7 +94,7 @@ For example to deploy a model from HuggingFace, the following procedure may be u
 
 ```python
 llm_function = project.new_function("llm",
-                                    kind="kubeai",
+                                    kind="kubeai-text",
                                     model_name="embedding",
                                     url="hf://BAAI/bge-small-en-v1.5",
                                     engine="Infinity",
