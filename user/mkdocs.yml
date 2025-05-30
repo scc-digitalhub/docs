@@ -32,6 +32,7 @@ nav:
       - "components/cli.md"
       - "components/resourcemanager.md"
       - "components/kubeflow.md"
+      - "components/kubeai.md"
       - Interactive Workspaces:
           - "components/jupyter.md"
           - "components/dremio.md"
@@ -58,6 +59,9 @@ nav:
           - "scenarios/mlmlflow/deploy.md"
       - "MLOps: Large Language Models":
           - "scenarios/mlllm/llm.md"
+          - "scenarios/mlllm/llmkubeai.md"
+      - "MLOps: Speech to Text":
+          - "scenarios/mlspeech/kubeaispeech.md"
       - "MLOps: Custom ML model training":
           - "scenarios/ml/intro.md"
           - "scenarios/ml/deploy.md"
