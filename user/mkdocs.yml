@@ -24,15 +24,16 @@ nav:
       - "tasks/kubernetes-resources.md"
       - "tasks/secrets.md"
       - "tasks/workflows.md"
+      - "tasks/triggers.md"
       - "tasks/code-source.md"
-      - "tasks/cli.md"
     #   - "tasks/git.md"
   - Components:
       - "components/dashboard.md"
       - "components/dh_console.md"
-      - "components/cli_commands.md"
+      - "components/cli.md"
       - "components/resourcemanager.md"
       - "components/kubeflow.md"
+      - "components/kubeai.md"
       - Interactive Workspaces:
           - "components/jupyter.md"
           - "components/dremio.md"
@@ -59,6 +60,9 @@ nav:
           - "scenarios/mlmlflow/deploy.md"
       - "MLOps: Large Language Models":
           - "scenarios/mlllm/llm.md"
+          - "scenarios/mlllm/llmkubeai.md"
+      - "MLOps: Speech to Text":
+          - "scenarios/mlspeech/kubeaispeech.md"
       - "MLOps: Custom ML model training":
           - "scenarios/ml/intro.md"
           - "scenarios/ml/deploy.md"
@@ -78,3 +82,6 @@ nav:
 
   - SDK Reference:
       - "sdk/intro.md"
+
+  - CLI Reference:
+      - "cli/commands.md"

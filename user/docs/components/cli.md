@@ -1,8 +1,8 @@
-# Using the platform externally
+# CLI
 
-A command-line interface (CLI) is available, allowing access to certain functionalities of the platform remotely. It can be used to set up the environment and install the Python packages.
+A command-line interface (CLI) is available, allowing access to certain functionalities of the platform remotely.
 
-## CLI installation
+## Installation
 
 ### Linux
 
@@ -49,4 +49,4 @@ dhcli login
 dhcli init
 ```
 
-In-detail descriptions of available commands can be found in [this dedicated section](../components/cli_commands.md).
+In-detail descriptions of available commands can be found in [this dedicated section](../cli/commands.md).
