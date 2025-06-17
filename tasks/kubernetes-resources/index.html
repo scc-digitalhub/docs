@@ -681,11 +681,173 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#managing-kubernetes-resources-with-sdk" class="md-nav__link">
+  <a href="#how-to-define-resource-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Managing Kubernetes Resources with SDK
+      How to define resource requirements
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="How to define resource requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-resources-at-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request resources at runtime
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-templates-and-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource templates and profiles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Available resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Available resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volumes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Volumes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ram-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      RAM memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secrets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Envs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tolerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tolerations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#affinity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Affinity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fs-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      FS group
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-as-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run as user
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-as-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run as group
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -751,12 +913,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../code-source/" class="md-nav__link">
+      <a href="../triggers/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Code source
+    Triggers and automation
     
   </span>
   
@@ -774,12 +936,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
+      <a href="../code-source/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Using the platform externally
+    Code source
     
   </span>
   
@@ -890,7 +1052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/cli_commands/" class="md-nav__link">
+      <a href="../../components/cli/" class="md-nav__link">
         
   
   
@@ -958,6 +1120,29 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../components/kubeai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    KubeAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -969,10 +1154,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_6" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_7" >
         
           
-          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
             
   
   
@@ -985,8 +1170,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
             <span class="md-nav__icon md-icon"></span>
             Interactive Workspaces
           </label>
@@ -1716,6 +1901,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/mlllm/llmkubeai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Managing LLM Models with KubeAI Runtime
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1749,7 +1957,7 @@
   
   
   <span class="md-ellipsis">
-    MLOps: Custom ML model training
+    MLOps: Speech to Text
     
   </span>
   
@@ -1759,6 +1967,77 @@
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_6">
+            <span class="md-nav__icon md-icon"></span>
+            MLOps: Speech to Text
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scenarios/mlspeech/kubeaispeech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Managing Speech-to-Text Models with KubeAI Runtime
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    MLOps: Custom ML model training
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_7">
             <span class="md-nav__icon md-icon"></span>
             MLOps: Custom ML model training
           </label>
@@ -1835,10 +2114,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_7" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_8" >
         
           
-          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
             
   
   
@@ -1851,8 +2130,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_8">
             <span class="md-nav__icon md-icon"></span>
             Dremio transformation
           </label>
@@ -1906,10 +2185,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_8" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_9" >
         
           
-          <label class="md-nav__link" for="__nav_7_8" id="__nav_7_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_9" id="__nav_7_9_label" tabindex="0">
             
   
   
@@ -1922,8 +2201,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_8">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_9">
             <span class="md-nav__icon md-icon"></span>
             API via PostgREST
           </label>
@@ -2268,6 +2547,76 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    CLI Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            CLI Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CLI commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -2295,11 +2644,173 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#managing-kubernetes-resources-with-sdk" class="md-nav__link">
+  <a href="#how-to-define-resource-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Managing Kubernetes Resources with SDK
+      How to define resource requirements
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="How to define resource requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-resources-at-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      Request resources at runtime
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-templates-and-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource templates and profiles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Available resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Available resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volumes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Volumes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ram-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      RAM memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secrets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#envs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Envs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tolerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tolerations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#affinity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Affinity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fs-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      FS group
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-as-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run as user
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-as-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run as group
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2320,10 +2831,9 @@
 
 
 <h1 id="using-kubernetes-resources-for-runs">Using Kubernetes Resources for Runs</h1>
-<h2 id="managing-kubernetes-resources-with-sdk">Managing Kubernetes Resources with SDK</h2>
 <p>When it come to execution of AI tasks, either batch jobs or model serving, it is important to be able to
 allocate an appropriate set of resources, such as memory, GPU, node types, etc.</p>
-<p>For this purpose the platform relies on the standard Kubernetes functionality and resource definitions. More specifically,
+<p>For this purpose the platform relies on Kubernetes functionalities and resource definitions. More specifically,
 the run configuration may have a specific requirements for</p>
 <ul>
 <li>node selection</li>
@@ -2332,12 +2842,116 @@ the run configuration may have a specific requirements for</p>
 <li>Kubernetes affinity definition and/or toleration properties</li>
 <li>Additional secrets and environment variables to be associated with the execution</li>
 </ul>
-<p>In the platform, these requirements may be defined in two ways.</p>
-<p>First, it is possible to configure them explictly when defining the function run, either via Core UI or via SDK. Please note that it is possible to describe only some of these properties, leaving the rest blank without constraints. All the defaults are managed by the underlying Kubernetes deployment.</p>
-<p>Second, it is possible to rely on a set of preconfigured HW profiles defined by the platform deployment. The mechanism of profiles is described in the administration section of the documentation and is managed by the platform admins. The profile allow for abstracting the platform users from the underlying complexity. Each profile corresponds to a specific resource configuration that defines a combination of requirements. For example, the profile may define a specific type of GPU, memory, and CPUs to be used. In this case it is sufficient to specify the corresponding profile name in the run execution configuration to allocate the corresponding resources.</p>
+<h2 id="how-to-define-resource-requirements">How to define resource requirements</h2>
+<p>In the platform, kubernetes resource requirements may be defined in two ways: 
+* by users at run time, by requesting resources to be allocated for a given run,
+* by administrators at deployment time, by configuring defaults and limits along with pre-configured templates and profiles</p>
+<h3 id="request-resources-at-runtime">Request resources at runtime</h3>
+<p>The platform lets users require additional k8s resource to be allocated to a given function's run, either via Core UI or via SDK. Please note that it is possible to describe only some properties, leaving the rest blank without constraints. All the defaults are managed by the platform in accordance with the underlying Kubernetes deployment.</p>
+<p>To define requirements for single runs, developers need to include in the run specification the resource definition, in accordance with the schema.</p>
+<p>For example, to request for a certain amount of compute resources, the spec must contain the detailed definition as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span>
+<span class="w">  </span><span class="nt">mem</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32Gi</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+</code></pre></div>
+<p>In order to provide such definitions, users can leverage the SDK or the Core UI to programmatically or interactively define their request.
+Please see the <a href="https://scc-digitalhub.github.io/sdk-docs/runtimes/kubernetes-resources/">Kubernetes Resources</a> section of the documentation for more information.</p>
+<h3 id="resource-templates-and-profiles">Resource templates and profiles</h3>
+<p>It is possible to rely on a set of preconfigured HW profiles defined during the platform deployment. 
+The profile allow for abstracting the platform users from the underlying complexity. Each profile corresponds to a specific resource configuration that defines a combination of requirements. For example, the profile may define a specific type of GPU, memory, and CPUs to be used. In this case it is sufficient to specify the corresponding profile name in the run execution configuration to allocate the corresponding resources.</p>
+<p>The mechanism of profiles is described in the administration section of the documentation and is managed by the platform admins. Please see <a href="https://scc-digitalhub.github.io/docs/admin/">Resource templates</a> section of the documentation for more information.</p>
 <p>Please note that the requirements defined in the template have priority over those defined by the user and are not overwritten.</p>
-<p>With SDK you can manage Kubernetes resources for your tasks. When you run a function, you can require some Kubernetes resources for the task. Resources and data are specified in the <code>function.run()</code> method.</p>
-<p>Please see the <a href="https://scc-digitalhub.github.io/sdk-docs/runtimes/kubernetes-resources/">Kubernetes Resources</a> section of the documentation for more information.</p>
+<h2 id="available-resources">Available resources</h2>
+<p>The section lists all the resources available to users for runs. </p>
+<h3 id="volumes">Volumes</h3>
+<p>Users can ask for a persistent volume claim (pvc) to be created and mounted on the container being launched by the task.
+You need to declare the volume type as <code>persistent_volume_claim</code>, a name for the PVC for the user (e.g., <code>my-pvc</code>), the mount path on the container and a spec with the size of the PV to be reserved.
+The platform will create the volume and bind it to the pod lifecycle.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">volume_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;persistent_volume_claim&quot;</span><span class="err">,</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-pvc&quot;</span><span class="err">,</span>
+<span class="w">          </span><span class="nt">mount_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/data&quot;</span><span class="err">,</span>
+<span class="w">          </span><span class="nt">spec</span><span class="p">:</span><span class="w"> </span>
+<span class="w">            </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10Gi&quot;</span><span class="err">,</span>
+</code></pre></div>
+<p>Note: the platform can be configured to block the usage of pre-existing volumes for security reasons. Volumes created by the platform for specific runs as ReadWriteOnce and used exclusively by the platform.</p>
+<h3 id="hardware-resources">Hardware Resources</h3>
+<p>Users can request a specific amount of hardware resources (cpu, memory, gpu) for a given run by declaring them  via the <code>resources</code> spec parameter.</p>
+<p>Supported resources are:</p>
+<ul>
+<li><strong>CPU</strong></li>
+<li><strong>RAM memory</strong></li>
+<li><strong>GPU</strong></li>
+</ul>
+<h4 id="cpu">CPU</h4>
+<p>To request a specific amount of CPU for the run, declare the resource type as <code>cpu</code> and specify request and/or limit values.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
+<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;12&quot;</span>
+</code></pre></div>
+<h4 id="ram-memory">RAM memory</h4>
+<p>To request a specific amount of RAM memory for the run, declare the resource type as <code>mem</code> and specify request and/or limit values.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">mem</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32Gi</span>
+<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64Gi</span>
+</code></pre></div>
+<h4 id="gpu">GPU</h4>
+<p>To request GPU resources, specify the resource type <code>gpu</code> and set the requested value as a limit.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="w">    </span>
+</code></pre></div>
+<h3 id="secrets">Secrets</h3>
+<p>Users can request a secret injection into the run being launched by passing the identifier inside the <code>secrets</code> field.
+Secrets must be stored via the platform: externally defined secrets (for example in k8s) are not accessible to users for security reasons.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-secret-key</span>
+</code></pre></div>
+<h3 id="envs">Envs</h3>
+<p>User can inject environment variables injection into the container being launched by passing definition of variables as key/value inside the <code>envs</code> field.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">envs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENV1</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VALU123123</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENV2</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VALU123123</span><span class="w">  </span>
+</code></pre></div>
+<h3 id="node-selection">Node selection</h3>
+<p>Users can request a node selector for the run being launched by defining the selector(s) as a key/value list. 
+The platform will add the selectors as-is to k8s resources such as Jobs, Pods, Deployments when appropriate.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">node_selector</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">selectorKey</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">selectValue</span>
+</code></pre></div>
+<p>See <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector">K8s Documentation</a> for reference.</p>
+<h3 id="tolerations">Tolerations</h3>
+<p>To define tolerations add the definition inside the <code>tolerations</code> field of the spec, following Kubernetes specifications.
+Please see <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Kubernetes documentation</a>.</p>
+<h3 id="affinity">Affinity</h3>
+<p>To define affinity add the definition inside the <code>affinity</code> field of the spec, following Kubernetes specifications.
+Please see <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity">Kubernetes documentation</a>.</p>
+<h3 id="fs-group">FS group</h3>
+<p>To properly map volumes mounted for runs, users can specify the group id used for mount operations. This step is required when the USER used to run the process does not match the default.
+Define the <code>fs_group</code> field by specifying the group id as integer.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">fs_group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+</code></pre></div>
+<h3 id="run-as-user">Run as user</h3>
+<p>The process run inside the container is owned by the USER defined in the container manifest. For security reasons, the platform does not allow containers to be run as root.
+User can ask for a different, specific user id to be used, by defining the <code>run_as_user</code> field.
+It accepts an integer value.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">run_as_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+</code></pre></div>
+<h3 id="run-as-group">Run as group</h3>
+<p>The process run inside the container is owned by the GROUP defined in the container manifest. For security reasons, the platform does not allow containers to be run as root.
+User can ask for a different, specific group id to be used, by defining the <code>run_as_group</code> field. 
+It accepts an integer value.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">run_as_group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+</code></pre></div>
 
 
 
