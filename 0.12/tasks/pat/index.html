@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/tasks/run-resources/">
+        <link rel="canonical" href="http://docs/user/tasks/pat/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Configuring resource-critical executions - Digital Hub</title>
+        <title>Personal Access Tokens (PATs) - Digital Hub</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuring-resource-critical-executions" class="md-skip">
+        <a href="#personal-access-tokens-pats" class="md-skip">
           Skip to content
         </a>
       
@@ -236,7 +236,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Configuring resource-critical executions
+              Personal Access Tokens (PATs)
             
           </span>
         </div>
@@ -2428,6 +2428,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#token-management-via-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token management via UI
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2442,22 +2468,75 @@
 
 
 
-<h1 id="configuring-resource-critical-executions">Configuring resource-critical executions</h1>
-<p>When it come to execution of AI tasks, either batch jobs or model serving, it is important to be able to
-allocate an appropriate set of resources, such as memory, GPU, node types, etc.</p>
-<p>For this purpose the platform relies on the standard Kubernetes functionality and resource definitions. More specifically,
-the run configuration may have a specific requirements for</p>
+<h1 id="personal-access-tokens-pats">Personal Access Tokens (PATs)</h1>
+<p>Personal Access Tokens (PATs) are a special type of access token that users can generate directly from the platform’s web console. PATs are designed to simplify user authentication for long-lived or automation-related use cases, offering the same functionality as standard access tokens with additional control features.</p>
+<p>Key Characteristics:</p>
 <ul>
-<li>node selection</li>
-<li>volumes (Persistent Volume Claims and Config Maps)</li>
-<li>HW resources in terms of CPU and memory requests and limits, numbers of GPUs</li>
-<li>Kubernetes affinity definition and/or toleration properties</li>
-<li>Additional secrets and environment variables to be associated with the execution</li>
+<li>
+<p><strong>No Automatic Expiration by Default</strong>:
+    PATs do not expire automatically unless an expiration policy is enforced by platform administrators. This makes them suitable for use cases requiring persistent access without frequent reauthentication.</p>
+</li>
+<li>
+<p><strong>Interoperable with Standard Access Token Workflows</strong>:
+    PATs can be used in any context where a standard access token is accepted, including calling APIs and authenticating with platform services.</p>
+</li>
+<li>
+<p><strong>Supports Token Exchange (Security Token Service - STS)</strong>:
+    PATs can be used in token exchange flows to obtain short-lived standard access tokens and associated credentials, aligning with security best practices for downstream service interactions.</p>
+</li>
+<li>
+<p><strong>Named Tokens</strong>:
+    Each PAT must be assigned a human-readable name upon creation. This name helps users identify and manage their tokens more easily in the web console.</p>
+</li>
+<li>
+<p><strong>User-Controlled Lifecycle Management</strong>:
+    PATs can be revoked at any time by their owner via the web console, providing a manual method of invalidating tokens if they are no longer needed or are believed to be compromised.</p>
+</li>
+<li>
+<p><strong>Opaque Format</strong>:
+    PATs are opaque strings, meaning their contents are not encoded in a readable format like JWTs (JSON Web Tokens). Their structure and claims are not introspectable by clients and must be validated by the platform.</p>
+</li>
 </ul>
-<p>In the platform, these requirements may be defined in two ways.</p>
-<p>First, it is possible to configure them explictly when defining the function run, either via Core UI or via SDK. Please note that it is possible to describe only some of these properties, leaving the rest blank without constraints. All the defaults are managed by the underlying Kubernetes deployment.</p>
-<p>Second, it is possible to rely on a set of preconfigured HW profiles defined by the platform deployment. The mechanism of profiles is described in the administration section of the documentation and is managed by the platform admins. The profile allow for abstracting the platform users from the underlying complexity. Each profile corresponds to a specific resource configuration that defines a combination of requirements. For example, the profile may define a specific type of GPU, memory, and CPUs to be used. In this case it is sufficient to specify the corresponding profile name in the run execution configuration to allocate the corresponding resources.</p>
-<p>Please note that the requirements defined in the template have priority over those defined by the user and are not overwritten.</p>
+<p>Typical Use Cases</p>
+<ul>
+<li>
+<p>Command-line tools or scripts requiring persistent access without interactive login</p>
+</li>
+<li>
+<p>Integration with CI/CD pipelines</p>
+</li>
+<li>
+<p>Applications that require non-expiring or manually managed credentials</p>
+</li>
+<li>
+<p>Access delegation to long-lived background jobs</p>
+</li>
+</ul>
+<h3 id="security-considerations">Security Considerations</h3>
+<p>Because PATs typically do not expire automatically and are opaque, they should be treated as sensitive credentials. It is strongly recommended to:</p>
+<ul>
+<li>
+<p>Store PATs securely (e.g., in encrypted secrets managers)</p>
+</li>
+<li>
+<p>Use token exchange to obtain short-lived credentials for actual API calls</p>
+</li>
+<li>
+<p>Regularly review and rotate PATs</p>
+</li>
+<li>
+<p>Revoke unused or compromised tokens immediately</p>
+</li>
+</ul>
+<h2 id="token-management-via-ui">Token management via UI</h2>
+<p>When logged in the web console, users can create, review and revoke <strong>Personal Access Tokens</strong> from the user menu, accessible via the top right dropdown with the username. </p>
+<p><img alt="User menu" src="../../images/console/user-menu.png" /></p>
+<p>Select <em>configuration</em> to open the user management page and then scroll down to the <em>Personal Access Tokens</em> section.</p>
+<p><img alt="PAT section" src="../../images/console/pat-section.png" /></p>
+<p>When adding a <em>PAT</em>, the form asks for a name and then lets users select which kind of permissions will be given to the newly created token. On creation, the token <em>value</em> will be shown once, and then stored secretly in the platform.</p>
+<p><strong>Copy the token value and store securely: it won't be readable anymore!</strong></p>
+<p><img alt="PAT creation" src="../../images/console/pat-create.png" /></p>
+<p>From now on, the token can be freely used wherever an <em>access token</em> would be required. At any given time, owner can revoke the token from the same page by selecting <em>Delete</em> and confirming the removal.</p>
 
 
 
