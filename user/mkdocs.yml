@@ -26,6 +26,7 @@ nav:
       - "tasks/workflows.md"
       - "tasks/triggers.md"
       - "tasks/code-source.md"
+      - "tasks/pat.md"      
     #   - "tasks/git.md"
   - Components:
       - "components/dashboard.md"
