@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/tasks/workspaces/">
+        <link rel="canonical" href="http://docs/user/tasks/pat/">
       
       
-        <link rel="prev" href="../functions/">
+        <link rel="prev" href="../code-source/">
       
       
-        <link rel="next" href="../resources/">
+        <link rel="next" href="../../components/dashboard/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Workspaces - Digital Hub</title>
+        <title>Personal Access Tokens (PATs) - Digital Hub</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#workspaces" class="md-skip">
+        <a href="#personal-access-tokens-pats" class="md-skip">
           Skip to content
         </a>
       
@@ -238,7 +238,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Workspaces
+              Personal Access Tokens (PATs)
             
           </span>
         </div>
@@ -542,32 +542,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Workspaces
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../workspaces/" class="md-nav__link">
         
   
   
@@ -578,77 +556,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#access-the-workspace-in-a-local-terminal" class="md-nav__link">
-    <span class="md-ellipsis">
-      Access the workspace in a local terminal
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#port-forwarding" class="md-nav__link">
-    <span class="md-ellipsis">
-      Port-forwarding
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Port-forwarding">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#public" class="md-nav__link">
-    <span class="md-ellipsis">
-      Public
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#local" class="md-nav__link">
-    <span class="md-ellipsis">
-      Local
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -842,10 +749,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../pat/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Personal Access Tokens (PATs)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -856,6 +785,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#token-management-via-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token management via UI
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2553,51 +2520,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#access-the-workspace-in-a-local-terminal" class="md-nav__link">
+  <a href="#security-considerations" class="md-nav__link">
     <span class="md-ellipsis">
-      Access the workspace in a local terminal
+      Security Considerations
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#port-forwarding" class="md-nav__link">
+  <a href="#token-management-via-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      Port-forwarding
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Port-forwarding">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#public" class="md-nav__link">
-    <span class="md-ellipsis">
-      Public
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#local" class="md-nav__link">
-    <span class="md-ellipsis">
-      Local
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
+      Token management via UI
     </span>
   </a>
   
@@ -2619,69 +2553,75 @@
 
 
 
-<h1 id="workspaces">Workspaces</h1>
-<p>While core tools of the platform are already up and running after installation, other components have to be individually deployed. This is easily and quickly done by creating workspaces in <em>Coder</em>, by using templates.</p>
-<p>Open your browser and go to the address of the Coder instance of the platform which should have been provided to you. You will need to sign in and will then be directed to the <em>Workspaces</em> page.</p>
-<p>Access the <em>Templates</em> tab at the top. Available templates are listed.</p>
-<p><img alt="Coder templates image" src="../../images/coder-templates.png" /></p>
-<p>To deploy one of these tools, click its corresponding <em>Use template</em> button. It will ask for a name for the workspace, the owner, and possibly a number of configurations that change depending on the template. More details on each template's configuration will be described in its respective component's section.</p>
-<p>Once a component has been created, it will appear under the <em>Workspaces</em> tab, but may take a few minutes before it's <em>Running</em>. Then, you can click on it to open its overview, and access the tools it offers by using the buttons above the logs.</p>
-<p>Workspaces in Coder contain dependencies and configuration required for applications to run.</p>
-<p>Let's take a look at how to access the workspace in a terminal.</p>
-<p>The easiest and fastest way is to simply click on the <em>Terminal</em> button above the logs, which will open a terminal in your browser that allows you to browse the workspace's environment.</p>
-<p><img alt="Coder buttons image" src="../../images/coder-buttons.png" /></p>
-<p>If you click on <em>VS Code Desktop</em>, it will open a connection to the workspace in your local instance of <em>VSCode</em> and you can open a terminal by clicking <em>Terminal</em> &gt; <em>New Terminal</em>.</p>
-<h2 id="access-the-workspace-in-a-local-terminal">Access the workspace in a local terminal</h2>
-<p>You can also connect your local terminal to the workspace via SSH. If you click on <em>SSH</em>, it will show some commands you need to run in your terminal, but first you have to install the <code>coder</code> command and log into the Coder instance.</p>
-<p>Install <code>coder</code>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux / macOS</label><label for="__tabbed_1_2">From binaries (Windows)</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://coder.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<p>Download the <a href="https://github.com/coder/coder/releases">release</a> for your OS (for example: <code>coder_0.27.2_windows_amd64.zip</code>), unzip it and move the <code>coder</code> executable to a location that's on your <code>PATH</code>. If you need to know how to add a directory to <code>PATH</code>, follow <a href="https://answers.microsoft.com/en-us/windows/forum/all/adding-path-variable/97300613-20cb-4d85-8d0e-cc9d3549ba23">this</a>.</p>
-<div class="admonition info">
-<p class="admonition-title">Restart the command prompt</p>
-<p>If it is already running, you will need to restart the <em>Command Prompt</em> for this change to take into effect.</p>
-</div>
-</div>
-</div>
-</div>
-<p>Log in:
-<div class="highlight"><pre><span></span><code>coder<span class="w"> </span>login<span class="w"> </span>https://coder.my-digitalhub-instance.it
-</code></pre></div>
-A tab will open in your browser, ask you to log-in if you haven't already, then display a token that you're supposed to copy and paste in the terminal.</p>
-<p><img alt="Coder token image" src="../../images/coder-token.png" /></p>
-<p>Now you can run the two commands you saw when you clicked on <em>SSH</em>. Configure SSH hosts (confirm with <code>yes</code> when asked):
-<div class="highlight"><pre><span></span><code>coder<span class="w"> </span>config-ssh
-</code></pre></div>
-Note that, if you create new workspaces after running this command, you will need to re-run it to connect to them.</p>
-<p>The sample command below displays how to connect to the Jupyter workspace and will differ depending on the workspace you want to connect to. Take the actual command from what you see when you click <em>SSH</em> on Coder.
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>coder.jupyter.jupyter
-</code></pre></div></p>
-<p>Your terminal should now be connected to the workspace. When you want to terminate the connection, simply type <code>exit</code>. To log coder out, type <code>coder logout</code>.</p>
-<h2 id="port-forwarding">Port-forwarding</h2>
-<p>Port-forwarding may be done on any port: there are no pre-configured ones and it will work as long as there is a service listening on that port. Ports may be forwarded to make a service public, or through a local session.</p>
-<h3 id="public">Public</h3>
-<p>This can be done from Coder, directly from the workspace's page. Click on <em>Port forward</em>, enter the port number and click <em>Open URL</em>. Users will have to log in to access the service.</p>
-<h3 id="local">Local</h3>
-<p>You can start a SSH port-forwarding session from your local terminal. First, log in:
-<div class="highlight"><pre><span></span><code>coder<span class="w"> </span>login<span class="w"> </span>https://coder.my-digitalhub-instance.it
-</code></pre></div></p>
-<p>The format for the SSH port-forwarding command is:
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-L<span class="w"> </span><span class="o">[</span>localport<span class="o">]</span>:localhost:<span class="o">[</span>remoteport<span class="o">]</span><span class="w"> </span>coder.<span class="o">[</span>workspace<span class="o">]</span>
-</code></pre></div></p>
-<p>For example, it may be:
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>-L<span class="w"> </span><span class="m">3000</span>:localhost:3000<span class="w"> </span>coder.jupyter.jupyter
-</code></pre></div></p>
-<p>You will now be able to access the service in your browser, at <code>localhost:3000</code>.</p>
-<h2 id="resources">Resources</h2>
+<h1 id="personal-access-tokens-pats">Personal Access Tokens (PATs)</h1>
+<p>Personal Access Tokens (PATs) are a special type of access token that users can generate directly from the platform’s web console. PATs are designed to simplify user authentication for long-lived or automation-related use cases, offering the same functionality as standard access tokens with additional control features.</p>
+<p>Key Characteristics:</p>
 <ul>
-<li><a href="https://coder.com/docs/v2/latest/install">Official documentation</a> on installation</li>
-<li><a href="https://coder.com/docs/v2/latest/workspaces">Official documentation</a> on Coder workspaces</li>
+<li>
+<p><strong>No Automatic Expiration by Default</strong>:
+    PATs do not expire automatically unless an expiration policy is enforced by platform administrators. This makes them suitable for use cases requiring persistent access without frequent reauthentication.</p>
+</li>
+<li>
+<p><strong>Interoperable with Standard Access Token Workflows</strong>:
+    PATs can be used in any context where a standard access token is accepted, including calling APIs and authenticating with platform services.</p>
+</li>
+<li>
+<p><strong>Supports Token Exchange (Security Token Service - STS)</strong>:
+    PATs can be used in token exchange flows to obtain short-lived standard access tokens and associated credentials, aligning with security best practices for downstream service interactions.</p>
+</li>
+<li>
+<p><strong>Named Tokens</strong>:
+    Each PAT must be assigned a human-readable name upon creation. This name helps users identify and manage their tokens more easily in the web console.</p>
+</li>
+<li>
+<p><strong>User-Controlled Lifecycle Management</strong>:
+    PATs can be revoked at any time by their owner via the web console, providing a manual method of invalidating tokens if they are no longer needed or are believed to be compromised.</p>
+</li>
+<li>
+<p><strong>Opaque Format</strong>:
+    PATs are opaque strings, meaning their contents are not encoded in a readable format like JWTs (JSON Web Tokens). Their structure and claims are not introspectable by clients and must be validated by the platform.</p>
+</li>
 </ul>
+<p>Typical Use Cases</p>
+<ul>
+<li>
+<p>Command-line tools or scripts requiring persistent access without interactive login</p>
+</li>
+<li>
+<p>Integration with CI/CD pipelines</p>
+</li>
+<li>
+<p>Applications that require non-expiring or manually managed credentials</p>
+</li>
+<li>
+<p>Access delegation to long-lived background jobs</p>
+</li>
+</ul>
+<h3 id="security-considerations">Security Considerations</h3>
+<p>Because PATs typically do not expire automatically and are opaque, they should be treated as sensitive credentials. It is strongly recommended to:</p>
+<ul>
+<li>
+<p>Store PATs securely (e.g., in encrypted secrets managers)</p>
+</li>
+<li>
+<p>Use token exchange to obtain short-lived credentials for actual API calls</p>
+</li>
+<li>
+<p>Regularly review and rotate PATs</p>
+</li>
+<li>
+<p>Revoke unused or compromised tokens immediately</p>
+</li>
+</ul>
+<h2 id="token-management-via-ui">Token management via UI</h2>
+<p>When logged in the web console, users can create, review and revoke <strong>Personal Access Tokens</strong> from the user menu, accessible via the top right dropdown with the username. </p>
+<p><img alt="User menu" src="../../images/console/user-menu.png" /></p>
+<p>Select <em>configuration</em> to open the user management page and then scroll down to the <em>Personal Access Tokens</em> section.</p>
+<p><img alt="PAT section" src="../../images/console/pat-section.png" /></p>
+<p>When adding a <em>PAT</em>, the form asks for a name and then lets users select which kind of permissions will be given to the newly created token. On creation, the token <em>value</em> will be shown once, and then stored secretly in the platform.</p>
+<p><strong>Copy the token value and store securely: it won't be readable anymore!</strong></p>
+<p><img alt="PAT creation" src="../../images/console/pat-create.png" /></p>
+<p>From now on, the token can be freely used wherever an <em>access token</em> would be required. At any given time, owner can revoke the token from the same page by selecting <em>Delete</em> and confirming the removal.</p>
 
 
 
