@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -2588,6 +2588,51 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    <span class="md-ellipsis">
+      run
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      log
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stop" class="md-nav__link">
+    <span class="md-ellipsis">
+      stop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resume" class="md-nav__link">
+    <span class="md-ellipsis">
+      resume
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2753,6 +2798,51 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    <span class="md-ellipsis">
+      run
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      log
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stop" class="md-nav__link">
+    <span class="md-ellipsis">
+      stop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resume" class="md-nav__link">
+    <span class="md-ellipsis">
+      resume
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2770,7 +2860,7 @@
 
 
 <h1 id="cli-commands">CLI commands</h1>
-<p>Available CLI commands and their parameters are listed here. In these examples, the executable is named <code>dhcli</code>. When you provide flag parameters, make sure they are listed <strong>before</strong> positional ones.</p>
+<p>Available CLI commands and their parameters are listed here. In these examples, the executable is named <code>dhcli</code>.</p>
 <p>If you need to install the CLI, refer to <a href="../../components/cli/">this section</a>.</p>
 <div class="admonition info">
 <p class="admonition-title">Run commands</p>
@@ -2800,15 +2890,15 @@ This will set the default environment.</p>
 <h3 id="login"><code>login</code></h3>
 <p><code>login</code> is to be used after registering an environment with the <code>register</code> command. It takes the following parameters:</p>
 <ul>
-<li><code>environment</code> <em>Optional</em>.</li>
+<li><code>-e environment</code> <em>Optional</em>.</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>login<span class="w"> </span>example
+<p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>login<span class="w"> </span>-e<span class="w"> </span>example
 </code></pre></div>
 It will read the corresponding section from the configuration file and start the log in procedure. It will update this section with the access token obtained. If no environment is specified, it will use the default one.</p>
 <h3 id="refresh"><code>refresh</code></h3>
 <p><code>refresh</code> is to be used after the <code>login</code> command, to update <code>access_token</code> and <code>refresh_token</code>. It takes the following parameters:</p>
 <ul>
-<li><code>environment</code> <em>Optional</em></li>
+<li><code>-e environment</code> <em>Optional</em></li>
 </ul>
 <p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>refresh<span class="w"> </span>example
 </code></pre></div>
@@ -2824,7 +2914,7 @@ It will remove the section from the configuration file.</p>
 <h3 id="init"><code>init</code></h3>
 <p><code>init</code> is used to install the platform's Python packages; therefore, Python must be installed. It takes the following parameters:</p>
 <ul>
-<li><code>environment</code> <em>Optional</em></li>
+<li><code>-e environment</code> <em>Optional</em></li>
 </ul>
 <p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>init<span class="w"> </span>example
 </code></pre></div>
@@ -2875,9 +2965,9 @@ It will match core's minor version as indicated in the specified environment. If
 <li><code>-e environment</code> <em>Optional</em></li>
 <li><code>-o output_format</code> <em>Optional</em>. Accepts <code>short</code>, <code>json</code>, <code>yaml</code>. Defaults to <code>short</code>.</li>
 <li><code>-p project</code> <em>Optional</em> (ignored) for projects, <strong>mandatory</strong> otherwise.</li>
-<li><code>-n name</code> <em>Optional</em> (ignored) if <code>id</code> is missing, <strong>mandatory</strong> otherwise. Will return latest version of specified resource.</li>
+<li><code>-n name</code> <em>Ignored</em> if <code>id</code> is present, otherwise <strong>mandatory</strong> and will return the latest version of the specified resource.</li>
 <li><code>resource</code> <strong>Mandatory</strong></li>
-<li><code>id</code> <em>Optional</em> if <code>-n name</code> is missing, <strong>mandatory</strong> otherwise.</li>
+<li><code>id</code> <em>Alternative</em> to <code>-n name</code>.</li>
 </ul>
 <p>Similarly to the <code>list</code> command, <code>output_format</code> determines how the output will be formatted. The default value, <code>short</code>, is meant to be used to quickly check resources in the terminal, while <code>json</code> and <code>yaml</code> will format the output accordingly, making it ideal to write to file.</p>
 <p>Get project:</p>
@@ -2921,6 +3011,66 @@ It will match core's minor version as indicated in the specified environment. If
 <p>Delete an artifact, skip confirmation:
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>delete<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-y<span class="w"> </span>artifacts<span class="w"> </span>my-artifact-id
 </code></pre></div></p>
+<h3 id="run"><code>run</code></h3>
+<p>Creates a run of the specified function. It takes the following parameters:</p>
+<ul>
+<li><code>-e environment</code> <em>Optional</em></li>
+<li><code>-p project</code> <strong>Mandatory</strong></li>
+<li><code>-n name_of_function</code> <em>Ignored</em> if <code>id</code> is specified, otherwise <strong>mandatory</strong> and will run the latest version of the function.</li>
+<li><code>-i id</code> <em>Alternative</em> to <code>-n name_of_function</code>.</li>
+<li><code>-f yaml_file_path</code> <em>Optional</em>, can contain additional parameters for the run.</li>
+<li><code>task</code> <strong>Mandatory</strong>. Must contain a valid task, such as <code>python+build</code>.</li>
+</ul>
+<p>Create a <code>python+build</code> run of latest version of <code>my-function</code>:
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-n<span class="w"> </span>my-function<span class="w"> </span>python+build
+</code></pre></div></p>
+<h3 id="log"><code>log</code></h3>
+<p>Returns the logs of the specified resource. It takes the following parameters:</p>
+<ul>
+<li><code>-e environment</code> <em>Optional</em></li>
+<li><code>-p project</code> <strong>Mandatory</strong></li>
+<li><code>-c container</code> <em>Optional</em>, ID of the container to read logs from. If not specified, the main container will be picked.</li>
+<li><code>-f</code> <em>Optional</em>, will update the printed logs periodically if set.</li>
+<li><code>resource</code> <strong>Mandatory</strong></li>
+<li><code>id</code> <strong>Mandatory</strong></li>
+</ul>
+<p>Retrieve and follow logs from the main container of a run:
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>log<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>run<span class="w"> </span>my-run-id
+</code></pre></div></p>
+<h3 id="metrics"><code>metrics</code></h3>
+<p>Returns metrics for the specified resource. It takes the following parameters:</p>
+<ul>
+<li><code>-e environment</code> <em>Optional</em></li>
+<li><code>-p project</code> <strong>Mandatory</strong></li>
+<li><code>-c container</code> <em>Optional</em>, ID of the container to read metrics from. If not specified, the main container will be picked.</li>
+<li><code>resource</code> <strong>Mandatory</strong></li>
+<li><code>id</code> <strong>Mandatory</strong></li>
+</ul>
+<p>Retrieve metrics from the main container of a run:
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>metrics<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>run<span class="w"> </span>my-run-id
+</code></pre></div></p>
+<h3 id="stop"><code>stop</code></h3>
+<p>Stops a resource. It takes the following parameters:</p>
+<ul>
+<li><code>-e environment</code> <em>Optional</em></li>
+<li><code>-p project</code> <strong>Mandatory</strong></li>
+<li><code>resource</code> <strong>Mandatory</strong></li>
+<li><code>id</code> <strong>Mandatory</strong></li>
+</ul>
+<p>Stop a run:
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>stop<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>run<span class="w"> </span>my-run-id
+</code></pre></div></p>
+<h3 id="resume"><code>resume</code></h3>
+<p>Resumes a resource. It takes the following parameters:</p>
+<ul>
+<li><code>-e environment</code> <em>Optional</em></li>
+<li><code>-p project</code> <strong>Mandatory</strong></li>
+<li><code>resource</code> <strong>Mandatory</strong></li>
+<li><code>id</code> <strong>Mandatory</strong></li>
+</ul>
+<p>Resume a run:
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>resume<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>run<span class="w"> </span>my-run-id
+</code></pre></div></p>
 
 
 
@@ -2955,7 +3105,7 @@ It will match core's minor version as indicated in the specified environment. If
       <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
       
     
   </body>
