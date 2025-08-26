@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
     
     
       
@@ -2535,21 +2535,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="create">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#resource-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource types
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -2628,6 +2613,24 @@
   <a href="#resume" class="md-nav__link">
     <span class="md-ellipsis">
       resume
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download" class="md-nav__link">
+    <span class="md-ellipsis">
+      download
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      upload
     </span>
   </a>
   
@@ -2745,21 +2748,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="create">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#resource-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource types
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -2838,6 +2826,24 @@
   <a href="#resume" class="md-nav__link">
     <span class="md-ellipsis">
       resume
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download" class="md-nav__link">
+    <span class="md-ellipsis">
+      download
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      upload
     </span>
   </a>
   
@@ -2936,8 +2942,6 @@ It will match core's minor version as indicated in the specified environment. If
 <p>Create an artifact, while resetting its ID:
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>create<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-f<span class="w"> </span>samples/artifact.yaml<span class="w"> </span>-reset-id<span class="w"> </span>artifacts
 </code></pre></div></p>
-<h4 id="resource-types">Resource types</h4>
-<p>The <code>resource</code> positional parameter can accept any value (to support future updates), but if an invalid one is specified, the CLI will forward the error returned by core. This parameter is used in building the endpoint of the URL for the API call to core's back-end, therefore, it is possible to specify aliases for a resource in the <code>config.json</code> file.</p>
 <h3 id="list"><code>list</code></h3>
 <p><code>list</code> returns a list of resources of the specified type. It takes the following parameters:</p>
 <ul>
@@ -3071,6 +3075,26 @@ It will match core's minor version as indicated in the specified environment. If
 <p>Resume a run:
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>resume<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>run<span class="w"> </span>my-run-id
 </code></pre></div></p>
+<h3 id="download"><code>download</code></h3>
+<p>Downloads a resource. It takes the following parameters:</p>
+<ul>
+<li><code>-e environment</code></li>
+<li><code>-p project</code></li>
+<li><code>-n name</code></li>
+<li><code>-o output_filename_or_dir</code></li>
+<li><code>resource</code></li>
+<li><code>id</code></li>
+</ul>
+<h3 id="upload"><code>upload</code></h3>
+<p>Uploads a resource. takes the following parameters:</p>
+<ul>
+<li><code>-e environment</code></li>
+<li><code>-p project</code></li>
+<li><code>-n name</code></li>
+<li><code>-f input_filename_or_dir</code></li>
+<li><code>resource</code></li>
+<li><code>id</code></li>
+</ul>
 
 
 
@@ -3102,10 +3126,10 @@ It will match core's minor version as indicated in the specified environment. If
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
       
     
   </body>
