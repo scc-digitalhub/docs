@@ -98,9 +98,6 @@ Create an artifact, while resetting its ID:
 dhcli create -p my-project -f samples/artifact.yaml -reset-id artifacts
 ```
 
-#### Resource types
-The `resource` positional parameter can accept any value (to support future updates), but if an invalid one is specified, the CLI will forward the error returned by core. This parameter is used in building the endpoint of the URL for the API call to core's back-end, therefore, it is possible to specify aliases for a resource in the `config.json` file.
-
 ### `list`
 `list` returns a list of resources of the specified type. It takes the following parameters:
 
@@ -268,3 +265,23 @@ Resume a run:
 ``` sh
 dhcli resume -p my-project run my-run-id
 ```
+
+### `download`
+Downloads a resource. It takes the following parameters:
+
+- `-e environment`
+- `-p project`
+- `-n name`
+- `-o output_filename_or_dir`
+- `resource`
+- `id`
+
+### `upload`
+Uploads a resource. takes the following parameters:
+
+- `-e environment`
+- `-p project`
+- `-n name`
+- `-f input_filename_or_dir`
+- `resource`
+- `id`
