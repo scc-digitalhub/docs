@@ -28,13 +28,7 @@ def pipeline():
                 inputs={"di": A.get_parameter("dataset")},
                 outputs=["dataset-measures"],
             )
-            D = step(
-                template={"action": "serve", "init_parameters": {"dataitem": "{{inputs.parameters.dataitem}}"}},
-                function="api",
-                inputs={"dataitem": C.get_parameter("dataset-measures")},
-            )
             A >> [B, C]
-            C >> D
     return w
 ```
 

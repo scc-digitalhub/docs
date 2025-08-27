@@ -67,7 +67,7 @@ Please note that other than defining the handler method, it is possible to defin
 Deploy the function (perform ``serve`` action):
 
 ```python
-run_serve_model = api_func.run("serve", wait=True)
+run_serve_model = api_func.run("serve", init_parameters={"dataitem": "dataset-measures"}, wait=True)
 ```
 
 Wait till the deployment is complete and the necessary pods and services are up and running.
