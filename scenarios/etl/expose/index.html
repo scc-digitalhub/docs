@@ -2600,7 +2600,7 @@
 </code></pre></div>
 <p>Please note that other than defining the handler method, it is possible to define the <code>init_function</code> to define the preparatory steps.</p>
 <p>Deploy the function (perform <code>serve</code> action):</p>
-<div class="highlight"><pre><span></span><code><span class="n">run_serve_model</span> <span class="o">=</span> <span class="n">api_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">run_serve_model</span> <span class="o">=</span> <span class="n">api_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">init_parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dataitem&quot;</span><span class="p">:</span> <span class="s2">&quot;dataset-measures&quot;</span><span class="p">},</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Wait till the deployment is complete and the necessary pods and services are up and running.</p>
 <div class="highlight"><pre><span></span><code><span class="n">run_serve_model</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
