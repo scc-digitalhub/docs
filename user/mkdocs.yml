@@ -26,7 +26,7 @@ nav:
       - "tasks/workflows.md"
       - "tasks/triggers.md"
       - "tasks/code-source.md"
-      - "tasks/pat.md"      
+      - "tasks/pat.md"
     #   - "tasks/git.md"
   - Components:
       - "components/dashboard.md"
@@ -78,7 +78,7 @@ nav:
       - Python: "runtimes/python.md"
       - DBT: "runtimes/dbt.md"
       - Container: "runtimes/container.md"
-      - Pipelines: "runtimes/kfp_pipelines.md"
+      - Pipelines: "runtimes/hera.md"
       - Modelserve: "runtimes/modelserve.md"
 
   - SDK Reference:

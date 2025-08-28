@@ -4,4 +4,4 @@ The **DBT runtime** allows you to run [DBT](https://www.getdbt.com/) transformat
 
 ## Management with SDK
 
-Check the [SDK DBT runtime documentation](https://scc-digitalhub.github.io/sdk-docs/runtimes/dbt/) for more information.
+Check the [SDK DBT runtime documentation](https://scc-digitalhub.github.io/sdk-docs/reference/runtimes/dbt/overview/) for more information.
