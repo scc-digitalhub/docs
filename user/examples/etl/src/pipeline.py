@@ -1,26 +1,26 @@
 
-from digitalhub_runtime_kfp.dsl import pipeline_context
+from digitalhub_runtime_hera.dsl import step
+from hera.workflows import DAG, Parameter, Workflow
 
-def pipeline(url):
-    with pipeline_context() as pc:
-        downloader = pc.step(
-            name="download-data",
-            function="download-data",
-            action="job",
-            inputs={"url": url},
-            outputs={"dataset": "dataset"},
-        )
 
-        process_spire = pc.step(
-            name="process-spire",
-            function="process-spire",
-            action="job",
-            inputs={"di": downloader.outputs["dataset"]}
-        )
-
-        process_measures = pc.step(
-            name="process-measures",
-            function="process-measures",
-            action="job",
-            inputs={"di": downloader.outputs["dataset"]}
-        )
+def pipeline():
+    with Workflow(entrypoint="dag", arguments=Parameter(name="url")) as w:
+        with DAG(name="dag"):
+            A = step(
+                template={"action": "job", "inputs": {"url": "{{workflow.parameters.url}}"}},
+                function="download-data",
+                outputs=["dataset"],
+            )
+            B = step(
+                template={"action": "job", "inputs": {"di": "{{inputs.parameters.di}}"}},
+                function="process-spire",
+                inputs={"di": A.get_parameter("dataset")},
+            )
+            C = step(
+                template={"action": "job", "inputs": {"di": "{{inputs.parameters.di}}"}},
+                function="process-measures",
+                inputs={"di": A.get_parameter("dataset")},
+                outputs=["dataset-measures"],
+            )
+            A >> [B, C]
+    return w

@@ -2,7 +2,7 @@
 
 Workflows allow for organizing the single operations in a advanced management pipelines, to perform a series operation of data processing, ML model training and serving, etc. Workflows represent long-running procedures defined as Directed Acyclic Graphs (DAGs) where each node is a single unit of work performed by the platform (e.g., as a Kubernetes Job).
 
-As in case of functions, it is possible for the platform to have different workflow runtimes. Currently, the only workflow runtime implemented is the one based on Kubeflow Pipelines infrastructure. See [KFP Runtime](../runtimes/kfp_pipelines.md) for further details about how the workflow is defined and executed with the Kubeflow Pipelines component of the platform.
+As in case of functions, it is possible for the platform to have different workflow runtimes. Currently, the only workflow runtime implemented is the one based on Hera infrastructure. See [Hera Runtime](../runtimes/hera/overview.md) for further details about how the workflow is defined and executed with the Hera component of the platform.
 
 Similarly, to functions the workflows may be managed via console UI or via Python SDK.
 
@@ -42,7 +42,7 @@ Metadata fields are optional and may be updated later.
 - **`Openmetadata`**: flag to publish metadata
 - **`Audit`**: author of creation and modification
 
-In case of a `kfp` workflow, the source code and handler fields are required as well.
+In case of a `hera` workflow, the source code and handler fields are required as well.
 
 ### Read
 
@@ -58,7 +58,7 @@ The `INSPECTOR` button will show a dialog containing the resource in JSON format
 
 The `EXPORT` button will download the resource's information as a yaml file.
 
-In case of ``kfp`` workflows, the executions of the workflow instances can be monitored with the corresponding DAG viewer.
+In case of ``hera`` workflows, the executions of the workflow instances can be monitored with the corresponding DAG viewer.
 
 ![Workflow run](../images/scenario-etl/pipeline.png)
 

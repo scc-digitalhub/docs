@@ -5,33 +5,29 @@ We define an exposing function to make the data reachable via REST API:
 ```python
 %%writefile 'src/api.py'
 
-def init_context(context):
-    di = context.project.get_dataitem('dataset-measures')
+def init_context(context, dataitem):
+    di = context.project.get_dataitem(dataitem)
     df = di.as_df()
     setattr(context, "df", df)
 
-def handler(context, event):
+def serve(context, event):
     df = context.df
 
     if df is None:
         return ""
 
     # mock REST api
-    method = event.method
-    path = event.path
     fields = event.fields
-
-    id = False
 
     # pagination
     page = 0
     pageSize = 50
 
     if "page" in fields:
-        page = int(fields['page'])
+        page = int(fields["page"])
 
     if "size" in fields:
-        pageSize = int(fields['size'])
+        pageSize = int(fields["size"])
 
     if page < 0:
         page = 0
@@ -52,9 +48,7 @@ def handler(context, event):
     ds = df.iloc[start:end]
     json = ds.to_json(orient="records")
 
-    res = {"data": json, "page": page, "size": pageSize, "total": total}
-
-    return res
+    return {"data": json, "page": page, "size": pageSize, "total": total}
 ```
 
 Register the function:
@@ -64,7 +58,7 @@ api_func = project.new_function(name="api",
                                 kind="python",
                                 python_version="PYTHON3_10",
                                 code_src="src/api.py",
-                                handler="handler",
+                                handler="serve",
                                 init_function="init_context")
 ```
 
@@ -73,7 +67,7 @@ Please note that other than defining the handler method, it is possible to defin
 Deploy the function (perform ``serve`` action):
 
 ```python
-run_serve_model = api_func.run("serve", wait=True)
+run_serve_model = api_func.run("serve", init_parameters={"dataitem": "dataset-measures"}, wait=True)
 ```
 
 Wait till the deployment is complete and the necessary pods and services are up and running.

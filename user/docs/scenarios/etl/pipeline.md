@@ -5,40 +5,40 @@ We define a simple workflow, which will execute all the ETL steps we have seen s
 ```python
 %%writefile "src/pipeline.py"
 
-from digitalhub_runtime_kfp.dsl import pipeline_context
+from digitalhub_runtime_hera.dsl import step
+from hera.workflows import DAG, Parameter, Workflow
 
-def pipeline(url):
-    with pipeline_context() as pc:
-        downloader = pc.step(
-            name="download-data",
-            function="download-data",
-            action="job",
-            inputs={"url": url},
-            outputs={"dataset": "dataset"},
-        )
 
-        process_spire = pc.step(
-            name="process-spire",
-            function="process-spire",
-            action="job",
-            inputs={"di": downloader.outputs["dataset"]}
-        )
-
-        process_measures = pc.step(
-            name="process-measures",
-            function="process-measures",
-            action="job",
-            inputs={"di": downloader.outputs["dataset"]}
-        )
+def pipeline():
+    with Workflow(entrypoint="dag", arguments=Parameter(name="url")) as w:
+        with DAG(name="dag"):
+            A = step(
+                template={"action": "job", "inputs": {"url": "{{workflow.parameters.url}}"}},
+                function="download-data",
+                outputs=["dataset"],
+            )
+            B = step(
+                template={"action": "job", "inputs": {"di": "{{inputs.parameters.di}}"}},
+                function="process-spire",
+                inputs={"di": A.get_parameter("dataset")},
+            )
+            C = step(
+                template={"action": "job", "inputs": {"di": "{{inputs.parameters.di}}"}},
+                function="process-measures",
+                inputs={"di": A.get_parameter("dataset")},
+                outputs=["dataset-measures"],
+            )
+            A >> [B, C]
+    return w
 ```
 
-Here in the definition we use a simple DSL to represent the execution of our functions as steps of the workflow. The DSL ``step`` method generates a KFP step that internally makes the remote execution of the corresponding job. Note that the syntax for step is similar to that of function execution.
+Here we use the Hera-based DSL to represent the execution of our functions as steps of the workflow. The DSL ``step`` method maps to Hera templates and produces an Argo workflow descriptor which performs the remote execution of the corresponding job. Note that the syntax for ``step`` is similar to that of function execution.
 
 Register the workflow:
 
 ```python
 workflow = project.new_workflow(name="pipeline",
-                                kind="kfp",
+                                kind="hera",
                                 code_src="src/pipeline.py",
                                 handler="pipeline")
 ```
