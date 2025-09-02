@@ -2546,10 +2546,12 @@
 <p>It is important to note that the path should point to the folder, where the MLFlow <code>MLModel</code> artifact is placed. If the model
 is created from MLFlow run artifact path, besides the <code>model</code> folder it may contain additional artifacts.</p>
 <p>Register it and deploy:</p>
-<div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;serve_mlflowmodel&quot;</span><span class="p">,</span>
-                            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;mlflowserve&quot;</span><span class="p">,</span>
-                            <span class="n">model_name</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-                            <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;model/&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">serve_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;serve-mlflow-model&quot;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;mlflowserve&quot;</span><span class="p">,</span>
+    <span class="n">model_name</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;model/&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="n">serve_run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
@@ -2572,6 +2574,7 @@ is created from MLFlow run artifact path, besides the <code>model</code> folder 
 <p>Finally, you can test the endpoint. When the model is ready to be used, invoke the endpoint:</p>
 <div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
+<p>If it does not work, wait for sometimes, because it takes a while to load the model.</p>
 <p>Please note that the MLFLow model serving exposes also the Open API specification under <code>/v2/docs</code> path.</p>
 <h2 id="create-an-api-gateway">Create an API gateway</h2>
 <p>Right now, the API is only accessible from within the environment. To make it accessible from outside, we'll need to create an API gateway.</p>
