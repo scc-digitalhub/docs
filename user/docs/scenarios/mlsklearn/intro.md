@@ -34,19 +34,14 @@ from sklearn.datasets import load_breast_cancer
 from digitalhub_runtime_python import handler
 
 @handler(outputs=["dataset"])
-def breast_cancer_generator():
+def data_generator():
     """
-    A function which generates the breast cancer dataset
+    A function which generates the breast cancer dataset from scikit-learn
     """
     breast_cancer = load_breast_cancer()
-    breast_cancer_dataset = pd.DataFrame(
-        data=breast_cancer.data, columns=breast_cancer.feature_names
-    )
+    breast_cancer_dataset = pd.DataFrame(data=breast_cancer.data, columns=breast_cancer.feature_names)
     breast_cancer_labels = pd.DataFrame(data=breast_cancer.target, columns=["target"])
-    breast_cancer_dataset = pd.concat(
-        [breast_cancer_dataset, breast_cancer_labels], axis=1
-    )
-
+    breast_cancer_dataset = pd.concat([breast_cancer_dataset, breast_cancer_labels], axis=1)
     return breast_cancer_dataset
 ```
 
@@ -57,13 +52,13 @@ data_gen_fn = project.new_function(name="data-prep",
                                    kind="python",
                                    python_version="PYTHON3_10",
                                    code_src="src/data-prep.py",
-                                   handler="breast_cancer_generator")
+                                   handler="data_generator")
 ```
 
-Run it locally:
+Run it:
 
 ```python
-gen_data_run = data_gen_fn.run("job", local_execution=True)
+gen_data_run = data_gen_fn.run("job")
 ```
 
 You can view the state of the execution with `gen_data_run.status` or its output with `gen_data_run.outputs()`. You can see a few records from the output artifact:

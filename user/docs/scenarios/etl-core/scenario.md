@@ -73,7 +73,7 @@ WHERE   tab."DEPARTMENT_ID" = '50'
 We create the function from the project object:
 
 ```python
-function = project.new_function(name="function-dbt",
+function = project.new_function(name="transform-employees",
                                 kind="dbt",
                                 code=sql)
 ```
