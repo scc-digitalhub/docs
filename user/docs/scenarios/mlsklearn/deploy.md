@@ -5,11 +5,13 @@ Deploying a scikit-learn model is easy: ``sklearnserve`` runtime supports this f
 Register it and deploy:
 
 ```python
-func = project.new_function(name="serve_sklearnmodel",
-                            kind="sklearnserve",
-                            path=model.spec.path + 'cancer_classifier.pkl')
+serve_func = project.new_function(
+    name="serve-classifier",
+    kind="sklearnserve",
+    path=model.spec.path + "breast_cancer_classifier.pkl",
+)
 
-serve_run = func.run("serve", wait=True)
+serve_run = serve_func.run("serve", wait=True)
 ```
 
 You can now create a dataset for testing the endpoint:
@@ -17,24 +19,18 @@ You can now create a dataset for testing the endpoint:
 ```python
 import numpy as np
 
+# Generate sample data for prediction
 data = np.random.rand(2, 30).tolist()
-json = {
-    "inputs": [
-        {
-        "name": "input-0",
-        "shape": [2, 30],
-        "datatype": "FP32",
-        "data": data
-        }
-    ]
-}
+json_payload = {"inputs": [{"name": "input-0", "shape": [2, 30], "datatype": "FP32", "data": data}]}
 ```
 
 Finally, you can test the endpoint. To do so, you need to refresh the serve run. This is needed because the backend monitors the deployment every minute and the model status, where the endpoint is exposed, is updated after a minute.
 When the model is ready, invoke the endpoint:
 
 ```python
-serve_run.invoke(json=json).json()
+result = serve_run.refresh().invoke(json=json_payload).json()
+print("Prediction result:")
+print(result)
 ```
 
 Please note that the scikit-learn model serving exposes also the Open API specification under ``/docs`` path.

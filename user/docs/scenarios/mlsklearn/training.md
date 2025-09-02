@@ -4,25 +4,25 @@ Let us define the training function.
 
 ```python
 %%writefile "src/train-model.py"
-
-
+import os
 import pandas as pd
-from sklearn.datasets import load_breast_cancer
-from sklearn.model_selection import train_test_split
-
-from digitalhub_runtime_python import handler
-from sklearn.svm import SVC
+import numpy as np
 from pickle import dump
 import sklearn.metrics
-import os
+from digitalhub_runtime_python import handler
+from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
 
 @handler(outputs=["model"])
-def train(project, di):
-
+def train_model(project, di):
+    """
+    Train an SVM classifier on the breast cancer dataset and log metrics
+    """
     df_cancer = di.as_df()
-    X = df_cancer.drop(['target'],axis=1)
-    y = df_cancer['target']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, random_state=5)
+    X = df_cancer.drop(["target"], axis=1)
+    y = df_cancer["target"]
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=5)
     svc_model = SVC()
     svc_model.fit(X_train, y_train)
     y_predict = svc_model.predict(X_test)
@@ -30,7 +30,7 @@ def train(project, di):
     if not os.path.exists("model"):
         os.makedirs("model")
 
-    with open("model/cancer_classifier.pkl", "wb") as f:
+    with open("model/breast_cancer_classifier.pkl", "wb") as f:
         dump(svc_model, f, protocol=5)
 
     metrics = {
@@ -39,11 +39,8 @@ def train(project, di):
         "precision": sklearn.metrics.precision_score(y_test, y_predict),
         "recall": sklearn.metrics.recall_score(y_test, y_predict),
     }
-    model = project.log_model(name="cancer_classifier",
-                              kind="sklearn",
-                              source="./model/")
-    for metric in metrics:
-        model.log_metric(metric, metrics[metric], single_value=True)
+    model = project.log_model(name="breast_cancer_classifier", kind="sklearn", source="./model/")
+    model.log_metrics(metrics)
     return model
 ```
 
@@ -52,20 +49,20 @@ The function takes the analysis dataset as input, creates an SVC model with the 
 Let us register it:
 
 ```python
-train_fn = project.new_function(name="train",
-                                kind="python",
-                                python_version="PYTHON3_10",
-                                code_src="src/train-model.py",
-                                handler="train",
-                                requirements=["scikit-learn==1.2.2"])
+train_fn = project.new_function(
+    name="train-classifier",
+    kind="python",
+    python_version="PYTHON3_10",
+    code_src="src/functions.py",
+    handler="train_model",
+    requirements=["numpy<2"],
+)
 ```
 
-and run it locally:
+and run it:
 
 ```python
-train_run = train_fn.run(action="job",
-                         inputs={"di": gen_data_run.output("dataset").key},
-                         local_execution=True)
+train_run = train_fn.run(action="job", inputs={"di": dataset.key}, wait=True)
 ```
 
 As a result, a new model is registered in the Core and may be used by different inference operations:
