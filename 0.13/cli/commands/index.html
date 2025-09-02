@@ -3078,12 +3078,12 @@ It will match core's minor version as indicated in the specified environment. If
 <h3 id="download"><code>download</code></h3>
 <p>Downloads a resource. It takes the following parameters:</p>
 <ul>
-<li><code>-e environment</code></li>
-<li><code>-p project</code></li>
-<li><code>-n name</code></li>
-<li><code>-o output_filename_or_dir</code></li>
-<li><code>resource</code></li>
-<li><code>id</code></li>
+<li><code>-e environment</code> <em>Optional</em></li>
+<li><code>-p project</code> <strong>Mandatory</strong></li>
+<li><code>-n name</code> <em>Alternative</em> to <code>id</code>, will download latest version.</li>
+<li><code>-o output_filename_or_dir</code> <em>Optional</em>, base directory for downloaded resources, will be created if missing.</li>
+<li><code>resource</code> <strong>Mandatory</strong></li>
+<li><code>id</code> <em>Alternative</em> to <code>-n name</code>.</li>
 </ul>
 <p>Download an artifact:
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>download<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-o<span class="w"> </span>downloaded_artifacts<span class="w"> </span>artifact<span class="w"> </span>my-artifact-id
@@ -3091,12 +3091,12 @@ It will match core's minor version as indicated in the specified environment. If
 <h3 id="upload"><code>upload</code></h3>
 <p>Uploads a resource. takes the following parameters:</p>
 <ul>
-<li><code>-e environment</code></li>
-<li><code>-p project</code></li>
-<li><code>-n name</code></li>
-<li><code>-f input_filename_or_dir</code></li>
-<li><code>resource</code></li>
-<li><code>id</code></li>
+<li><code>-e environment</code> <em>Optional</em></li>
+<li><code>-p project</code> <strong>Mandatory</strong></li>
+<li><code>-n name</code> Must be specified when creating a new artifact.</li>
+<li><code>-f input_filename_or_dir</code> <strong>Mandatory</strong>, path to input file or directory.</li>
+<li><code>resource</code> <strong>Mandatory</strong></li>
+<li><code>id</code> Must be omitted for new artifacts; used to update an existing artifact.</li>
 </ul>
 <p>Upload an artifact:
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>upload<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-f<span class="w"> </span>artifacts/artifact.csv<span class="w"> </span>artifact<span class="w"> </span>-n<span class="w"> </span>my-artifact
