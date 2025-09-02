@@ -2544,30 +2544,26 @@
 <h1 id="deploy-and-expose-the-model">Deploy and expose the model</h1>
 <p>Deploying a scikit-learn model is easy: <code>sklearnserve</code> runtime supports this functionality out of the box. It is sufficient to specify the path to the model artifact and optionally the name of the model to expose.</p>
 <p>Register it and deploy:</p>
-<div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;serve_sklearnmodel&quot;</span><span class="p">,</span>
-                            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;sklearnserve&quot;</span><span class="p">,</span>
-                            <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;cancer_classifier.pkl&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">serve_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;serve-classifier&quot;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;sklearnserve&quot;</span><span class="p">,</span>
+    <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;breast_cancer_classifier.pkl&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
-<span class="n">serve_run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">serve_run</span> <span class="o">=</span> <span class="n">serve_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>You can now create a dataset for testing the endpoint:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
+<span class="c1"># Generate sample data for prediction</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-<span class="n">json</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;input-0&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
-        <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;FP32&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<span class="n">json_payload</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;input-0&quot;</span><span class="p">,</span> <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;FP32&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">}]}</span>
 </code></pre></div>
 <p>Finally, you can test the endpoint. To do so, you need to refresh the serve run. This is needed because the backend monitors the deployment every minute and the model status, where the endpoint is exposed, is updated after a minute.
 When the model is ready, invoke the endpoint:</p>
-<div class="highlight"><pre><span></span><code><span class="n">serve_run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">serve_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">json</span><span class="o">=</span><span class="n">json_payload</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediction result:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </code></pre></div>
 <p>Please note that the scikit-learn model serving exposes also the Open API specification under <code>/docs</code> path.</p>
 <h2 id="create-an-api-gateway">Create an API gateway</h2>
