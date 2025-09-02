@@ -2584,19 +2584,14 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_runtime_python</span><span class="w"> </span><span class="kn">import</span> <span class="n">handler</span>
 
 <span class="nd">@handler</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dataset&quot;</span><span class="p">])</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">breast_cancer_generator</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">data_generator</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A function which generates the breast cancer dataset</span>
+<span class="sd">    A function which generates the breast cancer dataset from scikit-learn</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">breast_cancer</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
-    <span class="n">breast_cancer_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-        <span class="n">data</span><span class="o">=</span><span class="n">breast_cancer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">breast_cancer</span><span class="o">.</span><span class="n">feature_names</span>
-    <span class="p">)</span>
+    <span class="n">breast_cancer_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">breast_cancer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">breast_cancer</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
     <span class="n">breast_cancer_labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">breast_cancer</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">])</span>
-    <span class="n">breast_cancer_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
-        <span class="p">[</span><span class="n">breast_cancer_dataset</span><span class="p">,</span> <span class="n">breast_cancer_labels</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
-    <span class="p">)</span>
-
+    <span class="n">breast_cancer_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">breast_cancer_dataset</span><span class="p">,</span> <span class="n">breast_cancer_labels</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">breast_cancer_dataset</span>
 </code></pre></div>
 <p>Register it:</p>
@@ -2604,10 +2599,10 @@
                                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
                                    <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_10&quot;</span><span class="p">,</span>
                                    <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/data-prep.py&quot;</span><span class="p">,</span>
-                                   <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;breast_cancer_generator&quot;</span><span class="p">)</span>
+                                   <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;data_generator&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>Run it locally:</p>
-<div class="highlight"><pre><span></span><code><span class="n">gen_data_run</span> <span class="o">=</span> <span class="n">data_gen_fn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;job&quot;</span><span class="p">,</span> <span class="n">local_execution</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<p>Run it:</p>
+<div class="highlight"><pre><span></span><code><span class="n">gen_data_run</span> <span class="o">=</span> <span class="n">data_gen_fn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;job&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>You can view the state of the execution with <code>gen_data_run.status</code> or its output with <code>gen_data_run.outputs()</code>. You can see a few records from the output artifact:</p>
 <div class="highlight"><pre><span></span><code><span class="n">gen_data_run</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
