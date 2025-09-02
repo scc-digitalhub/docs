@@ -53,7 +53,7 @@ train_fn = project.new_function(
     name="train-classifier",
     kind="python",
     python_version="PYTHON3_10",
-    code_src="src/functions.py",
+    code_src="src/train-model.py",
     handler="train_model",
     requirements=["numpy<2"],
 )

@@ -8,10 +8,12 @@ is created from MLFlow run artifact path, besides the ``model`` folder it may co
 Register it and deploy:
 
 ```python
-func = project.new_function(name="serve_mlflowmodel",
-                            kind="mlflowserve",
-                            model_name=model.name,
-                            path=model.spec.path + 'model/')
+serve_func = project.new_function(
+    name="serve-mlflow-model",
+    kind="mlflowserve",
+    model_name=model.name,
+    path=model.spec.path + "model/",
+)
 
 serve_run = func.run("serve", wait=True)
 ```
@@ -40,6 +42,8 @@ Finally, you can test the endpoint. When the model is ready to be used, invoke t
 ```python
 serve_run.invoke(model_name=model.name, json=json).json()
 ```
+
+If it does not work, wait for sometimes, because it takes a while to load the model.
 
 Please note that the MLFLow model serving exposes also the Open API specification under ``/v2/docs`` path.
 
