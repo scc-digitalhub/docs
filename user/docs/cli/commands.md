@@ -276,6 +276,11 @@ Downloads a resource. It takes the following parameters:
 - `resource`
 - `id`
 
+Download an artifact:
+``` sh
+dhcli download -p my-project -o downloaded_artifacts artifact my-artifact-id
+```
+
 ### `upload`
 Uploads a resource. takes the following parameters:
 
@@ -285,3 +290,8 @@ Uploads a resource. takes the following parameters:
 - `-f input_filename_or_dir`
 - `resource`
 - `id`
+
+Upload an artifact:
+``` sh
+dhcli upload -p my-project -f artifacts/artifact.csv artifact -n my-artifact
+```
