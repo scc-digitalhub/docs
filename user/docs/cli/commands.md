@@ -269,12 +269,12 @@ dhcli resume -p my-project run my-run-id
 ### `download`
 Downloads a resource. It takes the following parameters:
 
-- `-e environment`
-- `-p project`
-- `-n name`
-- `-o output_filename_or_dir`
-- `resource`
-- `id`
+- `-e environment` *Optional*
+- `-p project` **Mandatory**
+- `-n name` *Alternative* to `id`, will download latest version.
+- `-o output_filename_or_dir` *Optional*, base directory for downloaded resources, will be created if missing.
+- `resource` **Mandatory**
+- `id` *Alternative* to `-n name`.
 
 Download an artifact:
 ``` sh
@@ -284,12 +284,12 @@ dhcli download -p my-project -o downloaded_artifacts artifact my-artifact-id
 ### `upload`
 Uploads a resource. takes the following parameters:
 
-- `-e environment`
-- `-p project`
-- `-n name`
-- `-f input_filename_or_dir`
-- `resource`
-- `id`
+- `-e environment` *Optional*
+- `-p project` **Mandatory**
+- `-n name` Must be specified when creating a new artifact.
+- `-f input_filename_or_dir` **Mandatory**, path to input file or directory.
+- `resource` **Mandatory**
+- `id` Must be omitted for new artifacts; used to update an existing artifact.
 
 Upload an artifact:
 ``` sh
