@@ -7,55 +7,61 @@ Create a model serving function and provide the model:
 
 ```python
 %%writefile "src/serve_darts_model.py"
-
-from darts.models import NBEATSModel
-from zipfile import ZipFile
-from darts import TimeSeries
 import json
+from zipfile import ZipFile
+
 import pandas as pd
+from darts import TimeSeries
+from darts.datasets import AirPassengersDataset
+from darts.metrics import mae, mape, smape
+from darts.models import NBEATSModel
+from digitalhub_runtime_python import handler
 
-def init(context):
-    model_name = "darts_model"
-
-    model = context.project.get_model(model_name)
+def init_context(context, model_key):
+    """
+    Initialize serving context by loading the trained model
+    """
+    model = context.project.get_model(model_key)
     path = model.download()
     local_path_model = "extracted_model/"
 
-    with ZipFile(path, 'r') as zip_ref:
+    # Extract model from zip file
+    with ZipFile(path, "r") as zip_ref:
         zip_ref.extractall(local_path_model)
 
+    # Load the NBEATS model
     input_chunk_length = 24
     output_chunk_length = 12
-    name_model_local = local_path_model +"predictor_model.pt"
-    mm = NBEATSModel(
-            input_chunk_length,
-            output_chunk_length
-    ).load(name_model_local)
+    name_model_local = local_path_model + "predictor_model.pt"
+    mm = NBEATSModel(input_chunk_length, output_chunk_length).load(name_model_local)
 
     setattr(context, "model", mm)
 
-def serve(context, event):
 
+def serve_predictions(context, event):
+    """
+    Serve time series predictions via REST API
+    """
     if isinstance(event.body, bytes):
         body = json.loads(event.body)
     else:
         body = event.body
+
     context.logger.info(f"Received event: {body}")
     inference_input = body["inference_input"]
 
+    # Convert input to Darts TimeSeries format
     pdf = pd.DataFrame(inference_input)
-    pdf['date'] = pd.to_datetime(pdf['date'], unit='ms')
+    pdf["date"] = pd.to_datetime(pdf["date"], unit="ms")
 
-    ts = TimeSeries.from_dataframe(
-        pdf,
-        time_col="date",
-        value_cols="value"
-    )
+    ts = TimeSeries.from_dataframe(pdf, time_col="date", value_cols="value")
 
+    # Make predictions
     output_chunk_length = 12
-    result = context.model.predict(n=output_chunk_length*2, series=ts)
-    # Convert the result to a pandas DataFrame, reset the index, and convert to a list
-    jsonstr = result.pd_dataframe().reset_index().to_json(orient='records')
+    result = context.model.predict(n=output_chunk_length * 2, series=ts)
+
+    # Convert result to JSON format
+    jsonstr = result.pd_dataframe().reset_index().to_json(orient="records")
     return json.loads(jsonstr)
 ```
 
@@ -81,13 +87,14 @@ run_build_model_serve = func.run("build",
 Now we can deploy the function:
 
 ```python
-serve_run = func.run("serve", wait=True)
+serve_run = serve_func.run("serve", init_parameters={"model_key": model.key}, labels=["time-series-service"], wait=True)
 ```
 
 Install locally the dependencies:
 
 ```python
-%pip install darts==0.30.0
+# Install darts locally for testing (if not already installed)
+%pip install darts==0.30.0 --quiet
 ```
 
 Create a test input:
@@ -97,11 +104,17 @@ import json
 from datetime import datetime
 from darts.datasets import AirPassengersDataset
 
+# Load test data
 series = AirPassengersDataset().load()
-val = series[-24:]
+val = series[-24:]  # Last 24 points for prediction
 json_value = json.loads(val.to_json())
 
-data = map(lambda x, y: {"value": x[0], "date": datetime.timestamp(datetime.strptime(y, "%Y-%m-%dT%H:%M:%S.%f"))*1000}, json_value["data"], json_value["index"])
+# Prepare input data in the expected format
+data = map(
+    lambda x, y: {"value": x[0], "date": datetime.timestamp(datetime.strptime(y, "%Y-%m-%dT%H:%M:%S.%f")) * 1000},
+    json_value["data"],
+    json_value["index"],
+)
 inputs = {"inference_input": list(data)}
 ```
 

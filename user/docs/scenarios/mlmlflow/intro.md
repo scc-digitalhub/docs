@@ -31,37 +31,42 @@ Let us define the training function.
 
 ```python
 %%writefile "src/train-model.py"
-
-from digitalhub_runtime_python import handler
-from digitalhub import from_mlflow_run, get_mlflow_model_metrics
 import mlflow
-
+from digitalhub import from_mlflow_run, get_mlflow_model_metrics
+from digitalhub_runtime_python import handler
 from sklearn import datasets, svm
 from sklearn.model_selection import GridSearchCV
 
+
 @handler(outputs=["model"])
-def train(project):
+def train_model(project):
+    """
+    Train an SVM classifier on the Iris dataset with hyperparameter tuning using MLflow
+    """
+    # Enable MLflow autologging for sklearn
     mlflow.sklearn.autolog(log_datasets=True)
 
+    # Load Iris dataset
     iris = datasets.load_iris()
+
+    # Define hyperparameter search space
     parameters = {"kernel": ("linear", "rbf"), "C": [1, 10]}
     svc = svm.SVC()
     clf = GridSearchCV(svc, parameters)
 
+    # Train model with grid search
     clf.fit(iris.data, iris.target)
+
+    # Get MLflow run information
     run_id = mlflow.last_active_run().info.run_id
 
-    # utility to map mlflow run artifacts to model metadata
+    # Extract MLflow run artifacts and metadata for DigitalHub integration
     model_params = from_mlflow_run(run_id)
     metrics = get_mlflow_model_metrics(run_id)
 
-    model = project.log_model(
-        name="model-mlflow",
-        kind="mlflow",
-        **model_params
-    )
-    for metric in metrics:
-        model.log_metric(metric, metrics[metric], single_value=True)
+    # Register model in DigitalHub with MLflow metadata
+    model = project.log_model(name="iris-classifier", kind="mlflow", **model_params)
+    model.log_metrics(metrics)
     return model
 ```
 
@@ -74,12 +79,14 @@ We then log the model of ``mlflow`` kind using the extract metadata as kwargs.
 Let us register it:
 
 ```python
-train_fn = project.new_function(name="train",
-                                kind="python",
-                                python_version="PYTHON3_10",
-                                code_src="src/train-model.py",
-                                handler="train",
-                                requirements=["scikit-learn", "mlflow"])
+train_fn = project.new_function(
+    name="train-mlflow-model",
+    kind="python",
+    python_version="PYTHON3_10",
+    code_src="src/train-model.py",
+    handler="train_model",
+    requirements=["numpy<2", "mlflow<3"],
+)
 ```
 
 and run it locally:
@@ -91,7 +98,7 @@ train_model_run = train_fn.run(action="job", wait=True)
 As a result, a new model is registered in the Core and may be used by different inference operations:
 
 ```python
-model = train_model_run.output("model-mlflow")
+model = train_model_run.output("model")
 model.spec.path
 ```
 

@@ -29,52 +29,52 @@ Let us define the training function. For the sake of simplicity, we use predefin
 
 ```python
 %%writefile "src/train-model.py"
-
-
-from digitalhub_runtime_python import handler
-
-import pandas as pd
-import numpy as np
-
-from darts import TimeSeries
-from darts.datasets import AirPassengersDataset
-from darts.models import NBEATSModel
-from darts.metrics import mape, smape, mae
-
+import json
 from zipfile import ZipFile
 
-@handler()
-def train_model(project):
-    series = AirPassengersDataset().load()
-    train, val = series[:-36], series[-36:]
+import pandas as pd
+from darts import TimeSeries
+from darts.datasets import AirPassengersDataset
+from darts.metrics import mae, mape, smape
+from darts.models import NBEATSModel
+from digitalhub_runtime_python import handler
 
-    model = NBEATSModel(
-        input_chunk_length=24,
-        output_chunk_length=12,
-        n_epochs=200,
-        random_state=0
-    )
+
+@handler(outputs=["model"])
+def train_model(project):
+    """
+    Train a NBEATS model on the Air Passengers dataset
+    """
+    # Load Air Passengers dataset
+    series = AirPassengersDataset().load()
+    train, test = series[:-36], series[-36:]
+
+    # Configure and train NBEATS model
+    model = NBEATSModel(input_chunk_length=24, output_chunk_length=12, n_epochs=200, random_state=0)
     model.fit(train)
+
+    # Make predictions for evaluation
     pred = model.predict(n=36)
 
+    # Save model artifacts
     model.save("predictor_model.pt")
     with ZipFile("predictor_model.pt.zip", "w") as z:
         z.write("predictor_model.pt")
         z.write("predictor_model.pt.ckpt")
-    metrics = {
-        "mape": mape(series, pred),
-        "smape": smape(series, pred),
-        "mae": mae(series, pred)
-    }
 
-    project.log_model(
-        name="darts_model",
+    # Calculate metrics
+    metrics = {"mape": mape(test, pred), "smape": smape(test, pred), "mae": mae(test, pred)}
+
+    # Register model in DigitalHub
+    model_artifact = project.log_model(
+        name="air-passengers-forecaster",
         kind="model",
         source="predictor_model.pt.zip",
         algorithm="darts.models.NBEATSModel",
         framework="darts",
-        metrics=metrics
     )
+    model_artifact.log_metrics(metrics)
+    return model_artifact
 ```
 
 In this code we create a NBEATS DL model, store it locally zipping the content, extract some metrics, and log the model to the platform
@@ -83,18 +83,20 @@ with a generic ``model`` kind.
 Let us register it:
 
 ```python
-train_fn = project.new_function(name="train-darts",
-                                kind="python",
-                                python_version="PYTHON3_10",
-                                code_src="src/train-model.py"
-                                handler="train_model")
+train_fn = project.new_function(
+    name="train-time-series-model",
+    kind="python",
+    python_version="PYTHON3_10",
+    code_src="src/functions.py",
+    handler="train_model",
+)
 ```
 
 and run it with build instruction:
 
 ```python
 train_build = train_fn.run("build",
-                           instructions=["pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu","pip3 install darts patsy scikit-learn"],
+                           instructions=["pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu","pip3 install darts==0.30.0 patsy"],
                            wait=True)
 ```
 
