@@ -2596,65 +2596,67 @@
 <h2 id="training-the-model">Training the model</h2>
 <p>Let us define the training function. For the sake of simplicity, we use predefined "Air Passengers" dataset of Darts.</p>
 <div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">&quot;src/train-model.py&quot;</span>
-
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_runtime_python</span><span class="w"> </span><span class="kn">import</span> <span class="n">handler</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">darts</span><span class="w"> </span><span class="kn">import</span> <span class="n">TimeSeries</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">darts.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">AirPassengersDataset</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">darts.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">NBEATSModel</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">darts.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mape</span><span class="p">,</span> <span class="n">smape</span><span class="p">,</span> <span class="n">mae</span>
-
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">zipfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZipFile</span>
 
-<span class="nd">@handler</span><span class="p">()</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">train_model</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
-    <span class="n">series</span> <span class="o">=</span> <span class="n">AirPassengersDataset</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
-    <span class="n">train</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="n">series</span><span class="p">[:</span><span class="o">-</span><span class="mi">36</span><span class="p">],</span> <span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="mi">36</span><span class="p">:]</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">darts</span><span class="w"> </span><span class="kn">import</span> <span class="n">TimeSeries</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">darts.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">AirPassengersDataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">darts.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mae</span><span class="p">,</span> <span class="n">mape</span><span class="p">,</span> <span class="n">smape</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">darts.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">NBEATSModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_runtime_python</span><span class="w"> </span><span class="kn">import</span> <span class="n">handler</span>
 
-    <span class="n">model</span> <span class="o">=</span> <span class="n">NBEATSModel</span><span class="p">(</span>
-        <span class="n">input_chunk_length</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>
-        <span class="n">output_chunk_length</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
-        <span class="n">n_epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-        <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
-    <span class="p">)</span>
+
+<span class="nd">@handler</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">train_model</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Train a NBEATS model on the Air Passengers dataset</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Load Air Passengers dataset</span>
+    <span class="n">series</span> <span class="o">=</span> <span class="n">AirPassengersDataset</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+    <span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">series</span><span class="p">[:</span><span class="o">-</span><span class="mi">36</span><span class="p">],</span> <span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="mi">36</span><span class="p">:]</span>
+
+    <span class="c1"># Configure and train NBEATS model</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">NBEATSModel</span><span class="p">(</span><span class="n">input_chunk_length</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">output_chunk_length</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">)</span>
+
+    <span class="c1"># Make predictions for evaluation</span>
     <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">36</span><span class="p">)</span>
 
+    <span class="c1"># Save model artifacts</span>
     <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;predictor_model.pt&quot;</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="s2">&quot;predictor_model.pt.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">z</span><span class="p">:</span>
         <span class="n">z</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;predictor_model.pt&quot;</span><span class="p">)</span>
         <span class="n">z</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;predictor_model.pt.ckpt&quot;</span><span class="p">)</span>
-    <span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;mape&quot;</span><span class="p">:</span> <span class="n">mape</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">pred</span><span class="p">),</span>
-        <span class="s2">&quot;smape&quot;</span><span class="p">:</span> <span class="n">smape</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">pred</span><span class="p">),</span>
-        <span class="s2">&quot;mae&quot;</span><span class="p">:</span> <span class="n">mae</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
-    <span class="p">}</span>
 
-    <span class="n">project</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;darts_model&quot;</span><span class="p">,</span>
+    <span class="c1"># Calculate metrics</span>
+    <span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;mape&quot;</span><span class="p">:</span> <span class="n">mape</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">pred</span><span class="p">),</span> <span class="s2">&quot;smape&quot;</span><span class="p">:</span> <span class="n">smape</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">pred</span><span class="p">),</span> <span class="s2">&quot;mae&quot;</span><span class="p">:</span> <span class="n">mae</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">pred</span><span class="p">)}</span>
+
+    <span class="c1"># Register model in DigitalHub</span>
+    <span class="n">model_artifact</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;air-passengers-forecaster&quot;</span><span class="p">,</span>
         <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">,</span>
         <span class="n">source</span><span class="o">=</span><span class="s2">&quot;predictor_model.pt.zip&quot;</span><span class="p">,</span>
         <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;darts.models.NBEATSModel&quot;</span><span class="p">,</span>
         <span class="n">framework</span><span class="o">=</span><span class="s2">&quot;darts&quot;</span><span class="p">,</span>
-        <span class="n">metrics</span><span class="o">=</span><span class="n">metrics</span>
     <span class="p">)</span>
+    <span class="n">model_artifact</span><span class="o">.</span><span class="n">log_metrics</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model_artifact</span>
 </code></pre></div>
 <p>In this code we create a NBEATS DL model, store it locally zipping the content, extract some metrics, and log the model to the platform
 with a generic <code>model</code> kind.</p>
 <p>Let us register it:</p>
-<div class="highlight"><pre><span></span><code><span class="n">train_fn</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;train-darts&quot;</span><span class="p">,</span>
-                                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
-                                <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_10&quot;</span><span class="p">,</span>
-                                <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/train-model.py&quot;</span>
-                                <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;train_model&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">train_fn</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;train-time-series-model&quot;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+    <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_10&quot;</span><span class="p">,</span>
+    <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/functions.py&quot;</span><span class="p">,</span>
+    <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;train_model&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 </code></pre></div>
 <p>and run it with build instruction:</p>
 <div class="highlight"><pre><span></span><code><span class="n">train_build</span> <span class="o">=</span> <span class="n">train_fn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;build&quot;</span><span class="p">,</span>
-                           <span class="n">instructions</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu&quot;</span><span class="p">,</span><span class="s2">&quot;pip3 install darts patsy scikit-learn&quot;</span><span class="p">],</span>
+                           <span class="n">instructions</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu&quot;</span><span class="p">,</span><span class="s2">&quot;pip3 install darts==0.30.0 patsy&quot;</span><span class="p">],</span>
                            <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Once the build is completed, launch the training.</p>
