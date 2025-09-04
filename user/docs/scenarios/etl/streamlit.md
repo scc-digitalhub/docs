@@ -25,7 +25,7 @@ rdf = pd.read_json("result.json", orient="records")
 rdf.columns = rdf.columns.str.replace(":", "")
 
 st.write("""My data""")
-st.line_chart(rdf, x="codice spira", y="1200-1300")
+st.line_chart(rdf, x="codice spira", y="value")
 ```
 
 ## Launch app
