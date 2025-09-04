@@ -96,7 +96,7 @@ and run it with build instruction:
 
 ```python
 train_build = train_fn.run("build",
-                           instructions=["pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu","pip3 install darts==0.30.0 patsy"],
+                           instructions=["pip3 install torch'<2.6.0' darts==0.30.0 patsy"],
                            wait=True)
 ```
 
