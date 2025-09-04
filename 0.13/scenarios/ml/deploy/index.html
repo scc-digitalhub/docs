@@ -2615,7 +2615,7 @@ operation where the model is loaded.</p>
 </code></pre></div>
 <p>Given the dependencies, it is better to have the image ready, using <code>build</code> action of the function:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run_build_model_serve</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;build&quot;</span><span class="p">,</span>
-                                 <span class="n">instructions</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu&quot;</span><span class="p">,</span><span class="s2">&quot;pip3 install darts patsy scikit-learn&quot;</span><span class="p">],</span>
+                                 <span class="n">instructions</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pip3 install torch&#39;&lt;2.6.0&#39; darts==0.30.0 patsy&quot;</span><span class="p">],</span>
                                  <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Now we can deploy the function:</p>
@@ -2623,7 +2623,7 @@ operation where the model is loaded.</p>
 </code></pre></div>
 <p>Install locally the dependencies:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Install darts locally for testing (if not already installed)</span>
-<span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">darts</span><span class="o">==</span><span class="mf">0.30.0</span> <span class="o">--</span><span class="n">quiet</span>
+<span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">darts</span><span class="o">==</span><span class="mf">0.30.0</span> <span class="n">torch</span><span class="s1">&#39;&lt;2.6.0&#39;</span> <span class="o">--</span><span class="n">quiet</span>
 </code></pre></div>
 <p>Create a test input:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>

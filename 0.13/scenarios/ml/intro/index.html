@@ -2656,7 +2656,7 @@ with a generic <code>model</code> kind.</p>
 </code></pre></div>
 <p>and run it with build instruction:</p>
 <div class="highlight"><pre><span></span><code><span class="n">train_build</span> <span class="o">=</span> <span class="n">train_fn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;build&quot;</span><span class="p">,</span>
-                           <span class="n">instructions</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu&quot;</span><span class="p">,</span><span class="s2">&quot;pip3 install darts==0.30.0 patsy&quot;</span><span class="p">],</span>
+                           <span class="n">instructions</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pip3 install torch&#39;&lt;2.6.0&#39; darts==0.30.0 patsy&quot;</span><span class="p">],</span>
                            <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Once the build is completed, launch the training.</p>
