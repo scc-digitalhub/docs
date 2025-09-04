@@ -58,7 +58,7 @@ data_gen_fn = project.new_function(name="data-prep",
 Run it:
 
 ```python
-gen_data_run = data_gen_fn.run("job")
+gen_data_run = data_gen_fn.run("job",wait=True)
 ```
 
 You can view the state of the execution with `gen_data_run.status` or its output with `gen_data_run.outputs()`. You can see a few records from the output artifact:
