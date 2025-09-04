@@ -80,7 +80,7 @@ Given the dependencies, it is better to have the image ready, using ``build`` ac
 
 ```python
 run_build_model_serve = func.run("build",
-                                 instructions=["pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu","pip3 install darts patsy scikit-learn"],
+                                 instructions=["pip3 install torch'<2.6.0' darts==0.30.0 patsy"],
                                  wait=True)
 ```
 
@@ -94,7 +94,7 @@ Install locally the dependencies:
 
 ```python
 # Install darts locally for testing (if not already installed)
-%pip install darts==0.30.0 --quiet
+%pip install darts==0.30.0 torch'<2.6.0' --quiet
 ```
 
 Create a test input:
