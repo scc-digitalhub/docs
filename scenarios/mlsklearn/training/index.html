@@ -212,12 +212,6 @@
                   
                 
               
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs/fix-docs-multi-fix-streamlit-mlops-typos">fix-docs-multi-fix-streamlit-mlops-typos</a>
-                  
-                
-              
             </button>
           </div>
           <div class="dropdown">
@@ -2543,7 +2537,8 @@
 <span class="p">)</span>
 </code></pre></div>
 <p>and run it:</p>
-<div class="highlight"><pre><span></span><code><span class="n">train_run</span> <span class="o">=</span> <span class="n">train_fn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;di&quot;</span><span class="p">:</span> <span class="n">dataset</span><span class="o">.</span><span class="n">key</span><span class="p">},</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">dataset</span> <span class="o">=</span> <span class="n">gen_data_run</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span>
+<span class="n">train_run</span> <span class="o">=</span> <span class="n">train_fn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;di&quot;</span><span class="p">:</span> <span class="n">dataset</span><span class="o">.</span><span class="n">key</span><span class="p">},</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>As a result, a new model is registered in the Core and may be used by different inference operations:</p>
 <div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">train_run</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">)</span>

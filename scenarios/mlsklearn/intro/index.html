@@ -212,12 +212,6 @@
                   
                 
               
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs/fix-docs-multi-fix-streamlit-mlops-typos">fix-docs-multi-fix-streamlit-mlops-typos</a>
-                  
-                
-              
             </button>
           </div>
           <div class="dropdown">
@@ -2606,7 +2600,7 @@
                                    <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;data_generator&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Run it:</p>
-<div class="highlight"><pre><span></span><code><span class="n">gen_data_run</span> <span class="o">=</span> <span class="n">data_gen_fn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;job&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">gen_data_run</span> <span class="o">=</span> <span class="n">data_gen_fn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;job&quot;</span><span class="p">,</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>You can view the state of the execution with <code>gen_data_run.status</code> or its output with <code>gen_data_run.outputs()</code>. You can see a few records from the output artifact:</p>
 <div class="highlight"><pre><span></span><code><span class="n">gen_data_run</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="s2">&quot;dataset&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
