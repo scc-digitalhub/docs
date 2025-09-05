@@ -1,6 +1,6 @@
 # CLI commands
 
-Available CLI commands and their parameters are listed here. In these examples, the executable is named `dhcli`. When you provide flag parameters, make sure they are listed **before** positional ones.
+Available CLI commands and their parameters are listed here. In these examples, the executable is named `dhcli`.
 
 If you need to install the CLI, refer to [this section](../components/cli.md).
 
@@ -39,17 +39,17 @@ This will set the default environment.
 ### `login`
 `login` is to be used after registering an environment with the `register` command. It takes the following parameters:
 
-- `environment` *Optional*.
+- `-e environment` *Optional*.
 
 ``` sh
-dhcli login example
+dhcli login -e example
 ```
 It will read the corresponding section from the configuration file and start the log in procedure. It will update this section with the access token obtained. If no environment is specified, it will use the default one.
 
 ### `refresh`
 `refresh` is to be used after the `login` command, to update `access_token` and `refresh_token`. It takes the following parameters:
 
-- `environment` *Optional*
+- `-e environment` *Optional*
 
 ``` sh
 dhcli refresh example
@@ -69,7 +69,7 @@ It will remove the section from the configuration file.
 ### `init`
 `init` is used to install the platform's Python packages; therefore, Python must be installed. It takes the following parameters:
 
-- `environment` *Optional*
+- `-e environment` *Optional*
 
 ``` sh
 dhcli init example
@@ -97,9 +97,6 @@ Create an artifact, while resetting its ID:
 ``` sh
 dhcli create -p my-project -f samples/artifact.yaml -reset-id artifacts
 ```
-
-#### Resource types
-The `resource` positional parameter can accept any value (to support future updates), but if an invalid one is specified, the CLI will forward the error returned by core. This parameter is used in building the endpoint of the URL for the API call to core's back-end, therefore, it is possible to specify aliases for a resource in the `config.json` file.
 
 ### `list`
 `list` returns a list of resources of the specified type. It takes the following parameters:
@@ -137,9 +134,9 @@ dhcli list -o yaml -p my-project artifacts > output.yaml
 - `-e environment` *Optional*
 - `-o output_format` *Optional*. Accepts `short`, `json`, `yaml`. Defaults to `short`.
 - `-p project` *Optional* (ignored) for projects, **mandatory** otherwise.
-- `-n name` *Optional* (ignored) if `id` is missing, **mandatory** otherwise. Will return latest version of specified resource.
+- `-n name` *Ignored* if `id` is present, otherwise **mandatory** and will return the latest version of the specified resource.
 - `resource` **Mandatory**
-- `id` *Optional* if `-n name` is missing, **mandatory** otherwise.
+- `id` *Alternative* to `-n name`.
 
 Similarly to the `list` command, `output_format` determines how the output will be formatted. The default value, `short`, is meant to be used to quickly check resources in the terminal, while `json` and `yaml` will format the output accordingly, making it ideal to write to file.
 
@@ -197,4 +194,104 @@ dhcli delete -c projects my-project
 Delete an artifact, skip confirmation:
 ``` sh
 dhcli delete -p my-project -y artifacts my-artifact-id
+```
+
+### `run`
+Creates a run of the specified function. It takes the following parameters:
+
+- `-e environment` *Optional*
+- `-p project` **Mandatory**
+- `-n name_of_function` *Ignored* if `id` is specified, otherwise **mandatory** and will run the latest version of the function.
+- `-i id` *Alternative* to `-n name_of_function`.
+- `-f yaml_file_path` *Optional*, can contain additional parameters for the run.
+- `task` **Mandatory**. Must contain a valid task, such as `python+build`.
+
+Create a `python+build` run of latest version of `my-function`:
+``` sh
+dhcli run -p my-project -n my-function python+build
+```
+
+### `log`
+Returns the logs of the specified resource. It takes the following parameters:
+
+- `-e environment` *Optional*
+- `-p project` **Mandatory**
+- `-c container` *Optional*, ID of the container to read logs from. If not specified, the main container will be picked.
+- `-f` *Optional*, will update the printed logs periodically if set.
+- `resource` **Mandatory**
+- `id` **Mandatory**
+
+Retrieve and follow logs from the main container of a run:
+``` sh
+dhcli log -p my-project run my-run-id
+```
+
+### `metrics`
+Returns metrics for the specified resource. It takes the following parameters:
+
+- `-e environment` *Optional*
+- `-p project` **Mandatory**
+- `-c container` *Optional*, ID of the container to read metrics from. If not specified, the main container will be picked.
+- `resource` **Mandatory**
+- `id` **Mandatory**
+
+Retrieve metrics from the main container of a run:
+``` sh
+dhcli metrics -p my-project run my-run-id
+```
+
+### `stop`
+Stops a resource. It takes the following parameters:
+
+- `-e environment` *Optional*
+- `-p project` **Mandatory**
+- `resource` **Mandatory**
+- `id` **Mandatory**
+
+Stop a run:
+``` sh
+dhcli stop -p my-project run my-run-id
+```
+
+### `resume`
+Resumes a resource. It takes the following parameters:
+
+- `-e environment` *Optional*
+- `-p project` **Mandatory**
+- `resource` **Mandatory**
+- `id` **Mandatory**
+
+Resume a run:
+``` sh
+dhcli resume -p my-project run my-run-id
+```
+
+### `download`
+Downloads a resource. It takes the following parameters:
+
+- `-e environment` *Optional*
+- `-p project` **Mandatory**
+- `-n name` *Alternative* to `id`, will download latest version.
+- `-o output_filename_or_dir` *Optional*, base directory for downloaded resources, will be created if missing.
+- `resource` **Mandatory**
+- `id` *Alternative* to `-n name`.
+
+Download an artifact:
+``` sh
+dhcli download -p my-project -o downloaded_artifacts artifact my-artifact-id
+```
+
+### `upload`
+Uploads a resource. takes the following parameters:
+
+- `-e environment` *Optional*
+- `-p project` **Mandatory**
+- `-n name` Must be specified when creating a new artifact.
+- `-f input_filename_or_dir` **Mandatory**, path to input file or directory.
+- `resource` **Mandatory**
+- `id` Must be omitted for new artifacts; used to update an existing artifact.
+
+Upload an artifact:
+``` sh
+dhcli upload -p my-project -f artifacts/artifact.csv artifact -n my-artifact
 ```
