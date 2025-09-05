@@ -62,6 +62,7 @@ train_fn = project.new_function(
 and run it:
 
 ```python
+dataset = gen_data_run.output("dataset")
 train_run = train_fn.run(action="job", inputs={"di": dataset.key}, wait=True)
 ```
 

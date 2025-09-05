@@ -1,6 +1,6 @@
 # Secret Management
 
-Working with different operations may implu the usage of a sensitive values, such as external API credentials,
+Working with different operations may imply the usage of a sensitive values, such as external API credentials,
 storage credentials, etc.
 
 In order to avoid embedding the credentials in the code of functions, the platform supports an explicit management
