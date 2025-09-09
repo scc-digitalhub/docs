@@ -91,4 +91,4 @@ Please consult the official [Kubernetes documentation](https://kubernetes.io/doc
 To install DigitalHub on a production environment, please consult the admin section of the documentation, where you will find informations about the configuration options and the installation as well.
 
 ## Installing the CLI
-To install and use the command-line interface, please refer to [this section](./tasks/cli.md)
+To install and use the command-line interface, please refer to [this section](./components/cli.md)
