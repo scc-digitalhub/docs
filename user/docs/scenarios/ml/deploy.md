@@ -64,7 +64,9 @@ def serve_predictions(context, event):
     jsonstr = result.pd_dataframe().reset_index().to_json(orient="records")
     return json.loads(jsonstr)
 ```
-
+```python
+model = train_run.output("model")
+```
 Register it:
 
 ```python
@@ -87,7 +89,7 @@ run_build_model_serve = func.run("build",
 Now we can deploy the function:
 
 ```python
-serve_run = serve_func.run("serve", init_parameters={"model_key": model.key}, labels=["time-series-service"], wait=True)
+serve_run = func.run("serve", init_parameters={"model_key": model.key}, labels=["time-series-service"], wait=True)
 ```
 
 Install locally the dependencies:

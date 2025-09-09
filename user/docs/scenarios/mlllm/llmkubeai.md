@@ -80,7 +80,7 @@ To expose the text embedding model, it is possible to use Core UI or Python SDK.
 - model URL. Currently the model can be loaded either from HuggingFace (``hf://`` prefix), from S3 storage of the platform (``s3://``).
 - feature should be set to ``TextEmbedding``.
 
-To serve the text emvedding model, the function should be run with the ``serve`` action, specifying additional parameters. 
+To serve the text embedding model, the function should be run with the ``serve`` action, specifying additional parameters. 
 Normally embedding models do not require extra resources. However,  further parameters and arguments accepted by the KubeAI model specification may be added:
 
 - ``args``: command-line arguments to pass to the engine

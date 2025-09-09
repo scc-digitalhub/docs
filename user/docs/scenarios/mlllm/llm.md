@@ -95,7 +95,7 @@ As in case of other services (ML model services or Serverless functions), it is 
 
 ## Exposing Predefined Text Generation Models
 
-In case of predefined HuggingFace ngenerative model it is possible to use ``huggingfaceserve`` runtime to expose the OpenAI compatible API. For this purpose it is necessary to define the ``huggingfaceserve`` function definition (via UI or SDK) providing the name of the exposed model and the URI of the model in the following form
+In case of predefined HuggingFace generative model it is possible to use ``huggingfaceserve`` runtime to expose the OpenAI compatible API. For this purpose it is necessary to define the ``huggingfaceserve`` function definition (via UI or SDK) providing the name of the exposed model and the URI of the model in the following form
 
 ``huggingface://<id of the huggingface model>``
 
@@ -242,8 +242,6 @@ As in case of other services (ML model services or Serverless functions), it is 
 when it comes to custom LLM model, it is possible to create HuggingFace-based fine tuned model, log it and then serve it from the model path.
 
 When using SDK, this may be accomplished as follows.
-
-First, import necessary libraries
 
 First, import necessary libraries and create a project to host the functions and executions
 
