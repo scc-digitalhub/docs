@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
     
     
       
@@ -2654,7 +2654,7 @@ Once the service becomes available, it is possible to make the calls:</p>
 </code></pre></div>
 <p>As in case of other services (ML model services or Serverless functions), it is possible to expose the service using the KRM API gateway functionality.</p>
 <h2 id="exposing-predefined-text-generation-models">Exposing Predefined Text Generation Models</h2>
-<p>In case of predefined HuggingFace ngenerative model it is possible to use <code>huggingfaceserve</code> runtime to expose the OpenAI compatible API. For this purpose it is necessary to define the <code>huggingfaceserve</code> function definition (via UI or SDK) providing the name of the exposed model and the URI of the model in the following form</p>
+<p>In case of predefined HuggingFace generative model it is possible to use <code>huggingfaceserve</code> runtime to expose the OpenAI compatible API. For this purpose it is necessary to define the <code>huggingfaceserve</code> function definition (via UI or SDK) providing the name of the exposed model and the URI of the model in the following form</p>
 <p><code>huggingface://&lt;id of the huggingface model&gt;</code></p>
 <p>For example <code>huggingface://meta-llama/meta-llama-3-8b-instruct</code>.</p>
 <p>When using SDK, this may be accomplished as follows.</p>
@@ -2770,7 +2770,6 @@ to specify the HW requirements as described in the <a href="../../../tasks/kuber
 <h2 id="fine-tuned-llm-model">Fine-tuned LLM model</h2>
 <p>when it comes to custom LLM model, it is possible to create HuggingFace-based fine tuned model, log it and then serve it from the model path.</p>
 <p>When using SDK, this may be accomplished as follows.</p>
-<p>First, import necessary libraries</p>
 <p>First, import necessary libraries and create a project to host the functions and executions</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 

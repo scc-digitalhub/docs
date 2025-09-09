@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.19">
     
     
       
@@ -2601,7 +2601,7 @@
 </li>
 </ol>
 <h2 id="exposing-ai-models-with-kubeai">Exposing AI models with KubeAI</h2>
-<p>Cirrently, KubeAI allows for serving the LLM models for text generation and text embedding and speech-to-text processing, in line with the OpenAI specification. To expose a model, it is possible to use Python SDK or directly the Core UI. More specifically,</p>
+<p>Currently, KubeAI allows for serving the LLM models for text generation and text embedding and speech-to-text processing, in line with the OpenAI specification. To expose a model, it is possible to use Python SDK or directly the Core UI. More specifically,</p>
 <ul>
 <li>it is necessary to define the corresponding KubeAI function (of <code>kubeai-text</code> or <code>kubeai-speech</code> kinds), define a set of parameters, like the task (feature) to perform, reference to an engine (e.g., vLLM or OLlama for text generation), reference to a model to expose (HuggingFace id, OLlama model, or S3 resource reference) and model name.</li>
 <li>activate serving operation on the function passing extra parameters (like engine arguments, HW resource profile and number of GPUs, secrets and/or envirnoment variables).</li>
