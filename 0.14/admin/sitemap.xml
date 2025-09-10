@@ -2,70 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>http://docs/admin/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/authentication/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/configuration/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/ingress/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/installation/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/upgrading/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/authentication/coder/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/authentication/core/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/authentication/dashboard/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/authentication/krm/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/authentication/kubeflow/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/authentication/minio/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/charts/core/keystore/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/charts/core/sts/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/charts/core/templates/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/charts/krm/roles/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
     <url>
          <loc>http://docs/admin/components/solr/basicauth/</loc>
-         <lastmod>2025-09-09</lastmod>
+         <lastmod>2025-09-10</lastmod>
     </url>
 </urlset>
