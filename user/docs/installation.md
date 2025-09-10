@@ -24,9 +24,11 @@ helm repo add digitalhub https://scc-digitalhub.github.io/digitalhub/
 
 4) Install DigitalHub with Helm.
 
-Replace the two placeholders called `MINIKUBE_IP_ADDRESS` in the command below with the output of the previous command, `minikube ip`
+The platform requires a Values file with the necessary configuration. We provide a configured `values-demo.yaml` file that you can find on our [GitHub repository](https://github.com/scc-digitalhub/digitalhub/blob/main/charts/digitalhub/values-demo.yaml), feel free to use it for starting the platform in a test environment or for reference.
+
+Replace the two placeholders called `MINIKUBE_IP_ADDRESS` in the command below with the output of the previous command, `minikube ip` and `PATH_TO_YOUR_VALUES_FILE` with the path of your configuration file.
 ```sh
-helm upgrade digitalhub digitalhub/digitalhub -n digitalhub --install --create-namespace --set global.registry.url="MINIKUBE_IP_ADDRESS" --set global.externalHostAddress="MINIKUBE_IP_ADDRESS" --timeout 45m0s
+helm upgrade digitalhub digitalhub/digitalhub -n digitalhub --install --create-namespace --set global.registry.url="MINIKUBE_IP_ADDRESS" --set global.externalHostAddress="MINIKUBE_IP_ADDRESS" --values PATH_TO_YOUR_VALUES_FILE --timeout 45m0s
 ```
 
 5) Wait until all pods are in Running or Completed state
