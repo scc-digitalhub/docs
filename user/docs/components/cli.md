@@ -31,7 +31,7 @@ Download the CLI for your OS and architecture from the [releases page](https://g
 
 The standard use flow of the CLI is as follows:
 
-1. Register your instance's configuration. This creates a `.dhcore.ini` file in your home directory (or, if not possible, in the current one), where the configuration will be stored, to be used and updated by subsequent commands.
+1. Register your instance's configuration. This creates a `.dhcore.ini` file in your home directory (or, if not possible, in the current one), where the configuration will be stored, to be used and updated by subsequent commands. The register command takes an optional `-e environment ` and a mandatory parameter `core_endpoint` — this is the base URL of your DigitalHub core (e.g. http://localhost:8080).
 
 ``` sh
 dhcli register http://localhost:8080
