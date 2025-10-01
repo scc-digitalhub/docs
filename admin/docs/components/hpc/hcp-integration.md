@@ -40,7 +40,7 @@ helm install --create-namespace -n interlink virtual-node \
   oci://ghcr.io/intertwin-eu/interlink-helm-chart/interlink \
   --values my-values.yaml
 ```
-my-values.yaml:
+
 ```yaml title="my-values.yaml"
 nodeName: interlink-socket-node
 
@@ -66,7 +66,7 @@ virtualNode:
 ## HPC Configuration
 1. Download [interlink-slurm-plugin](https://github.com/interlink-hq/interlink-slurm-plugin/releases) on your login node.
 2. Configure InterLink Slurm plugin to listen on a Unix socket instead of a TCP port:
-```yaml
+```yaml title="/root/SlurmConfig.yaml"
 SidecarPort: ""
 Socket: "unix:///var/run/plugin.sock"
 SbatchPath: "/usr/bin/sbatch"
