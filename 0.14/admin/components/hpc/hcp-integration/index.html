@@ -1492,11 +1492,10 @@ ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/interlink_rsa<span c
 Deploy the Interlink on your kubernetes cluster:</p>
 </li>
 </ol>
-<p><div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>--create-namespace<span class="w"> </span>-n<span class="w"> </span>interlink<span class="w"> </span>virtual-node<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>--create-namespace<span class="w"> </span>-n<span class="w"> </span>interlink<span class="w"> </span>virtual-node<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>oci://ghcr.io/intertwin-eu/interlink-helm-chart/interlink<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--values<span class="w"> </span>my-values.yaml
 </code></pre></div>
-my-values.yaml:
 <div class="highlight"><span class="filename">my-values.yaml</span><pre><span></span><code><span class="nt">nodeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">interlink-socket-node</span>
 
 <span class="nt">interlink</span><span class="p">:</span>
@@ -1517,12 +1516,12 @@ my-values.yaml:
 <span class="w">    </span><span class="nt">CPUs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span>
 <span class="w">    </span><span class="nt">memGiB</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span>
 <span class="w">    </span><span class="nt">pods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
-</code></pre></div></p>
+</code></pre></div>
 <h2 id="hpc-configuration">HPC Configuration</h2>
 <ol>
 <li>Download <a href="https://github.com/interlink-hq/interlink-slurm-plugin/releases">interlink-slurm-plugin</a> on your login node.</li>
 <li>Configure InterLink Slurm plugin to listen on a Unix socket instead of a TCP port:
-<div class="highlight"><pre><span></span><code><span class="nt">SidecarPort</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<div class="highlight"><span class="filename">/root/SlurmConfig.yaml</span><pre><span></span><code><span class="nt">SidecarPort</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 <span class="nt">Socket</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unix:///var/run/plugin.sock&quot;</span>
 <span class="nt">SbatchPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/usr/bin/sbatch&quot;</span>
 <span class="nt">ScancelPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/usr/bin/scancel&quot;</span>
