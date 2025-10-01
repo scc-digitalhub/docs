@@ -34,3 +34,5 @@ nav:
   - External components:
       - Solr:
           - "components/solr/basicauth.md"
+      - HPC Integration:
+          - "components/hpc/hcp-integration.md"
