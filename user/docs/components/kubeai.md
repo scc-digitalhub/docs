@@ -1,4 +1,4 @@
-# KubeAI
+# KubeAI and OpenWebUI
 
 [KubeAI](https://www.kubeai.org/) is an AI Inference Operator for deploy and scale machine learning models on Kubernetes currently built for LLMs, embeddings, and speech-to-text.
 

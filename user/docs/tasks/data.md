@@ -1,4 +1,4 @@
-# Data and transformations
+# Data and Transformations
 
 The platform supports data of different types to be stored and operated by the underlying storage subsystems.
 
@@ -144,6 +144,9 @@ You can update a data item by clicking `EDIT`. Greyed-out fields may not be upda
 #### Delete
 
 You can delete a data item from either its detail page or the list of data items, by clicking `DELETE`.
+
+### Data exploration in S3 browser
+TODO
 
 ## Management via SDK
 

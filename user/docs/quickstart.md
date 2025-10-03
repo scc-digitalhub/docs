@@ -16,7 +16,7 @@ To access the different components of the platform start from the [landing page]
 - Use **Core** Serverless platform to deploy and expose Python functions or ML Models in different formats as services within the platform.
 - It is possible to organize the data and ML operations in complex pipelines. Currently the platform relies on **Kubeflow Pipelines** specification for this purpose, orchestrating the activities as single Kubernetes Jobs. See more on this in the corresponding [Pipelines](./tasks/workflows.md) section.
 
-You can also use the **CLI** to perform operations on the platform externally. See how to install and use it in [this section](./tasks/cli.md).
+You can also use the **CLI** to perform operations on the platform externally. See how to install and use it in [this section](./cli/commands.md).
 
 ## Tutorials
 
