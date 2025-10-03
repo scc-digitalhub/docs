@@ -2785,7 +2785,8 @@
 <p>The deploy tasks creates a new deployment and exposes the correponding interfaces - for the app execution and monitoring, and for the SuperNode nodes to exchange the training information and instructions. The information about the exposed endpoints are available as a part of the <code>service</code> status of the deployment run. </p>
 <p>The SuperLink deployment parameters include
 - resource and environment parameters (e.g., resource profiles, secrets, variables, volumes)
-- list of public keys corresponding to the SuperNode nodel that SuperLink will accept. If specified, the SuperLink will accept the only the correpsonding clients. If not specified, any SuperNode will be accepted to the federation and to the training procedure.</p>
+- list of public keys corresponding to the SuperNode nodel that SuperLink will accept. If specified, the SuperLink will accept the only the correpsonding clients. If not specified, any SuperNode will be accepted to the federation and to the training procedure.
+- insecure flag to disable TLS verification (for single namespace or test purpose only)</p>
 <p>Once deployed, the SuperLink is ready to accept the application run execution requests.</p>
 <h2 id="flower-client-runtime-execution">Flower-client runtime execution</h2>
 <p>The SuperNode node defined with the corresponding configuration supports two actions: <code>build</code> and <code>deploy</code>.  The first one creates a container image, which is useful if there are many dependencies to be integrated or custom instructions should be provided to the image.</p>
