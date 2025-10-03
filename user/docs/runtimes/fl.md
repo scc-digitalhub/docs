@@ -23,6 +23,7 @@ The deploy tasks creates a new deployment and exposes the correponding interface
 The SuperLink deployment parameters include
 - resource and environment parameters (e.g., resource profiles, secrets, variables, volumes)
 - list of public keys corresponding to the SuperNode nodel that SuperLink will accept. If specified, the SuperLink will accept the only the correpsonding clients. If not specified, any SuperNode will be accepted to the federation and to the training procedure.
+- insecure flag to disable TLS verification (for single namespace or test purpose only)
 
 Once deployed, the SuperLink is ready to accept the application run execution requests.
 
