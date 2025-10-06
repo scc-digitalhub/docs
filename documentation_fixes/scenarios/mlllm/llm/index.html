@@ -2615,7 +2615,7 @@
 <span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;llm&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Create the serving function definition:</p>
-<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm_classification&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm-classification&quot;</span><span class="p">,</span>
                                     <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;huggingfaceserve&quot;</span><span class="p">,</span>
                                     <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
                                     <span class="n">path</span><span class="o">=</span><span class="s2">&quot;huggingface://distilbert/distilbert-base-uncased-finetuned-sst-2-english&quot;</span><span class="p">)</span>
@@ -2670,7 +2670,7 @@ Once the service becomes available, it is possible to make the calls:</p>
 <span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;llm&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Create the serving function definition:</p>
-<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm_generation&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm-generation&quot;</span><span class="p">,</span>
                                     <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;huggingfaceserve&quot;</span><span class="p">,</span>
                                     <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
                                     <span class="n">path</span><span class="o">=</span><span class="s2">&quot;huggingface://meta-llama/meta-llama-3-8b-instruct&quot;</span><span class="p">)</span>
@@ -2858,7 +2858,7 @@ to specify the HW requirements as described in the <a href="../../../tasks/kuber
 <span class="n">train_run</span><span class="o">=</span><span class="n">train_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;1xa100&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Create the serving function definition:</p>
-<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm_classification&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm-classification&quot;</span><span class="p">,</span>
                                     <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;huggingfaceserve&quot;</span><span class="p">,</span>
                                     <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
                                     <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://datalake/llm/model/test_llm_model/f8026820-2471-4497-97f5-8e6d49baac5f/&quot;</span><span class="p">)</span>
