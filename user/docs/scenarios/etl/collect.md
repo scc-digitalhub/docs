@@ -29,7 +29,7 @@ func = project.new_function(name="download-data",
                             handler="downloader")
 ```
 
-This code creates a new function definition that uses Python runtime (versione 3.9) pointing to the create file and the handler method that should be called.
+This code creates a new function definition that uses Python runtime (versione 3.9) pointing to the created file and the handler method that should be called.
 
 For the function to be executed, we need to pass it a reference to the data item. Let us create and register the corresponding data item:
 
