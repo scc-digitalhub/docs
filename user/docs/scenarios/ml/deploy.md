@@ -68,12 +68,12 @@ def serve_predictions(context, event):
 Register it:
 
 ```python
-func = project.new_function(name="serve_darts_model",
+func = project.new_function(name="serve-darts-model",
                             kind="python",
                             python_version="PYTHON3_10",
                             code_src="src/serve_darts_model.py",
                             handler="serve_predictions",
-                            init_function="init")
+                            init_function="init_context")
 ```
 
 Given the dependencies, it is better to have the image ready, using ``build`` action of the function:
