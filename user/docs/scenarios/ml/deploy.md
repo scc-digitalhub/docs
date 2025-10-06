@@ -64,9 +64,11 @@ def serve_predictions(context, event):
     jsonstr = result.pd_dataframe().reset_index().to_json(orient="records")
     return json.loads(jsonstr)
 ```
+
 ```python
 model = train_run.output("model")
 ```
+
 Register it:
 
 ```python
@@ -74,7 +76,7 @@ func = project.new_function(name="serve_darts_model",
                             kind="python",
                             python_version="PYTHON3_10",
                             code_src="src/serve_darts_model.py",
-                            handler="serve",
+                            handler="serve_predictions",
                             init_function="init")
 ```
 
