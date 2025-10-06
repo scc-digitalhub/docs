@@ -72,7 +72,7 @@ func = project.new_function(name="serve_darts_model",
                             kind="python",
                             python_version="PYTHON3_10",
                             code_src="src/serve_darts_model.py",
-                            handler="serve",
+                            handler="serve_predictions",
                             init_function="init")
 ```
 
