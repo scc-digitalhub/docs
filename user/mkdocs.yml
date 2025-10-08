@@ -76,6 +76,11 @@ nav:
           - "scenarios/postgrest/data.md"
           - "scenarios/postgrest/postgrest.md"
           - "scenarios/postgrest/apigw.md"
+      - Whisper fine-tuning:
+          - "scenarios/whisper-fine-tuning/intro.md"
+          - "scenarios/whisper-fine-tuning/create-dataset.md"
+          - "scenarios/whisper-fine-tuning/fine-tuning.md"
+          - "scenarios/whisper-fine-tuning/convert-test.md"
   - Runtimes reference: 
       - Overview: "runtimes/overview.md"
       - Python: "runtimes/python.md"
