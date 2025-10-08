@@ -712,6 +712,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Tracking and Metrics
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -723,6 +736,34 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#model-and-run-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model and Run Metrics
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2786,6 +2827,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#model-and-run-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model and Run Metrics
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2801,7 +2859,82 @@
 
 
 <h1 id="tracking-and-metrics">Tracking and Metrics</h1>
-<p>TODO</p>
+<p>Traceability in AI solutions refers to the ability to track and document every stage of a machine learning (ML) system’s lifecycle—from data collection and preprocessing to model training, deployment, and monitoring. It ensures transparency, reproducibility, and accountability by maintaining records of data sources, model versions, parameters, and performance metrics.</p>
+<p>Model and data metrics are key components of this traceability.</p>
+<ul>
+<li>
+<p>Data metrics assess the quality, balance, and drift of datasets (e.g., missing values, bias, or changes in data distribution).</p>
+</li>
+<li>
+<p>Model metrics evaluate performance, such as accuracy, precision, recall, or fairness indicators, and help compare model versions over time.</p>
+</li>
+</ul>
+<p>In MLOps (Machine Learning Operations), traceability and metrics are essential for maintaining reliable, compliant, and scalable AI systems. They enable teams to audit decisions, reproduce results, detect performance degradation, and ensure models remain aligned with business and ethical requirements throughout their operational lifecycle.</p>
+<p>Within the platform metrics and trracking are first-class elements and are implemented as follows.</p>
+<h2 id="model-and-run-metrics">Model and Run Metrics</h2>
+<p>First, it is possible to associate quantitiative metrics to the ML models that are being created and logged by the platform. In this way it is possible to associate single-value metric value (e.g., accuracy) or value series (e.g., loss over epochs) to a model. To perform this operation one can use Python SDK and perform <code>log_metrics</code> oepration over model instance (see <a href="https://scc-digitalhub.github.io/sdk-docs/reference/objects/model/methods/#digitalhub.entities.model._base.entity.Model.log_metrics">Python SDK documentation</a> for details).</p>
+<p>Second, the metrics may be associated to the function runs. Similarly to model metrics, the run metrics may be logged using Python SDK.</p>
+<p><img alt="Metrics" src="../../images/metrics.png" /></p>
+<p>Once reported, the metrics of the entities may be compared (e.g., training over different hyper parameter sets).</p>
+<p>While it is possible to log arbitrary metrics collected within the execution, in some cases it is possibile to rely on the functionality provided by the ML frameworks.</p>
+<p>In case of MLFlow model, it is possible to use <code>autolog</code> functionality of the framework to collect and assocaite metrics. For example</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">mlflow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="kn">import</span> <span class="n">from_mlflow_run</span><span class="p">,</span> <span class="n">get_mlflow_model_metrics</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_runtime_python</span><span class="w"> </span><span class="kn">import</span> <span class="n">handler</span>
+
+<span class="o">...</span>
+
+    <span class="c1"># Enable MLflow autologging for sklearn</span>
+    <span class="n">mlflow</span><span class="o">.</span><span class="n">sklearn</span><span class="o">.</span><span class="n">autolog</span><span class="p">(</span><span class="n">log_datasets</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># training</span>
+    <span class="o">...</span>
+
+    <span class="c1"># Get MLflow run information</span>
+    <span class="n">run_id</span> <span class="o">=</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">last_active_run</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">run_id</span>
+    <span class="c1"># Extract MLflow run artifacts and metadata for DigitalHub integration</span>
+    <span class="n">model_params</span> <span class="o">=</span> <span class="n">from_mlflow_run</span><span class="p">(</span><span class="n">run_id</span><span class="p">)</span>
+    <span class="n">metrics</span> <span class="o">=</span> <span class="n">get_mlflow_model_metrics</span><span class="p">(</span><span class="n">run_id</span><span class="p">)</span>
+</code></pre></div>
+<p>In case of models built / fine-tuned with HuggingFace Transformers, one can use the callbacks to report the metrics during the execution. For example</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AutoTokenizer</span><span class="p">,</span>
+    <span class="n">AutoModelForCausalLM</span><span class="p">,</span>
+    <span class="n">BitsAndBytesConfig</span><span class="p">,</span>
+    <span class="n">TrainingArguments</span><span class="p">,</span>
+    <span class="n">EarlyStoppingCallback</span><span class="p">,</span>
+    <span class="n">TrainerCallback</span>
+<span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">LoggingCallback</span><span class="p">(</span><span class="n">TrainerCallback</span><span class="p">):</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">run</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">run</span> <span class="o">=</span> <span class="n">run</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_log</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">control</span><span class="p">,</span> <span class="n">logs</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">metrics</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">logs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+                <span class="n">metrics</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="ow">and</span> <span class="n">v</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">metrics</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">&#39;Trainer is attempting to log a value of &quot;</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">&quot; of type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="si">}</span><span class="s1"> for key &quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">&quot; as a metric. &#39;</span>
+                    <span class="s2">&quot;MLflow&#39;s log_metric() only accepts float and int types so we dropped this attribute.&quot;</span>
+                <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="o">.</span><span class="n">log_metrics</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
+
+<span class="o">...</span>
+
+    <span class="n">trainer</span> <span class="o">=</span> <span class="n">SFTTrainer</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+        <span class="n">processing_class</span><span class="o">=</span><span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">train_dataset</span><span class="o">=</span><span class="n">train_dataset</span><span class="p">,</span>
+        <span class="n">eval_dataset</span><span class="o">=</span><span class="n">dev_dataset</span><span class="p">,</span>
+        <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span>
+        <span class="o">...</span>
+</code></pre></div>
 
 
 
