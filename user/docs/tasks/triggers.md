@@ -1,4 +1,4 @@
-# Triggers and automation
+# Triggers and Automation
 
 Triggers define a way for users to describe a set of *conditions* which should result in the execution of a function's task, i.e. a **run**.
 

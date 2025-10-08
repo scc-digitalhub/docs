@@ -15,7 +15,7 @@ serve_func = project.new_function(
     path=model.spec.path + "model/",
 )
 
-serve_run = func.run("serve", wait=True)
+serve_run = serve_func.run("serve", wait=True)
 ```
 
 You can now create a dataset for testing the endpoint:
