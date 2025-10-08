@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/tasks/models/">
+        <link rel="canonical" href="http://docs/user/scenarios/whisper-fine-tuning/convert-test/">
       
       
-        <link rel="prev" href="../functions/">
+        <link rel="prev" href="../fine-tuning/">
       
       
-        <link rel="next" href="../workflows/">
+        <link rel="next" href="../../../runtimes/overview/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
     
     
       
-        <title>ML Models - Digital Hub</title>
+        <title>Convert to faster-whisper and test - Digital Hub</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.2a3383ac.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2a3383ac.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/portal_selection.css">
+      <link rel="stylesheet" href="../../../../stylesheets/portal_selection.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/colors.css">
+      <link rel="stylesheet" href="../../../../stylesheets/colors.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ml-models" class="md-skip">
+        <a href="#convert-to-faster-whisper-and-test" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
 
     <!-- Link to home -->
     <a
-      href="../.."
+      href="../../.."
       title="Digital Hub"
       class="md-header__button md-logo"
       aria-label="Digital Hub"
@@ -258,7 +258,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ML Models
+              Convert to faster-whisper and test
             
           </span>
         </div>
@@ -373,7 +373,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Digital Hub" class="md-nav__button md-logo" aria-label="Digital Hub" data-md-component="logo">
+    <a href="../../.." title="Digital Hub" class="md-nav__button md-logo" aria-label="Digital Hub" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -391,7 +391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -413,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/" class="md-nav__link">
+      <a href="../../../architecture/" class="md-nav__link">
         
   
   
@@ -435,7 +435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quickstart/" class="md-nav__link">
+      <a href="../../../quickstart/" class="md-nav__link">
         
   
   
@@ -457,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/" class="md-nav__link">
+      <a href="../../../installation/" class="md-nav__link">
         
   
   
@@ -476,20 +476,20 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -505,7 +505,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Concepts and Tasks
@@ -519,7 +519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/" class="md-nav__link">
+      <a href="../../../tasks/projects/" class="md-nav__link">
         
   
   
@@ -542,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../functions/" class="md-nav__link">
+      <a href="../../../tasks/functions/" class="md-nav__link">
         
   
   
@@ -562,32 +562,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    ML Models
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../tasks/models/" class="md-nav__link">
         
   
   
@@ -598,86 +576,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#management-via-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Management via UI
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Management via UI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#read" class="md-nav__link">
-    <span class="md-ellipsis">
-      Read
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#update" class="md-nav__link">
-    <span class="md-ellipsis">
-      Update
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete" class="md-nav__link">
-    <span class="md-ellipsis">
-      Delete
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#management-via-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Management via SDK
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -690,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workflows/" class="md-nav__link">
+      <a href="../../../tasks/workflows/" class="md-nav__link">
         
   
   
@@ -713,7 +611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data/" class="md-nav__link">
+      <a href="../../../tasks/data/" class="md-nav__link">
         
   
   
@@ -736,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/" class="md-nav__link">
+      <a href="../../../tasks/services/" class="md-nav__link">
         
   
   
@@ -759,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../triggers/" class="md-nav__link">
+      <a href="../../../tasks/triggers/" class="md-nav__link">
         
   
   
@@ -782,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workspaces/" class="md-nav__link">
+      <a href="../../../tasks/workspaces/" class="md-nav__link">
         
   
   
@@ -805,7 +703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../metrics/" class="md-nav__link">
+      <a href="../../../tasks/metrics/" class="md-nav__link">
         
   
   
@@ -828,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/" class="md-nav__link">
+      <a href="../../../tasks/kubernetes-resources/" class="md-nav__link">
         
   
   
@@ -851,7 +749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code-source/" class="md-nav__link">
+      <a href="../../../tasks/code-source/" class="md-nav__link">
         
   
   
@@ -874,7 +772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../secrets/" class="md-nav__link">
+      <a href="../../../tasks/secrets/" class="md-nav__link">
         
   
   
@@ -897,7 +795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pat/" class="md-nav__link">
+      <a href="../../../tasks/pat/" class="md-nav__link">
         
   
   
@@ -920,7 +818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/" class="md-nav__link">
+      <a href="../../../tasks/resources/" class="md-nav__link">
         
   
   
@@ -990,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dashboard/" class="md-nav__link">
+      <a href="../../../components/dashboard/" class="md-nav__link">
         
   
   
@@ -1013,7 +911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dh_console/" class="md-nav__link">
+      <a href="../../../components/dh_console/" class="md-nav__link">
         
   
   
@@ -1036,7 +934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/cli/" class="md-nav__link">
+      <a href="../../../components/cli/" class="md-nav__link">
         
   
   
@@ -1059,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/resourcemanager/" class="md-nav__link">
+      <a href="../../../components/resourcemanager/" class="md-nav__link">
         
   
   
@@ -1082,7 +980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/kubeai/" class="md-nav__link">
+      <a href="../../../components/kubeai/" class="md-nav__link">
         
   
   
@@ -1145,7 +1043,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/code-toolbox/" class="md-nav__link">
+      <a href="../../../components/code-toolbox/" class="md-nav__link">
         
   
   
@@ -1208,7 +1106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dremio/" class="md-nav__link">
+      <a href="../../../components/dremio/" class="md-nav__link">
         
   
   
@@ -1231,7 +1129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/sqlpad/" class="md-nav__link">
+      <a href="../../../components/sqlpad/" class="md-nav__link">
         
   
   
@@ -1254,7 +1152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/grafana/" class="md-nav__link">
+      <a href="../../../components/grafana/" class="md-nav__link">
         
   
   
@@ -1297,20 +1195,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -1326,7 +1224,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Scenarios and Tutorials
@@ -1380,7 +1278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/intro/" class="md-nav__link">
+      <a href="../../etl/intro/" class="md-nav__link">
         
   
   
@@ -1403,7 +1301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/collect/" class="md-nav__link">
+      <a href="../../etl/collect/" class="md-nav__link">
         
   
   
@@ -1426,7 +1324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/process/" class="md-nav__link">
+      <a href="../../etl/process/" class="md-nav__link">
         
   
   
@@ -1449,7 +1347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/pipeline/" class="md-nav__link">
+      <a href="../../etl/pipeline/" class="md-nav__link">
         
   
   
@@ -1472,7 +1370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/expose/" class="md-nav__link">
+      <a href="../../etl/expose/" class="md-nav__link">
         
   
   
@@ -1495,7 +1393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/streamlit/" class="md-nav__link">
+      <a href="../../etl/streamlit/" class="md-nav__link">
         
   
   
@@ -1566,7 +1464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl-core/scenario/" class="md-nav__link">
+      <a href="../../etl-core/scenario/" class="md-nav__link">
         
   
   
@@ -1589,7 +1487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl-core/pipeline/" class="md-nav__link">
+      <a href="../../etl-core/pipeline/" class="md-nav__link">
         
   
   
@@ -1660,7 +1558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlsklearn/intro/" class="md-nav__link">
+      <a href="../../mlsklearn/intro/" class="md-nav__link">
         
   
   
@@ -1683,7 +1581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlsklearn/training/" class="md-nav__link">
+      <a href="../../mlsklearn/training/" class="md-nav__link">
         
   
   
@@ -1706,7 +1604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlsklearn/deploy/" class="md-nav__link">
+      <a href="../../mlsklearn/deploy/" class="md-nav__link">
         
   
   
@@ -1777,7 +1675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlmlflow/intro/" class="md-nav__link">
+      <a href="../../mlmlflow/intro/" class="md-nav__link">
         
   
   
@@ -1800,7 +1698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlmlflow/deploy/" class="md-nav__link">
+      <a href="../../mlmlflow/deploy/" class="md-nav__link">
         
   
   
@@ -1871,7 +1769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlllm/llm/" class="md-nav__link">
+      <a href="../../mlllm/llm/" class="md-nav__link">
         
   
   
@@ -1894,7 +1792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlllm/llmkubeai/" class="md-nav__link">
+      <a href="../../mlllm/llmkubeai/" class="md-nav__link">
         
   
   
@@ -1965,7 +1863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlspeech/kubeaispeech/" class="md-nav__link">
+      <a href="../../mlspeech/kubeaispeech/" class="md-nav__link">
         
   
   
@@ -2036,7 +1934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/ml/intro/" class="md-nav__link">
+      <a href="../../ml/intro/" class="md-nav__link">
         
   
   
@@ -2059,7 +1957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/ml/deploy/" class="md-nav__link">
+      <a href="../../ml/deploy/" class="md-nav__link">
         
   
   
@@ -2130,7 +2028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/dremio_grafana/scenario/" class="md-nav__link">
+      <a href="../../dremio_grafana/scenario/" class="md-nav__link">
         
   
   
@@ -2201,7 +2099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/intro/" class="md-nav__link">
+      <a href="../../postgrest/intro/" class="md-nav__link">
         
   
   
@@ -2224,7 +2122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/data/" class="md-nav__link">
+      <a href="../../postgrest/data/" class="md-nav__link">
         
   
   
@@ -2247,7 +2145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/postgrest/" class="md-nav__link">
+      <a href="../../postgrest/postgrest/" class="md-nav__link">
         
   
   
@@ -2270,7 +2168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/apigw/" class="md-nav__link">
+      <a href="../../postgrest/apigw/" class="md-nav__link">
         
   
   
@@ -2298,20 +2196,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_10" checked>
         
           
           <label class="md-nav__link" for="__nav_7_10" id="__nav_7_10_label" tabindex="0">
@@ -2327,7 +2225,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_10_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_10_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_10">
             <span class="md-nav__icon md-icon"></span>
             Whisper fine-tuning
@@ -2341,7 +2239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/whisper-fine-tuning/intro/" class="md-nav__link">
+      <a href="../intro/" class="md-nav__link">
         
   
   
@@ -2364,7 +2262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/whisper-fine-tuning/create-dataset/" class="md-nav__link">
+      <a href="../create-dataset/" class="md-nav__link">
         
   
   
@@ -2387,7 +2285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/whisper-fine-tuning/fine-tuning/" class="md-nav__link">
+      <a href="../fine-tuning/" class="md-nav__link">
         
   
   
@@ -2407,10 +2305,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../scenarios/whisper-fine-tuning/convert-test/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2421,6 +2328,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -2488,7 +2396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/overview/" class="md-nav__link">
+      <a href="../../../runtimes/overview/" class="md-nav__link">
         
   
   
@@ -2511,7 +2419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/python/" class="md-nav__link">
+      <a href="../../../runtimes/python/" class="md-nav__link">
         
   
   
@@ -2534,7 +2442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/container/" class="md-nav__link">
+      <a href="../../../runtimes/container/" class="md-nav__link">
         
   
   
@@ -2557,7 +2465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/hera/" class="md-nav__link">
+      <a href="../../../runtimes/hera/" class="md-nav__link">
         
   
   
@@ -2580,7 +2488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/llmserve/" class="md-nav__link">
+      <a href="../../../runtimes/llmserve/" class="md-nav__link">
         
   
   
@@ -2603,7 +2511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/mlflowserve/" class="md-nav__link">
+      <a href="../../../runtimes/mlflowserve/" class="md-nav__link">
         
   
   
@@ -2626,7 +2534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/asrserve/" class="md-nav__link">
+      <a href="../../../runtimes/asrserve/" class="md-nav__link">
         
   
   
@@ -2649,7 +2557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/sklearnserve/" class="md-nav__link">
+      <a href="../../../runtimes/sklearnserve/" class="md-nav__link">
         
   
   
@@ -2672,7 +2580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/fl/" class="md-nav__link">
+      <a href="../../../runtimes/fl/" class="md-nav__link">
         
   
   
@@ -2695,7 +2603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/dbt/" class="md-nav__link">
+      <a href="../../../runtimes/dbt/" class="md-nav__link">
         
   
   
@@ -2765,7 +2673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sdk/intro/" class="md-nav__link">
+      <a href="../../../sdk/intro/" class="md-nav__link">
         
   
   
@@ -2835,7 +2743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cli/commands/" class="md-nav__link">
+      <a href="../../../cli/commands/" class="md-nav__link">
         
   
   
@@ -2878,74 +2786,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#management-via-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Management via UI
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Management via UI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#read" class="md-nav__link">
-    <span class="md-ellipsis">
-      Read
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#update" class="md-nav__link">
-    <span class="md-ellipsis">
-      Update
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#delete" class="md-nav__link">
-    <span class="md-ellipsis">
-      Delete
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#management-via-sdk" class="md-nav__link">
-    <span class="md-ellipsis">
-      Management via SDK
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2960,51 +2800,36 @@
 
 
 
-<h1 id="ml-models">ML Models</h1>
-<p>Support for MLOps is one of the key functionality of the platform. Creation, management, and serving ML models is supported by the platform via ML Model entities and the corresponding functionality for their registration and serving.</p>
-<p>ML Model entity represent the relevant information about the model - framework and algorithms used to create it, hyper parameters and metrics, necessary artifacts constituting the model, etc. The platform support a list of standard model kinds as well as generic models. Specifically, it is possible to define models of the following kinds</p>
-<ul>
-<li><code>sklearn</code> - ML models created with Scikit-learn framework and packaged as a single artifact.</li>
-<li><code>mlflow</code> - ML models created with any MLFlow-compatible framework (or <code>flavor</code> in MLFlow terminology) and logged following the <a href="https://mlflow.org/">MLFlow</a> model format.</li>
-<li><code>huggingface</code> - LLM created using the <a href="https://huggingface.co/">HuggingFace</a> framework and format, either standard one or fine-tuned.</li>
-<li><code>model</code> - generic ML Model with custom packaging and framework.</li>
-</ul>
-<p>For the specific ML Model formats the platform provides the support for serving those models as inference API in line with the <a href="https://github.com/kserve/open-inference-protocol">V2 open inference protocol</a>. These is achieved with the corresponding model serving runtimes.</p>
-<h2 id="management-via-ui">Management via UI</h2>
-<p>Models can be created and managed as <em>entities</em> with the console. You can access them from the dashboard or the left menu. You can:</p>
-<ul>
-<li><code>create</code> a new model</li>
-<li><code>expand</code> a model to see its 5 latest versions</li>
-<li><code>show</code> the details of a model</li>
-<li><code>edit</code> a model</li>
-<li><code>delete</code> a model</li>
-<li><code>filter</code> models by name and kind</li>
-</ul>
-<p><img alt="Model list" src="../../images/console/model-list.png" /></p>
-<p>We will now see how to <a href="#create">create</a>, <a href="#read">read</a>, <a href="#update">update</a> and <a href="#delete">delete</a> models using the UI, similarly to what is done with the SDK.</p>
-<h3 id="create">Create</h3>
-<p>Click <code>CREATE</code> and a form will be shown:</p>
-<p><img alt="Model form" src="../../images/console/model-form.png" /></p>
-<p>Mandatory fields are:</p>
-<ul>
-<li><strong><code>Name</code></strong>: name and identifier of the model</li>
-<li><strong><code>Kind</code></strong>: kind of the model</li>
-<li>(Spec) <strong><code>Path</code></strong>: remote path where the model is stored. If you instead upload the model at the bottom of the form, this will be the path to where it will be stored.</li>
-</ul>
-<h3 id="read">Read</h3>
-<p>Click <code>SHOW</code> to view a model's details.</p>
-<p><img alt="Model details" src="../../images/console/model-read.png" /></p>
-<p>On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.</p>
-<p>The <code>INSPECTOR</code> button will show a dialog containing the resource in JSON format.</p>
-<p><img alt="Model inspector" src="../../images/console/model-inspector.png" /></p>
-<p>The <code>EXPORT</code> button will download the resource's information as a yaml file.</p>
-<h3 id="update">Update</h3>
-<p>You can update a model by clicking <code>EDIT</code>. Greyed-out fields may not be updated.</p>
-<h3 id="delete">Delete</h3>
-<p>You can delete a model from either its detail page or the list of models, by clicking <code>DELETE</code>.</p>
-<h2 id="management-via-sdk">Management via SDK</h2>
-<p>Models can be created and managed as <em>entities</em> with the SDK CRUD methods.
-Check the <a href="https://scc-digitalhub.github.io/sdk-docs/objects/model/entity/">SDK Model documentation</a> for more information.</p>
+<h1 id="convert-to-faster-whisper-and-test">Convert to faster-whisper and test</h1>
+<p>We will convert the model to be compatible with <a href="https://github.com/SYSTRAN/faster-whisper">faster-whisper</a>, a faster re-implementation of the Whisper model.</p>
+<p>Download the model:</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s2">&quot;whisper-ft&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;./model/whisper-ft&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p>Install <code>faster-whisper</code>:</p>
+<div class="highlight"><pre><span></span><code>%pip install faster-whisper transformers torch==2.8.0
+</code></pre></div>
+<p>Convert the model:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ctranslate2.converters</span><span class="w"> </span><span class="kn">import</span> <span class="n">TransformersConverter</span>
+
+<span class="n">tc</span> <span class="o">=</span> <span class="n">TransformersConverter</span><span class="p">(</span><span class="s2">&quot;./model/whisper-ft&quot;</span><span class="p">,</span> <span class="n">copy_files</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tokenizer.json&#39;</span><span class="p">,</span> <span class="s1">&#39;preprocessor_config.json&#39;</span><span class="p">])</span>
+<span class="n">tc</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;./model/faster-whisper-ft&#39;</span><span class="p">,</span> <span class="n">quantization</span><span class="o">=</span><span class="s2">&quot;float16&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">faster_whisper</span><span class="w"> </span><span class="kn">import</span> <span class="n">WhisperModel</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">WhisperModel</span><span class="p">(</span><span class="s1">&#39;./model/faster-whisper-ft&#39;</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Download a sample file:</p>
+<div class="highlight"><pre><span></span><code>!wget -O kubeai.mp4 &quot;https://github.com/user-attachments/assets/711d1279-6af9-4c6c-a052-e59e7730b757&quot;
+</code></pre></div>
+<p>Finally, we run the model on the sample file to test the results:</p>
+<div class="highlight"><pre><span></span><code><span class="n">segments</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transcribe</span><span class="p">(</span><span class="s2">&quot;kubeai.mp4&quot;</span><span class="p">,</span> <span class="n">beam_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Detected language &#39;</span><span class="si">%s</span><span class="s2">&#39; with probability </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">language</span><span class="p">,</span> <span class="n">info</span><span class="o">.</span><span class="n">language_probability</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%.2f</span><span class="s2">s -&gt; </span><span class="si">%.2f</span><span class="s2">s] </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">segment</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="n">segment</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
+</code></pre></div>
 
 
 
@@ -3036,10 +2861,10 @@ Check the <a href="https://scc-digitalhub.github.io/sdk-docs/objects/model/entit
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
     
   </body>
