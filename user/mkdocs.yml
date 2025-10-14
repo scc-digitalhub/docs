@@ -76,6 +76,12 @@ nav:
           - "scenarios/postgrest/data.md"
           - "scenarios/postgrest/postgrest.md"
           - "scenarios/postgrest/apigw.md"
+      - Retrieval-Augmented Generation:
+          - "scenarios/rag/intro.md"
+          - "scenarios/rag/llm.md"
+          - "scenarios/rag/knowledge-base.md"
+          - "scenarios/rag/rag.md"
+          - "scenarios/rag/webui.md"
       - Whisper fine-tuning:
           - "scenarios/whisper-fine-tuning/intro.md"
           - "scenarios/whisper-fine-tuning/create-dataset.md"
