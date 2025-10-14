@@ -144,7 +144,7 @@ if submit:
 
 ## Launch and test the Streamlit app
 
-This command launches the Streamlit app, based on the file written by the previous cell. To access the app, you will need to forward port 8501 in Coder. 
+This command launches the Streamlit app, based on the file written by the previous cell. To access the app, you will need to [forward port 8501 in Coder](../../../tasks/workspaces/#port-forwarding). 
 
 Try asking the app a question.
 
