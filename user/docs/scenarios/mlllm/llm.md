@@ -344,11 +344,16 @@ llm_function = project.new_function("llm_classification",
 Serve the model:
 
 ```python
-llm_run = llm_function.run(action="serve", profile="1xa100", wait=True)
+llm_run = llm_function.run(action="serve", profile="1xa100", volumes=[{
+                        "volume_type": "persistent_volume_claim",
+                        "name": "volume-llmpa",
+                        "mount_path": "/shared",
+                        "spec": { "size": "10Gi" }}]
+                    )
 ```
 
 Please note the use of the ``profile`` parameter. As the LLM models require specific hardware (GPU in particular), it is necessary
-to specify the HW requirements as described in the  [Configuring Kubernetes executions](../../tasks/kubernetes-resources.md) section. In particular, it is possible to rely on the predefined resource templates of the platform deployment.
+to specify the HW requirements as described in the  [Configuring Kubernetes executions](../../tasks/kubernetes-resources.md) section. In particular, it is possible to rely on the predefined resource templates of the platform deployment. Also, in case of large models the default disk space may be insufficient and an extra volume should be configured for the underlying deployment.
 
 Once the service becomes available, it is possible to make the calls:
 
@@ -365,7 +370,7 @@ json = {
     ]
 }
 
-llm_run.invoke(model_name=model_name, json=json).json()
+llm_run.refresh().invoke(model_name=model_name, json=json).json()
 ```
 
 Here the classification LLM service API follows the Open Inference protocol API and the expected result should have the following form:
