@@ -31,8 +31,8 @@ Then, we can run an instance connecting the model services together. It may take
 serve_run = serve_func.run(
     action="serve",
     resources={
-        "cpu": {"limits": "8", "requests": "4"},
-        "mem": {"limits": "8Gi", "requests": "4Gi"},
+        "cpu": "4",
+        "mem": "4Gi",
     },
     envs=[
             {"name": "CHAT_MODEL_NAME", "value": CHAT_MODEL},
@@ -54,6 +54,6 @@ To test our API, we make a call to the service endpoint, providing JSON text wit
 ```python
 import requests
 
-res = requests.post(f"http://{AGENT_URL}",json={"question": "What is the idea behind SVMs?"})
+res = requests.post(f"http://{AGENT_URL}",json={"question": "What does the platform integrate as data stores?"})
 print(res.json())
 ```

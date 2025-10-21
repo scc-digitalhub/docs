@@ -29,10 +29,8 @@ template:
   parameters:
     param1: value123
   resources:
-    cpu:
-      requests: "1"
-    mem:
-      requests: 64Mi
+    cpu: "1"
+    mem: 64Mi
 
 ```
 
