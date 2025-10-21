@@ -43,7 +43,7 @@ extract_function = project.new_function(
 We store the PDF file as artifact and download it. You are free to change the address to whichever PDF file you would like.
 
 ```python
-pdf = project.new_artifact("document.pdf",kind="artifact", path="https://harvard-ml-courses.github.io/cs181-web-2024/static/cs181-textbook.pdf")
+pdf = project.new_artifact("document.pdf",kind="artifact", path="https://raw.githubusercontent.com/scc-digitalhub/digitalhub-tutorials/master/s7-rag/resources/document.pdf")
 pdf.download("document.pdf")
 ```
 

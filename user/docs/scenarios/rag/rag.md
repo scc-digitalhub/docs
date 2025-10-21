@@ -40,7 +40,6 @@ serve_run = serve_func.run(
             {"name": "EMBEDDING_MODEL_NAME", "value": EMBED_MODEL},
             {"name": "EMBEDDING_SERVICE_URL", "value": EMBED_URL}
          ],
-    secrets=["PG_CONN_URL"],
     wait=True
 )
 ```
