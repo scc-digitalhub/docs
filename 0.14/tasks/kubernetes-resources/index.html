@@ -3437,12 +3437,9 @@ the run configuration may have a specific requirements for</p>
 <p>To define requirements for single runs, developers need to include in the run specification the resource definition, in accordance with the schema.</p>
 <p>For example, to request for a certain amount of compute resources, the spec must contain the detailed definition as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span>
-<span class="w">  </span><span class="nt">mem</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32Gi</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8&quot;</span>
+<span class="w">  </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32Gi</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
 </code></pre></div>
 <p>In order to provide such definitions, users can leverage the SDK or the Core UI to programmatically or interactively define their request.
 Please see the <a href="https://scc-digitalhub.github.io/sdk-docs/runtimes/kubernetes-resources/">Kubernetes Resources</a> section of the documentation for more information.</p>
@@ -3476,22 +3473,17 @@ The platform will create the volume and bind it to the pod lifecycle.</p>
 <h4 id="cpu">CPU</h4>
 <p>To request a specific amount of CPU for the run, declare the resource type as <code>cpu</code> and specify request and/or limit values.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
-<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;12&quot;</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
 </code></pre></div>
 <h4 id="ram-memory">RAM memory</h4>
 <p>To request a specific amount of RAM memory for the run, declare the resource type as <code>mem</code> and specify request and/or limit values.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">mem</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32Gi</span>
-<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64Gi</span>
+<span class="w">  </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32Gi</span>
 </code></pre></div>
 <h4 id="gpu">GPU</h4>
 <p>To request GPU resources, specify the resource type <code>gpu</code> and set the requested value as a limit.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="w">    </span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="w">    </span>
 </code></pre></div>
 <h3 id="secrets">Secrets</h3>
 <p>Users can request a secret injection into the run being launched by passing the identifier inside the <code>secrets</code> field.
