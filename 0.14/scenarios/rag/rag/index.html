@@ -3114,8 +3114,8 @@
 <div class="highlight"><pre><span></span><code><span class="n">serve_run</span> <span class="o">=</span> <span class="n">serve_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
     <span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span>
     <span class="n">resources</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;cpu&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;limits&quot;</span><span class="p">:</span> <span class="s2">&quot;8&quot;</span><span class="p">,</span> <span class="s2">&quot;requests&quot;</span><span class="p">:</span> <span class="s2">&quot;4&quot;</span><span class="p">},</span>
-        <span class="s2">&quot;mem&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;limits&quot;</span><span class="p">:</span> <span class="s2">&quot;8Gi&quot;</span><span class="p">,</span> <span class="s2">&quot;requests&quot;</span><span class="p">:</span> <span class="s2">&quot;4Gi&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;cpu&quot;</span><span class="p">:</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;mem&quot;</span><span class="p">:</span> <span class="s2">&quot;4Gi&quot;</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="n">envs</span><span class="o">=</span><span class="p">[</span>
             <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;CHAT_MODEL_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">CHAT_MODEL</span><span class="p">},</span>
@@ -3132,7 +3132,7 @@
 <p>To test our API, we make a call to the service endpoint, providing JSON text with an example question.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
-<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">AGENT_URL</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;What is the idea behind SVMs?&quot;</span><span class="p">})</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">AGENT_URL</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;What does the platform integrate as data stores?&quot;</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
 

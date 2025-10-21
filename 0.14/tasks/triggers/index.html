@@ -3181,10 +3181,8 @@
 <span class="w">  </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">param1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value123</span>
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
-<span class="w">    </span><span class="nt">mem</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64Mi</span>
+<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64Mi</span>
 </code></pre></div>
 <p>To solve this need, triggers can produce <em>inputs</em>, based on their context and the specific execution event. These inputs can be consumed by user-defined functions to perform specific, parametrized tasks: for example a validation function could perform a check on a given data table. In order to <em>consume</em> inputs, the function must accept variable parameters.</p>
 <p>For example, a function could receive a parameter shaped as a core entity as follow:</p>
