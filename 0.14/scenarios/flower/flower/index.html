@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/tasks/kubernetes-resources/">
+        <link rel="canonical" href="http://docs/user/scenarios/flower/flower/">
       
       
-        <link rel="prev" href="../metrics/">
+        <link rel="prev" href="../../whisper-fine-tuning/convert-test/">
       
       
-        <link rel="next" href="../code-source/">
+        <link rel="next" href="../../../runtimes/overview/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
-        <title>Using Kubernetes Resources for Runs - Digital Hub</title>
+        <title>Federated Learning with Flower - Digital Hub</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/portal_selection.css">
+      <link rel="stylesheet" href="../../../../stylesheets/portal_selection.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/colors.css">
+      <link rel="stylesheet" href="../../../../stylesheets/colors.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#using-kubernetes-resources-for-runs" class="md-skip">
+        <a href="#federated-learning-with-flower" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
 
     <!-- Link to home -->
     <a
-      href="../.."
+      href="../../.."
       title="Digital Hub"
       class="md-header__button md-logo"
       aria-label="Digital Hub"
@@ -258,7 +258,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Using Kubernetes Resources for Runs
+              Federated Learning with Flower
             
           </span>
         </div>
@@ -373,7 +373,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Digital Hub" class="md-nav__button md-logo" aria-label="Digital Hub" data-md-component="logo">
+    <a href="../../.." title="Digital Hub" class="md-nav__button md-logo" aria-label="Digital Hub" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -391,7 +391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -413,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/" class="md-nav__link">
+      <a href="../../../architecture/" class="md-nav__link">
         
   
   
@@ -435,7 +435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quickstart/" class="md-nav__link">
+      <a href="../../../quickstart/" class="md-nav__link">
         
   
   
@@ -457,7 +457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/" class="md-nav__link">
+      <a href="../../../installation/" class="md-nav__link">
         
   
   
@@ -476,20 +476,20 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -505,7 +505,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Concepts and Tasks
@@ -519,7 +519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/" class="md-nav__link">
+      <a href="../../../tasks/projects/" class="md-nav__link">
         
   
   
@@ -542,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../functions/" class="md-nav__link">
+      <a href="../../../tasks/functions/" class="md-nav__link">
         
   
   
@@ -565,7 +565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../models/" class="md-nav__link">
+      <a href="../../../tasks/models/" class="md-nav__link">
         
   
   
@@ -588,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workflows/" class="md-nav__link">
+      <a href="../../../tasks/workflows/" class="md-nav__link">
         
   
   
@@ -611,7 +611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data/" class="md-nav__link">
+      <a href="../../../tasks/data/" class="md-nav__link">
         
   
   
@@ -634,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/" class="md-nav__link">
+      <a href="../../../tasks/services/" class="md-nav__link">
         
   
   
@@ -657,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../triggers/" class="md-nav__link">
+      <a href="../../../tasks/triggers/" class="md-nav__link">
         
   
   
@@ -680,7 +680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workspaces/" class="md-nav__link">
+      <a href="../../../tasks/workspaces/" class="md-nav__link">
         
   
   
@@ -703,7 +703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../metrics/" class="md-nav__link">
+      <a href="../../../tasks/metrics/" class="md-nav__link">
         
   
   
@@ -723,32 +723,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Using Kubernetes Resources for Runs
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../tasks/kubernetes-resources/" class="md-nav__link">
         
   
   
@@ -759,197 +737,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-define-resource-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      How to define resource requirements
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="How to define resource requirements">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#request-resources-at-runtime" class="md-nav__link">
-    <span class="md-ellipsis">
-      Request resources at runtime
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resource-templates-and-profiles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource templates and profiles
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#available-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Available resources
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Available resources">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#volumes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Volumes
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hardware-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hardware Resources
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Hardware Resources">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cpu" class="md-nav__link">
-    <span class="md-ellipsis">
-      CPU
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ram-memory" class="md-nav__link">
-    <span class="md-ellipsis">
-      RAM memory
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gpu" class="md-nav__link">
-    <span class="md-ellipsis">
-      GPU
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#secrets" class="md-nav__link">
-    <span class="md-ellipsis">
-      Secrets
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#envs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Envs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node-selection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Node selection
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tolerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tolerations
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#affinity" class="md-nav__link">
-    <span class="md-ellipsis">
-      Affinity
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fs-group" class="md-nav__link">
-    <span class="md-ellipsis">
-      FS group
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-as-user" class="md-nav__link">
-    <span class="md-ellipsis">
-      Run as user
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-as-group" class="md-nav__link">
-    <span class="md-ellipsis">
-      Run as group
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -962,7 +749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code-source/" class="md-nav__link">
+      <a href="../../../tasks/code-source/" class="md-nav__link">
         
   
   
@@ -985,7 +772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../secrets/" class="md-nav__link">
+      <a href="../../../tasks/secrets/" class="md-nav__link">
         
   
   
@@ -1008,7 +795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pat/" class="md-nav__link">
+      <a href="../../../tasks/pat/" class="md-nav__link">
         
   
   
@@ -1031,7 +818,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/" class="md-nav__link">
+      <a href="../../../tasks/resources/" class="md-nav__link">
         
   
   
@@ -1101,7 +888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dashboard/" class="md-nav__link">
+      <a href="../../../components/dashboard/" class="md-nav__link">
         
   
   
@@ -1124,7 +911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dh_console/" class="md-nav__link">
+      <a href="../../../components/dh_console/" class="md-nav__link">
         
   
   
@@ -1147,7 +934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/cli/" class="md-nav__link">
+      <a href="../../../components/cli/" class="md-nav__link">
         
   
   
@@ -1170,7 +957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/resourcemanager/" class="md-nav__link">
+      <a href="../../../components/resourcemanager/" class="md-nav__link">
         
   
   
@@ -1193,7 +980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/kubeai/" class="md-nav__link">
+      <a href="../../../components/kubeai/" class="md-nav__link">
         
   
   
@@ -1256,7 +1043,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/code-toolbox/" class="md-nav__link">
+      <a href="../../../components/code-toolbox/" class="md-nav__link">
         
   
   
@@ -1319,7 +1106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/dremio/" class="md-nav__link">
+      <a href="../../../components/dremio/" class="md-nav__link">
         
   
   
@@ -1342,7 +1129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/sqlpad/" class="md-nav__link">
+      <a href="../../../components/sqlpad/" class="md-nav__link">
         
   
   
@@ -1365,7 +1152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../components/grafana/" class="md-nav__link">
+      <a href="../../../components/grafana/" class="md-nav__link">
         
   
   
@@ -1408,20 +1195,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -1437,7 +1224,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Scenarios and Tutorials
@@ -1491,7 +1278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/intro/" class="md-nav__link">
+      <a href="../../etl/intro/" class="md-nav__link">
         
   
   
@@ -1514,7 +1301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/collect/" class="md-nav__link">
+      <a href="../../etl/collect/" class="md-nav__link">
         
   
   
@@ -1537,7 +1324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/process/" class="md-nav__link">
+      <a href="../../etl/process/" class="md-nav__link">
         
   
   
@@ -1560,7 +1347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/pipeline/" class="md-nav__link">
+      <a href="../../etl/pipeline/" class="md-nav__link">
         
   
   
@@ -1583,7 +1370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/expose/" class="md-nav__link">
+      <a href="../../etl/expose/" class="md-nav__link">
         
   
   
@@ -1606,7 +1393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl/streamlit/" class="md-nav__link">
+      <a href="../../etl/streamlit/" class="md-nav__link">
         
   
   
@@ -1677,7 +1464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl-core/scenario/" class="md-nav__link">
+      <a href="../../etl-core/scenario/" class="md-nav__link">
         
   
   
@@ -1700,7 +1487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/etl-core/pipeline/" class="md-nav__link">
+      <a href="../../etl-core/pipeline/" class="md-nav__link">
         
   
   
@@ -1771,7 +1558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlsklearn/intro/" class="md-nav__link">
+      <a href="../../mlsklearn/intro/" class="md-nav__link">
         
   
   
@@ -1794,7 +1581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlsklearn/training/" class="md-nav__link">
+      <a href="../../mlsklearn/training/" class="md-nav__link">
         
   
   
@@ -1817,7 +1604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlsklearn/deploy/" class="md-nav__link">
+      <a href="../../mlsklearn/deploy/" class="md-nav__link">
         
   
   
@@ -1888,7 +1675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlmlflow/intro/" class="md-nav__link">
+      <a href="../../mlmlflow/intro/" class="md-nav__link">
         
   
   
@@ -1911,7 +1698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlmlflow/deploy/" class="md-nav__link">
+      <a href="../../mlmlflow/deploy/" class="md-nav__link">
         
   
   
@@ -1982,7 +1769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlllm/llm/" class="md-nav__link">
+      <a href="../../mlllm/llm/" class="md-nav__link">
         
   
   
@@ -2005,7 +1792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlllm/llmkubeai/" class="md-nav__link">
+      <a href="../../mlllm/llmkubeai/" class="md-nav__link">
         
   
   
@@ -2076,7 +1863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/mlspeech/kubeaispeech/" class="md-nav__link">
+      <a href="../../mlspeech/kubeaispeech/" class="md-nav__link">
         
   
   
@@ -2147,7 +1934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/ml/intro/" class="md-nav__link">
+      <a href="../../ml/intro/" class="md-nav__link">
         
   
   
@@ -2170,7 +1957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/ml/deploy/" class="md-nav__link">
+      <a href="../../ml/deploy/" class="md-nav__link">
         
   
   
@@ -2241,7 +2028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/dremio_grafana/scenario/" class="md-nav__link">
+      <a href="../../dremio_grafana/scenario/" class="md-nav__link">
         
   
   
@@ -2312,7 +2099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/intro/" class="md-nav__link">
+      <a href="../../postgrest/intro/" class="md-nav__link">
         
   
   
@@ -2335,7 +2122,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/data/" class="md-nav__link">
+      <a href="../../postgrest/data/" class="md-nav__link">
         
   
   
@@ -2358,7 +2145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/postgrest/" class="md-nav__link">
+      <a href="../../postgrest/postgrest/" class="md-nav__link">
         
   
   
@@ -2381,7 +2168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/postgrest/apigw/" class="md-nav__link">
+      <a href="../../postgrest/apigw/" class="md-nav__link">
         
   
   
@@ -2452,7 +2239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/rag/intro/" class="md-nav__link">
+      <a href="../../rag/intro/" class="md-nav__link">
         
   
   
@@ -2475,7 +2262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/rag/llm/" class="md-nav__link">
+      <a href="../../rag/llm/" class="md-nav__link">
         
   
   
@@ -2498,7 +2285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/rag/knowledge-base/" class="md-nav__link">
+      <a href="../../rag/knowledge-base/" class="md-nav__link">
         
   
   
@@ -2521,7 +2308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/rag/rag/" class="md-nav__link">
+      <a href="../../rag/rag/" class="md-nav__link">
         
   
   
@@ -2544,7 +2331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/rag/webui/" class="md-nav__link">
+      <a href="../../rag/webui/" class="md-nav__link">
         
   
   
@@ -2615,7 +2402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/whisper-fine-tuning/intro/" class="md-nav__link">
+      <a href="../../whisper-fine-tuning/intro/" class="md-nav__link">
         
   
   
@@ -2638,7 +2425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/whisper-fine-tuning/create-dataset/" class="md-nav__link">
+      <a href="../../whisper-fine-tuning/create-dataset/" class="md-nav__link">
         
   
   
@@ -2661,7 +2448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/whisper-fine-tuning/fine-tuning/" class="md-nav__link">
+      <a href="../../whisper-fine-tuning/fine-tuning/" class="md-nav__link">
         
   
   
@@ -2684,7 +2471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scenarios/whisper-fine-tuning/convert-test/" class="md-nav__link">
+      <a href="../../whisper-fine-tuning/convert-test/" class="md-nav__link">
         
   
   
@@ -2712,20 +2499,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7_12" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_12" checked>
         
           
           <label class="md-nav__link" for="__nav_7_12" id="__nav_7_12_label" tabindex="0">
@@ -2741,7 +2528,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_12_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_12_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_12">
             <span class="md-nav__icon md-icon"></span>
             FLower Federated Learning
@@ -2752,10 +2539,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../scenarios/flower/flower/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Federated Learning with Flower
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2766,6 +2575,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#initalize-the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initalize the project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-and-start-server-part-superlink" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create and Start Server part: Superlink
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-and-start-client-part-supernode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create and Start Client part: Supernode
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2833,7 +2689,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/overview/" class="md-nav__link">
+      <a href="../../../runtimes/overview/" class="md-nav__link">
         
   
   
@@ -2856,7 +2712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/python/" class="md-nav__link">
+      <a href="../../../runtimes/python/" class="md-nav__link">
         
   
   
@@ -2879,7 +2735,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/container/" class="md-nav__link">
+      <a href="../../../runtimes/container/" class="md-nav__link">
         
   
   
@@ -2902,7 +2758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/hera/" class="md-nav__link">
+      <a href="../../../runtimes/hera/" class="md-nav__link">
         
   
   
@@ -2925,7 +2781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/llmserve/" class="md-nav__link">
+      <a href="../../../runtimes/llmserve/" class="md-nav__link">
         
   
   
@@ -2948,7 +2804,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/mlflowserve/" class="md-nav__link">
+      <a href="../../../runtimes/mlflowserve/" class="md-nav__link">
         
   
   
@@ -2971,7 +2827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/asrserve/" class="md-nav__link">
+      <a href="../../../runtimes/asrserve/" class="md-nav__link">
         
   
   
@@ -2994,7 +2850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/sklearnserve/" class="md-nav__link">
+      <a href="../../../runtimes/sklearnserve/" class="md-nav__link">
         
   
   
@@ -3017,7 +2873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/fl/" class="md-nav__link">
+      <a href="../../../runtimes/fl/" class="md-nav__link">
         
   
   
@@ -3040,7 +2896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../runtimes/dbt/" class="md-nav__link">
+      <a href="../../../runtimes/dbt/" class="md-nav__link">
         
   
   
@@ -3110,7 +2966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sdk/intro/" class="md-nav__link">
+      <a href="../../../sdk/intro/" class="md-nav__link">
         
   
   
@@ -3180,7 +3036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cli/commands/" class="md-nav__link">
+      <a href="../../../cli/commands/" class="md-nav__link">
         
   
   
@@ -3230,173 +3086,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-define-resource-requirements" class="md-nav__link">
+  <a href="#initalize-the-project" class="md-nav__link">
     <span class="md-ellipsis">
-      How to define resource requirements
+      Initalize the project
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="How to define resource requirements">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#request-resources-at-runtime" class="md-nav__link">
-    <span class="md-ellipsis">
-      Request resources at runtime
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resource-templates-and-profiles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource templates and profiles
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#available-resources" class="md-nav__link">
+  <a href="#create-and-start-server-part-superlink" class="md-nav__link">
     <span class="md-ellipsis">
-      Available resources
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Available resources">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#volumes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Volumes
+      Create and Start Server part: Superlink
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#hardware-resources" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#create-and-start-client-part-supernode" class="md-nav__link">
     <span class="md-ellipsis">
-      Hardware Resources
+      Create and Start Client part: Supernode
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Hardware Resources">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cpu" class="md-nav__link">
-    <span class="md-ellipsis">
-      CPU
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ram-memory" class="md-nav__link">
-    <span class="md-ellipsis">
-      RAM memory
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#gpu" class="md-nav__link">
-    <span class="md-ellipsis">
-      GPU
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#secrets" class="md-nav__link">
-    <span class="md-ellipsis">
-      Secrets
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#envs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Envs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node-selection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Node selection
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tolerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tolerations
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#affinity" class="md-nav__link">
-    <span class="md-ellipsis">
-      Affinity
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fs-group" class="md-nav__link">
-    <span class="md-ellipsis">
-      FS group
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-as-user" class="md-nav__link">
-    <span class="md-ellipsis">
-      Run as user
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-as-group" class="md-nav__link">
-    <span class="md-ellipsis">
-      Run as group
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3416,128 +3128,257 @@
 
 
 
-<h1 id="using-kubernetes-resources-for-runs">Using Kubernetes Resources for Runs</h1>
-<p>When it come to execution of AI tasks, either batch jobs or model serving, it is important to be able to
-allocate an appropriate set of resources, such as memory, GPU, node types, etc.</p>
-<p>For this purpose the platform relies on Kubernetes functionalities and resource definitions. More specifically,
-the run configuration may have a specific requirements for</p>
+<h1 id="federated-learning-with-flower">Federated Learning with Flower</h1>
+<p><a href="https://flower.ai/">Flower Federated Learning</a> framework allows for running federated learning tasks where different client nodes perform local training and cooperatively create a more robust solution without exchanging the data but only the weight necessary to progress the training process. </p>
+<p>The platform support this approach natively integrating the Flower framework in the following manner:</p>
 <ul>
-<li>node selection</li>
-<li>volumes (Persistent Volume Claims and Config Maps)</li>
-<li>HW resources in terms of CPU and memory requests and limits, numbers of GPUs</li>
-<li>Kubernetes affinity definition and/or toleration properties</li>
-<li>Additional secrets and environment variables to be associated with the execution</li>
+<li>support creating a federation, with central Superlink node and a set of client Supernodes distributed potentially outside of the platform in a secure manner (with TLS verification and client authentication)</li>
+<li>activate the training procedures defined with the server coordination code and client training code managed by the platform. </li>
 </ul>
-<h2 id="how-to-define-resource-requirements">How to define resource requirements</h2>
-<p>In the platform, kubernetes resource requirements may be defined in two ways: 
-* by users at run time, by requesting resources to be allocated for a given run,
-* by administrators at deployment time, by configuring defaults and limits along with pre-configured templates and profiles</p>
-<h3 id="request-resources-at-runtime">Request resources at runtime</h3>
-<p>The platform lets users require additional k8s resource to be allocated to a given function's run, either via Core UI or via SDK. Please note that it is possible to describe only some properties, leaving the rest blank without constraints. All the defaults are managed by the platform in accordance with the underlying Kubernetes deployment.</p>
-<p>To define requirements for single runs, developers need to include in the run specification the resource definition, in accordance with the schema.</p>
-<p>For example, to request for a certain amount of compute resources, the spec must contain the detailed definition as follows:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span>
-<span class="w">  </span><span class="nt">mem</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32Gi</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<p>See more details in the description of the corresponding <a href="../../../runtimes/fl/">Flower runtime</a>.</p>
+<p>This tutorial  demonstrates how to use the Flower FL framework for execution of federated learning tasks. The tutorial is based on official Pandas example of Flower framework.</p>
+<h2 id="initalize-the-project">Initalize the project</h2>
+<p>Create a project where we define and start the federation Superlink node and the training function.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
+
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;test-flower&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>In order to provide such definitions, users can leverage the SDK or the Core UI to programmatically or interactively define their request.
-Please see the <a href="https://scc-digitalhub.github.io/sdk-docs/runtimes/kubernetes-resources/">Kubernetes Resources</a> section of the documentation for more information.</p>
-<h3 id="resource-templates-and-profiles">Resource templates and profiles</h3>
-<p>It is possible to rely on a set of preconfigured HW profiles defined during the platform deployment. 
-The profile allow for abstracting the platform users from the underlying complexity. Each profile corresponds to a specific resource configuration that defines a combination of requirements. For example, the profile may define a specific type of GPU, memory, and CPUs to be used. In this case it is sufficient to specify the corresponding profile name in the run execution configuration to allocate the corresponding resources.</p>
-<p>The mechanism of profiles is described in the administration section of the documentation and is managed by the platform admins. Please see <a href="https://scc-digitalhub.github.io/docs/admin/">Resource templates</a> section of the documentation for more information.</p>
-<p>Please note that the requirements defined in the template have priority over those defined by the user and are not overwritten.</p>
-<h2 id="available-resources">Available resources</h2>
-<p>The section lists all the resources available to users for runs. </p>
-<h3 id="volumes">Volumes</h3>
-<p>Users can ask for a persistent volume claim (pvc) to be created and mounted on the container being launched by the task.
-You need to declare the volume type as <code>persistent_volume_claim</code>, a name for the PVC for the user (e.g., <code>my-pvc</code>), the mount path on the container and a spec with the size of the PV to be reserved.
-The platform will create the volume and bind it to the pod lifecycle.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">volume_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;persistent_volume_claim&quot;</span><span class="err">,</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-pvc&quot;</span><span class="err">,</span>
-<span class="w">          </span><span class="nt">mount_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/data&quot;</span><span class="err">,</span>
-<span class="w">          </span><span class="nt">spec</span><span class="p">:</span><span class="w"> </span>
-<span class="w">            </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10Gi&quot;</span><span class="err">,</span>
+<h2 id="create-and-start-server-part-superlink">Create and Start Server part: Superlink</h2>
+<p>The following defines the Superlink function, build the corresponding image, and activates the server container with the dependencies.<br />
+Note that the server is started in <code>insecure</code> mode, meaning that no TLS verification is performed. While this is ok for the purpose of this tutorial, should not be used in a production federation.</p>
+<p>In secure mode the server will be equipped with a custom platform-level TLS certificate that should also be used by client SuperNode nodes.</p>
+<div class="highlight"><pre><span></span><code><span class="n">server_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-flower-server&quot;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;flower-server&quot;</span><span class="p">,</span>
+    <span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pandas==2.2.3&quot;</span><span class="p">,</span> <span class="s2">&quot;flwr-datasets[vision]==0.5.0&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1"># Build the server</span>
+<span class="n">server_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;build&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Deploy the server</span>
+<span class="n">run</span> <span class="o">=</span> <span class="n">server_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;deploy&quot;</span><span class="p">,</span> <span class="n">insecure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p>Note: the platform can be configured to block the usage of pre-existing volumes for security reasons. Volumes created by the platform for specific runs as ReadWriteOnce and used exclusively by the platform.</p>
-<h3 id="hardware-resources">Hardware Resources</h3>
-<p>Users can request a specific amount of hardware resources (cpu, memory, gpu) for a given run by declaring them  via the <code>resources</code> spec parameter.</p>
-<p>Supported resources are:</p>
+<h2 id="create-and-start-client-part-supernode">Create and Start Client part: Supernode</h2>
+<p>The following defines the Supernode function, build the corresponding image, and activates 3 client nodes container with the dependencies and the node-specific configuration.  </p>
+<p>Note that the server is started in <code>insecure</code> mode as no root certificate is provided. To enable secure mode, it is necessary to specify the <code>root_certificates</code> attribute to each run containing the body of the public root certificate.</p>
+<p>Also the node authentication is not enabled in this scenario. The node authentication allows for controlling which nodes are allowed to communicate with the server. To achieve this, it is necessary</p>
 <ul>
-<li><strong>CPU</strong></li>
-<li><strong>RAM memory</strong></li>
-<li><strong>GPU</strong></li>
+<li>at each node define a public-private key pair and store the values in project secrets.</li>
+<li>pass the secret names as <code>public_key_secret</code> and <code>private_key_secret</code> parameters to the supernode spec</li>
+<li>ensure the public key is included in <code>auth_public_keys</code> field of the server Superlink node</li>
 </ul>
-<h4 id="cpu">CPU</h4>
-<p>To request a specific amount of CPU for the run, declare the resource type as <code>cpu</code> and specify request and/or limit values.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
-<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;12&quot;</span>
+<p>Each client is started with the own set of parameters (<code>node_config</code>) and a reference to the <code>superlink</code> pointing to the superlink address (port 9092 by default).</p>
+<div class="highlight"><pre><span></span><code><span class="n">server_url</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">service</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;:9092&#39;</span> 
+
+<span class="n">client_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-flower-client&quot;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;flower-client&quot;</span><span class="p">,</span>
+    <span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pandas==2.2.3&quot;</span><span class="p">,</span> <span class="s2">&quot;flwr-datasets[vision]==0.5.0&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">client_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;build&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Deploy client 1</span>
+<span class="n">run</span> <span class="o">=</span> <span class="n">client_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;deploy&quot;</span><span class="p">,</span> <span class="n">superlink</span><span class="o">=</span><span class="n">server_url</span><span class="p">,</span> <span class="n">node_config</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;partition-id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;num-partitions&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;local-epochs&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">})</span>
+
+<span class="c1"># Deploy client 2</span>
+<span class="n">run</span> <span class="o">=</span> <span class="n">client_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;deploy&quot;</span><span class="p">,</span> <span class="n">superlink</span><span class="o">=</span><span class="n">server_url</span><span class="p">,</span> <span class="n">node_config</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;partition-id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;num-partitions&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;local-epochs&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">})</span>
+
+<span class="c1"># Deploy client 3</span>
+<span class="n">run</span> <span class="o">=</span> <span class="n">client_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;deploy&quot;</span><span class="p">,</span> <span class="n">superlink</span><span class="o">=</span><span class="n">server_url</span><span class="p">,</span> <span class="n">node_config</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;partition-id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;num-partitions&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;local-epochs&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">})</span>
 </code></pre></div>
-<h4 id="ram-memory">RAM memory</h4>
-<p>To request a specific amount of RAM memory for the run, declare the resource type as <code>mem</code> and specify request and/or limit values.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">mem</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32Gi</span>
-<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64Gi</span>
+<h1 id="create-and-start-the-training-execution">Create and Start the training execution</h1>
+<p>To perform the actual training procedure, we define a new flower app function with the application code for client and server.
+Specifically, it is necessary to provide either the reference to a complete Git project or, as in this case, the reference to the client and server source code files:</p>
+<ul>
+<li><code>client_src</code> provides reference to the  client source code, while <code>client_app</code> defines the reference in the code to the ClientApp instance.</li>
+<li><code>server_src</code> provides reference to the  server source code, while <code>server_app</code> defines the reference in the code to the ServerApp instance.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">app_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-flower-app&quot;</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;flower-app&quot;</span><span class="p">,</span>
+    <span class="n">client_src</span><span class="o">=</span><span class="s2">&quot;src/client.py&quot;</span><span class="p">,</span>
+    <span class="n">server_src</span><span class="o">=</span><span class="s2">&quot;src/server.py&quot;</span><span class="p">,</span>
+    <span class="n">client_app</span><span class="o">=</span><span class="s2">&quot;app&quot;</span><span class="p">,</span>
+    <span class="n">server_app</span><span class="o">=</span><span class="s2">&quot;app&quot;</span>
+
+<span class="p">)</span>
 </code></pre></div>
-<h4 id="gpu">GPU</h4>
-<p>To request GPU resources, specify the resource type <code>gpu</code> and set the requested value as a limit.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="w">    </span>
+<p>The code of the client looks as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;pandas_example: A Flower / Pandas app.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">flwr_datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">FederatedDataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">flwr_datasets.partitioner</span><span class="w"> </span><span class="kn">import</span> <span class="n">IidPartitioner</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">flwr.client</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClientApp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">flwr.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">Context</span><span class="p">,</span> <span class="n">Message</span><span class="p">,</span> <span class="n">MetricRecord</span><span class="p">,</span> <span class="n">RecordDict</span>
+
+<span class="n">fds</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Cache FederatedDataset</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">UserWarning</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_clientapp_dataset</span><span class="p">(</span><span class="n">partition_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">num_partitions</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="c1"># Only initialize `FederatedDataset` once</span>
+    <span class="k">global</span> <span class="n">fds</span>
+    <span class="k">if</span> <span class="n">fds</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">partitioner</span> <span class="o">=</span> <span class="n">IidPartitioner</span><span class="p">(</span><span class="n">num_partitions</span><span class="o">=</span><span class="n">num_partitions</span><span class="p">)</span>
+        <span class="n">fds</span> <span class="o">=</span> <span class="n">FederatedDataset</span><span class="p">(</span>
+            <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;scikit-learn/iris&quot;</span><span class="p">,</span>
+            <span class="n">partitioners</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="n">partitioner</span><span class="p">},</span>
+        <span class="p">)</span>
+
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">fds</span><span class="o">.</span><span class="n">load_partition</span><span class="p">(</span><span class="n">partition_id</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">with_format</span><span class="p">(</span><span class="s2">&quot;pandas&quot;</span><span class="p">)[:]</span>
+    <span class="c1"># Use just the specified columns</span>
+    <span class="k">return</span> <span class="n">dataset</span><span class="p">[[</span><span class="s2">&quot;SepalLengthCm&quot;</span><span class="p">,</span> <span class="s2">&quot;SepalWidthCm&quot;</span><span class="p">]]</span>
+
+
+<span class="c1"># Flower ClientApp</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">ClientApp</span><span class="p">()</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">query</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="n">Message</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Construct histogram of local dataset and report to `ServerApp`.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Read the node_config to fetch data partition associated to this node</span>
+    <span class="n">partition_id</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">node_config</span><span class="p">[</span><span class="s2">&quot;partition-id&quot;</span><span class="p">]</span>
+    <span class="n">num_partitions</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">node_config</span><span class="p">[</span><span class="s2">&quot;num-partitions&quot;</span><span class="p">]</span>
+
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">get_clientapp_dataset</span><span class="p">(</span><span class="n">partition_id</span><span class="p">,</span> <span class="n">num_partitions</span><span class="p">)</span>
+
+    <span class="n">metrics</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># Compute some statistics for each column in the dataframe</span>
+    <span class="k">for</span> <span class="n">feature_name</span> <span class="ow">in</span> <span class="n">dataset</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="c1"># Compute histogram</span>
+        <span class="n">freqs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="n">feature_name</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+        <span class="n">metrics</span><span class="p">[</span><span class="n">feature_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">freqs</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+        <span class="c1"># Compute weighted average</span>
+        <span class="n">metrics</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">feature_name</span><span class="si">}</span><span class="s2">_avg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">feature_name</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+        <span class="n">metrics</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">feature_name</span><span class="si">}</span><span class="s2">_count&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+
+    <span class="n">reply_content</span> <span class="o">=</span> <span class="n">RecordDict</span><span class="p">({</span><span class="s2">&quot;query_results&quot;</span><span class="p">:</span> <span class="n">MetricRecord</span><span class="p">(</span><span class="n">metrics</span><span class="p">)})</span>
+
+    <span class="k">return</span> <span class="n">Message</span><span class="p">(</span><span class="n">reply_content</span><span class="p">,</span> <span class="n">reply_to</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="secrets">Secrets</h3>
-<p>Users can request a secret injection into the run being launched by passing the identifier inside the <code>secrets</code> field.
-Secrets must be stored via the platform: externally defined secrets (for example in k8s) are not accessible to users for security reasons.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">secrets</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-secret-key</span>
+<p>The code of the server part looks like follows:</p>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;pandas_example: A Flower / Pandas app.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">logging</span><span class="w"> </span><span class="kn">import</span> <span class="n">INFO</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">flwr.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">Context</span><span class="p">,</span> <span class="n">Message</span><span class="p">,</span> <span class="n">MessageType</span><span class="p">,</span> <span class="n">RecordDict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">flwr.common.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">log</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">flwr.server</span><span class="w"> </span><span class="kn">import</span> <span class="n">Grid</span><span class="p">,</span> <span class="n">ServerApp</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">ServerApp</span><span class="p">()</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">grid</span><span class="p">:</span> <span class="n">Grid</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This `ServerApp` construct a histogram from partial-histograms reported by the</span>
+<span class="sd">    `ClientApp`s.&quot;&quot;&quot;</span>
+
+    <span class="n">num_rounds</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">run_config</span><span class="p">[</span><span class="s2">&quot;num-server-rounds&quot;</span><span class="p">]</span>
+    <span class="n">min_nodes</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">fraction_sample</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">run_config</span><span class="p">[</span><span class="s2">&quot;fraction-sample&quot;</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">server_round</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_rounds</span><span class="p">):</span>
+        <span class="n">log</span><span class="p">(</span><span class="n">INFO</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>  <span class="c1"># Add newline for log readability</span>
+        <span class="n">log</span><span class="p">(</span><span class="n">INFO</span><span class="p">,</span> <span class="s2">&quot;Starting round </span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">server_round</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_rounds</span><span class="p">)</span>
+
+        <span class="c1"># Loop and wait until enough nodes are available.</span>
+        <span class="n">all_node_ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_node_ids</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">min_nodes</span><span class="p">:</span>
+            <span class="n">all_node_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">get_node_ids</span><span class="p">())</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_node_ids</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">min_nodes</span><span class="p">:</span>
+                <span class="c1"># Sample nodes</span>
+                <span class="n">num_to_sample</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_node_ids</span><span class="p">)</span> <span class="o">*</span> <span class="n">fraction_sample</span><span class="p">)</span>
+                <span class="n">node_ids</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">all_node_ids</span><span class="p">,</span> <span class="n">num_to_sample</span><span class="p">)</span>
+                <span class="k">break</span>
+            <span class="n">log</span><span class="p">(</span><span class="n">INFO</span><span class="p">,</span> <span class="s2">&quot;Waiting for nodes to connect...&quot;</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="n">log</span><span class="p">(</span><span class="n">INFO</span><span class="p">,</span> <span class="s2">&quot;Sampled </span><span class="si">%s</span><span class="s2"> nodes (out of </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_ids</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_node_ids</span><span class="p">))</span>
+
+        <span class="c1"># Create messages</span>
+        <span class="n">recorddict</span> <span class="o">=</span> <span class="n">RecordDict</span><span class="p">()</span>
+        <span class="n">messages</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">node_id</span> <span class="ow">in</span> <span class="n">node_ids</span><span class="p">:</span>  <span class="c1"># one message for each node</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="n">Message</span><span class="p">(</span>
+                <span class="n">content</span><span class="o">=</span><span class="n">recorddict</span><span class="p">,</span>
+                <span class="n">message_type</span><span class="o">=</span><span class="n">MessageType</span><span class="o">.</span><span class="n">QUERY</span><span class="p">,</span>  <span class="c1"># target `query` method in ClientApp</span>
+                <span class="n">dst_node_id</span><span class="o">=</span><span class="n">node_id</span><span class="p">,</span>
+                <span class="n">group_id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">server_round</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+        <span class="c1"># Send messages and wait for all results</span>
+        <span class="n">replies</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">send_and_receive</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
+        <span class="n">log</span><span class="p">(</span><span class="n">INFO</span><span class="p">,</span> <span class="s2">&quot;Received </span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2"> results&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">replies</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">messages</span><span class="p">))</span>
+
+        <span class="c1"># Aggregate partial histograms</span>
+        <span class="n">aggregated_hist</span> <span class="o">=</span> <span class="n">aggregate_partial_histograms</span><span class="p">(</span><span class="n">replies</span><span class="p">)</span>
+
+        <span class="c1"># Display aggregated histogram</span>
+        <span class="n">log</span><span class="p">(</span><span class="n">INFO</span><span class="p">,</span> <span class="s2">&quot;Aggregated histogram: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">aggregated_hist</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">aggregate_partial_histograms</span><span class="p">(</span><span class="n">messages</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Message</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Aggregate partial histograms.&quot;&quot;&quot;</span>
+
+    <span class="n">aggregated_hist</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">total_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">rep</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">rep</span><span class="o">.</span><span class="n">has_error</span><span class="p">():</span>
+            <span class="k">continue</span>
+        <span class="n">query_results</span> <span class="o">=</span> <span class="n">rep</span><span class="o">.</span><span class="n">content</span><span class="p">[</span><span class="s2">&quot;query_results&quot;</span><span class="p">]</span>
+        <span class="c1"># Sum metrics</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">query_results</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;SepalLengthCm&quot;</span><span class="p">,</span> <span class="s2">&quot;SepalWidthCm&quot;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">aggregated_hist</span><span class="p">:</span>
+                    <span class="n">aggregated_hist</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">aggregated_hist</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot;_count&quot;</span> <span class="ow">in</span> <span class="n">k</span><span class="p">:</span>
+                <span class="n">total_count</span> <span class="o">+=</span> <span class="n">v</span>
+
+    <span class="c1"># Verify aggregated histogram adds up to total reported count</span>
+    <span class="k">assert</span> <span class="n">total_count</span> <span class="o">==</span> <span class="nb">sum</span><span class="p">([</span><span class="nb">sum</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">aggregated_hist</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+    <span class="k">return</span> <span class="n">aggregated_hist</span>
 </code></pre></div>
-<h3 id="envs">Envs</h3>
-<p>User can inject environment variables injection into the container being launched by passing definition of variables as key/value inside the <code>envs</code> field.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">envs</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENV1</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VALU123123</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENV2</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VALU123123</span><span class="w">  </span>
+<h2 id="running-the-training-function">Running the training function</h2>
+<p>The execution of the application run is a single job that bundles the application and interacts with the superlink to deploy, activate, and coordinate the federated learning execution. </p>
+<p>Each execution requires the reference to the corresponding execution API of the Superlink (port 9093) and optionally a set of hyperparameters.</p>
+<p>Note that the server is started in <code>insecure</code> mode as no root certificate is provided. To enable secure mode, it is necessary to specify the <code>root_certificates</code> attribute to each run containing the body of the public root certificate.</p>
+<div class="highlight"><pre><span></span><code><span class="n">server_url</span> <span class="o">=</span> <span class="n">server_url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;:9093&#39;</span> 
+
+<span class="n">app_run</span> <span class="o">=</span> <span class="n">app_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">superlink</span><span class="o">=</span><span class="n">server_url</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;num-config-rounds&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
+    <span class="s2">&quot;fraction-sample&quot;</span><span class="p">:</span> <span class="mf">1.0</span>
+<span class="p">})</span>
 </code></pre></div>
-<h3 id="node-selection">Node selection</h3>
-<p>Users can request a node selector for the run being launched by defining the selector(s) as a key/value list. 
-The platform will add the selectors as-is to k8s resources such as Jobs, Pods, Deployments when appropriate.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">node_selector</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">selectorKey</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">selectValue</span>
-</code></pre></div>
-<p>See <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector">K8s Documentation</a> for reference.</p>
-<h3 id="tolerations">Tolerations</h3>
-<p>To define tolerations add the definition inside the <code>tolerations</code> field of the spec, following Kubernetes specifications.
-Please see <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Kubernetes documentation</a>.</p>
-<h3 id="affinity">Affinity</h3>
-<p>To define affinity add the definition inside the <code>affinity</code> field of the spec, following Kubernetes specifications.
-Please see <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity">Kubernetes documentation</a>.</p>
-<h3 id="fs-group">FS group</h3>
-<p>To properly map volumes mounted for runs, users can specify the group id used for mount operations. This step is required when the USER used to run the process does not match the default.
-Define the <code>fs_group</code> field by specifying the group id as integer.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">fs_group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-</code></pre></div>
-<h3 id="run-as-user">Run as user</h3>
-<p>The process run inside the container is owned by the USER defined in the container manifest. For security reasons, the platform does not allow containers to be run as root.
-User can ask for a different, specific user id to be used, by defining the <code>run_as_user</code> field.
-It accepts an integer value.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">run_as_user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-</code></pre></div>
-<h3 id="run-as-group">Run as group</h3>
-<p>The process run inside the container is owned by the GROUP defined in the container manifest. For security reasons, the platform does not allow containers to be run as root.
-User can ask for a different, specific group id to be used, by defining the <code>run_as_group</code> field. 
-It accepts an integer value.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">run_as_group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-</code></pre></div>
+<p>The status and log of the execution may be obtained from the corresponding app run, e.g., through the Core Web UI. While not included in this example, the server procedure may create a model that can be logged using the platform SDK and used later for further operations (e.g., inference).</p>
 
 
 
@@ -3569,10 +3410,10 @@ It accepts an integer value.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
     
   </body>
