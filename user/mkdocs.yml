@@ -87,6 +87,8 @@ nav:
           - "scenarios/whisper-fine-tuning/create-dataset.md"
           - "scenarios/whisper-fine-tuning/fine-tuning.md"
           - "scenarios/whisper-fine-tuning/convert-test.md"
+      - FLower Federated Learning:
+          - "scenarios/flower/flower.md"
   - Runtimes reference: 
       - Overview: "runtimes/overview.md"
       - Python: "runtimes/python.md"
