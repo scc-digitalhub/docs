@@ -3094,14 +3094,14 @@
 
 <h1 id="deploy-and-expose-the-model">Deploy and expose the model</h1>
 <p>Deploying a MLFLow model is easy: <code>mlflowserve</code> runtime supports this functionality out of the box. It is sufficient to specify the path to the model artifact and optionally the name of the model to expose.</p>
-<p>It is important to note that the path should point to the folder, where the MLFlow <code>MLModel</code> artifact is placed. If the model
+<p>It is important to note that the path is model key.
 is created from MLFlow run artifact path, besides the <code>model</code> folder it may contain additional artifacts.</p>
 <p>Register it and deploy:</p>
 <div class="highlight"><pre><span></span><code><span class="n">serve_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;serve-mlflow-model&quot;</span><span class="p">,</span>
     <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;mlflowserve&quot;</span><span class="p">,</span>
     <span class="n">model_name</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-    <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;model/&quot;</span><span class="p">,</span>
+    <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">serve_run</span> <span class="o">=</span> <span class="n">serve_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>

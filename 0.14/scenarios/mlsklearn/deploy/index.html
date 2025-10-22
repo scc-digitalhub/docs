@@ -3093,7 +3093,7 @@
 
 
 <h1 id="deploy-and-expose-the-model">Deploy and expose the model</h1>
-<p>Deploying a scikit-learn model is easy: <code>sklearnserve</code> runtime supports this functionality out of the box. It is sufficient to specify the path to the model artifact and optionally the name of the model to expose.</p>
+<p>Deploying a scikit-learn model is easy: <code>sklearnserve</code> runtime supports this functionality out of the box. It is sufficient to specify the key of the model and optionally the name of the model to expose.</p>
 <p>Register it and deploy:</p>
 <div class="highlight"><pre><span></span><code><span class="n">serve_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;serve-classifier&quot;</span><span class="p">,</span>
