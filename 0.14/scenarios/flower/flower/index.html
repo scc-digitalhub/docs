@@ -3374,7 +3374,7 @@ Specifically, it is necessary to provide either the reference to a complete Git 
 <div class="highlight"><pre><span></span><code><span class="n">server_url</span> <span class="o">=</span> <span class="n">server_url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;:9093&#39;</span> 
 
 <span class="n">app_run</span> <span class="o">=</span> <span class="n">app_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">superlink</span><span class="o">=</span><span class="n">server_url</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
-    <span class="s2">&quot;num-config-rounds&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
+    <span class="s2">&quot;num-server-rounds&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span>
     <span class="s2">&quot;fraction-sample&quot;</span><span class="p">:</span> <span class="mf">1.0</span>
 <span class="p">})</span>
 </code></pre></div>
