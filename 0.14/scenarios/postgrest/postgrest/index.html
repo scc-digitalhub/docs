@@ -2195,15 +2195,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inspect-users-secrets" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inspect users' secrets
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#creating-the-postgrest-service" class="md-nav__link">
     <span class="md-ellipsis">
       Creating the PostgREST service
@@ -3077,15 +3068,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inspect-users-secrets" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inspect users' secrets
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#creating-the-postgrest-service" class="md-nav__link">
     <span class="md-ellipsis">
       Creating the PostgREST service
@@ -3112,20 +3094,18 @@
 
 <h1 id="create-postgrest-service">Create PostgREST service</h1>
 <p>We will go back to KRM to create a PostgREST service and expose the database's table via API.</p>
-<h2 id="inspect-users-secrets">Inspect users' secrets</h2>
-<p>We need some parameters to configure PostgREST. Similarly to what you did in the first stage of the scenario, go to <strong>Secrets</strong> on the left and look for the two secrets, belonging to the <em>owner</em> and <em>reader</em> users you created.</p>
-<p>For the <strong>owner</strong>, you will need the <em>Name</em> of the secret. For the <strong>reader</strong>, you will need the content of the <em>ROLE</em> field.</p>
 <h2 id="creating-the-postgrest-service">Creating the PostgREST service</h2>
 <p>Click <strong>PostgREST Data Services</strong> on the left and then <em>Create</em>.</p>
 <p>Fill the first few fields as follows:</p>
 <ul>
-<li><code>Name</code>: Anything you'd like, it's once again an identifier for Kubernetes.</li>
+<li><code>Name</code>: Anything you'd like, for example <code>my-postgrest</code>, as it's once again an identifier for Kubernetes.</li>
 <li><code>Schema</code>: <code>public</code></li>
 <li>Toggle on <code>With existing DB user</code>.</li>
 <li><code>Existing DB user name</code>: Value of <em>ROLE</em> in the owner's secret.</li>
 </ul>
 <p>Under <em>Connection</em>, fill the fields as follows:</p>
 <ul>
+<li>Toggle on <code>With existing secret</code>.</li>
 <li><code>Secret name</code>: <em>Name</em> of the owner's secret.</li>
 </ul>
 <p>When you hit <em>Save</em>, the PostgREST instance will be launched.</p>
