@@ -35,14 +35,14 @@ nav:
       - "components/dh_console.md"
       - "components/cli.md"
       - "components/resourcemanager.md"
-    #   - "components/kubeflow.md"
+      #   - "components/kubeflow.md"
       - "components/kubeai.md"
       - Interactive Workspaces:
           - "components/code-toolbox.md"
           - Community Workspaces:
-            - "components/dremio.md"
-            - "components/sqlpad.md"
-            - "components/grafana.md"
+              - "components/dremio.md"
+              - "components/sqlpad.md"
+              - "components/grafana.md"
   - Scenarios and Tutorials:
       - Extract-Transform-Load:
           - "scenarios/etl/intro.md"
@@ -87,9 +87,9 @@ nav:
           - "scenarios/whisper-fine-tuning/create-dataset.md"
           - "scenarios/whisper-fine-tuning/fine-tuning.md"
           - "scenarios/whisper-fine-tuning/convert-test.md"
-      - FLower Federated Learning:
+      - Flower Federated Learning:
           - "scenarios/flower/flower.md"
-  - Runtimes reference: 
+  - Runtimes reference:
       - Overview: "runtimes/overview.md"
       - Python: "runtimes/python.md"
       - Container: "runtimes/container.md"
