@@ -37,7 +37,7 @@ project = dh.get_or_create_project("llm")
 Create the serving function definition:
 
 ```python
-llm_function = project.new_function("llm_classification",
+llm_function = project.new_function("llm-classification",
                                     kind="huggingfaceserve",
                                     model_name="mymodel",
                                     path="huggingface://distilbert/distilbert-base-uncased-finetuned-sst-2-english")
@@ -114,7 +114,7 @@ project = dh.get_or_create_project("llm")
 Create the serving function definition:
 
 ```python
-llm_function = project.new_function("llm_generation",
+llm_function = project.new_function("llm-generation",
                                     kind="huggingfaceserve",
                                     model_name="mymodel",
                                     path="huggingface://meta-llama/meta-llama-3-8b-instruct")
@@ -335,7 +335,7 @@ train_run=train_func.run(action="job", profile="1xa100", wait=True)
 Create the serving function definition:
 
 ```python
-llm_function = project.new_function("llm_classification",
+llm_function = project.new_function("llm-classification",
                                     kind="huggingfaceserve",
                                     model_name="mymodel",
                                     path="s3://datalake/llm/model/test_llm_model/f8026820-2471-4497-97f5-8e6d49baac5f/")

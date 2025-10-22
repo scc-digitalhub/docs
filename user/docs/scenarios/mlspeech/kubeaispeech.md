@@ -35,6 +35,12 @@ audio_function = project.new_function("audio",
 run = audio_function.run(action="serve")                                    
 ```
 
+Downloading the model:
+
+```
+!wget -O kubeai.mp4 https://github.com/user-attachments/assets/711d1279-6af9-4c6c-a052-e59e7730b757
+```
+
 Once deployed, the model is available and it is possible to call the OpenAI-compatible API from within the platform (``/openai/v1/transcriptions`` endpoint):
 
 ```python
