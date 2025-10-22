@@ -277,7 +277,7 @@ Note that the server is started in `insecure` mode as no root certificate is pro
 server_url = server_url.split(':')[0] + ':9093' 
 
 app_run = app_function.run("train", superlink=server_url, parameters={
-    "num-config-rounds":3,
+    "num-server-rounds":3,
     "fraction-sample": 1.0
 })
 ```
