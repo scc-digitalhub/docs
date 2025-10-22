@@ -3121,6 +3121,9 @@ enabled. </p>
 
 <span class="n">run</span> <span class="o">=</span> <span class="n">audio_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">)</span>                                    
 </code></pre></div>
+<p>Downloading the model:</p>
+<div class="highlight"><pre><span></span><code>!wget -O kubeai.mp4 https://github.com/user-attachments/assets/711d1279-6af9-4c6c-a052-e59e7730b757
+</code></pre></div>
 <p>Once deployed, the model is available and it is possible to call the OpenAI-compatible API from within the platform (<code>/openai/v1/transcriptions</code> endpoint):</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
 

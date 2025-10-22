@@ -3157,12 +3157,12 @@ operation where the model is loaded.</p>
 <div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">train_run</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Register it:</p>
-<div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;serve_darts_model&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;serve-darts-model&quot;</span><span class="p">,</span>
                             <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
                             <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_10&quot;</span><span class="p">,</span>
                             <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/serve_darts_model.py&quot;</span><span class="p">,</span>
                             <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;serve_predictions&quot;</span><span class="p">,</span>
-                            <span class="n">init_function</span><span class="o">=</span><span class="s2">&quot;init&quot;</span><span class="p">)</span>
+                            <span class="n">init_function</span><span class="o">=</span><span class="s2">&quot;init_context&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Given the dependencies, it is better to have the image ready, using <code>build</code> action of the function:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run_build_model_serve</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;build&quot;</span><span class="p">,</span>
