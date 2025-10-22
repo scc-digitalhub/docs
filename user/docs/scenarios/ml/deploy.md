@@ -94,20 +94,9 @@ Now we can deploy the function:
 serve_run = func.run("serve", init_parameters={"model_key": model.key}, labels=["time-series-service"], wait=True)
 ```
 
-Install locally the dependencies:
-
-```python
-# Install darts locally for testing (if not already installed)
-%pip install darts==0.30.0 torch'<2.6.0' --quiet
-```
-
 Create a test input:
 
 ```python
-import json
-from datetime import datetime
-from darts.datasets import AirPassengersDataset
-
 # Load test data
 series = AirPassengersDataset().load()
 val = series[-24:]  # Last 24 points for prediction

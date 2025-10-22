@@ -6,9 +6,19 @@ We will train a generic model and expose it as a service. Access Jupyter from yo
 
 ## Set-up
 
-First, import necessary libraries and create a project to host the functions and executions
+First install locally the dependencies:
 
 ```python
+# Install darts locally for testing (if not already installed)
+%pip install darts==0.30.0 torch'<2.6.0' --quiet
+```
+
+then import necessary libraries and create a project to host the functions and executions.
+
+```python
+import json
+from datetime import datetime
+from darts.datasets import AirPassengersDataset
 import digitalhub as dh
 
 project = dh.get_or_create_project("project-cml-darts-ci")
