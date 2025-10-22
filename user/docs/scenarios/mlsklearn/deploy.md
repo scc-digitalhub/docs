@@ -8,9 +8,8 @@ Register it and deploy:
 serve_func = project.new_function(
     name="serve-classifier",
     kind="sklearnserve",
-    path=model.spec.path + "breast_cancer_classifier.pkl",
+    path=model.key,
 )
-
 serve_run = serve_func.run("serve", wait=True)
 ```
 

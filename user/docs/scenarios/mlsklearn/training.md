@@ -70,7 +70,6 @@ As a result, a new model is registered in the Core and may be used by different 
 
 ```python
 model = train_run.output("model")
-model.spec.path
 ```
 
 Lastly, we'll deploy and test the model.
