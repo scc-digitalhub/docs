@@ -3172,16 +3172,8 @@ operation where the model is loaded.</p>
 <p>Now we can deploy the function:</p>
 <div class="highlight"><pre><span></span><code><span class="n">serve_run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">init_parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;model_key&quot;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">key</span><span class="p">},</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time-series-service&quot;</span><span class="p">],</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p>Install locally the dependencies:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Install darts locally for testing (if not already installed)</span>
-<span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">darts</span><span class="o">==</span><span class="mf">0.30.0</span> <span class="n">torch</span><span class="s1">&#39;&lt;2.6.0&#39;</span> <span class="o">--</span><span class="n">quiet</span>
-</code></pre></div>
 <p>Create a test input:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">darts.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">AirPassengersDataset</span>
-
-<span class="c1"># Load test data</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Load test data</span>
 <span class="n">series</span> <span class="o">=</span> <span class="n">AirPassengersDataset</span><span class="p">()</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
 <span class="n">val</span> <span class="o">=</span> <span class="n">series</span><span class="p">[</span><span class="o">-</span><span class="mi">24</span><span class="p">:]</span>  <span class="c1"># Last 24 points for prediction</span>
 <span class="n">json_value</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">val</span><span class="o">.</span><span class="n">to_json</span><span class="p">())</span>
