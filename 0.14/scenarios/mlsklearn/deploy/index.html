@@ -3098,9 +3098,8 @@
 <div class="highlight"><pre><span></span><code><span class="n">serve_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;serve-classifier&quot;</span><span class="p">,</span>
     <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;sklearnserve&quot;</span><span class="p">,</span>
-    <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;breast_cancer_classifier.pkl&quot;</span><span class="p">,</span>
+    <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
 <span class="p">)</span>
-
 <span class="n">serve_run</span> <span class="o">=</span> <span class="n">serve_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>You can now create a dataset for testing the endpoint:</p>
