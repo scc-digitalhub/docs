@@ -2,7 +2,7 @@
 
 Deploying a MLFLow model is easy: ``mlflowserve`` runtime supports this functionality out of the box. It is sufficient to specify the path to the model artifact and optionally the name of the model to expose.
 
-It is important to note that the path should point to the folder, where the MLFlow ``MLModel`` artifact is placed. If the model
+It is important to note that the path is model key.
 is created from MLFlow run artifact path, besides the ``model`` folder it may contain additional artifacts.
 
 Register it and deploy:
@@ -12,7 +12,7 @@ serve_func = project.new_function(
     name="serve-mlflow-model",
     kind="mlflowserve",
     model_name=model.name,
-    path=model.spec.path + "model/",
+    path=model.key,
 )
 
 serve_run = serve_func.run("serve", wait=True)
