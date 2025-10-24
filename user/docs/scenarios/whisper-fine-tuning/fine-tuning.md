@@ -22,7 +22,7 @@ train_run = func.run(action="job",
                      parameters={
                          "model_id": "openai/whisper-small",
                          "model_name": "whisper-ft",
-                         "dataset_name": "mozilla-foundation/common_voice_11_0",
+                         "dataset_name": "fsicoli/common_voice_17_0",
                          "language": "Italian",
                          "language_code": "it",
                          "max_train_samples": 100,
@@ -35,13 +35,13 @@ train_run = func.run(action="job",
                      profile="1xa100",
                      secrets=["HF_TOKEN"],
                      envs=[
-                        {"name": "HF_HOME", "value": "shared/data/huggingface"},
-                        {"name": "TRANSFORMERS_CACHE", "value":  "shared/data/huggingface"}
+                        {"name": "HF_HOME", "value": "/local/data/huggingface"},
+                        {"name": "TRANSFORMERS_CACHE", "value":  "/local/data/huggingface"}
                      ],
                      volumes=[{
                         "volume_type": "persistent_volume_claim",
                         "name": "volume-llmpa",
-                        "mount_path": "/shared/data",
+                        "mount_path": "/local/data",
                         "spec": { "size": "100Gi" }}]
 					)
 ```

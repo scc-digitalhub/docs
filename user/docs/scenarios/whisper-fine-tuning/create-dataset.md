@@ -15,14 +15,14 @@ func = project.new_function(
 )
 ```
 
-Run the function. It may take over 10 minutes.
+Run the function. It may take over 10 minutes. Note that here for the tutorial purposes only a small subset of records is considered (`max_train_samples` and `max_eval_samples`).
 
 ```python
 train_run = func.run(action="job",
                      parameters={
                          "model_id": "openai/whisper-small",
                          "artifact_name": "audio-dataset",
-                         "dataset_name": "mozilla-foundation/common_voice_17_0",
+                         "dataset_name": "fsicoli/common_voice_17_0",
                          "language": "Italian",
                          "language_code": "it",
                          "max_train_samples": 100,
@@ -30,16 +30,22 @@ train_run = func.run(action="job",
                      },
                      secrets=["HF_TOKEN"],
                      envs=[
-                        {"name": "HF_HOME", "value": "shared/data/huggingface"},
-                        {"name": "TRANSFORMERS_CACHE", "value":  "shared/data/huggingface"}
+                        {"name": "HF_HOME", "value": "/local/data/huggingface"},
+                        {"name": "TRANSFORMERS_CACHE", "value":  "/local/data/huggingface"}
                      ],
                      volumes=[{
                         "volume_type": "persistent_volume_claim",
                         "name": "volume-llmpa",
-                        "mount_path": "/shared/data",
+                        "mount_path": "/local/data",
                         "spec": { "size": "300Gi" }}]
 					)
 ```
 
 !!! Warning "If the run fails"
     If the run fails, inspect its logs on the console. If you see mention of the dataset being `a gated dataset on the Hub`, you likely did not enable your HuggingFace account to have access to [this repository](https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0).
+
+!!! Warning "Insufficient resources"
+    Depending on the amount of data, the processing may require significant amount of resources. If the platform is configured in a way that the default amount of memory is limited, ensure it is sufficient for the task. Otherwise specify the required amount explicitly, passing the resource requirements to the spec, e.g.,
+    ```python
+    resources={"mem": "8Gi"}
+    ```
