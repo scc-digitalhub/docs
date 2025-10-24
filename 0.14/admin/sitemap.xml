@@ -21,6 +21,10 @@
          <lastmod>2025-10-24</lastmod>
     </url>
     <url>
+         <loc>http://docs/admin/priorityclass/</loc>
+         <lastmod>2025-10-24</lastmod>
+    </url>
+    <url>
          <loc>http://docs/admin/upgrading/</loc>
          <lastmod>2025-10-24</lastmod>
     </url>
@@ -66,10 +70,6 @@
     </url>
     <url>
          <loc>http://docs/admin/components/hpc/hcp-integration/</loc>
-         <lastmod>2025-10-24</lastmod>
-    </url>
-    <url>
-         <loc>http://docs/admin/components/solr/basicauth/</loc>
          <lastmod>2025-10-24</lastmod>
     </url>
 </urlset>

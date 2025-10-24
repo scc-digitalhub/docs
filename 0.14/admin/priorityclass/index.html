@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="http://docs/admin/installation/">
+        <link rel="canonical" href="http://docs/admin/priorityclass/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../ingress/">
       
       
-        <link rel="next" href="../configuration/">
+        <link rel="next" href="../authentication/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Installation on cluster - Digital Hub</title>
+        <title>Priority classes - Digital Hub</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#installation-on-cluster" class="md-skip">
+        <a href="#priority-classes" class="md-skip">
           Skip to content
         </a>
       
@@ -258,7 +258,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Installation on cluster
+              Priority classes
             
           </span>
         </div>
@@ -410,32 +410,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Installation on cluster
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
         
   
   
@@ -446,44 +424,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installation
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -492,20 +432,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -521,7 +461,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Configuration
@@ -601,10 +541,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../priorityclass/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -615,6 +564,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1256,32 +1206,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installation
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1296,53 +1220,68 @@
 
 
 
-<h1 id="installation-on-cluster">Installation on cluster</h1>
-<h3 id="prerequisites">Prerequisites</h3>
+<h1 id="priority-classes">Priority classes</h1>
+<p>The Platform's chart provides configuration options for the priority classes of the components provided.</p>
+<p>You can learn more about Priority and Priority Classes on the <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/">official Kubernetes documentation</a>. </p>
+<p><strong>Keep in mind that priority classes are cluster resources and will affect your whole environment, so previous knowledge of the resource is strictly required before using it.</strong></p>
+<p>With the configuration options provided, you can:</p>
 <ul>
-<li><a href="https://helm.sh/docs/intro/install/">Helm</a></li>
-<li><a href="https://kubernetes.io/docs/tasks/tools/#kubectl">Kubectl</a></li>
-<li>A configured image registry</li>
-<li>A configured DNS</li>
-<li>Domains and Ingress Controller for service exposition</li>
-<li>A configured OAuth provider to enable authentication</li>
+<li>Set a priority to the components</li>
+<li>Let the platform chart create the Priority Classes and assign them to the components</li>
+<li>Use custom Priority Classes that you already defined in your environment</li>
 </ul>
-<h3 id="installation">Installation</h3>
-<p>Once you have set your custom values.yaml file, DigitalHub can be installed as follows:</p>
-<p>1) Add Digitalhub repository:
-<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>digitalhub<span class="w"> </span>https://scc-digitalhub.github.io/digitalhub/
-</code></pre></div></p>
-<p>2) Install DigitalHub with Helm and your custom values.</p>
-<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>upgrade<span class="w"> </span>digitalhub<span class="w"> </span>digitalhub/digitalhub<span class="w"> </span>-n<span class="w"> </span>digitalhub<span class="w"> </span>--install<span class="w"> </span>--create-namespace<span class="w"> </span>--values<span class="w"> </span>PATH_TO_YOUR_VALUES_FILE<span class="w"> </span>--timeout<span class="w"> </span>45m0s
+<p>If you enable priority through the Values file, you can specify two priority classes, a high priority one and a low priority:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">global</span><span class="p">:</span>
+<span class="w">  </span><span class="c1">#  global.priority -- Priority class configuration</span>
+<span class="w">  </span><span class="nt">priority</span><span class="p">:</span>
+<span class="w">    </span><span class="c1">#  global.priority.enabled -- Enable/Disable priority classes</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="c1">#  global.priority.highPriority -- High priority class configuration</span>
+<span class="w">    </span><span class="nt">highPriority</span><span class="p">:</span>
+<span class="w">      </span><span class="c1">#  global.priority.highPriority.className -- Name of the high priority class</span>
+<span class="w">      </span><span class="nt">className</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;highPriority</span><span class="w"> </span><span class="s">&quot;HIGH_PRIORITY_CLASS&quot;</span>
+<span class="w">      </span><span class="c1">#  global.priority.highPriority.existingClass -- Set this to true if you have an existing priority class with the name specified in className</span>
+<span class="w">      </span><span class="nt">existingClass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="c1">#  global.priority.highPriority.value -- Value of the high priority class created by the chart</span>
+<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
+<span class="w">    </span><span class="c1">#  global.priority.lowPriority -- Low priority class configuration</span>
+<span class="w">    </span><span class="nt">lowPriority</span><span class="p">:</span>
+<span class="w">      </span><span class="c1">#  global.priority.lowPriority.className -- Name of the low priority class</span>
+<span class="w">      </span><span class="nt">className</span><span class="p">:</span><span class="w"> </span><span class="nl">&amp;lowPriority</span><span class="w"> </span><span class="s">&quot;LOW_PRIORITY_CLASS&quot;</span>
+<span class="w">      </span><span class="c1">#  global.priority.lowPriority.existingClass -- Set this to true if you have an existing priority class with the name specified in className</span>
+<span class="w">      </span><span class="nt">existingClass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">      </span><span class="c1">#  global.priority.lowPriority.value -- Value of the low priority class created by the chart</span>
+<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
 </code></pre></div>
-<p>5) Wait until all pods are in Running or Completed state
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>--namespace<span class="w"> </span>digitalhub<span class="w"> </span>get<span class="w"> </span>pods
-</code></pre></div></p>
-<p>Once installed, you should see the references (URLs) for the different tools of the platform, similar to the example below:
-<div class="highlight"><pre><span></span><code>##########################################################
-#   _____   _       _           _ _     _       _        #
-#  (____ \ (_)     (_)_        | | |   | |     | |       #
-#   _   \ \ _  ____ _| |_  ____| | |__ | |_   _| | _     #
-#  | |   | | |/ _  | |  _)/ _  | |  __)| | | | | || \    #
-#  | |__/ /| ( ( | | | |_( ( | | | |   | | |_| | |_) )   #
-#  |_____/ |_|\_|| |_|\___)_||_|_|_|   |_|\____|____/    #
-#            (_____|                                     #
-#                                                        #
-##########################################################
-
-Digitalhub has been installed. Check its status by running:
-  kubectl --namespace digitalhub get pods
-
-Digitalhub componet URLs:
-  - Dashboard: http://192.168.76.2:30110
-  - Jupyter: http://192.168.76.2:30040 (Create jupyter workspace from template in the coder dashboard before use)
-  - Dremio: http://192.168.76.2:30120 (Create dremio workspace from template in the coder dashboard before use)
-  - Sqlpad: http://192.168.76.2:30140 (Create sqlpad workspace from template in the coder dashboard before use)
-  - Grafana: http://192.168.76.2:30130 (Create grafana workspace from template in the coder dashboard before use)
-  - Docker Registry: http://192.168.76.2:30150
-  - Coder: http://192.168.76.2:30170 (Username: test@digitalhub.test Password: Test12456@!)
-  - Core: http://192.168.76.2:30180
-  - Kubernetes Resource Manager: http://192.168.76.2:30160
-</code></pre></div></p>
+<p>If <code>global.priority.highPriority/lowPriority.existingClass</code> is set to <code>false</code>, the chart will create these priority classes for you, using <code>className</code> and setting the priority as of <code>value</code>.
+Vice versa, if <code>global.priority.highPriority/lowPriority.existingClass</code> is set to <code>true</code>, the priority classes will not be created and the ones with the same name as <code>className</code> present on your environment will be used.</p>
+<p><em>By default, these two classes use an anchor to assign the classes to the components quickly through the Values file, so check all the components before installing or upgrading the Platform.</em></p>
+<p>You are not limited to using only a high priority and a low priority class, you can use as many as you like as long as you create them yourself and specify them in the values.</p>
+<p><strong>IMPORTANT: The pods generated by the users like Coder workspaces, Core runs and models, have a priority set to the default one present in your environment. Please, keep this in mind when you are planning your hierarchy!</strong></p>
+<p>Currently, priority classes are supported by the following components with the respective anchor assigned by default:</p>
+<p><strong>High Priority:</strong></p>
+<ul>
+<li>Argo Workflows</li>
+<li>Core</li>
+<li>STS (Core)</li>
+<li>Docker Registry</li>
+</ul>
+<p><strong>Low Priority:</strong></p>
+<ul>
+<li>API Gateway Operator</li>
+<li>Dashboard</li>
+<li>Dremio Rest Server Operator</li>
+<li>External Postgres Operator</li>
+<li>Kubernetes Resource Manager</li>
+<li>Open Web UI</li>
+<li>PostgRest Operator</li>
+</ul>
+<p>To change the priority of a specific component, edit the value of the respective <code>priorityClassName</code> field.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">core</span><span class="p">:</span>
+<span class="w">  </span><span class="c1">#  core.priorityClassName -- Name of the priority class to use for the core pods. If not set, no priority class will be used.</span>
+<span class="w">  </span><span class="nt">priorityClassName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;NAME_OF_YOUR_PRIORITY_CLASS&quot;</span>
+</code></pre></div>
 
 
 
