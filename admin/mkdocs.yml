@@ -21,18 +21,16 @@ nav:
       - "authentication/core.md"
       - "authentication/dashboard.md"
       - "authentication/krm.md"
-      - "authentication/minio.md"
-      - OAuth2 Proxy:
-          - "authentication/kubeflow.md"
   - Charts:
       - Core:
           - "charts/core/keystore.md"
           - "charts/core/sts.md"
           - "charts/core/templates.md"
+          - Indexing:
+              - "charts/core/lucene.md"
+              - "charts/core/solr.md"
       - Kubernetes Resource Manager:
           - "charts/krm/roles.md"
   - External components:
-      - Solr:
-          - "components/solr/basicauth.md"
       - HPC Integration:
           - "components/hpc/hcp-integration.md"
