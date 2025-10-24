@@ -15,6 +15,7 @@ nav:
       - "configuration.md"
       - "upgrading.md"
       - "ingress.md"
+      - "priorityclass.md"
   - Authentication:
       - "authentication.md"
       - "authentication/coder.md"
