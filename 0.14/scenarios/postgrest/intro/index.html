@@ -3133,7 +3133,7 @@
 <h2 id="database-set-up">Database set-up</h2>
 <p>Let's start by setting up the database. Access your KRM instance and <strong>Postgres DBs</strong> on the left menu, then click <em>Create</em>.</p>
 <ul>
-<li><code>Name</code>: This is just an identifier for Kubernetes. Type <code>my-db</code>.</li>
+<li><code>Metadata name</code>: This is just an identifier for Kubernetes. Type <code>my-db</code>.</li>
 <li><code>Database</code>: The actual name on the database. Type <code>mydb</code>.</li>
 <li>Toggle on <code>Drop on delete</code>, which conveniently deletes the database when you delete the custom resource.</li>
 </ul>
@@ -3143,18 +3143,20 @@
 <p>PostgREST needs a user to authenticate and a user to assume its role when the API is called. These can be separate users, but for our purposes, we will create just one to fill both roles.
 Click <em>Show</em> on your database's entry and then <em>Add user</em> on the bottom. Enter values as follows:</p>
 <ul>
-<li><code>Name</code>: An identifier for Kubernetes. Type <code>db-owner</code>.</li>
+<li><code>Metadata name</code>: An identifier for Kubernetes. Type <code>db-owner</code>.</li>
 <li><code>Role</code>: The actual name on the database. Type <code>owner</code>.</li>
 <li><code>Privileges</code>: Indicates what privileges the user will have. Pick <code>Owner</code>.</li>
-<li><code>Secret name</code>: The secret to authenticate the user. Type <code>owner</code>.</li>
+<li><code>Secret name</code>: The secret to authenticate the user. Type <code>owner-secret</code>.</li>
 </ul>
 <p><img alt="Create user" src="../../../images/postgrest-scenario/create-user.png" /></p>
 <h2 id="retrieve-postgres_url">Retrieve POSTGRES_URL</h2>
 <p>Together with the user, a secret has also been created. Go to <strong>Secrets</strong> on the left menu; the list should contain a secret with a name referring the user you created. Find it and click <em>Show</em>.</p>
-<p>Write down the following information somewhere, as we will need it later:
-- <em>Name</em> of the secret
-- Value of <code>POSTGRES_URL</code> (click on <em>Decode</em> to obtain it)
-- Value of <code>ROLE</code></p>
+<p>Write down the following information somewhere, as we will need it later:</p>
+<ul>
+<li><em>Name</em> of the secret</li>
+<li>Value of <code>POSTGRES_URL</code> (click on <em>Decode</em> to obtain it)</li>
+<li>Value of <code>ROLE</code></li>
+</ul>
 <p><img alt="Secret" src="../../../images/postgrest-scenario/secret.png" /></p>
 
 
