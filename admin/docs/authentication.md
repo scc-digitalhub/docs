@@ -10,5 +10,3 @@ This section will show how to set an authentication for the following:
 - [Core](authentication/core.md)
 - [Dashboard](authentication/dashboard.md)
 - [Kubernetes Resource Manager](authentication/krm.md)
-- [Kubeflow](authentication/kubeflow.md)
-- [Minio](authentication/minio.md)
