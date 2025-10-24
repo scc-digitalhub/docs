@@ -3113,8 +3113,8 @@
 <h1 id="fine-tuning-speech-to-text">Fine-tuning speech-to-text</h1>
 <p>In this scenario, we fine-tune <a href="https://huggingface.co/openai/whisper-small">Whisper</a>, a model for speech-to-text recognition.</p>
 <h2 id="requirements">Requirements</h2>
-<p>You'll need a HuggingFace token that has access to the voice library we will use. Enable your token to access <a href="https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0">this repository</a>.</p>
-<p>Create a workspace on Coder for Jupyter, with GPU enabled. When the workspace is up, access Jupyter and create a new notebook.</p>
+<p>You'll need a HuggingFace token that has access to the voice library we will use. Enable your token to access <a href="https://huggingface.co/datasets/fsicoli/common_voice_17_0">this repository</a>.</p>
+<p>Create a workspace on Coder for Jupyter. When the workspace is up, access Jupyter and create a new notebook.</p>
 <h2 id="set-up">Set-up</h2>
 <p>Import the platform's library and create a project:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
@@ -3124,7 +3124,7 @@
 <p>Create a secret as follows, make sure you replace the value with the token that has access to the aforementioned repository:</p>
 <div class="highlight"><pre><span></span><code><span class="n">project</span><span class="o">.</span><span class="n">new_secret</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;HF_TOKEN&quot;</span><span class="p">,</span> <span class="n">secret_value</span><span class="o">=</span><span class="s2">&quot;my-token&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>The functions we will run use code from a Python file. Due to the many lines this file has, instead of presenting it in this documentation, we invite you to download it from <a href="https://github.com/scc-digitalhub/digitalhub-tutorials/tree/main/s8-whisper-fine-tuning">the subfolder related to this scenario</a>. Copy the <code>src</code> directory and paste it at the same level of the notebook you're using. It should contain a <code>.py</code> file. </p>
+<p>The functions we will run use code from a Python file. Due to the many lines this file has, instead of presenting it in this documentation, we invite you to download it from <a href="https://github.com/scc-digitalhub/digitalhub-tutorials/tree/main/s8-whisper-fine-tuning">the subfolder related to this scenario</a>. Use the <code>src</code> directory and ensure it is at the same level of the notebook you're using. </p>
 
 
 
