@@ -62,5 +62,5 @@ By default, the ``KUBEAI_ENDPOINT`` is ``kubeai``.
 !!! note "Model name"
 
     Please note how the model name is defined: it is composed of the name of the model as specified in the function and a random value: ``<model_name>-<run_id>``.
-    The name of the generated model as well as the endpoint information can be seen in the run specification (see ``openai`` and ``service`` section)
+    The name of the generated model as well as the endpoint information can be seen in the run specification (see ``service`` section)
 

@@ -43,6 +43,10 @@ train_run = func.run(action="job",
 
 !!! Warning "If the run fails"
     If the run fails, inspect its logs on the console. If you see mention of the dataset being `a gated dataset on the Hub`, you likely did not enable your HuggingFace account to have access to [this repository](https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0).
+    Additionally, building the function before running the job may help. The build process typically takes around 10 minutes.
+    ```
+    train_build = func.run(action="build")
+    ```
 
 !!! Warning "Insufficient resources"
     Depending on the amount of data, the processing may require significant amount of resources. If the platform is configured in a way that the default amount of memory is limited, ensure it is sufficient for the task. Otherwise specify the required amount explicitly, passing the resource requirements to the spec, e.g.,
