@@ -3077,7 +3077,10 @@
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">If the run fails</p>
-<p>If the run fails, inspect its logs on the console. If you see mention of the dataset being <code>a gated dataset on the Hub</code>, you likely did not enable your HuggingFace account to have access to <a href="https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0">this repository</a>.</p>
+<p>If the run fails, inspect its logs on the console. If you see mention of the dataset being <code>a gated dataset on the Hub</code>, you likely did not enable your HuggingFace account to have access to <a href="https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0">this repository</a>.
+Additionally, building the function before running the job may help. The build process typically takes around 10 minutes.
+<div class="highlight"><pre><span></span><code>train_build = func.run(action=&quot;build&quot;)
+</code></pre></div></p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Insufficient resources</p>
