@@ -49,8 +49,7 @@ llm_run = llm_function.run(action="serve",
 ```
 
 Once deployed, the model is available and it is possible to call the OpenAI-compatible API from within the platform.
-The run status (see ``openai`` and ``service`` section) contains the information about the name of the model and the endpoints
-of the KubeAI API exposed 
+The run status (see ``openai`` and ``service`` section) contains the information about the name of the model and the endpoints of the KubeAI API exposed 
 
 ```python
 import requests 
@@ -59,11 +58,9 @@ model_name = f"tinyllama-chat-123xyz_colorist"
 
 input = {"prompt": "Hi", "model": model_name}
 
-res = requests.post(f"http://{KUBEAI_ENDPOINT}/openai/v1/completions", json=input)
+res = requests.post("http://kubeai:80/openai/v1/completions", json=input)
 print(res.json())
 ```
-
-By default, the ``KUBEAI_ENDPOINT`` is ``kubeai:80``.
 
 !!! note "Model name"
 
@@ -111,11 +108,9 @@ from openai import OpenAI
 
 model_name = f"embedding-123qwe"
 
-client = OpenAI(api_key="ignored", base_url=f"http://{KUBEAI_ENDPOINT}/openai/v1")
+client = OpenAI(api_key="ignored", base_url="http://kubeai:80/openai/v1")
 response = client.embeddings.create(
     input="Your text goes here.",
     model=model_name
 )
 ```
-
-By default, the ``KUBEAI_ENDPOINT`` is ``kubeai:80``.

@@ -33,10 +33,10 @@ llm_function = project.new_function(
 
 ## Model serving
 
-To deploy the model, we use a GPU profile (`1xa100`) to accelerate the generation.
+To deploy the model, we use a GPU profile to accelerate the generation.
 
 ```python
-llm_run = llm_function.run("serve", profile="1xa100", wait=True)
+llm_run = llm_function.run("serve", profile="1xa100-80GB", wait=True)
 ```
 
 Let's check that our service is running and ready to accept requests:
