@@ -513,6 +513,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Upgrading DigitalHub
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -524,6 +537,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#upgrade-notes-for-release-014" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upgrade notes for release 0.14
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrade-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upgrade procedure
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1212,6 +1262,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#upgrade-notes-for-release-014" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upgrade notes for release 0.14
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrade-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upgrade procedure
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1227,6 +1303,14 @@
 
 
 <h1 id="upgrading-digitalhub">Upgrading DigitalHub</h1>
+<h2 id="upgrade-notes-for-release-014">Upgrade notes for release 0.14</h2>
+<p><strong>Change of definition for Core runs</strong></p>
+<p>The definition for Core runs in the database has changed, so it becomes necessary to finish or stop all the current runs before upgrading to the new version.</p>
+<p><strong>Change of format for Core secrets</strong></p>
+<p>Core no longer accepts secrets created with a double <code>-</code> in it's name.</p>
+<p>If you have an ongoing project that still needs your secrets, recreate them with the correct syntax.</p>
+<p>For example, <code>proj-secrets--test</code> must become <code>proj-secrets--test</code>.</p>
+<h2 id="upgrade-procedure">Upgrade procedure</h2>
 <p>Once the platform is installed, you may find yourself in need of tweaking it and upgrading it.</p>
 <p>With the command <code>helm upgrade</code> you will be able to change the values of the platform with your custom ones like the example below:</p>
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>upgrade<span class="w"> </span>-n<span class="w"> </span>&lt;NAMESPACE&gt;<span class="w"> </span>&lt;RELEASE&gt;<span class="w"> </span>digitalhub/digitalhub<span class="w"> </span>--timeout<span class="w"> </span>30m0s<span class="w"> </span>--values<span class="w"> </span>&lt;YOUR_VALUES_FILE_PATH&gt;
