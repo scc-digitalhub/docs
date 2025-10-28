@@ -72,4 +72,8 @@
          <loc>http://docs/admin/components/hpc/hcp-integration/</loc>
          <lastmod>2025-10-28</lastmod>
     </url>
+    <url>
+         <loc>http://docs/admin/components/krm/krm-custom-views/</loc>
+         <lastmod>2025-10-28</lastmod>
+    </url>
 </urlset>
