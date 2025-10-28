@@ -220,18 +220,6 @@
                   
                 
               
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs/documentation_fixes">documentation_fixes</a>
-                  
-                
-              
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs/doc_fixes">doc_fixes</a>
-                  
-                
-              
             </button>
           </div>
           <div class="dropdown">
@@ -3176,8 +3164,8 @@
 <span class="p">)</span>
 </code></pre></div>
 <h2 id="model-serving">Model serving</h2>
-<p>To deploy the model, we use a GPU profile (<code>1xa100</code>) to accelerate the generation.</p>
-<div class="highlight"><pre><span></span><code><span class="n">llm_run</span> <span class="o">=</span> <span class="n">llm_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;1xa100&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<p>To deploy the model, we use a GPU profile to accelerate the generation.</p>
+<div class="highlight"><pre><span></span><code><span class="n">llm_run</span> <span class="o">=</span> <span class="n">llm_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;1xa100-80GB&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Let's check that our service is running and ready to accept requests:</p>
 <div class="highlight"><pre><span></span><code><span class="n">service</span> <span class="o">=</span> <span class="n">llm_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">service</span>
