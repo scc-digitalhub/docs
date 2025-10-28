@@ -1368,7 +1368,18 @@
 <span class="w">      </span><span class="no">- name: ENV1</span>
 <span class="w">        </span><span class="no">value: VALU123123</span>
 <span class="w">      </span><span class="no">- name: ENV2</span>
-<span class="w">        </span><span class="no">value: VALU123123    </span>
+<span class="w">        </span><span class="no">value: VALU123123</span>
+<span class="w">    </span><span class="no">resources:</span>
+<span class="w">      </span><span class="no">requests:</span>
+<span class="w">        </span><span class="no">cpu: &quot;1&quot;</span>
+<span class="w">        </span><span class="no">memory: &quot;1Gi&quot;</span>
+<span class="w">        </span><span class="no">nvidia.com/gpu: &quot;1&quot;</span>
+<span class="w">        </span><span class="no">ephemeral-storage: &quot;10Gi&quot;</span>
+<span class="w">      </span><span class="no">limits:</span>
+<span class="w">        </span><span class="no">cpu: &quot;5&quot;</span>
+<span class="w">        </span><span class="no">memory: &quot;40Gi&quot;</span>
+<span class="w">        </span><span class="no">nvidia.com/gpu: &quot;1&quot;</span>
+<span class="w">        </span><span class="no">ephemeral-storage: &quot;60Gi&quot;</span>
 <span class="w">    </span><span class="no">---</span>
 <span class="w">    </span><span class="no">apiVersion: batch/v1</span>
 <span class="w">    </span><span class="no">kind: Job</span>
@@ -1394,7 +1405,18 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENV1</span>
 <span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VALU123123</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENV2</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VALU123123</span><span class="w">    </span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VALU123123</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
+<span class="w">    </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">    </span><span class="nt">ephemeral-storage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10Gi&quot;</span>
+<span class="w">  </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5&quot;</span>
+<span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;40Gi&quot;</span>
+<span class="w">    </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">    </span><span class="nt">ephemeral-storage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;60Gi&quot;</span><span class="w">  </span>
 <span class="nn">---</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
