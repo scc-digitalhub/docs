@@ -38,7 +38,18 @@ data:
       - name: ENV1
         value: VALU123123
       - name: ENV2
-        value: VALU123123    
+        value: VALU123123
+    resources:
+      requests:
+        cpu: "1"
+        memory: "1Gi"
+        nvidia.com/gpu: "1"
+        ephemeral-storage: "10Gi"
+      limits:
+        cpu: "5"
+        memory: "40Gi"
+        nvidia.com/gpu: "1"
+        ephemeral-storage: "60Gi"
     ---
     apiVersion: batch/v1
     kind: Job
@@ -67,7 +78,18 @@ envs:
   - name: ENV1
     value: VALU123123
   - name: ENV2
-    value: VALU123123    
+    value: VALU123123
+resources:
+  requests:
+    cpu: "1"
+    memory: "1Gi"
+    nvidia.com/gpu: "1"
+    ephemeral-storage: "10Gi"
+  limits:
+    cpu: "5"
+    memory: "40Gi"
+    nvidia.com/gpu: "1"
+    ephemeral-storage: "60Gi"  
 ---
 apiVersion: batch/v1
 kind: Job
