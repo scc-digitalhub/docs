@@ -1,5 +1,21 @@
 # Upgrading DigitalHub
 
+## Upgrade notes for release 0.14
+
+**Change of definition for Core runs**
+
+The definition for Core runs in the database has changed, so it becomes necessary to finish or stop all the current runs before upgrading to the new version.
+
+**Change of format for Core secrets**
+
+Core no longer accepts secrets created with a double `-` in it's name.
+
+If you have an ongoing project that still needs your secrets, recreate them with the correct syntax.
+
+For example, `proj-secrets--test` must become `proj-secrets--test`.
+
+## Upgrade procedure
+
 Once the platform is installed, you may find yourself in need of tweaking it and upgrading it.
 
 With the command `helm upgrade` you will be able to change the values of the platform with your custom ones like the example below:
