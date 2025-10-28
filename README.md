@@ -1,4 +1,8 @@
-Repository for the documentation of the platform. The documentation features multiple portals, aimed at different audiences (`user`, `dev`, ...).
+# Platform documentation
+
+Repository for the documentation of the platform. Each branch corresponds to a different version of the platform, so if you need to update the documentation of a specific version, **do not create a separate branch, instead, commit directly to the branch corresponding to the version you're updating**.
+
+The documentation features multiple portals, aimed at different audiences (`user`, `admin`, ...).
 
 To create a new page (the following example refers to the `user` portal, but the process for others is equivalent):
 
@@ -36,7 +40,7 @@ Publishing a new branch will generate another documentation portal, named after 
 
 ## Adding a portal
 
-The documentation can feature multiple portals, such as `User` and `Dev`, aimed at different purposes, which can be accessed from a drop-down menu in the toolbar.
+The documentation can feature multiple portals, such as `User` and `Admin`, aimed at different purposes, which can be accessed from a drop-down menu in the toolbar.
 
 If you wish to add another portal, follow the steps below. This example will configure a new portal, called `Example`, available under the `/example` sub-path.
 
@@ -76,35 +80,35 @@ extra:
   portals:
     - name: User
       path: ""
-    - name: Dev
-      path: "/dev"
+    - name: Admin
+      path: "/admin"
     - name: Example    # Same as portal_name
       path: "/example" # Same as directory's name, prefixed with /
 ```
 
 Finally, you must update the `.github/workflows/update-docs.yaml` file, which defines the GitHub workflow, where some commands must be added.
 
-It may seem complicated, but all you have to do is duplicate the equivalent `dev` commands and adapt them for your new portal. The example below highlights these sections.
+It may seem complicated, but all you have to do is duplicate the equivalent `admin` commands and adapt them for your new portal. The example below highlights these sections.
 
 ``` sh
 # First here...
 git checkout $v
 cd user && mkdocs build && cd ..
-cd dev && mkdocs build && cd ..
+cd admin && mkdocs build && cd ..
 cd example && mkdocs build && cd .. # new line
 mkdir -p ./site
-mv user/site site/$v
-mv dev/site site/$v/dev
-mv example/site site/$v/example # new line
+[ ! -d user/site ] || mv user/site site/$v
+[ ! -d admin/site ] || mv admin/site site/$v/admin
+[ ! -d example/site ] || mv example/site site/$v/example # new line
 
 # and then a few lines later...
 git checkout main
 cd user && mkdocs build && cd ..
-cd dev && mkdocs build && cd ..
+cd admin && mkdocs build && cd ..
 cd example && mkdocs build && cd .. # new line
-mv user/site ./site
-mv dev/site site/dev
-mv example/site site/example # new line
+[ ! -d user/site ] || mv user/site ./site
+[ ! -d admin/site ] || mv admin/site site/admin
+[ ! -d example/site ] || mv example/site site/example # new line
 ```
 
 Once you commit these changes, your new portal will be available.
