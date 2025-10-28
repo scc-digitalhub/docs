@@ -14,8 +14,6 @@ extra:
   portals:
     - name: User
       path: ""
-    - name: Dev
-      path: "/dev"
     - name: Admin
       path: "/admin"
 

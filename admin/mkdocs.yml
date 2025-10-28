@@ -35,3 +35,5 @@ nav:
   - External components:
       - HPC Integration:
           - "components/hpc/hcp-integration.md"
+      - Kubernetes Resource Manager:
+          - "components/krm/krm-custom-views.md"
