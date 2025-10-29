@@ -20,6 +20,7 @@ nav:
       - "tasks/models.md"
       - "tasks/workflows.md"
       - "tasks/data.md"
+      - "tasks/files.md"
       - "tasks/services.md"
       - "tasks/triggers.md"
       - "tasks/workspaces.md"
