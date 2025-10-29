@@ -651,6 +651,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Services
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -662,6 +675,67 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#service-invocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service invocation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP client
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP client">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3028,6 +3102,56 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#service-invocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service invocation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#http-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP client
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP client">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3043,7 +3167,49 @@
 
 
 <h1 id="services">Services</h1>
-<p>TODO</p>
+<p>When executing <em>runs</em>, tasks of type <em>service</em> will result in a deployment with an HTTP service published inside the platform.</p>
+<p>Those runs will receive a unique, addressable identifier along with an IP address and an internal service URL. The detailed information are stored in the run <em>status</em> field, under the <code>service</code> keyword. Together with the base service url, all well known urls will be registered and exposed to users.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">service</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s-containerserve-9271ab33c0364d549c89f8b2834ae141</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
+<span class="w">  </span><span class="nt">clusterIP</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.16.143.129</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">port5678</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5678</span>
+<span class="w">      </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5678</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s-containerserve-9271ab33c0364d549c89f8b2834ae141:5678</span>
+</code></pre></div>
+<p>By calling the URL, users are thus able to invoke their function interactively.</p>
+<p>The service view will present at any given time the status of active <em>services</em>, i.e. runs with a service exposed. Users can get a quick glimpse of the health of their deployments, with quick actions available.</p>
+<p><img alt="Services list" src="../../images/console/services-list.png" /></p>
+<p>As we can see from the screenshot, the current <em>status</em> is highlighted, and any contextual message is directly reported.</p>
+<p><strong>Important!</strong></p>
+<p>Do note that service URLs are not exposed outside the perimeter of the platform. Only clients from inside the platform, such as workspaces, other functions and the core console are able to access. In order to expose the service <em>externally</em> an api gateway is required.</p>
+<h2 id="service-invocation">Service invocation</h2>
+<p>Services which are in an healthy state can be invoked from inside the platform, either manually (by custom code or standard HTTP clients) or via the python SDK <code>invoke</code> method on runs.</p>
+<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="c1"># invoke the service only when ready!</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div>
+<p>See the <a href="https://scc-digitalhub.github.io/sdk-docs">SDK Reference documentation</a> for details.</p>
+<h2 id="http-client">HTTP client</h2>
+<p>The user console implements a basic HTTP client, able to perform operations on textual content (e.g. text/plain, application/json etc).</p>
+<p>By selecting a valid service run and clicking the <em>CLIENT</em> button, the console will open a simplified dialog as depicted in following figure.</p>
+<p><img alt="HTTP Client" src="../../images/console/http-client.png" /></p>
+<p>From the client, users will be able to perform basic operations and visualize the results.</p>
+<h4 id="features">Features</h4>
+<ul>
+<li>Supports GET/POST/PUT/DELETE operations</li>
+<li>Can invoke internal urls leveraging core as gateway</li>
+<li>Supports custom HTTP headers</li>
+<li>Full request/response history</li>
+<li>Basic <em>raw</em> text support</li>
+<li>Interactive preview for JSON and YAML</li>
+</ul>
+<h4 id="notes">Notes</h4>
+<p>The service is not exposed to the user's browser: access is mediated by the console through the core backend. As such, only a limited set of content is allowed: <strong>text-based</strong> requests and responses with a reasonable size limit.</p>
 
 
 
