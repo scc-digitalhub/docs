@@ -90,6 +90,8 @@ nav:
           - "scenarios/whisper-fine-tuning/convert-test.md"
       - Flower Federated Learning:
           - "scenarios/flower/flower.md"
+      - Data validation:
+          - "scenarios/data_validation/scenario.md"
   - Runtimes reference:
       - Overview: "runtimes/overview.md"
       - Python: "runtimes/python.md"
