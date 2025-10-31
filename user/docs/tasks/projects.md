@@ -36,6 +36,7 @@ All projects present in the database are listed in the home page. Each tile show
 - Identifier of the project
 - Name of the project (hidden if same as identifier)
 - Description
+- Author
 - Date of creation
 - Date of last modification
 
@@ -48,10 +49,10 @@ Click on the tile to access the project's dashboard:
 This dashboard shows a summary of the resources associated with the project and allows you to access the management of these resources.
 
 - **`Jobs and runs`**: list and status of performed runs
-- **`Models`**: number and list of latest models
 - **`Functions and code`**: number and list of latest functions
+- **`Models`**: number and list of latest models
 - **`Data items`**: number and list of latest data items
-- **`Artifacts`**: number and list of latest artifacts
+- **`Artifacts`**: number and list of latest workflows
 
 You can return to the list of projects at any time by clicking *Projects* at the bottom of the left menu, or switch directly to a specific project by using the drop-down menu in the upper left of the interface.
 

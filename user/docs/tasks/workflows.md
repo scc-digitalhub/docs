@@ -1,10 +1,10 @@
 # Workflows
 
-Workflows allow for organizing the single operations in a advanced management pipelines, to perform a series operation of data processing, ML model training and serving, etc. Workflows represent long-running procedures defined as Directed Acyclic Graphs (DAGs) where each node is a single unit of work performed by the platform (e.g., as a Kubernetes Job).
+Workflows allow for organizing the single operations in advanced management pipelines, to perform a series operation of data processing, ML model training and serving, etc. Workflows represent long-running procedures defined as Directed Acyclic Graphs (DAGs) where each node is a single unit of work performed by the platform (e.g., as a Kubernetes Job).
 
 As in case of functions, it is possible for the platform to have different workflow runtimes. Currently, the only workflow runtime implemented is the one based on Hera infrastructure. See [Hera Runtime](../runtimes/hera.md) for further details about how the workflow is defined and executed with the Hera component of the platform.
 
-Similarly, to functions the workflows may be managed via console UI or via Python SDK.
+Similarly to functions, workflows may be managed via console UI or via Python SDK.
 
 ## Management via UI
 
@@ -23,7 +23,7 @@ We will now see how to [create](#create), [read](#read), [update](#update) and [
 
 ### Create
 
-Click `CREATE` and a form will be shown:
+Click `CREATE` and a two-step form will be shown:
 
 ![Workflow form](../images/console/workflow-form.png)
 
@@ -37,10 +37,11 @@ Metadata fields are optional and may be updated later.
 - **`Description`**: a human-readable description
 - **`Labels`**: list of labels
 - **`Name`**: name of the function
-- **`Embedded`**: flag for embedded metadata
-- **`Versioning`**: version of the function
-- **`Openmetadata`**: flag to publish metadata
 - **`Audit`**: author of creation and modification
+- **`Embedded`**: flag for embedded metadata
+- **`Openmetadata`**: flag to publish metadata
+- **`Relationships`**: relationships with other entities
+- **`Versioning`**: version of the function
 
 In case of a `hera` workflow, the source code and handler fields are required as well.
 

@@ -12,13 +12,11 @@ The platform handles the persistence, consistency and lifecycle of triggers by s
 
 Users can run or stop triggers at will, enabling or disabling the execution.
 
-
 ## Templates and inputs
 
 Triggers are designed to produce a function's run every time they are fired. In the platform, a *run* is a self described, fully enclosed definition of a function's execution. As such, the configuration (context, resources, parameters, inputs, secrets...) is passed as **spec** for the run. In the trigger flow, the spec is dynamically built by the platform, leveraging the context of the user and the triggers execution. Every parameter meant to go in the run's *spec* has to be either statically pre-defined or dynamically generated at runtime. 
 
 The trigger's spec includes a `template` field which serves as the base used to derive the run's `spec`: static parameters are copied, while the context and the environment are built by core. This solution can satisfy basic needs, such as *"execute this function every day"*, but fails to cover more complex uses, where the function's parameters must be dynamically populated.
-
 
 ```yaml
 
@@ -33,7 +31,6 @@ template:
     mem: 64Mi
 
 ```
-
 
 To solve this need, triggers can produce *inputs*, based on their context and the specific execution event. These inputs can be consumed by user-defined functions to perform specific, parametrized tasks: for example a validation function could perform a check on a given data table. In order to *consume* inputs, the function must accept variable parameters.
 
@@ -75,16 +72,16 @@ spec:
 
 ```
 
-
 ## Scheduler trigger
 
 The platform supports a basic, cron-like scheduler which will execute the associated task every time the cron *expression* is verified.
 
 The only configuration parameter is:
+
 * **schedule**: a cron-like expression describing the requested interval or time
 
-
 For example:
+
 ```yaml
 spec: 
     schedule: 0 * 0 ? * * * #every minute
@@ -92,7 +89,6 @@ spec:
 ```
 
 The expression is based on Quartz syntax, see [Quartz doc](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html) for reference.
-
 
 Additionally, the scheduler supports the `@` syntax for repeated tasks, supporting:
 
@@ -121,7 +117,6 @@ In order to define which content is relevant for a given trigger, the spec requi
 
 * **states**: a list of states (CREATED,UPLOADING,READY,ERROR,DELETED) which will be used to detect an event of interest.
 
-
 For example, the following will produce a function's run every time a table with the name ending in `.csv` is uploaded in the store and ready for usage:
 
 ```yaml
@@ -134,26 +129,19 @@ spec:
 
 Note: the key **must** match the current project.
 
-
-
 ## Management via UI
 
 Triggers can be managed via the user console, by navigating to the function's task of interest and then filling the `Create trigger` form in every detail.
 
 ![Trigger form](../images/console/trigger-create.png)
 
-
 Template parameters can be filled in under the *Task* and *Run* sections, using variable expansion via `{VAR}` when needed.
 
 ![Trigger params](../images/console/trigger-params.png)
 
-
 Afterwards, triggers can be managed from their section as a normal entity.
 
-
 ![Trigger show](../images/console/trigger-show.png)
-
-
 
 ## Management via SDK
 

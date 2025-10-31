@@ -18,7 +18,7 @@ Each data entity may be accessed and manipulated by the platform via UI or using
 
 ### Artifacts
 
-Artifacts can be managed as *entities* from the UI. You can access them from the dashboard or the left menu. You can:
+Artifacts can be managed as *entities* from the UI. You can access them from the left menu. You can:
 
 - `create` a new artifact
 - `filter` artifacts by name and kind
@@ -33,9 +33,11 @@ Here we analyze how to [create](#create), [read](#read), [update](#update) and [
 
 #### Create
 
-Click `CREATE` and a form will be shown:
+Click `CREATE` and a two-step form will be shown:
 
-![Artifact form](../images/console/artifacts-form.png)
+![Artifact form](../images/console/artifacts-form1.png)
+
+![Artifact form](../images/console/artifacts-form2.png)
 
 Mandatory fields are:
 
@@ -48,10 +50,11 @@ Other fields are optional and may be updated later.
 - (Metadata) **`Description`**: a human-readable description of the artifact
 - (Metadata) **`Labels`**: list of labels
 - (Metadata) **`Name`**: name of the artifact
-- (Metadata) **`Embedded`**: flag for embedded metadata
-- (Metadata) **`Versioning`**: version of the function
-- (Metadata) **`Openmetadata`**: flag to publish metadata
 - (Metadata) **`Audit`**: author of creation and modification
+- (Metadata) **`Embedded`**: flag for embedded metadata
+- (Metadata) **`Openmetadata`**: flag to publish metadata
+- (Metadata) **`Relationships`**: relationships with other entities
+- (Metadata) **`Versioning`**: version of the function
 - (Spec) **`Source path`**: local path to the artifact, used in case of upload into remote storage
 
 #### Read
@@ -93,9 +96,11 @@ Here we analyze how to [create](#create_1), [read](#read_1), [update](#update_1)
 
 #### Create
 
-Click `CREATE` and a form will be shown:
+Click `CREATE` and a two-step form will be shown:
 
-![Dataitem form](../images/console/dataitems-form.png)
+![Dataitem form](../images/console/dataitems-form1.png)
+
+![Dataitem form](../images/console/dataitems-form2.png)
 
 Mandatory fields are:
 
@@ -108,11 +113,11 @@ Other fields are optional and may be updated later:
 - (Metadata) **`Description`**: a human-readable description
 - (Metadata) **`Labels`**: list of labels
 - (Metadata) **`Name`**: name of the data item
-- (Metadata) **`Embedded`**: flag for embedded metadata
-- (Metadata) **`Versioning`**: version of the function
-- (Metadata) **`Openmetadata`**: flag to publish metadata
 - (Metadata) **`Audit`**: author of creation and modification
-- (Spec) **`Source path`**: local path of the data item, used in case of upload into remote storage
+- (Metadata) **`Embedded`**: flag for embedded metadata
+- (Metadata) **`Openmetadata`**: flag to publish metadata
+- (Metadata) **`Relationships`**: relationships with other entities
+- (Metadata) **`Versioning`**: version of the function
 
 ##### Kind
 
@@ -146,7 +151,8 @@ You can update a data item by clicking `EDIT`. Greyed-out fields may not be upda
 You can delete a data item from either its detail page or the list of data items, by clicking `DELETE`.
 
 ### Data exploration in S3 browser
-TODO
+
+The S3 object storage can be explored in a dedicated page. Check the [File Browser section](./files.md) for more information.
 
 ## Management via SDK
 

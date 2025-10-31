@@ -22,7 +22,7 @@ Key Characteristics:
 *    **Opaque Format**:
     PATs are opaque strings, meaning their contents are not encoded in a readable format like JWTs (JSON Web Tokens). Their structure and claims are not introspectable by clients and must be validated by the platform.
 
-Typical Use Cases
+Typical Use Cases:
 
 *    Command-line tools or scripts requiring persistent access without interactive login
 
@@ -32,7 +32,7 @@ Typical Use Cases
 
 *    Access delegation to long-lived background jobs
 
-### Security Considerations
+## Security Considerations
 
 Because PATs typically do not expire automatically and are opaque, they should be treated as sensitive credentials. It is strongly recommended to:
 
@@ -51,9 +51,7 @@ When logged in the web console, users can create, review and revoke **Personal A
 
 ![User menu](../images/console/user-menu.png)
 
-
-Select *configuration* to open the user management page and then scroll down to the *Personal Access Tokens* section.
-
+Select *Configuration* to open the user management page and then scroll down to the *Personal Access Tokens* section.
 
 ![PAT section](../images/console/pat-section.png)
 
@@ -62,6 +60,5 @@ When adding a *PAT*, the form asks for a name and then lets users select which k
 **Copy the token value and store securely: it won't be readable anymore!**
 
 ![PAT creation](../images/console/pat-create.png)
-
 
 From now on, the token can be freely used wherever an *access token* would be required. At any given time, owner can revoke the token from the same page by selecting *Delete* and confirming the removal.

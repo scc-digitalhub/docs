@@ -6,7 +6,7 @@ for the organization and operations over the Data Science [Projects](../tasks/pr
 - **functions** of various runtimes (see the [Functions and Runtimes](../tasks/functions.md) section for details), as well as their executions (runs) grouped by the corresponding operations (tasks)
 - **workflows** - composite pipelines combining executions of different functions
 - **dataitems** - structured [Data Items](../tasks/data.md) managed by the project
-- **artifacts** - unstructured files related and maanged by the project
+- **artifacts** - unstructured files related to and managed by the project
 - **models** - versioned ML Model artifacts with their metrics and metadata (see [ML Models](../tasks/models.md) section for details)
 
 When you access the console, you land to the project management page, where you can create or delete projects.
@@ -16,40 +16,41 @@ using the platform management Python SDK reflecting management of the same platf
 
 ## Create a Project
 
-Start by clicking the `CREATE A NEW PROJECT` button.
+Start by clicking the `CREATE` button.
 
 ![Project list](../images/console/project-list.png)
 
 Fill the form's properties.
-![Coder buttons](../images/console/project-form.png)
+
+![Project form](../images/console/project-form.png)
 
 Following the selection of a project, you can get an overview of the associated objects on its dashboard and manage them on their dedicated pages.
 
 ## Dashboard
 
-The console dashboard shows the resources that have been created with a series of cards and allows you to quickly access them. You can see the runs performed and their respective status, as well as artifacts, data items and functions.
-![Coder buttons](../images/console/dashboard-prj.png)
+The console dashboard shows the resources that have been created with a series of cards and allows you to quickly access them. You can see the runs performed and their respective status, as well as workflows, data items and functions.
+
+![Dashboard](../images/console/dashboard-prj.png)
 
 ## Objects
 
 Through the console it is also possible to manage directly the entities related to the project and perform different operations over those. This amounts
-not only to CRUD (create, update, delete, and read) operations, but also track relations, view detailed metadata and versions, execute functions and pipelines, etc. 
+not only to CRUD (create, update, delete, and read) operations, but also tracking relationships, viewing detailed metadata and versions, executing functions and pipelines, etc. 
 
 ### Functions
 
-[Functions](../tasks/functions.md) define the executable procedures implemented in various ways that can be run by the platform. In console it is possible to
-create new functions selecting the corresponding runtime and, based on that, providing its specification, e.g., source code. For each function the console lists the different versions of the function, the specification and the code (if available) of the function, as well as different tasks that can be performed over the function in the corresponding runtime. For example, in case of Python runtime, it is possible to ``build`` function (generating the corresponding Docker image and caching in the regsitry), to run the function as ``job`` (to be executed on the Kubernetes), or to expose the function as a service, that is to ``serve`` the function. 
+[Functions](../tasks/functions.md) define the executable procedures implemented in various ways that can be run by the platform. Via the console the user can
+create new functions by selecting the corresponding runtime and, based on that, providing its specification, e.g., source code. The console lists the existing versions of each function, its specification and code (if available), as well as different tasks that can be performed over the function in the corresponding runtime. For example, in the case of Python runtime, it is possible to ``build`` the function (i.e., generate the corresponding Docker image and cache in the registry), to run the function as ``job`` (to be executed on the Kubernetes), or to ``serve`` the function (i.e., expose it as a service). 
 
 ![Function read](../images/console/function-python-detail.png)
 
-
-Within the tab corresponding to the specific task, it is possible to access the list of runs executed over the function, the status of execution, the execution log. It is also possible to create new run of the task, defining the specific parameters and configurations for the run. 
+Within the tab corresponding to the specific task, the user can access the list of runs executed over the function, the status of execution, the execution log. It is also possible to create new runs of the task, defining the specific parameters and configurations. 
 
 ### Workflows
 
 [Workflows](../tasks/workflows.md) represent a composition of function executions that is run over the platform, specifying their dependencies (in terms of data and order). This allows for creating complex pipelines for AI/ML and data operations. Currently, the implementation of the workflow relies on the [Kubeflow Pipelines](https://www.kubeflow.org/docs/components/pipelines/) framework, that in turn relies on Kubernetes Argo Workflows so that each step of the workflow is executed as a single Kubernetes Job. 
 
-From the console it is possible to define a new workflow providing the code of the pipeline and run the ``pipeline`` task. As in case of the function runs, the execution of the pipeline is being tracked, as well as the progress of single steps, and the corresponding log. 
+From the console it is possible to define a new workflow by providing the code of the pipeline and running the ``pipeline`` task. As in case of function runs, the execution of the pipeline is being tracked, as well as the progress of single steps, and the corresponding log. 
 
 ### Dataitems 
 

@@ -36,7 +36,9 @@ Here we analyze how to [create](#create), [read](#read), [update](#update) and [
 
 #### Create
 
-Click `CREATE` and a form will be shown:
+Functions can be created either from scratch or from a preconfigured template. Templates for common use cases, such as deploying LLMs or performing machine learning related tasks with Python, are available.
+
+Click `CREATE` and a three-step form will be shown, the first step being the selection of either a template or a kind:
 
 ![Function form](../images/console/function-form.png)
 
@@ -50,12 +52,13 @@ Metadata fields are optional and may be updated later.
 - **`Description`**: a human-readable description
 - **`Labels`**: list of labels
 - **`Name`**: name of the function
-- **`Embedded`**: flag for embedded metadata
-- **`Versioning`**: version of the function
-- **`Openmetadata`**: flag to publish metadata
 - **`Audit`**: author of creation and modification
+- **`Embedded`**: flag for embedded metadata
+- **`Openmetadata`**: flag to publish metadata
+- **`Relationships`**: relationships with other entities
+- **`Versioning`**: version of the function
 
-`Spec` fields will change depending on the function's kind.
+Spec fields are specified in the third step and will change depending on the function's kind.
 
 #### Read
 
@@ -63,7 +66,7 @@ Click `SHOW` to view a function's details.
 
 ![Function read](../images/console/function-read.png)
 
-Tabs next to `SUMMARY` will change depending on the function's `kind`. Some of them allow you to create runs, but we will see this in a [later section](#runs).
+Tabs next to `SPEC` will change depending on the function's `kind`. Some of them allow you to create runs, but we will see this in a [later section](#runs).
 
 On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.
 
@@ -85,7 +88,7 @@ You can delete a function from either its detail page or the list of functions, 
 
 #### Create
 
-A run represents the execution of a task through a function. As such, the starting point to create a run is the function it is based on. Select one of the functions you created. You will notice multiple tabs at the top, next to `SUMMARY`. These tabs may differ depending on the function's `kind`.
+A run represents the execution of a task through a function. As such, the starting point to create a run is the function it is based on. Select one of the functions you created. You will notice multiple tabs at the top: some of the `kind`-specific tabs correspond to a task that can be executed.
 
 ![Function build tab](../images/console/function-build-tab.png)
 
@@ -103,17 +106,11 @@ The **third** step will simply present a recap.
 
 By going through a function's tabs, you can access the corresponding runs, but you may also access all runs from the *Runs* section in the left menu (also available as *Jobs and runs* in the dashboard).
 
-You can filter runs by name, kind and status.
-
 ![Run list](../images/console/run-list.png)
 
-Click on a run to view its details.
+Click on a run to view its details, such as its specifications, inputs, outputs, logs and metrics.
 
 ![Run overview](../images/console/run-overview.png)
-
-From here, click on `LOGS` to view its logs.
-
-![Run logs](../images/console/run-logs.png)
 
 ## Management via SDK
 
