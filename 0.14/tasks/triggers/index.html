@@ -3286,12 +3286,14 @@
 </code></pre></div>
 <h2 id="scheduler-trigger">Scheduler trigger</h2>
 <p>The platform supports a basic, cron-like scheduler which will execute the associated task every time the cron <em>expression</em> is verified.</p>
-<p>The only configuration parameter is:
-* <strong>schedule</strong>: a cron-like expression describing the requested interval or time</p>
-<p>For example:
+<p>The only configuration parameter is:</p>
+<ul>
+<li><strong>schedule</strong>: a cron-like expression describing the requested interval or time</li>
+</ul>
+<p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span><span class="w"> </span>
 <span class="w">    </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 * 0 ? * * *</span><span class="w"> </span><span class="c1">#every minute</span>
-</code></pre></div></p>
+</code></pre></div>
 <p>The expression is based on Quartz syntax, see <a href="https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html">Quartz doc</a> for reference.</p>
 <p>Additionally, the scheduler supports the <code>@</code> syntax for repeated tasks, supporting:</p>
 <ul>

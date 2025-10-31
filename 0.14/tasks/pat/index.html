@@ -3218,7 +3218,7 @@
     PATs are opaque strings, meaning their contents are not encoded in a readable format like JWTs (JSON Web Tokens). Their structure and claims are not introspectable by clients and must be validated by the platform.</p>
 </li>
 </ul>
-<p>Typical Use Cases</p>
+<p>Typical Use Cases:</p>
 <ul>
 <li>
 <p>Command-line tools or scripts requiring persistent access without interactive login</p>
@@ -3233,7 +3233,7 @@
 <p>Access delegation to long-lived background jobs</p>
 </li>
 </ul>
-<h3 id="security-considerations">Security Considerations</h3>
+<h2 id="security-considerations">Security Considerations</h2>
 <p>Because PATs typically do not expire automatically and are opaque, they should be treated as sensitive credentials. It is strongly recommended to:</p>
 <ul>
 <li>
@@ -3252,7 +3252,7 @@
 <h2 id="token-management-via-ui">Token management via UI</h2>
 <p>When logged in the web console, users can create, review and revoke <strong>Personal Access Tokens</strong> from the user menu, accessible via the top right dropdown with the username. </p>
 <p><img alt="User menu" src="../../images/console/user-menu.png" /></p>
-<p>Select <em>configuration</em> to open the user management page and then scroll down to the <em>Personal Access Tokens</em> section.</p>
+<p>Select <em>Configuration</em> to open the user management page and then scroll down to the <em>Personal Access Tokens</em> section.</p>
 <p><img alt="PAT section" src="../../images/console/pat-section.png" /></p>
 <p>When adding a <em>PAT</em>, the form asks for a name and then lets users select which kind of permissions will be given to the newly created token. On creation, the token <em>value</em> will be shown once, and then stored secretly in the platform.</p>
 <p><strong>Copy the token value and store securely: it won't be readable anymore!</strong></p>

@@ -680,7 +680,7 @@
         <li class="md-nav__item">
   <a href="#exploring-files" class="md-nav__link">
     <span class="md-ellipsis">
-      Exploring files
+      Exploring Files
     </span>
   </a>
   
@@ -689,7 +689,7 @@
         <li class="md-nav__item">
   <a href="#file-uploading" class="md-nav__link">
     <span class="md-ellipsis">
-      File uploading
+      File Uploading
     </span>
   </a>
   
@@ -698,7 +698,7 @@
         <li class="md-nav__item">
   <a href="#file-sharing" class="md-nav__link">
     <span class="md-ellipsis">
-      File sharing
+      File Sharing
     </span>
   </a>
   
@@ -3185,7 +3185,7 @@
         <li class="md-nav__item">
   <a href="#exploring-files" class="md-nav__link">
     <span class="md-ellipsis">
-      Exploring files
+      Exploring Files
     </span>
   </a>
   
@@ -3194,7 +3194,7 @@
         <li class="md-nav__item">
   <a href="#file-uploading" class="md-nav__link">
     <span class="md-ellipsis">
-      File uploading
+      File Uploading
     </span>
   </a>
   
@@ -3203,7 +3203,7 @@
         <li class="md-nav__item">
   <a href="#file-sharing" class="md-nav__link">
     <span class="md-ellipsis">
-      File sharing
+      File Sharing
     </span>
   </a>
   
@@ -3227,9 +3227,10 @@
 
 <h1 id="file-browser">File Browser</h1>
 <p>The File Browser is an integrated component within the web-based administrative console that enables users to explore, view, and manage files stored in the project’s repository, directly from the browser interface. </p>
-<p>The browser shows a full, unfiltered view of the project data store: differently from the catalog's view, the browser presents files organized in a tree, with nested folders and files. </p>
+<p>The browser shows a full, unfiltered view of the project data store: differently from the catalog's view, the browser presents content organized in a tree, with nested folders and files. </p>
 <p>By default, every content registered in the catalog will be stored under a path resembling the following schema:</p>
 <p><code>/[entity]/[name]/[version]/..</code></p>
+<p><img alt="File browser" src="../../images/console/file-browser.png" /></p>
 <p>Do note that adding/moving/removing files from those paths will probably result in an inconsistent data layout: do it at your risk.</p>
 <h2 id="key-features">Key Features</h2>
 <ul>
@@ -3252,45 +3253,50 @@
 <li><strong>File sharing</strong></li>
 </ul>
 <p>Users can generate read-only links to share files (and folders) with external collaborators.</p>
-<h2 id="exploring-files">Exploring files</h2>
-<p>By opening the <em>File browser</em> users are presented with a familiar view showing the content of the storage.</p>
-<p>TODO SCREENSHOT BROWSER</p>
-<p>Navigation is performed by clicking on folder's names, or via the interactive breadcrumb.</p>
-<p>When a single file is selected, the browser will show a contextual view with the file details and the available actions:</p>
+<h2 id="exploring-files">Exploring Files</h2>
+<p>By opening the <em>Files</em> page from the left menu of the console, users are presented with a familiar view showing the content of the storage.</p>
+<p><img alt="File tree view" src="../../images/console/file-tree-view.png" /></p>
+<p>Navigation is performed by clicking on folder names, or via the interactive breadcrumb.</p>
+<p>When a single file is selected, the browser will show a contextual view with the file details. The following actions can be performed (when applicable) on the file via the corresponding buttons:</p>
 <ul>
-<li><strong>download</strong> will initiate the file download via a temporary secure link</li>
-<li><strong>preview</strong> will open the file's preview (for supported files)</li>
-<li><strong>share</strong> will open the file sharing dialog</li>
-<li><strong>delete</strong> will delete the file </li>
+<li><strong>download</strong>: initiate the file download via a temporary secure link</li>
+<li><strong>preview</strong>: open the file's preview (for supported files)</li>
+<li><strong>share</strong>: open the file sharing dialog</li>
+<li><strong>delete</strong>: delete the file</li>
 </ul>
-<p>TODO SCREENSHOT FILE ASIDE</p>
-<p>Under the actions toolbar the side view reports all the <em>metadata</em> available for the selected file:
-* Name
-* Path
-* Content type
-* Size
-* Last modified (date)
-* Hash (etag/md5/sha)</p>
-<h2 id="file-uploading">File uploading</h2>
-<p>By opening the upload dialog from the toolbar, users are able to upload any kind of file to the project's repository. </p>
-<p>The uploader supports:
-* a single file
-* multiple files
-* a folder</p>
-<p>TODO SCREENSHOT FILE UPLOAD w/folder (multiple files)</p>
-<p>By default, no limitations on file's size, content type or path are applied. Administrators may configure more restrictive conditions for specific environments.</p>
-<h2 id="file-sharing">File sharing</h2>
-<p>Files stored in the project's repository are private by default: only members of the project can access the store. To enable external collaborators in downloading the files, the browser supports <strong>file sharing</strong> via temporay <em>pre-authorized</em> secure links.</p>
+<p><img alt="File details view" src="../../images/console/file-details-view.png" /></p>
+<p>Under the actions toolbar the side view reports all the <em>metadata</em> available for the selected file:</p>
+<ul>
+<li>Name</li>
+<li>Path</li>
+<li>Content type</li>
+<li>Size</li>
+<li>Last modified (date)</li>
+<li>Hash (etag/md5/sha)</li>
+</ul>
+<h2 id="file-uploading">File Uploading</h2>
+<p>The <code>UPLOAD</code> button on the top right of the File Browser opens a dialog for users to upload any kind of file to the project's repository. </p>
+<p>The uploader supports:</p>
+<ul>
+<li>a single file</li>
+<li>multiple files</li>
+<li>a folder</li>
+</ul>
+<p><img alt="File browser upload" src="../../images/console/file-browser-upload.png" /></p>
+<p>By default, no limitations on file size, content type or path are applied. Administrators may configure more restrictive conditions for specific environments.</p>
+<h2 id="file-sharing">File Sharing</h2>
+<p>Files stored in the project's repository are private by default: only members of the project can access the store. In order to enable file downloads by external collaborators, the browser supports <strong>file sharing</strong> via temporay <em>pre-authorized</em> secure links.</p>
 <p>Such links are generated with a signature derived from the user's credentials, and will expire after a configurable amount of time. </p>
 <p>Any user with the full link will be able to directly download the file: no specific client or code is required.</p>
 <p>To share a file:</p>
 <ol>
 <li>open the file details</li>
-<li>click on the <em>share</em> button </li>
-<li>define the desired duration and click share</li>
+<li>click on the <code>SHARE</code> button </li>
+<li>define the desired duration and click <code>SHARE</code></li>
 <li>copy the link and send to users.</li>
 </ol>
 <p>Do note that the generated secure link won't be shown again.</p>
+<p><img alt="File sharing" src="../../images/console/file-sharing.png" /></p>
 
 
 

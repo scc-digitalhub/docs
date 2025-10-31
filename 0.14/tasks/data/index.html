@@ -3516,7 +3516,7 @@
 <p>Each data entity may be accessed and manipulated by the platform via UI or using the API, for example with SDK.</p>
 <h2 id="management-via-ui">Management via UI</h2>
 <h3 id="artifacts">Artifacts</h3>
-<p>Artifacts can be managed as <em>entities</em> from the UI. You can access them from the dashboard or the left menu. You can:</p>
+<p>Artifacts can be managed as <em>entities</em> from the UI. You can access them from the left menu. You can:</p>
 <ul>
 <li><code>create</code> a new artifact</li>
 <li><code>filter</code> artifacts by name and kind</li>
@@ -3528,8 +3528,9 @@
 <p><img alt="Artifact list" src="../../images/console/artifacts-list.png" /></p>
 <p>Here we analyze how to <a href="#create">create</a>, <a href="#read">read</a>, <a href="#update">update</a> and <a href="#delete">delete</a> artifacts using the UI, similarly to what can be done through the SDK.</p>
 <h4 id="create">Create</h4>
-<p>Click <code>CREATE</code> and a form will be shown:</p>
-<p><img alt="Artifact form" src="../../images/console/artifacts-form.png" /></p>
+<p>Click <code>CREATE</code> and a two-step form will be shown:</p>
+<p><img alt="Artifact form" src="../../images/console/artifacts-form1.png" /></p>
+<p><img alt="Artifact form" src="../../images/console/artifacts-form2.png" /></p>
 <p>Mandatory fields are:</p>
 <ul>
 <li><strong><code>Name</code></strong>: name and identifier of the artifact</li>
@@ -3541,10 +3542,11 @@
 <li>(Metadata) <strong><code>Description</code></strong>: a human-readable description of the artifact</li>
 <li>(Metadata) <strong><code>Labels</code></strong>: list of labels</li>
 <li>(Metadata) <strong><code>Name</code></strong>: name of the artifact</li>
-<li>(Metadata) <strong><code>Embedded</code></strong>: flag for embedded metadata</li>
-<li>(Metadata) <strong><code>Versioning</code></strong>: version of the function</li>
-<li>(Metadata) <strong><code>Openmetadata</code></strong>: flag to publish metadata</li>
 <li>(Metadata) <strong><code>Audit</code></strong>: author of creation and modification</li>
+<li>(Metadata) <strong><code>Embedded</code></strong>: flag for embedded metadata</li>
+<li>(Metadata) <strong><code>Openmetadata</code></strong>: flag to publish metadata</li>
+<li>(Metadata) <strong><code>Relationships</code></strong>: relationships with other entities</li>
+<li>(Metadata) <strong><code>Versioning</code></strong>: version of the function</li>
 <li>(Spec) <strong><code>Source path</code></strong>: local path to the artifact, used in case of upload into remote storage</li>
 </ul>
 <h4 id="read">Read</h4>
@@ -3571,8 +3573,9 @@
 <p><img alt="Dataitem list" src="../../images/console/dataitems-list.png" /></p>
 <p>Here we analyze how to <a href="#create_1">create</a>, <a href="#read_1">read</a>, <a href="#update_1">update</a> and <a href="#delete_1">delete</a> data items using the UI, similarly to what can be done through the SDK.</p>
 <h4 id="create_1">Create</h4>
-<p>Click <code>CREATE</code> and a form will be shown:</p>
-<p><img alt="Dataitem form" src="../../images/console/dataitems-form.png" /></p>
+<p>Click <code>CREATE</code> and a two-step form will be shown:</p>
+<p><img alt="Dataitem form" src="../../images/console/dataitems-form1.png" /></p>
+<p><img alt="Dataitem form" src="../../images/console/dataitems-form2.png" /></p>
 <p>Mandatory fields are:</p>
 <ul>
 <li><strong><code>Name</code></strong>: name of the dataitem</li>
@@ -3584,11 +3587,11 @@
 <li>(Metadata) <strong><code>Description</code></strong>: a human-readable description</li>
 <li>(Metadata) <strong><code>Labels</code></strong>: list of labels</li>
 <li>(Metadata) <strong><code>Name</code></strong>: name of the data item</li>
-<li>(Metadata) <strong><code>Embedded</code></strong>: flag for embedded metadata</li>
-<li>(Metadata) <strong><code>Versioning</code></strong>: version of the function</li>
-<li>(Metadata) <strong><code>Openmetadata</code></strong>: flag to publish metadata</li>
 <li>(Metadata) <strong><code>Audit</code></strong>: author of creation and modification</li>
-<li>(Spec) <strong><code>Source path</code></strong>: local path of the data item, used in case of upload into remote storage</li>
+<li>(Metadata) <strong><code>Embedded</code></strong>: flag for embedded metadata</li>
+<li>(Metadata) <strong><code>Openmetadata</code></strong>: flag to publish metadata</li>
+<li>(Metadata) <strong><code>Relationships</code></strong>: relationships with other entities</li>
+<li>(Metadata) <strong><code>Versioning</code></strong>: version of the function</li>
 </ul>
 <h5 id="kind">Kind</h5>
 <p>There are 2 possible kinds for dataitems:</p>
@@ -3609,7 +3612,7 @@
 <h4 id="delete_1">Delete</h4>
 <p>You can delete a data item from either its detail page or the list of data items, by clicking <code>DELETE</code>.</p>
 <h3 id="data-exploration-in-s3-browser">Data exploration in S3 browser</h3>
-<p>TODO</p>
+<p>The S3 object storage can be explored in a dedicated page. Check the <a href="../files/">File Browser section</a> for more information.</p>
 <h2 id="management-via-sdk">Management via SDK</h2>
 <h3 id="managing-artifacts-with-sdk">Managing artifacts with SDK</h3>
 <p>Artifacts can be created and managed as <em>entities</em> with the SDK CRUD methods.

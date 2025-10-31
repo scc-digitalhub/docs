@@ -3396,7 +3396,8 @@ with respect to the function definition and execution is the following:</p>
 <p><img alt="Function list" src="../../images/console/function-list.png" /></p>
 <p>Here we analyze how to <a href="#create">create</a>, <a href="#read">read</a>, <a href="#update">update</a> and <a href="#delete">delete</a> functions using the UI, similarly to what can be done through the SDK.</p>
 <h4 id="create">Create</h4>
-<p>Click <code>CREATE</code> and a form will be shown:</p>
+<p>Functions can be created either from scratch or from a preconfigured template. Templates for common use cases, such as deploying LLMs or performing machine learning related tasks with Python, are available.</p>
+<p>Click <code>CREATE</code> and a three-step form will be shown, the first step being the selection of either a template or a kind:</p>
 <p><img alt="Function form" src="../../images/console/function-form.png" /></p>
 <p>Mandatory fields are:</p>
 <ul>
@@ -3408,16 +3409,17 @@ with respect to the function definition and execution is the following:</p>
 <li><strong><code>Description</code></strong>: a human-readable description</li>
 <li><strong><code>Labels</code></strong>: list of labels</li>
 <li><strong><code>Name</code></strong>: name of the function</li>
-<li><strong><code>Embedded</code></strong>: flag for embedded metadata</li>
-<li><strong><code>Versioning</code></strong>: version of the function</li>
-<li><strong><code>Openmetadata</code></strong>: flag to publish metadata</li>
 <li><strong><code>Audit</code></strong>: author of creation and modification</li>
+<li><strong><code>Embedded</code></strong>: flag for embedded metadata</li>
+<li><strong><code>Openmetadata</code></strong>: flag to publish metadata</li>
+<li><strong><code>Relationships</code></strong>: relationships with other entities</li>
+<li><strong><code>Versioning</code></strong>: version of the function</li>
 </ul>
-<p><code>Spec</code> fields will change depending on the function's kind.</p>
+<p>Spec fields are specified in the third step and will change depending on the function's kind.</p>
 <h4 id="read">Read</h4>
 <p>Click <code>SHOW</code> to view a function's details.</p>
 <p><img alt="Function read" src="../../images/console/function-read.png" /></p>
-<p>Tabs next to <code>SUMMARY</code> will change depending on the function's <code>kind</code>. Some of them allow you to create runs, but we will see this in a <a href="#runs">later section</a>.</p>
+<p>Tabs next to <code>SPEC</code> will change depending on the function's <code>kind</code>. Some of them allow you to create runs, but we will see this in a <a href="#runs">later section</a>.</p>
 <p>On the right side, all versions of the resource are listed, with the current one highlighted. By clicking a different version, values displayed will change accordingly.</p>
 <p>The <code>INSPECTOR</code> button will show a dialog containing the resource in JSON format.</p>
 <p><img alt="Function inspector" src="../../images/console/function-inspector.png" /></p>
@@ -3428,7 +3430,7 @@ with respect to the function definition and execution is the following:</p>
 <p>You can delete a function from either its detail page or the list of functions, by clicking <code>DELETE</code>.</p>
 <h3 id="runs">Runs</h3>
 <h4 id="create_1">Create</h4>
-<p>A run represents the execution of a task through a function. As such, the starting point to create a run is the function it is based on. Select one of the functions you created. You will notice multiple tabs at the top, next to <code>SUMMARY</code>. These tabs may differ depending on the function's <code>kind</code>.</p>
+<p>A run represents the execution of a task through a function. As such, the starting point to create a run is the function it is based on. Select one of the functions you created. You will notice multiple tabs at the top: some of the <code>kind</code>-specific tabs correspond to a task that can be executed.</p>
 <p><img alt="Function build tab" src="../../images/console/function-build-tab.png" /></p>
 <p>Click <code>CREATE</code> to create a new run. You will start a 3-steps process to create a run.</p>
 <p>The <strong>first</strong> step will ask for parameters that depend on the function's <code>kind</code> and the task you are creating the run for, but will generally also ask if you wish to configure resources to allocate, environment variables, secrets, volumes and node modules.</p>
@@ -3437,12 +3439,9 @@ with respect to the function definition and execution is the following:</p>
 <p><img alt="Run create" src="../../images/console/run-create.png" /></p>
 <h4 id="view-and-manage">View and manage</h4>
 <p>By going through a function's tabs, you can access the corresponding runs, but you may also access all runs from the <em>Runs</em> section in the left menu (also available as <em>Jobs and runs</em> in the dashboard).</p>
-<p>You can filter runs by name, kind and status.</p>
 <p><img alt="Run list" src="../../images/console/run-list.png" /></p>
-<p>Click on a run to view its details.</p>
+<p>Click on a run to view its details, such as its specifications, inputs, outputs, logs and metrics.</p>
 <p><img alt="Run overview" src="../../images/console/run-overview.png" /></p>
-<p>From here, click on <code>LOGS</code> to view its logs.</p>
-<p><img alt="Run logs" src="../../images/console/run-logs.png" /></p>
 <h2 id="management-via-sdk">Management via SDK</h2>
 <p>Functions can be created and managed as <em>entities</em> with the SDK CRUD methods.
 Check the <a href="https://scc-digitalhub.github.io/sdk-docs/objects/function/entity/">SDK Functions documentation</a> for more information.</p>
