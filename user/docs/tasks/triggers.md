@@ -124,6 +124,9 @@ spec:
     key: "store://my-proj/dataitem/table/*.csv"
     states:
     - READY
+    template:
+      inputs:
+        di: "{{input.key}}"
 
 ```
 
