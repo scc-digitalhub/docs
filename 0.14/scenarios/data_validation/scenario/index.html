@@ -2642,6 +2642,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trigger
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3127,6 +3136,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trigger
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3209,6 +3227,17 @@
                <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>The result will be the execution of the function as a batch job, producing a report in JSON format stored as artifact in the repository. Additionally, the function will append an <code>INVALID</code> label to the data item.</p>
+<h2 id="trigger">Trigger</h2>
+<p>We set up a trigger to automatically run the validate function when a CSV file is uploaded as a data item.</p>
+<p>Create the trigger:</p>
+<div class="highlight"><pre><span></span><code><span class="n">func</span><span class="o">.</span><span class="n">trigger</span><span class="p">(</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;lifecycle&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;csv-trigger&quot;</span><span class="p">,</span>
+             <span class="n">states</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;READY&quot;</span><span class="p">],</span>
+             <span class="n">key</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;store://</span><span class="si">{</span><span class="n">PROJECT</span><span class="si">}</span><span class="s2">/dataitem/table/*&quot;</span><span class="p">,</span>
+             <span class="n">template</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;di&quot;</span><span class="p">:</span> <span class="s2">&quot;{{input.key}}&quot;</span><span class="p">}})</span>
+</code></pre></div>
+<p>Go to the console and try creating a data item by selecting <code>table</code> as <em>kind</em> and uploading any CSV file. When the data item is <em>READY</em>, the function will be run and the report artifact will be generated.</p>
 
 
 
