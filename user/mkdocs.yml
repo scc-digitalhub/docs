@@ -25,11 +25,9 @@ nav:
       - "tasks/triggers.md"
       - "tasks/workspaces.md"
       - "tasks/metrics.md"
-      - "tasks/kubernetes-resources.md"
       - "tasks/code-source.md"
       - "tasks/secrets.md"
       - "tasks/pat.md"
-      - "tasks/resources.md"
     #   - "tasks/git.md"
   - Components:
       - "components/dashboard.md"
