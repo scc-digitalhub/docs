@@ -93,5 +93,20 @@ run = func.run("job",
 
 The result will be the execution of the function as a batch job, producing a report in JSON format stored as artifact in the repository. Additionally, the function will append an `INVALID` label to the data item.
 
+## Trigger
 
+We set up a trigger to automatically run the validate function when a CSV file is uploaded as a data item.
+
+Create the trigger:
+
+```python
+func.trigger("job",
+             "lifecycle",
+             "csv-trigger",
+             states=["READY"],
+             key=f"store://{PROJECT}/dataitem/table/*",
+             template={"inputs": {"di": "{{input.key}}"}})
+```
+
+Go to the console and try creating a data item by selecting `table` as *kind* and uploading any CSV file. When the data item is *READY*, the function will be run and the report artifact will be generated.
 
