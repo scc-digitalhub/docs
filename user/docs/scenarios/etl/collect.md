@@ -34,7 +34,7 @@ This code creates a new function definition that uses Python runtime (versione 3
 For the function to be executed, we need to pass it a reference to the data item. Let us create and register the corresponding data item:
 
 ```python
-URL = "https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?lang=it&timezone=Europe%2FRome&use_labels=true&delimiter=%3B"
+URL = "https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?limit=50000&lang=it&timezone=Europe%2FRome&use_labels=true&delimiter=%3B"
 di = project.new_dataitem(name="url_data_item",
                           kind="table",
                           path=URL)
