@@ -18,6 +18,7 @@ nav:
       - "tasks/projects.md"
       - "tasks/functions.md"
       - "tasks/models.md"
+      - "tasks/kubernetes-resources.md"
       - "tasks/workflows.md"
       - "tasks/data.md"
       - "tasks/files.md"
