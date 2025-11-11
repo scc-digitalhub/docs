@@ -28,7 +28,7 @@ project = dh.get_or_create_project(PROJECT)
 
 ## Function definition
 
-Define the function by writing the source code and registering it via sdk.
+Define the validation function by writing the source code and registering it via sdk.
 
 ```python
 %%writefile "validate.py"
@@ -42,7 +42,7 @@ import os
 @handler(outputs=["report"])
 def main(project, di):
     # download as local file
-    path = di.download(overwrite=True)
+    path = di.download(destination=di.name, overwrite=True)
     # validate
     report = validate(path)
     # update artifact with label    
@@ -77,8 +77,8 @@ The function can be tested by passing a DataItem as input. For example, we can r
 
 
 ```python
-URL = "https://raw.githubusercontent.com/frictionlessdata/frictionless-py/refs/heads/main/data/capital-invalid.csv"
-di = project.new_dataitem(name="capital-invalid.csv",
+URL = "https://raw.githubusercontent.com/scc-digitalhub/digitalhub-tutorials/refs/heads/main/s10-data-validation/data-invalid.csv"
+di = project.new_dataitem(name="data-invalid.csv",
                           kind="table",
                           path=URL)
 ```
@@ -108,5 +108,14 @@ func.trigger("job",
              template={"inputs": {"di": "{{input.key}}"}})
 ```
 
-Go to the console and try creating a data item by selecting `table` as *kind* and uploading any CSV file. When the data item is *READY*, the function will be run and the report artifact will be generated.
+If you go to the console and create a data item by selecting `table` as *kind* and uploading any CSV file, once the data item is *READY*, the function will be run and the report artifact will be generated.
 
+We can also create a data item here:
+
+```python
+URL = "https://raw.githubusercontent.com/scc-digitalhub/digitalhub-tutorials/refs/heads/main/s10-data-validation/data-valid.csv"
+di = project.new_dataitem(name="data-valid.csv",
+                          kind="table",
+                          path=URL)
+project.log_dataitem(name="data-valid.csv", kind="table", source=di.as_file())
+```
