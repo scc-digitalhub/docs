@@ -32,7 +32,6 @@ nav:
               - "charts/core/solr.md"
       - Kubernetes Resource Manager:
           - "charts/krm/resources.md"
-          - "charts/krm/kubernetes-resources.md"
           - "charts/krm/roles.md"
   - External components:
       - HPC Integration:
