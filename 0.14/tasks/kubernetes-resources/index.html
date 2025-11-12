@@ -4205,17 +4205,17 @@ The platform will create the volume and bind it to the pod lifecycle.</p>
 <li><strong>GPU</strong></li>
 </ul>
 <h4 id="cpu">CPU</h4>
-<p>To request a specific amount of CPU for the run, declare the resource type as <code>cpu</code> and specify request and/or limit values.</p>
+<p>To request a specific amount of CPU for the run, declare the resource type as <code>cpu</code> and specify requested value.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
 </code></pre></div>
 <h4 id="ram-memory">RAM memory</h4>
-<p>To request a specific amount of RAM memory for the run, declare the resource type as <code>mem</code> and specify request and/or limit values.</p>
+<p>To request a specific amount of RAM memory for the run, declare the resource type as <code>mem</code> and specify requested value.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32Gi</span>
 </code></pre></div>
 <h4 id="gpu">GPU</h4>
-<p>To request GPU resources, specify the resource type <code>gpu</code> and set the requested value as a limit.</p>
+<p>To request GPU resources, specify the resource type <code>gpu</code> and set the requested value.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="w">    </span>
 </code></pre></div>
