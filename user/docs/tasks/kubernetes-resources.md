@@ -79,7 +79,7 @@ Supported resources are:
 - **GPU**
 
 #### CPU
-To request a specific amount of CPU for the run, declare the resource type as `cpu` and specify request and/or limit values.
+To request a specific amount of CPU for the run, declare the resource type as `cpu` and specify requested value.
 
 ```yaml
 resources:
@@ -88,7 +88,7 @@ resources:
 
 #### RAM memory
 
-To request a specific amount of RAM memory for the run, declare the resource type as `mem` and specify request and/or limit values.
+To request a specific amount of RAM memory for the run, declare the resource type as `mem` and specify requested value.
 
 ```yaml
 resources:
@@ -97,7 +97,7 @@ resources:
 
 #### GPU
 
-To request GPU resources, specify the resource type `gpu` and set the requested value as a limit.
+To request GPU resources, specify the resource type `gpu` and set the requested value.
 
 ```yaml
 resources:
