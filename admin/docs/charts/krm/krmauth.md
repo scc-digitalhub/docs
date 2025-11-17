@@ -1,4 +1,4 @@
-# Kubernetes Resource Manager
+# Enabling authentication for Kubernetes Resource Manager
 
 To enable the authentication with a provider for Kubernetes Resource Manager, you will need to set the values in the file Values.yaml of the chart digitalhub in the Kubernetes Resource Manager section. 
 

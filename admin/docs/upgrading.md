@@ -2,9 +2,13 @@
 
 ## Upgrade notes for release 0.14
 
+You can find the full [Platform release notes here](https://github.com/scc-digitalhub/digitalhub/releases/tag/digitalhub-0.14.0).
+
 **Change of definition for Core runs**
 
 The definition for Core runs in the database has changed, so it becomes necessary to finish or stop all the current runs before upgrading to the new version.
+
+Read the full [Core release notes](https://github.com/scc-digitalhub/digitalhub-core/releases/tag/0.14.0) for more details.
 
 **Change of format for Core secrets**
 
@@ -13,6 +17,8 @@ Core no longer accepts secrets created with a double `-` in it's name.
 If you have an ongoing project that still needs your secrets, recreate them with the correct syntax.
 
 For example, `proj-secrets--test` must become `proj-secrets--test`.
+
+Read the full [Core release notes](https://github.com/scc-digitalhub/digitalhub-core/releases/tag/0.14.0) for more details.
 
 ## Upgrade procedure
 

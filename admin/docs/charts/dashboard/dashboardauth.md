@@ -1,4 +1,4 @@
-# Dashboard
+# Enabling authentication for the Dashboard
 
 To enable the authentication with a provider for the Dashboard, you will need to set the values in the file Values.yaml of the chart digitalhub in the Dashboard section.
 
