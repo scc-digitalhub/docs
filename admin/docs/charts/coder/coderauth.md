@@ -1,4 +1,4 @@
-# Coder
+# Enabling authentication for Coder
 
 To enable the authentication with a provider for Coder, please consult the [official Coder documentation](https://coder.com/docs/admin/auth).
 

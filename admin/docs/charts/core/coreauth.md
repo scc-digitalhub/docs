@@ -1,4 +1,4 @@
-# Core
+# Enabling authentication for Core
 
 To enable the authentication with a provider for Core, you will need to set the values in the file Values.yaml of the chart digitalhub in the Core section.
 
