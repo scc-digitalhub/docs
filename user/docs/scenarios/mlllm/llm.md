@@ -14,8 +14,6 @@ Based on the type of the task the API of the exposed service may differ. Generat
 
 The other types of tasks like token classification, sequence classification, fill mask are served using KServe's Open Inference Protocol v2 API.
 
-You can find the final notebook file for this scenario in the [tutorial repository](https://github.com/scc-digitalhub/digitalhub-tutorials/tree/main/s5-llm).
-
 ## Exposing Predefined Text Classification Models
 
 In case of predefined HuggingFace non-generative model it is possible to use ``huggingfaceserve`` runtime to expose the corresponding inference  API. For this purpose it is necessary to define the ``huggingfaceserve`` function definition (via UI or SDK) providing the name of the exposed model and the URI of the model in the following form

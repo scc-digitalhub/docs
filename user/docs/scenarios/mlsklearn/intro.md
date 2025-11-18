@@ -2,7 +2,7 @@
 
 This scenario provides a quick overview of developing and deploying a scikit-learn machine learning application using the functionalities of the platform.
 
-We will prepare data, train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook. Alternatively, you can find the final notebook file for this scenario in the [tutorial repository](https://github.com/scc-digitalhub/digitalhub-tutorials/tree/main/s3-scikit-learn).
+We will prepare data, train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook.
 
 ## Set-up
 

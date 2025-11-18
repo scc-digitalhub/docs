@@ -24,4 +24,6 @@ Create a secret as follows, make sure you replace the value with the token that 
 project.new_secret(name="HF_TOKEN", secret_value="my-token")
 ```
 
-The functions we will run use code from a Python file. Due to the many lines this file has, instead of presenting it in this documentation, we invite you to download it from [the subfolder related to this scenario](https://github.com/scc-digitalhub/digitalhub-tutorials/tree/main/s8-whisper-fine-tuning). Use the `src` directory and ensure it is at the same level of the notebook you're using. 
+The functions we will run use code from a Python file. Due to the many lines this file has, instead of presenting it in this documentation, we invite you to download it from the Whisper fine-tuning scenario in [the tutorials repository](https://github.com/scc-digitalhub/digitalhub-tutorials).
+
+Use the `src` directory and ensure it is at the same level of the notebook you're using. 

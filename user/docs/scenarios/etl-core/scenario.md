@@ -2,7 +2,7 @@
 
 Here we explore a proper, realistic scenario. We collect some data regarding organizations, analyze and transform it, then expose the resulting dataset.
 
-Access Jupyter from your Coder instance and create a new notebook. Alternatively, the final notebook for this scenario can be found in the [tutorial repository](https://github.com/scc-digitalhub/digitalhub-tutorials/tree/main/s2-dbt).
+Access Jupyter from your Coder instance and create a new notebook.
 
 ## Setup
 

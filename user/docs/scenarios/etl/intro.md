@@ -4,7 +4,7 @@ Here we explore a simple yet realistic scenario. We collect some data regarding 
 
 Access Jupyter from your Coder instance and create a new notebook. If a Jupyter workspace isn't already available, create one from its template.
 
-Copy the snippets of code from here and paste them in your notebook, then execute them with *Shift+Enter*. After running, Jupyter will create a new code cell. Alternatively, the final notebook for this scenario can be found in the [tutorial repository](https://github.com/scc-digitalhub/digitalhub-tutorials/tree/main/s1-etl).
+Copy the snippets of code from here and paste them in your notebook, then execute them with *Shift+Enter*. After running, Jupyter will create a new code cell.
 
 ## Set-up
 
