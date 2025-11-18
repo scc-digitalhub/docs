@@ -100,9 +100,9 @@ We set up a trigger to automatically run the validate function when a CSV file i
 Create the trigger:
 
 ```python
-func.trigger("job",
-             "lifecycle",
-             "csv-trigger",
+func.trigger(action="job",
+             kind="lifecycle",
+             name="csv-trigger",
              states=["READY"],
              key=f"store://{PROJECT}/dataitem/table/*",
              template={"inputs": {"di": "{{input.key}}"}})
