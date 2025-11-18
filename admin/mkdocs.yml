@@ -29,6 +29,7 @@ nav:
       - Kubernetes Resource Manager:
           - "charts/krm/resources.md"
           - "charts/krm/roles.md"
+          - "charts/krm/customviews.md"
           - "charts/krm/krmauth.md"
       - Dashboard:
           - "charts/dashboard/additionalcomponents.md"
@@ -38,5 +39,3 @@ nav:
   - External components:
       - HPC Integration:
           - "components/hpc/hcp-integration.md"
-      - Kubernetes Resource Manager:
-          - "components/krm/krm-custom-views.md"
