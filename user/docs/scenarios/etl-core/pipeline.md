@@ -2,8 +2,18 @@
 
 We define a simple workflow, which will execute the ETL step:
 
+Create a source directory for the workflow code:
+
 ```python
-%%writefile "src/dbt_pipeline.py"
+from pathlib import Path
+
+Path("src").mkdir(exist_ok=True)
+```
+
+And create the workflow code file:
+
+```python
+%%writefile "src/pipeline.py"
 
 from digitalhub_runtime_hera.dsl import step
 from hera.workflows import DAG, Parameter, Workflow
@@ -30,7 +40,7 @@ Register the workflow:
 ```python
 workflow = project.new_workflow(name="pipeline_dbt",
                                 kind="hera",
-                                code_src="src/dbt_pipeline.py",
+                                code_src="src/pipeline.py",
                                 handler="pipeline")
 ```
 

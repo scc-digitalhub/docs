@@ -1,6 +1,6 @@
 # KRM roles
 
-[Enabling authentication for the Kubernetes Resource Manager](../../authentication/krm.md) is required to use this feature.
+[Enabling authentication for the Kubernetes Resource Manager](krmauth.md) is required to use this feature.
 
 Setting up roles can be a great way for assigning permissions to the users of the Kubernetes Resource Manager, setting up limitations to what they can do and the resources they can have access to.
 

@@ -1,6 +1,6 @@
 # Deploy and expose the model
 
-Deploying a scikit-learn model is easy: ``sklearnserve`` runtime supports this functionality out of the box. It is sufficient to specify the path to the model artifact and optionally the name of the model to expose.
+Deploying a scikit-learn model is easy: ``sklearnserve`` runtime supports this functionality out of the box. It is sufficient to specify the key of the model and optionally the name of the model to expose.
 
 Register it and deploy:
 
@@ -8,9 +8,8 @@ Register it and deploy:
 serve_func = project.new_function(
     name="serve-classifier",
     kind="sklearnserve",
-    path=model.spec.path + "breast_cancer_classifier.pkl",
+    path=model.key,
 )
-
 serve_run = serve_func.run("serve", wait=True)
 ```
 

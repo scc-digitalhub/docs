@@ -65,15 +65,19 @@ def serve_predictions(context, event):
     return json.loads(jsonstr)
 ```
 
+```python
+model = train_run.output("model")
+```
+
 Register it:
 
 ```python
-func = project.new_function(name="serve_darts_model",
+func = project.new_function(name="serve-darts-model",
                             kind="python",
                             python_version="PYTHON3_10",
                             code_src="src/serve_darts_model.py",
                             handler="serve_predictions",
-                            init_function="init")
+                            init_function="init_context")
 ```
 
 Given the dependencies, it is better to have the image ready, using ``build`` action of the function:
@@ -87,23 +91,12 @@ run_build_model_serve = func.run("build",
 Now we can deploy the function:
 
 ```python
-serve_run = serve_func.run("serve", init_parameters={"model_key": model.key}, labels=["time-series-service"], wait=True)
-```
-
-Install locally the dependencies:
-
-```python
-# Install darts locally for testing (if not already installed)
-%pip install darts==0.30.0 torch'<2.6.0' --quiet
+serve_run = func.run("serve", init_parameters={"model_key": model.key}, labels=["time-series-service"], wait=True)
 ```
 
 Create a test input:
 
 ```python
-import json
-from datetime import datetime
-from darts.datasets import AirPassengersDataset
-
 # Load test data
 series = AirPassengersDataset().load()
 val = series[-24:]  # Last 24 points for prediction

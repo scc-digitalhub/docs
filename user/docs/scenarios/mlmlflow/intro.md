@@ -85,7 +85,7 @@ train_fn = project.new_function(
     python_version="PYTHON3_10",
     code_src="src/train-model.py",
     handler="train_model",
-    requirements=["numpy<2", "mlflow<3"],
+    requirements=["numpy<2", "mlflow<3", "scikit-learn <= 1.6.1"],
 )
 ```
 

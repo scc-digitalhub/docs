@@ -2,7 +2,7 @@
 
 To start with DigitalHub, the first step is to install the platform and all its components. For its functionality, DigitalHub relies on [Kubernetes](https://kubernetes.io/), a state-of-art Open-Source containerized application deployment, orchestration and execution platform. While it is possible to run DigitalHub on any Kubernetes installation, the quickest way is to deploy it on [Minikube](https://minikube.sigs.k8s.io/docs/start), a local Kubernetes environment with minimal settings. See [here](installation.md) instruction on how to set up DigitalHub on Minikube.
 
-Once installed, you can access different platform components and perform different operations, ranging from exlorative data science with Jupyter Notebooks, creating projects for data processing or ML tasks, managing necessary resources (e.g., databases or datalake buckets), creating and running different functions, etc.
+Once installed, you can access different platform components and perform different operations, ranging from explorative data science with Jupyter Notebooks, creating projects for data processing or ML tasks, managing necessary resources (e.g., databases or datalake buckets), creating and running different functions, etc.
 
 ## Platform Components and Functionality
 
@@ -16,7 +16,7 @@ To access the different components of the platform start from the [landing page]
 - Use **Core** Serverless platform to deploy and expose Python functions or ML Models in different formats as services within the platform.
 - It is possible to organize the data and ML operations in complex pipelines. Currently the platform relies on **Kubeflow Pipelines** specification for this purpose, orchestrating the activities as single Kubernetes Jobs. See more on this in the corresponding [Pipelines](./tasks/workflows.md) section.
 
-You can also use the **CLI** to perform operations on the platform externally. See how to install and use it in [this section](./tasks/cli.md).
+You can also use the **CLI** to perform operations on the platform externally. See how to install and use it in [this section](./cli/commands.md).
 
 ## Tutorials
 

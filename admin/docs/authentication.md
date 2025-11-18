@@ -6,9 +6,7 @@ It is mandatory to set custom values for the platform, so [Helm](https://helm.sh
 
 This section will show how to set an authentication for the following:
 
-- [Coder](authentication/coder.md)
-- [Core](authentication/core.md)
-- [Dashboard](authentication/dashboard.md)
-- [Kubernetes Resource Manager](authentication/krm.md)
-- [Kubeflow](authentication/kubeflow.md)
-- [Minio](authentication/minio.md)
+- [Coder](charts/coder/coderauth.md)
+- [Core](charts/core/coreauth.md)
+- [Dashboard](charts/dashboard/dashboardauth.md)
+- [Kubernetes Resource Manager](charts/krm/krmauth.md)

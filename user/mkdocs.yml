@@ -17,15 +17,17 @@ nav:
   - Concepts and Tasks:
       - "tasks/projects.md"
       - "tasks/functions.md"
-      - "tasks/workspaces.md"
-      - "tasks/resources.md"
-      - "tasks/data.md"
       - "tasks/models.md"
       - "tasks/kubernetes-resources.md"
-      - "tasks/secrets.md"
       - "tasks/workflows.md"
+      - "tasks/data.md"
+      - "tasks/files.md"
+      - "tasks/services.md"
       - "tasks/triggers.md"
+      - "tasks/workspaces.md"
+      - "tasks/metrics.md"
       - "tasks/code-source.md"
+      - "tasks/secrets.md"
       - "tasks/pat.md"
     #   - "tasks/git.md"
   - Components:
@@ -33,15 +35,15 @@ nav:
       - "components/dh_console.md"
       - "components/cli.md"
       - "components/resourcemanager.md"
-      - "components/kubeflow.md"
+      #   - "components/kubeflow.md"
       - "components/kubeai.md"
       - Interactive Workspaces:
-          - "components/jupyter.md"
-          - "components/dremio.md"
-          - "components/sqlpad.md"
-          - "components/grafana.md"
-          - "components/vscode.md"
-  - Scenarios:
+          - "components/code-toolbox.md"
+          - Community Workspaces:
+              - "components/dremio.md"
+              - "components/sqlpad.md"
+              - "components/grafana.md"
+  - Scenarios and Tutorials:
       - Extract-Transform-Load:
           - "scenarios/etl/intro.md"
           - "scenarios/etl/collect.md"
@@ -74,12 +76,32 @@ nav:
           - "scenarios/postgrest/data.md"
           - "scenarios/postgrest/postgrest.md"
           - "scenarios/postgrest/apigw.md"
+      - Retrieval-Augmented Generation:
+          - "scenarios/rag/intro.md"
+          - "scenarios/rag/llm.md"
+          - "scenarios/rag/knowledge-base.md"
+          - "scenarios/rag/rag.md"
+          - "scenarios/rag/webui.md"
+      - Whisper fine-tuning:
+          - "scenarios/whisper-fine-tuning/intro.md"
+          - "scenarios/whisper-fine-tuning/create-dataset.md"
+          - "scenarios/whisper-fine-tuning/fine-tuning.md"
+          - "scenarios/whisper-fine-tuning/convert-test.md"
+      - Flower Federated Learning:
+          - "scenarios/flower/flower.md"
+      - Data validation:
+          - "scenarios/data_validation/scenario.md"
   - Runtimes reference:
+      - Overview: "runtimes/overview.md"
       - Python: "runtimes/python.md"
-      - DBT: "runtimes/dbt.md"
       - Container: "runtimes/container.md"
-      - Pipelines: "runtimes/hera.md"
-      - Modelserve: "runtimes/modelserve.md"
+      - Hera Pipelines: "runtimes/hera.md"
+      - "Model Serving: LLMs": "runtimes/llmserve.md"
+      - "Model Serving: MLflow": "runtimes/mlflowserve.md"
+      - "Model Serving: Speech to Text": "runtimes/asrserve.md"
+      - "Model Serving: Scikit-learn": "runtimes/sklearnserve.md"
+      - "Federated Learning": "runtimes/fl.md"
+      - DBT: "runtimes/dbt.md"
 
   - SDK Reference:
       - "sdk/intro.md"

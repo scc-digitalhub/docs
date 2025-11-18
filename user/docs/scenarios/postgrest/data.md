@@ -20,13 +20,13 @@ import requests
 Connect to the database. You will need the value of **POSTGRES_URL** you got from the owner's secret in the first stage of the scenario.
 
 ```python
-engine = create_engine('postgresql://owner-UrN9ct:88aX8tLFJ95qYU7@database-postgres-cluster/mydb')
+engine = create_engine('postgresql://owner-pANdsG:UEw2jZyd2cBkeFQ@platform-postgres-cluster-rw/mydb')
 ```
 
 Download a CSV file and parse it (may take a few minutes):
 
 ```python
-URL = "https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?lang=it&timezone=Europe%2FRome&use_labels=true&delimiter=%3B"
+URL = "https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?limit=50000&lang=it&timezone=Europe%2FRome&use_labels=true&delimiter=%3B"
 filename = "rilevazione-flusso-veicoli-tramite-spire-anno-2023.csv"
 
 with requests.get(URL) as r:

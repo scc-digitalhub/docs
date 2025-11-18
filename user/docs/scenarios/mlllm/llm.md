@@ -37,7 +37,7 @@ project = dh.get_or_create_project("llm")
 Create the serving function definition:
 
 ```python
-llm_function = project.new_function("llm_classification",
+llm_function = project.new_function("llm-classification",
                                     kind="huggingfaceserve",
                                     model_name="mymodel",
                                     path="huggingface://distilbert/distilbert-base-uncased-finetuned-sst-2-english")
@@ -49,14 +49,12 @@ Serve the model:
 llm_run = llm_function.run(action="serve", profile="1xa100", wait=True)
 ```
 
-Please note the use of the ``profile`` parameter. As the LLM models require specific hardware (GPU in particular), it is necessary
-to specify the HW requirements as described in the  [Configuring Kubernetes executions](../../tasks/kubernetes-resources.md) section. In particular, it is possible to rely on the predefined resource templates of the platform deployment.
+Please note the use of the ``profile`` parameter. As the LLM models require specific hardware (GPU in particular), it is necessary to specify the HW requirements as described in the  [Configuring Kubernetes executions](../../tasks/kubernetes-resources.md) section. In particular, it is possible to rely on the predefined resource templates of the platform deployment.
 
 As in other scenarios, you need to wait a bit for the service to become available.
 Once the service becomes available, it is possible to make the calls:
 
 ```python
-model_name = "mymodel"
 json = {
     "inputs": [
         {
@@ -68,7 +66,7 @@ json = {
     ]
 }
 
-llm_run.invoke(model_name=model_name, json=json).json()
+llm_run.invoke(model_name="mymodel", json=json).json()
 ```
 
 Here the classification LLM service API follows the Open Inference protocol API and the expected result should have the following form:
@@ -95,7 +93,7 @@ As in case of other services (ML model services or Serverless functions), it is 
 
 ## Exposing Predefined Text Generation Models
 
-In case of predefined HuggingFace ngenerative model it is possible to use ``huggingfaceserve`` runtime to expose the OpenAI compatible API. For this purpose it is necessary to define the ``huggingfaceserve`` function definition (via UI or SDK) providing the name of the exposed model and the URI of the model in the following form
+In case of predefined HuggingFace generative model it is possible to use ``huggingfaceserve`` runtime to expose the OpenAI compatible API. For this purpose it is necessary to define the ``huggingfaceserve`` function definition (via UI or SDK) providing the name of the exposed model and the URI of the model in the following form
 
 ``huggingface://<id of the huggingface model>``
 
@@ -103,7 +101,7 @@ For example ``huggingface://meta-llama/meta-llama-3-8b-instruct``.
 
 When using SDK, this may be accomplished as follows.
 
-First, import necessary libraries and create a project to host the functions and executions
+First, import the necessary libraries and create a project to host the functions and runs:
 
 ```python
 import digitalhub as dh
@@ -114,24 +112,18 @@ project = dh.get_or_create_project("llm")
 Create the serving function definition:
 
 ```python
-llm_function = project.new_function("llm_generation",
+llm_function = project.new_function("llm-generation",
                                     kind="huggingfaceserve",
                                     model_name="mymodel",
                                     path="huggingface://meta-llama/meta-llama-3-8b-instruct")
 ```
 
-Serve the model:
-
-```python
-llm_run = llm_function.run(action="serve", profile="1xa100", wait=True)
-```
-
-Please note that in case of protected models (like, e.g., llama models) it is necessary to path the HuggingFace token. For example,
+Next, we serve the model. This particular one is protected, so you need to provide a HuggingFace token with access to it. As the model is large, we use a profile with more resources.
 
 ```python
 hf_token = "<HUGGINGFACE TOKEN>"
 llm_run = llm_function.run(action="serve",
-                           profile="1xa100",
+                           profile="1xa100-80GB",
                            envs = [{"name": "HF_TOKEN", "value": hf_token}],
                            wait=True)
 ```
@@ -148,9 +140,9 @@ Once the service becomes available, it is possible to make the calls. For exampl
 ```python
 service_url = llm_run.refresh().status.to_dict()["service"]["url"]
 url = f"http://{service_url}/openai/v1/completions"
-model_name = "mymodel"
+
 json = {
-    "model": model_name,
+    "model": "mymodel",
     "prompt": "Hello! How are you?",
     "stream": False,
     "max_tokens": 30
@@ -163,24 +155,24 @@ Here the expected output should have the following form:
 
 ``` json
 {
-  "id": "cmpl-625a9240f25e463487a9b6c53cbed080",
-  "choices": [
-    {
-      "finish_reason": "length",
-      "index": 0,
-      "logprobs": null,
-      "text": " and how they make you feel\nColors, oh colors, so vibrant and bright\nA world of emotions, a kaleidoscope in sight\nRed"
-    }
-  ],
-  "created": 1718620153,
-  "model": "mymodel",
-  "system_fingerprint": null,
-  "object": "text_completion",
-  "usage": {
-    "completion_tokens": 30,
-    "prompt_tokens": 6,
-    "total_tokens": 36
-  }
+   "id":"cmpl-69dd8b1ea70c477fbf80c353ac73b52e",
+   "choices":[
+      {
+         "finish_reason":"length",
+         "index":0,
+         "logprobs":"None",
+         "text":" Hope you're having a great day!\n\nHere I'd like to share some news about my new podcast, where I'll be exploring the world of..."
+      }
+   ],
+   "created":1761210462,
+   "model":"mymodel",
+   "system_fingerprint":"None",
+   "object":"text_completion",
+   "usage":{
+      "completion_tokens":30,
+      "prompt_tokens":7,
+      "total_tokens":37
+   }
 }
 ```
 
@@ -190,10 +182,8 @@ In case of chat requests:
 service_url = llm_run.refresh().status.to_dict()["service"]["url"]
 url = f'http://{service_url}/openai/v1/chat/completions'
 
-model_name = "mymodel"
-
 json = {
-    "model": model_name,
+    "model": "mymodel",
     "messages": [
         {"role": "system", "content": "You are an assistant that speaks like Shakespeare."},
         {"role": "user", "content": "Write a poem about colors"}
@@ -239,13 +229,11 @@ As in case of other services (ML model services or Serverless functions), it is 
 
 ## Fine-tuned LLM model
 
-when it comes to custom LLM model, it is possible to create HuggingFace-based fine tuned model, log it and then serve it from the model path.
+When it comes to custom LLM model, it is possible to create a HuggingFace-based fine-tuned model, log it and serve it from the model path.
 
-When using SDK, this may be accomplished as follows.
+When using the SDK, this may be accomplished as follows.
 
-First, import necessary libraries
-
-First, import necessary libraries and create a project to host the functions and executions
+First, import the necessary libraries and create a project to host the functions and runs:
 
 ```python
 import digitalhub as dh
@@ -253,7 +241,14 @@ import digitalhub as dh
 project = dh.get_or_create_project("llm")
 ```
 
-Create the training procedure that logs model to the platform:
+Create a directory for the code:
+
+```python
+from pathlib import Path
+Path("src").mkdir(exist_ok=True)
+```
+
+Create the training procedure that logs the model to the platform:
 
 ```python
 %%writefile "src/train_model.py"
@@ -321,7 +316,7 @@ def train(project):
     )
 ```
 
-Register the function and execute it:
+Register the function:
 
 ```python
 train_func = project.new_function(name="train_model",
@@ -330,32 +325,44 @@ train_func = project.new_function(name="train_model",
                                   code_src="src/train_model.py",
                                   handler="train",
                                   requirements=["evaluate", "transformers[torch]", "torch", "torchvision", "accelerate"])
+```
 
-train_run=train_func.run(action="job", profile="1xa100", wait=True)
+Run it:
+```python
+train_run = train_func.run(action="job", profile="1xa100", wait=True)
+```
+
+A new model should have been created in the project. We need its path:
+```python
+llm_model_path = project.get_model("test_llm_model").spec.path
 ```
 
 Create the serving function definition:
 
 ```python
-llm_function = project.new_function("llm_classification",
+llm_function = project.new_function("llm-classification",
                                     kind="huggingfaceserve",
                                     model_name="mymodel",
-                                    path="s3://datalake/llm/model/test_llm_model/f8026820-2471-4497-97f5-8e6d49baac5f/")
+                                    path=llm_model_path)
 ```
 
 Serve the model:
 
 ```python
-llm_run = llm_function.run(action="serve", profile="1xa100", wait=True)
+llm_run = llm_function.run(action="serve", profile="1xa100", volumes=[{
+                        "volume_type": "persistent_volume_claim",
+                        "name": "volume-llmpa",
+                        "mount_path": "/shared",
+                        "spec": { "size": "10Gi" }}]
+                    )
 ```
 
 Please note the use of the ``profile`` parameter. As the LLM models require specific hardware (GPU in particular), it is necessary
-to specify the HW requirements as described in the  [Configuring Kubernetes executions](../../tasks/kubernetes-resources.md) section. In particular, it is possible to rely on the predefined resource templates of the platform deployment.
+to specify the HW requirements as described in the  [Configuring Kubernetes executions](../../tasks/kubernetes-resources.md) section. In particular, it is possible to rely on the predefined resource templates of the platform deployment. Also, in case of large models the default disk space may be insufficient and an extra volume should be configured for the underlying deployment.
 
 Once the service becomes available, it is possible to make the calls:
 
 ```python
-model_name = "mymodel"
 json = {
     "inputs": [
         {
@@ -367,7 +374,7 @@ json = {
     ]
 }
 
-llm_run.invoke(model_name=model_name, json=json).json()
+llm_run.refresh().invoke(model_name="mymodel", json=json).json()
 ```
 
 Here the classification LLM service API follows the Open Inference protocol API and the expected result should have the following form:

@@ -39,7 +39,7 @@ Let's take a look at the data we will work with, which is available in CSV (Comm
 Set the URL to the data and the file name:
 
 ```python
-URL = "https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?lang=it&timezone=Europe%2FRome&use_labels=true&delimiter=%3B"
+URL = "https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?limit=50000&lang=it&timezone=Europe%2FRome&use_labels=true&delimiter=%3B"
 filename = "rilevazione-flusso-veicoli-tramite-spire-anno-2023.csv"
 ```
 

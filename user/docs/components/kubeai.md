@@ -1,4 +1,4 @@
-# KubeAI
+# KubeAI and OpenWebUI
 
 [KubeAI](https://www.kubeai.org/) is an AI Inference Operator for deploy and scale machine learning models on Kubernetes currently built for LLMs, embeddings, and speech-to-text.
 
@@ -14,7 +14,7 @@
  
 ## Exposing AI models with KubeAI
 
-Cirrently, KubeAI allows for serving the LLM models for text generation and text embedding and speech-to-text processing, in line with the OpenAI specification. To expose a model, it is possible to use Python SDK or directly the Core UI. More specifically,
+Currently, KubeAI allows for serving the LLM models for text generation and text embedding and speech-to-text processing, in line with the OpenAI specification. To expose a model, it is possible to use Python SDK or directly the Core UI. More specifically,
 
 - it is necessary to define the corresponding KubeAI function (of ``kubeai-text`` or ``kubeai-speech`` kinds), define a set of parameters, like the task (feature) to perform, reference to an engine (e.g., vLLM or OLlama for text generation), reference to a model to expose (HuggingFace id, OLlama model, or S3 resource reference) and model name.
 - activate serving operation on the function passing extra parameters (like engine arguments, HW resource profile and number of GPUs, secrets and/or envirnoment variables).

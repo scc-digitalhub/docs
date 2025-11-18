@@ -1,5 +1,27 @@
 # Upgrading DigitalHub
 
+## Upgrade notes for release 0.14
+
+You can find the full [Platform release notes here](https://github.com/scc-digitalhub/digitalhub/releases/tag/digitalhub-0.14.0).
+
+**Change of definition for Core runs**
+
+The definition for Core runs in the database has changed, so it becomes necessary to finish or stop all the current runs before upgrading to the new version.
+
+Read the full [Core release notes](https://github.com/scc-digitalhub/digitalhub-core/releases/tag/0.14.0) for more details.
+
+**Change of format for Core secrets**
+
+Core no longer accepts secrets created with a double `-` in it's name.
+
+If you have an ongoing project that still needs your secrets, recreate them with the correct syntax.
+
+For example, `proj-secrets--test` must become `proj-secrets--test`.
+
+Read the full [Core release notes](https://github.com/scc-digitalhub/digitalhub-core/releases/tag/0.14.0) for more details.
+
+## Upgrade procedure
+
 Once the platform is installed, you may find yourself in need of tweaking it and upgrading it.
 
 With the command `helm upgrade` you will be able to change the values of the platform with your custom ones like the example below:
@@ -25,22 +47,3 @@ coder:
       # In order to upgrade the templates, you will need to create and set here a Coder Token.
       token: ""
 ```
-
-**Upgrading from Digitalhub 0.7 to 0.8**
-
-This section is aimed only for environments with an already running instance of Digitalhub. 
-
-Due to the removal of MLRun, the upgrading process needs some extra steps.
-
-Follow this guide to upgrade your installation while keeping your existing environment stable:
-
-1) Clone the [repository of Digitalhub](https://github.com/scc-digitalhub/digitalhub). You will need to apply some CRDS manually.
-
-2) Apply the CRDS inside the folder `digitalhub/charts/kubeflow-pipelines/crds` in your namespace. Most of the CRDS are the same as the one applied with the MLRun chart, but some are not and are needed for the standalone installation of Kubeflow Pipelines.
-
-3) The MLRun chart included a MySql depolyment, but, although the Kubeflow Pipelines chart uses the same approach, the MySql version used (8.0.26) is greater then the one installed with MLRun, therefore it is necessary to remove the existing MySql deployment and the associated PVC.
-
-If your environment, instead of the embedded one, used an external deployment of MySql with a version compatible with 8.0.26, you can choose to keep it setting the values accordingly. Please, check the [MySql configuration guide for KFP](charts/kfp/mysql.md) for more details.
-
-4) You can now upgrade to Digitalhub 0.8.0. After the installation, make sure that the crds inside `digitalhub/charts/kubeflow-pipelines/crds` have been all correctly applied.
-

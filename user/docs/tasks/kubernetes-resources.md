@@ -27,12 +27,9 @@ For example, to request for a certain amount of compute resources, the spec must
 
 ```yaml
 resources:
-  cpu:
-    requests: 8
-  mem:
-    requests: 32Gi
-  gpu:
-    limits: "1"
+  cpu: "8"
+  mem: 32Gi
+  gpu: "1"
 ```
 
 In order to provide such definitions, users can leverage the SDK or the Core UI to programmatically or interactively define their request.
@@ -82,34 +79,29 @@ Supported resources are:
 - **GPU**
 
 #### CPU
-To request a specific amount of CPU for the run, declare the resource type as `cpu` and specify request and/or limit values.
+To request a specific amount of CPU for the run, declare the resource type as `cpu` and specify requested value.
 
 ```yaml
 resources:
-  cpu:
-    requests: "10"
-    limits: "12"
+  cpu: "10"
 ```
 
 #### RAM memory
 
-To request a specific amount of RAM memory for the run, declare the resource type as `mem` and specify request and/or limit values.
+To request a specific amount of RAM memory for the run, declare the resource type as `mem` and specify requested value.
 
 ```yaml
 resources:
-  mem:
-    requests: 32Gi
-    limits: 64Gi
+  mem: 32Gi
 ```
 
 #### GPU
 
-To request GPU resources, specify the resource type `gpu` and set the requested value as a limit.
+To request GPU resources, specify the resource type `gpu` and set the requested value.
 
 ```yaml
 resources:
-  gpu:
-    limits: "1"    
+  gpu: "1"    
 ```
 
 ### Secrets

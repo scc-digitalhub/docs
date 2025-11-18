@@ -1,8 +1,8 @@
 # ML Models
 
-Support for MLOps is one of the key functionality of the platform. Creation, management, and serving ML models is supported by the platform via ML Model entities and the corresponding functionality for their registration and serving.
+Support for MLOps is one of the key functionalities of the platform. Creating, managing and serving ML models is supported by the platform via ML Model entities and the corresponding functionality for their registration and serving.
 
-ML Model entity represent the relevant information about the model - framework and algorithms used to create it, hyper parameters and metrics, necessary artifacts constituting the model, etc. The platform support a list of standard model kinds as well as generic models. Specifically, it is possible to define models of the following kinds
+ML Model entity represent the relevant information about the model - framework and algorithms used to create it, hyperparameters and metrics, necessary artifacts constituting the model, etc. The platform supports a list of standard model kinds as well as generic models. Specifically, it is possible to define models of the following kinds
 
 - ``sklearn`` - ML models created with Scikit-learn framework and packaged as a single artifact.
 - ``mlflow`` - ML models created with any MLFlow-compatible framework (or ``flavor`` in MLFlow terminology) and logged following the [MLFlow](https://mlflow.org/) model format.

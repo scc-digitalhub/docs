@@ -15,22 +15,27 @@ nav:
       - "configuration.md"
       - "upgrading.md"
       - "ingress.md"
-  - Authentication:
+      - "priorityclass.md"
       - "authentication.md"
-      - "authentication/coder.md"
-      - "authentication/core.md"
-      - "authentication/dashboard.md"
-      - "authentication/krm.md"
-      - "authentication/minio.md"
-      - OAuth2 Proxy:
-          - "authentication/kubeflow.md"
-  - Charts:
+  - Platform components:
       - Core:
           - "charts/core/keystore.md"
           - "charts/core/sts.md"
           - "charts/core/templates.md"
+          - "charts/core/coreauth.md"
+          - Indexing:
+              - "charts/core/lucene.md"
+              - "charts/core/solr.md"
       - Kubernetes Resource Manager:
+          - "charts/krm/resources.md"
           - "charts/krm/roles.md"
+          - "charts/krm/customviews.md"
+          - "charts/krm/krmauth.md"
+      - Dashboard:
+          - "charts/dashboard/additionalcomponents.md"
+          - "charts/dashboard/dashboardauth.md"
+      - Coder:
+          - "charts/coder/coderauth.md"
   - External components:
-      - Solr:
-          - "components/solr/basicauth.md"
+      - HPC Integration:
+          - "components/hpc/hcp-integration.md"
