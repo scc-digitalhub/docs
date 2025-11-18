@@ -1,4 +1,4 @@
-# KRM - Custom views
+# Custom views
 
  In **Kubernetes Resource Manager**, it is possible to customize the pages for creating, listing, inspecting and editing custom resources of a specific kind. As it involves writing React code, and using the [React-admin](https://marmelab.com/react-admin/documentation.html) library, familiarity with these technologies may be required, depending on the desired level of customization.
 
