@@ -3901,9 +3901,9 @@
 <h2 id="trigger">Trigger</h2>
 <p>We set up a trigger to automatically run the validate function when a CSV file is uploaded as a data item.</p>
 <p>Create the trigger:</p>
-<div class="highlight"><pre><span></span><code><span class="n">func</span><span class="o">.</span><span class="n">trigger</span><span class="p">(</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
-             <span class="s2">&quot;lifecycle&quot;</span><span class="p">,</span>
-             <span class="s2">&quot;csv-trigger&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">func</span><span class="o">.</span><span class="n">trigger</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
+             <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;lifecycle&quot;</span><span class="p">,</span>
+             <span class="n">name</span><span class="o">=</span><span class="s2">&quot;csv-trigger&quot;</span><span class="p">,</span>
              <span class="n">states</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;READY&quot;</span><span class="p">],</span>
              <span class="n">key</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;store://</span><span class="si">{</span><span class="n">PROJECT</span><span class="si">}</span><span class="s2">/dataitem/table/*&quot;</span><span class="p">,</span>
              <span class="n">template</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;di&quot;</span><span class="p">:</span> <span class="s2">&quot;{{input.key}}&quot;</span><span class="p">}})</span>
