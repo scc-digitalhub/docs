@@ -2,6 +2,8 @@
 
 This scenario provides a quick overview of developing and deploying a machine learning application based on model tracked with MLFlow framework using the functionalities of the platform.
 
+This is scenario **4** in the *tutorials* repository.
+
 We will prepare data, train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook.
 
 ## Set-up

@@ -1,6 +1,6 @@
 # Custom ML scenario introduction
 
-This scenario provides a quick overview of developing and deploying generic machine learning applications using the functionalities of the platform. For this purpose, we use ML algorithms for the time series management provided by the [Darts](https://unit8co.github.io/darts/) framework.
+This scenario provides a quick overview of developing and deploying generic machine learning applications using the functionalities of the platform. For this purpose, we use ML algorithms for the time series management provided by the [Darts](https://unit8co.github.io/darts/) framework. This is scenario **6** in the *tutorials* repository.
 
 We will train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook.
 

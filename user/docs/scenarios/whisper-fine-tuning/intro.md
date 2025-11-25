@@ -2,6 +2,8 @@
 
 In this scenario, we fine-tune [Whisper](https://huggingface.co/openai/whisper-small), a model for speech-to-text recognition.
 
+This is scenario **8** in the *tutorials* repository.
+
 ## Requirements
 
 You'll need a HuggingFace token that has access to the voice library we will use. Enable your token to access [this repository](https://huggingface.co/datasets/fsicoli/common_voice_17_0).

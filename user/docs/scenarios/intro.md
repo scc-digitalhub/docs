@@ -1,4 +1,4 @@
-# Introduction to scenarios
+# Introduction
 
 This section showcases a number of different use cases for the platform.
 

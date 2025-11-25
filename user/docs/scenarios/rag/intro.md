@@ -1,6 +1,6 @@
 # Retrieval-Augmented Generation
 
-In this scenario, we create a *Retrieval-Augmented Generation* (RAG) application, a chatbot able to take new documents, learn from their contents and answer questions related to them.
+In this scenario, we create a *Retrieval-Augmented Generation* (RAG) application, a chatbot able to take new documents, learn from their contents and answer questions related to them. This is scenario **7** in the *tutorials* repository.
 
 When a LLM model is asked a question concerning information not found in the data it has been trained on, it is unable to provide a correct response and will provide a (perhaps even somewhat convincing) wrong answer or, at best, admit it doesn't know.
 

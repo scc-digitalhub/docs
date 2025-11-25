@@ -1,5 +1,7 @@
 # Managing LLM Models
 
+This is scenario **5** in the *tutorials* repository.
+
 With the platform it is possible to create and serve LLM HuggingFace-compatible-models. Specifically, it is possible to serve directly the LLM models from the HuggingFace catalogue provided the id of the model or to serve the fine-tuned model from the specified path, such as S3.
 
 LLM implementation relies on the [KServe LLM runtime](https://kserve.github.io/website/latest/modelserving/v1beta1/llm/huggingface/) and therefore supports one of the corresponding LLM tasks:

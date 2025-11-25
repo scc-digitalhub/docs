@@ -2,6 +2,8 @@
 
 This scenario implements a simple data validation function, which evaluates the correctness of a CSV table by leveraging an open source library, [Frictionless](https://github.com/frictionlessdata/frictionless-py).
 
+This is scenario **10** in the *tutorials* repository.
+
 The function will read a CSV file and then produce a *report*, along with a LABEL marking the dataset as `VALID` or `INVALID`.
 
 

@@ -1,6 +1,6 @@
 # Scikit-learn ML scenario introduction
 
-This scenario provides a quick overview of developing and deploying a scikit-learn machine learning application using the functionalities of the platform.
+This scenario provides a quick overview of developing and deploying a scikit-learn machine learning application using the functionalities of the platform. This is scenario **3** in the *tutorials* repository.
 
 We will prepare data, train a generic model and expose it as a service. Access Jupyter from your Coder instance and create a new notebook.
 
