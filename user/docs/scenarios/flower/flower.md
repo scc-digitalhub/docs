@@ -1,6 +1,8 @@
 # Federated Learning with Flower
 
-[Flower Federated Learning](https://flower.ai/) framework allows for running federated learning tasks where different client nodes perform local training and cooperatively create a more robust solution without exchanging the data but only the weight necessary to progress the training process. 
+[Flower Federated Learning](https://flower.ai/) framework allows for running federated learning tasks where different client nodes perform local training and cooperatively create a more robust solution without exchanging the data but only the weight necessary to progress the training process.
+
+This is scenario **9** in the *tutorials* repository.
 
 The platform support this approach natively integrating the Flower framework in the following manner:
 

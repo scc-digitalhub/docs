@@ -1,5 +1,7 @@
 # Managing LLM Models
 
+This is scenario **5** in the *tutorials* repository.
+
 With the platform it is possible to create and serve LLM HuggingFace-compatible-models. Specifically, it is possible to serve directly the LLM models from the HuggingFace catalogue provided the id of the model or to serve the fine-tuned model from the specified path, such as S3.
 
 LLM implementation relies on the [KServe LLM runtime](https://kserve.github.io/website/latest/modelserving/v1beta1/llm/huggingface/) and therefore supports one of the corresponding LLM tasks:
@@ -13,8 +15,6 @@ LLM implementation relies on the [KServe LLM runtime](https://kserve.github.io/w
 Based on the type of the task the API of the exposed service may differ. Generative models (text generation and text2text generation) use OpenAI's [Completion](https://platform.openai.com/docs/api-reference/completions) and [Chat Completion](https://platform.openai.com/docs/api-reference/chat) API.
 
 The other types of tasks like token classification, sequence classification, fill mask are served using KServe's Open Inference Protocol v2 API.
-
-You can find the final notebook file for this scenario in the [tutorial repository](https://github.com/scc-digitalhub/digitalhub-tutorials/tree/main/s5-llm).
 
 ## Exposing Predefined Text Classification Models
 
