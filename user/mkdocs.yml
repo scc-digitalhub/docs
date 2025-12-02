@@ -44,6 +44,7 @@ nav:
               - "components/sqlpad.md"
               - "components/grafana.md"
   - Scenarios and Tutorials:
+      - "scenarios/intro.md"
       - Extract-Transform-Load:
           - "scenarios/etl/intro.md"
           - "scenarios/etl/collect.md"
