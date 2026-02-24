@@ -45,7 +45,7 @@ def format_versions_string(versions):
     s = re.sub(" +", " ", s).strip()
 
     sa = sorted(s.split(" "), key=functools.cmp_to_key(compare_versions))
-    s = ",".join(list(reversed(sa)))
+    s = ",".join(list(reversed(sa))[:4])
 
     print(s)
     return s
