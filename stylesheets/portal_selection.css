@@ -47,3 +47,19 @@
 .dropdown a:hover {
     background-color: #ffffff1f
 }
+
+.external-link {
+    padding: 6px 10px 7px 10px;
+    margin-left: 10px;
+    border: #f4d2b8 solid 1px;
+    border-radius: .1rem;
+    font-weight: normal;
+}
+
+.external-link:hover {
+    background-color: #e27c2d;
+}
+
+.external-link:active {
+    background-color: #e58740;
+}
