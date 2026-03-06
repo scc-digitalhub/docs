@@ -10,7 +10,7 @@ Let's start by setting up the database. Access your KRM instance and **Postgres 
 - `Database`: The actual name on the database. Type `mydb`.
 - Toggle on `Drop on delete`, which conveniently deletes the database when you delete the custom resource.
 
-![Create DB](../../images/postgrest-scenario/create-db.png)
+![Create DB](./images/create-db.png)
 
 Click *Save*. You should now see your database listed.
 
@@ -24,7 +24,7 @@ Click *Show* on your database's entry and then *Add user* on the bottom. Enter v
 - `Privileges`: Indicates what privileges the user will have. Pick `Owner`.
 - `Secret name`: The secret to authenticate the user. Type `owner-secret`.
 
-![Create user](../../images/postgrest-scenario/create-user.png)
+![Create user](./images/create-user.png)
 
 ## Retrieve POSTGRES_URL
 
@@ -36,4 +36,4 @@ Write down the following information somewhere, as we will need it later:
 - Value of `POSTGRES_URL` (click on *Decode* to obtain it)
 - Value of `ROLE`
 
-![Secret](../../images/postgrest-scenario/secret.png)
+![Secret](./images/secret.png)

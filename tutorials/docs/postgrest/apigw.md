@@ -10,7 +10,7 @@ Fill the fields as follows:
 - **Path**: Leave the default `/`.
 - **Authentication**: `None`.
 
-![Create APIGW](../../images/postgrest-scenario/create-apigw.png)
+![Create APIGW](./images/create-apigw.png)
 
 Save and the API gateway will be created. You can try a simple query like the following, even in your browser, to view its results (remember to change domain according to your case):
 ```

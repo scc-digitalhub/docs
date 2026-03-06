@@ -117,7 +117,7 @@ Access Grafana from your Coder instance or create a new Grafana workspace. Open 
 - User: `admin`
 - Password: `<dremio_password_set_on_coder>`
 
-Now you can create a dashboard to visualize Dremio data. An example dashboard is available as a JSON file at the `user/examples/dremio_grafana` path within the repository of this documentation.
+Now you can create a dashboard to visualize Dremio data. An example dashboard is available as a JSON file at the `tutorials/examples/dremio_grafana` path within the repository of this documentation.
 
 Navigate to **Dashboards** from the left menu, expand the *New* button on the top right and select *Import*. Once imported, you will need to update the `datasource.uid` field, which holds a reference to the Dremio data source in your Grafana instance, throughout the JSON model.
 
@@ -131,6 +131,6 @@ Then, go back to **Dashboards**, open your dashboard, open the *Dashboard settin
 
 The dashboard includes three panels: a map of the traffic sensors, a table with the daily number of vehicles registered by each sensor and a graph of the vehicles registered monthly.
 
-![Grafana Dremio dashboard image](../../images/scenario-dremio-dashboard.png)
+![Grafana Dremio dashboard image](./dremio-dashboard.png)
 
 We can now use the dashboard to explore the data. We can either interact with the map to get the information related to each sensor, or use the dashboard filters to select different time ranges and analyze traffic evolution over time.

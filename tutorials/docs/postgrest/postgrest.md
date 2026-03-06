@@ -19,5 +19,5 @@ Under *Connection*, fill the fields as follows:
 
 When you hit *Save*, the PostgREST instance will be launched.
 
-![Create PostgREST](../../images/postgrest-scenario/create-postgrest.png)
+![Create PostgREST](./images/create-postgrest.png)
 

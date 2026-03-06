@@ -61,7 +61,7 @@ The `EXPORT` button will download the resource's information as a yaml file.
 
 In case of ``hera`` workflows, the executions of the workflow instances can be monitored with the corresponding DAG viewer.
 
-![Workflow run](../images/scenario-etl/pipeline.png)
+![Workflow run](../images/pipeline.png)
 
 ### Update
 

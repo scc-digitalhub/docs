@@ -109,6 +109,6 @@ Go to the Kubernetes Resource Manager component (available from dashboard) and g
 
 The platform by default support exposing the methods at the subdomains of ``services.<platform-domain>``, where platform-domain is the domain of the platform instance.
 
-![KRM APIGW image](../../images/scenario-etl/apigw-krm.png)
+![KRM APIGW image](../../images/apigw-krm.png)
 
 *Save* and, after a few moments, you will be able to call the API at the address you defined! If you set *Authentication* to *Basic*, don't forget that you have to provide the credentials.

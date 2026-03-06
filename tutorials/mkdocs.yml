@@ -1,0 +1,59 @@
+INHERIT: ../base.yml
+site_url: http://docs/tutorials
+
+extra:
+  portal_name: Tutorials
+
+extra_css:
+  - !ENV [OTHERS_STYLESHEETS_PORTAL_SELECTION, "../stylesheets/portal_selection.css"]
+  - !ENV [OTHERS_STYLESHEETS_COLORS, "../stylesheets/colors.css"]
+
+nav:
+  - "index.md"
+  - Extract-Transform-Load:
+    - "etl/intro.md"
+    - "etl/collect.md"
+    - "etl/process.md"
+    - "etl/pipeline.md"
+    - "etl/expose.md"
+    - "etl/streamlit.md"
+  - DBT transformation:
+    - "etl-core/scenario.md"
+    - "etl-core/pipeline.md"
+  - "MLOps: Scikit-learn ML models":
+    - "mlsklearn/intro.md"
+    - "mlsklearn/training.md"
+    - "mlsklearn/deploy.md"
+  - "MLOps: MLflow ML models":
+    - "mlmlflow/intro.md"
+    - "mlmlflow/deploy.md"
+  - "MLOps: Large Language Models":
+    - "mlllm/llm.md"
+    - "mlllm/llmkubeai.md"
+  - "MLOps: Speech to Text":
+    - "mlspeech/kubeaispeech.md"
+  - "MLOps: Custom ML model training":
+    - "ml/intro.md"
+    - "ml/deploy.md"
+  - Dremio transformation:
+    - "dremio_grafana/scenario.md"
+  - API via PostgREST:
+    - "postgrest/intro.md"
+    - "postgrest/data.md"
+    - "postgrest/postgrest.md"
+    - "postgrest/apigw.md"
+  - Retrieval-Augmented Generation:
+    - "rag/intro.md"
+    - "rag/llm.md"
+    - "rag/knowledge-base.md"
+    - "rag/rag.md"
+    - "rag/webui.md"
+  - Whisper fine-tuning:
+    - "whisper-fine-tuning/intro.md"
+    - "whisper-fine-tuning/create-dataset.md"
+    - "whisper-fine-tuning/fine-tuning.md"
+    - "whisper-fine-tuning/convert-test.md"
+  - Flower Federated Learning:
+    - "flower/flower.md"
+  - Data validation:
+    - "data_validation/scenario.md"

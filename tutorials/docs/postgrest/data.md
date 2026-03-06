@@ -6,7 +6,7 @@ Open a new notebook using the **`Python 3 (ipykernel)`** kernel.
 
 We will now insert some data into the database we created earlier. Copy the snippets of code from here and paste them in your notebook, then execute them with *Shift+Enter*. After running, Jupyter will create a new code cell.
 
-The notebook file is available in the `documentation/examples/postgrest` path within the repository of this documentation.
+The notebook file is available in the `tutorials/examples/postgrest` path within the repository of this documentation.
 
 Import required libraries:
 

@@ -44,16 +44,20 @@ jobs:
                 git checkout $v
                 cd user && mkdocs build && cd ..
                 cd admin && mkdocs build && cd ..
+                cd tutorials && mkdocs build && cd ..
                 mkdir -p ./site
                 [ ! -d user/site ] || mv user/site site/$v
                 [ ! -d admin/site ] || mv admin/site site/$v/admin
+                [ ! -d tutorials/site ] || mv tutorials/site site/$v/tutorials
               else
                 echo "Special behaviour for main"
                 git checkout main
                 cd user && mkdocs build && cd ..
                 cd admin && mkdocs build && cd ..
+                cd tutorials && mkdocs build && cd ..
                 [ ! -d user/site ] || mv user/site ./site
                 [ ! -d admin/site ] || mv admin/site site/admin
+                [ ! -d tutorials/site ] || mv tutorials/site site/tutorials
               fi
             fi
           done

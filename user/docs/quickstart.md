@@ -22,11 +22,11 @@ You can also use the **CLI** to perform operations on the platform externally. S
 
 Start exploring the platform through a series of tutorials aiming at explaining the key usage scenarios for DigitalHub platform. Specifically
 
-- Create your first [data management pipeline](./scenarios/etl/intro.md), from data exploration to automated data ETL procedure running on the platform.
-- Perform [DBT data transformation](./scenarios//etl-core/scenario.md) and store the data in a database.
-- [Train a scikit-learn ML Model](./scenarios/mlsklearn/intro.md) and deploy it as an inference server.
-- [Train a MLFLow-compatible Model](./scenarios/mlmlflow/intro.md) and deploy it as an inference server.
-- [Train a custom ML Model](./scenarios/ml/intro.md) and deploy it as a service with the serverless platform.
-- [Work with LLM Model](./scenarios/mlllm/llm.md) and deploy it as a service with the serverless platform.
-- Use Dremio distributed query engine to [organize data and visualize with Grafana](./scenarios/dremio_grafana/scenario.md).
-- Store data in DB to perform efficient and complex queries and [expose the data as REST API](./scenarios/postgrest/intro.md).
+- Create your first [data management pipeline](./tutorials/etl/intro.md), from data exploration to automated data ETL procedure running on the platform.
+- Perform [DBT data transformation](./tutorials/etl-core/scenario.md) and store the data in a database.
+- [Train a scikit-learn ML Model](./tutorials/mlsklearn/intro.md) and deploy it as an inference server.
+- [Train a MLFLow-compatible Model](./tutorials/mlmlflow/intro.md) and deploy it as an inference server.
+- [Train a custom ML Model](./tutorials/ml/intro.md) and deploy it as a service with the serverless platform.
+- [Work with LLM Model](./tutorials/mlllm/llm.md) and deploy it as a service with the serverless platform.
+- Use Dremio distributed query engine to [organize data and visualize with Grafana](./tutorials/dremio_grafana/scenario.md).
+- Store data in DB to perform efficient and complex queries and [expose the data as REST API](./tutorials/postgrest/intro.md).

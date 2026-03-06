@@ -1,51 +1,38 @@
 # Deploy and expose the model
 
-Deploying a MLFLow model is easy: ``mlflowserve`` runtime supports this functionality out of the box. It is sufficient to specify the path to the model artifact and optionally the name of the model to expose.
-
-It is important to note that the path is model key.
-is created from MLFlow run artifact path, besides the ``model`` folder it may contain additional artifacts.
+Deploying a scikit-learn model is easy: ``sklearnserve`` runtime supports this functionality out of the box. It is sufficient to specify the key of the model and optionally the name of the model to expose.
 
 Register it and deploy:
 
 ```python
 serve_func = project.new_function(
-    name="serve-mlflow-model",
-    kind="mlflowserve",
-    model_name=model.name,
+    name="serve-classifier",
+    kind="sklearnserve",
     path=model.key,
 )
-
 serve_run = serve_func.run("serve", wait=True)
 ```
 
 You can now create a dataset for testing the endpoint:
 
 ```python
-from sklearn import datasets
+import numpy as np
 
-iris = datasets.load_iris()
-data = iris.data[0:2].tolist()
-json={
-    "inputs": [
-        {
-        "name": "input-0",
-        "shape": [-1, 4],
-        "datatype": "FP64",
-        "data": data
-        }
-    ]
-}
+# Generate sample data for prediction
+data = np.random.rand(2, 30).tolist()
+json_payload = {"inputs": [{"name": "input-0", "shape": [2, 30], "datatype": "FP32", "data": data}]}
 ```
 
-Finally, you can test the endpoint. When the model is ready to be used, invoke the endpoint:
+Finally, you can test the endpoint. To do so, you need to refresh the serve run. This is needed because the backend monitors the deployment every minute and the model status, where the endpoint is exposed, is updated after a minute.
+When the model is ready, invoke the endpoint:
 
 ```python
-serve_run.invoke(model_name=model.name, json=json).json()
+result = serve_run.refresh().invoke(json=json_payload).json()
+print("Prediction result:")
+print(result)
 ```
 
-If it does not work, wait for sometimes, because it takes a while to load the model.
-
-Please note that the MLFLow model serving exposes also the Open API specification under ``/v2/docs`` path.
+Please note that the scikit-learn model serving exposes also the Open API specification under ``/docs`` path.
 
 ## Create an API gateway
 
@@ -60,6 +47,6 @@ Go to the Kubernetes Resource Manager component (available from dashboard) and g
 
 The platform by default support exposing the methods at the subdomains of ``services.<platform-domain>``, where platform-domain is the domain of the platform instance.
 
-![KRM APIGW image](../../images/scenario-etl/apigw-krm.png)
+![KRM APIGW image](../../images/apigw-krm.png)
 
 *Save* and, after a few moments, you will be able to call the API at the address you defined! If you set *Authentication* to *Basic*, don't forget that you have to provide the credentials.
