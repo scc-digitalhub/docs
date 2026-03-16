@@ -10,11 +10,11 @@ Model and data metrics are key components of this traceability.
 
 In MLOps (Machine Learning Operations), traceability and metrics are essential for maintaining reliable, compliant, and scalable AI systems. They enable teams to audit decisions, reproduce results, detect performance degradation, and ensure models remain aligned with business and ethical requirements throughout their operational lifecycle.
 
-Within the platform metrics and trracking are first-class elements and are implemented as follows.
+Within the platform metrics and tracking are first-class elements and are implemented as follows.
 
 ## Model and Run Metrics 
 
-First, it is possible to associate quantitiative metrics to the ML models that are being created and logged by the platform. In this way it is possible to associate single-value metric value (e.g., accuracy) or value series (e.g., loss over epochs) to a model. To perform this operation one can use Python SDK and perform ``log_metrics`` oepration over model instance (see [Python SDK documentation](https://scc-digitalhub.github.io/sdk-docs/reference/objects/model/methods/#digitalhub.entities.model._base.entity.Model.log_metrics) for details).
+First, it is possible to associate quantitiative metrics to the ML models that are being created and logged by the platform. In this way it is possible to associate single-value metric value (e.g., accuracy) or value series (e.g., loss over epochs) to a model. To perform this operation one can use Python SDK and perform ``log_metrics`` operation over model instance (see [Python SDK documentation](https://scc-digitalhub.github.io/sdk-docs/reference/objects/model/methods/#digitalhub.entities.model._base.entity.Model.log_metrics) for details).
 
 Second, the metrics may be associated to the function runs. Similarly to model metrics, the run metrics may be logged using Python SDK.
 
