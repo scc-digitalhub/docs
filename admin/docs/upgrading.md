@@ -16,7 +16,7 @@ Core no longer accepts secrets created with a double `-` in it's name.
 
 If you have an ongoing project that still needs your secrets, recreate them with the correct syntax.
 
-For example, `proj-secrets--test` must become `proj-secrets--test`.
+For example, `proj-secrets--test` must become `proj-secrets-test`.
 
 Read the full [Core release notes](https://github.com/scc-digitalhub/digitalhub-core/releases/tag/0.14.0) for more details.
 
