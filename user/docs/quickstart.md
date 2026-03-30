@@ -20,4 +20,4 @@ You can also use the **CLI** to perform operations on the platform externally. S
 
 ## Tutorials
 
-Start exploring the platform through a series of [tutorials](./tutorials/) aiming at explaining the key usage scenarios for DigitalHub platform.
+Start exploring the platform through a series of [tutorials](../tutorials/) aiming at explaining the key usage scenarios for DigitalHub platform.
