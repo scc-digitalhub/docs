@@ -1,4 +1,4 @@
-# Code source
+# Manage Source Code
 
 In several runtime objects, it is possible to execute a program (e.g. a function, a query or a workflow) written in a source. This source can be a single code file, a plain text string or a base64 encoded string, a zip archive or a git repository.
 Beside the source, you need also to define a [`handler`](#handler), which is the entrypoint of the code.

@@ -1,4 +1,4 @@
-# Projects
+# Manage Projects
 
 A *project* represents a data and AI application and is a container for different entities (code, assets, configuration, ...) that form the application. It is the context in which you can run functions and manage models, data, and artifacts.
 Projects may be created and managed from the UI, but also by using DH Core's API, for example via Python SDK.

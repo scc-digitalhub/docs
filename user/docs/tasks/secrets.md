@@ -1,4 +1,4 @@
-# Secret Management
+# Manage Secrets
 
 Working with different operations may imply the usage of a sensitive values, such as external API credentials, storage credentials, etc.
 

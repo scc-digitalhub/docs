@@ -1,4 +1,4 @@
-# Using Kubernetes Resources for Runs
+# Define and use Kubernetes Resources
 
 When it come to execution of AI tasks, either batch jobs or model serving, it is important to be able to
 allocate an appropriate set of resources, such as memory, GPU, node types, etc.

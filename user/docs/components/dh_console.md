@@ -5,9 +5,9 @@ for the organization and operations over the Data Science [Projects](../tasks/pr
 
 - **functions** of various runtimes (see the [Functions and Runtimes](../tasks/functions.md) section for details), as well as their executions (runs) grouped by the corresponding operations (tasks)
 - **workflows** - composite pipelines combining executions of different functions
-- **dataitems** - structured [Data Items](../tasks/data.md) managed by the project
+- **dataitems** - structured [Data Items](../data-tasks/data.md) managed by the project
 - **artifacts** - unstructured files related to and managed by the project
-- **models** - versioned ML Model artifacts with their metrics and metadata (see [ML Models](../tasks/models.md) section for details)
+- **models** - versioned ML Model artifacts with their metrics and metadata (see [ML Models](../ml-tasks/models.md) section for details)
 
 When you access the console, you land to the project management page, where you can create or delete projects.
 
@@ -54,19 +54,19 @@ From the console it is possible to define a new workflow by providing the code o
 
 ### Dataitems 
 
-Through [Dataitems](../tasks/data.md) the project may define the relevant structured and semi-structured datasets. Dataset may created manually, starting from a reference to an URL of the file or DB table, or may be produced as a result of some data transformation function execution. As in case of the functions, the dataitems are equipped with the relevant metadata (e.g., creation and changes, tags, ownership, etc). Furthermore, the datasets structured as tables (i.e., ``table`` kind datasets) are equipped with the derived schemas and profiling and data preview.
+Through [Dataitems](../data-tasks/data.md) the project may define the relevant structured and semi-structured datasets. Dataset may created manually, starting from a reference to an URL of the file or DB table, or may be produced as a result of some data transformation function execution. As in case of the functions, the dataitems are equipped with the relevant metadata (e.g., creation and changes, tags, ownership, etc). Furthermore, the datasets structured as tables (i.e., ``table`` kind datasets) are equipped with the derived schemas and profiling and data preview.
 
 Through the console it is possible to manage the datasets, i.e., create (from a URL or from file), update and delete them.
 
 ### Artifacts 
 
-Similar to dataitems, [Artifacts](../tasks/data.md) it is possible to explicitly capture the relevant unstructured objects and files. Artifacts may be of arbitrary type, and equipped with a generic metadata properties.  
+Similar to dataitems, [Artifacts](../data-tasks/data.md) it is possible to explicitly capture the relevant unstructured objects and files. Artifacts may be of arbitrary type, and equipped with a generic metadata properties.  
 
 Through the console it is possible to manage the artifacts, i.e., create (from a URL or from file), update and delete them.
 
 ### ML Models
 
-[ML Models](../tasks/models.md) represent a specific type of artifacts, which are produced by the AI tranining activites and represent the datasets used for inference operations. While managed in the same manner as other types of entities, ML Models may have a specific set of metadata and specification attributes, such model kind, metrics, algorithm and framework specification, etc. 
+[ML Models](../ml-tasks/models.md) represent a specific type of artifacts, which are produced by the AI tranining activites and represent the datasets used for inference operations. While managed in the same manner as other types of entities, ML Models may have a specific set of metadata and specification attributes, such model kind, metrics, algorithm and framework specification, etc. 
 
 ML Models are further used by the inference services.
 

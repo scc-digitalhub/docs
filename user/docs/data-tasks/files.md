@@ -1,4 +1,4 @@
-# File Browser 
+# Browse File in Datalake 
 
 The File Browser is an integrated component within the web-based administrative console that enables users to explore, view, and manage files stored in the project’s repository, directly from the browser interface. 
 

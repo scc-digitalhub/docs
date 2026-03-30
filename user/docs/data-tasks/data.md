@@ -7,10 +7,7 @@ Specifically, the platform natively supports two types of storages:
 - *persistence* object storage (datalake S3 Minio), which manages immutable data in the form of files.
 - *operational* relational data storage (PostgreSQL database), which is used for efficient querying of mutable data. *Postgres* is rich with extensions, most notably for geo-spatial and time-series data.
 
-The data is represented in the platform as entities of different types, depending on its usage and format. More specifically, we distinguish:
-
-- *data items*, which represent immutable data sets resulting from different transformation operations and are ready for use in differerent types of analysis. Data items are enriched with metadata (versions, lineage, stats, profiling, schema, ...) and unique keys and managed and persisted to the datalake directly by the platform in the form of *Parquet* files. It is possible to treat tabular data (items of ``table`` kind) as, for example, *DataFrames*, using conventional libraries.
-- *artifacts*, which represent arbitrary files, not limited to tabular format, stored to the datalake with some extra metadata.
+The data is represented in the platform as entities of different types, such as *data item* or *artifact*, depending on its usage and format.
 
 Each data entity may be accessed and manipulated by the platform via UI or using the API, for example with SDK.
 

@@ -1,4 +1,4 @@
-# Services
+# Invoke and Use Services
 
 When executing _runs_, tasks of type _service_ will result in a deployment with an HTTP service published inside the platform.
 

@@ -1,4 +1,4 @@
-# Tracking and Metrics
+# Track Experiments and Metrics
 
 Traceability in AI solutions refers to the ability to track and document every stage of a machine learning (ML) system’s lifecycle—from data collection and preprocessing to model training, deployment, and monitoring. It ensures transparency, reproducibility, and accountability by maintaining records of data sources, model versions, parameters, and performance metrics.
 

@@ -1,4 +1,4 @@
-# Workspaces
+# Use Interactive Workspaces
 
 While core tools of the platform are already up and running after installation, other components have to be individually deployed. This is easily and quickly done by creating workspaces in *Coder*, by using templates.
 

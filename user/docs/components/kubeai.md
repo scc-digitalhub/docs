@@ -36,7 +36,7 @@ foresees two roles - admin and user. The former can configure the tool functiona
 
 ## See Also
 
-- [How to manage LLM Models with KubeAI Runtime](../tutorials/mlllm/llmkubeai.md)
-- [How to manage speech-to-text models with KubeAI Runtime](../tutorials/mlspeech/kubeaispeech.md)
+- [How to manage LLM Models with KubeAI Runtime](../../tutorials/mlllm/llmkubeai.md)
+- [How to manage speech-to-text models with KubeAI Runtime](../../tutorials/mlspeech/kubeaispeech.md)
 - [Model Serving Runtime Reference](../runtimes/modelserve.md)
 

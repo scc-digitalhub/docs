@@ -14,22 +14,26 @@ nav:
   - "quickstart.md"
   - "installation.md"
   #- "core.md"
-  - Concepts and Tasks:
-      - "tasks/projects.md"
-      - "tasks/functions.md"
-      - "tasks/models.md"
-      - "tasks/kubernetes-resources.md"
-      - "tasks/workflows.md"
-      - "tasks/data.md"
-      - "tasks/files.md"
-      - "tasks/services.md"
-      - "tasks/triggers.md"
-      - "tasks/workspaces.md"
-      - "tasks/metrics.md"
-      - "tasks/code-source.md"
-      - "tasks/secrets.md"
-      - "tasks/pat.md"
-    #   - "tasks/git.md"
+  - "entities.md"
+  - Tasks:
+    - Common Tasks:
+        - "tasks/projects.md"
+        - "tasks/functions.md"
+        - "tasks/services.md"
+        - "tasks/workflows.md"
+        - "tasks/triggers.md"
+        - "tasks/workspaces.md"
+        - "tasks/kubernetes-resources.md"
+        - "tasks/code-source.md"
+        - "tasks/secrets.md"
+        - "tasks/pat.md"
+        #   - "tasks/git.md"
+    - Data-related Tasks:
+        - "data-tasks/data.md"
+        - "data-tasks/files.md"
+    - ML-related Tasks:
+        - "ml-tasks/models.md"
+        - "ml-tasks/metrics.md"
   - Components:
       - "components/dashboard.md"
       - "components/dh_console.md"
@@ -52,11 +56,19 @@ nav:
       - "Model Serving: MLflow": "runtimes/mlflowserve.md"
       - "Model Serving: Speech to Text": "runtimes/asrserve.md"
       - "Model Serving: Scikit-learn": "runtimes/sklearnserve.md"
+      - Open Inference: "runtimes/oi.md"
+      - Guardrail: "runtimes/guardrail.md"
       - "Federated Learning": "runtimes/fl.md"
       - DBT: "runtimes/dbt.md"
+
+  - Extensions reference:
+      - "extensions/overview.md"
+      - "extensions/envoygw.md"
 
   - SDK Reference:
       - "sdk/intro.md"
 
   - CLI Reference:
       - "cli/commands.md"
+
+  - Examples and Tutorials: "./tutorials/"
