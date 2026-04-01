@@ -5,7 +5,7 @@ enabled.
 
 To accomplish this, it is possible to use the KubeAI-supported runtime, namely [FasterWhisper](https://github.com/SYSTRAN/faster-whisper).
 
-For details about the specification, see the corresponding section of [Modelserve](../../runtimes/modelserve.md) reference.
+For details about the specification, see the corresponding section of [Modelserve](../../../runtimes/modelserve/) reference.
 
 ## Exposing Speech-to-Text  Models
 

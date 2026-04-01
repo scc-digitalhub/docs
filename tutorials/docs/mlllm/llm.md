@@ -49,7 +49,7 @@ Serve the model:
 llm_run = llm_function.run(action="serve", profile="1xa100", wait=True)
 ```
 
-Please note the use of the ``profile`` parameter. As the LLM models require specific hardware (GPU in particular), it is necessary to specify the HW requirements as described in the  [Configuring Kubernetes executions](../../tasks/kubernetes-resources.md) section. In particular, it is possible to rely on the predefined resource templates of the platform deployment.
+Please note the use of the ``profile`` parameter. As the LLM models require specific hardware (GPU in particular), it is necessary to specify the HW requirements as described in the  [Configuring Kubernetes executions](../../../tasks/kubernetes-resources/) section. In particular, it is possible to rely on the predefined resource templates of the platform deployment.
 
 As in other scenarios, you need to wait a bit for the service to become available.
 Once the service becomes available, it is possible to make the calls:
@@ -133,7 +133,7 @@ llm_run = llm_function.run(action="serve",
     in some cases up to 10 minutes.
 
 As in case of classification models, the LLM models require specific hardware (GPU in particular), it is necessary
-to specify the HW requirements as described in the [Configuring Kubernetes executions](../../tasks/kubernetes-resources.md) section. In particular, it is possible to rely on the predefined resource templates of the platform deployment.
+to specify the HW requirements as described in the [Configuring Kubernetes executions](../../../tasks/kubernetes-resources/) section. In particular, it is possible to rely on the predefined resource templates of the platform deployment.
 
 Once the service becomes available, it is possible to make the calls. For example, for the completion requests:
 
@@ -358,7 +358,7 @@ llm_run = llm_function.run(action="serve", profile="1xa100", volumes=[{
 ```
 
 Please note the use of the ``profile`` parameter. As the LLM models require specific hardware (GPU in particular), it is necessary
-to specify the HW requirements as described in the  [Configuring Kubernetes executions](../../tasks/kubernetes-resources.md) section. In particular, it is possible to rely on the predefined resource templates of the platform deployment. Also, in case of large models the default disk space may be insufficient and an extra volume should be configured for the underlying deployment.
+to specify the HW requirements as described in the  [Configuring Kubernetes executions](../../../tasks/kubernetes-resources) section. In particular, it is possible to rely on the predefined resource templates of the platform deployment. Also, in case of large models the default disk space may be insufficient and an extra volume should be configured for the underlying deployment.
 
 Once the service becomes available, it is possible to make the calls:
 

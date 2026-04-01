@@ -57,3 +57,7 @@ nav:
     - "flower/flower.md"
   - Data validation:
     - "data_validation/scenario.md"
+
+  - Open Inference Model Serving:
+    - "openinference/openinference.md"
+    

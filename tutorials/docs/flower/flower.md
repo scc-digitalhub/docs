@@ -9,7 +9,7 @@ The platform support this approach natively integrating the Flower framework in 
 - support creating a federation, with central Superlink node and a set of client Supernodes distributed potentially outside of the platform in a secure manner (with TLS verification and client authentication)
 - activate the training procedures defined with the server coordination code and client training code managed by the platform. 
 
-See more details in the description of the corresponding [Flower runtime](../../runtimes/fl.md).
+See more details in the description of the corresponding [Flower runtime](../../../runtimes/fl/).
 
 This tutorial  demonstrates how to use the Flower FL framework for execution of federated learning tasks. The tutorial is based on official Pandas example of Flower framework.
 

@@ -10,7 +10,7 @@ For what concerns LLM tasks, currently KubeAI runtime allows for deploying the m
 
 To accomplish this, it is possible to use one of the KubeAI-supported runtimes, namely [vLLM](https://docs.vllm.ai/), [OLlama](https://ollama.com/), and [Infinity](https://michaelfeil.eu/infinity). in case of vLLM also adapters are supported.
 
-For details about the specification, see the corresponding section of [Modelserve](../../runtimes/modelserve.md) reference.
+For details about the specification, see the corresponding section of [Modelserve](../../../runtimes/modelserve) reference.
 
 ## Exposing Text Generation Models
 

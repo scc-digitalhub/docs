@@ -58,6 +58,6 @@ workflow.run("pipeline", parameters={"url": di.key}, wait=True)
 
 It is possible to monitor the execution in the Core console:
 
-![Pipeline image](./images/pipeline.png)
+![Pipeline image](../images/pipeline.png)
 
 The next section will describe how to expose this newly obtained dataset as a REST API.
