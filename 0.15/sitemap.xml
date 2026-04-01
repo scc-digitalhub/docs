@@ -2,202 +2,202 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>http://docs/user/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/architecture/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/entities/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/installation/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/quickstart/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/cli/commands/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/cli/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/code-toolbox/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/dashboard/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/dh_console/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/dremio/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/grafana/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/jupyter/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/kubeai/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/kubeflow/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/resourcemanager/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/sqlpad/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/components/vscode/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/data-tasks/data/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/data-tasks/files/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/extensions/envoygw/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/extensions/overview/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/ml-tasks/metrics/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/ml-tasks/models/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/asrserve/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/container/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/dbt/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/fl/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/guardrail/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/hera/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/kfp_pipelines/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/llmserve/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/mlflowserve/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/modelserve/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/oi/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/overview/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/python/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/runtimes/sklearnserve/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/sdk/intro/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/code-source/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/functions/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/kubernetes-resources/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/pat/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/projects/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/run-resources/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/secrets/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/services/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/triggers/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/workflows/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
     <url>
          <loc>http://docs/user/tasks/workspaces/</loc>
-         <lastmod>2026-03-31</lastmod>
+         <lastmod>2026-04-01</lastmod>
     </url>
 </urlset>

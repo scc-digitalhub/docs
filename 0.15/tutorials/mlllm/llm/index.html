@@ -2107,6 +2107,88 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Open Inference Model Serving
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Open Inference Model Serving
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openinference/openinference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exposing Open Inference v2 Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -2266,7 +2348,7 @@
 <p>Serve the model:</p>
 <div class="highlight"><pre><span></span><code><span class="n">llm_run</span> <span class="o">=</span> <span class="n">llm_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;1xa100&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p>Please note the use of the <code>profile</code> parameter. As the LLM models require specific hardware (GPU in particular), it is necessary to specify the HW requirements as described in the  <a href="../../tasks/kubernetes-resources.md">Configuring Kubernetes executions</a> section. In particular, it is possible to rely on the predefined resource templates of the platform deployment.</p>
+<p>Please note the use of the <code>profile</code> parameter. As the LLM models require specific hardware (GPU in particular), it is necessary to specify the HW requirements as described in the  <a href="../../../tasks/kubernetes-resources/">Configuring Kubernetes executions</a> section. In particular, it is possible to rely on the predefined resource templates of the platform deployment.</p>
 <p>As in other scenarios, you need to wait a bit for the service to become available.
 Once the service becomes available, it is possible to make the calls:</p>
 <div class="highlight"><pre><span></span><code><span class="n">json</span> <span class="o">=</span> <span class="p">{</span>
@@ -2329,7 +2411,7 @@ Once the service becomes available, it is possible to make the calls:</p>
 in some cases up to 10 minutes.</p>
 </div>
 <p>As in case of classification models, the LLM models require specific hardware (GPU in particular), it is necessary
-to specify the HW requirements as described in the <a href="../../tasks/kubernetes-resources.md">Configuring Kubernetes executions</a> section. In particular, it is possible to rely on the predefined resource templates of the platform deployment.</p>
+to specify the HW requirements as described in the <a href="../../../tasks/kubernetes-resources/">Configuring Kubernetes executions</a> section. In particular, it is possible to rely on the predefined resource templates of the platform deployment.</p>
 <p>Once the service becomes available, it is possible to make the calls. For example, for the completion requests:</p>
 <div class="highlight"><pre><span></span><code><span class="n">service_url</span> <span class="o">=</span> <span class="n">llm_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s2">&quot;service&quot;</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">]</span>
 <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">service_url</span><span class="si">}</span><span class="s2">/openai/v1/completions&quot;</span>
@@ -2515,7 +2597,7 @@ to specify the HW requirements as described in the <a href="../../tasks/kubernet
                     <span class="p">)</span>
 </code></pre></div>
 <p>Please note the use of the <code>profile</code> parameter. As the LLM models require specific hardware (GPU in particular), it is necessary
-to specify the HW requirements as described in the  <a href="../../tasks/kubernetes-resources.md">Configuring Kubernetes executions</a> section. In particular, it is possible to rely on the predefined resource templates of the platform deployment. Also, in case of large models the default disk space may be insufficient and an extra volume should be configured for the underlying deployment.</p>
+to specify the HW requirements as described in the  <a href="../../../tasks/kubernetes-resources">Configuring Kubernetes executions</a> section. In particular, it is possible to rely on the predefined resource templates of the platform deployment. Also, in case of large models the default disk space may be insufficient and an extra volume should be configured for the underlying deployment.</p>
 <p>Once the service becomes available, it is possible to make the calls:</p>
 <div class="highlight"><pre><span></span><code><span class="n">json</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>

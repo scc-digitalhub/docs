@@ -8,13 +8,11 @@
       
       
       
-        <link rel="canonical" href="http://docs/tutorials/etl-core/pipeline/">
+        <link rel="canonical" href="http://docs/tutorials/openinference/openinference/">
       
       
-        <link rel="prev" href="../scenario/">
+        <link rel="prev" href="../../data_validation/scenario/">
       
-      
-        <link rel="next" href="../../mlsklearn/intro/">
       
       
         
@@ -25,7 +23,7 @@
     
     
       
-        <title>Workflow - Digital Hub</title>
+        <title>Exposing Open Inference v2 Services - Digital Hub</title>
       
     
     
@@ -80,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#workflow" class="md-skip">
+        <a href="#exposing-open-inference-v2-services" class="md-skip">
           Skip to content
         </a>
       
@@ -194,7 +192,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Workflow
+              Exposing Open Inference v2 Services
             
           </span>
         </div>
@@ -597,20 +595,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -631,7 +627,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -649,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../scenario/" class="md-nav__link">
+      <a href="../../etl-core/scenario/" class="md-nav__link">
         
   
   
@@ -674,19 +670,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../etl-core/pipeline/" class="md-nav__link">
         
   
   
@@ -702,7 +689,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -2041,18 +2027,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
         
           
           <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
@@ -2073,7 +2061,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_15">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2088,10 +2076,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../openinference/openinference/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exposing Open Inference v2 Services
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2107,6 +2122,103 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-initialize-the-digitalhub-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Initialize the DigitalHub Project
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-write-the-inference-service-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Write the Inference Service Code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-register-the-function-in-digitalhub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Register the Function in DigitalHub
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-deploy-the-function-as-a-serving-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Deploy the Function as a Serving Endpoint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-prepare-an-inference-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Prepare an Inference Request
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-send-the-inference-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Send the Inference Request
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-inspect-the-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Inspect the Response
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2138,6 +2250,91 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-initialize-the-digitalhub-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Initialize the DigitalHub Project
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-write-the-inference-service-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Write the Inference Service Code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-register-the-function-in-digitalhub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Register the Function in DigitalHub
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-deploy-the-function-as-a-serving-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Deploy the Function as a Serving Endpoint
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-prepare-an-inference-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Prepare an Inference Request
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-send-the-inference-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Send the Inference Request
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-inspect-the-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Inspect the Response
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2180,10 +2377,10 @@
     
     
       <li class="md-path__item">
-        <a href="../scenario/" class="md-path__link">
+        <a href="./" class="md-path__link">
           
   <span class="md-ellipsis">
-    DBT transformation
+    Open Inference Model Serving
   </span>
 
         </a>
@@ -2205,48 +2402,265 @@
   
 
 
-<h1 id="workflow">Workflow</h1>
-<p>We define a simple workflow, which will execute the ETL step:</p>
-<p>Create a source directory for the workflow code:</p>
+<h1 id="exposing-open-inference-v2-services">Exposing Open Inference v2 Services</h1>
+<p>The Open Inference protocol v2 is a protocol used by various inference providers (e.g., NVIDIA Triton, KServe) to expose models that can be used for ML inference.
+It defines a standard interfaces, defined by input and output tensor definitions to define how the interaction should be performed in a platform-agnostic manner.</p>
+<p>In this tutorial we  demonstrate how to deploy a Visual Question Answering (VQA) service using the <a href="https://huggingface.co/Salesforce/blip-image-captioning-base">BLIP</a> model from Salesforce and serve it via the <strong>OpenInference</strong> runtime on the platform.</p>
+<p>The workflow covers:
+1. Setting up the project and source directory
+2. Writing the inference service code
+3. Registering and deploying the function
+4. Sending inference requests to the running service</p>
+<h2 id="1-initialize-the-digitalhub-project">1. Initialize the DigitalHub Project</h2>
+<p>Import the <code>digitalhub</code> SDK and create (or retrieve) a project named <code>demo</code>. The project acts as a namespace for all functions, artifacts, and runs in DigitalHub.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
+
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="2-write-the-inference-service-code">2. Write the Inference Service Code</h2>
+<p>Prepare the source directory</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p>And create the workflow code file:</p>
-<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">&quot;src/pipeline.py&quot;</span>
+<p>Use the <code>%%writefile</code> magic to write <code>src/openinference_service.py</code> to disk. This file contains:</p>
+<ul>
+<li><strong><code>VQAModel</code></strong> — a wrapper around the <code>Salesforce/blip-image-captioning-base</code> model that loads the BLIP processor and model onto the available device (GPU or CPU) and exposes a <code>generate_caption</code> method for both image captioning and visual question answering.</li>
+<li><strong><code>init_context(context)</code></strong> — called once at server startup; loads the <code>VQAModel</code> and attaches it to the server context.</li>
+<li><strong><code>handler(context, request)</code></strong> — the per-request inference function; decodes the incoming raw image bytes, optionally reads a <code>question</code> parameter, calls <code>generate_caption</code>, and returns the result as a <code>BYTES</code> output tensor.
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">&quot;src/openinference_service.py&quot;</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">digitalhub_runtime_hera.dsl</span><span class="w"> </span><span class="kn">import</span> <span class="n">step</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">hera.workflows</span><span class="w"> </span><span class="kn">import</span> <span class="n">DAG</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Workflow</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Visual Question Answering Service using BLIP model and PyTriton.</span>
+
+<span class="sd">This microservice serves a BLIP model for visual question answering tasks.</span>
+<span class="sd">It accepts images (JPEG/PNG) and returns text descriptions.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="c1"># Import transformers for BLIP model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">BlipProcessor</span><span class="p">,</span> <span class="n">BlipForConditionalGeneration</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="c1"># Configure logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">pipeline</span><span class="p">():</span>
-    <span class="k">with</span> <span class="n">Workflow</span><span class="p">(</span><span class="n">entrypoint</span><span class="o">=</span><span class="s2">&quot;dag&quot;</span><span class="p">,</span> <span class="n">arguments</span><span class="o">=</span><span class="n">Parameter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;employees&quot;</span><span class="p">))</span> <span class="k">as</span> <span class="n">w</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;dag&quot;</span><span class="p">):</span>
-            <span class="n">A</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span>
-                <span class="n">template</span><span class="o">=</span><span class="p">{</span>
-                    <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;transform&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;employees&quot;</span><span class="p">:</span> <span class="s2">&quot;{{workflow.parameters.employees}}&quot;</span><span class="p">},</span>
-                    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;output_table&quot;</span><span class="p">:</span> <span class="s2">&quot;department-50&quot;</span><span class="p">},</span>
-                <span class="p">},</span>
-                <span class="n">function</span><span class="o">=</span><span class="s2">&quot;transform-employees&quot;</span><span class="p">,</span>
-            <span class="p">)</span>
-    <span class="k">return</span> <span class="n">w</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">VQAModel</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Visual Question Answering model wrapper for BLIP.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Salesforce/blip-image-captioning-base&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the BLIP model and processor.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model_name: HuggingFace model identifier</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading BLIP model: </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using device: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">processor</span> <span class="o">=</span> <span class="n">BlipProcessor</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">BlipForConditionalGeneration</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model loaded successfully&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_caption</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image</span><span class="p">:</span> <span class="n">Image</span><span class="o">.</span><span class="n">Image</span><span class="p">,</span> <span class="n">question</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate a caption or answer for the given image.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            image: PIL Image</span>
+<span class="sd">            question: Optional question text for VQA</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Generated text description</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">question</span><span class="p">:</span>
+            <span class="c1"># Visual question answering</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">question</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Image captioning</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">,</span> <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+        <span class="n">caption</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processor</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">caption</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">init_context</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize the VQA model at server startup.&quot;&quot;&quot;</span>
+    <span class="n">vqa_model</span> <span class="o">=</span> <span class="n">VQAModel</span><span class="p">()</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="n">vqa_model</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Inference function for the VQA model.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        request: Inference Request object</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List inference response</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">vqa_model</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">vqa_model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">init_context</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+        <span class="n">vqa_model</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">vqa_model</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">model</span>
+    <span class="n">image_bytes</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+
+    <span class="n">caption</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Convert bytes to PIL Image</span>
+        <span class="n">image_bytes_clean</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">image_bytes</span><span class="p">)</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">image_bytes_clean</span><span class="p">))</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span>
+        <span class="c1"># time.sleep(2)  # Simulate processing time</span>
+        <span class="c1"># Generate caption</span>
+
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="ow">and</span> <span class="s2">&quot;question&quot;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span><span class="p">:</span>
+            <span class="n">question</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;question&quot;</span><span class="p">]</span>
+            <span class="n">caption</span> <span class="o">=</span> <span class="n">vqa_model</span><span class="o">.</span><span class="n">generate_caption</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">question</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">caption</span> <span class="o">=</span> <span class="n">vqa_model</span><span class="o">.</span><span class="n">generate_caption</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+        <span class="n">context</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generated caption: </span><span class="si">{</span><span class="n">caption</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error processing image: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># caption = f&quot;Error: {str(e)}&quot;</span>
+
+
+    <span class="c1"># Convert results to numpy array with object dtype for variable-length strings</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> 
+            <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;caption&quot;</span><span class="p">,</span> <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;BYTES&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">caption</span><span class="p">],</span> <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">caption</span><span class="p">)]}</span>
+            <span class="p">]</span>
+
+    <span class="p">}</span>
+</code></pre></div></li>
+</ul>
+<h2 id="3-register-the-function-in-digitalhub">3. Register the Function in DigitalHub</h2>
+<p>Create a new <strong>OpenInference</strong> function in the project that points to the service file written above. Key parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kind</code></td>
+<td><code>openinference</code></td>
+<td>Runtime type used by DigitalHub</td>
+</tr>
+<tr>
+<td><code>handler</code></td>
+<td><code>handler</code></td>
+<td>Per-request inference entry point</td>
+</tr>
+<tr>
+<td><code>init_function</code></td>
+<td><code>init_context</code></td>
+<td>Called once at startup to load the model</td>
+</tr>
+<tr>
+<td><code>model_name</code></td>
+<td><code>vqa_blip</code></td>
+<td>Model name exposed by the inference server</td>
+</tr>
+<tr>
+<td><code>inputs</code></td>
+<td><code>image (UINT8)</code></td>
+<td>Raw image bytes accepted by the model</td>
+</tr>
+<tr>
+<td><code>outputs</code></td>
+<td><code>caption (BYTES)</code></td>
+<td>Text caption/answer returned by the model</td>
+</tr>
+<tr>
+<td><code>requirements</code></td>
+<td>torch, transformers, pillow</td>
+<td>Python packages installed in the serving environment</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;vqa-oi&quot;</span><span class="p">,</span>
+                            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;openinference&quot;</span><span class="p">,</span>
+                            <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_10&quot;</span><span class="p">,</span>
+                            <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/openinference_service.py&quot;</span><span class="p">,</span>
+                            <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;handler&quot;</span><span class="p">,</span>
+                            <span class="n">init_function</span><span class="o">=</span><span class="s2">&quot;init_context&quot;</span><span class="p">,</span>
+                            <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;vqa_blip&quot;</span><span class="p">,</span>
+                            <span class="n">inputs</span><span class="o">=</span><span class="p">[{</span>
+                                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;image&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;UINT8&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                            <span class="p">}],</span>
+                            <span class="n">outputs</span><span class="o">=</span><span class="p">[{</span>
+                                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;caption&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;BYTES&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                            <span class="p">}],</span>
+                            <span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;torch&gt;=2.0.0&quot;</span><span class="p">,</span> <span class="s2">&quot;transformers&gt;=4.30.0&quot;</span><span class="p">,</span> <span class="s2">&quot;pillow&gt;=10.0.0&quot;</span><span class="p">]</span>
+                           <span class="p">)</span>
 </code></pre></div>
-<p>Here we use the Hera-based DSL to represent the execution of our functions as steps of the workflow. The DSL <code>step</code> method maps to Hera templates and produces an Argo workflow descriptor which performs the remote execution of the corresponding job. Note that the syntax for <code>step</code> is similar to that of function execution.</p>
-<p>Register the workflow:</p>
-<div class="highlight"><pre><span></span><code><span class="n">workflow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_workflow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;pipeline_dbt&quot;</span><span class="p">,</span>
-                                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hera&quot;</span><span class="p">,</span>
-                                <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/pipeline.py&quot;</span><span class="p">,</span>
-                                <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;pipeline&quot;</span><span class="p">)</span>
+<h2 id="4-deploy-the-function-as-a-serving-endpoint">4. Deploy the Function as a Serving Endpoint</h2>
+<p>Run the registered function with the <code>serve</code> action to start an inference server. The resource requests ensure the BLIP model weights can be downloaded and held in memory.</p>
+<blockquote>
+<p><strong>Note:</strong> This cell is kept as a raw cell to prevent accidental re-deployment. Convert it to a code cell and run it when you want to (re)deploy the service.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">resources</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mem&quot;</span><span class="p">:</span> <span class="s2">&quot;4Gi&quot;</span><span class="p">,</span> <span class="s2">&quot;disk&quot;</span><span class="p">:</span> <span class="s2">&quot;30Gi&quot;</span><span class="p">})</span>
 </code></pre></div>
-<p>You <strong>MUST</strong> build the workflow before running it. This is necessary to compose the Argo descriptor which will be used to execute the workflow:</p>
-<div class="highlight"><pre><span></span><code><span class="n">run_build</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;build&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<h2 id="5-prepare-an-inference-request">5. Prepare an Inference Request</h2>
+<p>Configure the client with the service URL and model name, then download a sample parrot image from HuggingFace. The image bytes are wrapped into a KServe v2 inference request payload with a single <code>UINT8</code> input tensor.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+
+<span class="n">BASE_URL</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">service</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span>
+<span class="n">MODEL_NAME</span> <span class="o">=</span> <span class="s1">&#39;vqa_blip&#39;</span>
+
+<span class="n">img_url</span> <span class="o">=</span> <span class="s1">&#39;https://huggingface.co/datasets/Narsil/image_dummy/raw/main/parrots.png&#39;</span>
+<span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">img_url</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+    <span class="n">image_bytes</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;input&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;UINT8&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_bytes</span><span class="p">)],</span>
+                    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">image_bytes</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">]</span>    
+    <span class="p">}</span>
 </code></pre></div>
-<p>The Argo descriptor is saved as encoded base64 string into the workflow spec under the <em>build</em> attribute.
-Once the workflow is built, you can run it, passing the URL key as a parameter:</p>
-<div class="highlight"><pre><span></span><code><span class="n">workflow</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;pipeline&quot;</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;employees&quot;</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">},</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<h2 id="6-send-the-inference-request">6. Send the Inference Request</h2>
+<p>POST the prepared payload to the KServe v2 inference endpoint (<code>/v2/models/{model_name}/infer</code>) and print the HTTP status code to confirm the request was received successfully.</p>
+<div class="highlight"><pre><span></span><code><span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">/v2/models/</span><span class="si">{</span><span class="n">MODEL_NAME</span><span class="si">}</span><span class="s2">/infer&quot;</span><span class="p">,</span>
+        <span class="n">json</span><span class="o">=</span><span class="n">request</span><span class="p">,</span>
+        <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
+    <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Status Code: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
-<p>It is possible to monitor the execution in the Core console.</p>
+<h2 id="7-inspect-the-response">7. Inspect the Response</h2>
+<p>Display the full JSON response returned by the inference server. The response follows the Open Inference v2 format and includes an <code>outputs</code> array with the model's generated caption for the image.</p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
 
 
 
