@@ -54,6 +54,7 @@ nav:
       - Hera Pipelines: "runtimes/hera.md"
       - "Model Serving: LLMs": "runtimes/llmserve.md"
       - "Serving Generative Models": "runtimes/serving-generative-models.md"
+      - "Serving Machine Learning Models": "runtimes/serving-ml-models.md"
       - "Model Serving: MLflow": "runtimes/mlflowserve.md"
       - "Model Serving: Speech to Text": "runtimes/asrserve.md"
       - "Model Serving: Scikit-learn": "runtimes/sklearnserve.md"

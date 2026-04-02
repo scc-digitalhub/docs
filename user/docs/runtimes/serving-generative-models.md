@@ -119,3 +119,5 @@ On the DigitalHub platform, generative models can be served using multiple runti
 | vllmserve-speech | speech transcription, audio translation |
 | vllmserve-pooling | embeddings, semantic search, recommendations |
 | kubeai-text | multi-model serving, adapter routing, autoscaling |
+
+**Note**: Refer to the Tutorial section for more detailed usage and examples.
