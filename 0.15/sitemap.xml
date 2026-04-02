@@ -153,6 +153,10 @@
          <lastmod>2026-04-02</lastmod>
     </url>
     <url>
+         <loc>http://docs/user/runtimes/serving-ml-models/</loc>
+         <lastmod>2026-04-02</lastmod>
+    </url>
+    <url>
          <loc>http://docs/user/runtimes/sklearnserve/</loc>
          <lastmod>2026-04-02</lastmod>
     </url>
