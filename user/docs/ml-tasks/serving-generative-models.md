@@ -3,19 +3,29 @@
 
 Serving generative models means exposing trained models through APIs so that applications can send requests and receive generated outputs in real time. Once deployed, the runtime environment manages inference requests, routing, preprocessing, and response generation.
 
-On the **DigitalHub platform**, these interactions are performed through **OpenAI-compatible APIs**, allowing applications and tools to interact with deployed models using standard OpenAI protocols. This enables easy integration of generative AI capabilities into applications, automation pipelines, and development tools without requiring custom APIs. By combining these serving options with OpenAI-compatible APIs, the DigitalHub platform enables users to quickly deploy and operate generative AI models without implementing custom inference services. Using the available runtimes, users can configure and deploy models directly through the platform by specifying only a small set of parameters such as the model model name, runtime type, and optional adapters or runtime arguments. 
+On the platform, these interactions are performed, where possible, through **OpenAI-compatible APIs**, allowing applications and tools to interact with deployed models using standard OpenAI protocols. This enables easy integration of generative AI capabilities into applications, automation pipelines, and development tools without requiring custom APIs. By combining these serving options with OpenAI-compatible APIs, the DigitalHub platform enables users to quickly deploy and operate generative AI models without implementing custom inference services. Using the available runtimes, users can configure and deploy models directly through the platform by specifying only a small set of parameters such as the model model name, runtime type, and optional adapters or runtime arguments. 
 
 This approach enables **no-code or low-code model deployment**, where the platform automatically handles the underlying infrastructure required to run the model, including container configuration, API exposure, and runtime orchestration.
 
-Different runtimes support different types of generative workloads. The following examples illustrate typical runtime tasks that can be executed on the platform using either the platform SDK or the core console UI as indicated below.
+Different runtimes support different types of generative workloads. Specifically, we distinguish between
+
+- **Text Generation Tasks**
+- **Embedding and Vector Tasks**
+- **Speech Processing Tasks**
+
+The following examples illustrate typical runtime tasks that can be executed on the platform using either the platform SDK or the core console UI as indicated below.
 
 ---
 
-## Text Generation Tasks (vllmserve-text)
+## Text Generation Tasks
 
-The **vllmserve-text runtime** is commonly used for text generation and conversational workloads. Through the OpenAI-compatible APIs available in the DigitalHub platform, applications can send prompts or chat messages and receive generated responses.
+Text generation tasks, such as completion and chat generation, may be performed either through the [**vllmserve-text**](../runtimes/llmserve.md#vllm-serving-runtime) runtime or with the [**kubeai-text**](../runtimes/llmserve.md#kubeai-text-runtime) runtime.
 
-### Example runtime tasks
+The [**vllmserve-text**](../runtimes/llmserve.md#vllm-serving-runtime) runtime is commonly used for text generation and conversational workloads. Through the OpenAI-compatible APIs available in the DigitalHub platform, applications can send prompts or chat messages and receive generated responses. VLLM runtime can be configured in the same way the vLLM engine, it allows for integrating multiple LoRA adapters, etc.
+
+The [**kubeai-text**](../runtimes/llmserve.md#kubeai-text-runtime) runtime is a more advanced alternative that allows for serving multiple models or adapters and auto-scaling, allowing for using both vLLM and OLLama engines for different types of scenarios. For example, OLLama is more appropriate for CPU-only workloads, while vLLM is more suitable for GPU workloads and is more flexible for production-oriented tasks.
+
+### Example of vllmserve-textruntime tasks
 
 **Chat assistants**
 
@@ -38,11 +48,11 @@ Users can view the API endpoints for their deployed services in the 'services' t
 
 ---
 
-## Embedding and Vector Tasks (vllmserve-pooling)
+## Embedding and Vector Tasks
 
-The **vllmserve-pooling runtime** is designed for generating vector embeddings used in search, recommendation systems, and semantic analysis. These tasks can be executed through the OpenAI-compatible **embeddings API**.
+Frequently genAI applications require supporting tasks, such as embedding, ranking, scoring, and encoding. They are required, for example, for generating vector embeddings used in search, recommendation systems, and semantic analysis. In the platform these tasks may be implemented using the [**vllmserve-pooling**](../runtimes/llmserve.md#vllm-serving-runtime) runtime or the [**kubeai-text**](../runtimes/llmserve.md#kubeai-text-runtime) runtime (only for embedding).
 
-### Example runtime tasks
+### Example of vllmserve-pooling runtime tasks
 
 **Semantic search**
 
@@ -61,13 +71,7 @@ Users can view the API endpoints for their deployed services in the 'services' t
 
 ![services](../images/runtimes/vllmserve-pooling-services.png)
 
----
-
-## Multi-Model Serving Tasks (kubeai-text)
-
-The **kubeai-text runtime** enables flexible serving scenarios where multiple models or adapters can be deployed and managed dynamically. Requests can still be performed using the same OpenAI-compatible APIs available on the platform.
-
-### Example runtime tasks
+### Example of kubeai-text runtime tasks
 
 **Text embedding with KubeAI**
 
@@ -83,11 +87,13 @@ From the Core Manage UI, users can create a text embedding API task of kind 'kub
 ![configure model](../images/runtimes/kubeai-text-run.png)
 
 ---
-## Audio Processing Tasks (vllmserve-speech)
+## Audio Processing Tasks
 
-The **vllmserve-speech runtime** supports audio-based AI tasks such as speech recognition and translation. These capabilities are also accessible through OpenAI-compatible audio APIs exposed by the platform.
+Audio processing tasks, such as speech recognition and translation, may be performed through the [**vllmserve-speech**](../runtimes/llmserve.md#vllm-serving-runtime) runtime or with the [**kubeai-speech**](../runtimes/llmserve.md#kubeai-speech-runtime) runtime.
 
-### Example runtime tasks
+The [**vllmserve-speech**](../runtimes/llmserve.md#vllm-serving-runtime) runtime supports audio-based AI tasks such as speech recognition and translation. These capabilities are also accessible through OpenAI-compatible audio APIs exposed by the platform.
+
+### Example vllmserve-speech runtime tasks
 
 **Speech transcription**
 
@@ -116,8 +122,9 @@ On the DigitalHub platform, generative models can be served using multiple runti
 | Runtime | Example Tasks |
 |--------|---------------|
 | vllmserve-text | chat generation, text completion, code generation |
-| vllmserve-speech | speech transcription, audio translation |
+| kubeai-text | multi-model serving, adapter routing, autoscaling, text embedding |
 | vllmserve-pooling | embeddings, semantic search, recommendations |
-| kubeai-text | multi-model serving, adapter routing, autoscaling |
+| vllmserve-speech | speech transcription, audio translation |
+| kubeai-speech | speech transcription |
 
 **Note**: Refer to the Tutorial section for more detailed usage and examples.

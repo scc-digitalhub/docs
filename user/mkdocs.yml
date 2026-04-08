@@ -33,6 +33,8 @@ nav:
         - "data-tasks/files.md"
     - ML-related Tasks:
         - "ml-tasks/models.md"
+        - "Serving Generative Models": "ml-tasks/serving-generative-models.md"
+        - "Serving Machine Learning Models": "ml-tasks/serving-ml-models.md"
         - "ml-tasks/metrics.md"
   - Components:
       - "components/dashboard.md"
@@ -49,17 +51,15 @@ nav:
               - "components/grafana.md"
   - Runtimes reference:
       - Overview: "runtimes/overview.md"
-      - Python: "runtimes/python.md"
+      - Serverless (Python): "runtimes/python.md"
       - Container: "runtimes/container.md"
       - Hera Pipelines: "runtimes/hera.md"
       - "Model Serving: LLMs": "runtimes/llmserve.md"
-      - "Serving Generative Models": "runtimes/serving-generative-models.md"
-      - "Serving Machine Learning Models": "runtimes/serving-ml-models.md"
       - "Model Serving: MLflow": "runtimes/mlflowserve.md"
       - "Model Serving: Speech to Text": "runtimes/asrserve.md"
       - "Model Serving: Scikit-learn": "runtimes/sklearnserve.md"
-      - Open Inference: "runtimes/oi.md"
-      - Guardrail: "runtimes/guardrail.md"
+      - Open Inference (Python): "runtimes/oi.md"
+      - Guardrail (Python): "runtimes/guardrail.md"
       - "Federated Learning": "runtimes/fl.md"
       - DBT: "runtimes/dbt.md"
 
