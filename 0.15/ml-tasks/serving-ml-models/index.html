@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/tasks/pat/">
+        <link rel="canonical" href="http://docs/user/ml-tasks/serving-ml-models/">
       
       
-        <link rel="prev" href="../secrets/">
+        <link rel="prev" href="../serving-generative-models/">
       
       
-        <link rel="next" href="../../data-tasks/data/">
+        <link rel="next" href="../metrics/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Use Personal Access Tokens (PATs) - Digital Hub</title>
+        <title>Serving Machine Learning Models - Digital Hub</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#use-personal-access-tokens-pats" class="md-skip">
+        <a href="#serving-machine-learning-models" class="md-skip">
           Skip to content
         </a>
       
@@ -194,7 +194,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Use Personal Access Tokens (PATs)
+              Serving Machine Learning Models
             
           </span>
         </div>
@@ -532,20 +532,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -566,7 +564,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -584,7 +582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/" class="md-nav__link">
+      <a href="../../tasks/projects/" class="md-nav__link">
         
   
   
@@ -612,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../functions/" class="md-nav__link">
+      <a href="../../tasks/functions/" class="md-nav__link">
         
   
   
@@ -640,7 +638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/" class="md-nav__link">
+      <a href="../../tasks/services/" class="md-nav__link">
         
   
   
@@ -668,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workflows/" class="md-nav__link">
+      <a href="../../tasks/workflows/" class="md-nav__link">
         
   
   
@@ -696,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../triggers/" class="md-nav__link">
+      <a href="../../tasks/triggers/" class="md-nav__link">
         
   
   
@@ -724,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workspaces/" class="md-nav__link">
+      <a href="../../tasks/workspaces/" class="md-nav__link">
         
   
   
@@ -752,7 +750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/" class="md-nav__link">
+      <a href="../../tasks/kubernetes-resources/" class="md-nav__link">
         
   
   
@@ -780,7 +778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code-source/" class="md-nav__link">
+      <a href="../../tasks/code-source/" class="md-nav__link">
         
   
   
@@ -808,7 +806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../secrets/" class="md-nav__link">
+      <a href="../../tasks/secrets/" class="md-nav__link">
         
   
   
@@ -833,37 +831,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Use Personal Access Tokens (PATs)
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../tasks/pat/" class="md-nav__link">
         
   
   
@@ -879,48 +850,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#security-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Security Considerations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#token-management-via-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Token management via UI
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1049,18 +978,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
         
           
           <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
@@ -1081,7 +1012,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1099,7 +1030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ml-tasks/models/" class="md-nav__link">
+      <a href="../models/" class="md-nav__link">
         
   
   
@@ -1127,7 +1058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ml-tasks/serving-generative-models/" class="md-nav__link">
+      <a href="../serving-generative-models/" class="md-nav__link">
         
   
   
@@ -1152,10 +1083,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../ml-tasks/serving-ml-models/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serving Machine Learning Models
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1171,6 +1129,121 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scikit-learn-model-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scikit-Learn Model Serving
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scikit-Learn Model Serving">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-runtime-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example runtime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mlflow-model-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MLflow Model Serving
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MLflow Model Serving">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-runtime-tasks_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example runtime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-model-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Model Serving
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Model Serving">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-runtime-tasks_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example runtime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1183,7 +1256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ml-tasks/metrics/" class="md-nav__link">
+      <a href="../metrics/" class="md-nav__link">
         
   
   
@@ -1211,7 +1284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ml-tasks/guardrails/" class="md-nav__link">
+      <a href="../guardrails/" class="md-nav__link">
         
   
   
@@ -2381,21 +2454,94 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#security-considerations" class="md-nav__link">
+  <a href="#scikit-learn-model-serving" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Security Considerations
+        Scikit-Learn Model Serving
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scikit-Learn Model Serving">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-runtime-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example runtime tasks
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#token-management-via-ui" class="md-nav__link">
+  <a href="#mlflow-model-serving" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Token management via UI
+        MLflow Model Serving
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MLflow Model Serving">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-runtime-tasks_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example runtime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-model-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Model Serving
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom Model Serving">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-runtime-tasks_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example runtime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
       
     </span>
   </a>
@@ -2450,7 +2596,7 @@
     
     
       <li class="md-path__item">
-        <a href="../projects/" class="md-path__link">
+        <a href="../../tasks/projects/" class="md-path__link">
           
   <span class="md-ellipsis">
     Tasks
@@ -2471,10 +2617,10 @@
     
     
       <li class="md-path__item">
-        <a href="../projects/" class="md-path__link">
+        <a href="../models/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Common Tasks
+    ML-related Tasks
   </span>
 
         </a>
@@ -2496,75 +2642,75 @@
   
 
 
-<h1 id="use-personal-access-tokens-pats">Use Personal Access Tokens (PATs)</h1>
-<p>Personal Access Tokens (PATs) are a special type of access token that users can generate directly from the platform’s web console. PATs are designed to simplify user authentication for long-lived or automation-related use cases, offering the same functionality as standard access tokens with additional control features.</p>
-<p>Key Characteristics:</p>
+<h1 id="serving-machine-learning-models">Serving Machine Learning Models</h1>
+<p>Serving machine learning models means exposing trained models through APIs so that applications can send requests and receive predictions in real time. Once deployed, the runtime environment manages inference requests, routing, preprocessing, and response generation.</p>
+<p>On the platform, these interactions are performed through <strong>standard ML APIs</strong>, allowing applications and tools to interact with deployed models using industry-standard protocols, such as <a href="https://github.com/kserve/open-inference-protocol">Open Inference v2</a> protocol. This enables easy integration of machine learning capabilities into applications, automation pipelines, and development tools without requiring custom APIs.</p>
+<p>Using the available runtimes, users can configure and deploy models directly through the platform by specifying only a small set of parameters such as the model name, runtime type, and optional runtime arguments.</p>
+<p>This approach enables <strong>no-code or low-code model deployment</strong>, where the platform automatically handles the underlying infrastructure required to run the model, including container configuration, API exposure, and runtime orchestration.</p>
+<p>Different runtimes support different types of machine learning workloads. The following examples illustrate typical runtime tasks that can be executed on the platform using either the platform SDK or the core console UI.</p>
+<hr />
+<h2 id="scikit-learn-model-serving">Scikit-Learn Model Serving</h2>
+<p>The <a href="../../runtimes/sklearnserve/"><strong>sklearnserve runtime</strong></a> is commonly used for serving scikit-learn models for classification, regression, and clustering tasks. Applications can send feature vectors and receive predictions through standardized prediction APIs.</p>
+<h3 id="example-runtime-tasks">Example runtime tasks</h3>
+<p><strong>Classification predictions</strong></p>
+<p>Applications send feature data to generate classification predictions.</p>
+<p>Example:
+- Train a breast cancer classifier, deploy it as a REST API service.</p>
+<p>From the Core Manage UI, users can create a model serving task of kind 'sklearnserve+serve:run'.</p>
+<p><img alt="configure model" src="../../images/runtimes/sklearnserve-stepper.png" /></p>
+<p>Users can view the API endpoints for their deployed services in the 'services' tab.</p>
+<p><img alt="services" src="../../images/runtimes/sklearnserve-services.png" /></p>
+<hr />
+<h2 id="mlflow-model-serving">MLflow Model Serving</h2>
+<p>The <a href="../../runtimes/mlflowserve/"><strong>mlflowserve runtime</strong></a> is designed for serving models tracked and logged with MLflow, supporting multiple frameworks including scikit-learn, TensorFlow, PyTorch, and XGBoost. These tasks can be executed through MLflow's standard serving API.</p>
+<h3 id="example-runtime-tasks_1">Example runtime tasks</h3>
+<p><strong>Multi-framework model serving</strong></p>
+<p>Applications send inference requests to models regardless of the underlying framework.</p>
+<p>Example:
+- Train an iris classifier (e.g., scikit-learn), log the model with MLflow, and deploy the logged artifact as a REST serving endpoint.</p>
+<p>From the Core Manage UI, users can create a model serving task of kind 'mlflowserve+serve:run'.</p>
+<p><img alt="configure model" src="../../images/runtimes/mlflowserve-stepper.png" /></p>
+<p>Users can view the API endpoints for their deployed services in the 'services' tab.</p>
+<p><img alt="services" src="../../images/runtimes/mlflowserve-services.png" /></p>
+<hr />
+<h2 id="custom-model-serving">Custom Model Serving</h2>
+<p>It is possible to expose a custom model through the <a href="../../runtimes/python/"><strong>python serverless</strong></a> or <a href="../../runtimes/oi/"><strong>openinference</strong></a> runtimes. In the first case, the API is not limited to a specific format or protocol, and it is possible to define arbitrary HTTP API for interacting with the model. In the second case the exposed API is defined by the Open Inference v2 protocol, and allows for both HTTP and gRPC protocols. A custom model can be loaded from a local file or from a remote URL. </p>
+<h3 id="example-runtime-tasks_2">Example runtime tasks</h3>
 <ul>
-<li>
-<p><strong>No Automatic Expiration by Default</strong>:
-    PATs do not expire automatically unless an expiration policy is enforced by platform administrators. This makes them suitable for use cases requiring persistent access without frequent reauthentication.</p>
-</li>
-<li>
-<p><strong>Interoperable with Standard Access Token Workflows</strong>:
-    PATs can be used in any context where a standard access token is accepted, including calling APIs and authenticating with platform services.</p>
-</li>
-<li>
-<p><strong>Supports Token Exchange (Security Token Service - STS)</strong>:
-    PATs can be used in token exchange flows to obtain short-lived standard access tokens and associated credentials, aligning with security best practices for downstream service interactions.</p>
-</li>
-<li>
-<p><strong>Named Tokens</strong>:
-    Each PAT must be assigned a human-readable name upon creation. This name helps users identify and manage their tokens more easily in the web console.</p>
-</li>
-<li>
-<p><strong>User-Controlled Lifecycle Management</strong>:
-    PATs can be revoked at any time by their owner via the web console, providing a manual method of invalidating tokens if they are no longer needed or are believed to be compromised.</p>
-</li>
-<li>
-<p><strong>Opaque Format</strong>:
-    PATs are opaque strings, meaning their contents are not encoded in a readable format like JWTs (JSON Web Tokens). Their structure and claims are not introspectable by clients and must be validated by the platform.</p>
-</li>
+<li>Train a computer vision object detector using HuggingFace transformers library and publish the model on huggingface.co</li>
+<li>Define a Python inference function that accespts the image as byte array input and returns a prediction</li>
+<li>Define the corresponding input and ouptu tensor definitions and deploy the function using the Open Inference runtime.</li>
 </ul>
-<p>Typical Use Cases:</p>
-<ul>
-<li>
-<p>Command-line tools or scripts requiring persistent access without interactive login</p>
-</li>
-<li>
-<p>Integration with CI/CD pipelines</p>
-</li>
-<li>
-<p>Applications that require non-expiring or manually managed credentials</p>
-</li>
-<li>
-<p>Access delegation to long-lived background jobs</p>
-</li>
-</ul>
-<h2 id="security-considerations">Security Considerations</h2>
-<p>Because PATs typically do not expire automatically and are opaque, they should be treated as sensitive credentials. It is strongly recommended to:</p>
-<ul>
-<li>
-<p>Store PATs securely (e.g., in encrypted secrets managers)</p>
-</li>
-<li>
-<p>Use token exchange to obtain short-lived credentials for actual API calls</p>
-</li>
-<li>
-<p>Regularly review and rotate PATs</p>
-</li>
-<li>
-<p>Revoke unused or compromised tokens immediately</p>
-</li>
-</ul>
-<h2 id="token-management-via-ui">Token management via UI</h2>
-<p>When logged in the web console, users can create, review and revoke <strong>Personal Access Tokens</strong> from the user menu, accessible via the top right dropdown with the username. </p>
-<p><img alt="User menu" src="../../images/console/user-menu.png" /></p>
-<p>Select <em>Configuration</em> to open the user management page and then scroll down to the <em>Personal Access Tokens</em> section.</p>
-<p><img alt="PAT section" src="../../images/console/pat-section.png" /></p>
-<p>When adding a <em>PAT</em>, the form asks for a name and then lets users select which kind of permissions will be given to the newly created token. On creation, the token <em>value</em> will be shown once, and then stored secretly in the platform.</p>
-<p><strong>Copy the token value and store securely: it won't be readable anymore!</strong></p>
-<p><img alt="PAT creation" src="../../images/console/pat-create.png" /></p>
-<p>From now on, the token can be freely used wherever an <em>access token</em> would be required. At any given time, owner can revoke the token from the same page by selecting <em>Delete</em> and confirming the removal.</p>
+<hr />
+<h2 id="summary">Summary</h2>
+<p>On the DigitalHub platform, machine learning models can be served using multiple runtimes while maintaining <strong>consistent prediction API interfaces</strong>. This enables applications to perform various ML inference tasks without changing client-side integration.</p>
+<table>
+<thead>
+<tr>
+<th>Runtime</th>
+<th>Example Tasks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sklearnserve</td>
+<td>classification, regression, clustering</td>
+</tr>
+<tr>
+<td>mlflowserve</td>
+<td>multi-framework serving, model versioning, A/B testing</td>
+</tr>
+<tr>
+<td>python serverless</td>
+<td>custom model serving</td>
+</tr>
+<tr>
+<td>openinference</td>
+<td>custom model serving with Open Inference v2 protocol</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: Refer to the Tutorial section for more detailed usage and examples.</p>
 
 
 

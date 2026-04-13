@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/tasks/pat/">
+        <link rel="canonical" href="http://docs/user/ml-tasks/serving-generative-models/">
       
       
-        <link rel="prev" href="../secrets/">
+        <link rel="prev" href="../models/">
       
       
-        <link rel="next" href="../../data-tasks/data/">
+        <link rel="next" href="../serving-ml-models/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Use Personal Access Tokens (PATs) - Digital Hub</title>
+        <title>Serving Generative Models - Digital Hub</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#use-personal-access-tokens-pats" class="md-skip">
+        <a href="#serving-generative-models" class="md-skip">
           Skip to content
         </a>
       
@@ -194,7 +194,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Use Personal Access Tokens (PATs)
+              Serving Generative Models
             
           </span>
         </div>
@@ -532,20 +532,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -566,7 +564,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -584,7 +582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/" class="md-nav__link">
+      <a href="../../tasks/projects/" class="md-nav__link">
         
   
   
@@ -612,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../functions/" class="md-nav__link">
+      <a href="../../tasks/functions/" class="md-nav__link">
         
   
   
@@ -640,7 +638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/" class="md-nav__link">
+      <a href="../../tasks/services/" class="md-nav__link">
         
   
   
@@ -668,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workflows/" class="md-nav__link">
+      <a href="../../tasks/workflows/" class="md-nav__link">
         
   
   
@@ -696,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../triggers/" class="md-nav__link">
+      <a href="../../tasks/triggers/" class="md-nav__link">
         
   
   
@@ -724,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workspaces/" class="md-nav__link">
+      <a href="../../tasks/workspaces/" class="md-nav__link">
         
   
   
@@ -752,7 +750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/" class="md-nav__link">
+      <a href="../../tasks/kubernetes-resources/" class="md-nav__link">
         
   
   
@@ -780,7 +778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code-source/" class="md-nav__link">
+      <a href="../../tasks/code-source/" class="md-nav__link">
         
   
   
@@ -808,7 +806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../secrets/" class="md-nav__link">
+      <a href="../../tasks/secrets/" class="md-nav__link">
         
   
   
@@ -833,37 +831,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Use Personal Access Tokens (PATs)
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../tasks/pat/" class="md-nav__link">
         
   
   
@@ -879,48 +850,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#security-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Security Considerations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#token-management-via-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Token management via UI
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1049,18 +978,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
         
           
           <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
@@ -1081,7 +1012,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1099,7 +1030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ml-tasks/models/" class="md-nav__link">
+      <a href="../models/" class="md-nav__link">
         
   
   
@@ -1124,10 +1055,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../ml-tasks/serving-generative-models/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serving Generative Models
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1143,6 +1101,132 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#text-generation-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Generation Tasks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Text Generation Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-of-vllmserve-textruntime-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example of vllmserve-textruntime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedding-and-vector-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Embedding and Vector Tasks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Embedding and Vector Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-of-vllmserve-pooling-runtime-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example of vllmserve-pooling runtime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-of-kubeai-text-runtime-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example of kubeai-text runtime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-processing-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio Processing Tasks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio Processing Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-vllmserve-speech-runtime-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example vllmserve-speech runtime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1155,7 +1239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ml-tasks/serving-ml-models/" class="md-nav__link">
+      <a href="../serving-ml-models/" class="md-nav__link">
         
   
   
@@ -1183,7 +1267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ml-tasks/metrics/" class="md-nav__link">
+      <a href="../metrics/" class="md-nav__link">
         
   
   
@@ -1211,7 +1295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ml-tasks/guardrails/" class="md-nav__link">
+      <a href="../guardrails/" class="md-nav__link">
         
   
   
@@ -2381,21 +2465,105 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#security-considerations" class="md-nav__link">
+  <a href="#text-generation-tasks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Security Considerations
+        Text Generation Tasks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Text Generation Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-of-vllmserve-textruntime-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example of vllmserve-textruntime tasks
       
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#token-management-via-ui" class="md-nav__link">
+  <a href="#embedding-and-vector-tasks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Token management via UI
+        Embedding and Vector Tasks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Embedding and Vector Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-of-vllmserve-pooling-runtime-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example of vllmserve-pooling runtime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-of-kubeai-text-runtime-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example of kubeai-text runtime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-processing-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audio Processing Tasks
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio Processing Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-vllmserve-speech-runtime-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example vllmserve-speech runtime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
       
     </span>
   </a>
@@ -2450,7 +2618,7 @@
     
     
       <li class="md-path__item">
-        <a href="../projects/" class="md-path__link">
+        <a href="../../tasks/projects/" class="md-path__link">
           
   <span class="md-ellipsis">
     Tasks
@@ -2471,10 +2639,10 @@
     
     
       <li class="md-path__item">
-        <a href="../projects/" class="md-path__link">
+        <a href="../models/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Common Tasks
+    ML-related Tasks
   </span>
 
         </a>
@@ -2496,75 +2664,106 @@
   
 
 
-<h1 id="use-personal-access-tokens-pats">Use Personal Access Tokens (PATs)</h1>
-<p>Personal Access Tokens (PATs) are a special type of access token that users can generate directly from the platform’s web console. PATs are designed to simplify user authentication for long-lived or automation-related use cases, offering the same functionality as standard access tokens with additional control features.</p>
-<p>Key Characteristics:</p>
+<h1 id="serving-generative-models">Serving Generative Models</h1>
+<p>Serving generative models means exposing trained models through APIs so that applications can send requests and receive generated outputs in real time. Once deployed, the runtime environment manages inference requests, routing, preprocessing, and response generation.</p>
+<p>On the platform, these interactions are performed, where possible, through <strong>OpenAI-compatible APIs</strong>, allowing applications and tools to interact with deployed models using standard OpenAI protocols. This enables easy integration of generative AI capabilities into applications, automation pipelines, and development tools without requiring custom APIs. By combining these serving options with OpenAI-compatible APIs, the DigitalHub platform enables users to quickly deploy and operate generative AI models without implementing custom inference services. Using the available runtimes, users can configure and deploy models directly through the platform by specifying only a small set of parameters such as the model model name, runtime type, and optional adapters or runtime arguments. </p>
+<p>This approach enables <strong>no-code or low-code model deployment</strong>, where the platform automatically handles the underlying infrastructure required to run the model, including container configuration, API exposure, and runtime orchestration.</p>
+<p>Different runtimes support different types of generative workloads. Specifically, we distinguish between</p>
 <ul>
-<li>
-<p><strong>No Automatic Expiration by Default</strong>:
-    PATs do not expire automatically unless an expiration policy is enforced by platform administrators. This makes them suitable for use cases requiring persistent access without frequent reauthentication.</p>
-</li>
-<li>
-<p><strong>Interoperable with Standard Access Token Workflows</strong>:
-    PATs can be used in any context where a standard access token is accepted, including calling APIs and authenticating with platform services.</p>
-</li>
-<li>
-<p><strong>Supports Token Exchange (Security Token Service - STS)</strong>:
-    PATs can be used in token exchange flows to obtain short-lived standard access tokens and associated credentials, aligning with security best practices for downstream service interactions.</p>
-</li>
-<li>
-<p><strong>Named Tokens</strong>:
-    Each PAT must be assigned a human-readable name upon creation. This name helps users identify and manage their tokens more easily in the web console.</p>
-</li>
-<li>
-<p><strong>User-Controlled Lifecycle Management</strong>:
-    PATs can be revoked at any time by their owner via the web console, providing a manual method of invalidating tokens if they are no longer needed or are believed to be compromised.</p>
-</li>
-<li>
-<p><strong>Opaque Format</strong>:
-    PATs are opaque strings, meaning their contents are not encoded in a readable format like JWTs (JSON Web Tokens). Their structure and claims are not introspectable by clients and must be validated by the platform.</p>
-</li>
+<li><strong>Text Generation Tasks</strong></li>
+<li><strong>Embedding and Vector Tasks</strong></li>
+<li><strong>Speech Processing Tasks</strong></li>
 </ul>
-<p>Typical Use Cases:</p>
-<ul>
-<li>
-<p>Command-line tools or scripts requiring persistent access without interactive login</p>
-</li>
-<li>
-<p>Integration with CI/CD pipelines</p>
-</li>
-<li>
-<p>Applications that require non-expiring or manually managed credentials</p>
-</li>
-<li>
-<p>Access delegation to long-lived background jobs</p>
-</li>
-</ul>
-<h2 id="security-considerations">Security Considerations</h2>
-<p>Because PATs typically do not expire automatically and are opaque, they should be treated as sensitive credentials. It is strongly recommended to:</p>
-<ul>
-<li>
-<p>Store PATs securely (e.g., in encrypted secrets managers)</p>
-</li>
-<li>
-<p>Use token exchange to obtain short-lived credentials for actual API calls</p>
-</li>
-<li>
-<p>Regularly review and rotate PATs</p>
-</li>
-<li>
-<p>Revoke unused or compromised tokens immediately</p>
-</li>
-</ul>
-<h2 id="token-management-via-ui">Token management via UI</h2>
-<p>When logged in the web console, users can create, review and revoke <strong>Personal Access Tokens</strong> from the user menu, accessible via the top right dropdown with the username. </p>
-<p><img alt="User menu" src="../../images/console/user-menu.png" /></p>
-<p>Select <em>Configuration</em> to open the user management page and then scroll down to the <em>Personal Access Tokens</em> section.</p>
-<p><img alt="PAT section" src="../../images/console/pat-section.png" /></p>
-<p>When adding a <em>PAT</em>, the form asks for a name and then lets users select which kind of permissions will be given to the newly created token. On creation, the token <em>value</em> will be shown once, and then stored secretly in the platform.</p>
-<p><strong>Copy the token value and store securely: it won't be readable anymore!</strong></p>
-<p><img alt="PAT creation" src="../../images/console/pat-create.png" /></p>
-<p>From now on, the token can be freely used wherever an <em>access token</em> would be required. At any given time, owner can revoke the token from the same page by selecting <em>Delete</em> and confirming the removal.</p>
+<p>The following examples illustrate typical runtime tasks that can be executed on the platform using either the platform SDK or the core console UI as indicated below.</p>
+<hr />
+<h2 id="text-generation-tasks">Text Generation Tasks</h2>
+<p>Text generation tasks, such as completion and chat generation, may be performed either through the <a href="../../runtimes/llmserve/#vllm-serving-runtime"><strong>vllmserve-text</strong></a> runtime or with the <a href="../../runtimes/llmserve/#kubeai-text-runtime"><strong>kubeai-text</strong></a> runtime.</p>
+<p>The <a href="../../runtimes/llmserve/#vllm-serving-runtime"><strong>vllmserve-text</strong></a> runtime is commonly used for text generation and conversational workloads. Through the OpenAI-compatible APIs available in the DigitalHub platform, applications can send prompts or chat messages and receive generated responses. VLLM runtime can be configured in the same way the vLLM engine, it allows for integrating multiple LoRA adapters, etc.</p>
+<p>The <a href="../../runtimes/llmserve/#kubeai-text-runtime"><strong>kubeai-text</strong></a> runtime is a more advanced alternative that allows for serving multiple models or adapters and auto-scaling, allowing for using both vLLM and OLLama engines for different types of scenarios. For example, OLLama is more appropriate for CPU-only workloads, while vLLM is more suitable for GPU workloads and is more flexible for production-oriented tasks.</p>
+<h3 id="example-of-vllmserve-textruntime-tasks">Example of vllmserve-textruntime tasks</h3>
+<p><strong>Chat assistants</strong></p>
+<p>Applications send chat completion requests to generate conversational responses.</p>
+<p>Example:
+- A chatbot sends a user prompt asking for help writing an email.
+- The request is sent to the model using the OpenAI <strong>chat completions API</strong>.
+- The generated response is streamed back to the client application.</p>
+<p>From the Core Manage UI, users can create a chat assistant API task of kind 'vllmserve-text+serve:run' as shown.</p>
+<p><img alt="configure model" src="../../images/runtimes/vllmserve-text-stepper1.png" /></p>
+<p><img alt="customize parameters" src="../../images/runtimes/vllmserve-text-stepper2.png" /></p>
+<p>Users can view the API endpoints for their deployed services in the 'services' tab.</p>
+<p><img alt="services" src="../../images/runtimes/vllmserve-text-services.png" /></p>
+<hr />
+<h2 id="embedding-and-vector-tasks">Embedding and Vector Tasks</h2>
+<p>Frequently genAI applications require supporting tasks, such as embedding, ranking, scoring, and encoding. They are required, for example, for generating vector embeddings used in search, recommendation systems, and semantic analysis. In the platform these tasks may be implemented using the <a href="../../runtimes/llmserve/#vllm-serving-runtime"><strong>vllmserve-pooling</strong></a> runtime or the <a href="../../runtimes/llmserve/#kubeai-text-runtime"><strong>kubeai-text</strong></a> runtime (only for embedding).</p>
+<h3 id="example-of-vllmserve-pooling-runtime-tasks">Example of vllmserve-pooling runtime tasks</h3>
+<p><strong>Semantic search</strong></p>
+<p>Applications convert queries and documents into embeddings to perform similarity searches.</p>
+<p>Example:
+- A user searches for documents related to a specific topic.
+- The runtime generates an embedding vector for the query.
+- The search engine compares it with stored document embeddings.</p>
+<p>From the Core Manage UI, users can create a chat assistant API task of kind 'vllmserve-pooling+serve:run' as shown. </p>
+<p><img alt="configure model" src="../../images/runtimes/vllmserve-pooling-stepper1.png" /></p>
+<p>Users can view the API endpoints for their deployed services in the 'services' tab.</p>
+<p><img alt="services" src="../../images/runtimes/vllmserve-pooling-services.png" /></p>
+<h3 id="example-of-kubeai-text-runtime-tasks">Example of kubeai-text runtime tasks</h3>
+<p><strong>Text embedding with KubeAI</strong></p>
+<p>Applications convert text into vector embeddings for semantic search and similarity analysis.</p>
+<p>Example:
+- A document management system needs to index and search documents.
+- The runtime generates embedding vectors for documents and queries.
+- Similarity comparisons identify relevant documents.</p>
+<p>From the Core Manage UI, users can create a text embedding API task of kind 'kubeai-text+serve:run' and the services will be avaliable as shown below.</p>
+<p><img alt="configure model" src="../../images/runtimes/kubeai-text-run.png" /></p>
+<hr />
+<h2 id="audio-processing-tasks">Audio Processing Tasks</h2>
+<p>Audio processing tasks, such as speech recognition and translation, may be performed through the <a href="../../runtimes/llmserve/#vllm-serving-runtime"><strong>vllmserve-speech</strong></a> runtime or with the <a href="../../runtimes/llmserve/#kubeai-speech-runtime"><strong>kubeai-speech</strong></a> runtime.</p>
+<p>The <a href="../../runtimes/llmserve/#vllm-serving-runtime"><strong>vllmserve-speech</strong></a> runtime supports audio-based AI tasks such as speech recognition and translation. These capabilities are also accessible through OpenAI-compatible audio APIs exposed by the platform.</p>
+<h3 id="example-vllmserve-speech-runtime-tasks">Example vllmserve-speech runtime tasks</h3>
+<p><strong>Speech transcription</strong></p>
+<p>Audio recordings are processed and converted into text.</p>
+<p>Example:
+- A meeting recording is uploaded through the <strong>audio transcription API</strong>.
+- The runtime invokes the speech model.
+- The generated transcript is returned to the client.</p>
+<p>From the Core Manage UI, users can create a chat assistant API task of kind 'vllmserve-speech+serve:run' as shown. </p>
+<p><img alt="configure model" src="../../images/runtimes/vllmserve-speech-stepper1.png" /></p>
+<p>Users can view the API endpoints for their deployed services in the 'services' tab.</p>
+<p><img alt="services" src="../../images/runtimes/vllmserve-speech-services.png" /></p>
+<hr />
+<h2 id="summary">Summary</h2>
+<p>On the DigitalHub platform, generative models can be served using multiple runtimes while maintaining a <strong>consistent OpenAI-compatible API interface</strong>. This enables applications to perform a variety of AI tasks—such as text generation, speech processing, and embedding creation—without changing the client-side integration.</p>
+<table>
+<thead>
+<tr>
+<th>Runtime</th>
+<th>Example Tasks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vllmserve-text</td>
+<td>chat generation, text completion, code generation</td>
+</tr>
+<tr>
+<td>kubeai-text</td>
+<td>multi-model serving, adapter routing, autoscaling, text embedding</td>
+</tr>
+<tr>
+<td>vllmserve-pooling</td>
+<td>embeddings, semantic search, recommendations</td>
+</tr>
+<tr>
+<td>vllmserve-speech</td>
+<td>speech transcription, audio translation</td>
+</tr>
+<tr>
+<td>kubeai-speech</td>
+<td>speech transcription</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: Refer to the Tutorial section for more detailed usage and examples.</p>
 
 
 

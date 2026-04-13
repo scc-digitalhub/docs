@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="http://docs/user/tasks/pat/">
+        <link rel="canonical" href="http://docs/user/ml-tasks/guardrails/">
       
       
-        <link rel="prev" href="../secrets/">
+        <link rel="prev" href="../metrics/">
       
       
-        <link rel="next" href="../../data-tasks/data/">
+        <link rel="next" href="../../components/dashboard/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Use Personal Access Tokens (PATs) - Digital Hub</title>
+        <title>AI Service Guardrails - Digital Hub</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#use-personal-access-tokens-pats" class="md-skip">
+        <a href="#ai-service-guardrails" class="md-skip">
           Skip to content
         </a>
       
@@ -194,7 +194,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Use Personal Access Tokens (PATs)
+              AI Service Guardrails
             
           </span>
         </div>
@@ -532,20 +532,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -566,7 +564,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -584,7 +582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/" class="md-nav__link">
+      <a href="../../tasks/projects/" class="md-nav__link">
         
   
   
@@ -612,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../functions/" class="md-nav__link">
+      <a href="../../tasks/functions/" class="md-nav__link">
         
   
   
@@ -640,7 +638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/" class="md-nav__link">
+      <a href="../../tasks/services/" class="md-nav__link">
         
   
   
@@ -668,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workflows/" class="md-nav__link">
+      <a href="../../tasks/workflows/" class="md-nav__link">
         
   
   
@@ -696,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../triggers/" class="md-nav__link">
+      <a href="../../tasks/triggers/" class="md-nav__link">
         
   
   
@@ -724,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workspaces/" class="md-nav__link">
+      <a href="../../tasks/workspaces/" class="md-nav__link">
         
   
   
@@ -752,7 +750,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/" class="md-nav__link">
+      <a href="../../tasks/kubernetes-resources/" class="md-nav__link">
         
   
   
@@ -780,7 +778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code-source/" class="md-nav__link">
+      <a href="../../tasks/code-source/" class="md-nav__link">
         
   
   
@@ -808,7 +806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../secrets/" class="md-nav__link">
+      <a href="../../tasks/secrets/" class="md-nav__link">
         
   
   
@@ -833,37 +831,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Use Personal Access Tokens (PATs)
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../tasks/pat/" class="md-nav__link">
         
   
   
@@ -879,48 +850,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#security-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Security Considerations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#token-management-via-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Token management via UI
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1049,18 +978,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
         
           
           <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
@@ -1081,7 +1012,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1099,7 +1030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ml-tasks/models/" class="md-nav__link">
+      <a href="../models/" class="md-nav__link">
         
   
   
@@ -1127,7 +1058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ml-tasks/serving-generative-models/" class="md-nav__link">
+      <a href="../serving-generative-models/" class="md-nav__link">
         
   
   
@@ -1155,7 +1086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ml-tasks/serving-ml-models/" class="md-nav__link">
+      <a href="../serving-ml-models/" class="md-nav__link">
         
   
   
@@ -1183,7 +1114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ml-tasks/metrics/" class="md-nav__link">
+      <a href="../metrics/" class="md-nav__link">
         
   
   
@@ -1208,10 +1139,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../ml-tasks/guardrails/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Service Guardrails
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1227,6 +1185,131 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#guardrails-for-llm-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardrails for LLM Services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guardrails-for-inference-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardrails for Inference Services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-integrated-guardrails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application-integrated Guardrails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxy-gateway-guardrails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proxy / Gateway Guardrails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-post-validation-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre / Post Validation Services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-guardrail-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM Guardrail Frameworks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guardrails-on-the-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardrails on the Platform
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2381,10 +2464,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#security-considerations" class="md-nav__link">
+  <a href="#guardrails-for-llm-services" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Security Considerations
+        Guardrails for LLM Services
       
     </span>
   </a>
@@ -2392,10 +2475,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#token-management-via-ui" class="md-nav__link">
+  <a href="#guardrails-for-inference-services" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Token management via UI
+        Guardrails for Inference Services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-integrated-guardrails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application-integrated Guardrails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxy-gateway-guardrails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proxy / Gateway Guardrails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-post-validation-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre / Post Validation Services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pattern Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#llm-guardrail-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LLM Guardrail Frameworks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#guardrails-on-the-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardrails on the Platform
       
     </span>
   </a>
@@ -2450,7 +2616,7 @@
     
     
       <li class="md-path__item">
-        <a href="../projects/" class="md-path__link">
+        <a href="../../tasks/projects/" class="md-path__link">
           
   <span class="md-ellipsis">
     Tasks
@@ -2471,10 +2637,10 @@
     
     
       <li class="md-path__item">
-        <a href="../projects/" class="md-path__link">
+        <a href="../models/" class="md-path__link">
           
   <span class="md-ellipsis">
-    Common Tasks
+    ML-related Tasks
   </span>
 
         </a>
@@ -2496,75 +2662,187 @@
   
 
 
-<h1 id="use-personal-access-tokens-pats">Use Personal Access Tokens (PATs)</h1>
-<p>Personal Access Tokens (PATs) are a special type of access token that users can generate directly from the platform’s web console. PATs are designed to simplify user authentication for long-lived or automation-related use cases, offering the same functionality as standard access tokens with additional control features.</p>
-<p>Key Characteristics:</p>
+<h1 id="ai-service-guardrails">AI Service Guardrails</h1>
+<p>Guardrails are safety and control mechanisms placed around AI models and services to ensure that their inputs and outputs meet defined quality, safety, and policy requirements. They act as a protective layer that intercepts, inspects, and optionally modifies or blocks requests and responses, without changing the underlying model itself.</p>
+<p>In practice, guardrails are used to:</p>
 <ul>
-<li>
-<p><strong>No Automatic Expiration by Default</strong>:
-    PATs do not expire automatically unless an expiration policy is enforced by platform administrators. This makes them suitable for use cases requiring persistent access without frequent reauthentication.</p>
-</li>
-<li>
-<p><strong>Interoperable with Standard Access Token Workflows</strong>:
-    PATs can be used in any context where a standard access token is accepted, including calling APIs and authenticating with platform services.</p>
-</li>
-<li>
-<p><strong>Supports Token Exchange (Security Token Service - STS)</strong>:
-    PATs can be used in token exchange flows to obtain short-lived standard access tokens and associated credentials, aligning with security best practices for downstream service interactions.</p>
-</li>
-<li>
-<p><strong>Named Tokens</strong>:
-    Each PAT must be assigned a human-readable name upon creation. This name helps users identify and manage their tokens more easily in the web console.</p>
-</li>
-<li>
-<p><strong>User-Controlled Lifecycle Management</strong>:
-    PATs can be revoked at any time by their owner via the web console, providing a manual method of invalidating tokens if they are no longer needed or are believed to be compromised.</p>
-</li>
-<li>
-<p><strong>Opaque Format</strong>:
-    PATs are opaque strings, meaning their contents are not encoded in a readable format like JWTs (JSON Web Tokens). Their structure and claims are not introspectable by clients and must be validated by the platform.</p>
-</li>
+<li><strong>Filter harmful or inappropriate content</strong> — block requests containing toxic, offensive, or policy-violating text before they reach the model, and filter model outputs before they are returned to the user.</li>
+<li><strong>Prevent prompt injection attacks</strong> — detect and neutralize attempts to manipulate a model's behaviour through adversarial instructions embedded in user input.</li>
+<li><strong>Enforce output structure and validity</strong> — ensure responses conform to an expected schema, format, or value range, especially for structured output tasks.</li>
+<li><strong>Detect and redact sensitive information</strong> — identify and mask personally identifiable information (PII) or confidential data in both inputs and outputs.</li>
+<li><strong>Monitor for model drift and anomalies</strong> — flag responses that fall outside expected behavioural boundaries, signalling potential degradation or misuse.</li>
+<li><strong>Apply domain or business rules</strong> — enforce organisation-specific policies such as topic restrictions, regulatory compliance, or brand-safe language.</li>
 </ul>
-<p>Typical Use Cases:</p>
+<h3 id="guardrails-for-llm-services">Guardrails for LLM Services</h3>
+<p>Large language models are particularly sensitive to the quality and intent of user inputs, and their open-ended outputs require careful monitoring. Guardrails for LLMs are commonly applied at two stages: before the model receives a prompt (<strong>pre-processing</strong>) and after the model generates a response (<strong>post-processing</strong>).</p>
+<p>Pre-processing guardrails (input)</p>
 <ul>
-<li>
-<p>Command-line tools or scripts requiring persistent access without interactive login</p>
-</li>
-<li>
-<p>Integration with CI/CD pipelines</p>
-</li>
-<li>
-<p>Applications that require non-expiring or manually managed credentials</p>
-</li>
-<li>
-<p>Access delegation to long-lived background jobs</p>
-</li>
+<li><strong>Toxicity and hate speech detection</strong> — Scan user messages for harmful language and either reject the request or sanitise the input before forwarding it to the model.</li>
+<li><strong>Prompt injection detection</strong> — Identify attempts to override system instructions or extract sensitive information through maliciously crafted prompts.</li>
+<li><strong>PII detection and anonymisation</strong> — Detect names, emails, ID numbers, or other personal data in the input and redact or substitute them before the model processes the request.</li>
+<li><strong>Topic and intent classification</strong> — Route or reject requests based on the detected topic, ensuring the model only handles in-scope queries.</li>
+<li><strong>Input length and rate limiting</strong> — Enforce token limits or rate constraints to prevent abuse.</li>
 </ul>
-<h2 id="security-considerations">Security Considerations</h2>
-<p>Because PATs typically do not expire automatically and are opaque, they should be treated as sensitive credentials. It is strongly recommended to:</p>
+<p>Post-processing guardrails (output)</p>
 <ul>
-<li>
-<p>Store PATs securely (e.g., in encrypted secrets managers)</p>
-</li>
-<li>
-<p>Use token exchange to obtain short-lived credentials for actual API calls</p>
-</li>
-<li>
-<p>Regularly review and rotate PATs</p>
-</li>
-<li>
-<p>Revoke unused or compromised tokens immediately</p>
-</li>
+<li><strong>Output toxicity filtering</strong> — Re-scan generated text for harmful content that the model may have produced despite a safe input.</li>
+<li><strong>Fact grounding and hallucination detection</strong> — Compare the model's answer against a knowledge base or retrieved context to flag ungrounded claims.</li>
+<li><strong>Sensitive data masking</strong> — Prevent the model from leaking PII or confidential information that may have been present in retrieved context.</li>
+<li><strong>Format and schema validation</strong> — Ensure the response matches the expected structure (e.g., valid JSON, specific field values) before returning it to the caller.</li>
+<li><strong>Brand and tone enforcement</strong> — Check that the language, style, and sentiment of the response align with organisational guidelines.</li>
 </ul>
-<h2 id="token-management-via-ui">Token management via UI</h2>
-<p>When logged in the web console, users can create, review and revoke <strong>Personal Access Tokens</strong> from the user menu, accessible via the top right dropdown with the username. </p>
-<p><img alt="User menu" src="../../images/console/user-menu.png" /></p>
-<p>Select <em>Configuration</em> to open the user management page and then scroll down to the <em>Personal Access Tokens</em> section.</p>
-<p><img alt="PAT section" src="../../images/console/pat-section.png" /></p>
-<p>When adding a <em>PAT</em>, the form asks for a name and then lets users select which kind of permissions will be given to the newly created token. On creation, the token <em>value</em> will be shown once, and then stored secretly in the platform.</p>
-<p><strong>Copy the token value and store securely: it won't be readable anymore!</strong></p>
-<p><img alt="PAT creation" src="../../images/console/pat-create.png" /></p>
-<p>From now on, the token can be freely used wherever an <em>access token</em> would be required. At any given time, owner can revoke the token from the same page by selecting <em>Delete</em> and confirming the removal.</p>
+<h3 id="guardrails-for-inference-services">Guardrails for Inference Services</h3>
+<p>Beyond LLMs, guardrails are equally valuable for traditional machine learning inference services that serve classification, regression, or scoring models.</p>
+<ul>
+<li><strong>Input validation</strong> — Verify that incoming feature vectors contain values within expected ranges, have no missing mandatory fields, and match the schema the model was trained on. Reject or impute malformed requests before they reach the model.</li>
+<li><strong>Distribution monitoring</strong> — Compare incoming data against the training distribution to detect data drift. Flag requests where input features differ significantly from what the model has seen, as predictions in these regions are likely unreliable.</li>
+<li><strong>Output range checking</strong> — Ensure prediction scores, probabilities, or regression outputs fall within plausible bounds, catching numerical errors or model failures early.</li>
+<li><strong>Confidence thresholding</strong> — Block or escalate low-confidence predictions instead of returning uncertain results directly to the caller.</li>
+<li><strong>Audit logging</strong> — Record inputs and outputs for compliance, debugging, and monitoring, without exposing them to downstream systems.</li>
+</ul>
+<hr />
+<h3 id="architecture-patterns">Architecture Patterns</h3>
+<p>There is no single way to deploy guardrails. The right architecture depends on how the AI service is consumed, who controls the client, and how much latency overhead is acceptable. The following patterns represent the most common approaches.</p>
+<h4 id="application-integrated-guardrails">Application-integrated Guardrails</h4>
+<p>In this pattern the guardrail logic lives inside the application that calls the AI service. Before sending a request the application invokes a validation function, and after receiving a response it runs output checks. No additional infrastructure is required.</p>
+<div class="highlight"><pre><span></span><code>User → Application → [input guard] → AI Service → [output guard] → Application → User
+</code></pre></div>
+<p><strong>When to use:</strong> when the client application is under your control, when you need access to application-level context (user identity, session history) during validation, or when you want to keep infrastructure simple.</p>
+<p><strong>Trade-offs:</strong> guardrail coverage depends on every client implementing it correctly. If the AI service is called from multiple applications, each must independently apply the same logic, which creates duplication and inconsistency risk. Bypassing guardrails by calling the AI service directly is possible.</p>
+<p>Typical implementations use libraries such as <a href="https://docs.langchain.com/oss/python/langchain/guardrails">LangChain guardrails</a> or <a href="https://docs.nvidia.com/nemo/guardrails/latest/integration/langchain/langchain-integration.html">NeMo Guardrails</a> integration for LangChain.</p>
+<h4 id="proxy-gateway-guardrails">Proxy / Gateway Guardrails</h4>
+<p>In this pattern the guardrail logic is incapsulated in a dedicated server that sits between the AI service and the client and exposes the same API, such as Open AI-compatible APIs. This is particularly useful when the AI service is consumed by multiple clients or third-party applications, or when you need guaranteed, centralised enforcement that cannot be bypassed, and making the guardrail more scalable and efficient. Also, for LLM guardrails the proxy service implements the asynchronous streaming API, which is useful for handling long-running conversations.</p>
+<div class="highlight"><pre><span></span><code>User → Proxy  → [input guard] → AI Service → [output guard] → Proxy / Gateway → User
+</code></pre></div>
+<p><strong>When to use:</strong> when the API requires complex flows (e.g., LLM streaming), when the AI service is consumed by multiple clients or third-party applications, when you need guaranteed, centralised enforcement that cannot be bypassed, or when guardrail rules must change without redeploying client code.</p>
+<p><strong>Trade-offs:</strong> the proxy is an additional network hop and a potential bottleneck. </p>
+<p>Typical implementation of this  pattern use libraries like <a href="https://docs.nvidia.com/nemo/guardrails/latest/run-rails/index.html">NeMo Guardrails API Server</a> or <a href="https://guardrailsai.com/guardrails/docs">Guardrails AI</a>.</p>
+<hr />
+<h4 id="pre-post-validation-services">Pre / Post Validation Services</h4>
+<p>In this pattern the guardrail logic is factored into dedicated, independently deployed microservices. The calling component — either the application or a gateway — calls these services explicitly as part of the request lifecycle.</p>
+<div class="highlight"><pre><span></span><code>                ┌──────────────────┐
+User → App ────►│ Pre-validation   │──► AI Service
+                │ Service          │         │
+                └──────────────────┘         │
+                                             ▼
+                                ┌──────────────────┐
+User ◄── App ◄──────────────────│ Post-validation  │
+                                │    Service       │
+                                └──────────────────┘
+</code></pre></div>
+<p><strong>When to use:</strong> when guardrail management is complex enough to warrant its own lifecycle (independent scaling, versioning, and testing), when different services share the same validation logic and you want a single authoritative implementation, or when guardrail models (e.g., a safety classifier) are large and should be loaded once rather than once per application instance.</p>
+<p><strong>Trade-offs:</strong> adds operational complexity — each validation service must be monitored, scaled, and kept available. Network latency for each validation call adds to end-to-end response time.</p>
+<p>This pattern is common in enterprise deployments where a content safety classifier (e.g., <strong>Llama Guard</strong> or <strong>Azure AI Content Safety</strong>) is hosted as a shared service, and multiple AI-powered features call it via a common SDK or internal API.</p>
+<p>In the platform we implement the pre- and post- validation services as Python functions deployed using the <a href="../../runtimes/guardrail/">Guardrail runtime</a> and attached to the AI service via the <a href="../../extensions/envoygw/">Envoy Gateway extension</a>. The Envoy Gateway intercept the request and response and calls the pre- and post- validation services via <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/ext_proc_filter">ExtProc Envoy extension services</a>. </p>
+<h4 id="pattern-comparison">Pattern Comparison</h4>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Application-integrated</th>
+<th>Proxy / Gateway</th>
+<th>Pre / Post Services</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enforcement guarantee</td>
+<td>Dependent on client</td>
+<td>Centralised</td>
+<td>Centralised</td>
+</tr>
+<tr>
+<td>Infrastructure overhead</td>
+<td>None</td>
+<td>Services required</td>
+<td>Services and gateway required</td>
+</tr>
+<tr>
+<td>Independent scaling</td>
+<td>No</td>
+<td>Limited</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Multi-client reuse</td>
+<td>Requires duplication</td>
+<td>Automatic</td>
+<td>Automatic</td>
+</tr>
+<tr>
+<td>Latency impact</td>
+<td>Low</td>
+<td>Low</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Suitable for</td>
+<td>Single-app, simple rules</td>
+<td>Multi-client APIs</td>
+<td>Complex or shared rules</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="llm-guardrail-frameworks">LLM Guardrail Frameworks</h3>
+<p>A growing ecosystem of tools and frameworks has emerged to help implement guardrails. The following are widely used examples.</p>
+<p><strong>NeMo Guardrails</strong></p>
+<p><a href="https://github.com/NVIDIA/NeMo-Guardrails">NVIDIA NeMo Guardrails</a> is an open-source toolkit designed specifically for adding programmable constraints to LLM-based conversational applications. It uses a declarative language called <strong>Colang</strong> to define allowed and disallowed dialogue flows, integrating directly with the LLM to steer conversations and prevent undesirable outputs.</p>
+<p>Key capabilities:</p>
+<ul>
+<li>Input and output rail definitions in a human-readable configuration format.</li>
+<li>Built-in integrations with popular LLM providers (OpenAI, HuggingFace, NVIDIA NIM).</li>
+<li>Support for fact-checking, hallucination detection, and topic restrictions.</li>
+<li>Composable rail types: topical, safety, execution, and dialog rails.</li>
+</ul>
+<p>Patterns supported:</p>
+<ul>
+<li>Application integration: directly inside the application, through integration extensions (e.g., with LangChain)</li>
+<li>Proxy: through the NeMo Guardrails API Server</li>
+</ul>
+<p>NeMo Guardrails is particularly well suited for chat assistant applications where conversation control and safety are critical.</p>
+<p><strong>Guardrails AI</strong></p>
+<p><a href="https://github.com/guardrails-ai/guardrails">Guardrails AI</a> is an open-source Python framework focused on enforcing structured, validated outputs from LLMs. It wraps LLM calls with a validation layer defined using a library of pre-built <strong>validators</strong> (called <em>guards</em>), and can automatically re-prompt the model if the output fails validation.</p>
+<p>Key capabilities:</p>
+<ul>
+<li>A rich library of validators covering format, content, PII, and more.</li>
+<li>Support for defining custom validators.</li>
+<li>Integration with major LLM providers and frameworks (OpenAI, Anthropic, LangChain).</li>
+<li>Automatic retry and self-correction loop when outputs do not meet requirements.</li>
+</ul>
+<p>Patterns supported:</p>
+<ul>
+<li>Application integration: directly inside the application, through integration extensions (e.g., with LangChain, MLFlow genAI)</li>
+<li>Proxy: through the Guardrails Server</li>
+<li>Pre- and post-processing: using the Guardrails Validators</li>
+</ul>
+<p><strong>Llama Guard</strong></p>
+<p><a href="https://ai.meta.com/research/publications/llama-guard-llm-based-input-output-safeguard-for-human-ai-conversations/">Llama Guard</a> (by Meta) is a fine-tuned LLM designed to classify both user inputs and model outputs against a configurable safety taxonomy. It acts as a separate safety classifier that can be deployed alongside the main serving model and queried as part of the request pipeline.</p>
+<p>Key capabilities:</p>
+<ul>
+<li>Classifies content into a set of harm categories (violence, hate speech, sexual content, etc.).</li>
+<li>Can be used as both a pre-processing and a post-processing rail.</li>
+<li>Configurable taxonomy allows organisations to customise the set of categories to check.</li>
+<li>Available as open weights models (Llama Guard 3 family) on HuggingFace.</li>
+</ul>
+<p>Llama Guard is appropriate when a lightweight, self-hosted safety classifier is preferred over a third-party API, especially in privacy-sensitive deployments.</p>
+<p><strong>Azure AI Content Safety</strong></p>
+<p><a href="https://learn.microsoft.com/en-us/azure/ai-services/content-safety/overview">Azure AI Content Safety</a> is a cloud API service that analyses text and images for harmful content. It provides ready-made classifiers for hate speech, violence, self-harm, and sexual content, returning severity scores that can be used to gate whether a request or response should be allowed.</p>
+<p>Key capabilities:</p>
+<ul>
+<li>Multi-category content analysis with configurable severity thresholds.</li>
+<li>Prompt Shield endpoint to detect prompt injection attempts.</li>
+<li>Groundedness detection to identify LLM hallucinations with respect to a supplied context.</li>
+<li>Available as a managed API with no infrastructure to maintain.</li>
+</ul>
+<hr />
+<h3 id="guardrails-on-the-platform">Guardrails on the Platform</h3>
+<p>On the platform, guardrails may be implemented in different ways, for what concerns the proxy or pre- and post-processing services.</p>
+<p>First, it is possible to deploy proxy using the corresponding frameworks such as NeMo Guardrails and Guardrails AI. These frameworks provide the ready to use server APIs that can be used for chat applications. <a href="../../runtimes/container/">Container</a> Runtime can be used to deploy the proxy as a container.</p>
+<p>Second, for custom AI services and ML services, one can deploy custom proxy logic using the <a href="../../runtimes/python/">Python Serverless</a> or <a href="../../runtimes/container/">Container</a> runtimes.</p>
+<p>Finally, it is possible to deploy the corresponding pre- and post-processing functions using the <a href="../../runtimes/guardrail/">Guardrail runtime</a>. In this case, each function operates as either a <strong>preprocessor</strong> (applied to incoming requests), a <strong>postprocessor</strong> (applied to outgoing responses), or a <strong>wrapprocessor</strong> (applied to both), and is exposed as a gRPC service following the <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/ext_proc_filter">Envoy ExtProc</a> specification.</p>
+<p>To attach guardrails to a deployed service, use the <a href="../../extensions/envoygw/">Envoy Gateway extension</a>. The extension creates a proxy configuration so that all traffic to the protected service passes through the guardrail functions first. Guardrail logic can leverage any external framework (such as those described above) by declaring the required libraries as Python dependencies in the function specification.</p>
+<p>See the <a href="../../runtimes/guardrail/">Guardrail runtime reference</a> and the <a href="https://scc-digitalhub.github.io/sdk-docs/reference/runtimes/guardrail/overview/">SDK guardrail documentation</a> for implementation details.</p>
 
 
 
