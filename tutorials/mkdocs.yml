@@ -61,3 +61,5 @@ nav:
   - Open Inference Model Serving:
     - "openinference/openinference.md"
     
+  - AI Guardrails:
+    - "guardrails/nemoguardrails.md"

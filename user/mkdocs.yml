@@ -36,6 +36,7 @@ nav:
         - "Serving Generative Models": "ml-tasks/serving-generative-models.md"
         - "Serving Machine Learning Models": "ml-tasks/serving-ml-models.md"
         - "ml-tasks/metrics.md"
+        - "ml-tasks/guardrails.md"
   - Components:
       - "components/dashboard.md"
       - "components/dh_console.md"
