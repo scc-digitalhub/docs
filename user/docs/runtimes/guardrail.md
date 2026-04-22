@@ -17,7 +17,7 @@ For the handler function the following assumptions should be taken into account
 
 - eventual processing errors are suppressed and ignored by the middleware; the request passes through.
 - if it is necessary to change the status of the response (in pre- or post mode), it is necessary for handler to return an ``nuclio_sdk.Response`` structure containing the ``status_code`` field with the corresponding status code different from 0.
-- if in case of ``wrapprocessor`` upon request event it is necesary to prevent the propagation to the upstream service, the wrap processor should return the result and additionally append the ``X-Processing-Status`` header to signal that the processing should be terminated with the corresponding status code. This is necessary to disntinguish from the default status code returned by the processing chain. 
+- if in case of ``wrapprocessor`` upon request event it is necesary to prevent the propagation to the upstream service, the wrap processor should return the result as ``nuclio_sdk.Response`` object with the corresponding status code. 
 - to distinguish the processing phase of ExtProc, the ``processing-phase`` header is appended to the event object. The possible values are:
   
     - process request headers: 1
