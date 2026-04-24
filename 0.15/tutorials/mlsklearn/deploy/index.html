@@ -2192,7 +2192,7 @@
   <span class="md-ellipsis">
     
   
-    AI Guardrails
+    AI and Service Guardrails
   
 
     
@@ -2208,11 +2208,39 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    AI Guardrails
+    AI and Service Guardrails
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guardrails/basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protecting Services with Guardrails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2229,6 +2257,34 @@
     
   
     Protecting LLMs with NeMo Guardrails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guardrails/guardrailsai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protecting LLMs with Guardrails
   
 
     
@@ -2380,15 +2436,10 @@ When the model is ready, invoke the endpoint:</p>
 <p>Please note that the scikit-learn model serving exposes also the Open API specification under <code>/docs</code> path.</p>
 <h2 id="create-an-api-gateway">Create an API gateway</h2>
 <p>Right now, the API is only accessible from within the environment. To make it accessible from outside, we'll need to create an API gateway.</p>
-<p>Go to the Kubernetes Resource Manager component (available from dashboard) and go to the API Gateways section. To expose a service it is necessary to define</p>
-<ul>
-<li>name of the gateway</li>
-<li>the service to expose</li>
-<li>the endpoint where to publish</li>
-<li>and the authentication method (right now only no authentication or basic authentication are available). in case of basic authentication it is necessary to specify  <em>Username</em> and <em>Password</em>.</li>
-</ul>
+<p>Go to the Kubernetes Resource Manager component (available from dashboard) and go to the HTTP Route section. To expose a service it is necessary to define 
+a set of properties. See the <a href="../../admin/charts/krm/resources/#exposing-services-externally">HTTP Route</a> instructions for details.</p>
 <p>The platform by default support exposing the methods at the subdomains of <code>services.&lt;platform-domain&gt;</code>, where platform-domain is the domain of the platform instance.</p>
-<p><img alt="KRM APIGW image" src="../../images/apigw-krm.png" /></p>
+<p><img alt="KRM APIGW image" src="../../images/krm_httproute.jpg" /></p>
 <p><em>Save</em> and, after a few moments, you will be able to call the API at the address you defined! If you set <em>Authentication</em> to <em>Basic</em>, don't forget that you have to provide the credentials.</p>
 
 

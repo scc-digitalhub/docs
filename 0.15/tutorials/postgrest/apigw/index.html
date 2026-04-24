@@ -2144,7 +2144,7 @@
   <span class="md-ellipsis">
     
   
-    AI Guardrails
+    AI and Service Guardrails
   
 
     
@@ -2160,11 +2160,39 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    AI Guardrails
+    AI and Service Guardrails
   
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guardrails/basic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protecting Services with Guardrails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -2181,6 +2209,34 @@
     
   
     Protecting LLMs with NeMo Guardrails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guardrails/guardrailsai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protecting LLMs with Guardrails
   
 
     
@@ -2288,16 +2344,10 @@
 
 
 <h1 id="expose-service-externally">Expose service externally</h1>
-<p>Finally, we make the PostgREST service available externally. Access <em>API Gateways</em> on the left menu and click <code>CREATE</code>.</p>
-<p>Fill the fields as follows:</p>
-<ul>
-<li><strong>Name</strong>: name of the gateway. This is merely an identifier for Kubernetes.</li>
-<li><strong>Service</strong>: select the one referring to the PostgREST service you created. Its name may be something like <code>postgrest-my-postgrest</code>. <strong>Port</strong> will automatically be filled.</li>
-<li><strong>Host</strong>: full domain name under which the service will be exposed. By default, it refers to the <code>services</code> subdomain. If your instance of the platform is found in the <code>example.com</code> domain, this field's value could be <code>pgrest.services.example.com</code>.</li>
-<li><strong>Path</strong>: Leave the default <code>/</code>.</li>
-<li><strong>Authentication</strong>: <code>None</code>.</li>
-</ul>
-<p><img alt="Create APIGW" src="../images/create-apigw.png" /></p>
+<p>Finally, we make the PostgREST service available externally. </p>
+<p>Go to the Kubernetes Resource Manager component (available from dashboard) and go to the HTTP Route section. To expose a service it is necessary to define 
+a set of properties. See the <a href="../../admin/charts/krm/resources/#exposing-services-externally">HTTP Route</a> instructions for details.</p>
+<p><img alt="Create APIGW" src="./images/krm_httproute.jpg" /></p>
 <p>Save and the API gateway will be created. You can try a simple query like the following, even in your browser, to view its results (remember to change domain according to your case):
 <div class="highlight"><pre><span></span><code>https://pgrest.services.example.com/readings?limit=3
 </code></pre></div></p>
