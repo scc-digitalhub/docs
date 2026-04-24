@@ -190,17 +190,23 @@ A Dremio REST service will be deployed, connected to the specified Dremio instan
 
 ### Exposing services externally
 
-Various APIs and services (e.g., PostgREST or Dremio data services, serverless functions) may be exposed externally, outside of the platform, on a public domain of the platform. Using KRM, the operation amounts to defining a new API gateway resource that will be transformed into the corresponding ingress routing specification.
+Various APIs and services (e.g., PostgREST or Dremio data services, serverless functions) may be exposed externally, outside of the platform, on a public domain of the platform. Using KRM, the operation amounts to defining a new gateway (HTTPRoute resource) that will be transformed into the corresponding ingress routing specification.
 
-![KRM API gateway create image](../../images/krm/krm_apigw.png)
+![KRM HTTP Route create image](../../images/krm/krm_httproute.png)
 
-To create a new API gateway, provide the following:
+To create a new gateway, provide the following:
 
 - **Name** of the gateway. This is merely an identifier for Kubernetes.
-- Kubernetes **service** to be exposed (select it from the dropdown list and **port** will automatically be provided).
-- **Host** defines the full domain name under which the service will be exposed. By default, it refers to the `services` subdomain. If your instance of the platform is found in the `example.com` domain, this field's value could be `myservice.services.example.com`.
-- Relative **path** to expose the service on.
-- **Authentication** information. Currently, services may be unprotected (``None``) or protected with ``Basic`` authentication, specifying username and password.
+- Kubernetes **backend service** to be exposed (select it from the dropdown list and **port** will automatically be provided).
+- **Hostname** defines the full domain name under which the service will be exposed. By default, it refers to the `services` subdomain. If your instance of the platform is found in the `example.com` domain, this field's value could be `myservice.services.example.com`.
+- Relative **path prefix** to expose the service on.
+-  **Rewrite path prefix** to rewrite the path of the request.
+- 
+- **Authentication** information. Currently, services may be 
+    - unprotected (``None``) or 
+    - protected with ``Basic`` authentication, specifying the secret with the httpwd credentials.
+    - protected with ``ApiKey`` authentication, specifying the secret with the token name / token value pairs and the header name.
+    - protected with ``JWT`` configuration, specifying the information about JWKS, issuer, optional audiences to check and claim mapping.
 
 ## Defining and Managing CRD Schemas
 

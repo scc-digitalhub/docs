@@ -38,15 +38,11 @@ Please note that the scikit-learn model serving exposes also the Open API specif
 
 Right now, the API is only accessible from within the environment. To make it accessible from outside, we'll need to create an API gateway.
 
-Go to the Kubernetes Resource Manager component (available from dashboard) and go to the API Gateways section. To expose a service it is necessary to define
-
-- name of the gateway
-- the service to expose
-- the endpoint where to publish
-- and the authentication method (right now only no authentication or basic authentication are available). in case of basic authentication it is necessary to specify  *Username* and *Password*.
+Go to the Kubernetes Resource Manager component (available from dashboard) and go to the HTTP Route section. To expose a service it is necessary to define 
+a set of properties. See the [HTTP Route](../../admin/charts/krm/resources/#exposing-services-externally) instructions for details.
 
 The platform by default support exposing the methods at the subdomains of ``services.<platform-domain>``, where platform-domain is the domain of the platform instance.
 
-![KRM APIGW image](../images/apigw-krm.png)
+![KRM APIGW image](../images/krm_httproute.jpg)
 
 *Save* and, after a few moments, you will be able to call the API at the address you defined! If you set *Authentication* to *Basic*, don't forget that you have to provide the credentials.
