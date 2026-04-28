@@ -8,16 +8,31 @@ If you need to install the CLI, refer to [this section](../components/cli.md).
 
     Depending on the shell you are using, you may have to run the CLI with `./dhcli`.
 
+!!! info "Configuration file"
+
+    Commands read from and write to `.dhcore.ini`, located in the user's home directory by default. The path can be overridden by setting the `DH_CONFIG` environment variable.
+
+### Global flags
+The following flags are available on every command:
+
+- `-v, --verbose` *Optional*. Boolean. Enable verbose output.
+- `--debug` *Optional*. Boolean. Enable HTTP debug logging (implies verbose).
+
+!!! info "Project fallback"
+
+    Commands that take `-p project` will fall back to the `PROJECT_NAME` environment variable if the flag is omitted.
+
 ### `register`
 `register` takes the following parameters:
 
-- `-e environment` *Optional*. Name of the environment to register.
-- `core_endpoint` **Mandatory**
+- `-e environment` *Optional*. Name of the environment to register. If missing, the `dhcore_name` returned by the endpoint is used.
+- `-f, --force` *Optional*. Boolean. Override an existing environment that points to a different endpoint.
+- `endpoint` **Mandatory**. Trailing `/` is added automatically if missing.
 
 ``` sh
 dhcli register -e example http://localhost:8080
 ```
-It will create a `.dhcore.ini` file (if it doesn't already exist) in the user's home directory, or, if not possible, in the current one. A section will be appended, using the provided environment name (or, if missing, the one returned by the endpoint), containing the environment's configuration. This environment will be set as default, unless one is already set.
+It will create a `.dhcore.ini` file (if it doesn't already exist) in the user's home directory, or, if not possible, in the current one. The endpoint's `.well-known/configuration` and `.well-known/openid-configuration` are fetched and stored in a section named after the environment. This environment will be set as default, unless one is already set. If a section with the same name already exists with a different endpoint, the command will refuse to overwrite it unless `--force` is set.
 
 ### `list-env`
 `list-env` lists available environments. It takes no parameters.
@@ -44,7 +59,7 @@ This will set the default environment.
 ``` sh
 dhcli login -e example
 ```
-It will read the corresponding section from the configuration file and start the log in procedure. It will update this section with the access token obtained. If no environment is specified, it will use the default one.
+It will read the corresponding section from the configuration file and start the log in procedure (OAuth2 PKCE flow). It will update this section with the access token obtained. If no environment is specified, it will use the default one.
 
 ### `refresh`
 `refresh` is to be used after the `login` command, to update `access_token` and `refresh_token`. It takes the following parameters:
@@ -52,7 +67,7 @@ It will read the corresponding section from the configuration file and start the
 - `-e environment` *Optional*
 
 ``` sh
-dhcli refresh example
+dhcli refresh -e example
 ```
 If no environment is specified, it will use the default one.
 
@@ -67,26 +82,28 @@ dhcli remove example
 It will remove the section from the configuration file.
 
 ### `init`
-`init` is used to install the platform's Python packages; therefore, Python must be installed. It takes the following parameters:
+`init` creates or activates a Python virtual environment and installs the platform's Python packages (`digitalhub[full]` and `digitalhub-runtime-python`). Python 3.9–3.12 must be available as `python3`. It takes the following parameters:
 
 - `-e environment` *Optional*
+- `--pre` *Optional*. Boolean. Include pre-release (beta) versions when installing packages.
+- `path` *Optional*. Filesystem path of the virtual environment. If missing, the current environment name is used; if that is also empty, the current directory is used.
 
 ``` sh
-dhcli init example
+dhcli init ./venv
 ```
-It will match core's minor version as indicated in the specified environment. If no environment is specified, it will use the default one.
+It will match core's minor version as indicated in the specified environment. If no environment is specified, it will use the default one. If the path already contains a valid venv, dependencies are installed without recreating it. The command will ask for confirmation before installing.
 
 ### `create`
 `create` will create an instance of the indicated resource on the platform. It takes the following parameters:
 
 - `-e environment` *Optional*
 - `-p project` *Optional* (ignored) when creating projects, **mandatory** otherwise.
-- `-f yaml_file_path` **Mandatory** when creating resources other than projects, *alternative* to `name` for projects.
-- `-n name` *Optional* (ignored) when creating resources other than projects, *alternative* to `yaml_file_path` for projects.
-- `-reset-id` *Optional*. Boolean. If set, the `id` specified in the file is ignored.
+- `-f yaml_file_path` **Mandatory** when creating resources other than projects, *alternative* to `-n` for projects.
+- `-n name` *Optional* (ignored) when creating resources other than projects, *alternative* to `-f` for projects.
+- `-r, --reset-id` *Optional*. Boolean. If set, the `id` specified in the file is ignored and a new one is generated server-side.
 - `resource` **Mandatory**
 
-The type of resource to create is mandatory. The project flag `-p` is only mandatory when creating resources other than projects (artifacts, models, etc.). For projects, you may omit the file path and just use the `-n` flag to specify the name. The `-reset-id` flag, when set, ensures the created object has a randomly-generated ID, ignoring the `id` field if present in the input file (this is not relevant to projects).
+The type of resource to create is mandatory. The project flag `-p` is only mandatory when creating resources other than projects (artifacts, models, etc.). For projects, you may omit the file path and just use the `-n` flag to specify the name. The `--reset-id` flag, when set, ensures the created object has a randomly-generated ID, ignoring the `id` field if present in the input file (this is not relevant to projects).
 
 Create a project:
 ``` sh
@@ -95,7 +112,7 @@ dhcli create -f samples/project.yaml projects
 
 Create an artifact, while resetting its ID:
 ``` sh
-dhcli create -p my-project -f samples/artifact.yaml -reset-id artifacts
+dhcli create -p my-project -f samples/artifact.yaml -r artifacts
 ```
 
 ### `list`
@@ -105,8 +122,8 @@ dhcli create -p my-project -f samples/artifact.yaml -reset-id artifacts
 - `-o output_format` *Optional*. Accepts `short`, `json`, `yaml`. Defaults to `short`.
 - `-p project` *Optional* (ignored) for projects, **mandatory** otherwise.
 - `-n name` *Optional*. If present, will return all versions of specified resource. If missing, will return the latest version of all matching resources.
-- `-k kind` *Optional*
-- `-s state` *Optional*
+- `-k kind` *Optional*. Filter by kind.
+- `-s state` *Optional*. Filter by state.
 - `resource` **Mandatory**
 
 `output_format` determines how the output will be formatted. The default value, `short`, is meant to be used to quickly check resources in the terminal, while `json` and `yaml` will format the output accordingly, making it ideal to write to file.
@@ -134,11 +151,11 @@ dhcli list -o yaml -p my-project artifacts > output.yaml
 - `-e environment` *Optional*
 - `-o output_format` *Optional*. Accepts `short`, `json`, `yaml`. Defaults to `short`.
 - `-p project` *Optional* (ignored) for projects, **mandatory** otherwise.
-- `-n name` *Ignored* if `id` is present, otherwise **mandatory** and will return the latest version of the specified resource.
+- `-n name` *Ignored* if `id` is present, otherwise will return the latest version of the resource matching the name.
 - `resource` **Mandatory**
 - `id` *Alternative* to `-n name`.
 
-Similarly to the `list` command, `output_format` determines how the output will be formatted. The default value, `short`, is meant to be used to quickly check resources in the terminal, while `json` and `yaml` will format the output accordingly, making it ideal to write to file.
+At least one of `id` or `-n name` should be provided to identify the resource. Similarly to the `list` command, `output_format` determines how the output will be formatted. The default value, `short`, is meant to be used to quickly check resources in the terminal, while `json` and `yaml` will format the output accordingly, making it ideal to write to file.
 
 Get project:
 
@@ -181,10 +198,10 @@ dhcli update -p my-project -f samples/artifact.yaml artifacts my-artifact-id
 - `-e environment` *Optional*
 - `-p project` *Optional* (ignored) for projects, **mandatory** otherwise.
 - `-n name` *Alternative* to `id`, will delete all versions of a resource.
-- `-y` *Optional*. Boolean. If omitted, confirmation will be asked.
-- `-c` *Optional*. Boolean, only applies to projects. When set, all resource belonging to the project will also be deleted.
+- `-y, --confirm` *Optional*. Boolean. If omitted, confirmation will be asked.
+- `-c, --cascade` *Optional*. Boolean, only applies to projects. When set, all resources belonging to the project will also be deleted.
 - `resource` **Mandatory**
-- `id` *Alternative* to `name`, will delete a specific version. For projects, since versions do not apply, this is synonym with `id`.
+- `id` *Alternative* to `-n name`, will delete a specific version. For projects, since versions do not apply, this is synonym with `name`.
 
 Delete a project and all of its resources:
 ``` sh
@@ -201,8 +218,8 @@ Creates a run of the specified function. It takes the following parameters:
 
 - `-e environment` *Optional*
 - `-p project` **Mandatory**
-- `-n name_of_function` *Ignored* if `id` is specified, otherwise **mandatory** and will run the latest version of the function.
-- `-i id` *Alternative* to `-n name_of_function`.
+- `-n, --fn-name name_of_function` *Ignored* if `--fn-id` is specified, otherwise **mandatory** and will run the latest version of the function.
+- `-i, --fn-id id` *Alternative* to `--fn-name`.
 - `-f yaml_file_path` *Optional*, can contain additional parameters for the run.
 - `task` **Mandatory**. Must contain a valid task, such as `python+build`.
 
@@ -212,18 +229,17 @@ dhcli run -p my-project -n my-function python+build
 ```
 
 ### `log`
-Returns the logs of the specified resource. It takes the following parameters:
+Returns the logs of a run. The resource type is implicitly `runs`. It takes the following parameters:
 
 - `-e environment` *Optional*
 - `-p project` **Mandatory**
-- `-c container` *Optional*, ID of the container to read logs from. If not specified, the main container will be picked.
-- `-f` *Optional*, will update the printed logs periodically if set.
-- `resource` **Mandatory**
-- `id` **Mandatory**
+- `-c container` *Optional*. ID of the container to read logs from. If not specified, the main container is derived from the run's task.
+- `-f, --follow` *Optional*. Boolean. Will keep updating the printed logs periodically (every 5 seconds) if set.
+- `id` **Mandatory**. ID of the run.
 
 Retrieve and follow logs from the main container of a run:
 ``` sh
-dhcli log -p my-project run my-run-id
+dhcli log -p my-project -f my-run-id
 ```
 
 ### `metrics`
@@ -241,29 +257,15 @@ dhcli metrics -p my-project run my-run-id
 ```
 
 ### `stop`
-Stops a resource. It takes the following parameters:
+Stops a run. The resource type is implicitly `runs`. It takes the following parameters:
 
 - `-e environment` *Optional*
 - `-p project` **Mandatory**
-- `resource` **Mandatory**
-- `id` **Mandatory**
+- `id` **Mandatory**. ID of the run.
 
 Stop a run:
 ``` sh
-dhcli stop -p my-project run my-run-id
-```
-
-### `resume`
-Resumes a resource. It takes the following parameters:
-
-- `-e environment` *Optional*
-- `-p project` **Mandatory**
-- `resource` **Mandatory**
-- `id` **Mandatory**
-
-Resume a run:
-``` sh
-dhcli resume -p my-project run my-run-id
+dhcli stop -p my-project my-run-id
 ```
 
 ### `download`
@@ -272,26 +274,77 @@ Downloads a resource. It takes the following parameters:
 - `-e environment` *Optional*
 - `-p project` **Mandatory**
 - `-n name` *Alternative* to `id`, will download latest version.
-- `-o output_filename_or_dir` *Optional*, base directory for downloaded resources, will be created if missing.
+- `-d, --destination output_filename_or_dir` *Optional*, base directory or filename for downloaded resources, will be created if missing.
+- `-o output_format` *Optional*. Accepts `short`, `json`, `yaml`. Affects the printed metadata, not the downloaded payload.
+- `-v, --verbose` *Optional*. Boolean. Verbose progress/logging.
 - `resource` **Mandatory**
 - `id` *Alternative* to `-n name`.
 
 Download an artifact:
 ``` sh
-dhcli download -p my-project -o downloaded_artifacts artifact my-artifact-id
+dhcli download -p my-project -d downloaded_artifacts artifact my-artifact-id
 ```
 
 ### `upload`
-Uploads a resource. takes the following parameters:
+Uploads a resource to S3. The destination bucket defaults to `datalake` and can be overridden via the `s3_bucket` configuration entry. It takes the following parameters:
 
 - `-e environment` *Optional*
 - `-p project` **Mandatory**
 - `-n name` Must be specified when creating a new artifact.
 - `-f input_filename_or_dir` **Mandatory**, path to input file or directory.
+- `-v, --verbose` *Optional*. Boolean. Verbose progress/logging.
 - `resource` **Mandatory**
 - `id` Must be omitted for new artifacts; used to update an existing artifact.
 
 Upload an artifact:
 ``` sh
-dhcli upload -p my-project -f artifacts/artifact.csv artifact -n my-artifact
+dhcli upload -p my-project -f artifacts/artifact.csv -n my-artifact artifact
+```
+
+### `services`
+Lists runs filtered by `action=serve`. It takes the following parameters:
+
+- `-e environment` *Optional*
+- `-o output_format` *Optional*. Accepts `short`, `json`, `yaml`. Defaults to `short`.
+- `-p project` **Mandatory**
+- `-n name` *Optional*. If present, will return all versions of the specified service.
+- `-k kind` *Optional*. Filter by kind.
+- `-s state` *Optional*. Filter by state. Defaults to `RUNNING` when not specified.
+
+List services in a project:
+``` sh
+dhcli services -p my-project
+```
+
+### `proxy`
+Starts a local HTTP proxy that forwards requests to the `baseUrl` resolved from a run, going through the configured remote proxy with the appropriate `Authorization` header. It takes the following parameters:
+
+- `-e environment` *Optional*
+- `-p project` **Mandatory**
+- `-l, --local-port port` *Optional*. Local port to listen on. If missing, a random port is chosen.
+- `run-id` **Mandatory**
+
+Start a proxy for a run:
+``` sh
+dhcli proxy -p my-project my-run-id
+```
+
+### `config`
+Prints the non-secret configuration of the current (or specified) environment.
+
+- `-e environment` *Optional*
+- `-o output_format` *Optional*. Accepts `short`, `json`, `yaml`. Defaults to `short`.
+
+``` sh
+dhcli config
+```
+
+### `credentials`
+Prints the credentials (secret values) stored for the current (or specified) environment.
+
+- `-e environment` *Optional*
+- `-o output_format` *Optional*. Accepts `short`, `json`, `yaml`. Defaults to `short`.
+
+``` sh
+dhcli credentials
 ```
