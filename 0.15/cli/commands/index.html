@@ -2286,6 +2286,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#global-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global flags
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#register" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2462,17 +2473,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#resume" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        resume
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#download" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2488,6 +2488,50 @@
     <span class="md-ellipsis">
       
         upload
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        proxy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        config
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        credentials
       
     </span>
   </a>
@@ -2564,6 +2608,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#global-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global flags
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#register" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2740,17 +2795,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#resume" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        resume
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#download" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2766,6 +2810,50 @@
     <span class="md-ellipsis">
       
         upload
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        proxy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        config
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        credentials
       
     </span>
   </a>
@@ -2847,15 +2935,30 @@
 <p class="admonition-title">Run commands</p>
 <p>Depending on the shell you are using, you may have to run the CLI with <code>./dhcli</code>.</p>
 </div>
+<div class="admonition info">
+<p class="admonition-title">Configuration file</p>
+<p>Commands read from and write to <code>.dhcore.ini</code>, located in the user's home directory by default. The path can be overridden by setting the <code>DH_CONFIG</code> environment variable.</p>
+</div>
+<h3 id="global-flags">Global flags</h3>
+<p>The following flags are available on every command:</p>
+<ul>
+<li><code>-v, --verbose</code> <em>Optional</em>. Boolean. Enable verbose output.</li>
+<li><code>--debug</code> <em>Optional</em>. Boolean. Enable HTTP debug logging (implies verbose).</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Project fallback</p>
+<p>Commands that take <code>-p project</code> will fall back to the <code>PROJECT_NAME</code> environment variable if the flag is omitted.</p>
+</div>
 <h3 id="register"><code>register</code></h3>
 <p><code>register</code> takes the following parameters:</p>
 <ul>
-<li><code>-e environment</code> <em>Optional</em>. Name of the environment to register.</li>
-<li><code>core_endpoint</code> <strong>Mandatory</strong></li>
+<li><code>-e environment</code> <em>Optional</em>. Name of the environment to register. If missing, the <code>dhcore_name</code> returned by the endpoint is used.</li>
+<li><code>-f, --force</code> <em>Optional</em>. Boolean. Override an existing environment that points to a different endpoint.</li>
+<li><code>endpoint</code> <strong>Mandatory</strong>. Trailing <code>/</code> is added automatically if missing.</li>
 </ul>
 <p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>register<span class="w"> </span>-e<span class="w"> </span>example<span class="w"> </span>http://localhost:8080
 </code></pre></div>
-It will create a <code>.dhcore.ini</code> file (if it doesn't already exist) in the user's home directory, or, if not possible, in the current one. A section will be appended, using the provided environment name (or, if missing, the one returned by the endpoint), containing the environment's configuration. This environment will be set as default, unless one is already set.</p>
+It will create a <code>.dhcore.ini</code> file (if it doesn't already exist) in the user's home directory, or, if not possible, in the current one. The endpoint's <code>.well-known/configuration</code> and <code>.well-known/openid-configuration</code> are fetched and stored in a section named after the environment. This environment will be set as default, unless one is already set. If a section with the same name already exists with a different endpoint, the command will refuse to overwrite it unless <code>--force</code> is set.</p>
 <h3 id="list-env"><code>list-env</code></h3>
 <p><code>list-env</code> lists available environments. It takes no parameters.</p>
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>list-env
@@ -2875,13 +2978,13 @@ This will set the default environment.</p>
 </ul>
 <p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>login<span class="w"> </span>-e<span class="w"> </span>example
 </code></pre></div>
-It will read the corresponding section from the configuration file and start the log in procedure. It will update this section with the access token obtained. If no environment is specified, it will use the default one.</p>
+It will read the corresponding section from the configuration file and start the log in procedure (OAuth2 PKCE flow). It will update this section with the access token obtained. If no environment is specified, it will use the default one.</p>
 <h3 id="refresh"><code>refresh</code></h3>
 <p><code>refresh</code> is to be used after the <code>login</code> command, to update <code>access_token</code> and <code>refresh_token</code>. It takes the following parameters:</p>
 <ul>
 <li><code>-e environment</code> <em>Optional</em></li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>refresh<span class="w"> </span>example
+<p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>refresh<span class="w"> </span>-e<span class="w"> </span>example
 </code></pre></div>
 If no environment is specified, it will use the default one.</p>
 <h3 id="remove"><code>remove</code></h3>
@@ -2893,29 +2996,31 @@ If no environment is specified, it will use the default one.</p>
 </code></pre></div>
 It will remove the section from the configuration file.</p>
 <h3 id="init"><code>init</code></h3>
-<p><code>init</code> is used to install the platform's Python packages; therefore, Python must be installed. It takes the following parameters:</p>
+<p><code>init</code> creates or activates a Python virtual environment and installs the platform's Python packages (<code>digitalhub[full]</code> and <code>digitalhub-runtime-python</code>). Python 3.9–3.12 must be available as <code>python3</code>. It takes the following parameters:</p>
 <ul>
 <li><code>-e environment</code> <em>Optional</em></li>
+<li><code>--pre</code> <em>Optional</em>. Boolean. Include pre-release (beta) versions when installing packages.</li>
+<li><code>path</code> <em>Optional</em>. Filesystem path of the virtual environment. If missing, the current environment name is used; if that is also empty, the current directory is used.</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>init<span class="w"> </span>example
+<p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>init<span class="w"> </span>./venv
 </code></pre></div>
-It will match core's minor version as indicated in the specified environment. If no environment is specified, it will use the default one.</p>
+It will match core's minor version as indicated in the specified environment. If no environment is specified, it will use the default one. If the path already contains a valid venv, dependencies are installed without recreating it. The command will ask for confirmation before installing.</p>
 <h3 id="create"><code>create</code></h3>
 <p><code>create</code> will create an instance of the indicated resource on the platform. It takes the following parameters:</p>
 <ul>
 <li><code>-e environment</code> <em>Optional</em></li>
 <li><code>-p project</code> <em>Optional</em> (ignored) when creating projects, <strong>mandatory</strong> otherwise.</li>
-<li><code>-f yaml_file_path</code> <strong>Mandatory</strong> when creating resources other than projects, <em>alternative</em> to <code>name</code> for projects.</li>
-<li><code>-n name</code> <em>Optional</em> (ignored) when creating resources other than projects, <em>alternative</em> to <code>yaml_file_path</code> for projects.</li>
-<li><code>-reset-id</code> <em>Optional</em>. Boolean. If set, the <code>id</code> specified in the file is ignored.</li>
+<li><code>-f yaml_file_path</code> <strong>Mandatory</strong> when creating resources other than projects, <em>alternative</em> to <code>-n</code> for projects.</li>
+<li><code>-n name</code> <em>Optional</em> (ignored) when creating resources other than projects, <em>alternative</em> to <code>-f</code> for projects.</li>
+<li><code>-r, --reset-id</code> <em>Optional</em>. Boolean. If set, the <code>id</code> specified in the file is ignored and a new one is generated server-side.</li>
 <li><code>resource</code> <strong>Mandatory</strong></li>
 </ul>
-<p>The type of resource to create is mandatory. The project flag <code>-p</code> is only mandatory when creating resources other than projects (artifacts, models, etc.). For projects, you may omit the file path and just use the <code>-n</code> flag to specify the name. The <code>-reset-id</code> flag, when set, ensures the created object has a randomly-generated ID, ignoring the <code>id</code> field if present in the input file (this is not relevant to projects).</p>
+<p>The type of resource to create is mandatory. The project flag <code>-p</code> is only mandatory when creating resources other than projects (artifacts, models, etc.). For projects, you may omit the file path and just use the <code>-n</code> flag to specify the name. The <code>--reset-id</code> flag, when set, ensures the created object has a randomly-generated ID, ignoring the <code>id</code> field if present in the input file (this is not relevant to projects).</p>
 <p>Create a project:
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>samples/project.yaml<span class="w"> </span>projects
 </code></pre></div></p>
 <p>Create an artifact, while resetting its ID:
-<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>create<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-f<span class="w"> </span>samples/artifact.yaml<span class="w"> </span>-reset-id<span class="w"> </span>artifacts
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>create<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-f<span class="w"> </span>samples/artifact.yaml<span class="w"> </span>-r<span class="w"> </span>artifacts
 </code></pre></div></p>
 <h3 id="list"><code>list</code></h3>
 <p><code>list</code> returns a list of resources of the specified type. It takes the following parameters:</p>
@@ -2924,8 +3029,8 @@ It will match core's minor version as indicated in the specified environment. If
 <li><code>-o output_format</code> <em>Optional</em>. Accepts <code>short</code>, <code>json</code>, <code>yaml</code>. Defaults to <code>short</code>.</li>
 <li><code>-p project</code> <em>Optional</em> (ignored) for projects, <strong>mandatory</strong> otherwise.</li>
 <li><code>-n name</code> <em>Optional</em>. If present, will return all versions of specified resource. If missing, will return the latest version of all matching resources.</li>
-<li><code>-k kind</code> <em>Optional</em></li>
-<li><code>-s state</code> <em>Optional</em></li>
+<li><code>-k kind</code> <em>Optional</em>. Filter by kind.</li>
+<li><code>-s state</code> <em>Optional</em>. Filter by state.</li>
 <li><code>resource</code> <strong>Mandatory</strong></li>
 </ul>
 <p><code>output_format</code> determines how the output will be formatted. The default value, <code>short</code>, is meant to be used to quickly check resources in the terminal, while <code>json</code> and <code>yaml</code> will format the output accordingly, making it ideal to write to file.</p>
@@ -2944,11 +3049,11 @@ It will match core's minor version as indicated in the specified environment. If
 <li><code>-e environment</code> <em>Optional</em></li>
 <li><code>-o output_format</code> <em>Optional</em>. Accepts <code>short</code>, <code>json</code>, <code>yaml</code>. Defaults to <code>short</code>.</li>
 <li><code>-p project</code> <em>Optional</em> (ignored) for projects, <strong>mandatory</strong> otherwise.</li>
-<li><code>-n name</code> <em>Ignored</em> if <code>id</code> is present, otherwise <strong>mandatory</strong> and will return the latest version of the specified resource.</li>
+<li><code>-n name</code> <em>Ignored</em> if <code>id</code> is present, otherwise will return the latest version of the resource matching the name.</li>
 <li><code>resource</code> <strong>Mandatory</strong></li>
 <li><code>id</code> <em>Alternative</em> to <code>-n name</code>.</li>
 </ul>
-<p>Similarly to the <code>list</code> command, <code>output_format</code> determines how the output will be formatted. The default value, <code>short</code>, is meant to be used to quickly check resources in the terminal, while <code>json</code> and <code>yaml</code> will format the output accordingly, making it ideal to write to file.</p>
+<p>At least one of <code>id</code> or <code>-n name</code> should be provided to identify the resource. Similarly to the <code>list</code> command, <code>output_format</code> determines how the output will be formatted. The default value, <code>short</code>, is meant to be used to quickly check resources in the terminal, while <code>json</code> and <code>yaml</code> will format the output accordingly, making it ideal to write to file.</p>
 <p>Get project:</p>
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>get<span class="w"> </span>projects<span class="w"> </span>my-project
 </code></pre></div>
@@ -2979,10 +3084,10 @@ It will match core's minor version as indicated in the specified environment. If
 <li><code>-e environment</code> <em>Optional</em></li>
 <li><code>-p project</code> <em>Optional</em> (ignored) for projects, <strong>mandatory</strong> otherwise.</li>
 <li><code>-n name</code> <em>Alternative</em> to <code>id</code>, will delete all versions of a resource.</li>
-<li><code>-y</code> <em>Optional</em>. Boolean. If omitted, confirmation will be asked.</li>
-<li><code>-c</code> <em>Optional</em>. Boolean, only applies to projects. When set, all resource belonging to the project will also be deleted.</li>
+<li><code>-y, --confirm</code> <em>Optional</em>. Boolean. If omitted, confirmation will be asked.</li>
+<li><code>-c, --cascade</code> <em>Optional</em>. Boolean, only applies to projects. When set, all resources belonging to the project will also be deleted.</li>
 <li><code>resource</code> <strong>Mandatory</strong></li>
-<li><code>id</code> <em>Alternative</em> to <code>name</code>, will delete a specific version. For projects, since versions do not apply, this is synonym with <code>id</code>.</li>
+<li><code>id</code> <em>Alternative</em> to <code>-n name</code>, will delete a specific version. For projects, since versions do not apply, this is synonym with <code>name</code>.</li>
 </ul>
 <p>Delete a project and all of its resources:
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>delete<span class="w"> </span>-c<span class="w"> </span>projects<span class="w"> </span>my-project
@@ -2995,8 +3100,8 @@ It will match core's minor version as indicated in the specified environment. If
 <ul>
 <li><code>-e environment</code> <em>Optional</em></li>
 <li><code>-p project</code> <strong>Mandatory</strong></li>
-<li><code>-n name_of_function</code> <em>Ignored</em> if <code>id</code> is specified, otherwise <strong>mandatory</strong> and will run the latest version of the function.</li>
-<li><code>-i id</code> <em>Alternative</em> to <code>-n name_of_function</code>.</li>
+<li><code>-n, --fn-name name_of_function</code> <em>Ignored</em> if <code>--fn-id</code> is specified, otherwise <strong>mandatory</strong> and will run the latest version of the function.</li>
+<li><code>-i, --fn-id id</code> <em>Alternative</em> to <code>--fn-name</code>.</li>
 <li><code>-f yaml_file_path</code> <em>Optional</em>, can contain additional parameters for the run.</li>
 <li><code>task</code> <strong>Mandatory</strong>. Must contain a valid task, such as <code>python+build</code>.</li>
 </ul>
@@ -3004,17 +3109,16 @@ It will match core's minor version as indicated in the specified environment. If
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-n<span class="w"> </span>my-function<span class="w"> </span>python+build
 </code></pre></div></p>
 <h3 id="log"><code>log</code></h3>
-<p>Returns the logs of the specified resource. It takes the following parameters:</p>
+<p>Returns the logs of a run. The resource type is implicitly <code>runs</code>. It takes the following parameters:</p>
 <ul>
 <li><code>-e environment</code> <em>Optional</em></li>
 <li><code>-p project</code> <strong>Mandatory</strong></li>
-<li><code>-c container</code> <em>Optional</em>, ID of the container to read logs from. If not specified, the main container will be picked.</li>
-<li><code>-f</code> <em>Optional</em>, will update the printed logs periodically if set.</li>
-<li><code>resource</code> <strong>Mandatory</strong></li>
-<li><code>id</code> <strong>Mandatory</strong></li>
+<li><code>-c container</code> <em>Optional</em>. ID of the container to read logs from. If not specified, the main container is derived from the run's task.</li>
+<li><code>-f, --follow</code> <em>Optional</em>. Boolean. Will keep updating the printed logs periodically (every 5 seconds) if set.</li>
+<li><code>id</code> <strong>Mandatory</strong>. ID of the run.</li>
 </ul>
 <p>Retrieve and follow logs from the main container of a run:
-<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>log<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>run<span class="w"> </span>my-run-id
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>log<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-f<span class="w"> </span>my-run-id
 </code></pre></div></p>
 <h3 id="metrics"><code>metrics</code></h3>
 <p>Returns metrics for the specified resource. It takes the following parameters:</p>
@@ -3029,26 +3133,14 @@ It will match core's minor version as indicated in the specified environment. If
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>metrics<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>run<span class="w"> </span>my-run-id
 </code></pre></div></p>
 <h3 id="stop"><code>stop</code></h3>
-<p>Stops a resource. It takes the following parameters:</p>
+<p>Stops a run. The resource type is implicitly <code>runs</code>. It takes the following parameters:</p>
 <ul>
 <li><code>-e environment</code> <em>Optional</em></li>
 <li><code>-p project</code> <strong>Mandatory</strong></li>
-<li><code>resource</code> <strong>Mandatory</strong></li>
-<li><code>id</code> <strong>Mandatory</strong></li>
+<li><code>id</code> <strong>Mandatory</strong>. ID of the run.</li>
 </ul>
 <p>Stop a run:
-<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>stop<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>run<span class="w"> </span>my-run-id
-</code></pre></div></p>
-<h3 id="resume"><code>resume</code></h3>
-<p>Resumes a resource. It takes the following parameters:</p>
-<ul>
-<li><code>-e environment</code> <em>Optional</em></li>
-<li><code>-p project</code> <strong>Mandatory</strong></li>
-<li><code>resource</code> <strong>Mandatory</strong></li>
-<li><code>id</code> <strong>Mandatory</strong></li>
-</ul>
-<p>Resume a run:
-<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>resume<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>run<span class="w"> </span>my-run-id
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>stop<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>my-run-id
 </code></pre></div></p>
 <h3 id="download"><code>download</code></h3>
 <p>Downloads a resource. It takes the following parameters:</p>
@@ -3056,26 +3148,69 @@ It will match core's minor version as indicated in the specified environment. If
 <li><code>-e environment</code> <em>Optional</em></li>
 <li><code>-p project</code> <strong>Mandatory</strong></li>
 <li><code>-n name</code> <em>Alternative</em> to <code>id</code>, will download latest version.</li>
-<li><code>-o output_filename_or_dir</code> <em>Optional</em>, base directory for downloaded resources, will be created if missing.</li>
+<li><code>-d, --destination output_filename_or_dir</code> <em>Optional</em>, base directory or filename for downloaded resources, will be created if missing.</li>
+<li><code>-o output_format</code> <em>Optional</em>. Accepts <code>short</code>, <code>json</code>, <code>yaml</code>. Affects the printed metadata, not the downloaded payload.</li>
+<li><code>-v, --verbose</code> <em>Optional</em>. Boolean. Verbose progress/logging.</li>
 <li><code>resource</code> <strong>Mandatory</strong></li>
 <li><code>id</code> <em>Alternative</em> to <code>-n name</code>.</li>
 </ul>
 <p>Download an artifact:
-<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>download<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-o<span class="w"> </span>downloaded_artifacts<span class="w"> </span>artifact<span class="w"> </span>my-artifact-id
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>download<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-d<span class="w"> </span>downloaded_artifacts<span class="w"> </span>artifact<span class="w"> </span>my-artifact-id
 </code></pre></div></p>
 <h3 id="upload"><code>upload</code></h3>
-<p>Uploads a resource. takes the following parameters:</p>
+<p>Uploads a resource to S3. The destination bucket defaults to <code>datalake</code> and can be overridden via the <code>s3_bucket</code> configuration entry. It takes the following parameters:</p>
 <ul>
 <li><code>-e environment</code> <em>Optional</em></li>
 <li><code>-p project</code> <strong>Mandatory</strong></li>
 <li><code>-n name</code> Must be specified when creating a new artifact.</li>
 <li><code>-f input_filename_or_dir</code> <strong>Mandatory</strong>, path to input file or directory.</li>
+<li><code>-v, --verbose</code> <em>Optional</em>. Boolean. Verbose progress/logging.</li>
 <li><code>resource</code> <strong>Mandatory</strong></li>
 <li><code>id</code> Must be omitted for new artifacts; used to update an existing artifact.</li>
 </ul>
 <p>Upload an artifact:
-<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>upload<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-f<span class="w"> </span>artifacts/artifact.csv<span class="w"> </span>artifact<span class="w"> </span>-n<span class="w"> </span>my-artifact
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>upload<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-f<span class="w"> </span>artifacts/artifact.csv<span class="w"> </span>-n<span class="w"> </span>my-artifact<span class="w"> </span>artifact
 </code></pre></div></p>
+<h3 id="services"><code>services</code></h3>
+<p>Lists runs filtered by <code>action=serve</code>. It takes the following parameters:</p>
+<ul>
+<li><code>-e environment</code> <em>Optional</em></li>
+<li><code>-o output_format</code> <em>Optional</em>. Accepts <code>short</code>, <code>json</code>, <code>yaml</code>. Defaults to <code>short</code>.</li>
+<li><code>-p project</code> <strong>Mandatory</strong></li>
+<li><code>-n name</code> <em>Optional</em>. If present, will return all versions of the specified service.</li>
+<li><code>-k kind</code> <em>Optional</em>. Filter by kind.</li>
+<li><code>-s state</code> <em>Optional</em>. Filter by state. Defaults to <code>RUNNING</code> when not specified.</li>
+</ul>
+<p>List services in a project:
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>services<span class="w"> </span>-p<span class="w"> </span>my-project
+</code></pre></div></p>
+<h3 id="proxy"><code>proxy</code></h3>
+<p>Starts a local HTTP proxy that forwards requests to the <code>baseUrl</code> resolved from a run, going through the configured remote proxy with the appropriate <code>Authorization</code> header. It takes the following parameters:</p>
+<ul>
+<li><code>-e environment</code> <em>Optional</em></li>
+<li><code>-p project</code> <strong>Mandatory</strong></li>
+<li><code>-l, --local-port port</code> <em>Optional</em>. Local port to listen on. If missing, a random port is chosen.</li>
+<li><code>run-id</code> <strong>Mandatory</strong></li>
+</ul>
+<p>Start a proxy for a run:
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>proxy<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>my-run-id
+</code></pre></div></p>
+<h3 id="config"><code>config</code></h3>
+<p>Prints the non-secret configuration of the current (or specified) environment.</p>
+<ul>
+<li><code>-e environment</code> <em>Optional</em></li>
+<li><code>-o output_format</code> <em>Optional</em>. Accepts <code>short</code>, <code>json</code>, <code>yaml</code>. Defaults to <code>short</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>config
+</code></pre></div>
+<h3 id="credentials"><code>credentials</code></h3>
+<p>Prints the credentials (secret values) stored for the current (or specified) environment.</p>
+<ul>
+<li><code>-e environment</code> <em>Optional</em></li>
+<li><code>-o output_format</code> <em>Optional</em>. Accepts <code>short</code>, <code>json</code>, <code>yaml</code>. Defaults to <code>short</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>credentials
+</code></pre></div>
 
 
 
