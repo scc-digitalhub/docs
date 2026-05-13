@@ -67,6 +67,12 @@ From the client, users will be able to perform basic operations and visualize th
 
 The service is not exposed to the user's browser: access is mediated by the console through the core backend. As such, only a limited set of content is allowed: **text-based** requests and responses with a reasonable size limit.
 
+### Specialized clients
+
+In addition to the standard HTTP client, the console provides specialized clients for specific model-serving scenarios. The appropriate client is automatically selected based on the service type:
+
+- **[Chat Client](../runtimes/chat-client.md)** — An interactive chat interface for LLM models served with OpenAI-compatible APIs. Used with HuggingFace Serve and KubeAI Text runtimes.
+- **[InferenceV2 Client](../runtimes/inference-v2-client.md)** — A dedicated client for models served using the Open Inference Protocol (V2), with built-in health monitoring and pre-configured endpoints. Used with MLflow Serve and Scikit-learn Serve runtimes.
 
 ## Exposing services externally
 
@@ -80,10 +86,10 @@ To create a new gateway, provide the following:
 - Kubernetes **backend service** to be exposed (select it from the dropdown list and **port** will automatically be provided).
 - **Hostname** defines the full domain name under which the service will be exposed. By default, it refers to the `services` subdomain. If your instance of the platform is found in the `example.com` domain, this field's value could be `myservice.services.example.com`.
 - Relative **path prefix** to expose the service on.
--  **Rewrite path prefix** to rewrite the path of the request.
-- 
-- **Authentication** information. Currently, services may be 
-    - unprotected (``None``) or 
-    - protected with ``Basic`` authentication, specifying the secret with the httpwd credentials.
-    - protected with ``ApiKey`` authentication, specifying the secret with the token name / token value pairs and the header name.
-    - protected with ``JWT`` configuration, specifying the information about JWKS, issuer, optional audiences to check and claim mapping.
+- **Rewrite path prefix** to rewrite the path of the request.
+-
+- **Authentication** information. Currently, services may be
+  - unprotected (`None`) or
+  - protected with `Basic` authentication, specifying the secret with the httpwd credentials.
+  - protected with `ApiKey` authentication, specifying the secret with the token name / token value pairs and the header name.
+  - protected with `JWT` configuration, specifying the information about JWKS, issuer, optional audiences to check and claim mapping.
