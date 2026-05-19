@@ -43,7 +43,6 @@ nav:
       - "components/cli.md"
       - "components/resourcemanager.md"
       #   - "components/kubeflow.md"
-      - "components/kubeai.md"
       - Interactive Workspaces:
           - "components/code-toolbox.md"
           - Community Workspaces:
