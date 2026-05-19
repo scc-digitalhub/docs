@@ -1168,6 +1168,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#interact-with-the-model-directly-in-the-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interact with the model directly in the console
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1190,6 +1201,17 @@
     <span class="md-ellipsis">
       
         Example runtime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interact-with-the-model-directly-in-the-console_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interact with the model directly in the console
       
     </span>
   </a>
@@ -2586,6 +2608,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#interact-with-the-model-directly-in-the-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interact with the model directly in the console
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2608,6 +2641,17 @@
     <span class="md-ellipsis">
       
         Example runtime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interact-with-the-model-directly-in-the-console_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interact with the model directly in the console
       
     </span>
   </a>
@@ -2764,27 +2808,35 @@
 <h3 id="example-runtime-tasks">Example runtime tasks</h3>
 <p><strong>Classification predictions</strong></p>
 <p>Applications send feature data to generate classification predictions.</p>
-<p>Example:
-- Train a breast cancer classifier, deploy it as a REST API service.</p>
+<p>Example:</p>
+<ul>
+<li>Train a breast cancer classifier, deploy it as a REST API service.</li>
+</ul>
 <p>From the Core Manage UI, users can create a model serving task of kind 'sklearnserve+serve:run'.</p>
 <p><img alt="configure model" src="../../images/runtimes/sklearnserve-stepper.png" /></p>
 <p>Users can view the API endpoints for their deployed services in the 'services' tab.</p>
 <p><img alt="services" src="../../images/runtimes/sklearnserve-services.png" /></p>
+<h3 id="interact-with-the-model-directly-in-the-console">Interact with the model directly in the console</h3>
+<p>Once the service is running, it can be tested directly from the console using the built-in <a href="../../runtimes/inference-v2-client/">InferenceV2 Client</a>. The client is automatically selected for services that expose an Open Inference Protocol V2 endpoint. It provides health monitoring (Ready/Live indicators), a pre-configured inference request editor, and a metadata viewer.</p>
 <hr />
 <h2 id="mlflow-model-serving">MLflow Model Serving</h2>
 <p>The <a href="../../runtimes/mlflowserve/"><strong>mlflowserve runtime</strong></a> is designed for serving models tracked and logged with MLflow, supporting multiple frameworks including scikit-learn, TensorFlow, PyTorch, and XGBoost. These tasks can be executed through MLflow's standard serving API.</p>
 <h3 id="example-runtime-tasks_1">Example runtime tasks</h3>
 <p><strong>Multi-framework model serving</strong></p>
 <p>Applications send inference requests to models regardless of the underlying framework.</p>
-<p>Example:
-- Train an iris classifier (e.g., scikit-learn), log the model with MLflow, and deploy the logged artifact as a REST serving endpoint.</p>
+<p>Example:</p>
+<ul>
+<li>Train an iris classifier (e.g., scikit-learn), log the model with MLflow, and deploy the logged artifact as a REST serving endpoint.</li>
+</ul>
 <p>From the Core Manage UI, users can create a model serving task of kind 'mlflowserve+serve:run'.</p>
 <p><img alt="configure model" src="../../images/runtimes/mlflowserve-stepper.png" /></p>
 <p>Users can view the API endpoints for their deployed services in the 'services' tab.</p>
 <p><img alt="services" src="../../images/runtimes/mlflowserve-services.png" /></p>
+<h3 id="interact-with-the-model-directly-in-the-console_1">Interact with the model directly in the console</h3>
+<p>Once the service is running, it can be tested directly from the console using the built-in <a href="../../runtimes/inference-v2-client/">InferenceV2 Client</a>. The client is automatically selected for MLflow-served models, which expose an Open Inference Protocol V2 endpoint. It supports sending inference payloads, inspecting model metadata, and reviewing request history.</p>
 <hr />
 <h2 id="custom-model-serving">Custom Model Serving</h2>
-<p>It is possible to expose a custom model through the <a href="../../runtimes/python/"><strong>python serverless</strong></a> or <a href="../../runtimes/oi/"><strong>openinference</strong></a> runtimes. In the first case, the API is not limited to a specific format or protocol, and it is possible to define arbitrary HTTP API for interacting with the model. In the second case the exposed API is defined by the Open Inference v2 protocol, and allows for both HTTP and gRPC protocols. A custom model can be loaded from a local file or from a remote URL. </p>
+<p>It is possible to expose a custom model through the <a href="../../runtimes/python/"><strong>python serverless</strong></a> or <a href="../../runtimes/oi/"><strong>openinference</strong></a> runtimes. In the first case, the API is not limited to a specific format or protocol, and it is possible to define arbitrary HTTP API for interacting with the model. In the second case the exposed API is defined by the Open Inference v2 protocol, and allows for both HTTP and gRPC protocols. A custom model can be loaded from a local file or from a remote URL.</p>
 <h3 id="example-runtime-tasks_2">Example runtime tasks</h3>
 <ul>
 <li>Train a computer vision object detector using HuggingFace transformers library and publish the model on huggingface.co</li>
@@ -2799,24 +2851,29 @@
 <tr>
 <th>Runtime</th>
 <th>Example Tasks</th>
+<th>Console Client</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>sklearnserve</td>
 <td>classification, regression, clustering</td>
+<td><a href="../../runtimes/inference-v2-client/">InferenceV2 Client</a></td>
 </tr>
 <tr>
 <td>mlflowserve</td>
 <td>multi-framework serving, model versioning, A/B testing</td>
+<td><a href="../../runtimes/inference-v2-client/">InferenceV2 Client</a></td>
 </tr>
 <tr>
 <td>python serverless</td>
 <td>custom model serving</td>
+<td><a href="../../tasks/services/#http-client">HTTP Client</a></td>
 </tr>
 <tr>
 <td>openinference</td>
 <td>custom model serving with Open Inference v2 protocol</td>
+<td><a href="../../tasks/services/#http-client">HTTP Client</a></td>
 </tr>
 </tbody>
 </table>

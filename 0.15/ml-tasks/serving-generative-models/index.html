@@ -1140,6 +1140,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#interact-with-the-model-directly-in-the-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interact with the model directly in the console
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2597,6 +2608,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#interact-with-the-model-directly-in-the-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interact with the model directly in the console
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2776,7 +2798,7 @@
 
 <h1 id="serving-generative-models">Serving Generative Models</h1>
 <p>Serving generative models means exposing trained models through APIs so that applications can send requests and receive generated outputs in real time. Once deployed, the runtime environment manages inference requests, routing, preprocessing, and response generation.</p>
-<p>On the platform, these interactions are performed, where possible, through <strong>OpenAI-compatible APIs</strong>, allowing applications and tools to interact with deployed models using standard OpenAI protocols. This enables easy integration of generative AI capabilities into applications, automation pipelines, and development tools without requiring custom APIs. By combining these serving options with OpenAI-compatible APIs, the DigitalHub platform enables users to quickly deploy and operate generative AI models without implementing custom inference services. Using the available runtimes, users can configure and deploy models directly through the platform by specifying only a small set of parameters such as the model model name, runtime type, and optional adapters or runtime arguments. </p>
+<p>On the platform, these interactions are performed, where possible, through <strong>OpenAI-compatible APIs</strong>, allowing applications and tools to interact with deployed models using standard OpenAI protocols. This enables easy integration of generative AI capabilities into applications, automation pipelines, and development tools without requiring custom APIs. By combining these serving options with OpenAI-compatible APIs, the DigitalHub platform enables users to quickly deploy and operate generative AI models without implementing custom inference services. Using the available runtimes, users can configure and deploy models directly through the platform by specifying only a small set of parameters such as the model model name, runtime type, and optional adapters or runtime arguments.</p>
 <p>This approach enables <strong>no-code or low-code model deployment</strong>, where the platform automatically handles the underlying infrastructure required to run the model, including container configuration, API exposure, and runtime orchestration.</p>
 <p>Different runtimes support different types of generative workloads. Specifically, we distinguish between</p>
 <ul>
@@ -2793,36 +2815,44 @@
 <h3 id="example-of-vllmserve-textruntime-tasks">Example of vllmserve-textruntime tasks</h3>
 <p><strong>Chat assistants</strong></p>
 <p>Applications send chat completion requests to generate conversational responses.</p>
-<p>Example:
-- A chatbot sends a user prompt asking for help writing an email.
-- The request is sent to the model using the OpenAI <strong>chat completions API</strong>.
-- The generated response is streamed back to the client application.</p>
+<p>Example:</p>
+<ul>
+<li>A chatbot sends a user prompt asking for help writing an email.</li>
+<li>The request is sent to the model using the OpenAI <strong>chat completions API</strong>.</li>
+<li>The generated response is streamed back to the client application.</li>
+</ul>
 <p>From the Core Manage UI, users can create a chat assistant API task of kind 'vllmserve-text+serve:run' as shown.</p>
 <p><img alt="configure model" src="../../images/runtimes/vllmserve-text-stepper1.png" /></p>
 <p><img alt="customize parameters" src="../../images/runtimes/vllmserve-text-stepper2.png" /></p>
 <p>Users can view the API endpoints for their deployed services in the 'services' tab.</p>
 <p><img alt="services" src="../../images/runtimes/vllmserve-text-services.png" /></p>
+<h3 id="interact-with-the-model-directly-in-the-console">Interact with the model directly in the console</h3>
+<p>Once a text generation service is running, it can be tested interactively directly from the console using the built-in <a href="../../runtimes/chat-client/">Chat Client</a>. The Chat Client is automatically selected for any service that exposes an OpenAI-compatible chat API (both <code>vllmserve-text</code> and <code>kubeai-text</code>). It supports streaming responses, multi-turn conversation history, and response regeneration — no external tooling required.</p>
 <hr />
 <h2 id="embedding-and-vector-tasks">Embedding and Vector Tasks</h2>
 <p>Frequently genAI applications require supporting tasks, such as embedding, ranking, scoring, and encoding. They are required, for example, for generating vector embeddings used in search, recommendation systems, and semantic analysis. In the platform these tasks may be implemented using the <a href="../../runtimes/llmserve/#vllm-serving-runtime"><strong>vllmserve-pooling</strong></a> runtime or the <a href="../../runtimes/llmserve/#kubeai-text-runtime"><strong>kubeai-text</strong></a> runtime (only for embedding).</p>
 <h3 id="example-of-vllmserve-pooling-runtime-tasks">Example of vllmserve-pooling runtime tasks</h3>
 <p><strong>Semantic search</strong></p>
 <p>Applications convert queries and documents into embeddings to perform similarity searches.</p>
-<p>Example:
-- A user searches for documents related to a specific topic.
-- The runtime generates an embedding vector for the query.
-- The search engine compares it with stored document embeddings.</p>
-<p>From the Core Manage UI, users can create a chat assistant API task of kind 'vllmserve-pooling+serve:run' as shown. </p>
+<p>Example:</p>
+<ul>
+<li>A user searches for documents related to a specific topic.</li>
+<li>The runtime generates an embedding vector for the query.</li>
+<li>The search engine compares it with stored document embeddings.</li>
+</ul>
+<p>From the Core Manage UI, users can create a chat assistant API task of kind 'vllmserve-pooling+serve:run' as shown.</p>
 <p><img alt="configure model" src="../../images/runtimes/vllmserve-pooling-stepper1.png" /></p>
 <p>Users can view the API endpoints for their deployed services in the 'services' tab.</p>
 <p><img alt="services" src="../../images/runtimes/vllmserve-pooling-services.png" /></p>
 <h3 id="example-of-kubeai-text-runtime-tasks">Example of kubeai-text runtime tasks</h3>
 <p><strong>Text embedding with KubeAI</strong></p>
 <p>Applications convert text into vector embeddings for semantic search and similarity analysis.</p>
-<p>Example:
-- A document management system needs to index and search documents.
-- The runtime generates embedding vectors for documents and queries.
-- Similarity comparisons identify relevant documents.</p>
+<p>Example:</p>
+<ul>
+<li>A document management system needs to index and search documents.</li>
+<li>The runtime generates embedding vectors for documents and queries.</li>
+<li>Similarity comparisons identify relevant documents.</li>
+</ul>
 <p>From the Core Manage UI, users can create a text embedding API task of kind 'kubeai-text+serve:run' and the services will be avaliable as shown below.</p>
 <p><img alt="configure model" src="../../images/runtimes/kubeai-text-run.png" /></p>
 <hr />
@@ -2832,11 +2862,13 @@
 <h3 id="example-vllmserve-speech-runtime-tasks">Example vllmserve-speech runtime tasks</h3>
 <p><strong>Speech transcription</strong></p>
 <p>Audio recordings are processed and converted into text.</p>
-<p>Example:
-- A meeting recording is uploaded through the <strong>audio transcription API</strong>.
-- The runtime invokes the speech model.
-- The generated transcript is returned to the client.</p>
-<p>From the Core Manage UI, users can create a chat assistant API task of kind 'vllmserve-speech+serve:run' as shown. </p>
+<p>Example:</p>
+<ul>
+<li>A meeting recording is uploaded through the <strong>audio transcription API</strong>.</li>
+<li>The runtime invokes the speech model.</li>
+<li>The generated transcript is returned to the client.</li>
+</ul>
+<p>From the Core Manage UI, users can create a chat assistant API task of kind 'vllmserve-speech+serve:run' as shown.</p>
 <p><img alt="configure model" src="../../images/runtimes/vllmserve-speech-stepper1.png" /></p>
 <p>Users can view the API endpoints for their deployed services in the 'services' tab.</p>
 <p><img alt="services" src="../../images/runtimes/vllmserve-speech-services.png" /></p>
@@ -2848,28 +2880,34 @@
 <tr>
 <th>Runtime</th>
 <th>Example Tasks</th>
+<th>Console Client</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>vllmserve-text</td>
 <td>chat generation, text completion, code generation</td>
+<td><a href="../../runtimes/chat-client/">Chat Client</a></td>
 </tr>
 <tr>
 <td>kubeai-text</td>
 <td>multi-model serving, adapter routing, autoscaling, text embedding</td>
+<td><a href="../../runtimes/chat-client/">Chat Client</a></td>
 </tr>
 <tr>
 <td>vllmserve-pooling</td>
 <td>embeddings, semantic search, recommendations</td>
+<td>—</td>
 </tr>
 <tr>
 <td>vllmserve-speech</td>
 <td>speech transcription, audio translation</td>
+<td>—</td>
 </tr>
 <tr>
 <td>kubeai-speech</td>
 <td>speech transcription</td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
