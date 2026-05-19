@@ -53,7 +53,7 @@ The full conversation history is included in each request so the model has full 
 
 ## Usage
 
-1. Deploy an LLM model using one of the supported serving runtimes (e.g., HuggingFace Serve or KubeAI Text). See [Model Serving: LLMs](../runtimes/llmserve.md) for details.
+1. Deploy an LLM model using one of the supported serving runtimes (e.g., HuggingFace Serve or KubeAI Text). See [Model Serving: LLMs](llmserve.md) for details.
 2. Wait for the service to reach the **RUNNING** state.
 3. Click the **CLIENT** button in the service list or run detail page.
 4. The Chat Client dialog opens with the model name displayed at the top.
