@@ -946,39 +946,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#node-selection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Node selection
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tolerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tolerations
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#affinity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Affinity
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#fs-group" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2808,39 +2775,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#node-selection" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Node selection
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tolerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tolerations
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#affinity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Affinity
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#fs-group" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2978,10 +2912,8 @@ allocate an appropriate set of resources, such as memory, GPU, node types, etc.<
 <p>For this purpose the platform relies on Kubernetes functionalities and resource definitions. More specifically,
 the run configuration may have a specific requirements for</p>
 <ul>
-<li>node selection</li>
 <li>volumes (Persistent Volume Claims and Config Maps)</li>
 <li>HW resources in terms of CPU and memory requests and limits, numbers of GPUs</li>
-<li>Kubernetes affinity definition and/or toleration properties</li>
 <li>Additional secrets and environment variables to be associated with the execution</li>
 </ul>
 <h2 id="how-to-define-resource-requirements">How to define resource requirements</h2>
@@ -3055,20 +2987,6 @@ Secrets must be stored via the platform: externally defined secrets (for example
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ENV2</span>
 <span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VALU123123</span><span class="w">  </span>
 </code></pre></div>
-<h3 id="node-selection">Node selection</h3>
-<p>Users can request a node selector for the run being launched by defining the selector(s) as a key/value list. 
-The platform will add the selectors as-is to k8s resources such as Jobs, Pods, Deployments when appropriate.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">node_selector</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">selectorKey</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">selectValue</span>
-</code></pre></div>
-<p>See <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector">K8s Documentation</a> for reference.</p>
-<h3 id="tolerations">Tolerations</h3>
-<p>To define tolerations add the definition inside the <code>tolerations</code> field of the spec, following Kubernetes specifications.
-Please see <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/">Kubernetes documentation</a>.</p>
-<h3 id="affinity">Affinity</h3>
-<p>To define affinity add the definition inside the <code>affinity</code> field of the spec, following Kubernetes specifications.
-Please see <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity">Kubernetes documentation</a>.</p>
 <h3 id="fs-group">FS group</h3>
 <p>To properly map volumes mounted for runs, users can specify the group id used for mount operations. This step is required when the USER used to run the process does not match the default.
 Define the <code>fs_group</code> field by specifying the group id as integer.</p>
