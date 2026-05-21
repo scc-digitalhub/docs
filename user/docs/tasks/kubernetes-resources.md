@@ -6,10 +6,8 @@ allocate an appropriate set of resources, such as memory, GPU, node types, etc.
 For this purpose the platform relies on Kubernetes functionalities and resource definitions. More specifically,
 the run configuration may have a specific requirements for
 
-- node selection
 - volumes (Persistent Volume Claims and Config Maps)
 - HW resources in terms of CPU and memory requests and limits, numbers of GPUs
-- Kubernetes affinity definition and/or toleration properties
 - Additional secrets and environment variables to be associated with the execution
 
 ## How to define resource requirements
@@ -125,32 +123,6 @@ envs:
   - name: ENV2
     value: VALU123123  
 ```
-
-
-### Node selection
-
-Users can request a node selector for the run being launched by defining the selector(s) as a key/value list. 
-The platform will add the selectors as-is to k8s resources such as Jobs, Pods, Deployments when appropriate.
-
-```yaml
-node_selector:
-  - key: selectorKey
-    value: selectValue
-```
-
-See [K8s Documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector) for reference.
-
-
-
-### Tolerations
-
-To define tolerations add the definition inside the `tolerations` field of the spec, following Kubernetes specifications.
-Please see [Kubernetes documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
-
-### Affinity
-
-To define affinity add the definition inside the `affinity` field of the spec, following Kubernetes specifications.
-Please see [Kubernetes documentation](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity).
 
 ### FS group
 
