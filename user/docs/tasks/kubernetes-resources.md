@@ -38,7 +38,7 @@ resources:
 To configure resources from a Jupyter workspace using the SDK, you can use a run definition like the following:
 
 ```python
-run = function_s2.run(
+run = func.run(
     action="job",
     fs_group="8877",
     args=[...],
@@ -293,6 +293,7 @@ run = func.run(
   run_as_user=1000
 )
 ```
+
 
 ### Run as group
 
