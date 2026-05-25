@@ -1,7 +1,7 @@
 # Define and use Kubernetes Resources
 
 When it come to execution of AI tasks, either batch jobs or model serving, it is important to be able to
-allocate an appropriate set of resources, such as memory, GPU, node types, etc.
+allocate an appropriate set of resources, such as memory, GPU, disk etc.
 
 For this purpose the platform relies on Kubernetes functionalities and resource definitions. More specifically,
 the run configuration may have a specific requirements for
@@ -19,6 +19,10 @@ In the platform, kubernetes resource requirements may be defined in two ways:
 ### Request resources at runtime
 The platform lets users require additional k8s resource to be allocated to a given function's run, either via Core UI or via SDK. Please note that it is possible to describe only some properties, leaving the rest blank without constraints. All the defaults are managed by the platform in accordance with the underlying Kubernetes deployment.
 
+In the Core UI, resource requirements can be assigned when creating a run:
+
+![Core UI run resource assignment](../images/console/run-configure-resource.png)
+
 To define requirements for single runs, developers need to include in the run specification the resource definition, in accordance with the schema.
 
 For example, to request for a certain amount of compute resources, the spec must contain the detailed definition as follows:
@@ -28,6 +32,26 @@ resources:
   cpu: "8"
   mem: 32Gi
   gpu: "1"
+  disk: 10Gi
+```
+
+To configure resources from a Jupyter workspace using the SDK, you can use a run definition like the following:
+
+```python
+run = function_s2.run(
+    action="job",
+    fs_group="8877",
+    args=[...],
+    resources={"mem": "32Gi", "cpu": "6"},
+    volumes=[{
+        "volume_type": "persistent_volume_claim",
+        "name": "volume-deforestation",
+        "mount_path": "/app/files",
+        "spec": {
+             "size": "350Gi"
+        }
+    }]
+)
 ```
 
 In order to provide such definitions, users can leverage the SDK or the Core UI to programmatically or interactively define their request.
@@ -39,9 +63,29 @@ Please see the [Kubernetes Resources](https://scc-digitalhub.github.io/sdk-docs/
 It is possible to rely on a set of preconfigured HW profiles defined during the platform deployment. 
 The profile allow for abstracting the platform users from the underlying complexity. Each profile corresponds to a specific resource configuration that defines a combination of requirements. For example, the profile may define a specific type of GPU, memory, and CPUs to be used. In this case it is sufficient to specify the corresponding profile name in the run execution configuration to allocate the corresponding resources.
 
+To specify a profile from a Jupyter workspace using the SDK, you can define the run as follows:
+
+```python
+train_run = func.run(
+    action="job",
+    inputs={"input1": value},
+    profile="1xa100",  # selected hardware profile
+    resources={"mem": "6Gi"},
+    volumes=[{
+        "volume_type": "persistent_volume_claim",
+        "name": "train-volume",
+        "mount_path": "/local-data",
+        "spec": {
+            "size": "10Gi"
+        }
+    }]
+)
+```
+
 The mechanism of profiles is described in the administration section of the documentation and is managed by the platform admins. Please see [Resource templates](https://scc-digitalhub.github.io/docs/admin/) section of the documentation for more information.
 
 Please note that the requirements defined in the template have priority over those defined by the user and are not overwritten.
+
 
 
 ## Available resources
@@ -64,6 +108,22 @@ volumes:
             
 ```
 
+To configure a volume from a Jupyter workspace using the SDK:
+
+```python
+run = func.run(
+  action="job",
+  volumes=[{
+    "volume_type": "persistent_volume_claim",
+    "name": "my-pvc",
+    "mount_path": "/data",
+    "spec": {
+      "size": "10Gi"
+    }
+  }]
+)
+```
+
 Note: the platform can be configured to block the usage of pre-existing volumes for security reasons. Volumes created by the platform for specific runs as ReadWriteOnce and used exclusively by the platform.
 
 ### Hardware Resources
@@ -75,6 +135,7 @@ Supported resources are:
 - **CPU**
 - **RAM memory**
 - **GPU**
+- **Disk**
 
 #### CPU
 To request a specific amount of CPU for the run, declare the resource type as `cpu` and specify requested value.
@@ -84,6 +145,17 @@ resources:
   cpu: "10"
 ```
 
+To configure CPU resources from a Jupyter workspace using the SDK:
+
+```python
+run = func.run(
+    action="job",
+    resources={"cpu": "10"}
+)
+```
+
+
+
 #### RAM memory
 
 To request a specific amount of RAM memory for the run, declare the resource type as `mem` and specify requested value.
@@ -91,6 +163,15 @@ To request a specific amount of RAM memory for the run, declare the resource typ
 ```yaml
 resources:
   mem: 32Gi
+```
+
+To configure RAM memory from a Jupyter workspace using the SDK:
+
+```python
+run = func.run(
+    action="job",
+    resources={"mem": "32Gi"}
+)
 ```
 
 #### GPU
@@ -102,6 +183,34 @@ resources:
   gpu: "1"    
 ```
 
+To configure GPU resources from a Jupyter workspace using the SDK:
+
+```python
+run = func.run(
+    action="job",
+    resources={"gpu": "1"}
+)
+```
+
+#### Disk
+
+To request disk resources for the run, specify the resource type `disk` and set the requested value.
+
+```yaml
+resources:
+  disk: 10Gi
+```
+
+To configure disk resources from a Jupyter workspace using the SDK:
+
+```python
+run = func.run(
+    action="job",
+    resources={"disk": "10Gi"}
+)
+```
+
+
 ### Secrets
 
 Users can request a secret injection into the run being launched by passing the identifier inside the `secrets` field.
@@ -110,6 +219,16 @@ Secrets must be stored via the platform: externally defined secrets (for example
 ```yaml
 secrets:
   - my-secret-key
+```
+
+To configure secrets from a Jupyter workspace using the SDK:
+
+```python
+run = func.run(
+    action="job",
+    secrets=["CDSETOOL_ESA_USER", "CDSETOOL_ESA_PASSWORD"],
+    ..
+)
 ```
 
 ### Envs
@@ -124,6 +243,19 @@ envs:
     value: VALU123123  
 ```
 
+To configure environment variables from a Jupyter workspace using the SDK:
+
+```python
+run = func.run(
+    action="job",
+    envs=[
+      {"name": "HF_HOME", "value": "/local-data/huggingface"},
+      {"name": "TRANSFORMERS_CACHE", "value": "/local-data/huggingface"}
+    ],
+    ...
+)
+```
+
 ### FS group
 
 To properly map volumes mounted for runs, users can specify the group id used for mount operations. This step is required when the USER used to run the process does not match the default.
@@ -132,6 +264,16 @@ Define the `fs_group` field by specifying the group id as integer.
 ```yaml
 fs_group: 1000
 ```
+
+To configure fs_group from a Jupyter workspace using the SDK:
+
+```python
+run = func.run(
+  action="job",
+  fs_group='8877',
+)
+```
+
 
 ### Run as user
 
@@ -143,6 +285,15 @@ It accepts an integer value.
 run_as_user: 1000
 ```
 
+To configure run_as_user from a Jupyter workspace using the SDK:
+
+```python
+run = func.run(
+  action="job",
+  run_as_user=1000
+)
+```
+
 ### Run as group
 
 The process run inside the container is owned by the GROUP defined in the container manifest. For security reasons, the platform does not allow containers to be run as root.
@@ -151,5 +302,14 @@ It accepts an integer value.
 
 ```yaml
 run_as_group: 1000
+```
+
+To configure run_as_group from a Jupyter workspace using the SDK:
+
+```python
+run = func.run(
+  action="job",
+  run_as_group=1000
+)
 ```
 
