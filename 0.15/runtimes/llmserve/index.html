@@ -14,7 +14,7 @@
         <link rel="prev" href="../hera/">
       
       
-        <link rel="next" href="../chat-client/">
+        <link rel="next" href="../mlflowserve/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Overview - Digital Hub</title>
+        <title>Model Serving: LLMs - Digital Hub</title>
       
     
     
@@ -194,7 +194,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Model Serving: LLMs
             
           </span>
         </div>
@@ -1731,55 +1731,6 @@
   
   
   
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Model Serving: LLMs
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Model Serving: LLMs
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -1795,7 +1746,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Model Serving: LLMs
   
 
     
@@ -1813,7 +1764,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Model Serving: LLMs
   
 
     
@@ -1920,89 +1871,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../chat-client/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Chat Client
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Model Serving: MLflow
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Model Serving: MLflow
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../mlflowserve/" class="md-nav__link">
         
   
@@ -2010,7 +1878,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Model Serving: MLflow
   
 
     
@@ -2019,42 +1887,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../inference-v2-client/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    InferenceV2 Client
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -2655,24 +2487,6 @@
   
 
       
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="./" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Model Serving: LLMs
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
     </ol>
   </nav>
 
@@ -2689,9 +2503,9 @@
 <h1 id="llm-model-serving-runtime">LLM Model Serving Runtime</h1>
 <p><strong>LLM Model serving runtime</strong> aims at supporing the possibility to expose LLM models as OpenAI-compatible APIs. For this purpose, several different runtimes are available, which the user may choose depending on a specific scenario's requirements.</p>
 <ul>
-<li><strong>KubeAI Text and Speech</strong> <code>kubeai-text</code> and <code>kubeai-speech</code> runtimes rely on the <a href="https://www.kubeai.org/">KubeAI</a> operator to expose models. The model is served by KubeAI through a single channel. These runtimes rely on different engines, including vLLM, OLLama and Infinity, for different tasks. KubeAI also supports serving multiple LoRA adapters, autoscaling, and many other useful options for production-ready environments. </li>
+<li><strong>KubeAI Text and Speech</strong> <code>kubeai-text</code> and <code>kubeai-speech</code> runtimes rely on the <a href="https://www.kubeai.org/">KubeAI</a> operator to expose models. The model is served by KubeAI through a single channel. These runtimes rely on different engines, including vLLM, OLLama and Infinity, for different tasks. KubeAI also supports serving multiple LoRA adapters, autoscaling, and many other useful options for production-ready environments.</li>
 <li><strong>vLLM</strong> (<code>vllmserve-text</code>, <code>vllmserve-speech</code> , and <code>vllmserve-pooling</code>) runtime exposes LLM models using vLLM engine. This is a custom implementation of the OpenAI-compatible API that is based on <a href="https://docs.vllm.ai/">vLLM</a> engine. Based on a specific runtime version, the model supports the OpenAI generative AI APIs (completions, chat completions), OpenAI audio processing (audio transcription, audio translation), and a series of other OpenAI compatible functions (like embeddings, ranking, tokenization, classification, and raning).</li>
-<li><strong>HuggingFace Serving</strong> (<code>huggingfaceserve</code>) runtime exposes standalone LLM models using KServe-based implementation (deprecated). In a nutshell, this runtime allows for exposing LLMs using the <a href="https://docs.vllm.ai/">vLLM</a> engine. The engine supports, in particular, completions and chat completions APIs compatible with the OpenAI protocol, embedding, and a series of other functions (like embeddings, fill mask, classification) using Open Inference Protocol. See corresponding <a href="https://kserve.github.io/archive/0.14/modelserving/v1beta1/llm/huggingface/">kserve</a> documentation for the details. </li>
+<li><strong>HuggingFace Serving</strong> (<code>huggingfaceserve</code>) runtime exposes standalone LLM models using KServe-based implementation (deprecated). In a nutshell, this runtime allows for exposing LLMs using the <a href="https://docs.vllm.ai/">vLLM</a> engine. The engine supports, in particular, completions and chat completions APIs compatible with the OpenAI protocol, embedding, and a series of other functions (like embeddings, fill mask, classification) using Open Inference Protocol. See corresponding <a href="https://kserve.github.io/archive/0.14/modelserving/v1beta1/llm/huggingface/">kserve</a> documentation for the details.</li>
 </ul>
 <h2 id="kubeai-text-and-speech-runtimes">KubeAI Text and Speech runtimes</h2>
 <p>KubeAI Text and Speech runtimes rely on the KubeAI platform for model serving.</p>
@@ -2703,8 +2517,12 @@ KubeAI does not depend on other systems like Istio &amp; Knative (for scale-from
 <ul>
 <li>Multiple backend engines optimized for different goals. For example, OLLama is best suited for testing models without GPU, while vLLM is more suitable for GPU-based environments.</li>
 <li>Model proxy: the KubeAI proxy provides an OpenAI-compatible API. Behind this API, the proxy implements a prefix-aware load balancing strategy that optimizes for KV the cache utilization of the backend serving engines (i.e. vLLM). The proxy also implements request queueing (while the system scales from zero replicas) and request retries (to seamlessly handle bad backends).</li>
-<li>Model operator: the KubeAI model operator manages backend server Pods directly. It automates common operations such as downloading models, mounting volumes, and loading dynamic LoRA adapters via the KubeAI Model CRD. The KubeAI operator abstract the concepts of specific implementations and tasks providing a common specification model for defining models under different engines (OLlama, vLLM, Infinity, FasterWhisper).</li>
-<li><a href="https://openwebui.com/">Open WebUI</a> - an extensible, feature-rich, user-friendly self-hosted AI platform designed to operate entirely offline. It supports OpenAI-compatible APIs, with built-in inference engine for RAG. Its interface is integrated with the SSO authentication adopted by the platform and provides the management tools to expose and test the AI models. </li>
+<li>
+<p>Model operator: the KubeAI model operator manages backend server Pods directly. It automates common operations such as downloading models, mounting volumes, and loading dynamic LoRA adapters via the KubeAI Model CRD. The KubeAI operator abstract the concepts of specific implementations and tasks providing a common specification model for defining models under different engines (OLlama, vLLM, Infinity, FasterWhisper).</p>
+</li>
+<li>
+<p><a href="https://openwebui.com/">Open WebUI</a> - an extensible, feature-rich, user-friendly self-hosted AI platform designed to operate entirely offline. It supports OpenAI-compatible APIs, with built-in inference engine for RAG. Its interface is integrated with the SSO authentication adopted by the platform and provides the management tools to expose and test the AI models.</p>
+</li>
 </ul>
 <p>The specification of text and speech runtimes amounts to defining:</p>
 <ul>
@@ -2734,7 +2552,7 @@ KubeAI does not depend on other systems like Istio &amp; Knative (for scale-from
 <li>LLM metadata - feature information, engine, base model, etc</li>
 </ul>
 <p><img alt="KubeAI serve run" src="../../images/kubeai/kubeairun.png" /></p>
-<p>It is also possible to access the exposed model API through the KubeAI model proxy. The proxy exposes the OpenAI-compatible endpoints in function of the specified task. See the KubeAI documentation on how to use and access the models, to integrate this with the client libraries and applications. </p>
+<p>It is also possible to access the exposed model API through the KubeAI model proxy. The proxy exposes the OpenAI-compatible endpoints in function of the specified task. See the KubeAI documentation on how to use and access the models, to integrate this with the client libraries and applications.</p>
 <h2 id="vllm-serving-runtime">vLLM Serving runtime</h2>
 <p>The specification of the vLLM runtime functions consists of the following elements:</p>
 <ul>
@@ -2755,7 +2573,7 @@ KubeAI does not depend on other systems like Istio &amp; Knative (for scale-from
 <p>The specification of the HuggingfaceServe runtime functions consists of the following elements:</p>
 <ul>
 <li><code>path</code> defining the URL of the model, either from the platform storage or from HuggingFace catalog (e.g., 'huggingface://Qwen/Qwen2.5-0.5B')</li>
-<li><code>model</code> defining the name of the exposed model </li>
+<li><code>model</code> defining the name of the exposed model</li>
 <li>and optional base image to use for serving the model if different from the one used by the platform by default</li>
 </ul>
 <p>The runtime supports the <code>serve</code> action that may specify further deployment details including</p>
@@ -2767,7 +2585,7 @@ KubeAI does not depend on other systems like Istio &amp; Knative (for scale-from
 </ul>
 <p>Once deployed, a model is exposed with the corresponding Kubernetes service. The sevice endpoint is avaialble as a part of the <code>status/service</code> data of the run.</p>
 <h2 id="testing-deployed-models">Testing deployed models</h2>
-<p>Once a model is running, you can interact with it directly from the console using the <a href="../chat-client/">Chat Client</a>, which provides a built-in OpenAI-compatible chat interface for testing and interacting with deployed LLM services without external tools.</p>
+<p>Once a model is running, you can interact with it directly from the console using the <a href="../../ml-tasks/serving-generative-models/#chat-client">Chat Client</a>, which provides a built-in OpenAI-compatible chat interface for testing and interacting with deployed LLM services without external tools.</p>
 <h2 id="management-with-sdk">Management with SDK</h2>
 <p>Check the <a href="https://scc-digitalhub.github.io/sdk-docs/reference/runtimes/modelserve/overview/">SDK runtime documentation</a> for more information.</p>
 <h2 id="see-also">See Also</h2>
