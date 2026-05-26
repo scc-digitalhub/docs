@@ -1,4 +1,4 @@
-# Workflows
+# Manage Workflows
 
 Workflows allow for organizing the single operations in advanced management pipelines, to perform a series operation of data processing, ML model training and serving, etc. Workflows represent long-running procedures defined as Directed Acyclic Graphs (DAGs) where each node is a single unit of work performed by the platform (e.g., as a Kubernetes Job).
 
@@ -61,7 +61,7 @@ The `EXPORT` button will download the resource's information as a yaml file.
 
 In case of ``hera`` workflows, the executions of the workflow instances can be monitored with the corresponding DAG viewer.
 
-![Workflow run](../images/scenario-etl/pipeline.png)
+![Workflow run](../images/pipeline.png)
 
 ### Update
 

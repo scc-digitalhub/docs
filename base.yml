@@ -7,6 +7,9 @@ markdown_extensions:
 
 site_name: Digital Hub
 
+repo_name: scc-digitalhub/docs
+repo_url: https://github.com/scc-digitalhub/docs
+
 extra:
   site: https://scc-digitalhub.github.io/docs
   docs_version: !ENV [DOCS_VERSION, 'current']
@@ -16,12 +19,14 @@ extra:
       path: ""
     - name: Admin
       path: "/admin"
+    - name: Tutorials
+      path: "/tutorials"
 
 theme:
   name: material
   custom_dir: ../custom/
   features:
-    - navigation.expand
+    # - navigation.expand
     - navigation.path
     - content.code.copy
   palette:

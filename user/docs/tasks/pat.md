@@ -1,4 +1,4 @@
-# Personal Access Tokens (PATs)
+# Use Personal Access Tokens (PATs)
 
 Personal Access Tokens (PATs) are a special type of access token that users can generate directly from the platform’s web console. PATs are designed to simplify user authentication for long-lived or automation-related use cases, offering the same functionality as standard access tokens with additional control features.
 

@@ -13,3 +13,7 @@ The ``serve`` action of the runtime creates a dedicated deployment and exposes t
 ## Management with SDK
 
 Check the [SDK python runtime documentation](https://scc-digitalhub.github.io/sdk-docs/reference/runtimes/modelserve/overview/) for more information.
+
+## Testing deployed models
+
+Once a model is running, you can interact with it directly from the console using the [InferenceV2 Client](inference-v2-client.md), which provides a pre-configured interface for the Open Inference Protocol V2 endpoint, health monitoring, and request history.

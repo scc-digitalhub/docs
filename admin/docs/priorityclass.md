@@ -58,7 +58,6 @@ Currently, priority classes are supported by the following components with the r
 
 **Low Priority:**
 
-- API Gateway Operator
 - Dashboard
 - Dremio Rest Server Operator
 - External Postgres Operator
