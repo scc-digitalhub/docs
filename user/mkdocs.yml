@@ -54,12 +54,8 @@ nav:
       - Serverless (Python): "runtimes/python.md"
       - Container: "runtimes/container.md"
       - Hera Pipelines: "runtimes/hera.md"
-      - "Model Serving: LLMs":
-          - Overview: "runtimes/llmserve.md"
-          - "Chat Client": "runtimes/chat-client.md"
-      - "Model Serving: MLflow":
-          - Overview: "runtimes/mlflowserve.md"
-          - "InferenceV2 Client": "runtimes/inference-v2-client.md"
+      - "Model Serving: LLMs": "runtimes/llmserve.md"
+      - "Model Serving: MLflow": "runtimes/mlflowserve.md"
       - "Model Serving: Scikit-learn": "runtimes/sklearnserve.md"
       - Open Inference (Python): "runtimes/oi.md"
       - Guardrail (Python): "runtimes/guardrail.md"

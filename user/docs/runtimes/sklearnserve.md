@@ -4,11 +4,11 @@
 
 More specifically, to define the Scikit-Learn serving function it is necessary to provide
 
-- ``path`` defining a reference to the packaged model
-- ``model`` defining the name of the exposed model
+- `path` defining a reference to the packaged model
+- `model` defining the name of the exposed model
 - optional serving image if different from the one used by the platform by default.
 
-The ``serve`` action of the runtime creates a dedicated deployment and exposes the model as a Open Inference Protocol API. The standard resource- and service-related configuration may be specified.
+The `serve` action of the runtime creates a dedicated deployment and exposes the model as a Open Inference Protocol API. The standard resource- and service-related configuration may be specified.
 
 ## Management with SDK
 
@@ -16,4 +16,4 @@ Check the [SDK python runtime documentation](https://scc-digitalhub.github.io/sd
 
 ## Testing deployed models
 
-Once a model is running, you can interact with it directly from the console using the [InferenceV2 Client](inference-v2-client.md), which provides a pre-configured interface for the Open Inference Protocol V2 endpoint, health monitoring, and request history.
+Once a model is running, you can interact with it directly from the console using the [InferenceV2 Client](../ml-tasks/serving-ml-models.md/#inferencev2-client), which provides a pre-configured interface for the Open Inference Protocol V2 endpoint, health monitoring, and request history.
