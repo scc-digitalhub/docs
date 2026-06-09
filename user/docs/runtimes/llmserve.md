@@ -2,9 +2,9 @@
 
 **LLM Model serving runtime** aims at supporing the possibility to expose LLM models as OpenAI-compatible APIs. For this purpose, several different runtimes are available, which the user may choose depending on a specific scenario's requirements.
 
-- **KubeAI Text and Speech** `kubeai-text` and `kubeai-speech` runtimes rely on the [KubeAI](https://www.kubeai.org/) operator to expose models. The model is served by KubeAI through a single channel. These runtimes rely on different engines, including vLLM, OLLama and Infinity, for different tasks. KubeAI also supports serving multiple LoRA adapters, autoscaling, and many other useful options for production-ready environments. 
+- **KubeAI Text and Speech** `kubeai-text` and `kubeai-speech` runtimes rely on the [KubeAI](https://www.kubeai.org/) operator to expose models. The model is served by KubeAI through a single channel. These runtimes rely on different engines, including vLLM, OLLama and Infinity, for different tasks. KubeAI also supports serving multiple LoRA adapters, autoscaling, and many other useful options for production-ready environments.
 - **vLLM** (`vllmserve-text`, `vllmserve-speech` , and `vllmserve-pooling`) runtime exposes LLM models using vLLM engine. This is a custom implementation of the OpenAI-compatible API that is based on [vLLM](https://docs.vllm.ai/) engine. Based on a specific runtime version, the model supports the OpenAI generative AI APIs (completions, chat completions), OpenAI audio processing (audio transcription, audio translation), and a series of other OpenAI compatible functions (like embeddings, ranking, tokenization, classification, and raning).
-- **HuggingFace Serving** (`huggingfaceserve`) runtime exposes standalone LLM models using KServe-based implementation (deprecated). In a nutshell, this runtime allows for exposing LLMs using the [vLLM](https://docs.vllm.ai/) engine. The engine supports, in particular, completions and chat completions APIs compatible with the OpenAI protocol, embedding, and a series of other functions (like embeddings, fill mask, classification) using Open Inference Protocol. See corresponding [kserve](https://kserve.github.io/archive/0.14/modelserving/v1beta1/llm/huggingface/) documentation for the details. 
+- **HuggingFace Serving** (`huggingfaceserve`) runtime exposes standalone LLM models using KServe-based implementation (deprecated). In a nutshell, this runtime allows for exposing LLMs using the [vLLM](https://docs.vllm.ai/) engine. The engine supports, in particular, completions and chat completions APIs compatible with the OpenAI protocol, embedding, and a series of other functions (like embeddings, fill mask, classification) using Open Inference Protocol. See corresponding [kserve](https://kserve.github.io/archive/0.14/modelserving/v1beta1/llm/huggingface/) documentation for the details.
 
 ## KubeAI Text and Speech runtimes
 
@@ -22,7 +22,8 @@ A KubeAI deployment offers different advantages:
 - Multiple backend engines optimized for different goals. For example, OLLama is best suited for testing models without GPU, while vLLM is more suitable for GPU-based environments.
 - Model proxy: the KubeAI proxy provides an OpenAI-compatible API. Behind this API, the proxy implements a prefix-aware load balancing strategy that optimizes for KV the cache utilization of the backend serving engines (i.e. vLLM). The proxy also implements request queueing (while the system scales from zero replicas) and request retries (to seamlessly handle bad backends).
 - Model operator: the KubeAI model operator manages backend server Pods directly. It automates common operations such as downloading models, mounting volumes, and loading dynamic LoRA adapters via the KubeAI Model CRD. The KubeAI operator abstract the concepts of specific implementations and tasks providing a common specification model for defining models under different engines (OLlama, vLLM, Infinity, FasterWhisper).
-3. [Open WebUI](https://openwebui.com/) - an extensible, feature-rich, user-friendly self-hosted AI platform designed to operate entirely offline. It supports OpenAI-compatible APIs, with built-in inference engine for RAG. Its interface is integrated with the SSO authentication adopted by the platform and provides the management tools to expose and test the AI models. 
+
+3. [Open WebUI](https://openwebui.com/) - an extensible, feature-rich, user-friendly self-hosted AI platform designed to operate entirely offline. It supports OpenAI-compatible APIs, with built-in inference engine for RAG. Its interface is integrated with the SSO authentication adopted by the platform and provides the management tools to expose and test the AI models.
 
 The specification of text and speech runtimes amounts to defining:
 
@@ -53,7 +54,7 @@ When deployed, the corresponding `serve` run specification contains extra inform
 
 ![KubeAI serve run](../images/kubeai/kubeairun.png)
 
-It is also possible to access the exposed model API through the KubeAI model proxy. The proxy exposes the OpenAI-compatible endpoints in function of the specified task. See the KubeAI documentation on how to use and access the models, to integrate this with the client libraries and applications. 
+It is also possible to access the exposed model API through the KubeAI model proxy. The proxy exposes the OpenAI-compatible endpoints in function of the specified task. See the KubeAI documentation on how to use and access the models, to integrate this with the client libraries and applications.
 
 ## vLLM Serving runtime
 
@@ -78,7 +79,7 @@ Once deployed, a model is exposed with the corresponding Kubernetes service. The
 The specification of the HuggingfaceServe runtime functions consists of the following elements:
 
 - `path` defining the URL of the model, either from the platform storage or from HuggingFace catalog (e.g., 'huggingface://Qwen/Qwen2.5-0.5B')
-- `model` defining the name of the exposed model 
+- `model` defining the name of the exposed model
 - and optional base image to use for serving the model if different from the one used by the platform by default
 
 The runtime supports the `serve` action that may specify further deployment details including
@@ -92,7 +93,7 @@ Once deployed, a model is exposed with the corresponding Kubernetes service. The
 
 ## Testing deployed models
 
-Once a model is running, you can interact with it directly from the console using the [Chat Client](chat-client.md), which provides a built-in OpenAI-compatible chat interface for testing and interacting with deployed LLM services without external tools.
+Once a model is running, you can interact with it directly from the console using the [Chat Client](../ml-tasks/serving-generative-models.md/#chat-client), which provides a built-in OpenAI-compatible chat interface for testing and interacting with deployed LLM services without external tools.
 
 ## Management with SDK
 
