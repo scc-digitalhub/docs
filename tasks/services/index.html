@@ -1859,53 +1859,6 @@
   
   
   
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Model Serving: LLMs
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Model Serving: LLMs
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../../runtimes/llmserve/" class="md-nav__link">
         
@@ -1914,7 +1867,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Model Serving: LLMs
   
 
     
@@ -1927,89 +1880,6 @@
   
 
               
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../runtimes/chat-client/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Chat Client
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Model Serving: MLflow
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_6">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Model Serving: MLflow
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -2025,7 +1895,7 @@
   <span class="md-ellipsis">
     
   
-    Overview
+    Model Serving: MLflow
   
 
     
@@ -2034,42 +1904,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../runtimes/inference-v2-client/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    InferenceV2 Client
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -2773,8 +2607,8 @@
 <h3 id="specialized-clients">Specialized clients</h3>
 <p>In addition to the standard HTTP client, the console provides specialized clients for specific model-serving scenarios. The appropriate client is automatically selected based on the service type:</p>
 <ul>
-<li><strong><a href="../../runtimes/chat-client/">Chat Client</a></strong> — An interactive chat interface for LLM models served with OpenAI-compatible APIs. Used with HuggingFace Serve and KubeAI Text runtimes.</li>
-<li><strong><a href="../../runtimes/inference-v2-client/">InferenceV2 Client</a></strong> — A dedicated client for models served using the Open Inference Protocol (V2), with built-in health monitoring and pre-configured endpoints. Used with MLflow Serve and Scikit-learn Serve runtimes.</li>
+<li><strong><a href="../runtimes/chat-client.md">Chat Client</a></strong> — An interactive chat interface for LLM models served with OpenAI-compatible APIs. Used with HuggingFace Serve and KubeAI Text runtimes.</li>
+<li><strong><a href="../runtimes/inference-v2-client.md">InferenceV2 Client</a></strong> — A dedicated client for models served using the Open Inference Protocol (V2), with built-in health monitoring and pre-configured endpoints. Used with MLflow Serve and Scikit-learn Serve runtimes.</li>
 </ul>
 <h2 id="exposing-services-externally">Exposing services externally</h2>
 <p>Various APIs and services (e.g., PostgREST or Dremio data services, serverless functions, ML services) may be exposed externally, outside of the platform, on a public domain of the platform. Using KRM, the operation amounts to defining a new gateway (HTTPRoute resource) that will be transformed into the corresponding ingress routing specification.</p>
