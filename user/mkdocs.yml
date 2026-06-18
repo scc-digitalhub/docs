@@ -61,6 +61,7 @@ nav:
       - Guardrail (Python): "runtimes/guardrail.md"
       - "Federated Learning": "runtimes/fl.md"
       - DBT: "runtimes/dbt.md"
+      - Service Graph: "runtimes/servicegraph.md"
 
   - Extensions reference:
       - "extensions/overview.md"
