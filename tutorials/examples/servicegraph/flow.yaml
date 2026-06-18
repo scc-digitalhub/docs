@@ -1,0 +1,40 @@
+
+input:
+  kind: "mjpeg"
+  spec:
+    url: "http://source:1984/api/stream.mjpeg?src=example"
+    frame_interval: 5
+    read_timeout: 30
+
+output:
+  kind: "mjpeg"
+  spec:
+    port: 7777
+    path: "/stream"
+
+flow:
+  type: "sequence"
+  name: "anonymization-pipeline"
+  nodes:
+    - type: "service"
+      name: "anon-service"
+      config:
+        kind: "openinference"
+        spec:
+          address: "anonymization:9000"
+          model_name: "haar_face_cascade"
+          num_instances: 4  
+          timeout: 10      
+
+          input_tensor_spec:
+            - name: "image"
+              datatype: "UINT8"
+              shape: [-1, -1]
+
+          output_tensor_spec:
+            - name: "image"
+              datatype: "UINT8"
+              shape: [-1, -1]
+
+          output_template: |
+            {{. | jp "$.outputs[0].data" | raw}}
