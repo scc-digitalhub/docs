@@ -2,32 +2,31 @@
 
 ## Projects
 
-A *project* is used to scope an AI application and serves as a container for different entities (code, assets, configuration, ...) that make part of the application. It is the context in which you can develop the application, that is prepare the data, train and deploy the model etc. A project is therefore made of other types of entities, representing the data entities (data items and artifacts), AI models, source code (functions and their pipeline compositions). The evolution of these entities, their different versions, as well as execution of different functions and their metrics are scoped to the project.
+A *project* is used to scope an AI application and serves as a container for different entities (code, assets, configuration, ...) that make part of the application. It is the context in which you can develop the application: prepare the data, train and deploy the model etc. A project is therefore made of other types of entities, representing the data entities (data items and artifacts), AI models, source code (functions and their pipeline compositions). The evolution of these entities, their different versions, as well as execution of different functions and their metrics are scoped to the project.
 
 Furthermore, the project defines the space of collaboration, allowing different users to work simultaneously, sharing the underlying operations and experiments, common secrets and configurations.
 
 ## Data and Artifacts
 
-Data is the one of the key elements the project operate. Data entities may represent the raw data provided as input to the processes and services,
-may represent features extracted from the raw data or synthetic datasets derived from it, etc. 
+Data is one of the key elements the project operates with. Data entities may represent raw data provided as input to processes and services, features extracted from the raw data, synthetic datasets derived from it, etc. 
 
 Logically, we support different types of data and their representations:
 
 - *data items*, which represent immutable data sets resulting from different transformation operations and are ready for use in differerent types of analysis. Tabular data items are represented in the form of *Parquet* files. It is possible to treat tabular data (items of ``table`` kind) as, for example, *DataFrames*, using conventional libraries.
 - *artifacts*, which represent arbitrary files and folders, not limited to tabular format, stored to the datalake with some extra metadata. 
 
-All the data entities are enriched with metadata: common ones, such as versions, lineage, stats, and type-specific, such as profiling, schema. 
-Each data entiy is equipped with unique key and version and managed and persisted to the datalake directly by the platform.
+All data entities are enriched with metadata: common ones, such as versions, lineage or stats, and type-specific, such as profiling, schema. 
+Each data entity is equipped with unique key and version, and managed and persisted to the datalake directly by the platform.
 
-Even an external data object may be represented in the platform as a reference, provided a unique data URL and the associated kind for the appropriate management. 
+Even an external data object may be represented in the platform as a reference, by providing a unique data URL and the associated kind for appropriate management. 
 
-Listing and tracking the data entities is one of the key functionality of the platform essential for structured, transparent, and reproducible data and ML operations.
+Listing and tracking the data entities is one of the key functionalities of the platform, essential for structured, transparent, and reproducible data and ML operations.
 
 ## ML/AI Models
 
 Support for MLOps is one of the key functionalities of the platform. Creating, managing and serving ML models is supported by the platform via ML Model entities and the corresponding functionality for their registration and serving.
 
-ML Model entity represent the relevant information about the model - framework and algorithms used to create it, hyperparameters and metrics, necessary artifacts constituting the model, etc. The platform is agnostic to the specific framework used to create the model (e.g., pytorch or tensorflow), to package it (e.g., Huggingface or MLFlow), but for some of the frameworks the platform provides further support, such as model *serving* runtimes that allow for exposing the underlying inference function in a no-code or low-code manner.
+ML Model entities represent the relevant information about the model - framework and algorithms used to create it, hyperparameters and metrics, necessary artifacts constituting the model, etc. The platform is agnostic to the specific framework used to create the model (e.g., pytorch or tensorflow), to package it (e.g., Huggingface or MLFlow), but for some of the frameworks the platform provides further support, such as model *serving* runtimes that allow for exposing the underlying inference function in a no-code or low-code manner.
 
 An important functionality provided aby the platform as first-class support is the ability to run different ML experiments and track different versions with the models equipped with the model metrics in order to compare and identify the most appropriate ones. ML metrics may be associated to the model upon model validation. 
 

@@ -1,12 +1,11 @@
 # Code Toolbox
 
-Code toolbox is a workspace designed to support the devolopment activities using a variety of tools. Its configuration allows, in particular, for choosing
+Code toolbox is a workspace designed to support the devolopment activities using a variety of tools. Its configuration allows, in particular, for choosing:
 
-- **resource configuration** including the number of CPUs, memory size, disk size, and whether GPU-based node should be used (if available)
-- **software configuration** including the support for JetBrains tools integration (e.g., IDEA, PyCharm, etc), Python version.
+- **resource configuration** including number of CPUs, memory size, disk size, and whether GPU-based node should be used (if available)
+- **software configuration** including support for JetBrains tools integration (e.g., IDEA, PyCharm, etc), Python version.
 
-Each toolbox is by default shipped with the **Jupyter notebook** support, VS Code Desktop integration (via preconfigured agent and VS Code extension), 
-VS Code Web support. 
+Each toolbox is by default shipped with the **Jupyter notebook** support, VS Code Desktop integration (via preconfigured agent and VS Code extension), VS Code Web support. 
 
 [Jupyter](https://jupyter.org/) is a web-based environment for interactive computing, ideal for testing and prototyping. Some of its main features are:
 
