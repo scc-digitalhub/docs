@@ -2419,16 +2419,16 @@
 
 
 <h1 id="gateway-extension">Gateway Extension</h1>
-<p><em>Gateway Extension</em> allow for attaching a given service to an instance of <a href="https://www.envoyproxy.io/">Envoy Gateway</a> and specify some extra properties that control the way the service is exposed as well as some extra functionality. More specifically, currently the platform allows for distinguishing</p>
+<p><em>Gateway Extension</em> allows for attaching a given service to an instance of <a href="https://www.envoyproxy.io/">Envoy Gateway</a> and specify some extra properties that control the way the service is exposed as well as some extra functionality. More specifically, the platform currently allows for distinguishing:</p>
 <ul>
 <li>GenAI services and expose them with <a href="https://aigateway.envoyproxy.io/">Envoy AI Gateway</a>. In this way, some extra functionality may be exploited, including dedicated observability metrics collection and tracing, data monitoring, guardrails, etc.  </li>
 <li>Generic services and expose them with <a href="https://www.envoyproxy.io/">Envoy Gateway</a> with the additional capabilities of generic observability metrics collection and tracing, data monitoring, guardrails, etc.</li>
 </ul>
-<p>In the current version the support for Gateway functionality is limited and includes only the possibility to attach the guardrails to the service instance. </p>
+<p>In the current version, support for Gateway functionality is limited and only includes the possibility to attach the guardrails to the service instance. </p>
 <h2 id="guardrails">Guardrails</h2>
-<p>Guardrails allow for controlling and adjusting the interaction with a service, for example blocking or changing the input if inappropriate or incomplete, cleaning the output, or responding with some error or default message if necessary. Typically guardrails are attached to GenAI services, but the pattern may be applied to other services as well.</p>
-<p>In the current implementation the guardrails should be implemented as <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/ext_proc_filter">ExtProc Envoy extension services</a>, using e.g. <a href="../../runtimes/guardrail/">Guardrail runtime</a>. </p>
-<p>To enable the guardrails for the service, it is necessary to add to the service run a list of guardrail endpoints (one for each guardrail), defined as <code>host:port</code> in the same platform context. It is expected that the ExtProc-compatible gRPC port is exposed at the specified address.</p>
+<p>Guardrails allow for controlling and adjusting interaction with a service, for example blocking or changing the input if inappropriate or incomplete, cleaning the output, or responding with some error or default message if necessary. Typically, guardrails are attached to GenAI services, but the pattern may be applied to other services as well.</p>
+<p>In the current implementation, guardrails should be implemented as <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/ext_proc_filter">ExtProc Envoy extension services</a>, using e.g. <a href="../../runtimes/guardrail/">Guardrail runtime</a>. </p>
+<p>To enable guardrails for the service, it is necessary to add to the service run a list of guardrail endpoints (one for each guardrail), defined as <code>host:port</code> in the same platform context. It is expected that the ExtProc-compatible gRPC port is exposed at the specified address.</p>
 
 
 
