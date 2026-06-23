@@ -2960,7 +2960,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">graph_run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
     <span class="s2">&quot;input.url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://s-containerserve-13bca54c08204ec18c23519b699ab6af.dev-platform:1984/api/stream.mjpeg?src=v1&quot;</span><span class="p">,</span>
     <span class="s2">&quot;anon-service.address&quot;</span><span class="p">:</span> <span class="s2">&quot;s-openinferenceserve-0a12e534832043fc88f05b316f01b45c.dev-platform:9000&quot;</span>
-<span class="p">})</span>
+<span class="p">},</span> <span class="n">service_ports</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="mi">7777</span><span class="p">,</span> <span class="s2">&quot;target_port&quot;</span><span class="p">:</span> <span class="mi">7777</span><span class="p">}])</span>
 </code></pre></div>
 <p>Check the log and of the graph; it should report the success of the deployment and connection to the MJPEG source.</p>
 <h2 id="41-access-the-mjpeg-stream">4.1. Access the MJPEG stream</h2>
