@@ -65,3 +65,6 @@ nav:
     - "guardrails/basic.md"
     - "guardrails/nemoguardrails.md"
     - "guardrails/guardrailsai.md"    
+
+  - Service Graph:
+    - "servicegraph/servicegraph.md"
