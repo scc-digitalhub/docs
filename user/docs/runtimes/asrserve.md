@@ -1,16 +1,16 @@
 # Speech to Text Serving Runtime
 
-**Speech to Text serving runtime** (kubeai-speech) aims at supporing the possibility to expose the automated speech recognition functionality as OpenAI-compatible transcriptions API. 
+The **Speech to Text serving runtime** (kubeai-speech) supports exposing automated speech-recognition functionality as an OpenAI-compatible transcriptions API.
  
-For this purpose the runtime that relies on [KubeAI](https://www.kubeai.org/) operator to expose model using the FasterWhisper engine. The serving is performed by KubeAI as in case of KubeAI Text runtime. 
+For this purpose, the runtime relies on [KubeAI](https://www.kubeai.org/) operator to expose models using the FasterWhisper engine. Serving is performed by KubeAI, similarly to the KubeAI Text runtime. 
 
-The specification of the KubeAI speech runtime amounts to defining
+The specification of the KubeAI speech runtime amounts to defining:
 
-   model URL (from S3 storage or from HuggingFace catalog, e.g., ``hf://Systran/faster-whisper-medium.en``)
+- model URL (from S3 storage or from HuggingFace catalog, e.g., ``hf://Systran/faster-whisper-medium.en``)
 - name of the model to expose
 - optional base image for serving
 
-The ``serve`` action allows for deploying the model, and a set of extra properties may be configured, including
+The ``serve`` action allows for deploying the model, and a set of extra properties may be configured, including:
 
 - inference server-specific arguments
 - load balancing strategy and properties

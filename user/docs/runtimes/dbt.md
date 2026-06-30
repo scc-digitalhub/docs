@@ -64,10 +64,9 @@ select * from final
 
 The DBT runtime function is defined with the SQL transformation code to be executed.
 
-The only DBT action supported by the runtime is ``transform``, which 
-takes references to the data items as inputs, applies the operation using the DBT executable, and creates resulting data item under the name defined in the output mapping.
+The only DBT action supported by the runtime is ``transform``, which takes references to the data items as inputs, applies the operation using the DBT executable, and creates the resulting data item under the name defined in the output mapping.
 
-The DBT transformation may be executed both in the platform and locally (provided DBT executable is available in your environment).
+The DBT transformation may be executed both in the platform and locally (provided that the DBT executable is available in your environment).
 
 ## Management with SDK
 
