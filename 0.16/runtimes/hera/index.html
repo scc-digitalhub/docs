@@ -2420,13 +2420,13 @@
 
 <h1 id="hera-pipelines-runtime">Hera Pipelines Runtime</h1>
 <p>The <strong>Hera runtime</strong> allows you to run workflows within the platform. More specifically, <a href="https://hera.readthedocs.io/">Hera</a> represents a workflow orchestration in Python powered by <a href="https://argo-workflows.readthedocs.io/">Argo Workflows</a> in Kubernetes. </p>
-<p>Argo workflows are defined as Kubernetes Custom Resource and represent a composition of a Kubernetes Jobs with data and parameter passing support. </p>
-<p>Hera usess Python-based DSL to define the execuition tasks of a workflow that is then transformed into Argo workflow specification and may be executed through the platform. </p>
-<p>In addition to Here SDK and its DSL, we provide an extension of the platform SDK to run single functions of other runtimes directly as nodes of the Hera workfflow. </p>
-<p>Here runtime function definition is therefore composed of the Hera pipeline code in Python. The two actions supported by the runtime are</p>
+<p>Argo workflows are defined as Kubernetes Custom Resources and represent a composition of Kubernetes Jobs with data and parameter passing support. </p>
+<p>Hera uses Python-based DSL to define the execution tasks of a workflow, which is then transformed into an Argo workflow specification and may be executed through the platform. </p>
+<p>In addition to Hera SDK and its DSL, we provide an extension of the platform SDK to run single functions of other runtimes directly as nodes of the Hera workflow. </p>
+<p>A Hera runtime function definition is therefore composed of the Hera pipeline code in Python. The two actions supported by the runtime are:</p>
 <ul>
-<li><code>build</code> action necessary to compile the Hera DSL specification into Argo Workflow definition.<strong> Note that this action should be always executed before the actual pipeline execution</strong>.</li>
-<li><code>pipeline</code> action that performs the actual instantiation and execution of the workflow within the platform using Argo Workflow operator. It is possible to pass the parameters to the pipelines. </li>
+<li><code>build</code>, necessary to compile the Hera DSL specification into an Argo Workflow definition. <strong>Note that this action should be always executed before the actual pipeline execution</strong>.</li>
+<li><code>pipeline</code>, which performs the actual instantiation and execution of the workflow within the platform, using Argo Workflow operator. It is possible to pass parameters to pipelines. </li>
 </ul>
 <p>The following figure represents the execution graph of an example worklfow in the platform:</p>
 <p><img alt="Hera Workflow" src="../../images/runtimes/hera-workflow.png" /></p>

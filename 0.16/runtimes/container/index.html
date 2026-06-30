@@ -2419,19 +2419,19 @@
 
 
 <h1 id="container-runtime">Container runtime</h1>
-<p>The <strong>Container runtime</strong> allows you to create deployments, jobs and services on Kubernetes starting from arbitrary user-defined container image. That is, container function may be run</p>
+<p>The <strong>Container runtime</strong> allows you to create deployments, jobs and services on Kubernetes, starting from arbitrary user-defined container images. A container function may be run:</p>
 <ul>
-<li>as a <strong>Job</strong> (<code>action="job"</code>) representing a single piece of work (e.g., model training, data processing), or</li>
-<li>as a "<strong>Service</strong> (<code>action="serve"</code>) representing a Serverless function responding to HTTP requests, or</li>
-<li>as a "<strong>Deployment</strong> (<code>action="deploy"</code>) representing a deployment without exposing it as a service.</li>
+<li>as a <strong>Job</strong> (<code>action="job"</code>), representing a single piece of work (e.g., model training, data processing).</li>
+<li>as a "<strong>Service</strong> (<code>action="serve"</code>), representing a Serverless function responding to HTTP requests.</li>
+<li>as a "<strong>Deployment</strong> (<code>action="deploy"</code>), representing a deployment without exposing it as a service.</li>
 </ul>
-<p>Each container function is defined with</p>
+<p>Each container function is defined with:</p>
 <ul>
 <li>image specification</li>
 <li>command to run within container. If not provided, the default entry point is triggered.</li>
 </ul>
-<p>To customize the image to a specific context, it is possible to perform <code>build</code> operation on the function. This operation creates a container image starting from the base image and optional list of additional instructions. Next time the Job or Service starts, this prebuilt container image will be used for execution.</p>
-<p>When the run is created, it is possible to specify the following information</p>
+<p>To customize the image to a specific context, it is possible to perform a <code>build</code> operation on the function. This operation creates a container image starting from the base image and an optional list of additional instructions. Next time the Job or Service starts, this prebuilt container image will be used for execution.</p>
+<p>When the run is created, it is possible to specify the following information:</p>
 <ul>
 <li>resource configuration (see <a href="../../tasks/run-resources/">here</a> for details about configuring run resources)</li>
 <li>file system properties (e.g., <code>run_as_user</code>, <code>fs_group</code>, <code>run_as_group</code>)</li>

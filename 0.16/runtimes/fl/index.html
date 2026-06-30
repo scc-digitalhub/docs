@@ -2486,26 +2486,26 @@
 
 <h1 id="federated-learning-flower-runtime">Federated Learning: Flower Runtime</h1>
 <p><strong>Flower Runtime</strong> represents the extension of the platform to support the scenarios of federated and compositional Machine Learning going potentially beyond the scope of the platform instance and making different instances or external environments collaborate.</p>
-<p>This runtime relies on <a href="https://flower.ai/">Flower Framework</a> and allows for deploying and running Flower FL applications in different modes. The details about Flower architecture, concepts, and applications may be found in the corresponding specificiation. The Flower runtime integrated in the platform is agnostic to a specific application scenario and supports the following activities</p>
+<p>This runtime relies on <a href="https://flower.ai/">Flower Framework</a> and allows for deploying and running Flower FL applications in different modes. The details about Flower architecture, concepts, and applications may be found in the corresponding specification. The Flower runtime integrated in the platform is agnostic to a specific application scenario and supports the following activities:</p>
 <ul>
-<li>deploy the nodes of the application federation referred to as Flower <code>SuperNode</code>. The SuperNode represents a single participating element and controls computations of a single application part. In a fully distributed scenario a single node is deployed in platform instance for the given application, while the other nodes may belong to other instances. This is a typical case, e.g., in a medical domain where different tenants collaborate in order to build a single ML model without revealing proprietary data. Other scenario may represent a situation of a distributed paralllel computation, where different nodes run all in the same namespace in parallel each dealing with a dedicated data partition. </li>
-<li>deploy the central server node of the  application federation referred to as Flower <code>SuperLink</code>. The superlink is the coordinator of the federation; all the supernode connect to it in order to pass the intermediate weights or get the new training instructions. </li>
-<li>Run the specific application that consists of two parts - server coordination code and the client supernode training part. The application is passed to the superlink that distributes the client code to the supernodes of the federation and coordinates the execution iterations.</li>
+<li>deploy the nodes of the application federation referred to as Flower <code>SuperNode</code>. The SuperNode represents a single participating element and controls computations of a single application part. In a fully distributed scenario, a single node is deployed in platform instance for the given application, while the other nodes may belong to other instances. This is a typical case, e.g., in a medical domain where different tenants collaborate in order to build a single ML model without revealing proprietary data. Another scenario may represent a situation of a distributed parallel computation, where different nodes run all in the same namespace in parallel, each dealing with a dedicated data partition. </li>
+<li>deploy the central server node of the application federation referred to as Flower <code>SuperLink</code>. The superlink is the coordinator of the federation; all supernodes connect to it in order to pass the intermediate weights or get new training instructions. </li>
+<li>Run the specific application that consists of two parts - server coordination code and client supernode training part. The application is passed to the superlink that distributes the client code to the supernodes of the federation and coordinates the execution iterations.</li>
 </ul>
 <p>Accordingly, the runtime consists of the following elements: </p>
 <ul>
-<li><code>flower-client</code> runtime to define the Flower SuperNode entity. Built upon standard base image, the Flower SuperNode allows for defining additional Python dependencies necessary for the application client part execution.</li>
-<li><code>flower-server</code> runtime to define the Flower SuperLink entity. Built upon standard base image, the Flower SuperLink allows for defining additional Python dependencies necessary for the application server part execution.</li>
-<li><code>flower-app</code> runtime to define the application to be executed. Requires the application code to be defined, which may be done in two different ways. First, it is possible to provide a reference to the full project (e.g., as git repository reference). The project should be defined as a standard Flower applciation with the corresponding <code>pyproject.toml</code> specification available in the project root. Second, it is possible to provide the code of client and server parts and reference to the ClientApp and ServerApp objects.</li>
+<li><code>flower-client</code> runtime to define the Flower SuperNode entity. Built upon a standard base image, the Flower SuperNode allows for defining additional Python dependencies necessary for the application client part execution.</li>
+<li><code>flower-server</code> runtime to define the Flower SuperLink entity. Built upon a standard base image, the Flower SuperLink allows for defining additional Python dependencies necessary for the application server part execution.</li>
+<li><code>flower-app</code> runtime to define the application to be executed. Requires the application code to be defined, which may be done in two different ways. First, it is possible to provide a reference to the full project (e.g., as git repository reference). The project should be defined as a standard Flower application with the corresponding <code>pyproject.toml</code> specification available in the project root. Second, it is possible to provide the code of client and server parts and reference to the ClientApp and ServerApp objects.</li>
 </ul>
 <h2 id="flower-server-runtime-execution">Flower-server runtime execution</h2>
 <p>The SuperLink node defined with the corresponding configuration supports two actions: <code>build</code> and <code>deploy</code>.  The first one creates a container image, which is useful if there are many dependencies to be integrated or custom instructions should be provided to the image.</p>
-<p>The deploy tasks creates a new deployment and exposes the correponding interfaces - for the app execution and monitoring, and for the SuperNode nodes to exchange the training information and instructions. The information about the exposed endpoints are available as a part of the <code>service</code> status of the deployment run. </p>
-<p>The SuperLink deployment parameters include
+<p>The <code>deploy</code> task creates a new deployment and exposes the correponding interfaces - for the app execution and monitoring, and for the SuperNode nodes to exchange training information and instructions. Information about exposed endpoints is available as part of the <code>service</code> status of the deployment run. </p>
+<p>The SuperLink deployment parameters include:
 - resource and environment parameters (e.g., resource profiles, secrets, variables, volumes)
-- list of public keys corresponding to the SuperNode nodel that SuperLink will accept. If specified, the SuperLink will accept the only the correpsonding clients. If not specified, any SuperNode will be accepted to the federation and to the training procedure.
-- insecure flag to disable TLS verification (for single namespace or test purpose only)</p>
-<p>Once deployed, the SuperLink is ready to accept the application run execution requests.</p>
+- list of public keys corresponding to the SuperNodes that SuperLink will accept. If specified, the SuperLink will accept only the corresponding clients. If not specified, any SuperNode will be accepted to federation and training procedures.
+- insecure flag to disable TLS verification (for single namespace or test purposes only)</p>
+<p>Once deployed, the SuperLink is ready to accept application run execution requests.</p>
 <h2 id="flower-client-runtime-execution">Flower-client runtime execution</h2>
 <p>The SuperNode node defined with the corresponding configuration supports two actions: <code>build</code> and <code>deploy</code>.  The first one creates a container image, which is useful if there are many dependencies to be integrated or custom instructions should be provided to the image.</p>
 <p>The deploy tasks creates a new deployment that connects to the specified SuperLink and ready to accept the application code.</p>
@@ -2530,7 +2530,7 @@
 <ul>
 <li>name of the federation to use. Optional if the code is inline and the auto-generated federation name is used. Otherwise should correspond to the name defined in the application <code>pyproject.toml</code>.</li>
 <li>SuperLink endpoint to connect to with the execution API port.</li>
-<li>SuperLink root TLS certificate if defined by the SuperLink node to establish secure connection. </li>
+<li>SuperLink root TLS certificate if defined by the SuperLink node to establish a secure connection. </li>
 </ul>
 <h2 id="management-with-sdk">Management with SDK</h2>
 <p>Check the <a href="https://scc-digitalhub.github.io/sdk-docs/reference/runtimes/flower/overview/">SDK flower runtime documentation</a> for more information.</p>
