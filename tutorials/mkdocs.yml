@@ -35,6 +35,8 @@ nav:
   - "MLOps: Custom ML model training":
     - "ml/intro.md"
     - "ml/deploy.md"
+  - "MLOps: Migrating an existing ML model to platform":
+    - "ml-migration/migration.md"
   - Dremio transformation:
     - "dremio_grafana/scenario.md"
   - API via PostgREST:
