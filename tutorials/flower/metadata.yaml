@@ -1,0 +1,5 @@
+description: Tutorial for Flower
+version: 1.0.0
+notebook: https://raw.githubusercontent.com/scc-digitalhub/digitalhub-tutorials/refs/heads/main/s9-flower-fl/flower-tutorial.ipynb
+labels:
+- flower
