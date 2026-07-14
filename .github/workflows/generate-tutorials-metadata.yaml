@@ -26,7 +26,7 @@ jobs:
           git config --global user.name '${{ github.actor }}'
           git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
           echo "Generating tutorials metadata yaml"
-          python tutorials_metadata.py
+          python generate_tutorials_metadata.py
           git add --all
           git commit -m "Auto-generate tutorials-metadata.yaml" --allow-empty
           git push
