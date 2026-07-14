@@ -1,0 +1,32 @@
+name: generate-tutorials-metadata
+run-name: Generate tutorials metadata
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - tutorials/docs/**/metadata.yaml
+      - generate_tutorials_metadata.py
+concurrency:
+  group: update-docs
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  generate-tutorials-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - run: pip install mkdocs-material
+      - run: |
+          git fetch --prune --unshallow --tags
+          git config --global user.name '${{ github.actor }}'
+          git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
+          echo "Generating tutorials metadata yaml"
+          python tutorials_metadata.py
+          git add --all
+          git commit -m "Auto-generate tutorials-metadata.yaml" --allow-empty
+          git push
