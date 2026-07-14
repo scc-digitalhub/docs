@@ -100,7 +100,10 @@ tutorials:
     file: etl/streamlit.md
     name: Visualize data with Streamlit
     url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/main/tutorials/docs/etl/streamlit.md
-- description: Tutorial for Flower
+- description: The Flower framework allows for running federated learning tasks where
+    different client nodes perform local training and cooperatively create a more
+    robust solution without exchanging the data, but only the weight necessary to
+    progress the training process.
   dir: flower
   docs: https://scc-digitalhub.github.io/docs/tutorials/flower/flower
   labels:
@@ -113,7 +116,6 @@ tutorials:
     file: flower/flower.md
     name: Federated Learning with Flower
     url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/main/tutorials/docs/flower/flower.md
-  version: 1.0.0
 - dir: ml
   docs: https://scc-digitalhub.github.io/docs/tutorials/ml/intro
   name: 'MLOps: Custom ML model training'
@@ -213,15 +215,6 @@ tutorials:
     file: rag/webui.md
     name: Agent Web UI
     url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/main/tutorials/docs/rag/webui.md
-- dir: servicegraph
-  docs: https://scc-digitalhub.github.io/docs/tutorials/servicegraph/servicegraph
-  name: Service Graph
-  repository: https://github.com/scc-digitalhub/docs/tree/main/tutorials/docs/servicegraph
-  steps:
-  - docs: https://scc-digitalhub.github.io/docs/tutorials/servicegraph/servicegraph
-    file: servicegraph/servicegraph.md
-    name: Creating Distributed Anonymized Streaming with ServiceGraph
-    url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/main/tutorials/docs/servicegraph/servicegraph.md
 - dir: whisper-fine-tuning
   docs: https://scc-digitalhub.github.io/docs/tutorials/whisper-fine-tuning/intro
   name: Whisper fine-tuning
