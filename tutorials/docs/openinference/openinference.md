@@ -1,11 +1,12 @@
 # Exposing Open Inference v2 Services
 
 The Open Inference protocol v2 is a protocol used by various inference providers (e.g., NVIDIA Triton, KServe) to expose models that can be used for ML inference.
-It defines a standard interfaces, defined by input and output tensor definitions to define how the interaction should be performed in a platform-agnostic manner.
+It defines standard interfaces, defined by input and output tensor definitions, to define how the interaction should be performed in a platform-agnostic manner.
 
-In this tutorial we  demonstrate how to deploy a Visual Question Answering (VQA) service using the [BLIP](https://huggingface.co/Salesforce/blip-image-captioning-base) model from Salesforce and serve it via the **OpenInference** runtime on the platform.
+In this tutorial, we demonstrate how to deploy a Visual Question Answering (VQA) service using the [BLIP](https://huggingface.co/Salesforce/blip-image-captioning-base) model from Salesforce and serve it via the **OpenInference** runtime on the platform.
 
 The workflow covers:
+
 1. Setting up the project and source directory
 2. Writing the inference service code
 3. Registering and deploying the function
