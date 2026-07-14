@@ -2542,13 +2542,15 @@
 
 <h1 id="exposing-open-inference-v2-services">Exposing Open Inference v2 Services</h1>
 <p>The Open Inference protocol v2 is a protocol used by various inference providers (e.g., NVIDIA Triton, KServe) to expose models that can be used for ML inference.
-It defines a standard interfaces, defined by input and output tensor definitions to define how the interaction should be performed in a platform-agnostic manner.</p>
-<p>In this tutorial we  demonstrate how to deploy a Visual Question Answering (VQA) service using the <a href="https://huggingface.co/Salesforce/blip-image-captioning-base">BLIP</a> model from Salesforce and serve it via the <strong>OpenInference</strong> runtime on the platform.</p>
-<p>The workflow covers:
-1. Setting up the project and source directory
-2. Writing the inference service code
-3. Registering and deploying the function
-4. Sending inference requests to the running service</p>
+It defines standard interfaces, defined by input and output tensor definitions, to define how the interaction should be performed in a platform-agnostic manner.</p>
+<p>In this tutorial, we demonstrate how to deploy a Visual Question Answering (VQA) service using the <a href="https://huggingface.co/Salesforce/blip-image-captioning-base">BLIP</a> model from Salesforce and serve it via the <strong>OpenInference</strong> runtime on the platform.</p>
+<p>The workflow covers:</p>
+<ol>
+<li>Setting up the project and source directory</li>
+<li>Writing the inference service code</li>
+<li>Registering and deploying the function</li>
+<li>Sending inference requests to the running service</li>
+</ol>
 <h2 id="1-initialize-the-digitalhub-project">1. Initialize the DigitalHub Project</h2>
 <p>Import the <code>digitalhub</code> SDK and create (or retrieve) a project named <code>demo</code>. The project acts as a namespace for all functions, artifacts, and runs in DigitalHub.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
