@@ -7,14 +7,6 @@ from git repositories or other sources.
 import functools
 import re
 import sys
-from enum import Enum
-
-
-class SpecialVersion(Enum):
-    """Special version identifiers."""
-
-    CURRENT = "current"
-
 
 # Git-related strings to remove during cleaning
 GIT_PREFIXES_TO_REMOVE = {
@@ -22,10 +14,10 @@ GIT_PREFIXES_TO_REMOVE = {
     "origin": "",
     "HEAD": "",
     "gh-pages": "",
-    "main": SpecialVersion.CURRENT.value,
+    "main": "",
 }
 
-VERSION_PATTERN = re.compile(rf"^(?:{SpecialVersion.CURRENT.value}|\d+\.\d+)$")
+VERSION_PATTERN = re.compile(rf"^(?:\d+\.\d+)$")
 
 
 def normalize_version(version_parts: list[str]) -> tuple[int, int, int]:
@@ -68,8 +60,6 @@ def normalize_version(version_parts: list[str]) -> tuple[int, int, int]:
 def compare_versions(version_a: str, version_b: str) -> int:
     """Compare two version strings using semantic version ordering.
 
-    Special handling for 'current' version which is treated as the highest version.
-
     Parameters
     ----------
     version_a : str
@@ -86,15 +76,9 @@ def compare_versions(version_a: str, version_b: str) -> int:
     --------
     >>> compare_versions("1.2.3", "1.2.4")
     -1
-    >>> compare_versions("current", "1.0.0")
+    >>> compare_versions("2.0.0", "1.0.0")
     1
     """
-    # Handle special "current" version - it's always the highest
-    if version_a == SpecialVersion.CURRENT.value:
-        return 0 if version_b == SpecialVersion.CURRENT.value else 1
-    if version_b == SpecialVersion.CURRENT.value:
-        return -1
-
     # Compare normalized versions using Python's tuple comparison
     normalized_a = normalize_version(version_a.split("."))
     normalized_b = normalize_version(version_b.split("."))
@@ -124,7 +108,7 @@ def clean_version_string(raw_versions: str) -> str:
     Examples
     --------
     >>> clean_version_string("origin/main  origin/1.0.0  HEAD")
-    "current 1.0.0"
+    "1.0.0"
     """
     cleaned = raw_versions
 
@@ -153,8 +137,8 @@ def format_versions_string(versions: str) -> str:
 
     Examples
     --------
-    >>> format_versions_string("1.0.0 2.0.0 current")
-    "current,2.0.0,1.0.0"
+    >>> format_versions_string("1.0.0 2.0.0")
+    "2.0.0,1.0.0"
 
     Notes
     -----
@@ -168,7 +152,7 @@ def format_versions_string(versions: str) -> str:
     # Split into individual versions, filtering out empty strings
     version_list = [version for version in cleaned_versions.split() if version]
 
-    # Keep only supported version labels (current or x.y)
+    # Keep only supported version labels (x.y)
     version_list = [version for version in version_list if VERSION_PATTERN.match(version)]
 
     if not version_list:

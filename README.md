@@ -34,8 +34,6 @@ You can then view the docs at `localhost:8000`. As the docs on the website are g
 
 Different versions of the documentation may be available at once.
 
-The `current` version of the documentation reflects the most up-to-date state of the `main` branch, and is updated when new commits to `main` are made. It can be found under `/docs`.
-
 Publishing a new branch will generate another documentation portal, named after the branch, under `/docs/<branch_name>`. Further pushes to this branch will update the corresponding portal.
 
 ## Adding a portal
