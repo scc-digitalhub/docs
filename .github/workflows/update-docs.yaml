@@ -6,6 +6,7 @@ on:
       - gh-pages
   push:
     branches-ignore:
+      - main
       - gh-pages
     paths-ignore:
       - tutorials/docs/**/metadata.yaml
@@ -24,15 +25,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.12'
       - run: pip install mkdocs-material
       - run: pip install mkdocs-redirects
       - run: |
           git fetch --prune --unshallow --tags
           this_branch=${{ github.ref_name }}
-          if [ "$this_branch" == "main" ]; then
-            this_branch=current
-          fi
           echo "Triggered by event '${{ github.event_name }}' on branch '${this_branch}'"
           export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|python versions_string.py)
           echo "Versions are: ${VERSIONS}"
@@ -45,31 +43,19 @@ jobs:
           do
             if [ "${{ github.event_name }}" == "create" ] || [ "$v" == "$this_branch" ]; then
               echo "Deploying docs for: $v"
-              if [ "$v" != "current" ]; then
-                echo "Behaviour for any non-main branch"
-                export DOCS_VERSION="v:$v"
-                export USER_STYLESHEETS_PORTAL_SELECTION='../stylesheets/portal_selection.css'
-                export USER_STYLESHEETS_COLORS='../stylesheets/colors.css'
-                export OTHERS_STYLESHEETS_PORTAL_SELECTION='../../stylesheets/portal_selection.css'
-                export OTHERS_STYLESHEETS_COLORS='../../stylesheets/colors.css'
-                git checkout $v
-                cd user && mkdocs build && cd ..
-                cd admin && mkdocs build && cd ..
-                cd tutorials && mkdocs build && cd ..
-                mkdir -p ./site
-                [ ! -d user/site ] || mv user/site site/$v
-                [ ! -d admin/site ] || mv admin/site site/$v/admin
-                [ ! -d tutorials/site ] || mv tutorials/site site/$v/tutorials
-              else
-                echo "Special behaviour for main"
-                git checkout main
-                cd user && mkdocs build && cd ..
-                cd admin && mkdocs build && cd ..
-                cd tutorials && mkdocs build && cd ..
-                [ ! -d user/site ] || mv user/site ./site
-                [ ! -d admin/site ] || mv admin/site site/admin
-                [ ! -d tutorials/site ] || mv tutorials/site site/tutorials
-              fi
+              export DOCS_VERSION="v:$v"
+              export USER_STYLESHEETS_PORTAL_SELECTION='../stylesheets/portal_selection.css'
+              export USER_STYLESHEETS_COLORS='../stylesheets/colors.css'
+              export OTHERS_STYLESHEETS_PORTAL_SELECTION='../../stylesheets/portal_selection.css'
+              export OTHERS_STYLESHEETS_COLORS='../../stylesheets/colors.css'
+              git checkout $v
+              cd user && mkdocs build && cd ..
+              cd admin && mkdocs build && cd ..
+              cd tutorials && mkdocs build && cd ..
+              mkdir -p ./site
+              [ ! -d user/site ] || mv user/site site/$v
+              [ ! -d admin/site ] || mv admin/site site/$v/admin
+              [ ! -d tutorials/site ] || mv tutorials/site site/$v/tutorials
             fi
           done
           git checkout gh-pages
