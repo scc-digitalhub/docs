@@ -12,12 +12,12 @@
     cursor: pointer;
 }
 
-.dd-text {
-    padding: 0 30px 0 7px;
+#dd-version {
+    width: 130px;
 }
 
-#stable-text {
-    color: #ddd
+.dd-text {
+    padding: 0 30px 0 7px;
 }
   
 .dd-arrow {

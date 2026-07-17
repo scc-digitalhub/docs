@@ -43,7 +43,7 @@
             {{ config.site_name }}
           </span>
           <div class="dropdown">
-            <button class="dd-button">
+            <button class="dd-button" id="dd-version">
               {% set docsVersion = config.extra.docs_version|string %}
               {% if docsVersion.startswith('v:') %}
                 {% set docsVersion = docsVersion[2:] %}
