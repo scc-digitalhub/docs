@@ -36,7 +36,7 @@ jobs:
           echo "Triggered by event '${{ github.event_name }}' on branch '${this_branch}'"
           export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|python versions_string.py)
           echo "Versions are: ${VERSIONS}"
-          IFS=',' read -A version_array <<< ${VERSIONS}
+          IFS=',' read -a version_array <<< ${VERSIONS}
           export STABLE_VERSION=${version_array[2]}
           echo "Stable version is: ${STABLE_VERSION}"
           for v in ${VERSIONS//,/ }
