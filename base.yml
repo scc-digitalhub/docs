@@ -11,6 +11,7 @@ extra:
   site: https://scc-digitalhub.github.io/docs
   docs_version: !ENV [DOCS_VERSION, 'current']
   versions: !ENV [VERSIONS]
+  stable_version: !ENV [STABLE_VERSION]
   portals:
     - name: User
       path: ""

@@ -49,6 +49,9 @@
                 {% set docsVersion = docsVersion[2:] %}
               {% endif %}
               <span class="dd-text">{{ docsVersion }}</span>
+              {% if docsVersion == config.extra.stable_version %}
+                <span id="stable-text"> (stable)</span>
+              {% endif %}
               <span class="dd-arrow">&#9660;</span>
               {% set versions = [] %}
               {% if config.extra.versions is defined and config.extra.versions != None %}
@@ -57,7 +60,11 @@
               {% endif %}
               {% for version in versions[:4] %}
                 {% if version != docsVersion|string %}
-                  <a href="{{ config.extra.site }}/{{ version }}">{{ version }}</a>
+                  <a href="{{ config.extra.site }}/{{ version }}">{{ version }}
+                    {% if version == config.extra.stable_version %}
+                      <span id="stable-text"> (stable)</span>
+                    {% endif %}
+                  </a>
                 {% endif %}
               {% endfor %}
             </button>
