@@ -15,6 +15,10 @@
 .dd-text {
     padding: 0 30px 0 7px;
 }
+
+#stable-text {
+    color: #ddd
+}
   
 .dd-arrow {
     position: relative;
