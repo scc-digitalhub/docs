@@ -7,6 +7,11 @@ on:
   push:
     branches-ignore:
       - gh-pages
+    paths-ignore:
+      - tutorials/docs/**/metadata.yaml
+      - generate_tutorials_metadata.py
+      - tutorials/tutorials-metadata.yaml
+      - .github/workflows/generate-tutorials-metadata.yaml
 concurrency:
   group: update-docs
   cancel-in-progress: false
@@ -21,6 +26,7 @@ jobs:
         with:
           python-version: '3.9'
       - run: pip install mkdocs-material
+      - run: pip install mkdocs-redirects
       - run: |
           git fetch --prune --unshallow --tags
           this_branch=${{ github.ref_name }}
@@ -30,6 +36,11 @@ jobs:
           echo "Triggered by event '${{ github.event_name }}' on branch '${this_branch}'"
           export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|python versions_string.py)
           echo "Versions are: ${VERSIONS}"
+          IFS=',' read -a version_array <<< ${VERSIONS}
+          export STABLE_VERSION=${version_array[2]}
+          echo "Stable version is: ${STABLE_VERSION}"
+          export STABLE_DOCS="https://scc-digitalhub.github.io/docs/${STABLE_VERSION}"
+          echo "Stable docs are available at: ${STABLE_DOCS}"
           for v in ${VERSIONS//,/ }
           do
             if [ "${{ github.event_name }}" == "create" ] || [ "$v" == "$this_branch" ]; then
