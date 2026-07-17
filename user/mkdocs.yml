@@ -11,7 +11,7 @@ extra_css:
 plugins:
   - redirects:
       redirect_maps:
-        'index.md': 'https://scc-digitalhub.github.io/docs/!ENV [STABLE_VERSION]'
+        'index.md': !ENV [STABLE_DOCS]'
 
 nav:
   - "index.md"

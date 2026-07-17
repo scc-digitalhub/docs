@@ -39,6 +39,8 @@ jobs:
           IFS=',' read -a version_array <<< ${VERSIONS}
           export STABLE_VERSION=${version_array[2]}
           echo "Stable version is: ${STABLE_VERSION}"
+          export STABLE_DOCS="https://scc-digitalhub.github.io/docs/${STABLE_VERSION}"
+          echo "Stable docs are available at: ${STABLE_DOCS}"
           for v in ${VERSIONS//,/ }
           do
             if [ "${{ github.event_name }}" == "create" ] || [ "$v" == "$this_branch" ]; then
