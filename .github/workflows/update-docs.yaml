@@ -37,7 +37,7 @@ jobs:
           export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|python versions_string.py)
           echo "Versions are: ${VERSIONS}"
           IFS=',' read -a version_array <<< ${VERSIONS}
-          export STABLE_VERSION=${version_array[2]}
+          export STABLE_VERSION=${version_array[1]}
           echo "Stable version is: ${STABLE_VERSION}"
           export STABLE_DOCS="https://scc-digitalhub.github.io/docs/${STABLE_VERSION}"
           echo "Stable docs are available at: ${STABLE_DOCS}"
