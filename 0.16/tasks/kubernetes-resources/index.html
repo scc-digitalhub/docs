@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2765,19 +2765,19 @@
 
 
 <h1 id="define-and-use-kubernetes-resources">Define and use Kubernetes Resources</h1>
-<p>When it come to execution of AI tasks, either batch jobs or model serving, it is important to be able to
-allocate an appropriate set of resources, such as memory, GPU, disk etc.</p>
-<p>For this purpose the platform relies on Kubernetes functionalities and resource definitions. More specifically,
-the run configuration may have a specific requirements for</p>
+<p>When it come to execution of AI tasks, either batch jobs or model serving, it is important to be able to allocate an appropriate set of resources, such as memory, GPU, disk etc.</p>
+<p>For this purpose, the platform relies on Kubernetes functionalities and resource definitions. More specifically, the run configuration may have specific requirements for:</p>
 <ul>
 <li>volumes (Persistent Volume Claims and Config Maps)</li>
 <li>HW resources in terms of CPU and memory requests and limits, numbers of GPUs</li>
 <li>Additional secrets and environment variables to be associated with the execution</li>
 </ul>
 <h2 id="how-to-define-resource-requirements">How to define resource requirements</h2>
-<p>In the platform, kubernetes resource requirements may be defined in two ways: 
-* by users at run time, by requesting resources to be allocated for a given run,
-* by administrators at deployment time, by configuring defaults and limits along with pre-configured templates and profiles</p>
+<p>In the platform, kubernetes resource requirements may be defined in two ways: </p>
+<ul>
+<li>by users at run time, by requesting resources to be allocated for a given run,</li>
+<li>by administrators at deployment time, by configuring defaults and limits along with pre-configured templates and profiles</li>
+</ul>
 <h3 id="request-resources-at-runtime">Request resources at runtime</h3>
 <p>The platform lets users require additional k8s resource to be allocated to a given function's run, either via Core UI or via SDK. Please note that it is possible to describe only some properties, leaving the rest blank without constraints. All the defaults are managed by the platform in accordance with the underlying Kubernetes deployment.</p>
 <p>In the Core UI, resource requirements can be assigned when creating a run:</p>
@@ -3010,7 +3010,7 @@ It accepts an integer value.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
