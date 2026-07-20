@@ -1,10 +1,8 @@
 # Define and use Kubernetes Resources
 
-When it come to execution of AI tasks, either batch jobs or model serving, it is important to be able to
-allocate an appropriate set of resources, such as memory, GPU, disk etc.
+When it come to execution of AI tasks, either batch jobs or model serving, it is important to be able to allocate an appropriate set of resources, such as memory, GPU, disk etc.
 
-For this purpose the platform relies on Kubernetes functionalities and resource definitions. More specifically,
-the run configuration may have a specific requirements for
+For this purpose, the platform relies on Kubernetes functionalities and resource definitions. More specifically, the run configuration may have specific requirements for:
 
 - volumes (Persistent Volume Claims and Config Maps)
 - HW resources in terms of CPU and memory requests and limits, numbers of GPUs
@@ -12,6 +10,7 @@ the run configuration may have a specific requirements for
 
 ## How to define resource requirements
 In the platform, kubernetes resource requirements may be defined in two ways: 
+
 * by users at run time, by requesting resources to be allocated for a given run,
 * by administrators at deployment time, by configuring defaults and limits along with pre-configured templates and profiles
 
