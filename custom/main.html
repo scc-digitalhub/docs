@@ -43,26 +43,28 @@
             {{ config.site_name }}
           </span>
           <div class="dropdown">
-            <button class="dd-button">
+            <button class="dd-button" id="dd-version">
               {% set docsVersion = config.extra.docs_version|string %}
               {% if docsVersion.startswith('v:') %}
                 {% set docsVersion = docsVersion[2:] %}
               {% endif %}
               <span class="dd-text">{{ docsVersion }}</span>
+              {% if docsVersion == config.extra.stable_version|string %}
+                <span id="stable-text"> (stable)</span>
+              {% endif %}
               <span class="dd-arrow">&#9660;</span>
+              {% set versions = [] %}
               {% if config.extra.versions is defined and config.extra.versions != None %}
                 {% set versionsString = config.extra.versions|string %}
                 {% set versions = versionsString.split(',') %}
-              {% else %}
-                {% set versions = ['current'] %}
               {% endif %}
               {% for version in versions[:4] %}
                 {% if version != docsVersion|string %}
-                  {% if version == 'current' %}
-                    <a href="{{ config.extra.site }}">{{ version }}</a>
-                  {% else %}
-                    <a href="{{ config.extra.site }}/{{ version }}">{{ version }}</a>
-                  {% endif %}
+                  <a href="{{ config.extra.site }}/{{ version }}">{{ version }}
+                    {% if version == config.extra.stable_version|string %}
+                      <span id="stable-text"> (stable)</span>
+                    {% endif %}
+                  </a>
                 {% endif %}
               {% endfor %}
             </button>
@@ -74,14 +76,11 @@
               {% if config.extra.portals is defined and config.extra.portals != None %}
                 {% for portal in config.extra.portals %}
                   {% if portal.name != config.extra.portal_name %}
-                    {% if docsVersion == 'current' %}
-                      <a href="{{ config.extra.site }}{{ portal.path }}">{{ portal.name }}</a>
-                    {% else %}
-                      <a href="{{ config.extra.site }}/{{ docsVersion }}{{ portal.path }}">{{ portal.name }}</a>
-                    {% endif %}
+                    <a href="{{ config.extra.site }}/{{ docsVersion }}{{ portal.path }}">{{ portal.name }}</a>
                   {% endif %}
                 {% endfor %}
               {% endif %}
+              <a href="https://scc-digitalhub.github.io/sdk-docs/{{ docsVersion }}">SDK</a>
             </button>
           </div>
           <div>
