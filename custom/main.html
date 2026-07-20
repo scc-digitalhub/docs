@@ -48,10 +48,11 @@
               {% if docsVersion.startswith('v:') %}
                 {% set docsVersion = docsVersion[2:] %}
               {% endif %}
-              <span class="dd-text">{{ docsVersion }}</span>
-              {% if docsVersion == config.extra.stable_version|string %}
-                <span id="stable-text"> (stable)</span>
-              {% endif %}
+              <span class="dd-text">{{ docsVersion }}
+                {% if docsVersion == config.extra.stable_version|string %}
+                  <span id="stable-text"> (stable)</span>
+                {% endif %}
+              </span>
               <span class="dd-arrow">&#9660;</span>
               {% set versions = [] %}
               {% if config.extra.versions is defined and config.extra.versions != None %}
