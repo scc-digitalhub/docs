@@ -49,10 +49,13 @@ jobs:
               export OTHERS_STYLESHEETS_PORTAL_SELECTION='../../stylesheets/portal_selection.css'
               export OTHERS_STYLESHEETS_COLORS='../../stylesheets/colors.css'
               git checkout $v
-              cd user && mkdocs build && cd .. && echo "user docs built successfully"
-              cd admin && mkdocs build && cd .. && echo "admin docs built successfully"
-              cd tutorials && mkdocs build && cd .. && echo "tutorials docs built successfully"
-              cd sdk && pip install -r requirements.txt && mkdocs build && cd .. && echo "sdk docs built successfully" || true
+              cd user && mkdocs build && cd ..
+              cd admin && mkdocs build && cd ..
+              cd tutorials && mkdocs build && cd ..
+              cd sdk
+              pip install -r requirements.txt || echo "Failed to install SDK requirements"
+              mkdocs build || echo "Failed to build SDK documentation"
+              cd ..
               mkdir -p ./site
               [ ! -d user/site ] || mv user/site site/$v
               [ ! -d admin/site ] || mv admin/site site/$v/admin
