@@ -19,6 +19,8 @@ extra:
       path: "/admin"
     - name: Tutorials
       path: "/tutorials"
+    - name: SDK
+      path: "/sdk"
 
 theme:
   name: material
@@ -27,6 +29,7 @@ theme:
     # - navigation.expand
     - navigation.path
     - content.code.copy
+    - content.code.select
   palette:
     # Palette toggle for light mode
     - scheme: orange

@@ -29,17 +29,17 @@ jobs:
       - run: pip install mkdocs-material
       - run: pip install mkdocs-redirects
       - run: |
-          git fetch --prune --unshallow --tags
+          git fetch --prune --unshallow --tags origin "+refs/heads/*:refs/remotes/origin/*"
           this_branch=${{ github.ref_name }}
           echo "Triggered by event '${{ github.event_name }}' on branch '${this_branch}'"
           export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|python versions_string.py)
           echo "Versions are: ${VERSIONS}"
-          IFS=',' read -a version_array <<< ${VERSIONS}
+          version_array=${VERSIONS//,/ }
           export STABLE_VERSION=${version_array[1]}
           echo "Stable version is: ${STABLE_VERSION}"
           export STABLE_DOCS="https://scc-digitalhub.github.io/docs/${STABLE_VERSION}"
           echo "Stable docs are available at: ${STABLE_DOCS}"
-          for v in ${VERSIONS//,/ }
+          for v in ${version_array}
           do
             if [ "${{ github.event_name }}" == "create" ] || [ "$v" == "$this_branch" ]; then
               echo "Deploying docs for: $v"
@@ -49,13 +49,15 @@ jobs:
               export OTHERS_STYLESHEETS_PORTAL_SELECTION='../../stylesheets/portal_selection.css'
               export OTHERS_STYLESHEETS_COLORS='../../stylesheets/colors.css'
               git checkout $v
-              cd user && mkdocs build && cd ..
-              cd admin && mkdocs build && cd ..
-              cd tutorials && mkdocs build && cd ..
+              cd user && mkdocs build && cd .. && echo "user docs built successfully"
+              cd admin && mkdocs build && cd .. && echo "admin docs built successfully"
+              cd tutorials && mkdocs build && cd .. && echo "tutorials docs built successfully"
+              cd sdk && pip install -r requirements.txt && mkdocs build && cd .. && echo "sdk docs built successfully" || true
               mkdir -p ./site
               [ ! -d user/site ] || mv user/site site/$v
               [ ! -d admin/site ] || mv admin/site site/$v/admin
               [ ! -d tutorials/site ] || mv tutorials/site site/$v/tutorials
+              [ ! -d sdk/site ] || mv sdk/site site/$v/sdk
             fi
           done
           git checkout gh-pages

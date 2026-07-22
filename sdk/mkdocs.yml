@@ -1,0 +1,200 @@
+INHERIT: ../base.yml
+site_url: http://docs/sdk
+
+extra:
+  portal_name: SDK
+
+extra_css:
+  - !ENV [OTHERS_STYLESHEETS_PORTAL_SELECTION, "../stylesheets/portal_selection.css"]
+  - !ENV [OTHERS_STYLESHEETS_COLORS, "../stylesheets/colors.css"]
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - md_in_html
+
+plugins:
+  - search:
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            docstring_style: numpy
+            show_root_toc_entry: false
+            show_labels: false
+
+nav:
+  - Index: index.md
+  - Tutorials:
+      - Getting Started: tutorials/index.md
+      - Data Processing & Transformation:
+          - ETL Data Processing: tutorials/etl-data-processing.md
+          - Database Transformation with DBT: tutorials/dbt-transformation.md
+      - Machine Learning:
+          - Scikit-Learn Model Training: tutorials/scikit-learn-model.md
+          - MLflow Model Management: tutorials/mlflow-model.md
+          - Custom ML Models with Darts: tutorials/custom-ml-model.md
+      - AI & Large Language Models:
+          - Large Language Models: tutorials/llm-model.md
+  - How-to Guides:
+      - Guides: how-to/index.md
+      - What can I do?: how-to/what-can-i-do.md
+      - Quickstart: how-to/quickstart.md
+      - Installation: how-to/installation.md
+      - Runtime guide: how-to/runtime-guide.md
+      - Kubernetes guide: how-to/kubernetes.md
+      - Environment configuration: reference/configuration/credentials/overview.md
+  - Reference:
+      - Overview: reference/index.md
+      - Entities:
+          - Index: reference/objects/index.md
+          - Projects:
+              - Entity: reference/objects/project/entity.md
+              - CRUD: reference/objects/project/crud.md
+              - Methods: reference/objects/project/methods.md
+              - Config: reference/objects/project/config.md
+              - Setup: reference/objects/project/setup.md
+          - Functions:
+              - Entity: reference/objects/function/entity.md
+              - CRUD: reference/objects/function/crud.md
+              - Methods: reference/objects/function/methods.md
+              - Kinds: reference/objects/function/kinds.md
+          - Workflows:
+              - Entity: reference/objects/workflow/entity.md
+              - CRUD: reference/objects/workflow/crud.md
+              - Methods: reference/objects/workflow/methods.md
+              - Kinds: reference/objects/workflow/kinds.md
+          - Triggers:
+              - Entity: reference/objects/trigger/entity.md
+              - CRUD: reference/objects/trigger/crud.md
+              - Methods: reference/objects/trigger/methods.md
+              - Kinds: reference/objects/trigger/kinds.md
+          - Runs:
+              - Entity: reference/objects/run/entity.md
+              - CRUD: reference/objects/run/crud.md
+              - Methods: reference/objects/run/methods.md
+              - Kinds: reference/objects/run/kinds.md
+          - Artifacts:
+              - Entity: reference/objects/artifact/entity.md
+              - CRUD: reference/objects/artifact/crud.md
+              - Methods: reference/objects/artifact/methods.md
+              - Kinds: reference/objects/artifact/kinds.md
+          - Dataitems:
+              - Entity: reference/objects/dataitem/entity.md
+              - CRUD: reference/objects/dataitem/crud.md
+              - Methods: reference/objects/dataitem/methods.md
+              - Kinds: reference/objects/dataitem/kinds.md
+          - Models:
+              - Entity: reference/objects/model/entity.md
+              - CRUD: reference/objects/model/crud.md
+              - Methods: reference/objects/model/methods.md
+              - Kinds: reference/objects/model/kinds.md
+          - Secrets:
+              - Entity: reference/objects/secret/entity.md
+              - CRUD: reference/objects/secret/crud.md
+              - Methods: reference/objects/secret/methods.md
+          - Extensions:
+              - Entity: reference/objects/extension/entity.md
+              - CRUD: reference/objects/extension/crud.md
+              - Methods: reference/objects/extension/methods.md
+              - Kinds: reference/objects/extension/kinds.md
+      - Runtimes:
+          - Index: reference/runtimes/index.md
+          - Python:
+              - Overview: reference/runtimes/python/python/overview.md
+              - How-to: reference/runtimes/python/python/how-to.md
+              - Handler definition: reference/runtimes/python/python/define-function.md
+              - Generic handler: reference/runtimes/python/define-function.md
+              - Actions:
+                  - python job: reference/runtimes/python/python/python-job.md
+                  - python serve: reference/runtimes/python/python/python-serve.md
+                  - python build: reference/runtimes/python/python/python-build.md
+              - Examples: reference/runtimes/python/python/examples.md
+          - OpenInference (Python):
+              - Overview: reference/runtimes/python/openinference/overview.md
+              - How-to: reference/runtimes/python/openinference/how-to.md
+              - Handler definition: reference/runtimes/python/openinference/define-function.md
+              - Actions:
+                  - openinference serve: reference/runtimes/python/openinference/openinference-serve.md
+                  - openinference build: reference/runtimes/python/openinference/openinference-build.md
+              - Examples: reference/runtimes/python/openinference/examples.md
+          - Guardrail (Python):
+              - Overview: reference/runtimes/python/guardrail/overview.md
+              - How-to: reference/runtimes/python/guardrail/how-to.md
+              - Handler definition: reference/runtimes/python/guardrail/define-function.md
+              - Actions:
+                  - guardrail serve: reference/runtimes/python/guardrail/guardrail-serve.md
+                  - guardrail build: reference/runtimes/python/guardrail/guardrail-build.md
+              - Examples: reference/runtimes/python/guardrail/examples.md
+          - DBT:
+              - Overview: reference/runtimes/dbt/overview.md
+              - How-to: reference/runtimes/dbt/how-to.md
+              - Actions:
+                  - dbt transform: reference/runtimes/dbt/actions/dbt-transform.md
+              - Examples: reference/runtimes/dbt/examples.md
+          - Container:
+              - Overview: reference/runtimes/container/overview.md
+              - How-to: reference/runtimes/container/how-to.md
+              - Actions:
+                  - container job: reference/runtimes/container/actions/container-job.md
+                  - container serve: reference/runtimes/container/actions/container-serve.md
+                  - container build: reference/runtimes/container/actions/container-build.md
+              - Examples: reference/runtimes/container/examples.md
+          - Hera:
+              - Overview: reference/runtimes/hera/overview.md
+              - How-to: reference/runtimes/hera/how-to.md
+              - Pipeline definition: reference/runtimes/hera/define-pipeline.md
+              - Actions:
+                  - hera build: reference/runtimes/hera/actions/hera-build.md
+                  - hera pipeline: reference/runtimes/hera/actions/hera-pipeline.md
+              - Examples: reference/runtimes/hera/examples.md
+          - Modelserve:
+              - Overview: reference/runtimes/modelserve/overview.md
+              - How-to: reference/runtimes/modelserve/how-to.md
+              - Actions:
+                  - sklearnserve serve: reference/runtimes/modelserve/actions/sklearnserve-serve.md
+                  - mlflowserve serve: reference/runtimes/modelserve/actions/mlflowserve-serve.md
+                  - huggingfaceserve serve: reference/runtimes/modelserve/actions/huggingfaceserve-serve.md
+                  - kubeai-text serve: reference/runtimes/modelserve/actions/kubeai-text-serve.md
+                  - kubeai-speech serve: reference/runtimes/modelserve/actions/kubeai-speech-serve.md
+                  - vllmserve-text serve: reference/runtimes/modelserve/actions/vllmserve-text-serve.md
+                  - vllmserve-speech serve: reference/runtimes/modelserve/actions/vllmserve-speech-serve.md
+                  - vllmserve-pooling serve: reference/runtimes/modelserve/actions/vllmserve-pooling-serve.md
+              - Examples: reference/runtimes/modelserve/examples.md
+          - Flower:
+              - Overview: reference/runtimes/flower/overview.md
+              - How-to: reference/runtimes/flower/how-to.md
+              - Actions:
+                  - flower-app train: reference/runtimes/flower/actions/flower-app-train.md
+                  - flower-client build: reference/runtimes/flower/actions/flower-client-build.md
+                  - flower-client deploy: reference/runtimes/flower/actions/flower-client-deploy.md
+                  - flower-server build: reference/runtimes/flower/actions/flower-server-build.md
+                  - flower-server deploy: reference/runtimes/flower/actions/flower-server-deploy.md
+              - Examples: reference/runtimes/flower/examples.md
+      - Configuration:
+          - Paths:
+              - Overview: reference/configuration/paths/overview.md
+              - Local: reference/configuration/paths/local.md
+              - S3: reference/configuration/paths/s3.md
+              - Remote: reference/configuration/paths/remote.md
+              - SQL: reference/configuration/paths/sql.md
+          - Code source:
+              - Overview: reference/configuration/code_src/overview.md
+              - Local: reference/configuration/code_src/local.md
+              - HTTP: reference/configuration/code_src/http.md
+              - Git: reference/configuration/code_src/git.md
+              - S3: reference/configuration/code_src/s3.md
+          - Credentials handling:
+              - Overview: reference/configuration/credentials/overview.md
+              - DHCore: reference/configuration/credentials/dhcore.md
+              - S3: reference/configuration/credentials/s3.md
+              - SQL: reference/configuration/credentials/sql.md
+              - Git: reference/configuration/credentials/git.md
+              - Helpers: reference/configuration/credentials/helpers.md
+              - Store clients: reference/configuration/credentials/store-clients.md
+          - Kubernetes resources: reference/configuration/kubernetes/overview.md
