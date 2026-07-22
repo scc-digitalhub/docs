@@ -34,20 +34,22 @@ jobs:
           echo "Triggered by event '${{ github.event_name }}' on branch '${this_branch}'"
           export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|python versions_string.py)
           echo "Versions are: ${VERSIONS}"
-          version_array=${VERSIONS//,/ }
-          export STABLE_VERSION=${version_array[1]}
+          git checkout main
+          source config.env
           echo "Stable version is: ${STABLE_VERSION}"
           export STABLE_DOCS="https://scc-digitalhub.github.io/docs/${STABLE_VERSION}"
           echo "Stable docs are available at: ${STABLE_DOCS}"
-          for v in ${version_array}
+          echo "Number of versions to display: ${N_DISPLAY_VERSIONS}"
+          export USER_STYLESHEETS_PORTAL_SELECTION='../stylesheets/portal_selection.css'
+          export USER_STYLESHEETS_COLORS='../stylesheets/colors.css'
+          export OTHERS_STYLESHEETS_PORTAL_SELECTION='../../stylesheets/portal_selection.css'
+          export OTHERS_STYLESHEETS_COLORS='../../stylesheets/colors.css'
+      - run: |
+          for v in ${VERSIONS//,/ }
           do
             if [ "${{ github.event_name }}" == "create" ] || [ "$v" == "$this_branch" ]; then
               echo "Deploying docs for: $v"
               export DOCS_VERSION="v:$v"
-              export USER_STYLESHEETS_PORTAL_SELECTION='../stylesheets/portal_selection.css'
-              export USER_STYLESHEETS_COLORS='../stylesheets/colors.css'
-              export OTHERS_STYLESHEETS_PORTAL_SELECTION='../../stylesheets/portal_selection.css'
-              export OTHERS_STYLESHEETS_COLORS='../../stylesheets/colors.css'
               git checkout $v
               cd user && mkdocs build && cd ..
               cd admin && mkdocs build && cd ..

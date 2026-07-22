@@ -12,6 +12,7 @@ extra:
   docs_version: !ENV [DOCS_VERSION, 'current']
   versions: !ENV [VERSIONS]
   stable_version: !ENV [STABLE_VERSION]
+  n_display_versions: !ENV [N_DISPLAY_VERSIONS, 4]
   portals:
     - name: User
       path: ""

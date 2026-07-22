@@ -59,7 +59,7 @@
                 {% set versionsString = config.extra.versions|string %}
                 {% set versions = versionsString.split(',') %}
               {% endif %}
-              {% for version in versions[:4] %}
+              {% for version in versions[:config.extra.n_display_versions|int] %}
                 {% if version != docsVersion|string %}
                   <a href="{{ config.extra.site }}/{{ version }}">{{ version }}
                     {% if version == config.extra.stable_version|string %}
