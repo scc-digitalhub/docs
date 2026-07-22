@@ -35,6 +35,7 @@ jobs:
           export VERSIONS=$(echo `git branch -r --format='%(refname:short)'`|python versions_string.py)
           echo "Versions are: ${VERSIONS}"
           git checkout main
+          set -a
           source config.env
           echo "Stable version is: ${STABLE_VERSION}"
           export STABLE_DOCS="https://scc-digitalhub.github.io/docs/${STABLE_VERSION}"
