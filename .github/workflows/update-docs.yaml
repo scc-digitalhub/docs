@@ -44,7 +44,6 @@ jobs:
           export USER_STYLESHEETS_COLORS='../stylesheets/colors.css'
           export OTHERS_STYLESHEETS_PORTAL_SELECTION='../../stylesheets/portal_selection.css'
           export OTHERS_STYLESHEETS_COLORS='../../stylesheets/colors.css'
-      - run: |
           for v in ${VERSIONS//,/ }
           do
             if [ "${{ github.event_name }}" == "create" ] || [ "$v" == "$this_branch" ]; then
