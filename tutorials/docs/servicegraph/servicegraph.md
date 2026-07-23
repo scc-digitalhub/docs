@@ -365,10 +365,10 @@ To create a presigned S3 link, it is sufficient to do this using Core UI. Access
 
 ## 3.2 Create a streaming container
 
-We will create a container from go24rtc project and configure it to stream the video source in MJPEG format. We add a custom start script that will be executed when the container is started. This is needed to download the video source from the presigned link.
+We will create a container from go24rtc project and configure it to stream the video source in MJPEG format. We add a custom start script that will be executed when the container is started. This is needed to download the video source from the presigned link. Copy the presigned link we get in 3.1 as argument when we run the function.
 
 ```python
-%%writefile src/launch.sh
+%%writefile launch.sh
 
 #!/bin/bash
 ls -la /shared
@@ -405,15 +405,17 @@ Save configuration and access the MJPEG stream link:  ``api/stream.mjpeg?src=v1`
 
 # 4. Run service graph
 
-Now as all the entities are in place, we can deploy the service graph function. We need to replace the static URLs of the source and the anonimization service withe references to the deployed instances. Specifically,
+Now as all the entities are in place, we can deploy the service graph function. We need to replace the static URLs of the source and the anonimization service withe references to the deployed instances. Specifically, ,
 
 - use address of the stream container in input url. Note the name of the src in the URL parameter as ``v1``.
 - use address of the anonimization service in anon-service parameter. Note that we use OpenInference gRPC port (9000).
 
+We can use the "Alias" address that we can find inside the "Service" tab in the specific "Run" detail view.
+
 ```python
 graph_run = func.run(action="serve", parameters={
-    "input.url": "http://s-containerserve-13bca54c08204ec18c23519b699ab6af.dev-platform:1984/api/stream.mjpeg?src=v1",
-    "anon-service.address": "s-openinferenceserve-0a12e534832043fc88f05b316f01b45c.dev-platform:9000"
+    "input.url": "http://s-demo-servicegraph-videostream-latest.dev-platform:1984/api/stream.mjpeg?src=v1",
+    "anon-service.address": "s-demo-servicegraph-anonymization-service-latest.dev-platform:9000"
 }, service_ports=[{"port": 7777, "target_port": 7777}])
 ```
 
