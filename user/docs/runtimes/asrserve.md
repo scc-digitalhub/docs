@@ -10,7 +10,7 @@ The specification of the KubeAI speech runtime amounts to defining
 - name of the model to expose
 - optional base image for serving
 
-The ``serve`` action allows for deploying the model, and a set of extra properties may be configured, including
+The ``serve`` action allows for deploying the model, and a set of extra properties may be configured, including:
 
 - inference server-specific arguments
 - load balancing strategy and properties
