@@ -2983,8 +2983,8 @@
 <p>To create a presigned S3 link, it is sufficient to do this using Core UI. Access the file in the browser and share it. This will generate the presigned link of defined duration.</p>
 <p><img alt="Presigned link" src="../images/share.png" /></p>
 <h2 id="32-create-a-streaming-container">3.2 Create a streaming container</h2>
-<p>We will create a container from go24rtc project and configure it to stream the video source in MJPEG format. We add a custom start script that will be executed when the container is started. This is needed to download the video source from the presigned link.</p>
-<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="n">src</span><span class="o">/</span><span class="n">launch</span><span class="o">.</span><span class="n">sh</span>
+<p>We will create a container from go24rtc project and configure it to stream the video source in MJPEG format. We add a custom start script that will be executed when the container is started. This is needed to download the video source from the presigned link. Copy the presigned link we get in 3.1 as argument when we run the function.</p>
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="n">launch</span><span class="o">.</span><span class="n">sh</span>
 
 <span class="c1">#!/bin/bash</span>
 <span class="n">ls</span> <span class="o">-</span><span class="n">la</span> <span class="o">/</span><span class="n">shared</span>
@@ -3009,14 +3009,15 @@
 <p>Here v1 is the reference to a stream, while <code>video=mjpeg</code> indicates the output in MJPEG format.</p>
 <p>Save configuration and access the MJPEG stream link:  <code>api/stream.mjpeg?src=v1</code> relative to the container address.</p>
 <h1 id="4-run-service-graph">4. Run service graph</h1>
-<p>Now as all the entities are in place, we can deploy the service graph function. We need to replace the static URLs of the source and the anonimization service withe references to the deployed instances. Specifically,</p>
+<p>Now as all the entities are in place, we can deploy the service graph function. We need to replace the static URLs of the source and the anonimization service withe references to the deployed instances. Specifically, ,</p>
 <ul>
 <li>use address of the stream container in input url. Note the name of the src in the URL parameter as <code>v1</code>.</li>
 <li>use address of the anonimization service in anon-service parameter. Note that we use OpenInference gRPC port (9000).</li>
 </ul>
+<p>We can use the "Alias" address that we can find inside the "Service" tab in the specific "Run" detail view.</p>
 <div class="highlight"><pre><span></span><code><span class="n">graph_run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
-    <span class="s2">&quot;input.url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://s-containerserve-13bca54c08204ec18c23519b699ab6af.dev-platform:1984/api/stream.mjpeg?src=v1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;anon-service.address&quot;</span><span class="p">:</span> <span class="s2">&quot;s-openinferenceserve-0a12e534832043fc88f05b316f01b45c.dev-platform:9000&quot;</span>
+    <span class="s2">&quot;input.url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://s-demo-servicegraph-videostream-latest.dev-platform:1984/api/stream.mjpeg?src=v1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;anon-service.address&quot;</span><span class="p">:</span> <span class="s2">&quot;s-demo-servicegraph-anonymization-service-latest.dev-platform:9000&quot;</span>
 <span class="p">},</span> <span class="n">service_ports</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="mi">7777</span><span class="p">,</span> <span class="s2">&quot;target_port&quot;</span><span class="p">:</span> <span class="mi">7777</span><span class="p">}])</span>
 </code></pre></div>
 <p>Check the log and of the graph; it should report the success of the deployment and connection to the MJPEG source.</p>
