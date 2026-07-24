@@ -1566,17 +1566,17 @@
       "text": "<ul> <li>Official documentation on installation</li> <li>Official documentation on Coder workspaces</li> </ul>"
     },
     {
-      "location": "charts/core/solr/",
+      "location": "admin/charts/core/solr/",
       "title": "Solr",
       "text": "<p>Core supports Solr integration for indexing operations.</p> <p>The platform itself does not include Solr, so you will need to set it up by yourself in your environment.</p> <p>Keep in mind that enabling Solr will disable Lucene automatically.</p> <p>Make sure to already create the collection you want to use for Core in your instance.</p>"
     },
     {
-      "location": "charts/core/solr/#using-solr-without-authentication",
+      "location": "admin/charts/core/solr/#using-solr-without-authentication",
       "title": "Using Solr without authentication",
       "text": "<p>If you are using a Solr deployment without Basic Authentication enabled, set the following values:</p> <pre><code>core:\n  #  core.solr -- Solr configuration\n  solr:\n    #  core.solr.enabled -- Set this value to true if you want to use Core with an existing Solr instance\n    enabled: true\n    #  core.solr.collection -- Solr collection configuration\n    collection:\n      #  core.solr.collection.name -- Name of the Solr collection\n      name: \"COLLECTION_NAME\"\n    #  core.solr.url -- URL of your Solr instance\n    url: \"SOLR_INSTANCE_URL\"\n</code></pre>"
     },
     {
-      "location": "charts/core/solr/#using-solr-with-basic-auth",
+      "location": "admin/charts/core/solr/#using-solr-with-basic-auth",
       "title": "Using Solr with Basic Auth",
       "text": "<p>If you enabled authentication on your Solr instance you will still need to use the values mentioned in the previous section but you will need to set up some other things.</p> <p>You have two options for the configuration:</p> <ul> <li>Specify just the admin user</li> <li>Specify both admin user and a normal user with permissions to operate on that specific collection</li> </ul> <p>You will have to create a secret containing username and password for each user that you set in the values file.</p> <p>The configuration for the values section can be done like this:</p> <pre><code>core:\n  #  solr -- Solr configuration\n  solr:\n    #  solr.enabled -- Set this value to true if you want to use Core with an existing Solr instance\n    enabled: true\n    #  solr.basicAuth -- Basic Auth configuration of Solr\n    basicAuth:\n      #  solr.basicAuth.enabled -- Set this value to true if you use BasicAuth in your Solr instance\n      enabled: true\n      #  solr.credentials -- Solr credentials configuration\n      credentials:\n        # solr.basicAuth.credentials.existingSecrets -- Existing secrets for Solr Basic Auth configuration\n        existingSecrets:\n          # solr.basicAuth.credentials.existingSecrets.admin -- Existing secret for Solr Basic Auth admin user\n          admin:\n            #  solr.basicAuth.credentials.existingSecrets.admin.passwordKey -- Password key\n            passwordKey: \"PASSWORD_KEY\"\n            #  solr.basicAuth.credentials.existingSecrets.admin.secretName -- Secret name\n            secretName: \"SECRET_NAME\"\n            #  solr.basicAuth.credentials.existingSecrets.admin.usernameKey -- Username key\n            usernameKey: \"USER_KEY\"\n          #  solr.basicAuth.credentials.existingSecrets.user -- Existing secret for Solr Basic Auth user\n          user:\n            #  solr.basicAuth.credentials.existingSecrets.user.passwordKey -- Password key\n            passwordKey: \"PASSWORD_KEY\"\n            #  solr.basicAuth.credentials.existingSecrets.user.secretName -- Secret name\n            secretName: \"SECRET_NAME\"\n            #  solr.basicAuth.credentials.existingSecrets.user.usernameKey -- Username key\n            usernameKey: \"USER_KEY\"\n    #  solr.collection -- Solr collection configuration\n    collection:\n      #  solr.collection.name -- Name of the Solr collection\n      name: \"COLLECTION_NAME\"\n    #  solr.url -- URL of your Solr instance\n    url: \"SOLR_INSTANCE_URL\"\n</code></pre>"
     }
