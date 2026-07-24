@@ -1,6 +1,8 @@
 # Platform documentation
 
-Repository for the documentation of the platform. Each branch corresponds to a different version of the platform, so if you need to update the documentation of a specific version, **do not create a separate branch, instead, commit directly to the branch corresponding to the version you're updating**.
+If you wish to update the documentation, **do not create a separate branch. Instead, commit directly to the branch corresponding to the version you're updating**.
+
+This is the documentation for the platform. This *README* file contains information for those who wish to update the documentation. Users of the platform can find the documentation [here](https://scc-digitalhub.github.io/docs).
 
 The documentation features multiple portals, aimed at different audiences (`user`, `admin`, ...).
 
@@ -33,8 +35,6 @@ You can then view the docs at `localhost:8000`. As the docs on the website are g
 ## Versioned documentation
 
 Different versions of the documentation may be available at once.
-
-The `current` version of the documentation reflects the most up-to-date state of the `main` branch, and is updated when new commits to `main` are made. It can be found under `/docs`.
 
 Publishing a new branch will generate another documentation portal, named after the branch, under `/docs/<branch_name>`. Further pushes to this branch will update the corresponding portal.
 
@@ -96,19 +96,11 @@ git checkout $v
 cd user && mkdocs build && cd ..
 cd admin && mkdocs build && cd ..
 cd example && mkdocs build && cd .. # new line
+# and then a few lines later...
 mkdir -p ./site
 [ ! -d user/site ] || mv user/site site/$v
 [ ! -d admin/site ] || mv admin/site site/$v/admin
 [ ! -d example/site ] || mv example/site site/$v/example # new line
-
-# and then a few lines later...
-git checkout main
-cd user && mkdocs build && cd ..
-cd admin && mkdocs build && cd ..
-cd example && mkdocs build && cd .. # new line
-[ ! -d user/site ] || mv user/site ./site
-[ ! -d admin/site ] || mv admin/site site/admin
-[ ! -d example/site ] || mv example/site site/example # new line
 ```
 
 Once you commit these changes, your new portal will be available.
