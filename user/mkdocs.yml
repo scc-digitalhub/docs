@@ -67,9 +67,6 @@ nav:
       - "extensions/overview.md"
       - "extensions/envoygw.md"
 
-  - SDK Reference:
-      - "sdk/intro.md"
-
   - CLI Reference:
       - "cli/commands.md"
 

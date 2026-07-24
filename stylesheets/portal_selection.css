@@ -13,7 +13,11 @@
 }
 
 #dd-version {
-    width: 140px;
+    width: 8em;
+}
+
+#dd-portal {
+    width: 6em;
 }
 
 .dd-text {

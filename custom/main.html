@@ -59,7 +59,7 @@
                 {% set versionsString = config.extra.versions|string %}
                 {% set versions = versionsString.split(',') %}
               {% endif %}
-              {% for version in versions[:4] %}
+              {% for version in versions[:config.extra.n_display_versions|int] %}
                 {% if version != docsVersion|string %}
                   <a href="{{ config.extra.site }}/{{ version }}">{{ version }}
                     {% if version == config.extra.stable_version|string %}
@@ -71,7 +71,7 @@
             </button>
           </div>
           <div class="dropdown">
-            <button class="dd-button">
+            <button class="dd-button" id="dd-portal">
               <span class="dd-text">{{ config.extra.portal_name }}</span>
               <span class="dd-arrow">&#9660;</span>
               {% if config.extra.portals is defined and config.extra.portals != None %}
@@ -81,7 +81,6 @@
                   {% endif %}
                 {% endfor %}
               {% endif %}
-              <a href="https://scc-digitalhub.github.io/sdk-docs/{{ docsVersion }}">SDK</a>
             </button>
           </div>
           <div>
