@@ -111,7 +111,7 @@ Can only be specified when calling `function.run()`.
 
 Once the run is created, you can access its attributes and methods through the `run` object.
 
-::: digitalhub_runtime_python.entities.run._base.entity.RunPythonRun.output
+::: digitalhub_runtime_python.entities.run._base.entity.RunBaseRun.output
     options:
         heading_level: 6
         show_signature: false
@@ -121,7 +121,7 @@ Once the run is created, you can access its attributes and methods through the `
         show_root_full_path: false
         show_root_toc_entry: true
 
-::: digitalhub_runtime_python.entities.run._base.entity.RunPythonRun.outputs
+::: digitalhub_runtime_python.entities.run._base.entity.RunBaseRun.outputs
     options:
         heading_level: 6
         show_signature: false
@@ -131,7 +131,7 @@ Once the run is created, you can access its attributes and methods through the `
         show_root_full_path: false
         show_root_toc_entry: true
 
-::: digitalhub_runtime_python.entities.run._base.entity.RunPythonRun.result
+::: digitalhub_runtime_python.entities.run._base.entity.RunBaseRun.result
     options:
         heading_level: 6
         show_signature: false
@@ -141,7 +141,7 @@ Once the run is created, you can access its attributes and methods through the `
         show_root_full_path: false
         show_root_toc_entry: true
 
-::: digitalhub_runtime_python.entities.run._base.entity.RunPythonRun.results
+::: digitalhub_runtime_python.entities.run._base.entity.RunBaseRun.results
     options:
         heading_level: 6
         show_signature: false

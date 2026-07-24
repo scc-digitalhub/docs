@@ -1,6 +1,6 @@
-# SDK
+# Digitalhub SDK Documentation
 
-Welcome to the documentation for the [SDK](https://github.com/scc-digitalhub/digitalhub-sdk), a Python package for interacting with the platform.
+Welcome to the documentation for the [Digitalhub SDK](https://github.com/scc-digitalhub/digitalhub-sdk), a Python package for interacting with the [Digitalhub platform](https://scc-digitalhub.github.io/docs/).
 
 The SDK is open source under [Apache License 2.0](https://github.com/scc-digitalhub/digitalhub-sdk/blob/main/LICENSE) and is available on [GitHub](https://github.com/scc-digitalhub/digitalhub-sdk) and [PyPI](https://pypi.org/project/digitalhub/).
 

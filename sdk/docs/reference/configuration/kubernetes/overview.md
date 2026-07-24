@@ -33,16 +33,18 @@ resources = {
 }
 ```
 
-For GPU selection you need to use a `profile` (see below) depending on your cluster setup.
+For specific GPU configuration selection you need to use a `profile` (see below) depending on your cluster setup.
 
 ## Profile
 
 Profiles are templates administrators provide to request specific hardware (for example GPUs). Ask your administrator for available profiles.
 
 ```python
-# Request 1 GPU A100
-profile = "1xa100"
+# Request 1 GPU V100
+profile = "1xv100"
 ```
+
+To get a list of available profiles, you can use the the utils function `dh.get_k8s_resource_profiles`.
 
 ## Volumes
 

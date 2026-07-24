@@ -98,11 +98,6 @@ nav:
               - Entity: reference/objects/secret/entity.md
               - CRUD: reference/objects/secret/crud.md
               - Methods: reference/objects/secret/methods.md
-          - Extensions:
-              - Entity: reference/objects/extension/entity.md
-              - CRUD: reference/objects/extension/crud.md
-              - Methods: reference/objects/extension/methods.md
-              - Kinds: reference/objects/extension/kinds.md
       - Runtimes:
           - Index: reference/runtimes/index.md
           - Python:
@@ -158,6 +153,7 @@ nav:
               - How-to: reference/runtimes/modelserve/how-to.md
               - Actions:
                   - sklearnserve serve: reference/runtimes/modelserve/actions/sklearnserve-serve.md
+                  - mlflowserve build: reference/runtimes/modelserve/actions/mlflowserve-build.md
                   - mlflowserve serve: reference/runtimes/modelserve/actions/mlflowserve-serve.md
                   - huggingfaceserve serve: reference/runtimes/modelserve/actions/huggingfaceserve-serve.md
                   - kubeai-text serve: reference/runtimes/modelserve/actions/kubeai-text-serve.md
