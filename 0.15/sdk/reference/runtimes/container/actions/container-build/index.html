@@ -4201,6 +4201,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Task Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instructions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -4216,17 +4233,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Instructions
-      
-    </span>
-  </a>
   
 </li>
       
@@ -6188,6 +6194,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Task Parameters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instructions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -6203,17 +6226,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Instructions
-      
-    </span>
-  </a>
   
 </li>
       
@@ -6377,8 +6389,7 @@
 
 run = function.run(
     action=&quot;build&quot;,
-    instructions=[&quot;pip install numpy&quot;, &quot;pip install pandas&quot;],
-    image=&quot;my-custom-image:latest&quot;
+    instructions=[&quot;pip install numpy&quot;, &quot;pip install pandas&quot;]
 )
 </code></pre>
 <h2 id="parameters">Parameters</h2>
@@ -6533,6 +6544,10 @@ run = function.run(
 </tr>
 </tbody>
 </table>
+<h4 id="instructions">Instructions</h4>
+<p>Instructions are executed as <code>RUN</code> instructions in the generated Dockerfile. Example:</p>
+<pre><code class="language-python">instructions = [&quot;apt-get install -y git&quot;]
+</code></pre>
 <h3 id="run-parameters">Run Parameters</h3>
 <p>Can only be specified when calling <code>function.run()</code>.</p>
 <table>
@@ -6551,10 +6566,6 @@ run = function.run(
 </tr>
 </tbody>
 </table>
-<h2 id="instructions">Instructions</h2>
-<p>Instructions are executed as <code>RUN</code> instructions in the generated Dockerfile. Example:</p>
-<pre><code class="language-python">instructions = [&quot;apt-get install -y git&quot;]
-</code></pre>
 <h2 id="entity-methods">Entity methods</h2>
 <h3 id="run-methods">Run methods</h3>
 <p>There are no runtime-specific helper methods for container runs.</p>
