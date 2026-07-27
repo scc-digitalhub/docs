@@ -3209,6 +3209,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instructions
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6375,6 +6386,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Instructions
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6625,8 +6647,7 @@
 
 run = function.run(
     action=&quot;build&quot;,
-    inputs={&quot;data&quot;: dataitem.key},
-    parameters={&quot;threshold&quot;: 0.5}
+    instructions=[&quot;apt-get install -y git&quot;, &quot;apt-get install -y curl&quot;],
 )
 </code></pre>
 <h2 id="parameters">Parameters</h2>
@@ -6788,8 +6809,17 @@ run = function.run(
 <td>str</td>
 <td>Profile template.</td>
 </tr>
+<tr>
+<td><a href="#instructions">instructions</a></td>
+<td>list[str]</td>
+<td>Build instructions executed as RUN lines in the generated Dockerfile.</td>
+</tr>
 </tbody>
 </table>
+<h4 id="instructions">Instructions</h4>
+<p>Instructions are executed as <code>RUN</code> instructions in the generated Dockerfile. Example:</p>
+<pre><code class="language-python">instructions = [&quot;apt-get install -y git&quot;]
+</code></pre>
 <h3 id="run-parameters">Run Parameters</h3>
 <p>Can only be specified when calling <code>function.run()</code>.</p>
 <h4 id="run-shared-parameters">Run Shared Parameters</h4>
