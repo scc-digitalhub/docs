@@ -19,8 +19,7 @@ function = dh.new_function(
 
 run = function.run(
     action="build",
-    inputs={"data": dataitem.key},
-    parameters={"threshold": 0.5}
+    instructions=["apt-get install -y git", "apt-get install -y curl"],
 )
 ```
 
@@ -92,6 +91,15 @@ Can only be specified when calling `function.run()`.
 | [envs](../../../configuration/kubernetes/overview.md#secrets-envs) | list[dict] | Environment variables. |
 | [secrets](../../../configuration/kubernetes/overview.md#secrets-envs) | list[str] | List of secret names. |
 | [profile](../../../configuration/kubernetes/overview.md#profile) | str | Profile template. |
+| [instructions](#instructions) | list[str] | Build instructions executed as RUN lines in the generated Dockerfile. |
+
+#### Instructions
+
+Instructions are executed as `RUN` instructions in the generated Dockerfile. Example:
+
+```python
+instructions = ["apt-get install -y git"]
+```
 
 ### Run Parameters
 
