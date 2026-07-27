@@ -58,6 +58,7 @@ jobs:
               pip install -r requirements.txt || echo "Failed to install SDK requirements"
               mkdocs build || echo "Failed to build SDK documentation"
               cd ..
+              python merge_search_indices.py
               mkdir -p ./site
               [ ! -d user/site ] || mv user/site site/$v
               [ ! -d admin/site ] || mv admin/site site/$v/admin
