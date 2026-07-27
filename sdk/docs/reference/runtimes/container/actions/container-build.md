@@ -17,8 +17,7 @@ function = dh.new_function(
 
 run = function.run(
     action="build",
-    instructions=["pip install numpy", "pip install pandas"],
-    image="my-custom-image:latest"
+    instructions=["pip install numpy", "pip install pandas"]
 )
 ```
 
@@ -63,6 +62,14 @@ Can only be specified when calling `function.run()`.
 | base_image | str | Base image used when building the execution image. Required for `build` unless a full image is provided. |
 | image | str | Target image name:tag to build/push. |
 
+#### Instructions
+
+Instructions are executed as `RUN` instructions in the generated Dockerfile. Example:
+
+```python
+instructions = ["apt-get install -y git"]
+```
+
 ### Run Parameters
 
 Can only be specified when calling `function.run()`.
@@ -70,14 +77,6 @@ Can only be specified when calling `function.run()`.
 | Name | Type | Description |
 | --- | --- | --- |
 | args | list[str] | Command-line arguments to pass to the container command. |
-
-## Instructions
-
-Instructions are executed as `RUN` instructions in the generated Dockerfile. Example:
-
-```python
-instructions = ["apt-get install -y git"]
-```
 
 ## Entity methods
 
