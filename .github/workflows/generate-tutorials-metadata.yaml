@@ -8,6 +8,7 @@ on:
       - tutorials/docs/**
       - tutorials/mkdocs.yml
       - generate_tutorials_metadata.py
+      - .github/workflows/generate-tutorials-metadata.yaml
 concurrency:
   group: update-docs
   cancel-in-progress: false
