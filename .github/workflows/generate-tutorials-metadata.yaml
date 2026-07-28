@@ -27,8 +27,8 @@ jobs:
           git checkout main
           set -a
           source config.env
-          echo "Stable version is: ${STABLE_VERSION}"
-          if ["$this_branch" == "$STABLE_VERSION"]; then
+          echo "Action triggered on $this_branch; stable version is $STABLE_VERSION"
+          if [ "$this_branch" = "$STABLE_VERSION" ]; then
             git checkout $this_branch
             echo "Generating tutorials metadata yaml"
             python generate_tutorials_metadata.py
