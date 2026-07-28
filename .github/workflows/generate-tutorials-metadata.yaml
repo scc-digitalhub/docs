@@ -31,6 +31,7 @@ jobs:
           echo "Action triggered on $this_branch; stable version is $STABLE_VERSION"
           if [ "$this_branch" = "$STABLE_VERSION" ]; then
             git checkout $this_branch
+            pip install yaml
             echo "Generating tutorials metadata yaml"
             python generate_tutorials_metadata.py
             git checkout main
