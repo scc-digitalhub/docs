@@ -8,9 +8,9 @@ The runtime uses the command `flwr run` to start the Flower application.
 
 There are different ways to create a Flower application function, depending on the source of the code:
 
-1. **From a Git repository**: The source code is stored in a Git repository, and the `source` parameter is used to point to the repository URL. In this case, the `client_app` and `server_app` parameters **MUST NOT** be provided, as the code will be fetched from the repository. The repository **MUST** contain a valid `pyproject.toml` file that configures the Flower application. The run parameters are then used to override the configuration in the file by passing options to the `flwr` command with arguments `--federation-config` and `--run-config`.
+1. **From a Git repository**: The source code is stored in a Git repository, and the `git_source` parameter is used to point to the repository URL. In this case, the `client_app` and `server_app` parameters **MUST NOT** be provided, as the code will be fetched from the repository. The repository **MUST** contain a valid `pyproject.toml` file that configures the Flower application. The run parameters are then used to override the configuration in the file by passing options to the `flwr` command with arguments `--federation-config` and `--run-config`.
 
-2. **From local code references**: The Flower client and server code are provided directly using the `client_app` and `server_app` parameters. In this case, the `source` parameter **MUST NOT** be provided. The client and server code **MUST** be valid Flower implementations. The run parameters are used to create a `pyproject.toml` file that configures the Flower application.
+2. **From local code references**: The Flower client and server code are provided directly using the `client_app` and `server_app` parameters. In this case, the `git_source` parameter **MUST NOT** be provided. The client and server code **MUST** be valid Flower implementations. The run parameters are used to create a `pyproject.toml` file that configures the Flower application.
 
 ## Quick example with bare minimum parameters
 
@@ -21,7 +21,7 @@ import digitalhub as dh
 f = dh.new_function(
     name="my-flower-app",
     kind="flower-app",
-    source="git+https://github.com/my-org/my-flower-app.git",
+    git_source="git+https://github.com/my-org/my-flower-app.git",
 )
 run = f.run(action="train")
 
@@ -88,11 +88,11 @@ Must be specified when creating the function.
 
 #### String source code
 
-The `client_src` and `server_src` parameters contain the source code of the Flower client and server applications as strings. These strings must be valid Python code. The string source code will be encoded in base64 format and included in the `fab_source` field of the function specification.
+The `client_code` and `server_code` parameters contain the source code of the Flower client and server applications as strings. These strings must be valid Python code. The string source code will be encoded in base64 format and included in the `fab_source` field of the function specification.
 
 #### Local path source code
 
-The `client_src` and `server_src` parameters can also be specified as local paths to the Flower client and server application source code files. These paths must point to valid Python files. The files will be read and their content encoded in base64 format and included in the `fab_source` field of the function specification.
+The `client_src` and `server_src` parameters can be specified as local paths to the Flower client and server application source code files. These paths must point to valid Python files. The files will be read and their content encoded in base64 format and included in the `fab_source` field of the function specification.
 
 #### Appcode
 

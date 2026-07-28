@@ -60,7 +60,10 @@ Can only be specified when calling `function.run()`.
 
 Can only be specified when calling `function.run()`.
 
-No specific parameters for run of this action.
+| Name | Type | Description |
+| --- | --- | --- |
+| auth_public_keys | list[str] | List of public keys for authentication. |
+| insecure | bool | Disable TLS verification. |
 
 ## Entity methods
 

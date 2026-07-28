@@ -62,6 +62,7 @@ Can only be specified when calling `function.run()`.
 | [replicas](../../../configuration/kubernetes/overview.md#replicas) | int | Number of replicas. |
 | [service_ports](../../../configuration/kubernetes/overview.md#service-port-type) | list[dict] | Ports to expose for the service. Example: `[{"port": 80, "target_port": 8080}]`. |
 | [service_type](../../../configuration/kubernetes/overview.md#service-port-type) | str | Service type. |
+| service_name | str | Service name. |
 | [run_as_user](../../../configuration/kubernetes/overview.md#security-context) | int | User ID to run the container. |
 | [run_as_group](../../../configuration/kubernetes/overview.md#security-context) | int | Group ID to run the container. |
 | [fs_group](../../../configuration/kubernetes/overview.md#security-context) | int | File system group ID. |

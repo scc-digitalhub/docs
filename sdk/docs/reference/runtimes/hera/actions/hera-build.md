@@ -59,7 +59,9 @@ Can only be specified when calling `workflow.run()`.
 
 Can only be specified when calling `workflow.run()`.
 
-No specific parameters for run of this action.
+| Name | Type | Description |
+| --- | --- | --- |
+| parameters | dict | Inputs for the pipeline execution. |
 
 ## Entity methods
 

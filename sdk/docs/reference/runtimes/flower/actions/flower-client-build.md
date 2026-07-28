@@ -60,7 +60,14 @@ Can only be specified when calling `function.run()`.
 
 Can only be specified when calling `function.run()`.
 
-No specific parameters for run of this action.
+| Name | Type | Description |
+| --- | --- | --- |
+| superlink | str | Flower superlink service endpoint. |
+| node_config | dict | Node configuration parameters for the Flower client. |
+| root_certificates | str | Content of the root certificate as string. |
+| private_key_secret | str | Name of the secret containing the private key for secure communication. |
+| public_key_secret | str | Name of the secret containing the public key for secure communication. |
+| isolation | str | Isolation mode: `process` or `subprocess`. |
 
 ## Entity methods
 
