@@ -6071,10 +6071,11 @@
     code_src=&quot;src/flow.yaml&quot;
 )
 
-run = function.run(action=&quot;serve&quot;, 
+run = function.run(
+    action=&quot;serve&quot;,
     parameters={&quot;input.url&quot;: &quot;http://videosource:1984&quot;},
     service_ports=[{&quot;port&quot;: 7777, &quot;target_port&quot;: 7777}]
-    )
+)
 
 </code></pre>
 <h2 id="parameters">Parameters</h2>
@@ -6102,7 +6103,7 @@ run = function.run(action=&quot;serve&quot;,
 <tr>
 <td>kind</td>
 <td>str</td>
-<td>Function kind. Must be <code>huggingfaceserve</code>. <strong>Required.</strong></td>
+<td>Function kind. Must be <code>servicegraph</code>. <strong>Required.</strong></td>
 </tr>
 <tr>
 <td>uuid</td>
@@ -6140,7 +6141,7 @@ run = function.run(action=&quot;serve&quot;,
 <td>Pipeline definition encoded as base64.</td>
 </tr>
 <tr>
-<td><a href="#model-image">image</a></td>
+<td>image</td>
 <td>str</td>
 <td>Docker image where to serve the model.</td>
 </tr>

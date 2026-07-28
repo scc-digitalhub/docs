@@ -6474,7 +6474,47 @@ run = f.run(action=&quot;build&quot;, instructions=[&quot;... bash instructions 
 </table>
 <h3 id="run-parameters">Run Parameters</h3>
 <p>Can only be specified when calling <code>function.run()</code>.</p>
-<p>No specific parameters for run of this action.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>superlink</td>
+<td>str</td>
+<td>Flower superlink service endpoint.</td>
+</tr>
+<tr>
+<td>node_config</td>
+<td>dict</td>
+<td>Node configuration parameters for the Flower client.</td>
+</tr>
+<tr>
+<td>root_certificates</td>
+<td>str</td>
+<td>Content of the root certificate as string.</td>
+</tr>
+<tr>
+<td>private_key_secret</td>
+<td>str</td>
+<td>Name of the secret containing the private key for secure communication.</td>
+</tr>
+<tr>
+<td>public_key_secret</td>
+<td>str</td>
+<td>Name of the secret containing the public key for secure communication.</td>
+</tr>
+<tr>
+<td>isolation</td>
+<td>str</td>
+<td>Isolation mode: <code>process</code> or <code>subprocess</code>.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="entity-methods">Entity methods</h2>
 <h3 id="run-methods">Run methods</h3>
 <p>There are no additional run methods for this action.</p>

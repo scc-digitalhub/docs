@@ -6474,7 +6474,27 @@ run = f.run(action=&quot;build&quot;, instructions=[&quot;... bash instructions 
 </table>
 <h3 id="run-parameters">Run Parameters</h3>
 <p>Can only be specified when calling <code>function.run()</code>.</p>
-<p>No specific parameters for run of this action.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>auth_public_keys</td>
+<td>list[str]</td>
+<td>List of public keys for authentication.</td>
+</tr>
+<tr>
+<td>insecure</td>
+<td>bool</td>
+<td>Disable TLS verification.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="entity-methods">Entity methods</h2>
 <h3 id="run-methods">Run methods</h3>
 <p>There are no additional run methods for this action.</p>

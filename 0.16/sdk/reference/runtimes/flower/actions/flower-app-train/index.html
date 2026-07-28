@@ -6461,10 +6461,10 @@
 <p>There are different ways to create a Flower application function, depending on the source of the code:</p>
 <ol>
 <li>
-<p><strong>From a Git repository</strong>: The source code is stored in a Git repository, and the <code>source</code> parameter is used to point to the repository URL. In this case, the <code>client_app</code> and <code>server_app</code> parameters <strong>MUST NOT</strong> be provided, as the code will be fetched from the repository. The repository <strong>MUST</strong> contain a valid <code>pyproject.toml</code> file that configures the Flower application. The run parameters are then used to override the configuration in the file by passing options to the <code>flwr</code> command with arguments <code>--federation-config</code> and <code>--run-config</code>.</p>
+<p><strong>From a Git repository</strong>: The source code is stored in a Git repository, and the <code>git_source</code> parameter is used to point to the repository URL. In this case, the <code>client_app</code> and <code>server_app</code> parameters <strong>MUST NOT</strong> be provided, as the code will be fetched from the repository. The repository <strong>MUST</strong> contain a valid <code>pyproject.toml</code> file that configures the Flower application. The run parameters are then used to override the configuration in the file by passing options to the <code>flwr</code> command with arguments <code>--federation-config</code> and <code>--run-config</code>.</p>
 </li>
 <li>
-<p><strong>From local code references</strong>: The Flower client and server code are provided directly using the <code>client_app</code> and <code>server_app</code> parameters. In this case, the <code>source</code> parameter <strong>MUST NOT</strong> be provided. The client and server code <strong>MUST</strong> be valid Flower implementations. The run parameters are used to create a <code>pyproject.toml</code> file that configures the Flower application.</p>
+<p><strong>From local code references</strong>: The Flower client and server code are provided directly using the <code>client_app</code> and <code>server_app</code> parameters. In this case, the <code>git_source</code> parameter <strong>MUST NOT</strong> be provided. The client and server code <strong>MUST</strong> be valid Flower implementations. The run parameters are used to create a <code>pyproject.toml</code> file that configures the Flower application.</p>
 </li>
 </ol>
 <h2 id="quick-example-with-bare-minimum-parameters">Quick example with bare minimum parameters</h2>
@@ -6474,7 +6474,7 @@
 f = dh.new_function(
     name=&quot;my-flower-app&quot;,
     kind=&quot;flower-app&quot;,
-    source=&quot;git+https://github.com/my-org/my-flower-app.git&quot;,
+    git_source=&quot;git+https://github.com/my-org/my-flower-app.git&quot;,
 )
 run = f.run(action=&quot;train&quot;)
 
@@ -6612,9 +6612,9 @@ run = f.run(
 </tbody>
 </table>
 <h4 id="string-source-code">String source code</h4>
-<p>The <code>client_src</code> and <code>server_src</code> parameters contain the source code of the Flower client and server applications as strings. These strings must be valid Python code. The string source code will be encoded in base64 format and included in the <code>fab_source</code> field of the function specification.</p>
+<p>The <code>client_code</code> and <code>server_code</code> parameters contain the source code of the Flower client and server applications as strings. These strings must be valid Python code. The string source code will be encoded in base64 format and included in the <code>fab_source</code> field of the function specification.</p>
 <h4 id="local-path-source-code">Local path source code</h4>
-<p>The <code>client_src</code> and <code>server_src</code> parameters can also be specified as local paths to the Flower client and server application source code files. These paths must point to valid Python files. The files will be read and their content encoded in base64 format and included in the <code>fab_source</code> field of the function specification.</p>
+<p>The <code>client_src</code> and <code>server_src</code> parameters can be specified as local paths to the Flower client and server application source code files. These paths must point to valid Python files. The files will be read and their content encoded in base64 format and included in the <code>fab_source</code> field of the function specification.</p>
 <h4 id="appcode">Appcode</h4>
 <p>The <code>client_app</code> and <code>server_app</code> parameters reference two distinct files that contains valid Flower client and server code respectively. The form they <strong>MUST</strong> take is:</p>
 <pre><code class="language-python">client_app = &quot;name-of-ClientClass-instance&quot;
