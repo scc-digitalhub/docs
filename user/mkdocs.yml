@@ -67,6 +67,8 @@ nav:
       - "extensions/envoygw.md"
 
   - CLI Reference:
+      - "cli/installation.md"
+      - "cli/usage.md"
       - "cli/commands.md"
 
   - Examples and Tutorials: "./tutorials/"
