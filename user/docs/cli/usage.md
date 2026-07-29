@@ -6,23 +6,19 @@
 
 The standard use flow of the CLI is as follows:
 
-1. Register your instance's configuration. This creates a `.dhcore.ini` file in your home directory (or, if not possible, in the current one), where the configuration will be stored, to be used and updated by subsequent commands. The register command takes an optional `-e environment ` and a mandatory parameter `core_endpoint` — this is the base URL of your DigitalHub core (e.g. http://localhost:8080).
+**Register** your instance's configuration. This creates a `.dhcore.ini` file in your home directory (or, if not possible, in the current one), where the configuration will be stored, to be used and updated by subsequent commands. The register command takes an optional `-e environment ` and a mandatory parameter `core_endpoint` — this is the base URL of your DigitalHub core (e.g. http://localhost:8080).
 
 ```sh
 dhcli register http://localhost:8080
 ```
 
-2. Log in. This will open a tab in your Internet browser, where you will have to carry out the log in procedure.
+**Login** to authorize the CLI. This will open a tab in your Internet browser, where you will have to carry out the log in procedure.
 
 ```sh
 dhcli login
 ```
 
-3. If you wish to install the python packages, `init` will do so, matching the platform's version.
 
-```sh
-dhcli init
-```
 
 In-detail descriptions of available commands can be found in [this dedicated section](../commands.md).
 
@@ -84,6 +80,21 @@ The `log` command fetches the stdout collected by the platform for the given run
 
 ```sh
 dhcli -p myproject log 7a2f5b50fee5454b98977ee4c19741dd -f
+```
+
+The `metrics` command will fetch resource metrics for the given run, and return the summary with the details. The `-o` modifier can be used to fetch the whole response, with the full metric *series*, in either *json* or *yaml* formats.
+
+```sh
+$ dhcli -p myproject metrics 7a2f5b50fee5454b98977ee4c19741dd
+
+Run: 7a2f5b50fee5454b98977ee4c19741dd  Project: myproject
+cpu             : avg=0.01  sum=0.01  max=0.01  min=0.01
+memory          : avg=2.5GiB  sum=2.5GiB  max=2.5GiB  min=2.5GiB
+gpu             : avg=0%  sum=0%  max=0%  min=0%
+gpu-memory      : avg=27.94GiB  sum=27.94GiB  max=27.94GiB  min=27.94GiB
+network-send    : avg=0B  sum=0B  max=0B  min=0B
+network-receive : avg=0B  sum=0B  max=0B  min=0B
+
 ```
 
 
@@ -198,3 +209,64 @@ Type "help", "copyright", "credits" or "license" for more information.
 ```
 
 
+## Obtaining configuration and credentials
+
+The CLI can export both the full configuration and the current credentials for interactive with the platform and the repositories. This enables users in integrating third party or custom applications.
+
+Do note that while *configuration* is rarely updated, *credentials* are always short lived: depending on the specific environment policies, the duration typically ranges from 1 to 24 hours. The CLI automatically refreshes credentials when needed, so calling `credentials` again will always deliver fresh, valid credentials.
+
+
+```sh
+$ dhcli config
+
+AUTHORIZATION_ENDPOINT=[value]
+AWS_CREDENTIALS_EXPIRATION=[value]
+AWS_ENDPOINT_URL=[value]
+AWS_REGION=[value]
+DB_DATABASE=[value]
+DB_PLATFORM=[value]
+DB_USERNAME=[value]
+DH_PROJECTS=[value]
+DHCORE_API_LEVEL=[value]
+DHCORE_API_VERSION=[value]
+DHCORE_AUTHENTICATION_METHODS=[value]
+DHCORE_CLIENT_ID=[value]
+DHCORE_DEFAULT_FILES_STORE=[value]
+DHCORE_ENDPOINT=[value]
+DHCORE_ISSUER=[value]
+DHCORE_NAME=[value]
+DHCORE_VERSION=[value]
+GRANT_TYPES_SUPPORTED=[value]
+INI_SOURCE=[value]
+ISSUER=[value]
+JWKS_URI=[value]
+OAUTH2_AUTHORIZATION_ENDPOINT=[value]
+OAUTH2_GRANT_TYPES_SUPPORTED=[value]
+OAUTH2_ISSUER=[value]
+OAUTH2_JWKS_URI=[value]
+OAUTH2_RESPONSE_TYPES_SUPPORTED=[value]
+OAUTH2_SCOPES_SUPPORTED=[value]
+OAUTH2_TOKEN_ENDPOINT=[value]
+OAUTH2_TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED=[value]
+OAUTH2_USERINFO_ENDPOINT=[value]
+RESPONSE_TYPES_SUPPORTED=[value]
+S3_BUCKET=[value]
+S3_PATH_STYLE=[value]
+S3_SIGNATURE_VERSION=[value]
+SCOPES_SUPPORTED=[value]
+TOKEN_ENDPOINT=[value]
+TOKEN_ENDPOINT_AUTH_METHODS_SUPPORTED=[value]
+UPDATED_ENVIRONMENT=[value]
+USERINFO_ENDPOINT=[value]
+```
+
+```sh
+$ dhcli credentials
+
+AWS_ACCESS_KEY_ID=[value]
+AWS_SECRET_ACCESS_KEY=[value]
+AWS_SESSION_TOKEN=[value]
+DB_PASSWORD=[value]
+DHCORE_ACCESS_TOKEN=[value]
+DHCORE_REFRESH_TOKEN=[value]
+```
