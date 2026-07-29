@@ -2,510 +2,510 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>http://docs/sdk/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/how-to/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/how-to/installation/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/how-to/kubernetes/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/how-to/quickstart/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/how-to/runtime-guide/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/how-to/what-can-i-do/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/code_src/git/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/code_src/http/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/code_src/local/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/code_src/overview/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/code_src/s3/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/credentials/dhcore/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/credentials/git/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/credentials/helpers/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/credentials/overview/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/credentials/s3/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/credentials/sql/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/credentials/store-clients/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/kubernetes/overview/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/paths/local/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/paths/overview/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/paths/remote/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/paths/s3/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/configuration/paths/sql/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/artifact/crud/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/artifact/entity/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/artifact/kinds/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/artifact/methods/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/dataitem/crud/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/dataitem/entity/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/dataitem/kinds/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/dataitem/methods/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/function/crud/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/function/entity/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/function/kinds/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/function/methods/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/model/crud/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/model/entity/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/model/kinds/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/model/methods/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/project/config/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/project/crud/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/project/entity/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/project/methods/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/project/setup/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/run/crud/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/run/entity/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/run/kinds/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/run/methods/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/secret/crud/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/secret/entity/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/secret/methods/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/trigger/crud/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/trigger/entity/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/trigger/kinds/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/trigger/methods/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/workflow/crud/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/workflow/entity/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/workflow/kinds/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/objects/workflow/methods/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/container/examples/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/container/how-to/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/container/overview/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/container/actions/container-build/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/container/actions/container-job/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/container/actions/container-serve/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/dbt/examples/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/dbt/how-to/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/dbt/overview/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/dbt/actions/dbt-transform/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/flower/examples/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/flower/how-to/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/flower/overview/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/flower/actions/flower-app-train/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/flower/actions/flower-client-build/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/flower/actions/flower-client-deploy/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/flower/actions/flower-server-build/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/flower/actions/flower-server-deploy/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/hera/define-pipeline/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/hera/examples/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/hera/how-to/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/hera/overview/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/hera/actions/hera-build/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/hera/actions/hera-pipeline/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/modelserve/examples/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/modelserve/how-to/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/modelserve/overview/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/modelserve/actions/huggingfaceserve-serve/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/modelserve/actions/kubeai-speech-serve/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/modelserve/actions/kubeai-text-serve/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/modelserve/actions/mlflowserve-build/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/modelserve/actions/mlflowserve-serve/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/modelserve/actions/sklearnserve-serve/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/modelserve/actions/vllmserve-pooling-serve/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/modelserve/actions/vllmserve-speech-serve/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/modelserve/actions/vllmserve-text-serve/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/define-function/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/guardrail/define-function/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/guardrail/examples/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/guardrail/guardrail-build/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/guardrail/guardrail-serve/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/guardrail/how-to/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/guardrail/overview/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/openinference/define-function/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/openinference/examples/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/openinference/how-to/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/openinference/openinference-build/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/openinference/openinference-serve/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/openinference/overview/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/python/define-function/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/python/examples/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/python/how-to/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/python/overview/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/python/python-build/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/python/python-job/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/reference/runtimes/python/python/python-serve/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/tutorials/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/tutorials/custom-ml-model/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/tutorials/dbt-transformation/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/tutorials/etl-data-processing/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/tutorials/llm-model/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/tutorials/mlflow-model/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
     <url>
          <loc>http://docs/sdk/tutorials/scikit-learn-model/</loc>
-         <lastmod>2026-07-28</lastmod>
+         <lastmod>2026-07-29</lastmod>
     </url>
 </urlset>
