@@ -177,7 +177,24 @@ The CLI can bootstrap a python environment (backed by Venv or UV) to support loc
 The SDK will read the same *configuration file* (`~/.dhcore.ini` by default) as the CLI and connect to the remote enviroment to perform executions, interact with the catalog or upload/download resources.
 
 ```sh
-dhcli init 
+$ dhcli init 
+...
+Using venv path: dev-platform
+uv found, using uv for venv and package management
+Creating new venv at dev-platform
+Newest patch version of digitalhub 0.15 will be installed, continue? Y/n
+
+Installing digitalhub[full]>=0.15.0,<0.16 ...
+Using Python 3.14.4 environment at: dev-platform
+[...]
+Installation complete.
+
+$ python
+Python 3.14.4 (main, Jun 18 2026, 14:25:02) [GCC 15.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import digitalhub as dh
+>>> proj = dh.get_or_create_project("myproject")
+
 ```
 
 
