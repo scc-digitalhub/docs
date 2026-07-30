@@ -34,9 +34,8 @@ jobs:
             pip install pyyaml
             echo "Generating tutorials metadata yaml"
             python generate_tutorials_metadata.py
-            ls
             git checkout main
-            git status
+            mv -f tutorials-metadata-new.yaml tutorials-metadata.yaml
             git config --global user.name '${{ github.actor }}'
             git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
             git add --all
