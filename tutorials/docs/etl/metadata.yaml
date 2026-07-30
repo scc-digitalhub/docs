@@ -1,0 +1,3 @@
+description: Here we explore a simple yet realistic scenario. We collect some data regarding traffic, analyze and transform it, then expose the resulting dataset.
+labels:
+- etl

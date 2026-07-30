@@ -38,7 +38,7 @@ jobs:
             mv -f tutorials-metadata-new.yaml tutorials-metadata.yaml
             git config --global user.name '${{ github.actor }}'
             git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
-            git add --all
-            git commit -m "Auto-generate tutorials-metadata.yaml from branch $this_branch"
+            git add tutorials-metadata.yaml
+            git commit -m "Auto-generate tutorials-metadata.yaml from branch $this_branch" --allow-empty
             git push
           fi
