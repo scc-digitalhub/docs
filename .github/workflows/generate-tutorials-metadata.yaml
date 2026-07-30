@@ -35,9 +35,10 @@ jobs:
             echo "Generating tutorials metadata yaml"
             python generate_tutorials_metadata.py
             git checkout main
+            git status
             git config --global user.name '${{ github.actor }}'
             git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
-            git add tutorials-metadata.yaml
-            git commit -m "Auto-generate tutorials-metadata.yaml from branch $this_branch" --allow-empty
+            git add --all
+            git commit -m "Auto-generate tutorials-metadata.yaml from branch $this_branch"
             git push
           fi
