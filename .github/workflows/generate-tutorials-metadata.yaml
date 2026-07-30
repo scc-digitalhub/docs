@@ -34,6 +34,7 @@ jobs:
             pip install pyyaml
             echo "Generating tutorials metadata yaml"
             python generate_tutorials_metadata.py
+            ls
             git checkout main
             git status
             git config --global user.name '${{ github.actor }}'

@@ -65,6 +65,7 @@ def autobuild_catalog():
     return sorted(navigation, key=lambda d: d['name'])
 
 def main():
+    print("Initializing catalog")
     catalog = initialize_catalog()
     updated_tutorials = []
 
@@ -74,12 +75,14 @@ def main():
             # Read metadata file, if present
             metadata_path = f'{tutorial_path}/{metadata_filename}'
             if os.path.isfile(metadata_path):
+                print(f"Updating tutorial {t}")
                 t = t | load_yaml_file(metadata_path)
         updated_tutorials.append(t)
 
     catalog["tutorials"] = updated_tutorials
 
     with open(catalog_filename, 'w', encoding='utf-8') as file:
+        print(f"Writing to {catalog_filename}")
         yaml.dump(catalog, file, allow_unicode=True)
         #json.dump(catalog, file, indent=4, default=str)
 
