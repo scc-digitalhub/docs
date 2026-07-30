@@ -71,8 +71,12 @@ tutorials:
     file: dremio_grafana/scenario.md
     name: Data transformation and usage with Dremio and Grafana
     url: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/0.15/tutorials/docs/dremio_grafana/scenario.md
-- dir: etl
+- description: Here we explore a simple yet realistic scenario. We collect some data
+    regarding traffic, analyze and transform it, then expose the resulting dataset.
+  dir: etl
   docs: https://scc-digitalhub.github.io/docs/0.15/tutorials/etl/intro
+  labels:
+  - etl
   name: Extract-Transform-Load
   repository: https://github.com/scc-digitalhub/docs/tree/0.15/tutorials/docs/etl
   steps:
