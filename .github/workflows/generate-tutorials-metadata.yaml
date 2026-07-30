@@ -1,0 +1,44 @@
+name: generate-tutorials-metadata
+run-name: Generate tutorials metadata
+on:
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - tutorials/docs/**
+      - tutorials/mkdocs.yml
+      - generate_tutorials_metadata.py
+      - .github/workflows/generate-tutorials-metadata.yaml
+concurrency:
+  group: update-docs
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  generate-tutorials-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          git fetch --prune --unshallow --tags origin "+refs/heads/*:refs/remotes/origin/*"
+          this_branch=${{ github.ref_name }}
+          git checkout main
+          set -a
+          source config.env
+          echo "Action triggered on $this_branch; stable version is $STABLE_VERSION"
+          if [ "$this_branch" = "$STABLE_VERSION" ]; then
+            git checkout $this_branch
+            pip install pyyaml
+            echo "Generating tutorials metadata yaml"
+            python generate_tutorials_metadata.py
+            git checkout main
+            mv -f tutorials-metadata-new.yaml tutorials-metadata.yaml
+            git config --global user.name '${{ github.actor }}'
+            git config --global user.email '${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com'
+            git add tutorials-metadata.yaml
+            git commit -m "Auto-generate tutorials-metadata.yaml from branch $this_branch" --allow-empty
+            git push
+          fi
