@@ -1,0 +1,2 @@
+description: In this scenario, we download some data into a Postgres database, then use PostgREST - a tool to make Postgres tables accessible via REST API - to expose this data and run a simple request to view the results.
+notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/STABLE_VERSION/tutorials/examples/postgrest/insert_data_into_postgres.ipynb

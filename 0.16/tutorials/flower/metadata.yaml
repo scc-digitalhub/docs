@@ -1,0 +1,4 @@
+description: The Flower framework allows for running federated learning tasks where different client nodes perform local training and cooperatively create a more robust solution without exchanging the data, but only the weight necessary to progress the training process.
+notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/STABLE_VERSION/tutorials/examples/fl/flower-tutorial.ipynb
+labels:
+- flower
