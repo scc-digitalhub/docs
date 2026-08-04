@@ -1,15 +1,14 @@
 # Managing Speech-to-Text Models with KubeAI Runtime
 
-To support the speech-to-text scenario within the platform it is possible to use the KubeAI runtime when the [KubeAI](https://www.kubeai.org/) operator is
-enabled. 
+To support the speech-to-text scenario within the platform it is possible to use the KubeAI runtime when the [KubeAI](https://www.kubeai.org/) operator is enabled. 
 
 To accomplish this, it is possible to use the KubeAI-supported runtime, namely [FasterWhisper](https://github.com/SYSTRAN/faster-whisper).
 
 For details about the specification, see the corresponding section of [Modelserve](../../../runtimes/modelserve/) reference.
 
-## Exposing Speech-to-Text  Models
+## Exposing Speech-to-Text Models
 
-To expose the  speech-to-text  model, it is possible to use Core UI or Python SDK. To define the corresponding function, the following parameters should be specified:
+To expose the speech-to-text model, it is possible to use Core UI or Python SDK. To define the corresponding function, the following parameters should be specified:
 
 - model name
 - model URL. Currently the model can be loaded either from HuggingFace (``hf://`` prefix) or from S3 storage of the platform (``s3://``)).

@@ -74,7 +74,10 @@ def main():
             # Read metadata file, if present
             metadata_path = f'{tutorial_path}/{metadata_filename}'
             if os.path.isfile(metadata_path):
-                t = t | load_yaml_file(metadata_path)
+                with open(metadata_path, 'r', encoding='utf-8') as f:
+                    metadata = f.read()
+                metadata = metadata.replace("STABLE_VERSION", stable_version)
+                t = t | yaml.safe_load(metadata)
         updated_tutorials.append(t)
 
     catalog["tutorials"] = updated_tutorials

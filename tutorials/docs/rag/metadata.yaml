@@ -1,0 +1,1 @@
+description: In this scenario, we create a Retrieval-Augmented Generation (RAG) application, a chatbot able to take new documents, learn from their contents and answer questions related to them.
