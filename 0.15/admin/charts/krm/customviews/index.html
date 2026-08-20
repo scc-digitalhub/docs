@@ -1632,8 +1632,8 @@
 <p>The body of the function will perform any kind of computation that your page may need, while the return segment will contain the form or datagrid to display.</p>
 <p>Then, register these functions within a view and export it:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">CustomView</span><span class="o">:</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;myresource.example.com&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;My Resource&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">'myresource.example.com'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'My Resource'</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">list</span><span class="o">:</span><span class="w"> </span><span class="nx">CrList</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">show</span><span class="o">:</span><span class="w"> </span><span class="nx">CrShow</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">create</span><span class="o">:</span><span class="w"> </span><span class="nx">CrCreate</span><span class="p">,</span>
@@ -1644,11 +1644,11 @@
 </code></pre></div>
 <h2 id="register-the-custom-view">Register the custom view</h2>
 <p>Once the custom view file is ready, you simply need to register it. Open <code>frontend/src/App.tsx</code> and import the view:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">crExample</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./resources/cr.myresource.example.com&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">crExample</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./resources/cr.myresource.example.com'</span><span class="p">;</span>
 </code></pre></div>
 <p>Then, register it by adding a line to the <code>customView</code> structure:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">customViews</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">[</span><span class="nx">index</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="s1">&#39;myresource.example.com&#39;</span><span class="o">:</span><span class="w"> </span><span class="nx">crExample</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">'myresource.example.com'</span><span class="o">:</span><span class="w"> </span><span class="nx">crExample</span><span class="p">,</span>
 <span class="w">    </span><span class="p">...</span>
 <span class="p">};</span>
 </code></pre></div>

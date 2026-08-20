@@ -2391,44 +2391,44 @@
 <h1 id="rag-application-with-langchain">RAG application with LangChain</h1>
 <p>This step will define the agent which connects the embedding model, the chat model and the vector store to fullfill the RAG scenario.</p>
 <p>You should have the URLs and models for the latest <code>RUNNING</code> runs of the two functions from the previous steps of the scenario:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Service </span><span class="si">{</span><span class="n">EMBED_URL</span><span class="si">}</span><span class="s2"> with model </span><span class="si">{</span><span class="n">EMBED_MODEL</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Service </span><span class="si">{</span><span class="n">CHAT_URL</span><span class="si">}</span><span class="s2"> with model </span><span class="si">{</span><span class="n">CHAT_MODEL</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Service </span><span class="si">{</span><span class="n">EMBED_URL</span><span class="si">}</span><span class="s2"> with model </span><span class="si">{</span><span class="n">EMBED_MODEL</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Service </span><span class="si">{</span><span class="n">CHAT_URL</span><span class="si">}</span><span class="s2"> with model </span><span class="si">{</span><span class="n">CHAT_MODEL</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="create-the-agent">Create the agent</h2>
 <p>We will register a python function implementing the RAG agent with <a href="https://python.langchain.com/docs/introduction/">LangChain</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">serve_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;rag-service&quot;</span><span class="p">,</span> 
-    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> 
-    <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_10&quot;</span><span class="p">,</span>
-    <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/serve.py&quot;</span><span class="p">,</span>     
-    <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span>
-    <span class="n">init_function</span><span class="o">=</span><span class="s2">&quot;init&quot;</span><span class="p">,</span>
-    <span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;transformers==4.50.3&quot;</span><span class="p">,</span> <span class="s2">&quot;psycopg_binary&quot;</span><span class="p">,</span> <span class="s2">&quot;openai&quot;</span><span class="p">,</span> <span class="s2">&quot;langchain-text-splitters&quot;</span><span class="p">,</span> <span class="s2">&quot;langchain-community&quot;</span><span class="p">,</span> <span class="s2">&quot;langgraph&quot;</span><span class="p">,</span> <span class="s2">&quot;langchain-core&quot;</span><span class="p">,</span> <span class="s2">&quot;langchain-huggingface&quot;</span><span class="p">,</span> <span class="s2">&quot;langchain_postgres&quot;</span><span class="p">,</span> <span class="s2">&quot;langchain[openai]&quot;</span><span class="p">]</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"rag-service"</span><span class="p">,</span> 
+    <span class="n">kind</span><span class="o">=</span><span class="s2">"python"</span><span class="p">,</span> 
+    <span class="n">python_version</span><span class="o">=</span><span class="s2">"PYTHON3_10"</span><span class="p">,</span>
+    <span class="n">code_src</span><span class="o">=</span><span class="s2">"src/serve.py"</span><span class="p">,</span>     
+    <span class="n">handler</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span>
+    <span class="n">init_function</span><span class="o">=</span><span class="s2">"init"</span><span class="p">,</span>
+    <span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s2">"transformers==4.50.3"</span><span class="p">,</span> <span class="s2">"psycopg_binary"</span><span class="p">,</span> <span class="s2">"openai"</span><span class="p">,</span> <span class="s2">"langchain-text-splitters"</span><span class="p">,</span> <span class="s2">"langchain-community"</span><span class="p">,</span> <span class="s2">"langgraph"</span><span class="p">,</span> <span class="s2">"langchain-core"</span><span class="p">,</span> <span class="s2">"langchain-huggingface"</span><span class="p">,</span> <span class="s2">"langchain_postgres"</span><span class="p">,</span> <span class="s2">"langchain[openai]"</span><span class="p">]</span>
 <span class="p">)</span>
 </code></pre></div>
 <p>Then, we can run an instance connecting the model services together. It may take a while for this run to finish initialization. If the execution fails, it is probably due to the large number of dependencies required.</p>
 <div class="highlight"><pre><span></span><code><span class="n">serve_run</span> <span class="o">=</span> <span class="n">serve_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span>
     <span class="n">resources</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;cpu&quot;</span><span class="p">:</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;mem&quot;</span><span class="p">:</span> <span class="s2">&quot;4Gi&quot;</span><span class="p">,</span>
+        <span class="s2">"cpu"</span><span class="p">:</span> <span class="s2">"4"</span><span class="p">,</span>
+        <span class="s2">"mem"</span><span class="p">:</span> <span class="s2">"4Gi"</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="n">envs</span><span class="o">=</span><span class="p">[</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;CHAT_MODEL_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">CHAT_MODEL</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;CHAT_SERVICE_URL&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">CHAT_URL</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;EMBEDDING_MODEL_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">EMBED_MODEL</span><span class="p">},</span>
-            <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;EMBEDDING_SERVICE_URL&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">EMBED_URL</span><span class="p">}</span>
+            <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"CHAT_MODEL_NAME"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="n">CHAT_MODEL</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"CHAT_SERVICE_URL"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="n">CHAT_URL</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"EMBEDDING_MODEL_NAME"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="n">EMBED_MODEL</span><span class="p">},</span>
+            <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"EMBEDDING_SERVICE_URL"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="n">EMBED_URL</span><span class="p">}</span>
          <span class="p">],</span>
     <span class="n">wait</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">AGENT_URL</span> <span class="o">=</span> <span class="n">serve_run</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s2">&quot;service&quot;</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">AGENT_URL</span> <span class="o">=</span> <span class="n">serve_run</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s2">"service"</span><span class="p">][</span><span class="s2">"url"</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">AGENT_URL</span><span class="p">)</span>
 </code></pre></div>
 <p>To test our API, we make a call to the service endpoint, providing JSON text with an example question.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
-<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">AGENT_URL</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="s2">&quot;What does the platform integrate as data stores?&quot;</span><span class="p">})</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"http://</span><span class="si">{</span><span class="n">AGENT_URL</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span><span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"question"</span><span class="p">:</span> <span class="s2">"What does the platform integrate as data stores?"</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 </code></pre></div>
 

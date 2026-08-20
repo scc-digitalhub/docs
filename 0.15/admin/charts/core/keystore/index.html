@@ -1531,10 +1531,10 @@
 <div class="highlight"><pre><span></span><code><span class="nt">core</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">keystore</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">existingSecret</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;keystore-secret&quot;</span><span class="w"> </span><span class="c1"># Name of the secret containing the keystore</span>
-<span class="w">      </span><span class="nt">keyName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;keystore.jwks&quot;</span><span class="w">    </span><span class="c1"># Name of the key in your keystore secret, should correspond to the keystore file name</span>
-<span class="w">    </span><span class="nt">keystoreKid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w">  </span><span class="c1"># Specify the key that the keystore should pick</span>
-<span class="w">    </span><span class="nt">keystorePath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/etc/keystore&quot;</span><span class="w"> </span><span class="c1"># Path where your keystore will be saved</span>
+<span class="w">      </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="s">"keystore-secret"</span><span class="w"> </span><span class="c1"># Name of the secret containing the keystore</span>
+<span class="w">      </span><span class="nt">keyName</span><span class="p">:</span><span class="w"> </span><span class="s">"keystore.jwks"</span><span class="w">    </span><span class="c1"># Name of the key in your keystore secret, should correspond to the keystore file name</span>
+<span class="w">    </span><span class="nt">keystoreKid</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w">  </span><span class="c1"># Specify the key that the keystore should pick</span>
+<span class="w">    </span><span class="nt">keystorePath</span><span class="p">:</span><span class="w"> </span><span class="s">"/etc/keystore"</span><span class="w"> </span><span class="c1"># Path where your keystore will be saved</span>
 </code></pre></div>
 <p>In this example, a Keystore will be created in the path <code>/etc/keystore/keystore.jwks</code> from a secret called <code>keystore-secret</code>.
 The key of the secret, <code>keystore.jwks</code>, must contain the base64 encoded keystore.</p>

@@ -1533,14 +1533,14 @@
 <span class="w">  </span><span class="nt">authentication</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">openId</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">issuerUri</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://yourproviderurl&quot;</span><span class="w"> </span><span class="c1"># Set the issuer url of your provider</span>
-<span class="w">      </span><span class="nt">jwtAudience</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="c1"># Set the audience</span>
-<span class="w">      </span><span class="nt">jwtClaim</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="c1"># Set the claims</span>
-<span class="w">      </span><span class="nt">oidcClientId</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="c1"># Use this if you want to hardcode your clientID</span>
-<span class="w">      </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="c1"># Specify the scopes</span>
+<span class="w">      </span><span class="nt">issuerUri</span><span class="p">:</span><span class="w"> </span><span class="s">"https://yourproviderurl"</span><span class="w"> </span><span class="c1"># Set the issuer url of your provider</span>
+<span class="w">      </span><span class="nt">jwtAudience</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1"># Set the audience</span>
+<span class="w">      </span><span class="nt">jwtClaim</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1"># Set the claims</span>
+<span class="w">      </span><span class="nt">oidcClientId</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1"># Use this if you want to hardcode your clientID</span>
+<span class="w">      </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1"># Specify the scopes</span>
 <span class="w">      </span><span class="nt">externalSecret</span><span class="p">:</span><span class="w"> </span><span class="c1"># Use this if you want to get the clientID by secret.</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="c1"># Name of the secret</span>
-<span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="c1"># Key of the secret containing the clientID</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1"># Name of the secret</span>
+<span class="w">        </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="c1"># Key of the secret containing the clientID</span>
 </code></pre></div>
 <p>In your provider, the redirect url should correspond to <code>https://yourcoreurl/console/auth-callback</code>.</p>
 

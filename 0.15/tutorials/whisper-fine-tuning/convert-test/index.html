@@ -2324,8 +2324,8 @@
 <h1 id="convert-to-faster-whisper-and-test">Convert to faster-whisper and test</h1>
 <p>We will convert the model to be compatible with <a href="https://github.com/SYSTRAN/faster-whisper">faster-whisper</a>, a faster re-implementation of the Whisper model.</p>
 <p>Download the model:</p>
-<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s2">&quot;whisper-ft&quot;</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;./model/whisper-ft&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s2">"whisper-ft"</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">"./model/whisper-ft"</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Install <code>faster-whisper</code>:</p>
 <div class="highlight"><pre><span></span><code>%pip install faster-whisper transformers torch==2.8.0
@@ -2333,23 +2333,23 @@
 <p>Convert the model:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ctranslate2.converters</span><span class="w"> </span><span class="kn">import</span> <span class="n">TransformersConverter</span>
 
-<span class="n">tc</span> <span class="o">=</span> <span class="n">TransformersConverter</span><span class="p">(</span><span class="s2">&quot;./model/whisper-ft&quot;</span><span class="p">,</span> <span class="n">copy_files</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tokenizer.json&#39;</span><span class="p">,</span> <span class="s1">&#39;preprocessor_config.json&#39;</span><span class="p">])</span>
-<span class="n">tc</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;./model/faster-whisper-ft&#39;</span><span class="p">,</span> <span class="n">quantization</span><span class="o">=</span><span class="s2">&quot;float16&quot;</span><span class="p">)</span>
+<span class="n">tc</span> <span class="o">=</span> <span class="n">TransformersConverter</span><span class="p">(</span><span class="s2">"./model/whisper-ft"</span><span class="p">,</span> <span class="n">copy_files</span><span class="o">=</span><span class="p">[</span><span class="s1">'tokenizer.json'</span><span class="p">,</span> <span class="s1">'preprocessor_config.json'</span><span class="p">])</span>
+<span class="n">tc</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">'./model/faster-whisper-ft'</span><span class="p">,</span> <span class="n">quantization</span><span class="o">=</span><span class="s2">"float16"</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">faster_whisper</span><span class="w"> </span><span class="kn">import</span> <span class="n">WhisperModel</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">WhisperModel</span><span class="p">(</span><span class="s1">&#39;./model/faster-whisper-ft&#39;</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">WhisperModel</span><span class="p">(</span><span class="s1">'./model/faster-whisper-ft'</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">)</span>
 </code></pre></div>
 <p>Download a sample file:</p>
-<div class="highlight"><pre><span></span><code>!wget -O kubeai.mp4 &quot;https://github.com/user-attachments/assets/711d1279-6af9-4c6c-a052-e59e7730b757&quot;
+<div class="highlight"><pre><span></span><code>!wget -O kubeai.mp4 "https://github.com/user-attachments/assets/711d1279-6af9-4c6c-a052-e59e7730b757"
 </code></pre></div>
 <p>Finally, we run the model on the sample file to test the results:</p>
-<div class="highlight"><pre><span></span><code><span class="n">segments</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transcribe</span><span class="p">(</span><span class="s2">&quot;kubeai.mp4&quot;</span><span class="p">,</span> <span class="n">beam_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">segments</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">transcribe</span><span class="p">(</span><span class="s2">"kubeai.mp4"</span><span class="p">,</span> <span class="n">beam_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Detected language &#39;</span><span class="si">%s</span><span class="s2">&#39; with probability </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">language</span><span class="p">,</span> <span class="n">info</span><span class="o">.</span><span class="n">language_probability</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Detected language '</span><span class="si">%s</span><span class="s2">' with probability </span><span class="si">%f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">language</span><span class="p">,</span> <span class="n">info</span><span class="o">.</span><span class="n">language_probability</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="n">segments</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%.2f</span><span class="s2">s -&gt; </span><span class="si">%.2f</span><span class="s2">s] </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">segment</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="n">segment</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"[</span><span class="si">%.2f</span><span class="s2">s -&gt; </span><span class="si">%.2f</span><span class="s2">s] </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">segment</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">segment</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="n">segment</span><span class="o">.</span><span class="n">text</span><span class="p">))</span>
 </code></pre></div>
 
 

@@ -2423,7 +2423,7 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 </code></pre></div>
 <p>Create a project:</p>
-<div class="highlight"><pre><span></span><code><span class="n">PROJECT</span> <span class="o">=</span> <span class="s2">&quot;demo-etl&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">PROJECT</span> <span class="o">=</span> <span class="s2">"demo-etl"</span>
 <span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="n">PROJECT</span><span class="p">)</span>
 </code></pre></div>
 <p>Check that the project has been created successfully:</p>
@@ -2432,16 +2432,16 @@
 <h2 id="peek-at-the-data">Peek at the data</h2>
 <p>Let's take a look at the data we will work with, which is available in CSV (Comma-Separated Values) format at a remote API.</p>
 <p>Set the URL to the data and the file name:</p>
-<div class="highlight"><pre><span></span><code><span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?limit=50000&amp;lang=it&amp;timezone=Europe</span><span class="si">%2F</span><span class="s2">Rome&amp;use_labels=true&amp;delimiter=%3B&quot;</span>
-<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;rilevazione-flusso-veicoli-tramite-spire-anno-2023.csv&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">URL</span> <span class="o">=</span> <span class="s2">"https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?limit=50000&amp;lang=it&amp;timezone=Europe</span><span class="si">%2F</span><span class="s2">Rome&amp;use_labels=true&amp;delimiter=%3B"</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">"rilevazione-flusso-veicoli-tramite-spire-anno-2023.csv"</span>
 </code></pre></div>
 <p>Download the file and save it locally:</p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </code></pre></div>
 <p>Use <em>pandas</em> to read the file into a dataframe:</p>
-<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">";"</span><span class="p">)</span>
 </code></pre></div>
 <p>You can now run <code>df.head()</code> to view the first few records of the dataset. They contain information about how many vehicles have passed a sensor (spire), located at specific coordinates, within different time slots. If you wish, use <code>df.dtypes</code> to list the columns and respective types of the data, or <code>df.size</code> to know the data's size in Bytes.</p>
 <p><img alt="Jupyter head image" src="../images/jupyter-head.png" /></p>

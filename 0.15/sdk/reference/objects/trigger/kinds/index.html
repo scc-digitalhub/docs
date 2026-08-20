@@ -6177,40 +6177,40 @@
 <p>The scheduler trigger allows you to execute tasks on a schedule using cron expressions.</p>
 <p>Required parameters:</p>
 <ul>
-<li><code>task</code> - The task to execute</li>
-<li><code>schedule</code> - Quartz cron expression</li>
+<li><code>task</code> - The task to execute (in form of <code>&lt;task-kind&gt;://&lt;project&gt;/&lt;task-id&gt;</code>)</li>
+<li><code>schedule</code> - <a href="https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html">Quartz cron expression</a></li>
 <li>One of:</li>
-<li><code>function</code> - The function to execute</li>
-<li><code>workflow</code> - The workflow to execute</li>
+<li><code>function</code> - The function to execute (in form of <code>&lt;function-kind&gt;://&lt;project&gt;/&lt;function-name&gt;:&lt;function-id&gt;</code>)</li>
+<li><code>workflow</code> - The workflow to execute (in form of <code>&lt;workflow-kind&gt;://&lt;project&gt;/&lt;workflow-name&gt;:&lt;workflow-id&gt;</code>)</li>
 </ul>
 <p>Example:</p>
 <pre><code class="language-python">trigger = dh.new_trigger(
     project=&quot;my-project&quot;,
     name=&quot;daily-run&quot;,
     kind=&quot;scheduler&quot;,
-    task=&quot;my-task&quot;,
-    function=&quot;my-function&quot;,
-    schedule=&quot;0 0 * * *&quot;  # Run daily at midnight
+    task=&quot;&lt;task-kind&gt;://&lt;project&gt;/&lt;task-id&gt;&quot;,
+    function=&quot;&lt;function-kind&gt;://&lt;project&gt;/&lt;function-name&gt;:&lt;function-id&gt;&quot;,
+    schedule=&quot;0 0 * * * ?&quot;  # Run daily at midnight
 )
 </code></pre>
 <h2 id="lifecycle-trigger">Lifecycle Trigger</h2>
 <p>The lifecycle trigger executes tasks in response to entity state changes.</p>
 <p>Required parameters:</p>
 <ul>
-<li><code>task</code> - The task to execute</li>
+<li><code>task</code> - The task to execute (in form of <code>&lt;task-kind&gt;://&lt;project&gt;/&lt;task-id&gt;</code>)</li>
 <li><code>key</code> - The entity key to monitor</li>
 <li><code>states</code> - List of states to trigger on</li>
 <li>One of:</li>
-<li><code>function</code> - The function to execute</li>
-<li><code>workflow</code> - The workflow to execute</li>
+<li><code>function</code> - The function to execute (in form of <code>&lt;function-kind&gt;://&lt;project&gt;/&lt;function-name&gt;:&lt;function-id&gt;</code>)</li>
+<li><code>workflow</code> - The workflow to execute (in form of <code>&lt;workflow-kind&gt;://&lt;project&gt;/&lt;workflow-name&gt;:&lt;workflow-id&gt;</code>)</li>
 </ul>
 <p>Example:</p>
 <pre><code class="language-python">trigger = dh.new_trigger(
     project=&quot;my-project&quot;,
     name=&quot;model-complete&quot;,
     kind=&quot;lifecycle&quot;,
-    task=&quot;my-task&quot;,
-    function=&quot;my-function&quot;,
+    task=&quot;&lt;task-kind&gt;://&lt;project&gt;/&lt;task-id&gt;&quot;,
+    function=&quot;&lt;function-kind&gt;://&lt;project&gt;/&lt;function-name&gt;:&lt;function-id&gt;&quot;,
     key=&quot;store://project/model/kind/name&quot;,
     states=[&quot;completed&quot;]
 )

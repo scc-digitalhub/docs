@@ -1651,17 +1651,17 @@
 <span class="w">    </span><span class="c1">#  sts.client --</span>
 <span class="w">    </span><span class="nt">client</span><span class="p">:</span>
 <span class="w">      </span><span class="c1">#  sts.client.clientId -- ClientID used by STS</span>
-<span class="w">      </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">      </span><span class="c1">#  sts.client.clientSecret -- ClientSecret used by STS</span>
-<span class="w">      </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">      </span><span class="c1">#  sts.client.existingSecret --</span>
 <span class="w">      </span><span class="nt">existingSecret</span><span class="p">:</span>
 <span class="w">        </span><span class="c1">#  sts.client.existingSecret.clientIdKey -- Key corresponding to the STS ClientID</span>
-<span class="w">        </span><span class="nt">clientIdKey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CLIENTID&quot;</span>
+<span class="w">        </span><span class="nt">clientIdKey</span><span class="p">:</span><span class="w"> </span><span class="s">"CLIENTID"</span>
 <span class="w">        </span><span class="c1">#  sts.client.existingSecret.clientSecretKey -- Key corresponding to the STS ClientSecret</span>
-<span class="w">        </span><span class="nt">clientSecretKey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CLIENTSECRET&quot;</span>
+<span class="w">        </span><span class="nt">clientSecretKey</span><span class="p">:</span><span class="w"> </span><span class="s">"CLIENTSECRET"</span>
 <span class="w">        </span><span class="c1">#  sts.client.existingSecret.name -- Name of the secret containing STS ClientID and ClientSecret</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_STS_SECRET&quot;</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"YOUR_STS_SECRET"</span>
 </code></pre></div>
 <h2 id="configuring-sts-database">Configuring STS database</h2>
 <p>STS itself needs it's own database so you'll need to set the connection with it as well.</p>
@@ -1676,29 +1676,29 @@
 <span class="w">        </span><span class="c1">#  These values have higher priority than the explicit declarations.</span>
 <span class="w">        </span><span class="nt">existingSecret</span><span class="p">:</span>
 <span class="w">          </span><span class="c1">#  core.sts.stsDb.credentials.existingSecret.name -- Name of the secret containing username and password of the STS database user</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;YOUR_STS_DB_OWNER&quot;</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"YOUR_STS_DB_OWNER"</span>
 <span class="w">          </span><span class="c1">#  core.sts.stsDb.credentials.existingSecret.passwordKey -- Key corresponding to the STS database user password</span>
-<span class="w">          </span><span class="nt">passwordKey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;OWNER_PASSWORD_KEY&quot;</span>
+<span class="w">          </span><span class="nt">passwordKey</span><span class="p">:</span><span class="w"> </span><span class="s">"OWNER_PASSWORD_KEY"</span>
 <span class="w">          </span><span class="c1">#  core.sts.stsDb.credentials.existingSecret.usernameKey -- Key corresponding to the STS database user username</span>
-<span class="w">          </span><span class="nt">usernameKey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;OWNER_USERNAME_KEY&quot;</span>
+<span class="w">          </span><span class="nt">usernameKey</span><span class="p">:</span><span class="w"> </span><span class="s">"OWNER_USERNAME_KEY"</span>
 <span class="w">        </span><span class="c1">#  core.sts.stsDb.credentials.password -- Explicit declaration of the STS database user password.</span>
 <span class="w">        </span><span class="c1">#  It has lower priority than the corresponding secret values.</span>
-<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">        </span><span class="c1">#  core.sts.stsDb.credentials.username -- Explicit declaration of the STS database user username.</span>
 <span class="w">        </span><span class="c1">#  It has lower priority than the corresponding secret values.</span>
-<span class="w">        </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">      </span><span class="c1">#  core.sts.stsDb.database -- Name of the STS database</span>
-<span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;STS_DATABASE_NAME&quot;</span>
+<span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="s">"STS_DATABASE_NAME"</span>
 <span class="w">      </span><span class="c1">#  core.sts.stsDb.driver -- Driver used by the STS database</span>
-<span class="w">      </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;STS_DB_DRIVER&quot;</span>
+<span class="w">      </span><span class="nt">driver</span><span class="p">:</span><span class="w"> </span><span class="s">"STS_DB_DRIVER"</span>
 <span class="w">      </span><span class="c1">#  core.sts.stsDb.host -- Host of the STS database</span>
-<span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;STS_DATABASE_HOSTNAME&quot;</span>
+<span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">"STS_DATABASE_HOSTNAME"</span>
 <span class="w">      </span><span class="c1">#  core.sts.stsDb.platform -- Which kind of database you are using for STS (For example, postgresql)</span>
-<span class="w">      </span><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;postgresql&quot;</span>
+<span class="w">      </span><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="s">"postgresql"</span>
 <span class="w">      </span><span class="c1">#  core.sts.stsDb.port -- STS Database port</span>
-<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5432&quot;</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s">"5432"</span>
 <span class="w">      </span><span class="c1">#  core.sts.stsDb.schema -- STS database schema</span>
-<span class="w">      </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;public&quot;</span>
+<span class="w">      </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="s">"public"</span>
 </code></pre></div>
 <h2 id="configuring-the-database-that-will-use-the-temporary-credentials">Configuring the Database that will use the temporary credentials</h2>
 <p>Now that you have configured the connection with the STS database, all that's left is configuring the connection with the Platform's main database:</p>
@@ -1707,29 +1707,29 @@
 <span class="w">    </span><span class="c1">#  sts.credentials --</span>
 <span class="w">    </span><span class="nt">credentials</span><span class="p">:</span>
 <span class="w">      </span><span class="c1">#  sts.credentials.roles -- Roles that will be mapped to the user for Database operations.</span>
-<span class="w">      </span><span class="c1">#  Must correspond to the owner user of the Platform&#39;s main database.</span>
-<span class="w">      </span><span class="nt">roles</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;OWNER_USER&quot;</span>
-<span class="w">    </span><span class="c1">#  sts.databaseProvider -- Values of the Platform&#39;s main database</span>
+<span class="w">      </span><span class="c1">#  Must correspond to the owner user of the Platform's main database.</span>
+<span class="w">      </span><span class="nt">roles</span><span class="p">:</span><span class="w"> </span><span class="s">"OWNER_USER"</span>
+<span class="w">    </span><span class="c1">#  sts.databaseProvider -- Values of the Platform's main database</span>
 <span class="w">    </span><span class="nt">databaseProvider</span><span class="p">:</span>
 <span class="w">      </span><span class="c1">#  sts.databaseProvider.enabled -- Enable/Disable dynamic credentials for Postgres operations.</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="c1">#  sts.databaseProvider.credentials -- Credentials of the Platform&#39;s main database</span>
+<span class="w">      </span><span class="c1">#  sts.databaseProvider.credentials -- Credentials of the Platform's main database</span>
 <span class="w">      </span><span class="nt">credentials</span><span class="p">:</span>
-<span class="w">        </span><span class="c1">#  sts.databaseProvider.credentials.existingSecret -- Reference to the secret containing username and password of the Platform&#39;s main database owner user.</span>
+<span class="w">        </span><span class="c1">#  sts.databaseProvider.credentials.existingSecret -- Reference to the secret containing username and password of the Platform's main database owner user.</span>
 <span class="w">        </span><span class="c1">#  These values have higher priority than the explicit declarations.</span>
 <span class="w">        </span><span class="nt">existingSecret</span><span class="p">:</span>
-<span class="w">          </span><span class="c1">#  sts.databaseProvider.credentials.existingSecret.name -- Name of the secret containing username and password of the Platform&#39;s main database owner user</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;OWNER_SECRET&quot;</span>
-<span class="w">          </span><span class="c1">#  sts.databaseProvider.credentials.existingSecret.passwordKey -- Key corresponding to the Platform&#39;s main database owner user password</span>
-<span class="w">          </span><span class="nt">passwordKey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;OWNER_PWD&quot;</span>
-<span class="w">          </span><span class="c1">#  sts.databaseProvider.credentials.existingSecret.usernameKey -- Key corresponding to the Platform&#39;s main database owner user username</span>
-<span class="w">          </span><span class="nt">usernameKey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;OWNER_USERNAME&quot;</span>
-<span class="w">        </span><span class="c1">#  sts.databaseProvider.credentials.password -- Explicit declaration of the Platform&#39;s main database owner user password.</span>
+<span class="w">          </span><span class="c1">#  sts.databaseProvider.credentials.existingSecret.name -- Name of the secret containing username and password of the Platform's main database owner user</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"OWNER_SECRET"</span>
+<span class="w">          </span><span class="c1">#  sts.databaseProvider.credentials.existingSecret.passwordKey -- Key corresponding to the Platform's main database owner user password</span>
+<span class="w">          </span><span class="nt">passwordKey</span><span class="p">:</span><span class="w"> </span><span class="s">"OWNER_PWD"</span>
+<span class="w">          </span><span class="c1">#  sts.databaseProvider.credentials.existingSecret.usernameKey -- Key corresponding to the Platform's main database owner user username</span>
+<span class="w">          </span><span class="nt">usernameKey</span><span class="p">:</span><span class="w"> </span><span class="s">"OWNER_USERNAME"</span>
+<span class="w">        </span><span class="c1">#  sts.databaseProvider.credentials.password -- Explicit declaration of the Platform's main database owner user password.</span>
 <span class="w">        </span><span class="c1">#  It has lower priority than the corresponding secret values.</span>
-<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="c1">#  sts.databaseProvider.credentials.username -- Explicit declaration of the Platform&#39;s main database owner user username.</span>
+<span class="w">        </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="w">        </span><span class="c1">#  sts.databaseProvider.credentials.username -- Explicit declaration of the Platform's main database owner user username.</span>
 <span class="w">        </span><span class="c1">#  It has lower priority than the corresponding secret values.</span>
-<span class="w">        </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">    </span><span class="c1">#  sts.jwt --</span>
 <span class="w">    </span><span class="nt">jwt</span><span class="p">:</span>
 <span class="w">      </span><span class="c1">#  sts.jwt.issuerUri -- URL of the JWT issuer.</span>

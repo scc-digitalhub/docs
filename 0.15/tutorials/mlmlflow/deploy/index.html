@@ -2394,13 +2394,13 @@
 is created from MLFlow run artifact path, besides the <code>model</code> folder it may contain additional artifacts.</p>
 <p>Register it and deploy:</p>
 <div class="highlight"><pre><span></span><code><span class="n">serve_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;serve-mlflow-model&quot;</span><span class="p">,</span>
-    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;mlflowserve&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"serve-mlflow-model"</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">"mlflowserve"</span><span class="p">,</span>
     <span class="n">model_name</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
     <span class="n">path</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">serve_run</span> <span class="o">=</span> <span class="n">serve_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">serve_run</span> <span class="o">=</span> <span class="n">serve_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"serve"</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>You can now create a dataset for testing the endpoint:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">datasets</span>
@@ -2408,12 +2408,12 @@ is created from MLFlow run artifact path, besides the <code>model</code> folder 
 <span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">json</span><span class="o">=</span><span class="p">{</span>
-    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"inputs"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;input-0&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
-        <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;FP64&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"input-0"</span><span class="p">,</span>
+        <span class="s2">"shape"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+        <span class="s2">"datatype"</span><span class="p">:</span> <span class="s2">"FP64"</span><span class="p">,</span>
+        <span class="s2">"data"</span><span class="p">:</span> <span class="n">data</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>

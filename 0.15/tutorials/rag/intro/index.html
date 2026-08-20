@@ -2427,32 +2427,32 @@
 <p>Three functions will be used during this tutorial. To prepare them in advance, run the following code cells on your Jupyter notebook.</p>
 <p>Create the directory for the code:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="n">Path</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Path</span><span class="p">(</span><span class="s2">"src"</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Function for text extraction:</p>
-<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">&quot;src/extract.py&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">"src/extract.py"</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">extract_text</span><span class="p">(</span><span class="n">tika_url</span><span class="p">,</span> <span class="n">artifact</span><span class="p">,</span> <span class="n">project</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloading artifact </span><span class="si">{</span><span class="n">artifact</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Downloading artifact </span><span class="si">{</span><span class="n">artifact</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
     <span class="n">fp</span> <span class="o">=</span> <span class="n">artifact</span><span class="o">.</span><span class="n">as_file</span><span class="p">()</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">tika_url</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;http&quot;</span><span class="p">:</span> 
-        <span class="n">tika_url</span> <span class="o">=</span> <span class="s2">&quot;http://&quot;</span><span class="o">+</span><span class="n">tika_url</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sending </span><span class="si">{</span><span class="n">fp</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">tika_url</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>    
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">tika_url</span><span class="o">+</span><span class="s2">&quot;/tika&quot;</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Accept&quot;</span><span class="p">:</span><span class="s2">&quot;text/html&quot;</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">tika_url</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"http"</span><span class="p">:</span> 
+        <span class="n">tika_url</span> <span class="o">=</span> <span class="s2">"http://"</span><span class="o">+</span><span class="n">tika_url</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Sending </span><span class="si">{</span><span class="n">fp</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">tika_url</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>    
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">tika_url</span><span class="o">+</span><span class="s2">"/tika"</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Accept"</span><span class="p">:</span><span class="s2">"text/html"</span><span class="p">},</span> <span class="n">data</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span><span class="s1">'rb'</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
     <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Extracted text with success&quot;</span><span class="p">)</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="s2">&quot;/tmp/output.html&quot;</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tf</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Extracted text with success"</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="s2">"/tmp/output.html"</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">tf</span><span class="p">:</span>
             <span class="n">tf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="n">project</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">artifact</span><span class="o">.</span><span class="n">name</span><span class="o">+</span><span class="s2">&quot;_output.html&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">res</span><span class="p">)</span>
+        <span class="n">project</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"artifact"</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">artifact</span><span class="o">.</span><span class="n">name</span><span class="o">+</span><span class="s2">"_output.html"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">res</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">res</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received error: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Received error: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">"Error"</span><span class="p">)</span>
 </code></pre></div>
 <p>Function for embedding generation:</p>
-<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">&quot;src/embedder.py&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">"src/embedder.py"</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">bs4</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.document_loaders</span><span class="w"> </span><span class="kn">import</span> <span class="n">WebBaseLoader</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">langchain_text_splitters</span><span class="w"> </span><span class="kn">import</span> <span class="n">RecursiveCharacterTextSplitter</span>
@@ -2463,53 +2463,53 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
 
 
-<span class="n">PG_USER</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DB_USERNAME&quot;</span><span class="p">]</span>
-<span class="n">PG_PASS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DB_PASSWORD&quot;</span><span class="p">]</span>
-<span class="n">PG_HOST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DB_HOST&quot;</span><span class="p">]</span>
-<span class="n">PG_PORT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DB_PORT&quot;</span><span class="p">]</span>
-<span class="n">DB_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DB_DATABASE&quot;</span><span class="p">]</span>
-<span class="n">ACCESS_TOKEN</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DHCORE_ACCESS_TOKEN&quot;</span><span class="p">]</span>
+<span class="n">PG_USER</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DB_USERNAME"</span><span class="p">]</span>
+<span class="n">PG_PASS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DB_PASSWORD"</span><span class="p">]</span>
+<span class="n">PG_HOST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DB_HOST"</span><span class="p">]</span>
+<span class="n">PG_PORT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DB_PORT"</span><span class="p">]</span>
+<span class="n">DB_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DB_DATABASE"</span><span class="p">]</span>
+<span class="n">ACCESS_TOKEN</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DHCORE_ACCESS_TOKEN"</span><span class="p">]</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;process input </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"process input </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
     <span class="n">url</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DHCORE_ENDPOINT&quot;</span><span class="p">]</span>
-        <span class="o">+</span> <span class="s2">&quot;/api/v1/-/&quot;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DHCORE_ENDPOINT"</span><span class="p">]</span>
+        <span class="o">+</span> <span class="s2">"/api/v1/-/"</span>
         <span class="o">+</span> <span class="nb">input</span><span class="o">.</span><span class="n">project</span>
-        <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+        <span class="o">+</span> <span class="s2">"/"</span>
         <span class="o">+</span> <span class="nb">input</span><span class="o">.</span><span class="n">kind</span>
-        <span class="o">+</span> <span class="s2">&quot;s/&quot;</span>
+        <span class="o">+</span> <span class="s2">"s/"</span>
         <span class="o">+</span> <span class="nb">input</span><span class="o">.</span><span class="n">id</span>
-        <span class="o">+</span> <span class="s2">&quot;/files/download&quot;</span>
+        <span class="o">+</span> <span class="s2">"/files/download"</span>
     <span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;request download link for input </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">ACCESS_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">})</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Download url status </span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"request download link for input </span><span class="si">{</span><span class="nb">input</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">"Authorization"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"Bearer </span><span class="si">{</span><span class="n">ACCESS_TOKEN</span><span class="si">}</span><span class="s2">"</span><span class="p">})</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Download url status </span><span class="si">{</span><span class="n">res</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">res</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
         <span class="n">j</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="c1">#if &quot;url&quot; in j:</span>
-            <span class="c1">#return embed(j[&quot;url&quot;])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="c1">#if "url" in j:</span>
+            <span class="c1">#return embed(j["url"])</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;End.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"End."</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">embed</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
     <span class="n">PG_CONN_URL</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;postgresql+psycopg://</span><span class="si">{</span><span class="n">PG_USER</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">PG_PASS</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">PG_HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">PG_PORT</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">DB_NAME</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="sa">f</span><span class="s2">"postgresql+psycopg://</span><span class="si">{</span><span class="n">PG_USER</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">PG_PASS</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">PG_HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">PG_PORT</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">DB_NAME</span><span class="si">}</span><span class="s2">"</span>
     <span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;process url </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
-    <span class="n">embedding_service_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;EMBEDDING_SERVICE_URL&quot;</span><span class="p">]</span>
-    <span class="n">embedding_model_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;EMBEDDING_MODEL_NAME&quot;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"process url </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">..."</span><span class="p">)</span>
+    <span class="n">embedding_service_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"EMBEDDING_SERVICE_URL"</span><span class="p">]</span>
+    <span class="n">embedding_model_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"EMBEDDING_MODEL_NAME"</span><span class="p">]</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">CEmbeddings</span><span class="p">(</span><span class="n">OpenAIEmbeddings</span><span class="p">):</span>
         <span class="k">def</span><span class="w"> </span><span class="nf">embed_documents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docs</span><span class="p">):</span>
-            <span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;ignored&quot;</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">embedding_service_url</span><span class="si">}</span><span class="s2">/v1&quot;</span><span class="p">)</span>
+            <span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">"ignored"</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">embedding_service_url</span><span class="si">}</span><span class="s2">/v1"</span><span class="p">)</span>
             <span class="n">emb_arr</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">:</span>
                 <span class="c1">#sanitize string: replace NUL with spaces</span>
-                <span class="n">d</span><span class="o">=</span><span class="n">doc</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x00</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
+                <span class="n">d</span><span class="o">=</span><span class="n">doc</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"</span><span class="se">\x00</span><span class="s2">"</span><span class="p">,</span> <span class="s2">"-"</span><span class="p">)</span>
                 <span class="n">embs</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
                     <span class="nb">input</span><span class="o">=</span><span class="n">d</span><span class="p">,</span>
                     <span class="n">model</span><span class="o">=</span><span class="n">embedding_model_name</span>
@@ -2517,11 +2517,11 @@
                 <span class="n">emb_arr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">embs</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">embedding</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">emb_arr</span>
 
-    <span class="n">custom_embeddings</span> <span class="o">=</span> <span class="n">CEmbeddings</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+    <span class="n">custom_embeddings</span> <span class="o">=</span> <span class="n">CEmbeddings</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">"ignore"</span><span class="p">)</span>
 
     <span class="n">vector_store</span> <span class="o">=</span> <span class="n">PGVector</span><span class="p">(</span>
         <span class="n">embeddings</span><span class="o">=</span><span class="n">custom_embeddings</span><span class="p">,</span>
-        <span class="n">collection_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">embedding_model_name</span><span class="si">}</span><span class="s2">_docs&quot;</span><span class="p">,</span>
+        <span class="n">collection_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">embedding_model_name</span><span class="si">}</span><span class="s2">_docs"</span><span class="p">,</span>
         <span class="n">connection</span><span class="o">=</span><span class="n">PG_CONN_URL</span><span class="p">,</span>
     <span class="p">)</span>
 
@@ -2529,22 +2529,22 @@
         <span class="n">web_paths</span><span class="o">=</span><span class="p">(</span><span class="n">url</span><span class="p">,),</span>
         <span class="n">bs_kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
             <span class="n">parse_only</span><span class="o">=</span><span class="n">bs4</span><span class="o">.</span><span class="n">SoupStrainer</span><span class="p">(</span>
-                <span class="n">class_</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;post-content&quot;</span><span class="p">)</span>
+                <span class="n">class_</span><span class="o">=</span><span class="p">(</span><span class="s2">"post-content"</span><span class="p">)</span>
             <span class="p">)</span>
         <span class="p">),</span>
     <span class="p">)</span>    
     <span class="n">docs</span> <span class="o">=</span> <span class="n">loader</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;document loaded, generate embeddings...&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"document loaded, generate embeddings..."</span><span class="p">)</span>
 
     <span class="n">text_splitter</span> <span class="o">=</span> <span class="n">RecursiveCharacterTextSplitter</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
     <span class="n">all_splits</span> <span class="o">=</span> <span class="n">text_splitter</span><span class="o">.</span><span class="n">split_documents</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;store documents in vector db...&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"store documents in vector db..."</span><span class="p">)</span>
 
     <span class="n">vector_store</span><span class="o">.</span><span class="n">add_documents</span><span class="p">(</span><span class="n">documents</span><span class="o">=</span><span class="n">all_splits</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Done."</span><span class="p">)</span>
 </code></pre></div>
 <p>Function to serve the RAG application:</p>
-<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">&quot;src/serve.py&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">"src/serve.py"</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">bs4</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">langchain_text_splitters</span><span class="w"> </span><span class="kn">import</span> <span class="n">RecursiveCharacterTextSplitter</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">langchain_postgres</span><span class="w"> </span><span class="kn">import</span> <span class="n">PGVector</span>
@@ -2559,12 +2559,12 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">START</span><span class="p">,</span> <span class="n">StateGraph</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">langchain.chat_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">init_chat_model</span>
 
-<span class="n">PG_USER</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DB_USERNAME&quot;</span><span class="p">]</span>
-<span class="n">PG_PASS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DB_PASSWORD&quot;</span><span class="p">]</span>
-<span class="n">PG_HOST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DB_HOST&quot;</span><span class="p">]</span>
-<span class="n">PG_PORT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DB_PORT&quot;</span><span class="p">]</span>
-<span class="n">DB_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DB_DATABASE&quot;</span><span class="p">]</span>
-<span class="n">ACCESS_TOKEN</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;DHCORE_ACCESS_TOKEN&quot;</span><span class="p">]</span>
+<span class="n">PG_USER</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DB_USERNAME"</span><span class="p">]</span>
+<span class="n">PG_PASS</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DB_PASSWORD"</span><span class="p">]</span>
+<span class="n">PG_HOST</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DB_HOST"</span><span class="p">]</span>
+<span class="n">PG_PORT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DB_PORT"</span><span class="p">]</span>
+<span class="n">DB_NAME</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DB_DATABASE"</span><span class="p">]</span>
+<span class="n">ACCESS_TOKEN</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"DHCORE_ACCESS_TOKEN"</span><span class="p">]</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
     <span class="n">question</span><span class="p">:</span> <span class="nb">str</span>
@@ -2573,14 +2573,14 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-    <span class="n">chat_model_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CHAT_MODEL_NAME&quot;</span><span class="p">]</span>
-    <span class="n">chat_service_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;CHAT_SERVICE_URL&quot;</span><span class="p">]</span>
-    <span class="n">embedding_model_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;EMBEDDING_MODEL_NAME&quot;</span><span class="p">]</span>
-    <span class="n">embedding_service_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;EMBEDDING_SERVICE_URL&quot;</span><span class="p">]</span>
+    <span class="n">chat_model_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"CHAT_MODEL_NAME"</span><span class="p">]</span>
+    <span class="n">chat_service_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"CHAT_SERVICE_URL"</span><span class="p">]</span>
+    <span class="n">embedding_model_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"EMBEDDING_MODEL_NAME"</span><span class="p">]</span>
+    <span class="n">embedding_service_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"EMBEDDING_SERVICE_URL"</span><span class="p">]</span>
 
     <span class="k">class</span><span class="w"> </span><span class="nc">CEmbeddings</span><span class="p">(</span><span class="n">OpenAIEmbeddings</span><span class="p">):</span>
         <span class="k">def</span><span class="w"> </span><span class="nf">embed_documents</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">docs</span><span class="p">):</span>
-            <span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;ignored&quot;</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">embedding_service_url</span><span class="si">}</span><span class="s2">/v1&quot;</span><span class="p">)</span>
+            <span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">"ignored"</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">embedding_service_url</span><span class="si">}</span><span class="s2">/v1"</span><span class="p">)</span>
             <span class="n">emb_arr</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">:</span>
                 <span class="n">embs</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">embeddings</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
@@ -2590,49 +2590,49 @@
                 <span class="n">emb_arr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">embs</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">embedding</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">emb_arr</span>
 
-    <span class="n">custom_embeddings</span> <span class="o">=</span> <span class="n">CEmbeddings</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;ignored&quot;</span><span class="p">)</span>
+    <span class="n">custom_embeddings</span> <span class="o">=</span> <span class="n">CEmbeddings</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="s2">"ignored"</span><span class="p">)</span>
     <span class="n">PG_CONN_URL</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="sa">f</span><span class="s2">&quot;postgresql+psycopg://</span><span class="si">{</span><span class="n">PG_USER</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">PG_PASS</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">PG_HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">PG_PORT</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">DB_NAME</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="sa">f</span><span class="s2">"postgresql+psycopg://</span><span class="si">{</span><span class="n">PG_USER</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">PG_PASS</span><span class="si">}</span><span class="s2">@</span><span class="si">{</span><span class="n">PG_HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">PG_PORT</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">DB_NAME</span><span class="si">}</span><span class="s2">"</span>
     <span class="p">)</span>
     <span class="n">vector_store</span> <span class="o">=</span> <span class="n">PGVector</span><span class="p">(</span>
         <span class="n">embeddings</span><span class="o">=</span><span class="n">custom_embeddings</span><span class="p">,</span>
-        <span class="n">collection_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">embedding_model_name</span><span class="si">}</span><span class="s2">_docs&quot;</span><span class="p">,</span>
+        <span class="n">collection_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">embedding_model_name</span><span class="si">}</span><span class="s2">_docs"</span><span class="p">,</span>
         <span class="n">connection</span><span class="o">=</span><span class="n">PG_CONN_URL</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ignore&quot;</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"OPENAI_API_KEY"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"ignore"</span>
 
-    <span class="n">llm</span> <span class="o">=</span> <span class="n">init_chat_model</span><span class="p">(</span><span class="n">chat_model_name</span><span class="p">,</span> <span class="n">model_provider</span><span class="o">=</span><span class="s2">&quot;openai&quot;</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">chat_service_url</span><span class="si">}</span><span class="s2">/v1/&quot;</span><span class="p">)</span>
-    <span class="n">prompt</span> <span class="o">=</span> <span class="n">hub</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="s2">&quot;rlm/rag-prompt&quot;</span><span class="p">)</span>
+    <span class="n">llm</span> <span class="o">=</span> <span class="n">init_chat_model</span><span class="p">(</span><span class="n">chat_model_name</span><span class="p">,</span> <span class="n">model_provider</span><span class="o">=</span><span class="s2">"openai"</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">chat_service_url</span><span class="si">}</span><span class="s2">/v1/"</span><span class="p">)</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="n">hub</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="s2">"rlm/rag-prompt"</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">retrieve</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">):</span>
-        <span class="n">retrieved_docs</span> <span class="o">=</span> <span class="n">vector_store</span><span class="o">.</span><span class="n">similarity_search</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">&quot;question&quot;</span><span class="p">])</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;context&quot;</span><span class="p">:</span> <span class="n">retrieved_docs</span><span class="p">}</span>
+        <span class="n">retrieved_docs</span> <span class="o">=</span> <span class="n">vector_store</span><span class="o">.</span><span class="n">similarity_search</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="s2">"question"</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">"context"</span><span class="p">:</span> <span class="n">retrieved_docs</span><span class="p">}</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">):</span>
-        <span class="n">docs_content</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">page_content</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;context&quot;</span><span class="p">])</span>
-        <span class="n">messages</span> <span class="o">=</span> <span class="n">prompt</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;question&quot;</span><span class="p">],</span> <span class="s2">&quot;context&quot;</span><span class="p">:</span> <span class="n">docs_content</span><span class="p">})</span>
+        <span class="n">docs_content</span> <span class="o">=</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">doc</span><span class="o">.</span><span class="n">page_content</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">state</span><span class="p">[</span><span class="s2">"context"</span><span class="p">])</span>
+        <span class="n">messages</span> <span class="o">=</span> <span class="n">prompt</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">"question"</span><span class="p">:</span> <span class="n">state</span><span class="p">[</span><span class="s2">"question"</span><span class="p">],</span> <span class="s2">"context"</span><span class="p">:</span> <span class="n">docs_content</span><span class="p">})</span>
         <span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">"answer"</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">}</span>
 
     <span class="n">graph_builder</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">State</span><span class="p">)</span><span class="o">.</span><span class="n">add_sequence</span><span class="p">([</span><span class="n">retrieve</span><span class="p">,</span> <span class="n">generate</span><span class="p">])</span>
-    <span class="n">graph_builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="s2">&quot;retrieve&quot;</span><span class="p">)</span>
+    <span class="n">graph_builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="s2">"retrieve"</span><span class="p">)</span>
     <span class="n">graph</span> <span class="o">=</span> <span class="n">graph_builder</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
 
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s2">&quot;graph&quot;</span><span class="p">,</span> <span class="n">graph</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s2">"graph"</span><span class="p">,</span> <span class="n">graph</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">serve</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
     <span class="n">graph</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">graph</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Received event: </span><span class="si">{</span><span class="n">event</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Received event: </span><span class="si">{</span><span class="n">event</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">body</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
         <span class="n">body</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">body</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">body</span>
 
-    <span class="n">question</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="s2">&quot;question&quot;</span><span class="p">]</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">&quot;question&quot;</span><span class="p">:</span> <span class="n">question</span><span class="p">})</span>
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;answer&quot;</span><span class="p">:</span> <span class="n">response</span><span class="p">[</span><span class="s2">&quot;answer&quot;</span><span class="p">]}</span>
+    <span class="n">question</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="s2">"question"</span><span class="p">]</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">({</span><span class="s2">"question"</span><span class="p">:</span> <span class="n">question</span><span class="p">})</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"answer"</span><span class="p">:</span> <span class="n">response</span><span class="p">[</span><span class="s2">"answer"</span><span class="p">]}</span>
 </code></pre></div>
 
 

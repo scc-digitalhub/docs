@@ -2436,22 +2436,22 @@
 <p>We can take this one step further and visualize our data in a graph using <a href="https://streamlit.io/">Streamlit</a>, a library to create web apps and visualize data by writing simple scripts. Let's get familiar with it.</p>
 <h2 id="setup">Setup</h2>
 <p>From the Jupyter notebook you've been using, write the result of the API call to a file:</p>
-<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;result.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"result.json"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">'data'</span><span class="p">])</span>
 </code></pre></div>
 <p>Create the script that Streamlit will run:</p>
-<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s1">&#39;streamlit-app.py&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s1">'streamlit-app.py'</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
 
-<span class="n">rdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;result.json&quot;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+<span class="n">rdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">"result.json"</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">"records"</span><span class="p">)</span>
 
 <span class="c1"># Replace colons in column names as they can cause issues with Streamlit</span>
-<span class="n">rdf</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">rdf</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">rdf</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">rdf</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">":"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
 
-<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;My data&quot;&quot;&quot;</span><span class="p">)</span>
-<span class="n">st</span><span class="o">.</span><span class="n">line_chart</span><span class="p">(</span><span class="n">rdf</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;codice spira&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"""My data"""</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">line_chart</span><span class="p">(</span><span class="n">rdf</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">"codice spira"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"value"</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="launch-app">Launch app</h2>
 <p>In a new code cell, run the following to install Streamlit in the workspace. Note that if you want to run a shell command from Jupyter cell, prepone it with <code>!</code>. If you want to install a package in the workspace, prepone <code>pip install</code> with <code>%</code>.</p>
@@ -2506,7 +2506,7 @@
 
 <span class="k">HEALTHCHECK</span><span class="w"> </span><span class="k">CMD</span><span class="w"> </span>curl<span class="w"> </span>--fail<span class="w"> </span>http://localhost:8501/_stcore/health
 
-<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;streamlit&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;streamlit-app.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--browser.gatherUsageStats=false&quot;</span><span class="p">]</span>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">"streamlit"</span><span class="p">,</span><span class="w"> </span><span class="s2">"run"</span><span class="p">,</span><span class="w"> </span><span class="s2">"streamlit-app.py"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--browser.gatherUsageStats=false"</span><span class="p">]</span>
 </code></pre></div>
 <p>The Dockerfile describes how the image for the container will be built. In short, it installs the required libraries, copies the files you downloaded, then launches the Streamlit script.</p>
 <p>Make sure the three files are in the same directory, then open a shell in it and run the following, which builds the Docker image:</p>

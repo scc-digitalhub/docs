@@ -2420,10 +2420,10 @@
 <p>Import the platform's library and create a project:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;whisper-fine-tuning&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"whisper-fine-tuning"</span><span class="p">)</span>
 </code></pre></div>
 <p>Create a secret as follows, make sure you replace the value with the token that has access to the aforementioned repository:</p>
-<div class="highlight"><pre><span></span><code><span class="n">project</span><span class="o">.</span><span class="n">new_secret</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;HF_TOKEN&quot;</span><span class="p">,</span> <span class="n">secret_value</span><span class="o">=</span><span class="s2">&quot;my-token&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">project</span><span class="o">.</span><span class="n">new_secret</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"HF_TOKEN"</span><span class="p">,</span> <span class="n">secret_value</span><span class="o">=</span><span class="s2">"my-token"</span><span class="p">)</span>
 </code></pre></div>
 <p>The functions we will run use code from a Python file. Due to the many lines this file has, instead of presenting it in this documentation, we invite you to download it from the Whisper fine-tuning scenario in <a href="https://github.com/scc-digitalhub/digitalhub-tutorials">the tutorials repository</a>.</p>
 <p>Use the <code>src</code> directory and ensure it is at the same level of the notebook you're using. </p>
