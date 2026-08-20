@@ -72,7 +72,7 @@ All triggers have these base specifications:
 
 Additional specifications:
 
-- `schedule`: Quartz cron expression
+- `schedule`: [Quartz cron expression](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html)
 
 ### Lifecycle Trigger
 
@@ -97,7 +97,7 @@ trigger = function.trigger(
     action="job",
     kind="scheduler",
     name="daily-function-run",
-    schedule="0 0 * * *"  # Run daily at midnight
+    schedule="0 0 * * * ?"  # Run daily at midnight
 )
 
 # Create a lifecycle trigger when an artifact is uploaded
@@ -121,7 +121,7 @@ trigger = workflow.trigger(
     action="pipeline",
     kind="scheduler",
     name="weekly-workflow-run",
-    schedule="0 0 * * 0"  # Run weekly on Sunday
+    schedule="0 0 * * 0 ?"  # Run weekly on Sunday
 )
 
 # Create a lifecycle trigger

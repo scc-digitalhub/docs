@@ -9,11 +9,7 @@ import digitalhub as dh
 
 
 # Use CRUD method from SDK
-trigger = dh.new_trigger(project="my-project",
-                        name="my-trigger",
-                        kind="scheduler",
-                        task="my-task",
-                        function="my-function")
+trigger = dh.new_trigger(project="my-project", ...)
 ```
 
 A `trigger` entity can be managed with the following methods.

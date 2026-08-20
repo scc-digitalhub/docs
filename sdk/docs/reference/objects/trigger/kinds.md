@@ -13,11 +13,11 @@ The scheduler trigger allows you to execute tasks on a schedule using cron expre
 
 Required parameters:
 
-- `task` - The task to execute
-- `schedule` - Quartz cron expression
+- `task` - The task to execute (in form of `<task-kind>://<project>/<task-id>`)
+- `schedule` - [Quartz cron expression](https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html)
 - One of:
-  - `function` - The function to execute
-  - `workflow` - The workflow to execute
+  - `function` - The function to execute (in form of `<function-kind>://<project>/<function-name>:<function-id>`)
+  - `workflow` - The workflow to execute (in form of `<workflow-kind>://<project>/<workflow-name>:<workflow-id>`)
 
 Example:
 
@@ -26,9 +26,9 @@ trigger = dh.new_trigger(
     project="my-project",
     name="daily-run",
     kind="scheduler",
-    task="my-task",
-    function="my-function",
-    schedule="0 0 * * *"  # Run daily at midnight
+    task="<task-kind>://<project>/<task-id>",
+    function="<function-kind>://<project>/<function-name>:<function-id>",
+    schedule="0 0 * * * ?"  # Run daily at midnight
 )
 ```
 
@@ -38,12 +38,12 @@ The lifecycle trigger executes tasks in response to entity state changes.
 
 Required parameters:
 
-- `task` - The task to execute
+- `task` - The task to execute (in form of `<task-kind>://<project>/<task-id>`)
 - `key` - The entity key to monitor
 - `states` - List of states to trigger on
 - One of:
-  - `function` - The function to execute
-  - `workflow` - The workflow to execute
+  - `function` - The function to execute (in form of `<function-kind>://<project>/<function-name>:<function-id>`)
+  - `workflow` - The workflow to execute (in form of `<workflow-kind>://<project>/<workflow-name>:<workflow-id>`)
 
 Example:
 
@@ -52,8 +52,8 @@ trigger = dh.new_trigger(
     project="my-project",
     name="model-complete",
     kind="lifecycle",
-    task="my-task",
-    function="my-function",
+    task="<task-kind>://<project>/<task-id>",
+    function="<function-kind>://<project>/<function-name>:<function-id>",
     key="store://project/model/kind/name",
     states=["completed"]
 )
