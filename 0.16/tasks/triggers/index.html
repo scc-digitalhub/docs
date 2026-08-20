@@ -2447,7 +2447,7 @@
 <span class="w">  </span><span class="nt">parameters</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">param1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value123</span>
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64Mi</span>
 </code></pre></div>
 <p>To solve this need, triggers can produce <em>inputs</em>, based on their context and the specific execution event. These inputs can be consumed by user-defined functions to perform specific, parametrized tasks: for example a validation function could perform a check on a given data table. In order to <em>consume</em> inputs, the function must accept variable parameters.</p>
@@ -2463,7 +2463,7 @@
 <p>Following the previous example, the template could expose the data item key for the python code to consume by defining the parametrized value in the template:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">template</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">inputs</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">di</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{input.key}}&quot;</span>
+<span class="w">    </span><span class="nt">di</span><span class="p">:</span><span class="w"> </span><span class="s">"{{input.key}}"</span>
 </code></pre></div>
 <p>This definition will instruct the templating engine in producing a run with a named input <code>di</code> valorized as the store key of the data item triggering the execution. Every resulting run will then receive a different, specific input enabling the automation to work.</p>
 <p>The resulting spec for an execution triggered by entity <code>my-test-data</code> will be:</p>
@@ -2491,7 +2491,7 @@
 </ul>
 <p>Example
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span><span class="w"> </span>
-<span class="w">    </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;@hourly&#39;</span><span class="w"> </span><span class="c1">#every hour</span>
+<span class="w">    </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">'@hourly'</span><span class="w"> </span><span class="c1">#every hour</span>
 </code></pre></div></p>
 <h2 id="lifecycle-trigger">Lifecycle trigger</h2>
 <p>The <em>lifecycle</em> actuator monitors the lifecycle of entities stored in the platform and can trigger a function's execution on state changes, such as files being uploaded or models being created. This lets users define simple automations for reacting to changes in the platform's store such as validating a content, or deploying a new version of a given model.</p>
@@ -2507,12 +2507,12 @@
 </ul>
 <p>For example, the following will produce a function's run every time a table with the name ending in <code>.csv</code> is uploaded in the store and ready for usage:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;store://my-proj/dataitem/table/*.csv&quot;</span>
+<span class="w">    </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">"store://my-proj/dataitem/table/*.csv"</span>
 <span class="w">    </span><span class="nt">states</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">READY</span>
 <span class="w">    </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">inputs</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">di</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{input.key}}&quot;</span>
+<span class="w">        </span><span class="nt">di</span><span class="p">:</span><span class="w"> </span><span class="s">"{{input.key}}"</span>
 </code></pre></div>
 <p>Note: the key <strong>must</strong> match the current project.</p>
 <h2 id="management-via-ui">Management via UI</h2>

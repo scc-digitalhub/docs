@@ -2707,23 +2707,23 @@
 <p>To define requirements for single runs, developers need to include in the run specification the resource definition, in accordance with the schema.</p>
 <p>For example, to request for a certain amount of compute resources, the spec must contain the detailed definition as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8&quot;</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"8"</span>
 <span class="w">  </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32Gi</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
 <span class="w">  </span><span class="nt">disk</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10Gi</span>
 </code></pre></div>
 <p>To configure resources from a Jupyter workspace using the SDK, you can use a run definition like the following:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
-    <span class="n">fs_group</span><span class="o">=</span><span class="s2">&quot;8877&quot;</span><span class="p">,</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
+    <span class="n">fs_group</span><span class="o">=</span><span class="s2">"8877"</span><span class="p">,</span>
     <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="o">...</span><span class="p">],</span>
-    <span class="n">resources</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mem&quot;</span><span class="p">:</span> <span class="s2">&quot;32Gi&quot;</span><span class="p">,</span> <span class="s2">&quot;cpu&quot;</span><span class="p">:</span> <span class="s2">&quot;6&quot;</span><span class="p">},</span>
+    <span class="n">resources</span><span class="o">=</span><span class="p">{</span><span class="s2">"mem"</span><span class="p">:</span> <span class="s2">"32Gi"</span><span class="p">,</span> <span class="s2">"cpu"</span><span class="p">:</span> <span class="s2">"6"</span><span class="p">},</span>
     <span class="n">volumes</span><span class="o">=</span><span class="p">[{</span>
-        <span class="s2">&quot;volume_type&quot;</span><span class="p">:</span> <span class="s2">&quot;persistent_volume_claim&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;volume-deforestation&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;mount_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/app/files&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span>
-             <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;350Gi&quot;</span>
+        <span class="s2">"volume_type"</span><span class="p">:</span> <span class="s2">"persistent_volume_claim"</span><span class="p">,</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"volume-deforestation"</span><span class="p">,</span>
+        <span class="s2">"mount_path"</span><span class="p">:</span> <span class="s2">"/app/files"</span><span class="p">,</span>
+        <span class="s2">"spec"</span><span class="p">:</span> <span class="p">{</span>
+             <span class="s2">"size"</span><span class="p">:</span> <span class="s2">"350Gi"</span>
         <span class="p">}</span>
     <span class="p">}]</span>
 <span class="p">)</span>
@@ -2735,16 +2735,16 @@ Please see the <a href="https://scc-digitalhub.github.io/sdk-docs/runtimes/kuber
 The profile allow for abstracting the platform users from the underlying complexity. Each profile corresponds to a specific resource configuration that defines a combination of requirements. For example, the profile may define a specific type of GPU, memory, and CPUs to be used. In this case it is sufficient to specify the corresponding profile name in the run execution configuration to allocate the corresponding resources.</p>
 <p>To specify a profile from a Jupyter workspace using the SDK, you can define the run as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="n">train_run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
-    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;input1&quot;</span><span class="p">:</span> <span class="n">value</span><span class="p">},</span>
-    <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;1xa100&quot;</span><span class="p">,</span>  <span class="c1"># selected hardware profile</span>
-    <span class="n">resources</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mem&quot;</span><span class="p">:</span> <span class="s2">&quot;6Gi&quot;</span><span class="p">},</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">"input1"</span><span class="p">:</span> <span class="n">value</span><span class="p">},</span>
+    <span class="n">profile</span><span class="o">=</span><span class="s2">"1xa100"</span><span class="p">,</span>  <span class="c1"># selected hardware profile</span>
+    <span class="n">resources</span><span class="o">=</span><span class="p">{</span><span class="s2">"mem"</span><span class="p">:</span> <span class="s2">"6Gi"</span><span class="p">},</span>
     <span class="n">volumes</span><span class="o">=</span><span class="p">[{</span>
-        <span class="s2">&quot;volume_type&quot;</span><span class="p">:</span> <span class="s2">&quot;persistent_volume_claim&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;train-volume&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;mount_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/local-data&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;10Gi&quot;</span>
+        <span class="s2">"volume_type"</span><span class="p">:</span> <span class="s2">"persistent_volume_claim"</span><span class="p">,</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"train-volume"</span><span class="p">,</span>
+        <span class="s2">"mount_path"</span><span class="p">:</span> <span class="s2">"/local-data"</span><span class="p">,</span>
+        <span class="s2">"spec"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"size"</span><span class="p">:</span> <span class="s2">"10Gi"</span>
         <span class="p">}</span>
     <span class="p">}]</span>
 <span class="p">)</span>
@@ -2758,21 +2758,21 @@ The profile allow for abstracting the platform users from the underlying complex
 You need to declare the volume type as <code>persistent_volume_claim</code>, a name for the PVC for the user (e.g., <code>my-pvc</code>), the mount path on the container and a spec with the size of the PV to be reserved.
 The platform will create the volume and bind it to the pod lifecycle.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">volume_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;persistent_volume_claim&quot;</span><span class="err">,</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-pvc&quot;</span><span class="err">,</span>
-<span class="w">          </span><span class="nt">mount_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/data&quot;</span><span class="err">,</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">volume_type</span><span class="p">:</span><span class="w"> </span><span class="s">"persistent_volume_claim"</span><span class="err">,</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"my-pvc"</span><span class="err">,</span>
+<span class="w">          </span><span class="nt">mount_path</span><span class="p">:</span><span class="w"> </span><span class="s">"/data"</span><span class="err">,</span>
 <span class="w">          </span><span class="nt">spec</span><span class="p">:</span><span class="w"> </span>
-<span class="w">            </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10Gi&quot;</span><span class="err">,</span>
+<span class="w">            </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="s">"10Gi"</span><span class="err">,</span>
 </code></pre></div>
 <p>To configure a volume from a Jupyter workspace using the SDK:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-  <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
+  <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
   <span class="n">volumes</span><span class="o">=</span><span class="p">[{</span>
-    <span class="s2">&quot;volume_type&quot;</span><span class="p">:</span> <span class="s2">&quot;persistent_volume_claim&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my-pvc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;mount_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/data&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;10Gi&quot;</span>
+    <span class="s2">"volume_type"</span><span class="p">:</span> <span class="s2">"persistent_volume_claim"</span><span class="p">,</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"my-pvc"</span><span class="p">,</span>
+    <span class="s2">"mount_path"</span><span class="p">:</span> <span class="s2">"/data"</span><span class="p">,</span>
+    <span class="s2">"spec"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"size"</span><span class="p">:</span> <span class="s2">"10Gi"</span>
     <span class="p">}</span>
   <span class="p">}]</span>
 <span class="p">)</span>
@@ -2790,12 +2790,12 @@ The platform will create the volume and bind it to the pod lifecycle.</p>
 <h4 id="cpu">CPU</h4>
 <p>To request a specific amount of CPU for the run, declare the resource type as <code>cpu</code> and specify requested value.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
+<span class="w">  </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"10"</span>
 </code></pre></div>
 <p>To configure CPU resources from a Jupyter workspace using the SDK:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
-    <span class="n">resources</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;cpu&quot;</span><span class="p">:</span> <span class="s2">&quot;10&quot;</span><span class="p">}</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
+    <span class="n">resources</span><span class="o">=</span><span class="p">{</span><span class="s2">"cpu"</span><span class="p">:</span> <span class="s2">"10"</span><span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
 <h4 id="ram-memory">RAM memory</h4>
@@ -2805,19 +2805,19 @@ The platform will create the volume and bind it to the pod lifecycle.</p>
 </code></pre></div>
 <p>To configure RAM memory from a Jupyter workspace using the SDK:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
-    <span class="n">resources</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mem&quot;</span><span class="p">:</span> <span class="s2">&quot;32Gi&quot;</span><span class="p">}</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
+    <span class="n">resources</span><span class="o">=</span><span class="p">{</span><span class="s2">"mem"</span><span class="p">:</span> <span class="s2">"32Gi"</span><span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
 <h4 id="gpu">GPU</h4>
 <p>To request GPU resources, specify the resource type <code>gpu</code> and set the requested value.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="w">    </span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span><span class="w">    </span>
 </code></pre></div>
 <p>To configure GPU resources from a Jupyter workspace using the SDK:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
-    <span class="n">resources</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;gpu&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">}</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
+    <span class="n">resources</span><span class="o">=</span><span class="p">{</span><span class="s2">"gpu"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
 <h4 id="disk">Disk</h4>
@@ -2827,8 +2827,8 @@ The platform will create the volume and bind it to the pod lifecycle.</p>
 </code></pre></div>
 <p>To configure disk resources from a Jupyter workspace using the SDK:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
-    <span class="n">resources</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;disk&quot;</span><span class="p">:</span> <span class="s2">&quot;10Gi&quot;</span><span class="p">}</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
+    <span class="n">resources</span><span class="o">=</span><span class="p">{</span><span class="s2">"disk"</span><span class="p">:</span> <span class="s2">"10Gi"</span><span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="secrets">Secrets</h3>
@@ -2839,8 +2839,8 @@ Secrets must be stored via the platform: externally defined secrets (for example
 </code></pre></div>
 <p>To configure secrets from a Jupyter workspace using the SDK:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
-    <span class="n">secrets</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;CDSETOOL_ESA_USER&quot;</span><span class="p">,</span> <span class="s2">&quot;CDSETOOL_ESA_PASSWORD&quot;</span><span class="p">],</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
+    <span class="n">secrets</span><span class="o">=</span><span class="p">[</span><span class="s2">"CDSETOOL_ESA_USER"</span><span class="p">,</span> <span class="s2">"CDSETOOL_ESA_PASSWORD"</span><span class="p">],</span>
     <span class="o">..</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -2854,10 +2854,10 @@ Secrets must be stored via the platform: externally defined secrets (for example
 </code></pre></div>
 <p>To configure environment variables from a Jupyter workspace using the SDK:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
     <span class="n">envs</span><span class="o">=</span><span class="p">[</span>
-      <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;HF_HOME&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;/local-data/huggingface&quot;</span><span class="p">},</span>
-      <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;TRANSFORMERS_CACHE&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;/local-data/huggingface&quot;</span><span class="p">}</span>
+      <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"HF_HOME"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"/local-data/huggingface"</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"TRANSFORMERS_CACHE"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"/local-data/huggingface"</span><span class="p">}</span>
     <span class="p">],</span>
     <span class="o">...</span>
 <span class="p">)</span>
@@ -2869,8 +2869,8 @@ Define the <code>fs_group</code> field by specifying the group id as integer.</p
 </code></pre></div>
 <p>To configure fs_group from a Jupyter workspace using the SDK:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-  <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
-  <span class="n">fs_group</span><span class="o">=</span><span class="s1">&#39;8877&#39;</span><span class="p">,</span>
+  <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
+  <span class="n">fs_group</span><span class="o">=</span><span class="s1">'8877'</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="run-as-user">Run as user</h3>
@@ -2881,7 +2881,7 @@ It accepts an integer value.</p>
 </code></pre></div>
 <p>To configure run_as_user from a Jupyter workspace using the SDK:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-  <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
+  <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
   <span class="n">run_as_user</span><span class="o">=</span><span class="mi">1000</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -2893,7 +2893,7 @@ It accepts an integer value.</p>
 </code></pre></div>
 <p>To configure run_as_group from a Jupyter workspace using the SDK:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-  <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
+  <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
   <span class="n">run_as_group</span><span class="o">=</span><span class="mi">1000</span>
 <span class="p">)</span>
 </code></pre></div>

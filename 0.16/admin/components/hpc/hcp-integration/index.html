@@ -1809,7 +1809,7 @@ Deploy the Interlink on your kubernetes cluster:</p>
 <span class="nt">sshBastion</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">clientKeys</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">authorizedKeys</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ssh-ed25519</span><span class="nv"> </span><span class="s">AAAAC3NzaC1lZDI1NTE5AAAAI...&quot;</span><span class="w"> </span><span class="c1"># Previosly createt public key</span>
+<span class="w">    </span><span class="nt">authorizedKeys</span><span class="p">:</span><span class="w"> </span><span class="s">"ssh-ed25519</span><span class="nv"> </span><span class="s">AAAAC3NzaC1lZDI1NTE5AAAAI..."</span><span class="w"> </span><span class="c1"># Previosly createt public key</span>
 <span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">31022</span>
 
 <span class="nt">virtualNode</span><span class="p">:</span>
@@ -1822,27 +1822,27 @@ Deploy the Interlink on your kubernetes cluster:</p>
 <ol>
 <li>Download <a href="https://github.com/interlink-hq/interlink-slurm-plugin/releases">interlink-slurm-plugin</a> on your login node.</li>
 <li>Configure InterLink Slurm plugin to listen on a Unix socket instead of a TCP port:
-<div class="highlight"><span class="filename">/root/SlurmConfig.yaml</span><pre><span></span><code><span class="nt">SidecarPort</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="nt">Socket</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unix:///var/run/plugin.sock&quot;</span>
-<span class="nt">SbatchPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/usr/bin/sbatch&quot;</span>
-<span class="nt">ScancelPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/usr/bin/scancel&quot;</span>
-<span class="nt">SqueuePath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/usr/bin/squeue&quot;</span>
-<span class="nt">SinfoPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/usr/bin/sinfo&quot;</span>
-<span class="nt">CommandPrefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="nt">SingularityPrefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="nt">SingularityPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;singularity&quot;</span>
+<div class="highlight"><span class="filename">/root/SlurmConfig.yaml</span><pre><span></span><code><span class="nt">SidecarPort</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="nt">Socket</span><span class="p">:</span><span class="w"> </span><span class="s">"unix:///var/run/plugin.sock"</span>
+<span class="nt">SbatchPath</span><span class="p">:</span><span class="w"> </span><span class="s">"/usr/bin/sbatch"</span>
+<span class="nt">ScancelPath</span><span class="p">:</span><span class="w"> </span><span class="s">"/usr/bin/scancel"</span>
+<span class="nt">SqueuePath</span><span class="p">:</span><span class="w"> </span><span class="s">"/usr/bin/squeue"</span>
+<span class="nt">SinfoPath</span><span class="p">:</span><span class="w"> </span><span class="s">"/usr/bin/sinfo"</span>
+<span class="nt">CommandPrefix</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="nt">SingularityPrefix</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
+<span class="nt">SingularityPath</span><span class="p">:</span><span class="w"> </span><span class="s">"singularity"</span>
 <span class="nt">ExportPodData</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">DataRootFolder</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;.local/interlink/jobs/&quot;</span>
-<span class="nt">Namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vk&quot;</span>
+<span class="nt">DataRootFolder</span><span class="p">:</span><span class="w"> </span><span class="s">".local/interlink/jobs/"</span>
+<span class="nt">Namespace</span><span class="p">:</span><span class="w"> </span><span class="s">"vk"</span>
 <span class="nt">Tsocks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">TsocksPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;$WORK/tsocks-1.8beta5+ds1/libtsocks.so&quot;</span>
-<span class="nt">TsocksLoginNode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;login01&quot;</span>
+<span class="nt">TsocksPath</span><span class="p">:</span><span class="w"> </span><span class="s">"$WORK/tsocks-1.8beta5+ds1/libtsocks.so"</span>
+<span class="nt">TsocksLoginNode</span><span class="p">:</span><span class="w"> </span><span class="s">"login01"</span>
 <span class="nt">BashPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
 <span class="nt">VerboseLogging</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">ErrorsOnlyLogging</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">ContainerRuntime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">singularity</span>
-<span class="nt">EnrootDefaultOptions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;--rw&quot;</span><span class="p p-Indicator">]</span>
-<span class="nt">EnrootPrefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="nt">EnrootDefaultOptions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"--rw"</span><span class="p p-Indicator">]</span>
+<span class="nt">EnrootPrefix</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="nt">EnrootPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enroot</span>
 </code></pre></div></li>
 <li>
@@ -1884,7 +1884,7 @@ kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </
 <span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span>
-<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;sleep&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;3600&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"sleep"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"3600"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <p>```bash
 kubectl apply -f test-pod.yaml

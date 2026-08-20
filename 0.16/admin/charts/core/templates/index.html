@@ -1692,15 +1692,15 @@
 <span class="w">        </span><span class="no">value: VALU123123</span>
 <span class="w">    </span><span class="no">resources:</span>
 <span class="w">      </span><span class="no">requests:</span>
-<span class="w">        </span><span class="no">cpu: &quot;1&quot;</span>
-<span class="w">        </span><span class="no">memory: &quot;1Gi&quot;</span>
-<span class="w">        </span><span class="no">nvidia.com/gpu: &quot;1&quot;</span>
-<span class="w">        </span><span class="no">ephemeral-storage: &quot;10Gi&quot;</span>
+<span class="w">        </span><span class="no">cpu: "1"</span>
+<span class="w">        </span><span class="no">memory: "1Gi"</span>
+<span class="w">        </span><span class="no">nvidia.com/gpu: "1"</span>
+<span class="w">        </span><span class="no">ephemeral-storage: "10Gi"</span>
 <span class="w">      </span><span class="no">limits:</span>
-<span class="w">        </span><span class="no">cpu: &quot;5&quot;</span>
-<span class="w">        </span><span class="no">memory: &quot;40Gi&quot;</span>
-<span class="w">        </span><span class="no">nvidia.com/gpu: &quot;1&quot;</span>
-<span class="w">        </span><span class="no">ephemeral-storage: &quot;60Gi&quot;</span>
+<span class="w">        </span><span class="no">cpu: "5"</span>
+<span class="w">        </span><span class="no">memory: "40Gi"</span>
+<span class="w">        </span><span class="no">nvidia.com/gpu: "1"</span>
+<span class="w">        </span><span class="no">ephemeral-storage: "60Gi"</span>
 <span class="w">    </span><span class="no">---</span>
 <span class="w">    </span><span class="no">apiVersion: batch/v1</span>
 <span class="w">    </span><span class="no">kind: Job</span>
@@ -1712,7 +1712,7 @@
 <span class="w">          </span><span class="no">containers:</span>
 <span class="w">            </span><span class="no">- name: pi</span>
 <span class="w">              </span><span class="no">image: perl:5.34.0</span>
-<span class="w">              </span><span class="no">command: [&quot;perl&quot;, &quot;-Mbignum=bpi&quot;, &quot;-wle&quot;, &quot;print bpi(2000)&quot;]</span>
+<span class="w">              </span><span class="no">command: ["perl", "-Mbignum=bpi", "-wle", "print bpi(2000)"]</span>
 <span class="w">          </span><span class="no">restartPolicy: Never</span>
 <span class="w">      </span><span class="no">backoffLimit: 4</span>
 </code></pre></div>
@@ -1729,15 +1729,15 @@
 <span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VALU123123</span>
 <span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">requests</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
-<span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
-<span class="w">    </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
-<span class="w">    </span><span class="nt">ephemeral-storage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10Gi&quot;</span>
+<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
+<span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"1Gi"</span>
+<span class="w">    </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
+<span class="w">    </span><span class="nt">ephemeral-storage</span><span class="p">:</span><span class="w"> </span><span class="s">"10Gi"</span>
 <span class="w">  </span><span class="nt">limits</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;5&quot;</span>
-<span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;40Gi&quot;</span>
-<span class="w">    </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
-<span class="w">    </span><span class="nt">ephemeral-storage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;60Gi&quot;</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"5"</span>
+<span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"40Gi"</span>
+<span class="w">    </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
+<span class="w">    </span><span class="nt">ephemeral-storage</span><span class="p">:</span><span class="w"> </span><span class="s">"60Gi"</span><span class="w">  </span>
 <span class="nn">---</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">batch/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Job</span>
@@ -1749,7 +1749,7 @@
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pi</span>
 <span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">perl:5.34.0</span>
-<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;perl&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-Mbignum=bpi&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;-wle&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;print</span><span class="nv"> </span><span class="s">bpi(2000)&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"perl"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-Mbignum=bpi"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-wle"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"print</span><span class="nv"> </span><span class="s">bpi(2000)"</span><span class="p p-Indicator">]</span>
 <span class="w">      </span><span class="nt">restartPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Never</span>
 <span class="w">  </span><span class="nt">backoffLimit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 </code></pre></div>

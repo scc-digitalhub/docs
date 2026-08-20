@@ -6598,7 +6598,7 @@
 <h3 id="scheduler-trigger">Scheduler Trigger</h3>
 <p>Additional specifications:</p>
 <ul>
-<li><code>schedule</code>: Quartz cron expression</li>
+<li><code>schedule</code>: <a href="https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html">Quartz cron expression</a></li>
 </ul>
 <h3 id="lifecycle-trigger">Lifecycle Trigger</h3>
 <p>Additional specifications:</p>
@@ -6617,7 +6617,7 @@ trigger = function.trigger(
     action=&quot;job&quot;,
     kind=&quot;scheduler&quot;,
     name=&quot;daily-function-run&quot;,
-    schedule=&quot;0 0 * * *&quot;  # Run daily at midnight
+    schedule=&quot;0 0 * * * ?&quot;  # Run daily at midnight
 )
 
 # Create a lifecycle trigger when an artifact is uploaded
@@ -6638,7 +6638,7 @@ trigger = workflow.trigger(
     action=&quot;pipeline&quot;,
     kind=&quot;scheduler&quot;,
     name=&quot;weekly-workflow-run&quot;,
-    schedule=&quot;0 0 * * 0&quot;  # Run weekly on Sunday
+    schedule=&quot;0 0 * * 0 ?&quot;  # Run weekly on Sunday
 )
 
 # Create a lifecycle trigger

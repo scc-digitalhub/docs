@@ -2961,29 +2961,29 @@
 <div class="highlight"><pre><span></span><code><span class="c1"># Read a local tar.gz archive (Multi30k format) and return a list of (src, tgt) tuples.</span>
 <span class="c1"># The archive must contain one file per language, identified by its extension (e.g. train.de / train.en).</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">_read_local_tarfile</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">src_lang</span><span class="p">,</span> <span class="n">tgt_lang</span><span class="p">):</span>
-    <span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;r:gz&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tar</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"r:gz"</span><span class="p">)</span> <span class="k">as</span> <span class="n">tar</span><span class="p">:</span>
         <span class="n">members</span> <span class="o">=</span> <span class="n">tar</span><span class="o">.</span><span class="n">getmembers</span><span class="p">()</span>
-        <span class="n">src_member</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">members</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;.</span><span class="si">{</span><span class="n">src_lang</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
-        <span class="n">tgt_member</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">members</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;.</span><span class="si">{</span><span class="n">tgt_lang</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
-        <span class="n">src_lines</span> <span class="o">=</span> <span class="n">tar</span><span class="o">.</span><span class="n">extractfile</span><span class="p">(</span><span class="n">src_member</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
-        <span class="n">tgt_lines</span> <span class="o">=</span> <span class="n">tar</span><span class="o">.</span><span class="n">extractfile</span><span class="p">(</span><span class="n">tgt_member</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+        <span class="n">src_member</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">members</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">".</span><span class="si">{</span><span class="n">src_lang</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
+        <span class="n">tgt_member</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">members</span> <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="sa">f</span><span class="s2">".</span><span class="si">{</span><span class="n">tgt_lang</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
+        <span class="n">src_lines</span> <span class="o">=</span> <span class="n">tar</span><span class="o">.</span><span class="n">extractfile</span><span class="p">(</span><span class="n">src_member</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+        <span class="n">tgt_lines</span> <span class="o">=</span> <span class="n">tar</span><span class="o">.</span><span class="n">extractfile</span><span class="p">(</span><span class="n">tgt_member</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
     <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">src_lines</span><span class="p">,</span> <span class="n">tgt_lines</span><span class="p">))</span>
 
 <span class="o">...</span>
 
 
     <span class="c1"># Get training examples from torchtext (the multi30k dataset)</span>
-    <span class="n">train_file</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;train_file&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">valid_file</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;valid_file&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">train_file</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"train_file"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">valid_file</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"valid_file"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">train_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">valid_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">train_iterator</span> <span class="o">=</span> <span class="n">_read_local_tarfile</span><span class="p">(</span><span class="n">train_file</span><span class="p">,</span> <span class="n">src_lang</span><span class="p">,</span> <span class="n">tgt_lang</span><span class="p">)</span>
         <span class="n">valid_iterator</span> <span class="o">=</span> <span class="n">_read_local_tarfile</span><span class="p">(</span><span class="n">valid_file</span><span class="p">,</span> <span class="n">src_lang</span><span class="p">,</span> <span class="n">tgt_lang</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">multi30k</span><span class="o">.</span><span class="n">URL</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/training.tar.gz&quot;</span>
-        <span class="n">multi30k</span><span class="o">.</span><span class="n">URL</span><span class="p">[</span><span class="s2">&quot;valid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/validation.tar.gz&quot;</span>
-        <span class="n">train_iterator</span> <span class="o">=</span> <span class="n">Multi30k</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="n">language_pair</span><span class="o">=</span><span class="p">(</span><span class="n">src_lang</span><span class="p">,</span> <span class="n">tgt_lang</span><span class="p">))</span>
-        <span class="n">valid_iterator</span> <span class="o">=</span> <span class="n">Multi30k</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;valid&quot;</span><span class="p">,</span> <span class="n">language_pair</span><span class="o">=</span><span class="p">(</span><span class="n">src_lang</span><span class="p">,</span> <span class="n">tgt_lang</span><span class="p">))</span>
+        <span class="n">multi30k</span><span class="o">.</span><span class="n">URL</span><span class="p">[</span><span class="s2">"train"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/training.tar.gz"</span>
+        <span class="n">multi30k</span><span class="o">.</span><span class="n">URL</span><span class="p">[</span><span class="s2">"valid"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/validation.tar.gz"</span>
+        <span class="n">train_iterator</span> <span class="o">=</span> <span class="n">Multi30k</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">"train"</span><span class="p">,</span> <span class="n">language_pair</span><span class="o">=</span><span class="p">(</span><span class="n">src_lang</span><span class="p">,</span> <span class="n">tgt_lang</span><span class="p">))</span>
+        <span class="n">valid_iterator</span> <span class="o">=</span> <span class="n">Multi30k</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">"valid"</span><span class="p">,</span> <span class="n">language_pair</span><span class="o">=</span><span class="p">(</span><span class="n">src_lang</span><span class="p">,</span> <span class="n">tgt_lang</span><span class="p">))</span>
 </code></pre></div>
 <p>In this way the datasets are read from local files, falling back to predefined dataset if the files are not specified.</p>
 <p>For the project to work, the language models should be downloaded and installed using SpaCy toolkit before the script execution. In certain settings it may be more
@@ -2999,7 +2999,7 @@ makes the code self-consistent and universal. We will see how this may be used i
 <p>Please note that the data initialization and storing the training output are mandatory steps for the migration as the execution of the code within the platform is based on ephemeral storage, which is empty at the beginning and will be destroyed at the end of the execution.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;./torch-translation-tutorial/&quot;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"./torch-translation-tutorial/"</span><span class="p">)</span>
 
 <span class="c1"># WORKAROUND for SpaCy language model download. To use SpaCy models,</span>
 <span class="c1"># the model must be downloaded and installed before the training script. </span>
@@ -3011,12 +3011,12 @@ makes the code self-consistent and universal. We will see how this may be used i
     <span class="kn">import</span><span class="w"> </span><span class="nn">spacy</span>
 
     <span class="n">OLD_MODEL_SHORTCUTS</span> <span class="o">=</span> <span class="p">(</span>
-                        <span class="n">spacy</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">OLD_MODEL_SHORTCUTS</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">spacy</span><span class="o">.</span><span class="n">errors</span><span class="p">,</span> <span class="s2">&quot;OLD_MODEL_SHORTCUTS&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="p">{}</span>
+                        <span class="n">spacy</span><span class="o">.</span><span class="n">errors</span><span class="o">.</span><span class="n">OLD_MODEL_SHORTCUTS</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">spacy</span><span class="o">.</span><span class="n">errors</span><span class="p">,</span> <span class="s2">"OLD_MODEL_SHORTCUTS"</span><span class="p">)</span> <span class="k">else</span> <span class="p">{}</span>
                     <span class="p">)</span>
 
     <span class="n">model_name</span> <span class="o">=</span> <span class="n">OLD_MODEL_SHORTCUTS</span><span class="p">[</span><span class="n">model_name</span><span class="p">]</span> <span class="k">if</span> <span class="n">model_name</span> <span class="ow">in</span> <span class="n">OLD_MODEL_SHORTCUTS</span> <span class="k">else</span> <span class="n">model_name</span>
-    <span class="n">download</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;-t&quot;</span><span class="p">,</span> <span class="s2">&quot;/shared/language_models/&quot;</span><span class="p">)</span>    
-    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/shared/language_models/&quot;</span><span class="p">)</span>
+    <span class="n">download</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">"-t"</span><span class="p">,</span> <span class="s2">"/shared/language_models/"</span><span class="p">)</span>    
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"/shared/language_models/"</span><span class="p">)</span>
     <span class="n">model_module</span> <span class="o">=</span> <span class="n">import_module</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
     <span class="n">model_module</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
 
@@ -3026,85 +3026,85 @@ makes the code self-consistent and universal. We will see how this may be used i
    <span class="n">run</span><span class="p">,</span>
    <span class="n">training_data</span><span class="p">,</span>
    <span class="n">validation_data</span><span class="p">,</span>
-   <span class="n">src_lang</span><span class="o">=</span><span class="s2">&quot;de&quot;</span><span class="p">,</span>
-   <span class="n">tgt_lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+   <span class="n">src_lang</span><span class="o">=</span><span class="s2">"de"</span><span class="p">,</span>
+   <span class="n">tgt_lang</span><span class="o">=</span><span class="s2">"en"</span><span class="p">,</span>
    <span class="n">epochs</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>     
    <span class="n">lr</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span>
    <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
-   <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+   <span class="n">backend</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">,</span>
    <span class="n">attn_heads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
    <span class="n">enc_layers</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
    <span class="n">dec_layers</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
    <span class="n">embed_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
    <span class="n">dim_feedforward</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
    <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-   <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;translator-model&quot;</span><span class="p">,</span>
+   <span class="n">model_name</span><span class="o">=</span><span class="s2">"translator-model"</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running training script...&quot;</span><span class="p">)</span>
-    <span class="n">opts</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;Namespace&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="p">{})()</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="n">src_lang</span><span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;tgt&quot;</span><span class="p">,</span> <span class="n">tgt_lang</span><span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;epochs&quot;</span><span class="p">,</span> <span class="n">epochs</span><span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;lr&quot;</span><span class="p">,</span> <span class="n">lr</span><span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;batch&quot;</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;backend&quot;</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;attn_heads&quot;</span><span class="p">,</span> <span class="n">attn_heads</span><span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;enc_layers&quot;</span><span class="p">,</span> <span class="n">enc_layers</span><span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;dec_layers&quot;</span><span class="p">,</span> <span class="n">dec_layers</span><span class="p">)</span>    
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;embed_size&quot;</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;dim_feedforward&quot;</span><span class="p">,</span> <span class="n">dim_feedforward</span><span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;dropout&quot;</span><span class="p">,</span> <span class="n">dropout</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Running training script..."</span><span class="p">)</span>
+    <span class="n">opts</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s2">"Namespace"</span><span class="p">,</span> <span class="p">(),</span> <span class="p">{})()</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"src"</span><span class="p">,</span> <span class="n">src_lang</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"tgt"</span><span class="p">,</span> <span class="n">tgt_lang</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"epochs"</span><span class="p">,</span> <span class="n">epochs</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"lr"</span><span class="p">,</span> <span class="n">lr</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"batch"</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"backend"</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"attn_heads"</span><span class="p">,</span> <span class="n">attn_heads</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"enc_layers"</span><span class="p">,</span> <span class="n">enc_layers</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"dec_layers"</span><span class="p">,</span> <span class="n">dec_layers</span><span class="p">)</span>    
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"embed_size"</span><span class="p">,</span> <span class="n">embed_size</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"dim_feedforward"</span><span class="p">,</span> <span class="n">dim_feedforward</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"dropout"</span><span class="p">,</span> <span class="n">dropout</span><span class="p">)</span>
 
-    <span class="n">model_dir</span> <span class="o">=</span> <span class="s2">&quot;./data/output/&quot;</span>
+    <span class="n">model_dir</span> <span class="o">=</span> <span class="s2">"./data/output/"</span>
     <span class="c1"># fixed logging dir</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;logging_dir&quot;</span><span class="p">,</span> <span class="n">model_dir</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"logging_dir"</span><span class="p">,</span> <span class="n">model_dir</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">ensure_lang_model</span><span class="p">(</span><span class="n">src_lang</span><span class="p">)</span>
         <span class="n">ensure_lang_model</span><span class="p">(</span><span class="n">tgt_lang</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error downloading language models: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error downloading language models: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
         <span class="k">raise</span> <span class="n">e</span>
 
-    <span class="n">training_data</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;./data/input/training.tar.gz&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">validation_data</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;./data/input/validation.tar.gz&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;train_file&quot;</span><span class="p">,</span> <span class="s2">&quot;./data/input/training.tar.gz&quot;</span><span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;valid_file&quot;</span><span class="p">,</span> <span class="s2">&quot;./data/input/validation.tar.gz&quot;</span><span class="p">)</span>
+    <span class="n">training_data</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">"./data/input/training.tar.gz"</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">validation_data</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">"./data/input/validation.tar.gz"</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"train_file"</span><span class="p">,</span> <span class="s2">"./data/input/training.tar.gz"</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"valid_file"</span><span class="p">,</span> <span class="s2">"./data/input/validation.tar.gz"</span><span class="p">)</span>
 
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;dry_run&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"dry_run"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;run&quot;</span><span class="p">,</span> <span class="n">run</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"run"</span><span class="p">,</span> <span class="n">run</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="n">metrics</span> <span class="o">=</span> <span class="n">main</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model metrics:</span><span class="si">{</span><span class="n">metrics</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Model metrics:</span><span class="si">{</span><span class="n">metrics</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error running training script: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error running training script: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">())</span>
         <span class="k">raise</span> <span class="n">e</span>
 
     <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;src&quot;</span><span class="p">:</span> <span class="n">src_lang</span><span class="p">,</span>
-        <span class="s2">&quot;tgt&quot;</span><span class="p">:</span> <span class="n">tgt_lang</span><span class="p">,</span>
-        <span class="s2">&quot;epochs&quot;</span><span class="p">:</span> <span class="n">epochs</span><span class="p">,</span>
-        <span class="s2">&quot;lr&quot;</span><span class="p">:</span> <span class="n">lr</span><span class="p">,</span>
-        <span class="s2">&quot;batch&quot;</span><span class="p">:</span> <span class="n">batch_size</span><span class="p">,</span>
-        <span class="s2">&quot;backend&quot;</span><span class="p">:</span> <span class="n">backend</span><span class="p">,</span>
-        <span class="s2">&quot;attn_heads&quot;</span><span class="p">:</span> <span class="n">attn_heads</span><span class="p">,</span>
-        <span class="s2">&quot;enc_layers&quot;</span><span class="p">:</span> <span class="n">enc_layers</span><span class="p">,</span>
-        <span class="s2">&quot;dec_layers&quot;</span><span class="p">:</span> <span class="n">dec_layers</span><span class="p">,</span>
-        <span class="s2">&quot;embed_size&quot;</span><span class="p">:</span> <span class="n">embed_size</span><span class="p">,</span>
-        <span class="s2">&quot;dim_feedforward&quot;</span><span class="p">:</span> <span class="n">dim_feedforward</span><span class="p">,</span>
-        <span class="s2">&quot;dropout&quot;</span><span class="p">:</span> <span class="n">dropout</span>
+        <span class="s2">"src"</span><span class="p">:</span> <span class="n">src_lang</span><span class="p">,</span>
+        <span class="s2">"tgt"</span><span class="p">:</span> <span class="n">tgt_lang</span><span class="p">,</span>
+        <span class="s2">"epochs"</span><span class="p">:</span> <span class="n">epochs</span><span class="p">,</span>
+        <span class="s2">"lr"</span><span class="p">:</span> <span class="n">lr</span><span class="p">,</span>
+        <span class="s2">"batch"</span><span class="p">:</span> <span class="n">batch_size</span><span class="p">,</span>
+        <span class="s2">"backend"</span><span class="p">:</span> <span class="n">backend</span><span class="p">,</span>
+        <span class="s2">"attn_heads"</span><span class="p">:</span> <span class="n">attn_heads</span><span class="p">,</span>
+        <span class="s2">"enc_layers"</span><span class="p">:</span> <span class="n">enc_layers</span><span class="p">,</span>
+        <span class="s2">"dec_layers"</span><span class="p">:</span> <span class="n">dec_layers</span><span class="p">,</span>
+        <span class="s2">"embed_size"</span><span class="p">:</span> <span class="n">embed_size</span><span class="p">,</span>
+        <span class="s2">"dim_feedforward"</span><span class="p">:</span> <span class="n">dim_feedforward</span><span class="p">,</span>
+        <span class="s2">"dropout"</span><span class="p">:</span> <span class="n">dropout</span>
     <span class="p">}</span>
 
     <span class="c1"># log model</span>
     <span class="n">model_artifact</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span>
-        <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">,</span>
-        <span class="n">framework</span><span class="o">=</span><span class="s2">&quot;pytorch&quot;</span><span class="p">,</span>
-        <span class="n">source</span><span class="o">=</span><span class="n">model_dir</span> <span class="o">+</span> <span class="s2">&quot;best.pt&quot;</span><span class="p">,</span>
+        <span class="n">kind</span><span class="o">=</span><span class="s2">"model"</span><span class="p">,</span>
+        <span class="n">framework</span><span class="o">=</span><span class="s2">"pytorch"</span><span class="p">,</span>
+        <span class="n">source</span><span class="o">=</span><span class="n">model_dir</span> <span class="o">+</span> <span class="s2">"best.pt"</span><span class="p">,</span>
         <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">model_artifact</span><span class="o">.</span><span class="n">log_metrics</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
@@ -3113,7 +3113,7 @@ makes the code self-consistent and universal. We will see how this may be used i
 </code></pre></div>
 <p>Let us see the implementation of the <code>wrapper</code> in details.</p>
 <h3 id="code-references">Code references</h3>
-<div class="highlight"><pre><span></span><code><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;./torch-translation-tutorial/&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"./torch-translation-tutorial/"</span><span class="p">)</span>
 </code></pre></div>
 <p>This is needed to import the <code>main</code> function from the <code>src/main.py</code> file. When the Git tutorial project is imported, the execution has the project root as a python entry path. So to make the <code>main.py</code> and <code>src/</code> files visible, we need to add the tutorial root to the python path.</p>
 <h3 id="dynamic-language-model-download">Dynamic language model download</h3>
@@ -3126,19 +3126,19 @@ makes the code self-consistent and universal. We will see how this may be used i
    <span class="n">run</span><span class="p">,</span>
    <span class="n">training_data</span><span class="p">,</span>
    <span class="n">validation_data</span><span class="p">,</span>
-   <span class="n">src_lang</span><span class="o">=</span><span class="s2">&quot;de&quot;</span><span class="p">,</span>
-   <span class="n">tgt_lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+   <span class="n">src_lang</span><span class="o">=</span><span class="s2">"de"</span><span class="p">,</span>
+   <span class="n">tgt_lang</span><span class="o">=</span><span class="s2">"en"</span><span class="p">,</span>
    <span class="n">epochs</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>     
    <span class="n">lr</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span>
    <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
-   <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+   <span class="n">backend</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">,</span>
    <span class="n">attn_heads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
    <span class="n">enc_layers</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
    <span class="n">dec_layers</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
    <span class="n">embed_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
    <span class="n">dim_feedforward</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
    <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-   <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;translator-model&quot;</span><span class="p">,</span>
+   <span class="n">model_name</span><span class="o">=</span><span class="s2">"translator-model"</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="o">...</span>
 </code></pre></div>
@@ -3151,35 +3151,35 @@ makes the code self-consistent and universal. We will see how this may be used i
 <li><code>model_name</code> - the name of the model to be trained and stored as a versioned artifact in the platform.</li>
 </ul>
 <h3 id="input-data-preparation">Input data preparation</h3>
-<div class="highlight"><pre><span></span><code>    <span class="n">training_data</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;./data/input/training.tar.gz&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">validation_data</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;./data/input/validation.tar.gz&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;train_file&quot;</span><span class="p">,</span> <span class="s2">&quot;./data/input/training.tar.gz&quot;</span><span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;valid_file&quot;</span><span class="p">,</span> <span class="s2">&quot;./data/input/validation.tar.gz&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code>    <span class="n">training_data</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">"./data/input/training.tar.gz"</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">validation_data</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">"./data/input/validation.tar.gz"</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"train_file"</span><span class="p">,</span> <span class="s2">"./data/input/training.tar.gz"</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"valid_file"</span><span class="p">,</span> <span class="s2">"./data/input/validation.tar.gz"</span><span class="p">)</span>
 </code></pre></div>
 <p>The input data is downloaded from the platform and extracted to the local folder. Note how the input data is treated: Python SDK of the platform treats the referenced objects as platform artifacts so the corresponding methods may be used (<code>download</code> method to store the artifact locally). The <code>opts</code> object is used to pass the file names to the training function.</p>
 <h3 id="output-model-logging">Output model logging</h3>
 <p>Once training is complete, the output model is stored in the platform and logged as a versioned artifact. The model metrics and hyper parameters are stored as well.</p>
 <div class="highlight"><pre><span></span><code><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;src&quot;</span><span class="p">:</span> <span class="n">src_lang</span><span class="p">,</span>
-        <span class="s2">&quot;tgt&quot;</span><span class="p">:</span> <span class="n">tgt_lang</span><span class="p">,</span>
-        <span class="s2">&quot;epochs&quot;</span><span class="p">:</span> <span class="n">epochs</span><span class="p">,</span>
-        <span class="s2">&quot;lr&quot;</span><span class="p">:</span> <span class="n">lr</span><span class="p">,</span>
-        <span class="s2">&quot;batch&quot;</span><span class="p">:</span> <span class="n">batch_size</span><span class="p">,</span>
-        <span class="s2">&quot;backend&quot;</span><span class="p">:</span> <span class="n">backend</span><span class="p">,</span>
-        <span class="s2">&quot;attn_heads&quot;</span><span class="p">:</span> <span class="n">attn_heads</span><span class="p">,</span>
-        <span class="s2">&quot;enc_layers&quot;</span><span class="p">:</span> <span class="n">enc_layers</span><span class="p">,</span>
-        <span class="s2">&quot;dec_layers&quot;</span><span class="p">:</span> <span class="n">dec_layers</span><span class="p">,</span>
-        <span class="s2">&quot;embed_size&quot;</span><span class="p">:</span> <span class="n">embed_size</span><span class="p">,</span>
-        <span class="s2">&quot;dim_feedforward&quot;</span><span class="p">:</span> <span class="n">dim_feedforward</span><span class="p">,</span>
-        <span class="s2">&quot;dropout&quot;</span><span class="p">:</span> <span class="n">dropout</span>
+        <span class="s2">"src"</span><span class="p">:</span> <span class="n">src_lang</span><span class="p">,</span>
+        <span class="s2">"tgt"</span><span class="p">:</span> <span class="n">tgt_lang</span><span class="p">,</span>
+        <span class="s2">"epochs"</span><span class="p">:</span> <span class="n">epochs</span><span class="p">,</span>
+        <span class="s2">"lr"</span><span class="p">:</span> <span class="n">lr</span><span class="p">,</span>
+        <span class="s2">"batch"</span><span class="p">:</span> <span class="n">batch_size</span><span class="p">,</span>
+        <span class="s2">"backend"</span><span class="p">:</span> <span class="n">backend</span><span class="p">,</span>
+        <span class="s2">"attn_heads"</span><span class="p">:</span> <span class="n">attn_heads</span><span class="p">,</span>
+        <span class="s2">"enc_layers"</span><span class="p">:</span> <span class="n">enc_layers</span><span class="p">,</span>
+        <span class="s2">"dec_layers"</span><span class="p">:</span> <span class="n">dec_layers</span><span class="p">,</span>
+        <span class="s2">"embed_size"</span><span class="p">:</span> <span class="n">embed_size</span><span class="p">,</span>
+        <span class="s2">"dim_feedforward"</span><span class="p">:</span> <span class="n">dim_feedforward</span><span class="p">,</span>
+        <span class="s2">"dropout"</span><span class="p">:</span> <span class="n">dropout</span>
     <span class="p">}</span>
 
     <span class="c1"># log model</span>
     <span class="n">model_artifact</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span>
         <span class="n">name</span><span class="o">=</span><span class="n">model_name</span><span class="p">,</span>
-        <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">,</span>
-        <span class="n">framework</span><span class="o">=</span><span class="s2">&quot;pytorch&quot;</span><span class="p">,</span>
-        <span class="n">source</span><span class="o">=</span><span class="n">model_dir</span> <span class="o">+</span> <span class="s2">&quot;best.pt&quot;</span><span class="p">,</span>
+        <span class="n">kind</span><span class="o">=</span><span class="s2">"model"</span><span class="p">,</span>
+        <span class="n">framework</span><span class="o">=</span><span class="s2">"pytorch"</span><span class="p">,</span>
+        <span class="n">source</span><span class="o">=</span><span class="n">model_dir</span> <span class="o">+</span> <span class="s2">"best.pt"</span><span class="p">,</span>
         <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">model_artifact</span><span class="o">.</span><span class="n">log_metrics</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
@@ -3191,19 +3191,19 @@ makes the code self-consistent and universal. We will see how this may be used i
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">opts</span><span class="p">):</span>
     <span class="o">...</span>
     <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">&quot;train_loss&quot;</span><span class="p">:</span> <span class="n">train_loss</span><span class="p">,</span>
-        <span class="s2">&quot;val_loss&quot;</span><span class="p">:</span> <span class="n">val_loss</span><span class="p">,</span>
+        <span class="s2">"train_loss"</span><span class="p">:</span> <span class="n">train_loss</span><span class="p">,</span>
+        <span class="s2">"val_loss"</span><span class="p">:</span> <span class="n">val_loss</span><span class="p">,</span>
     <span class="p">}</span>    
 </code></pre></div>
 <h3 id="optional-tracing-the-training-metrics">(Optional) Tracing the training metrics</h3>
 <p>The last (optional also in this) change regards the possibility to report the training metrics while executing at each epoch step. This is done by the following code:</p>
 <div class="highlight"><pre><span></span><code>    <span class="o">...</span>
-    <span class="n">run</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">run</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;run&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">run</span> <span class="o">=</span> <span class="n">opts</span><span class="o">.</span><span class="n">run</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"run"</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
     <span class="o">...</span>
 
     <span class="k">if</span> <span class="n">run</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;train_loss&quot;</span><span class="p">:</span> <span class="n">train_loss</span><span class="p">,</span> <span class="s2">&quot;val_loss&quot;</span><span class="p">:</span> <span class="n">val_loss</span><span class="p">}</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Logging metrics to run... : </span><span class="si">{</span><span class="n">metrics</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">metrics</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"train_loss"</span><span class="p">:</span> <span class="n">train_loss</span><span class="p">,</span> <span class="s2">"val_loss"</span><span class="p">:</span> <span class="n">val_loss</span><span class="p">}</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Logging metrics to run... : </span><span class="si">{</span><span class="n">metrics</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="n">run</span><span class="o">.</span><span class="n">log_metrics</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
 </code></pre></div>
 <p>This is why we need <code>run</code> parameter to our entry point. Otherwise it should be reconstructed using SDK from the <code>RUN_ID</code> environment variable available in the container.</p>
@@ -3213,7 +3213,7 @@ makes the code self-consistent and universal. We will see how this may be used i
 <p>It is possible to create the project via platform UI or programmatically using the platform SDK:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;translation-example&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"translation-example"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="prepare-and-register-the-input-data">Prepare and register the input data</h3>
 <p>The next step is to prepare and explicitly register the input data necessary for our experiment. Making it explicit allows for better tracability and reproducibility of the experiments. We will use the same data as in the original code. Download it locally for further processing.</p>
@@ -3222,18 +3222,18 @@ makes the code self-consistent and universal. We will see how this may be used i
 <li>validation: <a href="https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/validation.tar.gz">https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/validation.tar.gz</a></li>
 </ul>
 <p>It is possible to upload the data artifacts via UI or programmatically:</p>
-<div class="highlight"><pre><span></span><code><span class="n">project</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="s2">&quot;train-data&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;training.tar.gz&quot;</span><span class="p">)</span>
-<span class="n">project</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="s2">&quot;validation-data&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;validation.tar.gz&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">project</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="s2">"train-data"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"artifact"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">"training.tar.gz"</span><span class="p">)</span>
+<span class="n">project</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="s2">"validation-data"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"artifact"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">"validation.tar.gz"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="register-function">Register function</h3>
 <p>Next, we need to describe and register our training function. Our code is pure Python Job application, so we can use <code>python</code> runtime for this purpose. Again, it is possible to do it via UI or programmatically:</p>
 <div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
-    <span class="s2">&quot;train-translator&quot;</span><span class="p">,</span>
-    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
-    <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_12&quot;</span><span class="p">,</span>
-    <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;git+https://github.com/scc-digitalhub/digitalhub-tutorials&quot;</span><span class="p">,</span>
-    <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;torch-translation-tutorial.wrapper:train&quot;</span><span class="p">,</span>
-    <span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;torch==2.3.0&quot;</span><span class="p">,</span> <span class="s2">&quot;torchtext==0.18.0&quot;</span><span class="p">,</span> <span class="s2">&quot;torchdata==0.9.0&quot;</span><span class="p">,</span> <span class="s2">&quot;spacy===3.8.14&quot;</span><span class="p">,</span> <span class="s2">&quot;portalocker==3.2.0&quot;</span><span class="p">,</span> <span class="s2">&quot;click &gt;= 8.2.1&quot;</span><span class="p">]</span>
+    <span class="s2">"train-translator"</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">"python"</span><span class="p">,</span>
+    <span class="n">python_version</span><span class="o">=</span><span class="s2">"PYTHON3_12"</span><span class="p">,</span>
+    <span class="n">code_src</span><span class="o">=</span><span class="s2">"git+https://github.com/scc-digitalhub/digitalhub-tutorials"</span><span class="p">,</span>
+    <span class="n">handler</span><span class="o">=</span><span class="s2">"torch-translation-tutorial.wrapper:train"</span><span class="p">,</span>
+    <span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s2">"torch==2.3.0"</span><span class="p">,</span> <span class="s2">"torchtext==0.18.0"</span><span class="p">,</span> <span class="s2">"torchdata==0.9.0"</span><span class="p">,</span> <span class="s2">"spacy===3.8.14"</span><span class="p">,</span> <span class="s2">"portalocker==3.2.0"</span><span class="p">,</span> <span class="s2">"click &gt;= 8.2.1"</span><span class="p">]</span>
 <span class="p">)</span>
 </code></pre></div>
 <p>Note the reference to the git repository where the training function is located: by default it will point out to the <strong>current</strong> version of the code in the main branch. So each time the function is executed, the latest version of the code will be used. However, it is possible to point to a specific commit, branch, or tag using the standard git reference syntax (e.g., <code>git+https://github.com/scc-digitalhub/digitalhub-tutorials#main</code>).</p>
@@ -3244,7 +3244,7 @@ makes the code self-consistent and universal. We will see how this may be used i
 <p>In case of remote execution, the execution takes place in the computational cluster behind the platform. The SDK will call the platform API to trigger this execution, and the plaform will instantiate a <strong>Kubernetes Job</strong>, that will be scheduled on the cluster and will download the code and execute it with the parameters and configuration specified. For this to happen the underlying function container image should be created.</p>
 <h3 id="building-a-container-image">Building a container image</h3>
 <p>The build operation may be triggered by the UI or programmatically:</p>
-<div class="highlight"><pre><span></span><code><span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;build&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"build"</span><span class="p">)</span>
 </code></pre></div>
 <p>This will result in the container image being created within the platform cluster, the image will be published in the internal image registry, and the function will be associated with the image. If the list of the dependencies changes, the container image should be rebuild. The images with the same dependencies and base image may be reused across different functions and executions.</p>
 <p>If the build operation is not performed, the execution will fail as the base container image does not include the required dependencies.</p>
@@ -3252,16 +3252,16 @@ makes the code self-consistent and universal. We will see how this may be used i
 <h3 id="executing-the-function">Executing the function</h3>
 <p>The function can be executed via UI or programmatically:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
     <span class="n">inputs</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;training_data&quot;</span><span class="p">:</span> <span class="n">project</span><span class="o">.</span><span class="n">get_artifact</span><span class="p">(</span><span class="s2">&quot;train-data&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
-        <span class="s2">&quot;validation_data&quot;</span><span class="p">:</span> <span class="n">project</span><span class="o">.</span><span class="n">get_artifact</span><span class="p">(</span><span class="s2">&quot;validation-data&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">key</span>
+        <span class="s2">"training_data"</span><span class="p">:</span> <span class="n">project</span><span class="o">.</span><span class="n">get_artifact</span><span class="p">(</span><span class="s2">"train-data"</span><span class="p">)</span><span class="o">.</span><span class="n">key</span><span class="p">,</span>
+        <span class="s2">"validation_data"</span><span class="p">:</span> <span class="n">project</span><span class="o">.</span><span class="n">get_artifact</span><span class="p">(</span><span class="s2">"validation-data"</span><span class="p">)</span><span class="o">.</span><span class="n">key</span>
     <span class="p">},</span>
     <span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;epochs&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;backend&quot;</span><span class="p">:</span> <span class="s2">&quot;gpu&quot;</span>
+        <span class="s2">"epochs"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"backend"</span><span class="p">:</span> <span class="s2">"gpu"</span>
     <span class="p">},</span>
-    <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;1xV100&quot;</span><span class="p">,</span>
+    <span class="n">profile</span><span class="o">=</span><span class="s2">"1xV100"</span><span class="p">,</span>
     <span class="n">local_execution</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -3277,8 +3277,8 @@ makes the code self-consistent and universal. We will see how this may be used i
 <p>Once the execution terminates successfully, the resulting model is logged and registered in the platform as a versioned artifact ready for inference use.</p>
 <h2 id="4-using-the-model-for-inference">4. Using the Model for Inference</h2>
 <p>Once model is trained, we can test it for inference. We start from downloading the model weights locally and create the inference from them.</p>
-<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s2">&quot;translator-model&quot;</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">&quot;./model/&quot;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s2">"translator-model"</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s2">"./model/"</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Once the model is downloaded, we can use it for inference. First, we initialize the model</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">src.model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Translator</span> <span class="c1"># Our model</span>
@@ -3286,14 +3286,14 @@ makes the code self-consistent and universal. We will see how this may be used i
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span> 
 
-<span class="n">DEVICE</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="n">DEVICE</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">"cuda"</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">"cpu"</span><span class="p">)</span>
 
-<span class="n">opts</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s2">&quot;Namespace&quot;</span><span class="p">,</span> <span class="p">(),</span> <span class="p">{})()</span>
-<span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;src&#39;</span><span class="p">])</span>
-<span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;tgt&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;tgt&#39;</span><span class="p">])</span>
-<span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;batch&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;batch&#39;</span><span class="p">])</span>
-<span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;train_file&quot;</span><span class="p">,</span> <span class="s2">&quot;training.tar.gz&quot;</span><span class="p">)</span>
-<span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">&quot;valid_file&quot;</span><span class="p">,</span> <span class="s2">&quot;validation.tar.gz&quot;</span><span class="p">)</span>
+<span class="n">opts</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="s2">"Namespace"</span><span class="p">,</span> <span class="p">(),</span> <span class="p">{})()</span>
+<span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"src"</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'src'</span><span class="p">])</span>
+<span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"tgt"</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'tgt'</span><span class="p">])</span>
+<span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"batch"</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'batch'</span><span class="p">])</span>
+<span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"train_file"</span><span class="p">,</span> <span class="s2">"training.tar.gz"</span><span class="p">)</span>
+<span class="nb">setattr</span><span class="p">(</span><span class="n">opts</span><span class="p">,</span> <span class="s2">"valid_file"</span><span class="p">,</span> <span class="s2">"validation.tar.gz"</span><span class="p">)</span>
 
 <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">src_vocab</span><span class="p">,</span> <span class="n">tgt_vocab</span><span class="p">,</span> <span class="n">src_transform</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">special_symbols</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span>
 
@@ -3302,24 +3302,24 @@ makes the code self-consistent and universal. We will see how this may be used i
 
 <span class="c1"># Create model</span>
 <span class="n">translator</span> <span class="o">=</span> <span class="n">Translator</span><span class="p">(</span>
-    <span class="n">num_encoder_layers</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;enc_layers&#39;</span><span class="p">],</span>
-    <span class="n">num_decoder_layers</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;dec_layers&#39;</span><span class="p">],</span>
-    <span class="n">embed_size</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;embed_size&#39;</span><span class="p">],</span>
-    <span class="n">num_heads</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;attn_heads&#39;</span><span class="p">],</span>
+    <span class="n">num_encoder_layers</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'enc_layers'</span><span class="p">],</span>
+    <span class="n">num_decoder_layers</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'dec_layers'</span><span class="p">],</span>
+    <span class="n">embed_size</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'embed_size'</span><span class="p">],</span>
+    <span class="n">num_heads</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'attn_heads'</span><span class="p">],</span>
     <span class="n">src_vocab_size</span><span class="o">=</span><span class="n">src_vocab_size</span><span class="p">,</span>
     <span class="n">tgt_vocab_size</span><span class="o">=</span><span class="n">tgt_vocab_size</span><span class="p">,</span>
-    <span class="n">dim_feedforward</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;dim_feedforward&#39;</span><span class="p">],</span>
-    <span class="n">dropout</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;dropout&#39;</span><span class="p">]</span>
+    <span class="n">dim_feedforward</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'dim_feedforward'</span><span class="p">],</span>
+    <span class="n">dropout</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'dropout'</span><span class="p">]</span>
 <span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
 
 <span class="c1"># Load in weights</span>
-<span class="n">translator</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;./model/best.pt&quot;</span><span class="p">))</span>
+<span class="n">translator</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"./model/best.pt"</span><span class="p">))</span>
 
 <span class="c1"># Set to inference</span>
 <span class="n">translator</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 </code></pre></div>
 <p>Second, we try the inference with a test sentence.  </p>
-<div class="highlight"><pre><span></span><code><span class="n">sentence</span> <span class="o">=</span> <span class="s2">&quot;Ich verstehe nicht.&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">sentence</span> <span class="o">=</span> <span class="s2">"Ich verstehe nicht."</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">greedy_decode</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">src_mask</span><span class="p">,</span> <span class="n">max_len</span><span class="p">,</span> <span class="n">start_symbol</span><span class="p">,</span> <span class="n">end_symbol</span><span class="p">):</span>
 
@@ -3365,7 +3365,7 @@ makes the code self-consistent and universal. We will see how this may be used i
 
 <span class="c1"># Decode</span>
 <span class="n">tgt_tokens</span> <span class="o">=</span> <span class="n">greedy_decode</span><span class="p">(</span>
-    <span class="n">translator</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">src_mask</span><span class="p">,</span> <span class="n">max_len</span><span class="o">=</span><span class="n">num_tokens</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span> <span class="n">start_symbol</span><span class="o">=</span><span class="n">special_symbols</span><span class="p">[</span><span class="s2">&quot;&lt;bos&gt;&quot;</span><span class="p">],</span> <span class="n">end_symbol</span><span class="o">=</span><span class="n">special_symbols</span><span class="p">[</span><span class="s2">&quot;&lt;eos&gt;&quot;</span><span class="p">]</span>
+    <span class="n">translator</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">src_mask</span><span class="p">,</span> <span class="n">max_len</span><span class="o">=</span><span class="n">num_tokens</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span> <span class="n">start_symbol</span><span class="o">=</span><span class="n">special_symbols</span><span class="p">[</span><span class="s2">"&lt;bos&gt;"</span><span class="p">],</span> <span class="n">end_symbol</span><span class="o">=</span><span class="n">special_symbols</span><span class="p">[</span><span class="s2">"&lt;eos&gt;"</span><span class="p">]</span>
 <span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
 <span class="c1"># Convert to list of tokens</span>
@@ -3375,7 +3375,7 @@ makes the code self-consistent and universal. We will see how this may be used i
 <span class="n">output_list_words</span> <span class="o">=</span> <span class="n">tgt_vocab</span><span class="o">.</span><span class="n">lookup_tokens</span><span class="p">(</span><span class="n">output_as_list</span><span class="p">)</span>
 
 <span class="c1"># Remove special tokens and convert to string</span>
-<span class="n">translation</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_list_words</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&lt;bos&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&lt;eos&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">translation</span> <span class="o">=</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_list_words</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"&lt;bos&gt;"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"&lt;eos&gt;"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">translation</span><span class="p">)</span>
 </code></pre></div>

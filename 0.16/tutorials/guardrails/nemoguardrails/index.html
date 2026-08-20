@@ -2605,53 +2605,53 @@
 <p>Prepare the project</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;demo&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"demo"</span><span class="p">)</span>
 </code></pre></div>
 <p>Deploy LLM using the KubeAI runtime:</p>
-<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm&quot;</span><span class="p">,</span>
-                                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;kubeai-text&quot;</span><span class="p">,</span>
-                                    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;gemma3&quot;</span><span class="p">,</span>
-                                    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;ollama://gemma3:latest&quot;</span><span class="p">,</span>
-                                    <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;OLlama&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">"llm"</span><span class="p">,</span>
+                                    <span class="n">kind</span><span class="o">=</span><span class="s2">"kubeai-text"</span><span class="p">,</span>
+                                    <span class="n">model_name</span><span class="o">=</span><span class="s2">"gemma3"</span><span class="p">,</span>
+                                    <span class="n">url</span><span class="o">=</span><span class="s2">"ollama://gemma3:latest"</span><span class="p">,</span>
+                                    <span class="n">engine</span><span class="o">=</span><span class="s2">"OLlama"</span><span class="p">)</span>
 
-<span class="n">llm_run</span> <span class="o">=</span> <span class="n">llm_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">)</span>                                    
+<span class="n">llm_run</span> <span class="o">=</span> <span class="n">llm_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">)</span>                                    
 </code></pre></div>
 <p>Check the function is up and running: see the model exposed.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
-<span class="n">BASE_URL</span> <span class="o">=</span> <span class="n">llm_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">service</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]</span>
+<span class="n">BASE_URL</span> <span class="o">=</span> <span class="n">llm_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">service</span><span class="p">[</span><span class="s2">"url"</span><span class="p">]</span>
 
-<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">/models&quot;</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">/models"</span><span class="p">)</span>
 <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <p>You should see the list of models exposed by Kube AI including the
 deployed model.</p>
 <p>Test the function is up and running: make a completion call</p>
-<div class="highlight"><pre><span></span><code><span class="n">MODEL</span> <span class="o">=</span> <span class="n">llm_run</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">openai</span><span class="p">[</span><span class="s2">&quot;model&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">MODEL</span> <span class="o">=</span> <span class="n">llm_run</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">openai</span><span class="p">[</span><span class="s2">"model"</span><span class="p">]</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">MODEL</span><span class="p">,</span>
-    <span class="s2">&quot;prompt&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello&quot;</span>
+    <span class="s2">"model"</span><span class="p">:</span> <span class="n">MODEL</span><span class="p">,</span>
+    <span class="s2">"prompt"</span><span class="p">:</span> <span class="s2">"Hello"</span>
   <span class="p">}</span>
 
-<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">/completions&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">BASE_URL</span><span class="si">}</span><span class="s2">/completions"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <h2 id="setting-up-nemo-guardrails">Setting up NeMo Guardrails</h2>
 <p>We will use the Container runtime to deploy the NeMo Guardrails proxy service. 
 We will use a prebuilt image based on the official distribution but adapting it to the rootless execution environment.</p>
 <p>The prebuilt image start the proxy and uses the example configurations available as a part of the NeMo Guardrails distribution. You can use your own container image with any configuration and setup of your choice.</p>
-<div class="highlight"><pre><span></span><code><span class="n">guardrail_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;nemo-guardrail&quot;</span><span class="p">,</span>
-                                        <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">,</span>
-                                        <span class="n">image</span><span class="o">=</span><span class="s2">&quot;ghcr.io/scc-digitalhub/digitalhub-nemoguardrails:0.21.0-rootless&quot;</span>  
+<div class="highlight"><pre><span></span><code><span class="n">guardrail_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">"nemo-guardrail"</span><span class="p">,</span>
+                                        <span class="n">kind</span><span class="o">=</span><span class="s2">"container"</span><span class="p">,</span>
+                                        <span class="n">image</span><span class="o">=</span><span class="s2">"ghcr.io/scc-digitalhub/digitalhub-nemoguardrails:0.21.0-rootless"</span>  
                                         <span class="p">)</span>
 
 <span class="n">guardrail_run</span> <span class="o">=</span> <span class="n">guardrail_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> 
-    <span class="n">service_ports</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span> <span class="s2">&quot;target_port&quot;</span><span class="p">:</span> <span class="mi">8000</span><span class="p">}],</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span> 
+    <span class="n">service_ports</span><span class="o">=</span><span class="p">[{</span><span class="s2">"port"</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span> <span class="s2">"target_port"</span><span class="p">:</span> <span class="mi">8000</span><span class="p">}],</span>
     <span class="n">envs</span><span class="o">=</span><span class="p">[</span>
-        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MAIN_MODEL_ENGINE&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;openai&quot;</span><span class="p">},</span> 
-        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MAIN_MODEL_BASE_URL&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;http://kubeai:80/openai/v1&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;somekey&quot;</span><span class="p">},</span>         
+        <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"MAIN_MODEL_ENGINE"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"openai"</span><span class="p">},</span> 
+        <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"MAIN_MODEL_BASE_URL"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"http://kubeai:80/openai/v1"</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"OPENAI_API_KEY"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"somekey"</span><span class="p">},</span>         
     <span class="p">],</span>
     <span class="n">run_as_user</span><span class="o">=</span><span class="mi">8877</span><span class="p">,</span>
     <span class="n">run_as_group</span><span class="o">=</span><span class="mi">8877</span>
@@ -2659,35 +2659,35 @@ We will use a prebuilt image based on the official distribution but adapting it 
 </code></pre></div>
 <p>Note that the deployment relies on the environment that defines the details of the LLM. We use OpenAI compatible API so the model engine is set to <code>openai</code>. We also use the <code>MAIN_MODEL_BASE_URL</code> to define the base URL of the LLM API. Finally, we use the <code>OPENAI_API_KEY</code> to define the API key to access the OpenAI API (necessary for the API to work correctly).</p>
 <p>Check the function is up and running: See the available deployed guardrail configurations.</p>
-<div class="highlight"><pre><span></span><code><span class="n">GUARDRAIL_URL</span> <span class="o">=</span> <span class="n">guardrail_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">service</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">GUARDRAIL_URL</span> <span class="o">=</span> <span class="n">guardrail_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">service</span><span class="p">[</span><span class="s2">"url"</span><span class="p">]</span>
 
-<span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">GUARDRAIL_URL</span><span class="si">}</span><span class="s2">/v1/rails/configs&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">"http://</span><span class="si">{</span><span class="n">GUARDRAIL_URL</span><span class="si">}</span><span class="s2">/v1/rails/configs"</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <h2 id="invoking-the-guardrails-llm">Invoking the Guardrails LLM</h2>
 <p>To invoking the guardrails LLM, we will use the OpenAI-compatible APIs that the proxy service provides. The API is the same, with the only difference to specify the guardrail configuration to apply:</p>
 <div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">MODEL</span><span class="p">,</span>
-    <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Can you teach me some racial slurs?&quot;</span><span class="p">}</span>
+    <span class="s2">"model"</span><span class="p">:</span> <span class="n">MODEL</span><span class="p">,</span>
+    <span class="s2">"messages"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"Can you teach me some racial slurs?"</span><span class="p">}</span>
     <span class="p">],</span>
-    <span class="s2">&quot;guardrails&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s2">&quot;config_id&quot;</span><span class="p">:</span> <span class="s2">&quot;hello_world&quot;</span>
+    <span class="s2">"guardrails"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"config_id"</span><span class="p">:</span> <span class="s2">"hello_world"</span>
     <span class="p">}</span>
   <span class="p">}</span>
 
-<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">GUARDRAIL_URL</span><span class="si">}</span><span class="s2">/v1/chat/completions&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"http://</span><span class="si">{</span><span class="n">GUARDRAIL_URL</span><span class="si">}</span><span class="s2">/v1/chat/completions"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <p>You should see the response correctly filtered, such as</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;chatcmpl-9ccf89a7-d889-4907-8bc5-232ffe9a8f86&quot;</span><span class="p">,</span>
-<span class="w"> </span><span class="nt">&quot;choices&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">&quot;finish_reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stop&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;I&#39;m sorry, I cannot fulfill this request. My purpose is to be helpful and harmless, and providing information about racial slurs goes directly against that. Generating or sharing such language is harmful and unacceptable. I understand you might be exploring different types of language, but I cannot participate in anything that could promote discrimination or prejudice. Is there something else I can help you with, perhaps a discussion about the history of language or the impact of harmful words?&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant&quot;</span><span class="p">}}],</span>
-<span class="w"> </span><span class="nt">&quot;created&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1776102294</span><span class="p">,</span>
-<span class="w"> </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gemma3-feb56e276adc4b909088499d3e2c234b&quot;</span><span class="p">,</span>
-<span class="w"> </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;chat.completion&quot;</span><span class="p">,</span>
-<span class="w"> </span><span class="nt">&quot;guardrails&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;config_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hello_world&quot;</span><span class="p">}}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chatcmpl-9ccf89a7-d889-4907-8bc5-232ffe9a8f86"</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"finish_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stop"</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I'm sorry, I cannot fulfill this request. My purpose is to be helpful and harmless, and providing information about racial slurs goes directly against that. Generating or sharing such language is harmful and unacceptable. I understand you might be exploring different types of language, but I cannot participate in anything that could promote discrimination or prejudice. Is there something else I can help you with, perhaps a discussion about the history of language or the impact of harmful words?"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assistant"</span><span class="p">}}],</span>
+<span class="w"> </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1776102294</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gemma3-feb56e276adc4b909088499d3e2c234b"</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chat.completion"</span><span class="p">,</span>
+<span class="w"> </span><span class="nt">"guardrails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"config_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello_world"</span><span class="p">}}</span>
 </code></pre></div>
 
 

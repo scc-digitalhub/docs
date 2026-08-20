@@ -2617,46 +2617,46 @@
 <p>First, import necessary libraries and create a project to host the functions and executions</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;llm&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"llm"</span><span class="p">)</span>
 </code></pre></div>
 <p>Create the serving function definition:</p>
-<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm-classification&quot;</span><span class="p">,</span>
-                                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;huggingfaceserve&quot;</span><span class="p">,</span>
-                                    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
-                                    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;huggingface://distilbert/distilbert-base-uncased-finetuned-sst-2-english&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">"llm-classification"</span><span class="p">,</span>
+                                    <span class="n">kind</span><span class="o">=</span><span class="s2">"huggingfaceserve"</span><span class="p">,</span>
+                                    <span class="n">model_name</span><span class="o">=</span><span class="s2">"mymodel"</span><span class="p">,</span>
+                                    <span class="n">path</span><span class="o">=</span><span class="s2">"huggingface://distilbert/distilbert-base-uncased-finetuned-sst-2-english"</span><span class="p">)</span>
 </code></pre></div>
 <p>Serve the model:</p>
-<div class="highlight"><pre><span></span><code><span class="n">llm_run</span> <span class="o">=</span> <span class="n">llm_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;1xa100&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">llm_run</span> <span class="o">=</span> <span class="n">llm_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">"1xa100"</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Please note the use of the <code>profile</code> parameter. As the LLM models require specific hardware (GPU in particular), it is necessary to specify the HW requirements as described in the  <a href="../../../tasks/kubernetes-resources/">Configuring Kubernetes executions</a> section. In particular, it is possible to rely on the predefined resource templates of the platform deployment.</p>
 <p>As in other scenarios, you need to wait a bit for the service to become available.
 Once the service becomes available, it is possible to make the calls:</p>
 <div class="highlight"><pre><span></span><code><span class="n">json</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"inputs"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;input-0&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-            <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;BYTES&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Hello, my dog is cute&quot;</span><span class="p">,</span> <span class="s2">&quot;I am feeling sad&quot;</span><span class="p">],</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"input-0"</span><span class="p">,</span>
+            <span class="s2">"shape"</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="s2">"datatype"</span><span class="p">:</span> <span class="s2">"BYTES"</span><span class="p">,</span>
+            <span class="s2">"data"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Hello, my dog is cute"</span><span class="p">,</span> <span class="s2">"I am feeling sad"</span><span class="p">],</span>
         <span class="p">},</span>
     <span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">llm_run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mymodel&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">llm_run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">"mymodel"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <p>Here the classification LLM service API follows the Open Inference protocol API and the expected result should have the following form:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="s2">&quot;model_name&quot;</span><span class="p">:</span> <span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;model_version&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;cab30aa5-c10f-4233-94e2-14e4bc8fbf6f&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"model_name"</span><span class="p">:</span> <span class="s2">"mymodel"</span><span class="p">,</span>
+    <span class="s2">"model_version"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"cab30aa5-c10f-4233-94e2-14e4bc8fbf6f"</span><span class="p">,</span>
+    <span class="s2">"parameters"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s2">"outputs"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;output-0&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-            <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;INT64&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"output-0"</span><span class="p">,</span>
+            <span class="s2">"shape"</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="s2">"datatype"</span><span class="p">:</span> <span class="s2">"INT64"</span><span class="p">,</span>
+            <span class="s2">"parameters"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">"data"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
         <span class="p">},</span>
     <span class="p">],</span>
 <span class="p">}</span>
@@ -2670,19 +2670,19 @@ Once the service becomes available, it is possible to make the calls:</p>
 <p>First, import the necessary libraries and create a project to host the functions and runs:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;llm&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"llm"</span><span class="p">)</span>
 </code></pre></div>
 <p>Create the serving function definition:</p>
-<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm-generation&quot;</span><span class="p">,</span>
-                                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;huggingfaceserve&quot;</span><span class="p">,</span>
-                                    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
-                                    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;huggingface://meta-llama/meta-llama-3-8b-instruct&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">"llm-generation"</span><span class="p">,</span>
+                                    <span class="n">kind</span><span class="o">=</span><span class="s2">"huggingfaceserve"</span><span class="p">,</span>
+                                    <span class="n">model_name</span><span class="o">=</span><span class="s2">"mymodel"</span><span class="p">,</span>
+                                    <span class="n">path</span><span class="o">=</span><span class="s2">"huggingface://meta-llama/meta-llama-3-8b-instruct"</span><span class="p">)</span>
 </code></pre></div>
 <p>Next, we serve the model. This particular one is protected, so you need to provide a HuggingFace token with access to it. As the model is large, we use a profile with more resources.</p>
-<div class="highlight"><pre><span></span><code><span class="n">hf_token</span> <span class="o">=</span> <span class="s2">&quot;&lt;HUGGINGFACE TOKEN&gt;&quot;</span>
-<span class="n">llm_run</span> <span class="o">=</span> <span class="n">llm_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span>
-                           <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;1xa100-80GB&quot;</span><span class="p">,</span>
-                           <span class="n">envs</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;HF_TOKEN&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">hf_token</span><span class="p">}],</span>
+<div class="highlight"><pre><span></span><code><span class="n">hf_token</span> <span class="o">=</span> <span class="s2">"&lt;HUGGINGFACE TOKEN&gt;"</span>
+<span class="n">llm_run</span> <span class="o">=</span> <span class="n">llm_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span>
+                           <span class="n">profile</span><span class="o">=</span><span class="s2">"1xa100-80GB"</span><span class="p">,</span>
+                           <span class="n">envs</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"HF_TOKEN"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">:</span> <span class="n">hf_token</span><span class="p">}],</span>
                            <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition warning">
@@ -2693,80 +2693,80 @@ in some cases up to 10 minutes.</p>
 <p>As in case of classification models, the LLM models require specific hardware (GPU in particular), it is necessary
 to specify the HW requirements as described in the <a href="../../../tasks/kubernetes-resources/">Configuring Kubernetes executions</a> section. In particular, it is possible to rely on the predefined resource templates of the platform deployment.</p>
 <p>Once the service becomes available, it is possible to make the calls. For example, for the completion requests:</p>
-<div class="highlight"><pre><span></span><code><span class="n">service_url</span> <span class="o">=</span> <span class="n">llm_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s2">&quot;service&quot;</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">]</span>
-<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">service_url</span><span class="si">}</span><span class="s2">/openai/v1/completions&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">service_url</span> <span class="o">=</span> <span class="n">llm_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s2">"service"</span><span class="p">][</span><span class="s2">"url"</span><span class="p">]</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"http://</span><span class="si">{</span><span class="n">service_url</span><span class="si">}</span><span class="s2">/openai/v1/completions"</span>
 
 <span class="n">json</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;prompt&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello! How are you?&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="s2">&quot;max_tokens&quot;</span><span class="p">:</span> <span class="mi">30</span>
+    <span class="s2">"model"</span><span class="p">:</span> <span class="s2">"mymodel"</span><span class="p">,</span>
+    <span class="s2">"prompt"</span><span class="p">:</span> <span class="s2">"Hello! How are you?"</span><span class="p">,</span>
+    <span class="s2">"stream"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s2">"max_tokens"</span><span class="p">:</span> <span class="mi">30</span>
 <span class="p">}</span>
 
 <span class="n">llm_run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <p>Here the expected output should have the following form:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">   </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;cmpl-69dd8b1ea70c477fbf80c353ac73b52e&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;choices&quot;</span><span class="p">:[</span>
+<span class="w">   </span><span class="nt">"id"</span><span class="p">:</span><span class="s2">"cmpl-69dd8b1ea70c477fbf80c353ac73b52e"</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"choices"</span><span class="p">:[</span>
 <span class="w">      </span><span class="p">{</span>
-<span class="w">         </span><span class="nt">&quot;finish_reason&quot;</span><span class="p">:</span><span class="s2">&quot;length&quot;</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;logprobs&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="s2">&quot; Hope you&#39;re having a great day!\n\nHere I&#39;d like to share some news about my new podcast, where I&#39;ll be exploring the world of...&quot;</span>
+<span class="w">         </span><span class="nt">"finish_reason"</span><span class="p">:</span><span class="s2">"length"</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"index"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"logprobs"</span><span class="p">:</span><span class="s2">"None"</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"text"</span><span class="p">:</span><span class="s2">" Hope you're having a great day!\n\nHere I'd like to share some news about my new podcast, where I'll be exploring the world of..."</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">   </span><span class="p">],</span>
-<span class="w">   </span><span class="nt">&quot;created&quot;</span><span class="p">:</span><span class="mi">1761210462</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;system_fingerprint&quot;</span><span class="p">:</span><span class="s2">&quot;None&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="s2">&quot;text_completion&quot;</span><span class="p">,</span>
-<span class="w">   </span><span class="nt">&quot;usage&quot;</span><span class="p">:{</span>
-<span class="w">      </span><span class="nt">&quot;completion_tokens&quot;</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;prompt_tokens&quot;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;total_tokens&quot;</span><span class="p">:</span><span class="mi">37</span>
+<span class="w">   </span><span class="nt">"created"</span><span class="p">:</span><span class="mi">1761210462</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"model"</span><span class="p">:</span><span class="s2">"mymodel"</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"system_fingerprint"</span><span class="p">:</span><span class="s2">"None"</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"object"</span><span class="p">:</span><span class="s2">"text_completion"</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"usage"</span><span class="p">:{</span>
+<span class="w">      </span><span class="nt">"completion_tokens"</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"prompt_tokens"</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"total_tokens"</span><span class="p">:</span><span class="mi">37</span>
 <span class="w">   </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>In case of chat requests:</p>
-<div class="highlight"><pre><span></span><code><span class="n">service_url</span> <span class="o">=</span> <span class="n">llm_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s2">&quot;service&quot;</span><span class="p">][</span><span class="s2">&quot;url&quot;</span><span class="p">]</span>
-<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;http://</span><span class="si">{</span><span class="n">service_url</span><span class="si">}</span><span class="s1">/openai/v1/chat/completions&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="n">service_url</span> <span class="o">=</span> <span class="n">llm_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s2">"service"</span><span class="p">][</span><span class="s2">"url"</span><span class="p">]</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'http://</span><span class="si">{</span><span class="n">service_url</span><span class="si">}</span><span class="s1">/openai/v1/chat/completions'</span>
 
 <span class="n">json</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are an assistant that speaks like Shakespeare.&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Write a poem about colors&quot;</span><span class="p">}</span>
+    <span class="s2">"model"</span><span class="p">:</span> <span class="s2">"mymodel"</span><span class="p">,</span>
+    <span class="s2">"messages"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"system"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"You are an assistant that speaks like Shakespeare."</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">"role"</span><span class="p">:</span> <span class="s2">"user"</span><span class="p">,</span> <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"Write a poem about colors"</span><span class="p">}</span>
     <span class="p">],</span>
-    <span class="s2">&quot;max_tokens&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-    <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="kc">False</span>
+    <span class="s2">"max_tokens"</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="s2">"stream"</span><span class="p">:</span> <span class="kc">False</span>
 <span class="p">}</span>
 
 <span class="n">llm_run</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <p>Expected output:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cmpl-9aad539128294069bf1e406a5cba03d3&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;choices&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cmpl-9aad539128294069bf1e406a5cba03d3"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;finish_reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;length&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;  O, fair and vibrant colors, how ye doth delight\nIn the world around us, with thy hues so bright!\n&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;tool_calls&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;function_call&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">      </span><span class="nt">"finish_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"length"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"  O, fair and vibrant colors, how ye doth delight\nIn the world around us, with thy hues so bright!\n"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"tool_calls"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assistant"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"function_call"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">&quot;logprobs&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
+<span class="w">      </span><span class="nt">"logprobs"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">],</span>
-<span class="w">  </span><span class="nt">&quot;created&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1718638005</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;system_fingerprint&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;object&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;chat.completion&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;usage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;completion_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;prompt_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;total_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">67</span>
+<span class="w">  </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1718638005</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mymodel"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"system_fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chat.completion"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"usage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"completion_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"prompt_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"total_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">67</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -2777,14 +2777,14 @@ to specify the HW requirements as described in the <a href="../../../tasks/kuber
 <p>First, import the necessary libraries and create a project to host the functions and runs:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;llm&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"llm"</span><span class="p">)</span>
 </code></pre></div>
 <p>Create a directory for the code:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="n">Path</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Path</span><span class="p">(</span><span class="s2">"src"</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Create the training procedure that logs the model to the platform:</p>
-<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">&quot;src/train_model.py&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="s2">"src/train_model.py"</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
@@ -2797,28 +2797,28 @@ to specify the HW requirements as described in the <a href="../../../tasks/kuber
 
 <span class="nd">@handler</span><span class="p">()</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">project</span><span class="p">):</span>
-    <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;google-bert/bert-base-cased&quot;</span><span class="p">)</span>
-    <span class="n">metric</span> <span class="o">=</span> <span class="n">evaluate</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;accuracy&quot;</span><span class="p">)</span>
+    <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"google-bert/bert-base-cased"</span><span class="p">)</span>
+    <span class="n">metric</span> <span class="o">=</span> <span class="n">evaluate</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"accuracy"</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">tokenize_function</span><span class="p">(</span><span class="n">examples</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">examples</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">],</span> <span class="n">padding</span><span class="o">=</span><span class="s2">&quot;max_length&quot;</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tokenizer</span><span class="p">(</span><span class="n">examples</span><span class="p">[</span><span class="s2">"text"</span><span class="p">],</span> <span class="n">padding</span><span class="o">=</span><span class="s2">"max_length"</span><span class="p">,</span> <span class="n">truncation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">compute_metrics</span><span class="p">(</span><span class="n">eval_pred</span><span class="p">):</span>
         <span class="n">logits</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">eval_pred</span>
         <span class="n">predictions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">metric</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">predictions</span><span class="o">=</span><span class="n">predictions</span><span class="p">,</span> <span class="n">references</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
 
-    <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;yelp_review_full&quot;</span><span class="p">)</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">"yelp_review_full"</span><span class="p">)</span>
     <span class="n">tokenized_datasets</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">tokenize_function</span><span class="p">,</span> <span class="n">batched</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSequenceClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;google-bert/bert-base-cased&quot;</span><span class="p">,</span> <span class="n">num_labels</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">AutoModelForSequenceClassification</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">"google-bert/bert-base-cased"</span><span class="p">,</span> <span class="n">num_labels</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
-    <span class="n">training_args</span> <span class="o">=</span> <span class="n">TrainingArguments</span><span class="p">(</span><span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;test_trainer&quot;</span><span class="p">)</span>
+    <span class="n">training_args</span> <span class="o">=</span> <span class="n">TrainingArguments</span><span class="p">(</span><span class="n">output_dir</span><span class="o">=</span><span class="s2">"test_trainer"</span><span class="p">)</span>
 
-    <span class="n">small_train_dataset</span> <span class="o">=</span> <span class="n">tokenized_datasets</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
-    <span class="n">small_eval_dataset</span> <span class="o">=</span> <span class="n">tokenized_datasets</span><span class="p">[</span><span class="s2">&quot;test&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+    <span class="n">small_train_dataset</span> <span class="o">=</span> <span class="n">tokenized_datasets</span><span class="p">[</span><span class="s2">"train"</span><span class="p">]</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+    <span class="n">small_eval_dataset</span> <span class="o">=</span> <span class="n">tokenized_datasets</span><span class="p">[</span><span class="s2">"test"</span><span class="p">]</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
 
-    <span class="n">training_args</span> <span class="o">=</span> <span class="n">TrainingArguments</span><span class="p">(</span><span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;test_trainer&quot;</span><span class="p">,</span> <span class="n">eval_strategy</span><span class="o">=</span><span class="s2">&quot;epoch&quot;</span><span class="p">)</span>
+    <span class="n">training_args</span> <span class="o">=</span> <span class="n">TrainingArguments</span><span class="p">(</span><span class="n">output_dir</span><span class="o">=</span><span class="s2">"test_trainer"</span><span class="p">,</span> <span class="n">eval_strategy</span><span class="o">=</span><span class="s2">"epoch"</span><span class="p">)</span>
 
     <span class="n">trainer</span> <span class="o">=</span> <span class="n">Trainer</span><span class="p">(</span>
         <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
@@ -2830,11 +2830,11 @@ to specify the HW requirements as described in the <a href="../../../tasks/kuber
 
     <span class="n">trainer</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 
-    <span class="n">save_model</span> <span class="o">=</span> <span class="s2">&quot;model&quot;</span>
+    <span class="n">save_model</span> <span class="o">=</span> <span class="s2">"model"</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">save_model</span><span class="p">):</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">save_model</span><span class="p">)</span>
 
-    <span class="n">save_dir</span> <span class="o">=</span> <span class="s2">&quot;model&quot;</span>
+    <span class="n">save_dir</span> <span class="o">=</span> <span class="s2">"model"</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">save_dir</span><span class="p">):</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">save_dir</span><span class="p">)</span>
 
@@ -2842,69 +2842,69 @@ to specify the HW requirements as described in the <a href="../../../tasks/kuber
     <span class="n">tokenizer</span><span class="o">.</span><span class="n">save_pretrained</span><span class="p">(</span><span class="n">save_dir</span><span class="p">)</span>
 
     <span class="n">project</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;test_llm_model&quot;</span><span class="p">,</span>
-        <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;huggingface&quot;</span><span class="p">,</span>
-        <span class="n">base_model</span><span class="o">=</span><span class="s2">&quot;google-bert/bert-base-cased&quot;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">"test_llm_model"</span><span class="p">,</span>
+        <span class="n">kind</span><span class="o">=</span><span class="s2">"huggingface"</span><span class="p">,</span>
+        <span class="n">base_model</span><span class="o">=</span><span class="s2">"google-bert/bert-base-cased"</span><span class="p">,</span>
         <span class="n">source</span><span class="o">=</span><span class="n">save_dir</span><span class="p">,</span>
     <span class="p">)</span>
 </code></pre></div>
 <p>Register the function:</p>
-<div class="highlight"><pre><span></span><code><span class="n">train_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;train_model&quot;</span><span class="p">,</span>
-                                  <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
-                                  <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_10&quot;</span><span class="p">,</span>
-                                  <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/train_model.py&quot;</span><span class="p">,</span>
-                                  <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
-                                  <span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;evaluate&quot;</span><span class="p">,</span> <span class="s2">&quot;transformers[torch]&quot;</span><span class="p">,</span> <span class="s2">&quot;torch&quot;</span><span class="p">,</span> <span class="s2">&quot;torchvision&quot;</span><span class="p">,</span> <span class="s2">&quot;accelerate&quot;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><span class="n">train_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"train_model"</span><span class="p">,</span>
+                                  <span class="n">kind</span><span class="o">=</span><span class="s2">"python"</span><span class="p">,</span>
+                                  <span class="n">python_version</span><span class="o">=</span><span class="s2">"PYTHON3_10"</span><span class="p">,</span>
+                                  <span class="n">code_src</span><span class="o">=</span><span class="s2">"src/train_model.py"</span><span class="p">,</span>
+                                  <span class="n">handler</span><span class="o">=</span><span class="s2">"train"</span><span class="p">,</span>
+                                  <span class="n">requirements</span><span class="o">=</span><span class="p">[</span><span class="s2">"evaluate"</span><span class="p">,</span> <span class="s2">"transformers[torch]"</span><span class="p">,</span> <span class="s2">"torch"</span><span class="p">,</span> <span class="s2">"torchvision"</span><span class="p">,</span> <span class="s2">"accelerate"</span><span class="p">])</span>
 </code></pre></div>
 <p>Run it:
-<div class="highlight"><pre><span></span><code><span class="n">train_run</span> <span class="o">=</span> <span class="n">train_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;1xa100&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">train_run</span> <span class="o">=</span> <span class="n">train_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">"1xa100"</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div></p>
 <p>A new model should have been created in the project. We need its path:
-<div class="highlight"><pre><span></span><code><span class="n">llm_model_path</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s2">&quot;test_llm_model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span>
+<div class="highlight"><pre><span></span><code><span class="n">llm_model_path</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_model</span><span class="p">(</span><span class="s2">"test_llm_model"</span><span class="p">)</span><span class="o">.</span><span class="n">spec</span><span class="o">.</span><span class="n">path</span>
 </code></pre></div></p>
 <p>Create the serving function definition:</p>
-<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;llm-classification&quot;</span><span class="p">,</span>
-                                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;huggingfaceserve&quot;</span><span class="p">,</span>
-                                    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">llm_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">"llm-classification"</span><span class="p">,</span>
+                                    <span class="n">kind</span><span class="o">=</span><span class="s2">"huggingfaceserve"</span><span class="p">,</span>
+                                    <span class="n">model_name</span><span class="o">=</span><span class="s2">"mymodel"</span><span class="p">,</span>
                                     <span class="n">path</span><span class="o">=</span><span class="n">llm_model_path</span><span class="p">)</span>
 </code></pre></div>
 <p>Serve the model:</p>
-<div class="highlight"><pre><span></span><code><span class="n">llm_run</span> <span class="o">=</span> <span class="n">llm_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;1xa100&quot;</span><span class="p">,</span> <span class="n">volumes</span><span class="o">=</span><span class="p">[{</span>
-                        <span class="s2">&quot;volume_type&quot;</span><span class="p">:</span> <span class="s2">&quot;persistent_volume_claim&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;volume-llmpa&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;mount_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/shared&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="s2">&quot;10Gi&quot;</span> <span class="p">}}]</span>
+<div class="highlight"><pre><span></span><code><span class="n">llm_run</span> <span class="o">=</span> <span class="n">llm_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span> <span class="n">profile</span><span class="o">=</span><span class="s2">"1xa100"</span><span class="p">,</span> <span class="n">volumes</span><span class="o">=</span><span class="p">[{</span>
+                        <span class="s2">"volume_type"</span><span class="p">:</span> <span class="s2">"persistent_volume_claim"</span><span class="p">,</span>
+                        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"volume-llmpa"</span><span class="p">,</span>
+                        <span class="s2">"mount_path"</span><span class="p">:</span> <span class="s2">"/shared"</span><span class="p">,</span>
+                        <span class="s2">"spec"</span><span class="p">:</span> <span class="p">{</span> <span class="s2">"size"</span><span class="p">:</span> <span class="s2">"10Gi"</span> <span class="p">}}]</span>
                     <span class="p">)</span>
 </code></pre></div>
 <p>Please note the use of the <code>profile</code> parameter. As the LLM models require specific hardware (GPU in particular), it is necessary
 to specify the HW requirements as described in the  <a href="../../../tasks/kubernetes-resources">Configuring Kubernetes executions</a> section. In particular, it is possible to rely on the predefined resource templates of the platform deployment. Also, in case of large models the default disk space may be insufficient and an extra volume should be configured for the underlying deployment.</p>
 <p>Once the service becomes available, it is possible to make the calls:</p>
 <div class="highlight"><pre><span></span><code><span class="n">json</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"inputs"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;input-0&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-            <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;BYTES&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Hello, my dog is cute&quot;</span><span class="p">,</span> <span class="s2">&quot;I am feeling sad&quot;</span><span class="p">],</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"input-0"</span><span class="p">,</span>
+            <span class="s2">"shape"</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="s2">"datatype"</span><span class="p">:</span> <span class="s2">"BYTES"</span><span class="p">,</span>
+            <span class="s2">"data"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Hello, my dog is cute"</span><span class="p">,</span> <span class="s2">"I am feeling sad"</span><span class="p">],</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">llm_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;mymodel&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">llm_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">"mymodel"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">json</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <p>Here the classification LLM service API follows the Open Inference protocol API and the expected result should have the following form:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-    <span class="s2">&quot;model_name&quot;</span><span class="p">:</span> <span class="s2">&quot;mymodel&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;model_version&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;cab30aa5-c10f-4233-94e2-14e4bc8fbf6f&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"model_name"</span><span class="p">:</span> <span class="s2">"mymodel"</span><span class="p">,</span>
+    <span class="s2">"model_version"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"cab30aa5-c10f-4233-94e2-14e4bc8fbf6f"</span><span class="p">,</span>
+    <span class="s2">"parameters"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s2">"outputs"</span><span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;output-0&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-            <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;INT64&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
-            <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"output-0"</span><span class="p">,</span>
+            <span class="s2">"shape"</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="s2">"datatype"</span><span class="p">:</span> <span class="s2">"INT64"</span><span class="p">,</span>
+            <span class="s2">"parameters"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">"data"</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
         <span class="p">}</span>
     <span class="p">],</span>
 <span class="p">}</span>

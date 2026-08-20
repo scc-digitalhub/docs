@@ -2661,50 +2661,50 @@
 <li>sink anonymized stream to MJPEG sink</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="n">Path</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Path</span><span class="p">(</span><span class="s2">"src"</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Lets create the Service Graph function definition:</p>
 <div class="highlight"><pre><span></span><code><span class="o">%%</span><span class="n">writefile</span> <span class="n">src</span><span class="o">/</span><span class="n">flow</span><span class="o">.</span><span class="n">yaml</span>
 
 <span class="nb">input</span><span class="p">:</span>
-  <span class="n">kind</span><span class="p">:</span> <span class="s2">&quot;mjpeg&quot;</span>
+  <span class="n">kind</span><span class="p">:</span> <span class="s2">"mjpeg"</span>
   <span class="n">spec</span><span class="p">:</span>
-    <span class="n">url</span><span class="p">:</span> <span class="s2">&quot;http://source:1984/api/stream.mjpeg?src=example&quot;</span>
+    <span class="n">url</span><span class="p">:</span> <span class="s2">"http://source:1984/api/stream.mjpeg?src=example"</span>
     <span class="n">frame_interval</span><span class="p">:</span> <span class="mi">5</span>
     <span class="n">read_timeout</span><span class="p">:</span> <span class="mi">30</span>
 
 <span class="n">output</span><span class="p">:</span>
-  <span class="n">kind</span><span class="p">:</span> <span class="s2">&quot;mjpeg&quot;</span>
+  <span class="n">kind</span><span class="p">:</span> <span class="s2">"mjpeg"</span>
   <span class="n">spec</span><span class="p">:</span>
     <span class="n">port</span><span class="p">:</span> <span class="mi">7777</span>
-    <span class="n">path</span><span class="p">:</span> <span class="s2">&quot;/stream&quot;</span>
+    <span class="n">path</span><span class="p">:</span> <span class="s2">"/stream"</span>
 
 <span class="n">flow</span><span class="p">:</span>
-  <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;sequence&quot;</span>
-  <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;anonymization-pipeline&quot;</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="s2">"sequence"</span>
+  <span class="n">name</span><span class="p">:</span> <span class="s2">"anonymization-pipeline"</span>
   <span class="n">nodes</span><span class="p">:</span>
-    <span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;service&quot;</span>
-      <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;anon-service&quot;</span>
+    <span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="s2">"service"</span>
+      <span class="n">name</span><span class="p">:</span> <span class="s2">"anon-service"</span>
       <span class="n">config</span><span class="p">:</span>
-        <span class="n">kind</span><span class="p">:</span> <span class="s2">&quot;openinference&quot;</span>
+        <span class="n">kind</span><span class="p">:</span> <span class="s2">"openinference"</span>
         <span class="n">spec</span><span class="p">:</span>
-          <span class="n">address</span><span class="p">:</span> <span class="s2">&quot;anonymization:9000&quot;</span>
-          <span class="n">model_name</span><span class="p">:</span> <span class="s2">&quot;haar_face_cascade&quot;</span>
+          <span class="n">address</span><span class="p">:</span> <span class="s2">"anonymization:9000"</span>
+          <span class="n">model_name</span><span class="p">:</span> <span class="s2">"haar_face_cascade"</span>
           <span class="n">num_instances</span><span class="p">:</span> <span class="mi">4</span>  
           <span class="n">timeout</span><span class="p">:</span> <span class="mi">10</span>      
 
           <span class="n">input_tensor_spec</span><span class="p">:</span>
-            <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;image&quot;</span>
-              <span class="n">datatype</span><span class="p">:</span> <span class="s2">&quot;UINT8&quot;</span>
+            <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">"image"</span>
+              <span class="n">datatype</span><span class="p">:</span> <span class="s2">"UINT8"</span>
               <span class="n">shape</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
           <span class="n">output_tensor_spec</span><span class="p">:</span>
-            <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;image&quot;</span>
-              <span class="n">datatype</span><span class="p">:</span> <span class="s2">&quot;UINT8&quot;</span>
+            <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="s2">"image"</span>
+              <span class="n">datatype</span><span class="p">:</span> <span class="s2">"UINT8"</span>
               <span class="n">shape</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
           <span class="n">output_template</span><span class="p">:</span> <span class="o">|</span>
-            <span class="p">{{</span><span class="o">.</span> <span class="o">|</span> <span class="n">jp</span> <span class="s2">&quot;$.outputs[0].data&quot;</span> <span class="o">|</span> <span class="n">raw</span><span class="p">}}</span>
+            <span class="p">{{</span><span class="o">.</span> <span class="o">|</span> <span class="n">jp</span> <span class="s2">"$.outputs[0].data"</span> <span class="o">|</span> <span class="n">raw</span><span class="p">}}</span>
 </code></pre></div>
 <p>Specifically, this simple graph</p>
 <ul>
@@ -2718,9 +2718,9 @@
 <p>Initialize the project and create the function in your prefered enviroment (e.g. Jupyter Notebook):</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;demo-servicegraph&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"demo-servicegraph"</span><span class="p">)</span>
 
-<span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;anonymization-pipeline&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;servicegraph&quot;</span><span class="p">,</span> <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/flow.yaml&quot;</span><span class="p">)</span>
+<span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">"anonymization-pipeline"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"servicegraph"</span><span class="p">,</span> <span class="n">code_src</span><span class="o">=</span><span class="s2">"src/flow.yaml"</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="2-create-the-anonymization-function">2. Create the anonymization function</h2>
 <p>We will use a simple Open Inference function in order to implement the anonymization task and will rely on OpenInference runtime to deploy and execute it.</p>
@@ -2739,21 +2739,21 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">init_model</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize face detection models at server startup.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Initialize face detection models at server startup."""</span>
     <span class="c1"># Fallback to Haar Cascade (comes with OpenCV)</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Loading Haar Cascade face detector...&quot;</span><span class="p">)</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Loading Haar Cascade face detector..."</span><span class="p">)</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CascadeClassifier</span><span class="p">(</span>
-        <span class="n">cv2</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">haarcascades</span> <span class="o">+</span> <span class="s1">&#39;haarcascade_frontalface_default.xml&#39;</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">haarcascades</span> <span class="o">+</span> <span class="s1">'haarcascade_frontalface_default.xml'</span>
     <span class="p">)</span>
-    <span class="nb">setattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Haar Cascade face detector loaded successfully&quot;</span><span class="p">)</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s2">"model"</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Haar Cascade face detector loaded successfully"</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">init_context</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="n">init_model</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">detect_faces_haar</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">image</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Detect faces using Haar Cascade.</span>
 
 <span class="sd">    Args:</span>
@@ -2761,7 +2761,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        List of (x, y, w, h) tuples for detected faces</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
     <span class="n">faces</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">detectMultiScale</span><span class="p">(</span>
         <span class="n">gray</span><span class="p">,</span>
@@ -2773,7 +2773,7 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">blur_region</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">blur_factor</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Apply Gaussian blur to a specific region of the image.</span>
 
 <span class="sd">    Args:</span>
@@ -2784,7 +2784,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Image with blurred region</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># Ensure coordinates are within image bounds</span>
     <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">x</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
@@ -2806,7 +2806,7 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">pixelate_region</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">pixel_size</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Apply pixelation effect to a specific region.</span>
 
 <span class="sd">    Args:</span>
@@ -2817,7 +2817,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Image with pixelated region</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># Ensure coordinates are within image bounds</span>
     <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
     <span class="n">x</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
@@ -2838,25 +2838,25 @@
     <span class="k">return</span> <span class="n">image</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">anonymize_image</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">image_bytes</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;blur&#39;</span><span class="p">,</span> <span class="n">blur_factor</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">pixel_size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">draw_boxes</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">anonymize_image</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">image_bytes</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">'blur'</span><span class="p">,</span> <span class="n">blur_factor</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">pixel_size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">draw_boxes</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Anonymize an image by detecting and obscuring faces.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        image_bytes: Image data as bytes</span>
-<span class="sd">        method: Anonymization method (&#39;blur&#39; or &#39;pixelate&#39;)</span>
+<span class="sd">        method: Anonymization method ('blur' or 'pixelate')</span>
 <span class="sd">        blur_factor: Blur intensity for blur method</span>
 <span class="sd">        pixel_size: Pixel size for pixelate method</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        Tuple of (anonymized_image_bytes, face_count)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># Convert bytes to OpenCV image</span>
     <span class="n">nparr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">image_bytes</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imdecode</span><span class="p">(</span><span class="n">nparr</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">image</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Failed to decode image&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Failed to decode image"</span><span class="p">)</span>
 
     <span class="c1"># Detect faces</span>
     <span class="n">faces</span> <span class="o">=</span> <span class="n">detect_faces_haar</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
@@ -2864,8 +2864,8 @@
 
     <span class="c1"># Anonymize each face</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="n">faces</span><span class="p">:</span>
-        <span class="c1">#context.logger.info(f&quot;Face {x} {y} {w} {h}&quot;)</span>
-        <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;pixelate&#39;</span><span class="p">:</span>
+        <span class="c1">#context.logger.info(f"Face {x} {y} {w} {h}")</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">'pixelate'</span><span class="p">:</span>
             <span class="n">image</span> <span class="o">=</span> <span class="n">pixelate_region</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">pixel_size</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>  <span class="c1"># blur</span>
             <span class="n">image</span> <span class="o">=</span> <span class="n">blur_region</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">blur_factor</span><span class="p">)</span>
@@ -2873,42 +2873,42 @@
             <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
 
     <span class="c1"># Convert back to bytes</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">buffer</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imencode</span><span class="p">(</span><span class="s1">&#39;.jpg&#39;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">buffer</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imencode</span><span class="p">(</span><span class="s1">'.jpg'</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">buffer</span><span class="o">.</span><span class="n">tobytes</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">faces</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">handler</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Anonymize faces in the provided image.</span>
 
 <span class="sd">    Expects: Image bytes in request body</span>
 <span class="sd">    Query params:</span>
-<span class="sd">        - method: &#39;blur&#39; or &#39;pixelate&#39; (default: blur)</span>
+<span class="sd">        - method: 'blur' or 'pixelate' (default: blur)</span>
 <span class="sd">        - blur_factor: Blur intensity (default: 50)</span>
 <span class="sd">        - pixel_size: Pixelation size (default: 15)</span>
 <span class="sd">        - draw_boxes: Whether to draw bounding boxes around detected faces (default: False)</span>
 <span class="sd">        - store_files: Whether to save anonymized images to disk for debugging (default: False)</span>
 
 <span class="sd">    Returns: Anonymized image bytes</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">model</span>  <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="n">model</span>  <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s1">'model'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">init_model</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Get image from request body</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">datatype</span> <span class="o">==</span> <span class="s2">&quot;BYTES&quot;</span> <span class="k">else</span> <span class="n">request</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">datatype</span> <span class="o">==</span> <span class="s2">"BYTES"</span> <span class="k">else</span> <span class="n">request</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
         <span class="n">image_bytes</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
         <span class="c1"># Get parameters</span>
-        <span class="n">method</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;method&#39;</span><span class="p">]</span> <span class="k">if</span>  <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="ow">and</span> <span class="s1">&#39;method&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="k">else</span> <span class="s1">&#39;blur&#39;</span>
-        <span class="n">blur_factor</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;blur_factor&#39;</span><span class="p">])</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="ow">and</span> <span class="s1">&#39;blur_factor&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="k">else</span> <span class="mi">50</span>
-        <span class="n">pixel_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;pixel_size&#39;</span><span class="p">])</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="ow">and</span> <span class="s1">&#39;pixel_size&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="k">else</span> <span class="mi">15</span>
-        <span class="n">draw_boxes</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;draw_boxes&#39;</span><span class="p">])</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="ow">and</span> <span class="s1">&#39;draw_boxes&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="k">else</span> <span class="kc">False</span>
-        <span class="n">store_files</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;store_files&#39;</span><span class="p">])</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="ow">and</span> <span class="s1">&#39;store_files&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">method</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'method'</span><span class="p">]</span> <span class="k">if</span>  <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="ow">and</span> <span class="s1">'method'</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="k">else</span> <span class="s1">'blur'</span>
+        <span class="n">blur_factor</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'blur_factor'</span><span class="p">])</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="ow">and</span> <span class="s1">'blur_factor'</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="k">else</span> <span class="mi">50</span>
+        <span class="n">pixel_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'pixel_size'</span><span class="p">])</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="ow">and</span> <span class="s1">'pixel_size'</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="k">else</span> <span class="mi">15</span>
+        <span class="n">draw_boxes</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'draw_boxes'</span><span class="p">])</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="ow">and</span> <span class="s1">'draw_boxes'</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="n">store_files</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'store_files'</span><span class="p">])</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="ow">and</span> <span class="s1">'store_files'</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">parameters</span> <span class="k">else</span> <span class="kc">False</span>
 
         <span class="c1"># Validate method</span>
-        <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;blur&#39;</span><span class="p">,</span> <span class="s1">&#39;pixelate&#39;</span><span class="p">]:</span>
-            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;Method must be &#39;blur&#39; or &#39;pixelate&#39;&quot;</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'blur'</span><span class="p">,</span> <span class="s1">'pixelate'</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">"error"</span><span class="p">:</span> <span class="s2">"Method must be 'blur' or 'pixelate'"</span><span class="p">}</span>
 
         <span class="c1"># Anonymize the image</span>
         <span class="n">anonymized_bytes</span><span class="p">,</span> <span class="n">face_count</span> <span class="o">=</span> <span class="n">anonymize_image</span><span class="p">(</span>
@@ -2919,59 +2919,59 @@
         <span class="c1"># the image name has timestamp in UTC format to avoid overwriting files</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">face_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="n">store_files</span><span class="p">:</span>
             <span class="c1"># check if exists the output directory, if not create it</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;/workspace/output&quot;</span><span class="p">):</span>
-                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;/workspace/output&quot;</span><span class="p">)</span>
-            <span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">-%H%M%S&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">())</span>   
-            <span class="n">output_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;/workspace/output/anonymized_</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s2">.jpg&quot;</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_filename</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">"/workspace/output"</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">"/workspace/output"</span><span class="p">)</span>
+            <span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y%m</span><span class="si">%d</span><span class="s2">-%H%M%S"</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">())</span>   
+            <span class="n">output_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"/workspace/output/anonymized_</span><span class="si">{</span><span class="n">timestamp</span><span class="si">}</span><span class="s2">.jpg"</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_filename</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
                 <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">anonymized_bytes</span><span class="p">)</span>
 
-        <span class="n">context</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Anonymized </span><span class="si">{</span><span class="n">face_count</span><span class="si">}</span><span class="s2"> face(s) using </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> method&quot;</span><span class="p">)</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Anonymized </span><span class="si">{</span><span class="n">face_count</span><span class="si">}</span><span class="s2"> face(s) using </span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2"> method"</span><span class="p">)</span>
 
         <span class="n">anonymized_bytes_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">anonymized_bytes</span><span class="p">)</span>
 
         <span class="c1"># Return anonymized image</span>
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">&quot;outputs&quot;</span><span class="p">:</span> 
+            <span class="s2">"outputs"</span><span class="p">:</span> 
                 <span class="p">[</span>
-                    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;image&quot;</span><span class="p">,</span> <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;UINT8&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">anonymized_bytes_list</span><span class="p">,</span> <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">anonymized_bytes_list</span><span class="p">)]}</span>
+                    <span class="p">{</span><span class="s2">"name"</span><span class="p">:</span> <span class="s2">"image"</span><span class="p">,</span> <span class="s2">"datatype"</span><span class="p">:</span> <span class="s2">"UINT8"</span><span class="p">,</span> <span class="s2">"data"</span><span class="p">:</span> <span class="n">anonymized_bytes_list</span><span class="p">,</span> <span class="s2">"shape"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">anonymized_bytes_list</span><span class="p">)]}</span>
                 <span class="p">]</span>            
         <span class="p">}</span>
 
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">context</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error processing image: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error processing image: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">{</span>
-            <span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
-            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span>
+            <span class="s2">"error"</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">),</span>
+            <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"error"</span>
         <span class="p">}</span>
 </code></pre></div>
 <p>Declare and register the function in the project, build its image and deploy it as a Open Inference service:</p>
-<div class="highlight"><pre><span></span><code><span class="n">anon_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;anonymization-service&quot;</span><span class="p">,</span>
-                            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;openinference&quot;</span><span class="p">,</span>
-                            <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_10&quot;</span><span class="p">,</span>
-                            <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/anonymization.py&quot;</span><span class="p">,</span>
-                            <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;handler&quot;</span><span class="p">,</span>
-                            <span class="n">init_function</span><span class="o">=</span><span class="s2">&quot;init_model&quot;</span><span class="p">,</span>
-                            <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;haar_face_cascade&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">anon_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"anonymization-service"</span><span class="p">,</span>
+                            <span class="n">kind</span><span class="o">=</span><span class="s2">"openinference"</span><span class="p">,</span>
+                            <span class="n">python_version</span><span class="o">=</span><span class="s2">"PYTHON3_10"</span><span class="p">,</span>
+                            <span class="n">code_src</span><span class="o">=</span><span class="s2">"src/anonymization.py"</span><span class="p">,</span>
+                            <span class="n">handler</span><span class="o">=</span><span class="s2">"handler"</span><span class="p">,</span>
+                            <span class="n">init_function</span><span class="o">=</span><span class="s2">"init_model"</span><span class="p">,</span>
+                            <span class="n">model_name</span><span class="o">=</span><span class="s2">"haar_face_cascade"</span><span class="p">,</span>
                             <span class="n">inputs</span><span class="o">=</span><span class="p">[{</span>
-                                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;image&quot;</span><span class="p">,</span>
-                                <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;UINT8&quot;</span><span class="p">,</span>
-                                <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"image"</span><span class="p">,</span>
+                                <span class="s2">"datatype"</span><span class="p">:</span> <span class="s2">"UINT8"</span><span class="p">,</span>
+                                <span class="s2">"shape"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
                             <span class="p">}],</span>
                             <span class="n">outputs</span><span class="o">=</span><span class="p">[{</span>
-                                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;image&quot;</span><span class="p">,</span>
-                                <span class="s2">&quot;datatype&quot;</span><span class="p">:</span> <span class="s2">&quot;UINT8&quot;</span><span class="p">,</span>
-                                <span class="s2">&quot;shape&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"image"</span><span class="p">,</span>
+                                <span class="s2">"datatype"</span><span class="p">:</span> <span class="s2">"UINT8"</span><span class="p">,</span>
+                                <span class="s2">"shape"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
                             <span class="p">}],</span>
                             <span class="n">requirements</span><span class="o">=</span><span class="p">[</span>
-                                <span class="s2">&quot;opencv-python-headless==4.12.0.88&quot;</span><span class="p">,</span> 
-                                <span class="s2">&quot;opencv-contrib-python-headless==4.12.0.88&quot;</span><span class="p">,</span> 
-                                <span class="s2">&quot;numpy&gt;=1.24.0&quot;</span><span class="p">,</span> <span class="s2">&quot;pillow&gt;=10.0.0&quot;</span><span class="p">,</span> 
-                                <span class="s2">&quot;requests&gt;=2.31.0&quot;</span><span class="p">]</span>
+                                <span class="s2">"opencv-python-headless==4.12.0.88"</span><span class="p">,</span> 
+                                <span class="s2">"opencv-contrib-python-headless==4.12.0.88"</span><span class="p">,</span> 
+                                <span class="s2">"numpy&gt;=1.24.0"</span><span class="p">,</span> <span class="s2">"pillow&gt;=10.0.0"</span><span class="p">,</span> 
+                                <span class="s2">"requests&gt;=2.31.0"</span><span class="p">]</span>
                            <span class="p">)</span>
 
-<span class="n">anon_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;build&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">anon_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">anon_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"build"</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">anon_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="3-simulate-a-video-source">3. Simulate a video source</h2>
 <p>To create a video source in MJPEG format we will use the <a href="https://go2rtc.org/">go2rtc.org</a> project. Specifically, we will run a container that streams the video. To accomplish this, we have to</p>
@@ -2981,7 +2981,7 @@
 </ul>
 <h3 id="31-create-a-video-artifact-and-share-with-presigned-link">3.1. Create a video artifact and share with presigned link</h3>
 <p>For demo purposes, we will use a test video and create a presigned link to share it with the go2rtc container. Indeed, it is possible to use any arbitrary video source for the same purpose.</p>
-<div class="highlight"><pre><span></span><code><span class="n">project</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="s2">&quot;video&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">&quot;video.mp4&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">project</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="s2">"video"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"artifact"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">"video.mp4"</span><span class="p">)</span>
 </code></pre></div>
 <p>To create a presigned S3 link, it is sufficient to do this using Core UI. Access the file in the browser and share it. This will generate the presigned link of defined duration.</p>
 <p><img alt="Presigned link" src="../images/share.png" /></p>
@@ -2996,11 +2996,11 @@
 <span class="n">go2rtc</span> <span class="o">-</span><span class="n">config</span> <span class="o">/</span><span class="n">shared</span><span class="o">/</span><span class="n">go2rtc</span><span class="o">.</span><span class="n">yaml</span>
 <span class="n">exit</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">stream_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;videostream&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="s2">&quot;alexxit/go2rtc&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="s2">&quot;/bin/bash&quot;</span><span class="p">,</span> <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;launch.sh&quot;</span><span class="p">)</span>
-<span class="n">stream_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> 
-                <span class="n">service_ports</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="mi">1984</span><span class="p">,</span> <span class="s2">&quot;target_port&quot;</span><span class="p">:</span> <span class="mi">1984</span><span class="p">}],</span> 
+<div class="highlight"><pre><span></span><code><span class="n">stream_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">"videostream"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"container"</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="s2">"alexxit/go2rtc"</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="s2">"/bin/bash"</span><span class="p">,</span> <span class="n">code_src</span><span class="o">=</span><span class="s2">"launch.sh"</span><span class="p">)</span>
+<span class="n">stream_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span> 
+                <span class="n">service_ports</span><span class="o">=</span><span class="p">[{</span><span class="s2">"port"</span><span class="p">:</span> <span class="mi">1984</span><span class="p">,</span> <span class="s2">"target_port"</span><span class="p">:</span> <span class="mi">1984</span><span class="p">}],</span> 
                 <span class="n">fs_group</span><span class="o">=</span><span class="mi">8877</span><span class="p">,</span> <span class="n">run_as_user</span><span class="o">=</span><span class="mi">8877</span><span class="p">,</span> <span class="n">run_as_group</span><span class="o">=</span><span class="mi">8877</span><span class="p">,</span> 
-                <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;/shared/launch.sh&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;presigned_link&gt;&quot;</span><span class="p">],</span>
+                <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="s2">"/shared/launch.sh"</span><span class="p">,</span> <span class="s2">"&lt;presigned_link&gt;"</span><span class="p">],</span>
                 <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>Once started, it is possible to configure the container. Using the "Browser" client of the UI it is possible to open the integrated Web interface of the go2rtc.</p>
@@ -3018,10 +3018,10 @@
 <li>use address of the anonimization service in anon-service parameter. Note that we use OpenInference gRPC port (9000).</li>
 </ul>
 <p>We can use the "Alias" address that we can find inside the "Service" tab in the specific "Run" detail view.</p>
-<div class="highlight"><pre><span></span><code><span class="n">graph_run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
-    <span class="s2">&quot;input.url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://s-demo-servicegraph-videostream-latest.dev-platform:1984/api/stream.mjpeg?src=v1&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;anon-service.address&quot;</span><span class="p">:</span> <span class="s2">&quot;s-demo-servicegraph-anonymization-service-latest.dev-platform:9000&quot;</span>
-<span class="p">},</span> <span class="n">service_ports</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="mi">7777</span><span class="p">,</span> <span class="s2">&quot;target_port&quot;</span><span class="p">:</span> <span class="mi">7777</span><span class="p">}])</span>
+<div class="highlight"><pre><span></span><code><span class="n">graph_run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">"input.url"</span><span class="p">:</span> <span class="s2">"http://s-demo-servicegraph-videostream-latest.dev-platform:1984/api/stream.mjpeg?src=v1"</span><span class="p">,</span>
+    <span class="s2">"anon-service.address"</span><span class="p">:</span> <span class="s2">"s-demo-servicegraph-anonymization-service-latest.dev-platform:9000"</span>
+<span class="p">},</span> <span class="n">service_ports</span><span class="o">=</span><span class="p">[{</span><span class="s2">"port"</span><span class="p">:</span> <span class="mi">7777</span><span class="p">,</span> <span class="s2">"target_port"</span><span class="p">:</span> <span class="mi">7777</span><span class="p">}])</span>
 </code></pre></div>
 <p>Check the log and of the graph; it should report the success of the deployment and connection to the MJPEG source.</p>
 <h2 id="41-access-the-mjpeg-stream">4.1. Access the MJPEG stream</h2>

@@ -2649,7 +2649,7 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 </code></pre></div>
 <p>Create a project:</p>
-<div class="highlight"><pre><span></span><code><span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;project-dbt-ci&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"project-dbt-ci"</span><span class="p">)</span>
 </code></pre></div>
 <p>Check that the project has been created successfully:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
@@ -2657,12 +2657,12 @@
 <h2 id="set-data-source">Set data source</h2>
 <p>The data we will use is available as a CSV file on GitHub. It is a generic sample table of employees.
 The URL to the data is:</p>
-<div class="highlight"><pre><span></span><code><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://gist.githubusercontent.com/kevin336/acbb2271e66c10a5b73aacf82ca82784/raw/e38afe62e088394d61ed30884dd50a6826eee0a8/employees.csv&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">url</span> <span class="o">=</span> <span class="s2">"https://gist.githubusercontent.com/kevin336/acbb2271e66c10a5b73aacf82ca82784/raw/e38afe62e088394d61ed30884dd50a6826eee0a8/employees.csv"</span>
 </code></pre></div>
 <p>We can now create a dataitem to represent the data source that we want to operate transformation on. The DBT runtime will use the dataitem specifications to fetch the data and perform the <code>transform</code> task on it.</p>
 <p>To create the dataitem, we call the <code>new_dataitem</code> method of the project object. We pass the following mandatory parameters:</p>
-<div class="highlight"><pre><span></span><code><span class="n">di</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;employees-dbt&quot;</span><span class="p">,</span>
-                          <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">di</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"employees-dbt"</span><span class="p">,</span>
+                          <span class="n">kind</span><span class="o">=</span><span class="s2">"table"</span><span class="p">,</span>
                           <span class="n">path</span><span class="o">=</span><span class="n">url</span><span class="p">)</span>
 </code></pre></div>
 <p>The parameters are:</p>
@@ -2675,19 +2675,19 @@ The URL to the data is:</p>
 <h2 id="set-up-the-function">Set up the function</h2>
 <p>We can now set up the function that operates a tranformation on data with DBT.
 Our function will be an SQL query that selects all the employees of department 60.</p>
-<div class="highlight"><pre><span></span><code><span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">WITH tab AS (</span>
 <span class="s2">    SELECT  *</span>
-<span class="s2">    FROM    {{ ref(&#39;employees&#39;) }}</span>
+<span class="s2">    FROM    {{ ref('employees') }}</span>
 <span class="s2">)</span>
 <span class="s2">SELECT  *</span>
 <span class="s2">FROM    tab</span>
-<span class="s2">WHERE   tab.&quot;DEPARTMENT_ID&quot; = &#39;50&#39;</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">WHERE   tab."DEPARTMENT_ID" = '50'</span>
+<span class="s2">"""</span>
 </code></pre></div>
 <p>We create the function from the project object:</p>
-<div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;transform-employees&quot;</span><span class="p">,</span>
-                                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dbt&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"transform-employees"</span><span class="p">,</span>
+                                <span class="n">kind</span><span class="o">=</span><span class="s2">"dbt"</span><span class="p">,</span>
                                 <span class="n">code</span><span class="o">=</span><span class="n">sql</span><span class="p">)</span>
 </code></pre></div>
 <p>The parameters are:</p>
@@ -2703,9 +2703,9 @@ Our function will be an SQL query that selects all the employees of department 6
 <li>the inputs map the refereced table in the DBT query (<code>{{ ref('employees') }}</code>) to one of our dataitems key. The Runtime will fetch the data and use dem as reference for the query.</li>
 <li>the output map the output table name. The name of the output table will be <code>department-50</code> and will be the sql query table name result and the output dataitem name.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span>
-                   <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;employees&quot;</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">},</span>
-                   <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;output_table&quot;</span><span class="p">:</span> <span class="s2">&quot;department-50&quot;</span><span class="p">},</span>
+<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"transform"</span><span class="p">,</span>
+                   <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">"employees"</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">},</span>
+                   <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">"output_table"</span><span class="p">:</span> <span class="s2">"department-50"</span><span class="p">},</span>
                    <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p>We can check the status of the run:</p>
@@ -2718,7 +2718,7 @@ Our function will be an SQL query that selects all the employees of department 6
 <h2 id="explore-the-results">Explore the results</h2>
 <p>We can now explore the results of the function.
 We can fetch the output table and explore it with <code>pandas</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="s1">&#39;department-50&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="s1">'department-50'</span><span class="p">)</span><span class="o">.</span><span class="n">as_df</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div>
 <p>In the next section, we will see how to convert this example in a workflow.</p>

@@ -2735,13 +2735,13 @@
 Content-Type: application/json
 
 {
-  &quot;model&quot;: &quot;&lt;model-name&gt;&quot;,
-  &quot;messages&quot;: [
-    { &quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Hello!&quot; },
-    { &quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;Hi there! How can I help?&quot; },
-    { &quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Tell me about machine learning.&quot; }
+  "model": "&lt;model-name&gt;",
+  "messages": [
+    { "role": "user", "content": "Hello!" },
+    { "role": "assistant", "content": "Hi there! How can I help?" },
+    { "role": "user", "content": "Tell me about machine learning." }
   ],
-  &quot;stream&quot;: true
+  "stream": true
 }
 </code></pre></div>
 <p>The full conversation history is included in each request so the model has full context of the exchange.</p>

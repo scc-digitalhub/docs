@@ -1536,14 +1536,14 @@
 <span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="c1">#  dashboard.additional-components.apps -- Components to add in list format</span>
 <span class="w">    </span><span class="nt">apps</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Custom</span><span class="nv"> </span><span class="s">component</span><span class="nv"> </span><span class="s">description&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">"Custom</span><span class="nv"> </span><span class="s">component</span><span class="nv"> </span><span class="s">description"</span>
 <span class="w">        </span><span class="nt">existingSecret</span><span class="p">:</span>
-<span class="w">          </span><span class="c1">#  dashboard.additional-components.apps.existingSecret.clientId -- Key of the application&#39;s clientID</span>
-<span class="w">          </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CLIENT_ID_KEY&quot;</span>
-<span class="w">          </span><span class="c1">#  dashboard.additional-components.apps.existingSecret.name -- Secret containing the application&#39;s clientID and clientSecret for authentication</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SECRET_NAME&quot;</span>
-<span class="w">          </span><span class="c1">#  dashboard.additional-components.apps.existingSecret.secretKey -- Key of the application&#39;s clientSecret</span>
-<span class="w">          </span><span class="nt">secretKey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SECRET_KEY_KEY&quot;</span>
+<span class="w">          </span><span class="c1">#  dashboard.additional-components.apps.existingSecret.clientId -- Key of the application's clientID</span>
+<span class="w">          </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="s">"CLIENT_ID_KEY"</span>
+<span class="w">          </span><span class="c1">#  dashboard.additional-components.apps.existingSecret.name -- Secret containing the application's clientID and clientSecret for authentication</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"SECRET_NAME"</span>
+<span class="w">          </span><span class="c1">#  dashboard.additional-components.apps.existingSecret.secretKey -- Key of the application's clientSecret</span>
+<span class="w">          </span><span class="nt">secretKey</span><span class="p">:</span><span class="w"> </span><span class="s">"SECRET_KEY_KEY"</span>
 <span class="w">        </span><span class="nt">ingress</span><span class="p">:</span>
 <span class="w">          </span><span class="c1">#  dashboard.additional-components.apps.ingress.enabled -- Enables Ingress.</span>
 <span class="w">          </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
@@ -1552,19 +1552,19 @@
 <span class="w">          </span><span class="c1">#  dashboard.additional-components.apps.ingress.hosts --</span>
 <span class="w">          </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
 <span class="w">          </span><span class="c1">#  dashboard.additional-components.apps.ingress.ingressClassName -- Ingress Class Name. MAY be required for Kubernetes versions &gt;= 1.18-</span>
-<span class="w">          </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">          </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 <span class="w">          </span><span class="c1">#  dashboard.additional-components.apps.ingress.path --</span>
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
 <span class="w">          </span><span class="c1">#  dashboard.additional-components.apps.ingress.tls -- Ingress TLS configuration.</span>
 <span class="w">          </span><span class="nt">tls</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Component</span><span class="nv"> </span><span class="s">name&quot;</span>
-<span class="w">        </span><span class="nt">oidcIssuerUrl</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ISSUER_URL&quot;</span>
-<span class="w">        </span><span class="nt">redirectUrl</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;REDIRECT_URL&quot;</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"Component</span><span class="nv"> </span><span class="s">name"</span>
+<span class="w">        </span><span class="nt">oidcIssuerUrl</span><span class="p">:</span><span class="w"> </span><span class="s">"ISSUER_URL"</span>
+<span class="w">        </span><span class="nt">redirectUrl</span><span class="p">:</span><span class="w"> </span><span class="s">"REDIRECT_URL"</span>
 <span class="w">        </span><span class="nt">service</span><span class="p">:</span>
-<span class="w">          </span><span class="c1">#  dashboard.additional-components.apps.service.name -- Application&#39;s service name</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SERVICE_NAME&quot;</span>
-<span class="w">          </span><span class="c1">#  dashboard.additional-components.apps.service.port -- Application&#39;s service port</span>
-<span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SERVICE_PORT&quot;</span>
+<span class="w">          </span><span class="c1">#  dashboard.additional-components.apps.service.name -- Application's service name</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"SERVICE_NAME"</span>
+<span class="w">          </span><span class="c1">#  dashboard.additional-components.apps.service.port -- Application's service port</span>
+<span class="w">          </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="s">"SERVICE_PORT"</span>
 </code></pre></div>
 <p>Being a list, you can add as many apps as you want under <code>dashboard.additional-components.apps</code>.</p>
 

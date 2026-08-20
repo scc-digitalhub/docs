@@ -2572,13 +2572,13 @@
 <li><code>caching_profile</code>: cache profile as of KubeAI documentation.</li>
 </ul>
 <p>For example to deploy a model from HuggingFace, the following procedure may be used:</p>
-<div class="highlight"><pre><span></span><code><span class="n">audio_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">&quot;audio&quot;</span><span class="p">,</span>
-                                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;kubeai-speech&quot;</span><span class="p">,</span>
-                                    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;audiomodel&quot;</span><span class="p">,</span>
-                                    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;hf://Systran/faster-whisper-medium.en&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">audio_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="s2">"audio"</span><span class="p">,</span>
+                                    <span class="n">kind</span><span class="o">=</span><span class="s2">"kubeai-speech"</span><span class="p">,</span>
+                                    <span class="n">model_name</span><span class="o">=</span><span class="s2">"audiomodel"</span><span class="p">,</span>
+                                    <span class="n">url</span><span class="o">=</span><span class="s2">"hf://Systran/faster-whisper-medium.en"</span><span class="p">)</span>
 
 
-<span class="n">run</span> <span class="o">=</span> <span class="n">audio_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">)</span>                                    
+<span class="n">run</span> <span class="o">=</span> <span class="n">audio_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">)</span>                                    
 </code></pre></div>
 <p>Downloading the model:</p>
 <div class="highlight"><pre><span></span><code>!wget -O kubeai.mp4 https://github.com/user-attachments/assets/711d1279-6af9-4c6c-a052-e59e7730b757
@@ -2586,11 +2586,11 @@
 <p>Once deployed, the model is available and it is possible to call the OpenAI-compatible API from within the platform (<code>/openai/v1/transcriptions</code> endpoint):</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">KUBEAI_ENDPOINT</span><span class="si">}</span><span class="s2">/openai/v1&quot;</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
-<span class="n">audio_file</span><span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;kubeai.mp4&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">base_url</span><span class="o">=</span><span class="sa">f</span><span class="s2">"http://</span><span class="si">{</span><span class="n">KUBEAI_ENDPOINT</span><span class="si">}</span><span class="s2">/openai/v1"</span><span class="p">,</span> <span class="n">api_key</span><span class="o">=</span><span class="s2">"ignore"</span><span class="p">)</span>
+<span class="n">audio_file</span><span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"kubeai.mp4"</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span>
 
 <span class="n">transcription</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">audio</span><span class="o">.</span><span class="n">transcriptions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
-    <span class="n">model</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;audiomodel-123zxc&quot;</span><span class="p">,</span> 
+    <span class="n">model</span><span class="o">=</span><span class="sa">f</span><span class="s2">"audiomodel-123zxc"</span><span class="p">,</span> 
     <span class="n">file</span><span class="o">=</span><span class="n">audio_file</span>
 <span class="p">)</span>
 

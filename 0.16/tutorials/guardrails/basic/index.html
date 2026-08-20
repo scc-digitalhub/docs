@@ -2615,30 +2615,30 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">body</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">body</span>
 
-    <span class="n">divident</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="s1">&#39;divident&#39;</span><span class="p">]</span>
-    <span class="n">divisor</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="s1">&#39;divisor&#39;</span><span class="p">]</span>
+    <span class="n">divident</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="s1">'divident'</span><span class="p">]</span>
+    <span class="n">divisor</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="s1">'divisor'</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="n">divident</span><span class="o">/</span><span class="n">divisor</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"result"</span><span class="p">:</span> <span class="n">divident</span><span class="o">/</span><span class="n">divisor</span><span class="p">}</span>
 </code></pre></div>
 <p>Register the function in platform:</p>
-<div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;divisor&quot;</span><span class="p">,</span>
-                            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
-                            <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_10&quot;</span><span class="p">,</span>
-                            <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/divisor.py&quot;</span><span class="p">,</span>
-                            <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;handler_serve&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"divisor"</span><span class="p">,</span>
+                            <span class="n">kind</span><span class="o">=</span><span class="s2">"python"</span><span class="p">,</span>
+                            <span class="n">python_version</span><span class="o">=</span><span class="s2">"PYTHON3_10"</span><span class="p">,</span>
+                            <span class="n">code_src</span><span class="o">=</span><span class="s2">"src/divisor.py"</span><span class="p">,</span>
+                            <span class="n">handler</span><span class="o">=</span><span class="s2">"handler_serve"</span>
                            <span class="p">)</span>
 </code></pre></div>
 <p>Run and test the unprotected function:</p>
-<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span> <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Test the function</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;divident&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
-    <span class="s1">&#39;divisor&#39;</span><span class="p">:</span> <span class="mi">6</span>
+    <span class="s1">'divident'</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="s1">'divisor'</span><span class="p">:</span> <span class="mi">6</span>
 <span class="p">}</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">service</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">"http://</span><span class="si">{</span><span class="n">run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">service</span><span class="p">[</span><span class="s1">'url'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="n">res</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <h2 id="setting-up-the-guardrail">Setting up the Guardrail</h2>
@@ -2653,27 +2653,27 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">body</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">body</span>
 
-    <span class="n">divident</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="s1">&#39;divident&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="s1">&#39;divident&#39;</span> <span class="ow">in</span> <span class="n">body</span> <span class="k">else</span> <span class="mi">0</span> 
-    <span class="n">divisor</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="s1">&#39;divisor&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="s1">&#39;divisor&#39;</span> <span class="ow">in</span> <span class="n">body</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="n">divident</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="s1">'divident'</span><span class="p">]</span> <span class="k">if</span> <span class="s1">'divident'</span> <span class="ow">in</span> <span class="n">body</span> <span class="k">else</span> <span class="mi">0</span> 
+    <span class="n">divisor</span> <span class="o">=</span> <span class="n">body</span><span class="p">[</span><span class="s1">'divisor'</span><span class="p">]</span> <span class="k">if</span> <span class="s1">'divisor'</span> <span class="ow">in</span> <span class="n">body</span> <span class="k">else</span> <span class="mi">0</span>
 
     <span class="k">if</span> <span class="n">divident</span> <span class="ow">and</span> <span class="n">divisor</span> <span class="ow">and</span> <span class="n">divisor</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">event</span><span class="o">.</span><span class="n">body</span>
 
-    <span class="k">return</span> <span class="n">context</span><span class="o">.</span><span class="n">Response</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="s2">&quot;Invalid input data&quot;</span><span class="p">,</span>
+    <span class="k">return</span> <span class="n">context</span><span class="o">.</span><span class="n">Response</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="s2">"Invalid input data"</span><span class="p">,</span>
                 <span class="n">headers</span><span class="o">=</span><span class="p">{},</span>
-                <span class="n">content_type</span><span class="o">=</span><span class="s1">&#39;text/plain&#39;</span><span class="p">,</span>
+                <span class="n">content_type</span><span class="o">=</span><span class="s1">'text/plain'</span><span class="p">,</span>
                 <span class="n">status_code</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
 </code></pre></div>
 <p>Register the function in platform and run it:</p>
-<div class="highlight"><pre><span></span><code><span class="n">guardrail_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;divisor-guardrail&quot;</span><span class="p">,</span>
-                                        <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;guardrail&quot;</span><span class="p">,</span>
-                                        <span class="n">python_version</span><span class="o">=</span><span class="s2">&quot;PYTHON3_10&quot;</span><span class="p">,</span>
-                                        <span class="n">code_src</span><span class="o">=</span><span class="s2">&quot;src/divisor_guardrail_service.py&quot;</span><span class="p">,</span>
-                                        <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;handler_serve&quot;</span><span class="p">,</span>
-                                        <span class="n">processing_mode</span><span class="o">=</span><span class="s2">&quot;preprocessor&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">guardrail_func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"divisor-guardrail"</span><span class="p">,</span>
+                                        <span class="n">kind</span><span class="o">=</span><span class="s2">"guardrail"</span><span class="p">,</span>
+                                        <span class="n">python_version</span><span class="o">=</span><span class="s2">"PYTHON3_10"</span><span class="p">,</span>
+                                        <span class="n">code_src</span><span class="o">=</span><span class="s2">"src/divisor_guardrail_service.py"</span><span class="p">,</span>
+                                        <span class="n">handler</span><span class="o">=</span><span class="s2">"handler_serve"</span><span class="p">,</span>
+                                        <span class="n">processing_mode</span><span class="o">=</span><span class="s2">"preprocessor"</span>
                                        <span class="p">)</span>
 
-<span class="n">run</span> <span class="o">=</span> <span class="n">guardrail_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">)</span>
+<span class="n">run</span> <span class="o">=</span> <span class="n">guardrail_func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="use-the-guardrail-to-protect-the-api">Use the Guardrail to Protect the API</h2>
 <p>To protect the service instance with guardrails, we rely on the corresponding gateway and use Envoy Gateway extension for the runs. Specifically, when the service enable the extension, we obtain:</p>
@@ -2681,25 +2681,25 @@
 <li>the service exposed also behind the preconfigured service Envoy gateway (see the gatewayInfo in service status);</li>
 <li>if the guardrails are configured, the gateway controls the traffic using the ExtProc extension that interacts with the guardrails to implement pre/post processing logic. </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="n">guardrail_url</span> <span class="o">=</span> <span class="n">guardrail_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">service</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">guardrail_url</span> <span class="o">=</span> <span class="n">guardrail_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">service</span><span class="p">[</span><span class="s1">'url'</span><span class="p">]</span>
 
-<span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span> <span class="n">extensions</span><span class="o">=</span><span class="p">[{</span>
-    <span class="s2">&quot;kind&quot;</span><span class="p">:</span> <span class="s2">&quot;envoygw&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gw&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;guardrails&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">guardrail_url</span><span class="p">]</span>
+<span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span> <span class="n">extensions</span><span class="o">=</span><span class="p">[{</span>
+    <span class="s2">"kind"</span><span class="p">:</span> <span class="s2">"envoygw"</span><span class="p">,</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"gw"</span><span class="p">,</span>
+    <span class="s2">"spec"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"guardrails"</span><span class="p">:</span> <span class="p">[</span><span class="n">guardrail_url</span><span class="p">]</span>
     <span class="p">}</span>
 <span class="p">}])</span>
 </code></pre></div>
 <p>The protected endpoint of service gateway may be obtained as follows:</p>
-<div class="highlight"><pre><span></span><code><span class="n">PROTECTED_ENDPOINT</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;http://</span><span class="si">{</span><span class="n">run</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">gatewayInfo</span><span class="p">[</span><span class="s1">&#39;gatewayEndpoint&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">run</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">PROTECTED_ENDPOINT</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"http://</span><span class="si">{</span><span class="n">run</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">gatewayInfo</span><span class="p">[</span><span class="s1">'gatewayEndpoint'</span><span class="p">]</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">run</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <p>Test the protected service:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;divident&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
-    <span class="s1">&#39;divisor&#39;</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="s1">'divident'</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="s1">'divisor'</span><span class="p">:</span> <span class="mi">0</span>
 <span class="p">}</span>
 <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">PROTECTED_ENDPOINT</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="n">res</span><span class="o">.</span><span class="n">text</span>
