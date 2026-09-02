@@ -42,7 +42,10 @@ Crud methods are used to interact with the entity object in the backend or local
 
 ## Run method
 
-The `run()` method is used to execute the workflow.
+The `run()` method is used to execute the workflow. Its `extensions` parameter
+adds extension dictionaries to the resulting `Run` object. Other keyword
+arguments are passed to the run builder, including `inputs`, `parameters` and
+runtime-specific options.
 
 ::: digitalhub.entities.workflow._base.entity.Workflow.run
     options:
@@ -61,7 +64,10 @@ The workflow object exposes the following methods to manage tasks.
 - `new_task()`: Create a task for an action.
 - `get_task()`: Get the task for an action.
 - `list_task()`: List the tasks related to the workflow.
+- `import_tasks()`: Import serialized tasks and associate matching tasks with the workflow.
 - `update_task()`: Update the task for an action.
+- `set_task()`: Create or replace the task for an action.
+- `delete_task()`: Delete the task for an action.
 
 ::: digitalhub.entities.workflow._base.entity.Workflow.new_task
     options:
@@ -94,6 +100,36 @@ The workflow object exposes the following methods to manage tasks.
         show_root_toc_entry: true
 
 ::: digitalhub.entities.workflow._base.entity.Workflow.update_task
+    options:
+        heading_level: 3
+        show_signature: false
+        show_source: false
+        show_root_heading: true
+        show_symbol_type_heading: true
+        show_root_full_path: false
+        show_root_toc_entry: true
+
+::: digitalhub.entities.workflow._base.entity.Workflow.import_tasks
+    options:
+        heading_level: 3
+        show_signature: false
+        show_source: false
+        show_root_heading: true
+        show_symbol_type_heading: true
+        show_root_full_path: false
+        show_root_toc_entry: true
+
+::: digitalhub.entities.workflow._base.entity.Workflow.set_task
+    options:
+        heading_level: 3
+        show_signature: false
+        show_source: false
+        show_root_heading: true
+        show_symbol_type_heading: true
+        show_root_full_path: false
+        show_root_toc_entry: true
+
+::: digitalhub.entities.workflow._base.entity.Workflow.delete_task
     options:
         heading_level: 3
         show_signature: false

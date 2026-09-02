@@ -35,6 +35,15 @@ Create:
 - [**`log_mlflow`**](#log-mlflow)
 - [**`log_sklearn`**](#log-sklearn)
 - [**`log_huggingface`**](#log-huggingface)
+- [**`log_tvm_ir`**](#log-tvm-ir)
+- [**`log_tvm_so`**](#log-tvm-so)
+- [**`register_model`**](#register)
+- [**`register_generic_model`**](#register-generic)
+- [**`register_mlflow`**](#register-mlflow)
+- [**`register_sklearn`**](#register-sklearn)
+- [**`register_huggingface`**](#register-huggingface)
+- [**`register_tvm_ir`**](#register-tvm-ir)
+- [**`register_tvm_so`**](#register-tvm-so)
 
 Read:
 
@@ -140,6 +149,121 @@ This function logs a HuggingFace model from a local repository or directory.
         show_source: false
         members:
             - log_huggingface
+
+### Log TVM IR
+
+::: digitalhub.entities
+    options:
+        heading_level: 6
+        show_signature: false
+        show_docstring_description: false
+        show_symbol_type_heading: true
+        show_source: false
+        members:
+            - log_tvm_ir
+
+### Log TVM SO
+
+::: digitalhub.entities
+    options:
+        heading_level: 6
+        show_signature: false
+        show_docstring_description: false
+        show_symbol_type_heading: true
+        show_source: false
+        members:
+            - log_tvm_so
+
+## Register
+
+Register a model whose files already exist in a supported store. Registration
+does not upload local files. Pass the existing path or URI as `source`; use
+`embedded=True` to embed the entity reference in the project specification
+when supported.
+
+### Register model
+
+::: digitalhub.entities
+    options:
+        heading_level: 6
+        show_signature: false
+        show_docstring_description: false
+        show_symbol_type_heading: true
+        show_source: false
+        members:
+            - register_model
+
+### Register generic
+
+::: digitalhub.entities
+    options:
+        heading_level: 6
+        show_signature: false
+        show_docstring_description: false
+        show_symbol_type_heading: true
+        show_source: false
+        members:
+            - register_generic_model
+
+### Register MLflow
+
+::: digitalhub.entities
+    options:
+        heading_level: 6
+        show_signature: false
+        show_docstring_description: false
+        show_symbol_type_heading: true
+        show_source: false
+        members:
+            - register_mlflow
+
+### Register sklearn
+
+::: digitalhub.entities
+    options:
+        heading_level: 6
+        show_signature: false
+        show_docstring_description: false
+        show_symbol_type_heading: true
+        show_source: false
+        members:
+            - register_sklearn
+
+### Register HuggingFace
+
+::: digitalhub.entities
+    options:
+        heading_level: 6
+        show_signature: false
+        show_docstring_description: false
+        show_symbol_type_heading: true
+        show_source: false
+        members:
+            - register_huggingface
+
+### Register TVM IR
+
+::: digitalhub.entities
+    options:
+        heading_level: 6
+        show_signature: false
+        show_docstring_description: false
+        show_symbol_type_heading: true
+        show_source: false
+        members:
+            - register_tvm_ir
+
+### Register TVM SO
+
+::: digitalhub.entities
+    options:
+        heading_level: 6
+        show_signature: false
+        show_docstring_description: false
+        show_symbol_type_heading: true
+        show_source: false
+        members:
+            - register_tvm_so
 
 ## Read
 

@@ -23,6 +23,8 @@ f = dh.new_function(
 run = f.run(action="build", instructions=["... bash instructions ..."])
 ```
 
+You can also call `f.build()` to create a client build run directly.
+
 ## Parameters
 
 ### Function Parameters
@@ -40,7 +42,7 @@ Must be specified when creating the function.
 | embedded | bool | Whether the object should be embedded in the project. |
 | image | str | Custom Docker image name for the built container. |
 | base_image | str | Base Docker image to use for building. |
-| requirements | list[str] | Additional Python package requirements. |
+| requirements | list[str] \| str | Additional Python package requirements or a supported requirements file path. |
 
 ### Task Parameters
 
@@ -51,8 +53,8 @@ Can only be specified when calling `function.run()`.
 | action | str | Task action. **Required. MUST BE `build`** |
 | [volumes](../../../configuration/kubernetes/overview.md#volumes) | list[dict] | List of volumes for build execution. |
 | [resources](../../../configuration/kubernetes/overview.md#resources) | dict | Resource limits/requests for build execution. |
-| [envs](../../../configuration/kubernetes/overview.md#secrets-envs) | list[dict] | Environment variables for build execution. |
-| [secrets](../../../configuration/kubernetes/overview.md#secrets-envs) | list[str] | List of secret names for build execution. |
+| [envs](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[dict] | Environment variables for build execution. |
+| [secrets](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[str] | List of secret names for build execution. |
 | [profile](../../../configuration/kubernetes/overview.md#profile) | str | Profile template for build execution. |
 | instructions | list[str] | Custom build instructions to execute during container build. |
 
@@ -68,9 +70,14 @@ Can only be specified when calling `function.run()`.
 | private_key_secret | str | Name of the secret containing the private key for secure communication. |
 | public_key_secret | str | Name of the secret containing the public key for secure communication. |
 | isolation | str | Isolation mode: `process` or `subprocess`. |
+| auto_build | bool | Whether to build the function automatically when no image is configured. Defaults to `True`. |
+
+### Requirements
+
+`requirements` accepts a list of requirement strings or a path to a supported requirements file. The SDK parses the requirements when the function is saved. For an unversioned package found in the local environment, it adds the installed version and logs a warning; use an explicit version or constraint to avoid this inference.
 
 ## Entity methods
 
 ### Run methods
 
-There are no additional run methods for this action.
+Once the build run is complete, the generated image reference is available through the `run.image` property.

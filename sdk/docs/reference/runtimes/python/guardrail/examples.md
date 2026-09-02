@@ -2,7 +2,6 @@
 
 ## Function Creation
 
-
 ```python
 guardrail_function = project.new_function(
     name="request-guardrail",
@@ -15,7 +14,6 @@ guardrail_function = project.new_function(
 ```
 
 ## Task Execution
-
 
 **Build image:**
 

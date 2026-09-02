@@ -16,4 +16,4 @@ Runtimes define the key point of extension of the platform: new runtimes may be 
 - [Hera](hera/overview.md) — Hera pipelines runtime (DAG/steps orchestration).
 - [ModelServe](modelserve/overview.md) — model serving and inference workloads.
 - [Flower](flower/overview.md) — federated learning with Flower framework.
-- [ServieGraph](serviegraph/overview.md) — run service pipeline orchestration services.
+- [ServiceGraph](servicegraph/overview.md) — run service pipeline orchestration services.

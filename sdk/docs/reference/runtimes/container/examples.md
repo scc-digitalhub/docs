@@ -15,7 +15,7 @@ function = project.new_function(
 
 run = function.run(
     action="job",
-    run_as_user="8877",
+    run_as_user=8877,
     wait=True,
 )
 ```
@@ -34,7 +34,7 @@ function = project.new_function(
 )
 run = function.run(
     action="build",
-    instructions=["RUN apt-get update && apt-get install -y git"],
+    instructions=["apt-get update && apt-get install -y git"],
     wait=True,
 )
 ```
@@ -56,7 +56,7 @@ run = function.run(
     replicas=2,
     service_ports=[{"port": 5678, "target_port": 5678}],
     service_name="http-echo",
-    run_as_user="8877",
+    run_as_user=8877,
     wait=True,
 )
 

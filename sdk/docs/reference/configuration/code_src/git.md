@@ -1,19 +1,19 @@
 # Code source — Git repository
 
-Use a Git repository as a code source by prefixing the URL with `git+`.
+Use a Git repository as a code source with a `git://`, `git+http://` or `git+https://` URL.
 This points the runtime to a remote repository that will be cloned at execution time.
 
 ## Quick checklist
 
-- Prefix the URL with `git+` (required).
+- Use one of the supported prefixes: `git+http://` or `git+https://`.
 - Provide a `handler` that points to the module and callable (e.g. `pkg.module:func`).
 - Set [authentication](#credentials) env vars or create secrets before creating the function (token recommended) to access private repos.
 
 ## Format
 
-- `git+https://github.com/user/repo(#branch-or-tag-or-commit)`
+- `git+https://github.com/user/repo#branch-or-tag-or-commit`
 
-The `(#branch-or-tag-or-commit)` and will be used to checkout the specific reference after cloning.
+The optional fragment (`#branch-or-tag-or-commit`) is used to check out a specific reference after cloning.
 
 ## Behavior
 

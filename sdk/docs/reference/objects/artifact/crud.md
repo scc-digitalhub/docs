@@ -32,6 +32,8 @@ Create:
 - [**`new_artifact`**](#new)
 - [**`log_artifact`**](#log)
 - [**`log_generic_artifact`**](#log-generic)
+- [**`register_artifact`**](#register)
+- [**`register_generic_artifact`**](#register-generic)
 
 Read:
 
@@ -95,6 +97,39 @@ This function creates an artifact from a local path and uploads it to the artifa
         show_source: false
         members:
             - log_generic_artifact
+
+## Register
+
+Register an artifact whose source already exists in a supported store. Unlike
+`log_artifact()`, registration does not upload local data. The `source` value
+is kept as the artifact path, and `embedded=True` stores the entity reference
+in the project specification when supported.
+
+### Register
+
+::: digitalhub.entities
+    options:
+        heading_level: 6
+        show_signature: false
+        show_docstring_description: false
+        show_symbol_type_heading: true
+        show_source: false
+        members:
+            - register_artifact
+
+### Register generic
+
+Use the generic form when the artifact kind is not one of the built-in kinds.
+
+::: digitalhub.entities
+    options:
+        heading_level: 6
+        show_signature: false
+        show_docstring_description: false
+        show_symbol_type_heading: true
+        show_source: false
+        members:
+            - register_generic_artifact
 
 ## Read
 

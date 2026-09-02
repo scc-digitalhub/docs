@@ -84,7 +84,7 @@ Must be specified when creating the function.
 | [server_app](#appcode) | str | Name of the Flower server application instance. |
 | image | str | Custom Docker image for execution of Flower code. |
 | base_image | str | Base Docker image to use. |
-| requirements | list[str] | Additional Python package requirements. |
+| requirements | list[str] \| str | Additional Python package requirements or a supported requirements file path. |
 
 #### String source code
 
@@ -105,6 +105,10 @@ server_app = "name-of-ServerClass-instance"
 
 Where `ClientClass` and `ServerClass` are the classes implementing the Flower client and server respectively.
 
+#### Requirements
+
+`requirements` accepts a list of requirement strings or a path to a supported requirements file: `requirements.txt`, `setup.py`, `pyproject.toml`, `environment.yml`, or `environment.yaml`. The SDK parses the requirements when the function is saved. For an unversioned package found in the local environment, it adds the installed version and logs a warning; use an explicit version or constraint to avoid this inference.
+
 ### Task Parameters
 
 Can only be specified when calling `function.run()`.
@@ -115,8 +119,8 @@ Can only be specified when calling `function.run()`.
 | schedule | str | Quartz cron expression. |
 | [volumes](../../../configuration/kubernetes/overview.md#volumes) | list[dict] | List of volumes. |
 | [resources](../../../configuration/kubernetes/overview.md#resources) | dict | Resource limits/requests. |
-| [envs](../../../configuration/kubernetes/overview.md#secrets-envs) | list[dict] | Environment variables. |
-| [secrets](../../../configuration/kubernetes/overview.md#secrets-envs) | list[str] | List of secret names. |
+| [envs](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[dict] | Environment variables. |
+| [secrets](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[str] | List of secret names. |
 | [profile](../../../configuration/kubernetes/overview.md#profile) | str | Profile template. |
 
 ### Run Parameters
@@ -155,4 +159,4 @@ Other parameters are parsed with the following rules:
 
 ### Run methods
 
-There are no additional run methods for this action.
+`run.local_execution()` returns whether the run uses local Flower simulation mode.

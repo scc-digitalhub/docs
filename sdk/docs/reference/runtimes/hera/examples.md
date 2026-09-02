@@ -55,16 +55,36 @@ workflow = dh.new_workflow(
 )
 ```
 
-## Run Examples
+## Build and Pipeline Example
 
 ```python
-# Build the pipeline
-run_build = workflow.run(
-    action="build"
+# Recommended: build automatically when needed and execute the pipeline.
+run_pipeline = workflow.run(
+    action="pipeline",
+    auto_build=True,
+    parameters={"url": "https://example.com"},
+    wait=True,
+)
+```
+
+To keep build and execution as separate runs:
+
+```python
+# The handler is called without arguments and must return a Hera Workflow.
+run_build = workflow.build(
+    wait=True,
 )
 
-# Execute the pipeline
-run_pipeline = workflow.run(action="pipeline")
+# Generated Argo YAML, encoded as base64
+workflow_yaml_base64 = run_build.result("workflow")
+
+# Execute the already-built workflow
+run_pipeline = workflow.run(
+    action="pipeline",
+    auto_build=False,
+    parameters={"url": "https://example.com"},
+    wait=True,
+)
 ```
 
 ## Tutorials

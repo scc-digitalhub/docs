@@ -2,7 +2,6 @@
 
 ## Function Creation
 
-
 ```python
 openinference_function = project.new_function(
     name="text-inference",
@@ -30,7 +29,6 @@ run = openinference_function.run(
 ## Service Invocation
 
 After deploying a service:
-
 
 An OpenInference endpoint receives tensor-oriented payloads:
 

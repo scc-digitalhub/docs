@@ -5,7 +5,10 @@ extra:
   portal_name: SDK
 
 extra_css:
-  - !ENV [OTHERS_STYLESHEETS_PORTAL_SELECTION, "../stylesheets/portal_selection.css"]
+  - !ENV [
+      OTHERS_STYLESHEETS_PORTAL_SELECTION,
+      "../stylesheets/portal_selection.css",
+    ]
   - !ENV [OTHERS_STYLESHEETS_COLORS, "../stylesheets/colors.css"]
 
 markdown_extensions:
@@ -69,6 +72,11 @@ nav:
               - CRUD: reference/objects/workflow/crud.md
               - Methods: reference/objects/workflow/methods.md
               - Kinds: reference/objects/workflow/kinds.md
+          - Tasks:
+              - Entity: reference/objects/task/entity.md
+              - CRUD: reference/objects/task/crud.md
+              - Methods: reference/objects/task/methods.md
+              - Kinds: reference/objects/task/kinds.md
           - Triggers:
               - Entity: reference/objects/trigger/entity.md
               - CRUD: reference/objects/trigger/crud.md
@@ -98,6 +106,11 @@ nav:
               - Entity: reference/objects/secret/entity.md
               - CRUD: reference/objects/secret/crud.md
               - Methods: reference/objects/secret/methods.md
+          - Container images:
+              - Entity: reference/objects/containerimage/entity.md
+              - CRUD: reference/objects/containerimage/crud.md
+              - Methods: reference/objects/containerimage/methods.md
+              - Kinds: reference/objects/containerimage/kinds.md
       - Runtimes:
           - Index: reference/runtimes/index.md
           - Python:
@@ -172,12 +185,19 @@ nav:
                   - flower-server build: reference/runtimes/flower/actions/flower-server-build.md
                   - flower-server deploy: reference/runtimes/flower/actions/flower-server-deploy.md
               - Examples: reference/runtimes/flower/examples.md
+          - ServiceGraph:
+              - Overview: reference/runtimes/servicegraph/overview.md
+              - How-to: reference/runtimes/servicegraph/how-to.md
+              - Actions:
+                  - servicegraph serve: reference/runtimes/servicegraph/actions/servicegraph-serve.md
+              - Examples: reference/runtimes/servicegraph/examples.md
       - Configuration:
           - Paths:
               - Overview: reference/configuration/paths/overview.md
               - Local: reference/configuration/paths/local.md
               - S3: reference/configuration/paths/s3.md
               - Remote: reference/configuration/paths/remote.md
+              - Hugging Face: reference/configuration/paths/hf.md
               - SQL: reference/configuration/paths/sql.md
           - Code source:
               - Overview: reference/configuration/code_src/overview.md

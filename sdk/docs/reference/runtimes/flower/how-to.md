@@ -45,6 +45,8 @@ run = function.run(
 )
 ```
 
+For `flower-client` and `flower-server`, omit `image` to let `run()` build the image automatically. This behavior is enabled by default; use `auto_build=False` when an existing image is required.
+
 ### Local vs Remote Execution
 
 When executing a **flower-app** function (and only that) with `train` action, you can choose between **local execution** and **remote execution** by setting the `local_execution` parameter in the run parameters.

@@ -8,8 +8,8 @@ To better understand the Kubernetes configuration options, refer to the [Kuberne
 - You need to manage resource limits (more cpu/memory) -> [Set resource requests/limits](#resources)
 - You need a GPU -> [Request a GPU profile](#profile)
 - You need to mount a volume -> [Declare a volume](#volumes)
-- You need to set environment variables -> [Inject secrets and envs](#secrets-envs)
-- You need to expose a service -> [Configure service ports](#service-port-type)
+- You need to set environment variables -> [Inject secrets and envs](#secrets-and-envs)
+- You need to expose a service -> [Configure service ports](#service-port-and-type)
 - You need to configure security settings -> [Set security context](#security-context)
 - You need to scale your application -> [Set replicas](#replicas)
 
@@ -101,7 +101,7 @@ volumes = [{
 }]
 ```
 
-## Secrets and Envs {#secrets-envs}
+## Secrets and Envs
 
 Inject secret names into the pod environment via `secrets` (list of strings). It uses existing digitalhub `Secrets` as reference.
 Set environment variables as a list of `{name, value}` objects.
@@ -111,7 +111,7 @@ secrets = ["my-secret"]
 envs = [{"name": "ENV_NAME", "value": "value"}]
 ```
 
-## Service port and type {#service-port-type}
+## Service port and type
 
 Expose services using `service_ports` (list of `{port, target_port}`) and `service_type` (`ClusterIP`, `LoadBalancer`, `NodePort`, `ExternalName`).
 
@@ -120,7 +120,7 @@ service_ports = [{"port": 80, "target_port": 80}]
 service_type = "NodePort"
 ```
 
-## Security context {#security-context}
+## Security context
 
 Set `run_as_user` and `run_as_group` (integers) to control the UID/GID the container runs as.
 Set `fs_group` (integer) to control the GID for the filesystem.

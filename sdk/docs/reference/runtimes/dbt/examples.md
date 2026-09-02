@@ -24,7 +24,8 @@ run = function.run(
     },
     outputs={
         "output_table": "mapped-name"
-    }
+    },
+    wait=True,
 )
 ```
 

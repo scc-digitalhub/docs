@@ -33,18 +33,18 @@ The runtime provides DSL helpers in `digitalhub_runtime_hera.dsl`:
 
 ### `step` function
 
-`step(**step_kwargs)` creates a workflow step (a Hera Task) inside a DAG or Steps context. Main arguments:
+`step(**step_kwargs)` creates a workflow step inside a DAG or Steps context. It returns a Hera `Task` inside a `DAG` and a Hera `Step` inside `Steps`. Main arguments:
 
 | Parameter | Type | Example | Description |
 | --- | --- | --- | --- |
-| template | dict | {"action": "job"} | Parameters template to pass to `function.run()` or `workflow.run()`. The `action` key is always required. To pass inputs from other steps use the `{{inputs.parameters.parameter_name}}` template syntax. |
-| function | str | "download-data" | Name of the digitalhub function to execute. |
+| template | dict | {"action": "job"} | Parameters template to pass to the DigitalHub function run. The `action` key is required. To pass inputs from other steps use the `{{inputs.parameters.parameter_name}}` template syntax. |
+| function | str | "download-data" | Name of the DigitalHub function to execute. |
 | function_id | str | "abc123" | Function ID (optional). |
 | name | str | "step1" | Step name. |
 | [inputs](#step-inputs-and-outputs) | dict | {"some-input": ANOTHER_STEP.get_parameter("some-output")} | Step inputs. Keys become Hera Parameters; values can reference other steps' outputs. |
 | [outputs](#step-inputs-and-outputs) | list | ["output1"] | Step outputs. These become Hera Outputs and Artifacts. |
 
-Other keyword arguments are forwarded to the underlying container template. `step` must be called inside a `DAG` or `Steps` context.
+Other keyword arguments are forwarded to the underlying container template. `step` must be called inside a `DAG` or `Steps` context. The function is resolved when the workflow is built, and `DHCORE_WORKFLOW_IMAGE` must be set to create the container template.
 
 #### Step Inputs and Outputs
 
@@ -63,7 +63,7 @@ B = step(template={"action":"job", "inputs": {"parameter-name": "{{inputs.parame
 
 ### `container_template` function
 
-`container_template(...)` builds a Hera container template for a workflow step. It returns a Hera `Container` object and accepts similar arguments to `step` (template, function, name, inputs, outputs, ...). Use it directly for advanced scenarios or custom templates.
+`container_template(...)` builds a Hera container template for a workflow step. It returns a Hera `Container` object and requires `template` and `function`. Unlike `step`, its `inputs` argument is a list of input names. Use it directly for advanced scenarios or custom templates. `DHCORE_WORKFLOW_IMAGE` must be set; the value is used as the stepper image.
 
 ## Pipeline Definition Example
 

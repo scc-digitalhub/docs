@@ -34,6 +34,10 @@ Create:
 - [**`log_generic_dataitem`**](#log-generic)
 - [**`log_table`**](#log-table)
 - [**`log_croissant`**](#log-croissant)
+- [**`register_dataitem`**](#register)
+- [**`register_generic_dataitem`**](#register-generic)
+- [**`register_table`**](#register-table)
+- [**`register_croissant`**](#register-croissant)
 
 Read:
 
@@ -126,6 +130,61 @@ referenced local files.
         show_source: false
         members:
             - log_croissant
+
+## Register
+
+Register data that already exists in a supported store. Registration does not
+upload local files. Pass the existing path or URI as `source`; use
+`embedded=True` to embed the entity reference in the project specification
+when supported.
+
+### Register dataitem
+
+::: digitalhub.entities
+    options:
+        heading_level: 6
+        show_signature: false
+        show_docstring_description: false
+        show_symbol_type_heading: true
+        show_source: false
+        members:
+            - register_dataitem
+
+### Register generic
+
+::: digitalhub.entities
+    options:
+        heading_level: 6
+        show_signature: false
+        show_docstring_description: false
+        show_symbol_type_heading: true
+        show_source: false
+        members:
+            - register_generic_dataitem
+
+### Register table
+
+::: digitalhub.entities
+    options:
+        heading_level: 6
+        show_signature: false
+        show_docstring_description: false
+        show_symbol_type_heading: true
+        show_source: false
+        members:
+            - register_table
+
+### Register Croissant
+
+::: digitalhub.entities
+    options:
+        heading_level: 6
+        show_signature: false
+        show_docstring_description: false
+        show_symbol_type_heading: true
+        show_source: false
+        members:
+            - register_croissant
 
 ## Read
 

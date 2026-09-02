@@ -74,21 +74,7 @@ The engine is a `KubeaiEngine` object that represents the engine to use for the 
 
 #### Model URL
 
-The model url must follow the pattern:
-
-```python
-regexp = (
-    r"^(store://([^/]+)/model/huggingface/.*)"
-    + r"|"
-    + r"^pvc?://.*$"
-    + r"|"
-    + r"^s3?://.*$"
-    + r"|"
-    + r"^ollama?://.*$"
-    + r"|"
-    + r"^hf?://.*$"
-)
-```
+The SDK stores the model URL as a string and does not validate its format locally. Provide a URL supported by KubeAI, such as an `hf://` source.
 
 ### Task Parameters
 
@@ -99,8 +85,8 @@ Can only be specified when calling `function.run()`.
 | Name | Type | Description |
 | --- | --- | --- |
 | action | str | Task action. **Required. Must be `serve`** |
-| [envs](../../../configuration/kubernetes/overview.md#secrets-envs) | list[dict] | Environment variables. |
-| [secrets](../../../configuration/kubernetes/overview.md#secrets-envs) | list[str] | List of secret names. |
+| [envs](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[dict] | Environment variables. |
+| [secrets](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[str] | List of secret names. |
 | [profile](../../../configuration/kubernetes/overview.md#profile) | str | Profile template. |
 
 ### Run Parameters

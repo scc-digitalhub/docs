@@ -1,6 +1,12 @@
 # Define a Python Function
 
-This section describes how to define a Python-runtime handler. The same handler model is used by `python`, `guardrail`, and `openinference` functions. A handler is a Python function declared with the standard `def` keyword. Handlers can be simple or accept platform-provided objects and inputs. The runtime injects reserved arguments and provides helpers to map inputs and outputs.
+This section describes the shared handler contract for Python-runtime functions. The same common model is used by `python`, `guardrail`, and `openinference` functions. A handler is a Python function declared with the standard `def` keyword. Handlers can be simple or accept platform-provided objects and inputs. The runtime injects reserved arguments and provides helpers to map inputs and outputs.
+
+Use the runtime-specific pages for additional behavior:
+
+- [Python handler details](python/define-function.md)
+- [Guardrail handler details](guardrail/define-function.md)
+- [OpenInference handler details](openinference/define-function.md)
 
 ## Function Anatomy
 
@@ -13,7 +19,7 @@ from digitalhub_runtime_python import handler
 
 @handler(outputs=["my-sdk-output", "my-primitive-output"])
 def func(project, run, context, event, input_1, parameter_1):
-    project.log_artifact("my-artifact", "artifact", source="some-file.ext")
+    project.log_artifact(source="some-file.ext", name="my-artifact")
     run.log_metric("my-metric", -14.6)
     context.logger.info("log-some-string")
 
@@ -55,6 +61,7 @@ Inputs and parameters map function argument names to values provided at run time
 
 - Inputs must reference platform entities (for example `Dataitem`, `Artifact`, or `Model`) by their keys.
 - Parameters may be plain Python values (strings, numbers, dicts, lists, etc.).
+- The argument names in the two maps must match the handler signature. Reserved names (`project`, `run`, `context`, and `event`) are supplied by the runtime when they appear in the signature.
 
 Example:
 
@@ -97,7 +104,30 @@ run.output("data")   # returns a Dataitem object
 run.result("string") # returns "some value"
 ```
 
-You can omit the decorator; in that case the SDK will assign default placeholder names to any outputs you return. If you use `@handler`, map outputs explicitly to collect named results.
+The `outputs` list can contain names or descriptors. A descriptor explicitly
+selects the entity kind to log and can pass kind-specific specification fields:
+
+```python
+@handler(outputs=[
+    {"name": "model", "kind": "sklearn", "spec_kwargs": {"framework": "sklearn"}},
+])
+def train():
+    return trained_model_path
+```
+
+Returned values are classified as follows:
+
+- `Dataitem`, `Artifact`, or `Model` objects are recorded as entity outputs.
+- Supported dataframe objects are logged as table dataitems.
+- Other objects are serialized and logged as artifacts.
+- Strings, numbers, booleans, and bytes are stored as primitive results.
+- `None` produces no result. A tuple or list is treated as multiple positional results.
+
+Entity outputs are available through `run.output(name)`; primitive values are
+available through `run.result(name)`. If the decorator is omitted, returned
+values receive default names such as `output_0`. If the number of declared
+names differs from the number of returned values, missing names also use this
+default pattern and extra names are ignored.
 
 ## Init function
 

@@ -9,6 +9,7 @@ SQL paths reference a single table in a database and are used where the SDK inte
 ## Behavior
 
 - A SQL path always points to a single table. The SDK expects at least database and table names.
+- Use the `sql://` prefix.
 
 ## Example
 

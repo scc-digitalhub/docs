@@ -1,19 +1,25 @@
 # Code source — Local file
 
-Reference a single local file that contains the code you want to run.
+Reference local code that is available when the Function is created.
 
 ## Quick checklist
 
-- Does your codebase fit within a single file?
-- For multi-file codebase, use a [git repository](./git.md) or a [S3 zip archive](./s3.md) to package the code and its dependencies.
+- Does your codebase fit within a single file, directory or ZIP archive?
+- For code stored elsewhere, use a [git repository](./git.md), [S3 ZIP archive](./s3.md) or [HTTP(S) source](./http.md).
 
 ## Supported formats
 
 - `path/to/file.py`
+- `path/to/package/`
+- `path/to/archive.zip`
 
 ## Behavior
 
-- The runtime reads the local file, encodes it, and runs the specified handler.
+- The SDK validates local sources when the Function is created.
+- A Python file is encoded into the Function specification.
+- A directory is archived and uploaded to the configured default files store.
+- A ZIP archive is uploaded to the configured default files store.
+- The runtime then imports and runs the specified handler from the resulting source.
 
 ## Examples
 

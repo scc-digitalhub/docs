@@ -36,5 +36,7 @@ To execute federated learning tasks on the platform:
 2. Create a `Function` resource that references your Flower code.
 3. Call `function.run()` to execute the federated learning task.
 
+For `flower-client` and `flower-server`, `run()` automatically builds an image when none is configured. Set `auto_build=False` when you want to deploy only an existing image.
+
 See [how to](how-to.md) for detailed instructions on which kind of applications you can execute and how to implement and deploy your Flower application.
 See [Examples](examples.md) for code samples.

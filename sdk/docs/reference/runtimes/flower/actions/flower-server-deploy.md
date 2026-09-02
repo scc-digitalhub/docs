@@ -6,6 +6,7 @@ The `deploy` action deploys a built Flower server container to orchestrate feder
 
 The runtime deploys the Flower server container image to a Kubernetes cluster or remote execution environment.
 The deployed server will coordinate federated learning rounds and manage client communications.
+If no image is configured, `auto_build=True` builds the image before deployment.
 
 ## Quick example with bare minimum parameters
 
@@ -38,9 +39,9 @@ Must be specified when creating the function.
 | description | str | Description of the object. |
 | labels | list[str] | List of labels. |
 | embedded | bool | Whether the object should be embedded in the project. |
-| image | str | Docker image name of the built Flower server container. **Required for deploy.** |
-| base_image | str | Base Docker image used for building (informational only for deploy). |
-| requirements | list[str] | Python package requirements (informational only for deploy). |
+| image | str | Docker image name of the built Flower server container. If omitted, `auto_build=True` builds it before deployment. |
+| base_image | str | Base Docker image used if an automatic build is triggered. |
+| requirements | list[str] \| str | Python package requirements or a supported requirements file path; used if an automatic build is triggered. |
 
 ### Task Parameters
 
@@ -51,8 +52,8 @@ Can only be specified when calling `function.run()`.
 | action | str | Task action. **Required. MUST BE `deploy`** |
 | [volumes](../../../configuration/kubernetes/overview.md#volumes) | list[dict] | List of volumes for the deployment. |
 | [resources](../../../configuration/kubernetes/overview.md#resources) | dict | Resource limits/requests for the deployment. |
-| [envs](../../../configuration/kubernetes/overview.md#secrets-envs) | list[dict] | Environment variables for the deployment. |
-| [secrets](../../../configuration/kubernetes/overview.md#secrets-envs) | list[str] | List of secret names for the deployment. |
+| [envs](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[dict] | Environment variables for the deployment. |
+| [secrets](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[str] | List of secret names for the deployment. |
 | [profile](../../../configuration/kubernetes/overview.md#profile) | str | Profile template for the deployment. |
 
 ### Run Parameters
@@ -63,6 +64,11 @@ Can only be specified when calling `function.run()`.
 | --- | --- | --- |
 | auth_public_keys | list[str] | List of public keys for client authentication. |
 | insecure | bool | Disable TLS verification (default False). |
+| auto_build | bool | Whether to build the function automatically when no image is configured. Defaults to `True`. |
+
+### Requirements
+
+`requirements` accepts a list of requirement strings or a path to a supported requirements file. The SDK parses the requirements when the function is saved. For an unversioned package found in the local environment, it adds the installed version and logs a warning; use an explicit version or constraint to avoid this inference.
 
 ## Entity methods
 

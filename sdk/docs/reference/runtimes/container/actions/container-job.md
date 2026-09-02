@@ -44,7 +44,7 @@ Must be specified when creating the function.
 | lang | str | Source code language (informational). |
 | image | str | Container image to use for execution (name:tag). |
 | base_image | str | Base image used when building the execution image. |
-| image_pull_policy | str | Kubernetes image pull policy. |
+| image_pull_policy | str | Kubernetes image pull policy: `Always`, `IfNotPresent` or `Never`. |
 | command | str | Command to run inside the container. |
 
 ### Task Parameters
@@ -57,18 +57,18 @@ Can only be specified when calling `function.run()`.
 | --- | --- | --- |
 | action | str | Task action. **Required. Must be `job`** |
 | [volumes](../../../configuration/kubernetes/overview.md#volumes) | list[dict] | List of volumes. |
-| [resources](../../../configuration/kubernetes/overview.md#resources) | dict | Resource limits/requests. Example: `{"limits": {"cpu": "1", "memory": "512Mi"}, "requests": {"cpu": "250m", "memory": "128Mi"}}`. |
-| [envs](../../../configuration/kubernetes/overview.md#secrets-envs) | list[dict] | Environment variables. Example: `[{"name": "FOO", "value": "bar"}]`. |
-| [secrets](../../../configuration/kubernetes/overview.md#secrets-envs) | list[str] | List of secret names. |
+| [resources](../../../configuration/kubernetes/overview.md#resources) | dict | Resource values with optional `cpu`, `mem`, `gpu` and `disk` keys. Example: `{"cpu": "1", "mem": "512Mi"}`. |
+| [envs](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[dict] | Environment variables. Example: `[{"name": "FOO", "value": "bar"}]`. |
+| [secrets](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[str] | List of secret names. |
 | [profile](../../../configuration/kubernetes/overview.md#profile) | str | Profile template. |
 
 #### Job-Specific Parameters
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [fs_group](../../../configuration/kubernetes/overview.md#security-context) | int | File system group ID. |
-| [run_as_user](../../../configuration/kubernetes/overview.md#security-context) | int | User ID to run the container. |
-| [run_as_group](../../../configuration/kubernetes/overview.md#security-context) | int | Group ID to run the container. |
+| [fs_group](../../../configuration/kubernetes/overview.md#security-context) | int | File system group ID. Must be positive. |
+| [run_as_user](../../../configuration/kubernetes/overview.md#security-context) | int | User ID to run the container. Must be non-negative. |
+| [run_as_group](../../../configuration/kubernetes/overview.md#security-context) | int | Group ID to run the container. Must be non-negative. |
 
 ### Run Parameters
 
@@ -76,6 +76,7 @@ Can only be specified when calling `function.run()`.
 
 | Name | Type | Description |
 | --- | --- | --- |
+| auto_build | bool | Whether to build the function automatically when no image is configured. Defaults to `True`. |
 | args | list[str] | Command-line arguments to pass to the container command. |
 
 ## Entity methods

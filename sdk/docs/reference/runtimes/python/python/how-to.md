@@ -46,7 +46,19 @@ When executing a function, you can choose between **local execution** and **remo
 
 - **Local Execution** (`local_execution=True`): The function runs directly on your local machine. You need to have the required dependencies of your function installed locally.
 
-- **Remote Execution** (`local_execution=False`, default): The function is executed on a remote server or cluster managed by the platform. Remember to provide the dependencies in the function's `requirements` parameter or in your `requirements.txt`.
+- **Remote Execution** (`local_execution=False`, default): The function is executed on a remote server or cluster managed by the platform. Provide the dependencies in the function's `requirements` parameter or in a supported requirements file.
+
+### Requirements and automatic builds
+
+The `requirements` function parameter accepts a list of requirement strings or a path to one of these files:
+
+- `requirements.txt` or `setup.py`, parsed as pip requirements
+- `pyproject.toml`, read from `project.dependencies`
+- `conda.yml` or `conda.yaml`, reading pip dependencies from the `dependencies.pip` section
+
+When the function is saved, the SDK parses a requirements file and normalizes the resulting list. If an unversioned package is installed in the local environment, its installed version is added and a warning is logged. For example, `pandas` can become `pandas==<installed-version>` with a warning that the version was inferred from the local environment. Use an explicit version or version constraint to avoid this inference; pin an exact version for reproducible builds.
+
+For remote `job` and `serve` runs, a non-empty `requirements` list requires a build so that the dependencies are installed in the execution image. Requirements are not installed during the run itself. With the default `auto_build=True`, the runtime calls `function.build()` when `spec.image` is `None`. It does not rebuild when an image is already configured, even if requirements are present; after changing requirements, call `function.build()` explicitly or provide an image that already contains them.
 
 !!! note
     Note that some features, like serving functions, are only available with remote execution.

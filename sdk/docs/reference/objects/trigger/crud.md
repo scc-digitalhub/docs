@@ -21,7 +21,6 @@ Create:
 Read:
 
 - [**`get_trigger`**](#get)
-- [**`get_trigger_versions`**](#get-versions)
 - [**`import_trigger`**](#import)
 - [**`list_triggers`**](#list)
 
@@ -54,7 +53,7 @@ This function creates a new entity and saves it into the backend.
 
 ## Read
 
-To read triggers you can use the `get_trigger()`, `get_trigger_versions()`, `list_triggers()` or `import_trigger()` functions.
+To read triggers you can use the `get_trigger()`, `list_triggers()` or `import_trigger()` functions.
 
 ### Get
 
@@ -73,20 +72,6 @@ If you want to collect a trigger from the backend using `get_trigger()`, you hav
         show_source: false
         members:
             - get_trigger
-
-### Get versions
-
-This function returns all the versions of a trigger from the backend.
-
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_trigger_versions
 
 ### List
 

@@ -23,6 +23,8 @@ To execute a dbt transformation, follow this pattern:
 1. Use `dh.new_function()` or `project.new_function()` to create the function, passing **function parameters**.
 2. Call `function.run()` with the desired action, passing **task parameters** and **run parameters**.
 
+For a dbt transformation, `inputs`, `outputs` and `local_execution` are run parameters. Kubernetes options such as `resources`, `envs` and `volumes` are task parameters.
+
 ```python
 # Create function with function parameters
 function = dh.new_function(
@@ -45,7 +47,7 @@ You can control whether the execution happens locally on your machine or remotel
 
 When executing a function, you can choose between **local execution** and **remote execution** by setting the `local_execution` parameter in the run parameters.
 
-- **Local Execution** (`local_execution=True`): The function runs directly on your local machine. You need to have the required dependencies of your function installed locally.
+- **Local Execution** (`local_execution=True`): The function runs directly on your local machine. Install the `local` extra, and make sure the PostgreSQL connection used by DigitalHub is configured and reachable.
 
 - **Remote Execution** (`local_execution=False`, default): The function is executed on a remote server or cluster managed by the platform.
 

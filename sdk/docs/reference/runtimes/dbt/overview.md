@@ -24,13 +24,15 @@ For local execution:
 pip install digitalhub-runtime-dbt[local]
 ```
 
+The `local` extra installs the dbt Core and PostgreSQL adapter dependencies required for local execution.
+
 ## Usage overview
 
 To execute dbt transformations on the platform:
 
 1. Implement your dbt project/code.
-2. Create a `Function` resource that references your dbt code and declares inputs/outputs.
-3. Call `function.run()` to execute the transformation.
+2. Create a `Function` resource that references your dbt SQL code.
+3. Call `function.run()` with the input entity references and output table name to execute the transformation.
 
 See [how to](how-to.md) for detailed instructions on executing dbt transformations.
 See [Examples](examples.md) for code samples.

@@ -4,12 +4,12 @@ The `transform` action executes a dbt transformation using the DBT runtime. A `T
 
 ## Overview
 
-The DBT runtime wraps the DBT CLI and executes SQL/dbt transformations. At a high level:
+The DBT runtime wraps the dbt CLI and executes SQL transformations. At a high level:
 
-1. Downloads input dataitems and loads them into temporary tables in the configured Postgres database
-2. Collects the dbt project/code and generates required artifacts (profiles.yml, dbt_project.yml, etc.)
-3. Runs the dbt transformation
-4. Writes the resulting table back to the database and creates a Dataitem representing the output
+1. Collects input material entities and materializes them as versioned tables in the configured PostgreSQL database
+2. Collects the SQL source and generates the dbt project files and configuration
+3. Runs `dbt run --select <output_table>`
+4. Creates one table Dataitem for the resulting table
 
 ## Quick example with bare minimum parameters
 
@@ -37,6 +37,8 @@ run = function.run(
 
 Must be specified when creating the function.
 
+Provide at least one of `code`, `code_src` or `base64`. The source must contain SQL for a dbt transformation. When `code_src` points to a repository or archive, also provide `handler` with the source file path.
+
 | Name | Type | Description |
 | --- | --- | --- |
 | project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
@@ -47,10 +49,10 @@ Must be specified when creating the function.
 | labels | list[str] | List of labels. |
 | embedded | bool | Whether the object should be embedded in the project. |
 | [code_src](../../../configuration/code_src/overview.md#code-source-uri) | str | URI pointing to the source code. |
-| [code](../../../configuration/code_src/overview.md#plain-text-source) | str | Source code provided as plain text. |
-| base64 | str | Source code encoded as base64. |
-| [handler](../../../configuration/code_src/overview.md#handler) | str | Function entrypoint. |
-| lang | str | Source code language (informational). |
+| [code](../../../configuration/code_src/overview.md#plain-text-source) | str | SQL source provided as plain text. |
+| base64 | str | SQL source encoded as base64. |
+| [handler](../../../configuration/code_src/overview.md#handler) | str | Source file path used with repository or archive sources. |
+| lang | str | Source language hint. Defaults to `sql`; dbt transformations use SQL. |
 
 ### Task Parameters
 
@@ -60,9 +62,9 @@ Can only be specified when calling `function.run()`.
 | --- | --- | --- |
 | action | str | Task action. **Required. Must be `transform`** |
 | [volumes](../../../configuration/kubernetes/overview.md#volumes) | list[dict] | List of volumes. |
-| [resources](../../../configuration/kubernetes/overview.md#resources) | dict | Resource limits/requests. |
-| [envs](../../../configuration/kubernetes/overview.md#secrets-envs) | list[dict] | Environment variables. |
-| [secrets](../../../configuration/kubernetes/overview.md#secrets-envs) | list[str] | List of secret names. |
+| [resources](../../../configuration/kubernetes/overview.md#resources) | dict | Resource values with optional `cpu`, `mem`, `gpu` and `disk` keys. |
+| [envs](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[dict] | Environment variables. |
+| [secrets](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[str] | List of secret names. |
 | [profile](../../../configuration/kubernetes/overview.md#profile) | str | Profile template. |
 
 ### Run Parameters
@@ -72,9 +74,9 @@ Can only be specified when calling `function.run()`.
 | Name | Type | Description |
 | --- | --- | --- |
 | local_execution | bool | Execute the run locally instead of remotely. (Default: False) |
-| inputs | dict | Mapping of function argument names to entity keys. |
-| outputs | dict | Mapping of outputs. **MUST BE** in the form: {"output_table": "your-table-output-name"} |
-| parameters | dict | Extra parameters passed to the function. |
+| inputs | dict | Mapping of names used by dbt `ref()` calls to material entity keys. Pass `{}` when the SQL has no input references. |
+| outputs | dict | Required mapping containing `output_table`, whose value is the name of the resulting table Dataitem. Example: `{"output_table": "your-table-output-name"}`. |
+| parameters | dict | Additional parameters stored in the run specification. They are not consumed by the dbt runtime. |
 
 ## Entity methods
 

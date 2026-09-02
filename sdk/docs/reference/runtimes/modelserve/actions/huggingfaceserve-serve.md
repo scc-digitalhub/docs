@@ -43,29 +43,11 @@ Must be specified when creating the function.
 
 #### Model Path
 
-The model path must follow the pattern:
-
-```python
-path_regex = (
-    r"^(store://([^/]+)/model/huggingface/.*)"
-    + r"|"
-    + r".*\\/$"
-    + r"|"
-    + r".*\\.zip$"
-    + r"|"
-    + r"^huggingface?://.*$"
-    + r"|"
-    + r"^hf?://.*$"
-)
-```
+The SDK stores the model path as a string and does not validate its format locally. Provide a path supported by the platform and the Hugging Face serving runtime.
 
 #### Model Image
 
-Model image must follow the pattern:
-
-```python
-image_regex = r"^kserve\\/huggingfaceserver?:"
-```
+The SDK stores the image as a string and does not validate its format locally. Provide an image compatible with the Hugging Face serving runtime.
 
 ### Task Parameters
 
@@ -76,11 +58,11 @@ Can only be specified when calling `function.run()`.
 | action | str | Task action. **Required. Must be `serve`** |
 | [volumes](../../../configuration/kubernetes/overview.md#volumes) | list[dict] | List of volumes. |
 | [resources](../../../configuration/kubernetes/overview.md#resources) | dict | Resource limits/requests. |
-| [envs](../../../configuration/kubernetes/overview.md#secrets-envs) | list[dict] | Environment variables. |
-| [secrets](../../../configuration/kubernetes/overview.md#secrets-envs) | list[str] | List of secret names. |
+| [envs](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[dict] | Environment variables. |
+| [secrets](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[str] | List of secret names. |
 | [profile](../../../configuration/kubernetes/overview.md#profile) | str | Profile template. |
 | [replicas](../../../configuration/kubernetes/overview.md#replicas) | int | Number of replicas. |
-| [service_type](../../../configuration/kubernetes/overview.md#service-port-type) | str | Service type. |
+| [service_type](../../../configuration/kubernetes/overview.md#service-port-and-type) | str | Service type. |
 | service_name | str | Service name. |
 | [huggingface_task](#huggingface-task) | str | Huggingface task type. |
 | [backend](#backend) | str | Backend type. |

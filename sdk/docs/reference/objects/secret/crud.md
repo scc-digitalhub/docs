@@ -32,7 +32,6 @@ Create:
 Read:
 
 - [**`get_secret`**](#get)
-- [**`get_secret_versions`**](#get-versions)
 - [**`import_secret`**](#import)
 - [**`list_secrets`**](#list)
 
@@ -64,7 +63,7 @@ This function create a new entity and saves it into the backend.
 
 ## Read
 
-To read secrets you can use the `get_secret()`, `get_secret_versions()`, `list_secrets()` or `import_secret()` functions.
+To read secrets you can use the `get_secret()`, `list_secrets()` or `import_secret()` functions.
 
 ### Get
 
@@ -83,20 +82,6 @@ If you want to collect a secret from the backend using `get_secret()`, you have 
         show_source: false
         members:
             - get_secret
-
-### Get versions
-
-This function returns all the versions of a secret from the backend.
-
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_secret_versions
 
 ### List
 

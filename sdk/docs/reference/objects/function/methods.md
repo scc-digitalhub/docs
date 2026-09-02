@@ -42,7 +42,10 @@ Crud methods are used to interact with the entity object in the backend or local
 
 ## Run method
 
-The `run()` method is used to execute the function.
+The `run()` method is used to execute the function. Its `extensions` parameter
+adds extension dictionaries to the resulting `Run` object. Other keyword
+arguments are passed to the run builder, including `inputs`, `parameters` and
+runtime-specific options.
 
 ::: digitalhub.entities.function._base.entity.Function.run
     options:
@@ -61,7 +64,10 @@ The function object exposes the following methods to manage tasks.
 - `new_task()`: Create a task for an action.
 - `get_task()`: Get the task for an action.
 - `list_task()`: List the tasks related to the function.
+- `import_tasks()`: Import serialized tasks and associate matching tasks with the function.
 - `update_task()`: Update the task for an action.
+- `set_task()`: Create or replace the task for an action.
+- `delete_task()`: Delete the task for an action.
 
 ::: digitalhub.entities.function._base.entity.Function.new_task
     options:
@@ -94,6 +100,36 @@ The function object exposes the following methods to manage tasks.
         show_root_toc_entry: true
 
 ::: digitalhub.entities.function._base.entity.Function.update_task
+    options:
+        heading_level: 3
+        show_signature: false
+        show_source: false
+        show_root_heading: true
+        show_symbol_type_heading: true
+        show_root_full_path: false
+        show_root_toc_entry: true
+
+::: digitalhub.entities.function._base.entity.Function.import_tasks
+    options:
+        heading_level: 3
+        show_signature: false
+        show_source: false
+        show_root_heading: true
+        show_symbol_type_heading: true
+        show_root_full_path: false
+        show_root_toc_entry: true
+
+::: digitalhub.entities.function._base.entity.Function.set_task
+    options:
+        heading_level: 3
+        show_signature: false
+        show_source: false
+        show_root_heading: true
+        show_symbol_type_heading: true
+        show_root_full_path: false
+        show_root_toc_entry: true
+
+::: digitalhub.entities.function._base.entity.Function.delete_task
     options:
         heading_level: 3
         show_signature: false

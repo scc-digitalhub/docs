@@ -61,9 +61,7 @@ run = function.run(action="serve")
 function = project.new_function(
     name="kubeai-speech-function",
     kind="kubeai-speech",
-    url="hf://openai/whisper-large-v3",
-    features=["SpeechToText"],
-    engine="FasterWhisper"
+    url="hf://openai/whisper-large-v3"
 )
 
 run = function.run(action="serve")

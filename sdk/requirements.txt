@@ -1,9 +1,10 @@
 mkdocstrings[python]
-digitalhub[full]>=0.15.0b, <0.16
-digitalhub_runtime_python>=0.15.0b, <0.16
-digitalhub_runtime_container>=0.15.0b, <0.16
-digitalhub_runtime_guardrail>=0.15.0b, <0.16
-digitalhub_runtime_modelserve>=0.15.0b, <0.16
-digitalhub_runtime_dbt>=0.15.0b, <0.16
-digitalhub_runtime_hera>=0.15.0b, <0.16
-digitalhub_runtime_flower>=0.15.0b, <0.16
+digitalhub[full]>=0.16.0b, <0.17
+digitalhub_runtime_python>=0.16.0b, <0.17
+digitalhub_runtime_container>=0.16.0b, <0.17
+digitalhub_runtime_guardrail>=0.16.0b, <0.17
+digitalhub_runtime_modelserve>=0.16.0b, <0.17
+digitalhub_runtime_dbt>=0.16.0b, <0.17
+digitalhub_runtime_hera>=0.16.0b, <0.17
+digitalhub_runtime_flower>=0.16.0b, <0.17
+digitalhub_runtime_servicegraph>=0.16.0b, <0.17

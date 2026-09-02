@@ -48,7 +48,7 @@ Must be specified when creating the function.
 | lang | str | Source code language (informational). |
 | image | str | Container image used to execute the function. |
 | [base_image](#base-image) | str | Base image (name:tag) used to build the execution image. |
-| [requirements](#requirements) | list | List of pip requirements to install into the execution image. |
+| [requirements](#requirements) | list[str] | List of pip requirements to install into the execution image. |
 | [processing_mode](#processing-mode) | str | Guardrail processing mode. **Required.** |
 
 #### Python Versions
@@ -70,7 +70,7 @@ The base image is the image (name:tag) used as the foundation when building the 
 
 #### Requirements
 
-Requirements are a list of strings representing packages to be installed by `pip` in the image where the function will be executed.
+Requirements are a list of strings representing packages to be installed by `pip` in the image where the function will be executed. The SDK normalizes them when the function is saved; an unversioned package found in the local environment is replaced with its installed version and a warning is logged. A build is required to install requirements before remote execution. See [Requirements and automatic builds](../python/how-to.md#requirements-and-automatic-builds) for details.
 
 #### Processing Mode
 
@@ -89,8 +89,8 @@ Can only be specified when calling `function.run()`.
 | action | str | Task action. **Required. Must be `build`** |
 | [volumes](../../../configuration/kubernetes/overview.md#volumes) | list[dict] | List of volumes. |
 | [resources](../../../configuration/kubernetes/overview.md#resources) | dict | Resource limits/requests. |
-| [envs](../../../configuration/kubernetes/overview.md#secrets-envs) | list[dict] | Environment variables. |
-| [secrets](../../../configuration/kubernetes/overview.md#secrets-envs) | list[str] | List of secret names. |
+| [envs](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[dict] | Environment variables. |
+| [secrets](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[str] | List of secret names. |
 | [profile](../../../configuration/kubernetes/overview.md#profile) | str | Profile template. |
 | instructions | list[str] | Additional build instructions. |
 

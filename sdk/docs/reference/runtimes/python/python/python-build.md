@@ -47,7 +47,7 @@ Must be specified when creating the function.
 | lang | str | Source code language (informational). |
 | image | str | Container image used to execute the function. |
 | [base_image](#base-image) | str | Base image (name:tag) used to build the execution image. |
-| [requirements](#requirements) | list | List of pip requirements to install into the execution image. |
+| [requirements](#requirements) | list[str] \| str | List of pip requirements or a supported requirements file path. |
 
 #### Python Versions
 
@@ -71,7 +71,7 @@ The base image is the image (name:tag) used as the foundation when building the 
 
 #### Requirements
 
-Requirements are a list of strings representing packages to be installed by `pip` in the image where the function will be executed.
+Requirements can be a list of strings or a path to a supported requirements file. The SDK parses and normalizes them when the function is saved. See [Requirements and automatic builds](how-to.md#requirements-and-automatic-builds) for supported filenames, local version inference, and the build requirement for remote execution.
 
 ```python
 requirements = ["numpy", "pandas>1,<3", "scikit-learn==1.2.0"]
@@ -88,8 +88,8 @@ Can only be specified when calling `function.run()`.
 | action | str | Task action. **Required. Must be `build`** |
 | [volumes](../../../configuration/kubernetes/overview.md#volumes) | list[dict] | List of volumes. |
 | [resources](../../../configuration/kubernetes/overview.md#resources) | dict | Resource limits/requests. |
-| [envs](../../../configuration/kubernetes/overview.md#secrets-envs) | list[dict] | Environment variables. |
-| [secrets](../../../configuration/kubernetes/overview.md#secrets-envs) | list[str] | List of secret names. |
+| [envs](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[dict] | Environment variables. |
+| [secrets](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[str] | List of secret names. |
 | [profile](../../../configuration/kubernetes/overview.md#profile) | str | Profile template. |
 | [instructions](#instructions) | list[str] | Build instructions executed as RUN lines in the generated Dockerfile. |
 
