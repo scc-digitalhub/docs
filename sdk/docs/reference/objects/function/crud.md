@@ -1,160 +1,209 @@
 # CRUD
 
-The CRUD methods are used to create, read, update and delete functions. There are two ways to use them.
-The first is through the SDK and the second is through the `Project` object.
-The syntax is the same for all CRUD methods. If you want to manage functions from the project, you can use the `Project` object and avoid to specify the `project` parameter. In this last case, you need to specify every parameter as keyword argument.
-
-Example:
-
-```python
-import digitalhub as dh
-
-project = dh.get_or_create_project("my-project")
-
-# Use CRUD method on project
-
-function = project.new_function(name="my-function",
-                                kind="python",
-                                code_src="function.py",
-                                handler="function-handler")
-
-# Use CRUD method from SDK
-
-function = dh.new_function(project="my-project",
-                           name="my-function",
-                           kind="python",
-                           code_src="function.py",
-                           handler="function-handler")
-```
-
-A `function` entity can be managed with the following methods.
-
-Create:
-
-- [**`new_function`**](#new)
-
-Read:
-
-- [**`get_function`**](#get)
-- [**`get_function_versions`**](#get-versions)
-- [**`import_function`**](#import)
-- [**`list_functions`**](#list)
-
-Update:
-
-- [**`update_function`**](#update)
-
-Delete:
-
-- [**`delete_function`**](#delete)
+The CRUD methods create, read, update and delete functions. They can be called directly from the SDK or through a `Project` object.
+The syntax is the same for all CRUD methods. When using a `Project` object, omit the `project` parameter and pass every other parameter as a keyword argument.
 
 ## Create
 
-You can create a function with the `new_function()`.
-The `kwargs` parameters are determined by the **kind** of the object, and are described in the [kinds section](kinds.md).
+`new_function()` creates and saves a function. The `kind` and other specification parameters are determined by the runtime. See the [runtime documentation](../../runtimes/index.md) when creating a function.
 
-### New
+??? example "new_function"
 
-This function create a new entity and saves it into the backend.
+    Create and save a function.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - new_function
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - new_function
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        function = dh.new_function(
+            project="my-project",
+            name="my-function",
+            kind="python",
+            code_src="function.py",
+            handler="function-handler",
+        )
+        ```
 
 ## Read
 
-To read functions you can use the `get_function()`, `get_function_versions()`, `list_functions()` or `import_function()` functions.
+Use the read methods to retrieve functions from the backend or load them from a YAML descriptor.
 
-### Get
+??? example "get_function"
 
-This function searches for a single function into the backend.
-If you want to collect a function from the backend using `get_function()`, you have two options:
+    Get one function by name and project. Omitting `entity_id` returns the latest version.
 
-- The first one is to use the `key` parameter which has the pattern `store://<project-name>/<entity-type>/<entity-kind>/<entity-name>:<entity-id>`.
-- The second one is to use the entity name as `identifier`, the project name as `project` and the entity id as `entity_id` parameters. If you do not specify the entity id, you will get the latest version.
+    === "Function documentation"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_function
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - get_function
 
-### Get versions
+    === "Example"
 
-This function returns all the versions of a function from the backend.
+        ```python
+        import digitalhub as dh
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_function_versions
+        function = dh.get_function(
+            identifier="my-function",
+            project="my-project",
+        )
+        ```
 
-### List
+??? example "get_function_versions"
 
-This function returns all the latest functions from the backend related to a project.
+    Get all versions of a function by name and project.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - list_functions
+    === "Function documentation"
 
-### Import
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - get_function_versions
 
-This function load the function from a local yaml file descriptor.
+    === "Example"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - import_function
+        ```python
+        import digitalhub as dh
+
+        functions = dh.get_function_versions(
+            identifier="my-function",
+            project="my-project",
+        )
+        ```
+
+??? example "list_functions"
+
+    List the latest functions in a project.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - list_functions
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        functions = dh.list_functions(project="my-project")
+        ```
+
+??? example "import_function"
+
+    Import a function from a local YAML descriptor or a storage key.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - import_function
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        function = dh.import_function("my-function.yaml")
+        ```
 
 ## Update
 
-To update a function you can use the `update_function()` method.
+Update a function after changing its mutable metadata.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - update_function
+??? example "update_function"
+
+    Update an existing function. Its specification is immutable.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - update_function
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        function = dh.get_function(
+            identifier="my-function",
+            project="my-project",
+        )
+        function.set_description("Updated function")
+        function = dh.update_function(function)
+        ```
 
 ## Delete
 
-To delete a function you can use the `delete_function()` method.
+Delete one function version or all versions of a function.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - delete_function
+??? example "delete_function"
+
+    Set `delete_all_versions=True` to delete all versions by entity name.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - delete_function
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        dh.delete_function(
+            identifier="my-function",
+            project="my-project",
+            delete_all_versions=True,
+        )
+        ```

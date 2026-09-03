@@ -55,4 +55,4 @@ When executing a function, you can choose between **local execution** and **remo
 
 Here are links to the detailed documentation for each parameter category:
 
-- [DBT Transform](actions/dbt-transform.md) — Complete reference for the transform action including function, task, and run parameters.
+- [DBT Transform](../../reference/runtimes/dbt/actions/dbt-transform.md) — Complete reference for the transform action including function, task, and run parameters.

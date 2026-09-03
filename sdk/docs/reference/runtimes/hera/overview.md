@@ -36,5 +36,5 @@ Core components:
 - `step`: defines an individual workflow step inside a `DAG` or `Steps` context; it returns a Hera `Task` in a `DAG` and a Hera `Step` in `Steps`, and can declare inputs and outputs.
 - `container_template`: constructs a Hera container template (image, command, args). It is used by `step` and also available for advanced custom templates.
 
-See [how to](how-to.md) for detailed instructions on building and executing Hera workflows.
+See the [Hera execution model](../../../explanations/runtimes/hera-execution.md) for building and executing workflows.
 See [Examples](examples.md) for code samples.

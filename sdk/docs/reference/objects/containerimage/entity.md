@@ -4,6 +4,32 @@ A `Containerimage` represents an existing container image reference in a project
 
 Container images are versioned context entities and can be managed directly with the SDK CRUD methods or through a `Project` object.
 
-1. In the [CRUD section](./crud.md), see how to create, read, update and delete container images.
-2. In the [methods section](./methods.md), see the methods available on a `Containerimage` object.
-3. In the [kinds section](./kinds.md), see the supported kinds.
+## Choose a container image kind
+
+Choose the kind that matches the container image you want to create. The `kind` to use is shown at the end of the card description.
+
+<div class="kind-cards" markdown>
+
+- [**Container image**](./kind/container-image.md){ .kind-card-link } - Store a container image reference with image metadata - `container-image`
+
+</div>
+
+## Container image operations
+
+<div class="grid cards" markdown>
+
+- [**Container image CRUD**](./crud.md){ .card-link }
+
+	---
+
+	Create, read, update, or delete container images.
+
+- [**Use the Containerimage entity**](./methods.md){ .card-link }
+
+	---
+
+	Save, export, and refresh container image entities.
+
+</div>
+
+[Back to Entities](../index.md)

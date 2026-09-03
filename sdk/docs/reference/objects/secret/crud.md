@@ -1,140 +1,180 @@
 # CRUD
 
-The CRUD methods are used to create, read, update and delete secrets. There are two ways to use them.
-The first is through the SDK and the second is through the `Project` object.
-The syntax is the same for all CRUD methods. If you want to manage secrets from the project, you can use the `Project` object and avoid to specify the `project` parameter. In this last case, you need to specify every parameter as keyword argument.
-
-Example:
-
-```python
-import digitalhub as dh
-
-project = dh.get_or_create_project("my-project")
-
-# Use CRUD method on project
-
-secret = project.new_secret(name="my-secret",
-                            secret_value="some-value")
-
-# Use CRUD method from SDK
-
-secret = dh.new_secret(project="my-project",
-                       name="my-secret",
-                       secret_value="some-value")
-```
-
-A `secret` entity can be managed with the following methods.
-
-Create:
-
-- [**`new_secret`**](#new)
-
-Read:
-
-- [**`get_secret`**](#get)
-- [**`import_secret`**](#import)
-- [**`list_secrets`**](#list)
-
-Update:
-
-- [**`update_secret`**](#update)
-
-Delete:
-
-- [**`delete_secret`**](#delete)
+The CRUD methods create, read, update and delete secrets. They can be called directly from the SDK or through a `Project` object.
+The syntax is the same for all CRUD methods. When using a `Project` object, omit the `project` parameter and pass every other parameter as a keyword argument.
 
 ## Create
 
-You can create a secret with the `new_secret()`.
+`new_secret()` creates and saves a project-level secret. Secret values are managed separately from the entity metadata. For specification parameters, see the [secret kind](kind/secret.md) reference.
 
-### New
+??? example "new_secret"
 
-This function create a new entity and saves it into the backend.
+    Create and save a secret.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - new_secret
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - new_secret
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        secret = dh.new_secret(
+            project="my-project",
+            name="my-secret",
+            secret_value="my-secret-value",
+        )
+        ```
 
 ## Read
 
-To read secrets you can use the `get_secret()`, `list_secrets()` or `import_secret()` functions.
+Use the read methods to retrieve secrets from the backend or load them from a YAML descriptor.
 
-### Get
+??? example "get_secret"
 
-This function searches for a single secret into the backend.
-If you want to collect a secret from the backend using `get_secret()`, you have two options:
+    Get one secret by name and project. Omitting `entity_id` returns the latest version.
 
-- The first one is to use the `key` parameter which has the pattern `store://<project-name>/<entity-type>/<entity-kind>/<entity-name>:<entity-id>`.
-- The second one is to use the entity name as `identifier`, the project name as `project` and the entity id as `entity_id` parameters. If you do not specify the entity id, you will get the latest version.
+    === "Function documentation"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_secret
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - get_secret
 
-### List
+    === "Example"
 
-This function returns all the latest secrets from the backend related to a project.
+        ```python
+        import digitalhub as dh
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - list_secrets
+        secret = dh.get_secret(
+            identifier="my-secret",
+            project="my-project",
+        )
+        ```
 
-### Import
+??? example "list_secrets"
 
-This function load the secret from a local yaml file descriptor.
+    List the latest secrets in a project.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - import_secret
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - list_secrets
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        secrets = dh.list_secrets(project="my-project")
+        ```
+
+??? example "import_secret"
+
+    Import a secret from a local YAML descriptor or a storage key.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - import_secret
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        secret = dh.import_secret("my-secret.yaml")
+        ```
 
 ## Update
 
-To update a secret you can use the `update_secret()` method.
+Update a secret after changing its mutable metadata.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - update_secret
+??? example "update_secret"
+
+    Update an existing secret entity.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - update_secret
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        secret = dh.get_secret(
+            identifier="my-secret",
+            project="my-project",
+        )
+        secret.set_description("Updated secret")
+        secret = dh.update_secret(secret)
+        ```
 
 ## Delete
 
-To delete a secret you can use the `delete_secret()` method.
+Delete one secret version or all versions of a secret.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - delete_secret
+??? example "delete_secret"
+
+    Set `delete_all_versions=True` to delete all versions by entity name.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - delete_secret
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        dh.delete_secret(
+            identifier="my-secret",
+            project="my-project",
+            delete_all_versions=True,
+        )
+        ```

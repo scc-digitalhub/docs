@@ -72,7 +72,7 @@ The base image is the image (name:tag) used as the foundation when building the 
 
 #### Requirements
 
-Requirements can be a list of strings or a path to a supported requirements file. The SDK parses and normalizes them when the function is saved. See [Requirements and automatic builds](how-to.md#requirements-and-automatic-builds) for supported filenames, local version inference, and the build requirement for remote execution.
+Requirements can be a list of strings or a path to a supported requirements file. The SDK parses and normalizes them when the function is saved. See [Requirements and automatic builds](../../../../explanations/runtimes/python-execution.md#requirements-and-automatic-builds) for supported filenames, local version inference, and the build requirement for remote execution.
 
 ```python
 requirements = ["numpy", "pandas>1,<3", "scikit-learn==1.2.0"]

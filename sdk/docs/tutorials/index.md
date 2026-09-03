@@ -1,17 +1,31 @@
 
 # Tutorials
 
-Welcome to the Digitalhub SDK tutorials! These hands-on guides will teach you the platform's capabilities through practical, real-world examples.
+These hands-on guides teach the Digitalhub SDK through complete examples. Use them when you want to learn by building something from start to finish.
 
-## How to Use These Tutorials
+## Start with Python
 
-Each tutorial is built around an interactive Jupyter notebook that you can import and run in your development environment:
+<div class="grid cards" markdown>
 
-1. **Import the notebook** - Each tutorial references a specific `.ipynb` file from the [digitalhub-tutorials repository](https://github.com/scc-digitalhub/digitalhub-tutorials)
-2. **Execute step by step** - Run the notebook cells sequentially to follow along with the tutorial
-3. **Learn by doing** - The notebooks contain working code examples with explanations
+- **Run your first function**
 
-All notebooks are designed to be self-contained and include detailed explanations of each step in the process.
+  ---
+
+  Create a Python handler, register it with a project, run it, and print its output.
+
+  [Open the quickstart](quickstart.md)
+
+</div>
+
+## Notebook tutorials
+
+The longer tutorials are built around interactive Jupyter notebooks that you can import and run in your development environment:
+
+1. **Import the notebook** - Each tutorial references a specific `.ipynb` file from the [digitalhub-tutorials repository](https://github.com/scc-digitalhub/digitalhub-tutorials).
+2. **Execute step by step** - Run the notebook cells sequentially to follow along with the tutorial.
+3. **Learn by doing** - The notebooks contain working code examples with explanations.
+
+The notebooks are self-contained and include explanations of each step in the process.
 
 ## 📊 Data Processing & Transformation
 

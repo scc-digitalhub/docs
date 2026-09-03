@@ -1,143 +1,195 @@
 # CRUD
 
-The CRUD methods are used to create, read, update and delete projects.
-
-Example:
-
-```python
-import digitalhub as dh
-
-project = dh.get_or_create_project("my-project")
-```
-
-A `project` entity can be managed with the following methods.
-
-Create:
-
-- [**`new_project`**](#new)
-
-Read:
-
-- [**`get_project`**](#get)
-- [**`import_project`**](#import)
-- [**`load_project`**](#load)
-
-Read or create:
-
-- [**`get_or_create_project`**](#read-or-create)
-
-Update:
-
-- [**`update_project`**](#update)
-
-Delete:
-
-- [**`delete_project`**](#delete)
-
-For project configuration options, please refer to the [Config](config.md) section, and the [Setup](setup.md) section.
+The CRUD methods create, read, update and delete projects.
 
 ## Create
 
-You can create a project with the `new_project()` method.
+`new_project()` creates and saves a project. For project configuration options, see the [Config](config.md) and [Setup](setup.md) sections.
 
-### New
+??? example "new_project"
 
-This function create a new entity and saves it into the backend.
+    Create and save a project.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - new_project
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - new_project
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        project = dh.new_project(name="my-project")
+        ```
 
 ## Read
 
-To read projects you can use the `get_project()`, `import_project()` or `load_project()`.
+Use the read methods to retrieve projects from the backend or load them from a YAML descriptor.
 
-### Get
+??? example "get_project"
 
-This function searches for a single project into the backend.
+    Get a project by name.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_project
+    === "Function documentation"
 
-### Import
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - get_project
 
-This function load the project from a local yaml file descriptor.
+    === "Example"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - import_project
+        ```python
+        import digitalhub as dh
 
-### Load
+        project = dh.get_project("my-project")
+        ```
 
-This function loads the project from a local YAML file and updates the existing object into the backend.
+??? example "import_project"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - load_project
+    Import a project from a local YAML descriptor or a storage key.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - import_project
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        project = dh.import_project("my-project.yaml")
+        ```
+
+??? example "load_project"
+
+    Load a project from a local YAML descriptor and update the existing backend object.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - load_project
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        project = dh.load_project("my-project.yaml")
+        ```
 
 ## Read or create
 
-You can read or create a project with the `get_or_create_project()` method.
+Use `get_or_create_project()` to retrieve a project or create it when it does not exist.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_or_create_project
+??? example "get_or_create_project"
+
+    Get or create a project by name.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - get_or_create_project
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        project = dh.get_or_create_project("my-project")
+        ```
 
 ## Update
 
-To update a project you can use the `update_project()` method.
+Update a project after changing its mutable metadata.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - update_project
+??? example "update_project"
+
+    Update an existing project.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - update_project
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        project = dh.get_project("my-project")
+        project.set_description("Updated project")
+        project = dh.update_project(project)
+        ```
 
 ## Delete
 
-To delete a project you can use the `delete_project()` method.
+Delete a project from the backend.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - delete_project
+??? example "delete_project"
+
+    Delete a project by name.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - delete_project
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        dh.delete_project("my-project")
+        ```
+
+[Back to Project](./entity.md)

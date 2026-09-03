@@ -1,130 +1,200 @@
 # CRUD
 
-The CRUD methods are used to create, read, update and delete triggers. The syntax is the same for all CRUD methods.
-
-Example:
-
-```python
-import digitalhub as dh
-
-
-# Use CRUD method from SDK
-trigger = dh.new_trigger(project="my-project", ...)
-```
-
-A `trigger` entity can be managed with the following methods.
-
-Create:
-
-- [**`new_trigger`**](#new)
-
-Read:
-
-- [**`get_trigger`**](#get)
-- [**`import_trigger`**](#import)
-- [**`list_triggers`**](#list)
-
-Update:
-
-- [**`update_trigger`**](#update)
-
-Delete:
-
-- [**`delete_trigger`**](#delete)
+The CRUD methods create, read, update and delete triggers. The syntax is the same for all CRUD methods.
 
 ## Create
 
-You can create a trigger with the `new_trigger()`.
-The `kwargs` parameters are determined by the **kind** of the object, and are described in the [kinds section](kinds.md).
+`new_trigger()` creates and saves a trigger. Its specification depends on the selected kind. See the [scheduler kind](kind/scheduler.md) and [lifecycle kind](kind/lifecycle.md) references for the supported parameters.
 
-### New
+??? example "new_trigger"
 
-This function creates a new entity and saves it into the backend.
+    Create and save a trigger.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - new_trigger
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - new_trigger
+
+    === "Creation examples"
+
+        **Scheduler**
+
+        ```python
+        import digitalhub as dh
+
+        trigger = dh.new_trigger(
+            project="my-project",
+            name="daily-run",
+            kind="scheduler",
+            task="store://my-project/task/my-task:latest",
+            function="store://my-project/function/my-function:latest",
+            schedule="0 0 * * * ?",
+        )
+        ```
+
+        **Lifecycle**
+
+        ```python
+        import digitalhub as dh
+
+        trigger = dh.new_trigger(
+            project="my-project",
+            name="model-complete",
+            kind="lifecycle",
+            task="store://my-project/task/my-task:latest",
+            function="store://my-project/function/my-function:latest",
+            key="store://my-project/model/*",
+            states=["COMPLETED"],
+        )
+        ```
 
 ## Read
 
-To read triggers you can use the `get_trigger()`, `list_triggers()` or `import_trigger()` functions.
+Use the read methods to retrieve triggers from the backend or load them from a YAML descriptor.
 
-### Get
+??? example "get_trigger"
 
-This function searches for a single trigger into the backend.
-If you want to collect a trigger from the backend using `get_trigger()`, you have two options:
+    Get one trigger by name and project. Omitting `entity_id` returns the latest version.
 
-- The first one is to use the `key` parameter which has the pattern `store://<project-name>/<entity-type>/<entity-kind>/<entity-name>:<entity-id>`.
-- The second one is to use the entity name as `identifier`, the project name as `project` and the entity id as `entity_id` parameters. If you do not specify the entity id, you will get the latest version.
+    === "Function documentation"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_trigger
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - get_trigger
 
-### List
+    === "Example"
 
-This function returns all the latest triggers from the backend related to a project.
+        ```python
+        import digitalhub as dh
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - list_triggers
+        trigger = dh.get_trigger(
+            identifier="daily-run",
+            project="my-project",
+        )
+        ```
 
-### Import
+??? example "list_triggers"
 
-This function loads the trigger from a local yaml file descriptor.
+    List the latest triggers in a project.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - import_trigger
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - list_triggers
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        triggers = dh.list_triggers(project="my-project")
+        ```
+
+??? example "import_trigger"
+
+    Import a trigger from a local YAML descriptor or a storage key.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - import_trigger
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        trigger = dh.import_trigger("my-trigger.yaml")
+        ```
 
 ## Update
 
-To update a trigger you can use the `update_trigger()` method.
+Update a trigger after changing its mutable metadata.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - update_trigger
+??? example "update_trigger"
+
+    Update an existing trigger. Its specification is immutable.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - update_trigger
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        trigger = dh.get_trigger(
+            identifier="daily-run",
+            project="my-project",
+        )
+        trigger.set_description("Updated trigger")
+        trigger = dh.update_trigger(trigger)
+        ```
 
 ## Delete
 
-To delete a trigger you can use the `delete_trigger()` method.
+Delete one trigger version or all versions of a trigger.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - delete_trigger
+??? example "delete_trigger"
+
+    Set `delete_all_versions=True` to delete all versions by entity name.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - delete_trigger
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        dh.delete_trigger(
+            identifier="daily-run",
+            project="my-project",
+            delete_all_versions=True,
+        )
+        ```

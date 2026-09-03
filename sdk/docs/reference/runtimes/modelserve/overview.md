@@ -65,5 +65,5 @@ json = {
 run.invoke(json=json)
 ```
 
-See [how to](how-to.md) for detailed instructions on deploying different types of models.
+See the [ModelServe execution model](../../../explanations/runtimes/modelserve-execution.md) for supported model-serving actions.
 See [Examples](examples.md) for code samples.

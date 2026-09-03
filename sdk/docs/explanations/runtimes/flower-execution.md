@@ -59,8 +59,8 @@ When executing a **flower-app** function (and only that) with `train` action, yo
 
 Here are links to the detailed documentation for each function and action:
 
-- Function `flower-app` action `train` [docs](actions/flower-app-train.md).
-- Function `flower-client` action `build` [docs](actions/flower-client-build.md).
-- Function `flower-client` action `deploy` [docs](actions/flower-client-deploy.md).
-- Function `flower-server` action `build` [docs](actions/flower-server-build.md).
-- Function `flower-server` action `deploy` [docs](actions/flower-server-deploy.md).
+- Function `flower-app` action `train` [docs](../../reference/runtimes/flower/actions/flower-app-train.md).
+- Function `flower-client` action `build` [docs](../../reference/runtimes/flower/actions/flower-client-build.md).
+- Function `flower-client` action `deploy` [docs](../../reference/runtimes/flower/actions/flower-client-deploy.md).
+- Function `flower-server` action `build` [docs](../../reference/runtimes/flower/actions/flower-server-build.md).
+- Function `flower-server` action `deploy` [docs](../../reference/runtimes/flower/actions/flower-server-deploy.md).

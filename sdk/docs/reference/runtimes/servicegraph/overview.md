@@ -2,7 +2,7 @@
 
 The ServiceGraph runtime enables deploying real-time synchronous and asyncronous service pipelines based on [ServiceGraph](https://github.com/scc-digitalhub/digitalhub-servicegraph) project. The pipelines may be used to orchestrate a set of AI services, build processing chains for streaming data, etc. See the project documentation for more details.
 
-The runtime allows for defining and deploying a service graph orchestrator as a service starting from declarative pipeline mode. It supports the `serve` action for orchestrator deployment. 
+The runtime allows for defining and deploying a service graph orchestrator as a service starting from declarative pipeline mode. It supports the `serve` action for orchestrator deployment.
 
 ## Prerequisites
 
@@ -35,7 +35,7 @@ run.refresh()
 run.status
 ```
 
-Testing the deployed pipeline depends on the pipeline source. 
+Testing the deployed pipeline depends on the pipeline source.
 
 For synchronous pipelines with the HTTP source, call the inference endpoint with `run.invoke()`. By default the `url` is taken from the `run` object; override it with an explicit `url` parameter if needed.
 
@@ -53,5 +53,5 @@ For streaming services, the testing can be done attaching the pipeline to some d
 
 If needed, it is possible to customize the ports the service exposes in order to access inputs/outputs of the pipeline.
 
-See [how to](how-to.md) for detailed instructions on deploying different types of graphs.
+See the [ServiceGraph execution model](../../../explanations/runtimes/servicegraph-execution.md) for supported graph-serving actions.
 See [Examples](examples.md) for code samples.

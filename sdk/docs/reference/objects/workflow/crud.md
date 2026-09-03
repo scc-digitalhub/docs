@@ -1,160 +1,209 @@
 # CRUD
 
-The CRUD methods are used to create, read, update and delete workflows. There are two ways to use them.
-The first is through the SDK and the second is through the `Project` object.
-The syntax is the same for all CRUD methods. If you want to manage workflows from the project, you can use the `Project` object and avoid to specify the `project` parameter. In this last case, you need to specify every parameter as keyword argument.
-
-Example:
-
-```python
-import digitalhub as dh
-
-project = dh.get_or_create_project("my-project")
-
-# Use CRUD method on project
-
-workflow = project.new_workflow(name="my-workflow",
-                                kind="hera",
-                                code_src="pipeline.py",
-                                handler="pipeline-handler")
-
-# Use CRUD method from SDK
-
-workflow = dh.new_workflow(project="my-project",
-                           name="my-function",
-                           kind="hera",
-                           code_src="pipeline.py",
-                           handler="pipeline-handler")
-```
-
-A `workflow` entity can be managed with the following methods.
-
-Create:
-
-- [**`new_workflow`**](#new)
-
-Read:
-
-- [**`get_workflow`**](#get)
-- [**`get_workflow_versions`**](#get-versions)
-- [**`import_workflow`**](#import)
-- [**`list_workflows`**](#list)
-
-Update:
-
-- [**`update_workflow`**](#update)
-
-Delete:
-
-- [**`delete_workflow`**](#delete)
+The CRUD methods create, read, update and delete workflows. They can be called directly from the SDK or through a `Project` object.
+The syntax is the same for all CRUD methods. When using a `Project` object, omit the `project` parameter and pass every other parameter as a keyword argument.
 
 ## Create
 
-You can create a workflow with the `new_workflow()`.
-The `kwargs` parameters are determined by the **kind** of the object, and are described in the [kinds section](kinds.md).
+`new_workflow()` creates and saves a workflow. The `kind` and other specification parameters are determined by the Hera runtime. See the [Hera runtime documentation](../../runtimes/hera/overview.md) when creating a workflow.
 
-### New
+??? example "new_workflow"
 
-This function create a new entity and saves it into the backend.
+    Create and save a workflow.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - new_workflow
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - new_workflow
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        workflow = dh.new_workflow(
+            project="my-project",
+            name="my-workflow",
+            kind="hera",
+            code_src="pipeline.py",
+            handler="pipeline-handler",
+        )
+        ```
 
 ## Read
 
-To read workflows you can use the `get_workflow()`, `get_workflow_versions()`, `list_workflows()` or `import_workflow()` workflows.
+Use the read methods to retrieve workflows from the backend or load them from a YAML descriptor.
 
-### Get
+??? example "get_workflow"
 
-This function searches for a single workflow into the backend.
-If you want to collect a workflow from the backend using `get_workflow()`, you have two options:
+    Get one workflow by name and project. Omitting `entity_id` returns the latest version.
 
-- The first one is to use the `key` parameter which has the pattern `store://<project-name>/<entity-type>/<entity-kind>/<entity-name>:<entity-id>`.
-- The second one is to use the entity name as `identifier`, the project name as `project` and the entity id as `entity_id` parameters. If you do not specify the entity id, you will get the latest version.
+    === "Function documentation"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_workflow
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - get_workflow
 
-### Get versions
+    === "Example"
 
-This function returns all the versions of a workflow from the backend.
+        ```python
+        import digitalhub as dh
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_workflow_versions
+        workflow = dh.get_workflow(
+            identifier="my-workflow",
+            project="my-project",
+        )
+        ```
 
-### List
+??? example "get_workflow_versions"
 
-This function returns all the latest workflows from the backend related to a project.
+    Get all versions of a workflow by name and project.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - list_workflows
+    === "Function documentation"
 
-### Import
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - get_workflow_versions
 
-This function load the workflow from a local yaml file descriptor.
+    === "Example"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - import_workflow
+        ```python
+        import digitalhub as dh
+
+        workflows = dh.get_workflow_versions(
+            identifier="my-workflow",
+            project="my-project",
+        )
+        ```
+
+??? example "list_workflows"
+
+    List the latest workflows in a project.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - list_workflows
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        workflows = dh.list_workflows(project="my-project")
+        ```
+
+??? example "import_workflow"
+
+    Import a workflow from a local YAML descriptor or a storage key.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - import_workflow
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        workflow = dh.import_workflow("my-workflow.yaml")
+        ```
 
 ## Update
 
-To update a workflow you can use the `update_workflow()` method.
+Update a workflow after changing its mutable metadata.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - update_workflow
+??? example "update_workflow"
+
+    Update an existing workflow. Its specification is immutable.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - update_workflow
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        workflow = dh.get_workflow(
+            identifier="my-workflow",
+            project="my-project",
+        )
+        workflow.set_description("Updated workflow")
+        workflow = dh.update_workflow(workflow)
+        ```
 
 ## Delete
 
-To delete a workflow you can use the `delete_workflow()` method.
+Delete one workflow version or all versions of a workflow.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - delete_workflow
+??? example "delete_workflow"
+
+    Set `delete_all_versions=True` to delete all versions by entity name.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - delete_workflow
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        dh.delete_workflow(
+            identifier="my-workflow",
+            project="my-project",
+            delete_all_versions=True,
+        )
+        ```

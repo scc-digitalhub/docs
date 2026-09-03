@@ -71,7 +71,7 @@ The base image is the image (name:tag) used as the foundation when building the 
 
 #### Requirements
 
-Requirements are a list of strings representing packages to be installed by `pip` in the image where the function will be executed. The SDK normalizes them when the function is saved; an unversioned package found in the local environment is replaced with its installed version and a warning is logged. A build is required to install requirements before remote execution. See [Requirements and automatic builds](../python/how-to.md#requirements-and-automatic-builds) for details.
+Requirements are a list of strings representing packages to be installed by `pip` in the image where the function will be executed. The SDK normalizes them when the function is saved; an unversioned package found in the local environment is replaced with its installed version and a warning is logged. A build is required to install requirements before remote execution. See [Requirements and automatic builds](../../../../explanations/runtimes/python-execution.md#requirements-and-automatic-builds) for details.
 
 #### Processing Mode
 

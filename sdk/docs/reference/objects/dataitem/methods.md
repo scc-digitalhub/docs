@@ -6,79 +6,100 @@ The `Dataitem` object comes with three sets of methods: CRUD methods, I/O method
 
 Crud methods are used to interact with the entity object in the backend or locally.
 
-- `save()`: Save or update the entity into the backend.
-- `export()`: Export the entity locally as yaml file.
-- `refresh()`: Refresh (read) the entity from the backend.
+??? example "save"
 
-::: digitalhub.entities.dataitem._base.entity.Dataitem.save
-    options:
-        heading_level: 3
-        show_signature: false
-        show_source: false
-        show_root_heading: true
-        show_symbol_type_heading: true
-        show_root_full_path: false
-        show_root_toc_entry: true
+    Save or update the dataitem in the backend.
 
-::: digitalhub.entities.dataitem._base.entity.Dataitem.export
-    options:
-        heading_level: 3
-        show_signature: false
-        show_source: false
-        show_root_heading: true
-        show_symbol_type_heading: true
-        show_root_full_path: false
-        show_root_toc_entry: true
+    ::: digitalhub.entities.dataitem._base.entity.Dataitem.save
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
 
-::: digitalhub.entities.dataitem._base.entity.Dataitem.refresh
-    options:
-        heading_level: 3
-        show_signature: false
-        show_source: false
-        show_root_heading: true
-        show_symbol_type_heading: true
-        show_root_full_path: false
-        show_root_toc_entry: true
+??? example "export"
+
+    Export the dataitem locally as a YAML file.
+
+    ::: digitalhub.entities.dataitem._base.entity.Dataitem.export
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
+
+??? example "refresh"
+
+    Refresh the dataitem from the backend.
+
+    ::: digitalhub.entities.dataitem._base.entity.Dataitem.refresh
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
 
 ## I/O methods
 
 I/O methods are used to handle objects as files.
 
-- `as_file()`: Downloads the dataitem into a local temporary destination
-- `download()`: Downloads the dataitem into a specified path
-- `upload()`: Uploads the dataitem to dataitem spec path
+??? example "as_file"
 
-::: digitalhub.entities.dataitem._base.entity.Dataitem.as_file
-    options:
-        heading_level: 3
-        show_signature: false
-        show_source: false
-        show_root_heading: true
-        show_symbol_type_heading: true
-        show_root_full_path: false
-        show_root_toc_entry: true
+    Download the dataitem into a local temporary destination.
 
-::: digitalhub.entities.dataitem._base.entity.Dataitem.download
-    options:
-        heading_level: 3
-        show_signature: false
-        show_source: false
-        show_root_heading: true
-        show_symbol_type_heading: true
-        show_root_full_path: false
-        show_root_toc_entry: true
+    ::: digitalhub.entities.dataitem._base.entity.Dataitem.as_file
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
 
-::: digitalhub.entities.dataitem._base.entity.Dataitem.upload
-    options:
-        heading_level: 3
-        show_signature: false
-        show_source: false
-        show_root_heading: true
-        show_symbol_type_heading: true
-        show_root_full_path: false
-        show_root_toc_entry: true
+??? example "download"
+
+    Download the dataitem into a specified path.
+
+    ::: digitalhub.entities.dataitem._base.entity.Dataitem.download
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
+
+??? example "upload"
+
+    Upload the dataitem to its specification path.
+
+    ::: digitalhub.entities.dataitem._base.entity.Dataitem.upload
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
 
 ## Kind specific methods
 
-Kind specific methods are used to express potential behaviors of different object kinds.
-See the [kinds section](kinds.md) for more information.
+Methods specific to a dataitem kind are documented in the corresponding kind reference page: [dataitem](kind/dataitem.md), [table](kind/table.md), or [croissant](kind/croissant.md).

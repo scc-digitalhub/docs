@@ -2,278 +2,466 @@
 
 The CRUD methods are used to create, read, update and delete dataitems. There are two ways to use them.
 The first is through the SDK and the second is through the `Project` object.
-The syntax is the same for all CRUD methods. If you want to manage dataitems from the project, you can use the `Project` object and avoid to specify the `project` parameter. In this last case, you need to specify every parameter as keyword argument.
-
-Example:
-
-```python
-import digitalhub as dh
-
-project = dh.get_or_create_project("my-project")
-
-# Use CRUD method on project
-
-dataitem = project.new_dataitem(name="my-dataitem",
-                                kind="table",
-                                path="path-to-some-data")
-
-# Use CRUD method from SDK
-
-dataitem = dh.new_dataitem(project="my-project",
-                           name="my-dataitem",
-                           kind="table",
-                           path="path-to-some-data")
-```
-
-A `dataitem` entity can be managed with the following methods.
-
-Create:
-
-- [**`new_dataitem`**](#new)
-- [**`log_dataitem`**](#log)
-- [**`log_generic_dataitem`**](#log-generic)
-- [**`log_table`**](#log-table)
-- [**`log_croissant`**](#log-croissant)
-- [**`register_dataitem`**](#register)
-- [**`register_generic_dataitem`**](#register-generic)
-- [**`register_table`**](#register-table)
-- [**`register_croissant`**](#register-croissant)
-
-Read:
-
-- [**`get_dataitem`**](#get)
-- [**`get_dataitem_versions`**](#get-versions)
-- [**`import_dataitem`**](#import)
-- [**`list_dataitems`**](#list)
-
-Update:
-
-- [**`update_dataitem`**](#update)
-
-Delete:
-
-- [**`delete_dataitem`**](#delete)
+The syntax is the same for all CRUD methods. If you want to manage dataitems from the project, you can use the `Project` object and avoid specifying the `project` parameter. In this case, specify every parameter as a keyword argument.
 
 ## Create
 
-You can create a dataitem with the `new_dataitem()` or with `log_dataitem()` method. The main difference between the two methods is that `log_dataitem()` also uploads a local file into a dataitem store (eg. *S3*), while `new_dataitem()` only creates a new entity and saves it into the backend.
-The `kwargs` parameters are determined by the **kind** of the object, and are described in the [kinds section](kinds.md).
-The `kwargs` parameters are the same for both *new* and *log* methods.
+Creation methods differ in how they handle the source:
 
-### New
+- `new_dataitem()` creates and saves an entity.
+- `log_<kind>()` creates an entity and uploads the source to a dataitem store.
+- `register_<kind>()` creates an entity for an existing source; `name` is optional and can be inferred from the source.
 
-This function creates a new entity and saves it into the backend.
+For specification parameters, see the documentation for the relevant [dataitem kind](kind/dataitem.md), [table kind](kind/table.md), or [croissant kind](kind/croissant.md). Use the generic methods only for a kind supported by DigitalHub Core but not by the SDK.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - new_dataitem
+??? example "new_dataitem"
 
-### Log
+    This function creates a new entity and saves it into the backend.
 
-This function creates a new entity in the backend and also uploads a local file into a dataitem store (eg. *S3*).
+    === "Function documentation"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - log_dataitem
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - new_dataitem
 
-### Log generic
+    === "Creation example"
 
-This function creates a generic dataitem by uploading one or more local files.
+        ```python
+        import digitalhub as dh
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - log_generic_dataitem
+        dataitem = dh.new_dataitem(
+            project="my-project",
+            name="my-table",
+            kind="table",
+            path="s3://my-bucket/my-table.parquet",
+        )
+        ```
 
-### Log table
+??? example "log_dataitem"
 
-This function logs a table dataitem from a dataframe or file source.
+    This function creates a dataitem and uploads a local source to a dataitem store.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - log_table
+    === "Function documentation"
 
-### Log croissant
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - log_dataitem
 
-This function creates a Croissant dataitem by uploading a `metadata.json` file and its
-referenced local files.
+    === "Creation example"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - log_croissant
+        ```python
+        import digitalhub as dh
 
-## Register
+        dataitem = dh.log_dataitem(
+            project="my-project",
+            name="my-dataitem",
+            source="./local-dataitem",
+        )
+        ```
 
-Register data that already exists in a supported store. Registration does not
-upload local files. Pass the existing path or URI as `source`; use
-`embedded=True` to embed the entity reference in the project specification
-when supported.
+??? example "log_generic_dataitem"
 
-### Register dataitem
+    This function creates a dataitem of a custom kind and uploads a local source.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - register_dataitem
+    === "Function documentation"
 
-### Register generic
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - log_generic_dataitem
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - register_generic_dataitem
+    === "Creation example"
 
-### Register table
+        ```python
+        import digitalhub as dh
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - register_table
+        dataitem = dh.log_generic_dataitem(
+            project="my-project",
+            kind="custom-dataitem",
+            source="./local-dataitem",
+            name="my-dataitem",
+        )
+        ```
 
-### Register Croissant
+??? example "log_table"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - register_croissant
+    This function logs a table dataitem from a dataframe, SQL query, or file source.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - log_table
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.log_table(
+            project="my-project",
+            name="my-table",
+            source="./my-table.csv",
+        )
+
+        dataitem = dh.log_table(
+            project="my-project",
+            name="my-table-2",
+            data=pandas-dataframe,
+        )
+        ```
+
+??? example "log_croissant"
+
+    This function creates a Croissant dataitem by uploading a `metadata.json` file and its referenced local files.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - log_croissant
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.log_croissant(
+            project="my-project",
+            name="my-croissant",
+            source="./metadata.json",
+        )
+        ```
+
+??? example "register_dataitem"
+
+    Register a dataitem whose source already exists in a supported store. The `name` can be inferred from the source.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - register_dataitem
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.register_dataitem(
+            project="my-project",
+            source="s3://my-bucket/my-dataitem",
+        )
+        ```
+
+??? example "register_generic_dataitem"
+
+    Register an existing source with a custom dataitem kind.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - register_generic_dataitem
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.register_generic_dataitem(
+            project="my-project",
+            kind="custom-dataitem",
+            source="s3://my-bucket/my-dataitem",
+        )
+        ```
+
+??? example "register_table"
+
+    Register an existing table source. The `name` can be inferred from the source.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - register_table
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.register_table(
+            project="my-project",
+            source="s3://my-bucket/my-table.parquet",
+        )
+        ```
+
+??? example "register_croissant"
+
+    Register an existing Croissant dataset. The `name` can be inferred from the source.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - register_croissant
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.register_croissant(
+            project="my-project",
+            source="s3://my-bucket/my-croissant/",
+        )
+        ```
 
 ## Read
 
-To read dataitems you can use the `get_dataitem()`, `get_dataitem_versions()`, `list_dataitems()` or `import_dataitem()` functions.
+Use the read methods to retrieve dataitems from the backend or load them from a YAML descriptor.
 
-### Get
+??? example "get_dataitem"
 
-This function searches for a single dataitem into the backend.
-If you want to collect a dataitem from the backend using `get_dataitem()`, you have two options:
+    Get one dataitem by name and project. Omitting `entity_id` returns the latest version. You can also pass a `store://` entity key as `identifier`.
 
-- The first one is to use the `key` parameter which has the pattern `store://<project-name>/<entity-type>/<entity-kind>/<entity-name>:<entity-id>`.
-- The second one is to use the entity name as `identifier`, the project name as `project` and the entity id as `entity_id` parameters. If you do not specify the entity id, you will get the latest version.
+    === "Function documentation"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_dataitem
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - get_dataitem
 
-### Get versions
+    === "Example"
 
-This function returns all the versions of a dataitem from the backend.
+        ```python
+        import digitalhub as dh
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_dataitem_versions
+        dataitem = dh.get_dataitem(
+            identifier="my-dataitem",
+            project="my-project",
+        )
+        ```
 
-### List
+??? example "get_dataitem_versions"
 
-This function returns all the latest dataitems from the backend related to a project.
+    Get all versions of a dataitem by name and project.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - list_dataitems
+    === "Function documentation"
 
-### Import
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - get_dataitem_versions
 
-This function loads the dataitem from a local yaml file descriptor.
+    === "Example"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - import_dataitem
+        ```python
+        import digitalhub as dh
+
+        dataitems = dh.get_dataitem_versions(
+            identifier="my-dataitem",
+            project="my-project",
+        )
+        ```
+
+??? example "list_dataitems"
+
+    List the latest dataitems in a project.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - list_dataitems
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitems = dh.list_dataitems(project="my-project")
+        ```
+
+??? example "import_dataitem"
+
+    Import a dataitem from a local YAML descriptor or a storage key.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - import_dataitem
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.import_dataitem("my-dataitem.yaml")
+        ```
+
+??? example "load_dataitem"
+
+    Load a dataitem from a local YAML descriptor and update the existing backend entity.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - load_dataitem
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.load_dataitem("my-dataitem.yaml")
+        ```
 
 ## Update
 
-To update a dataitem you can use the `update_dataitem()` method.
+Update a dataitem after changing its mutable metadata.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - update_dataitem
+??? example "update_dataitem"
+
+    Update an existing dataitem. The dataitem specification is immutable.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - update_dataitem
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.get_dataitem(
+            identifier="my-dataitem",
+            project="my-project",
+        )
+        dataitem.set_description("Updated dataitem")
+        dataitem = dh.update_dataitem(dataitem)
+        ```
 
 ## Delete
 
-To delete a dataitem you can use the `delete_dataitem()` method.
+Delete one dataitem version or all versions of a dataitem.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - delete_dataitem
+??? example "delete_dataitem"
+
+    Set `delete_all_versions=True` to delete all versions by entity name.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - delete_dataitem
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        dh.delete_dataitem(
+            identifier="my-dataitem",
+            project="my-project",
+            delete_all_versions=True,
+        )
+        ```

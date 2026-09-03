@@ -16,7 +16,7 @@ The Python runtime supports the following action set
 
 To execute a function, follow this pattern:
 
-1. Implement a Python function (see [Function definition](define-function.md) for detailed instructions on creating Python, guardrail, and openinference handlers).
+1. Implement a Python function (see [Function definition](../../reference/runtimes/python/python/define-function.md) for detailed instructions on creating Python, guardrail, and openinference handlers).
 2. Use `dh.new_function()` or `project.new_function()` to create the function, passing **function parameters**.
 3. Call `function.run()` with the desired action, passing **task parameters** and **run parameters**.
 
@@ -67,6 +67,6 @@ For remote `job` and `serve` runs, a non-empty `requirements` list requires a bu
 
 Here are links to the detailed documentation for each Python action:
 
-- [Python Job](python-job.md) — Execute a `python` function as a one-off task
-- [Python Serve](python-serve.md) — Deploy a `python` function as an HTTP endpoint
-- [Python Build](python-build.md) — Build a container image for a `python` function
+- [Python Job](../../reference/runtimes/python/python/python-job.md) — Execute a `python` function as a one-off task
+- [Python Serve](../../reference/runtimes/python/python/python-serve.md) — Deploy a `python` function as an HTTP endpoint
+- [Python Build](../../reference/runtimes/python/python/python-build.md) — Build a container image for a `python` function

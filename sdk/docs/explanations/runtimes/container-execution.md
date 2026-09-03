@@ -45,6 +45,6 @@ Container functions are executed remotely on Kubernetes clusters managed by the 
 
 Here are links to the detailed documentation for each container action:
 
-- [Container Job](actions/container-job.md) — Execute a container as a one-off job
-- [Container Serve](actions/container-serve.md) — Deploy a container as a long-lived service
-- [Container Build](actions/container-build.md) — Create a Docker image with custom instructions
+- [Container Job](../../reference/runtimes/container/actions/container-job.md) — Execute a container as a one-off job
+- [Container Serve](../../reference/runtimes/container/actions/container-serve.md) — Deploy a container as a long-lived service
+- [Container Build](../../reference/runtimes/container/actions/container-build.md) — Create a Docker image with custom instructions

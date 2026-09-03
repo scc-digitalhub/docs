@@ -38,4 +38,4 @@ ServiceGraph functions are executed remotely on Kubernetes clusters managed by t
 
 Here are links to the detailed documentation for the serving actions in the ServiceGraph runtime:
 
-- [servicegraph serve](actions/servicegraph-serve.md) 
+- [servicegraph serve](../../reference/runtimes/servicegraph/actions/servicegraph-serve.md)

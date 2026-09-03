@@ -4,6 +4,24 @@ A `Task` represents one executable action associated with a Function or Workflow
 
 Tasks are normally created automatically by `Function.run()` or `Workflow.run()`, but they can also be managed as entities with the SDK CRUD methods.
 
-1. In the [CRUD section](./crud.md), see how to create, read, update and delete tasks.
-2. In the [methods section](./methods.md), see how to execute a task and manage its runs.
-3. In the [kinds section](./kinds.md), see how task kinds are derived from executable actions.
+Task kinds are derived from the executable kind and action provided by a runtime. See the [runtime documentation](../../runtimes/index.md) to create and configure a task.
+
+## Task operations
+
+<div class="grid cards" markdown>
+
+- [**Task CRUD**](./crud.md){ .card-link }
+
+	---
+
+	Create, read, update, or delete tasks.
+
+- [**Use the Task entity**](./methods.md){ .card-link }
+
+	---
+
+	Execute tasks and manage their runs.
+
+</div>
+
+[Back to Entities](../index.md)

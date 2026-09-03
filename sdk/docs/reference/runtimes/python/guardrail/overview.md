@@ -44,5 +44,5 @@ To execute a Python-based handler on the platform:
 2. Create a `Function` resource with kind  `guardrail`.
 3. Call `function.run()` to execute the handler.
 
-See [how to](how-to.md) for detailed instructions on which actions you can execute and how to configure each function kind.
+See the [Guardrail execution model](../../../../explanations/runtimes/guardrail-execution.md) for supported actions and function configuration.
 See [Examples](examples.md) for code samples.

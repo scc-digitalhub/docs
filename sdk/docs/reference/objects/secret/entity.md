@@ -7,9 +7,39 @@ It is possible to define custom secrets at the level of a single project. The pr
 
 At the level of the project the secrets are represented as key-value pairs. The management of secrets is delegated to a secret provider, and currently only Kubernetes Secret Manager is supported. Each project has its own Kubernetes secret, where all the key-value pairs are stored.
 
+## Choose a secret kind
+
+The SDK provides one concrete secret kind.
+
+<div class="kind-cards" markdown>
+
+- [**Secret**](./kind/secret.md){ .kind-card-link } - Store a project secret through the configured secret provider - `secret`
+
+</div>
+
 ## Managing secrets with SDK
 
 Secrets can be created and managed as *entities* with the SDK CRUD methods. This can be done directly from the package or through the `Project` object.
 
 1. In the [CRUD section](./crud.md), we will see how to create, read, update and delete secrets.
 2. In the [methods section](./methods.md), we will see what can be done with the `Secret` object.
+
+## Secret operations
+
+<div class="grid cards" markdown>
+
+- [**Secret CRUD**](./crud.md){ .card-link }
+
+	---
+
+	Create, read, update, or delete secrets.
+
+- [**Use the Secret entity**](./methods.md){ .card-link }
+
+	---
+
+	Set and read secret values.
+
+</div>
+
+[Back to Entities](../index.md)

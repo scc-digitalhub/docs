@@ -4,7 +4,11 @@ site_url: http://docs/sdk
 extra:
   portal_name: SDK
 
+extra_javascript:
+  - https://unpkg.com/mermaid@11/dist/mermaid.min.js
+
 extra_css:
+  - stylesheets/cards.css
   - !ENV [
       OTHERS_STYLESHEETS_PORTAL_SELECTION,
       "../stylesheets/portal_selection.css",
@@ -12,16 +16,37 @@ extra_css:
   - !ENV [OTHERS_STYLESHEETS_COLORS, "../stylesheets/colors.css"]
 
 markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed: { alternate_style: true }
   - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
+      { anchor_linenums: true, line_spans: __span, pygments_lang_class: true }
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - md_in_html
 
 plugins:
-  - search:
+  - search: {}
+  - redirects:
+      redirect_maps:
+        how-to/quickstart.md: tutorials/quickstart.md
+        how-to/runtime-guide.md: explanations/choosing-a-runtime.md
+        how-to/what-can-i-do.md: explanations/what-can-i-do.md
+        reference/runtimes/container/how-to.md: explanations/runtimes/container-execution.md
+        reference/runtimes/dbt/how-to.md: explanations/runtimes/dbt-execution.md
+        reference/runtimes/flower/how-to.md: explanations/runtimes/flower-execution.md
+        reference/runtimes/hera/how-to.md: explanations/runtimes/hera-execution.md
+        reference/runtimes/modelserve/how-to.md: explanations/runtimes/modelserve-execution.md
+        reference/runtimes/servicegraph/how-to.md: explanations/runtimes/servicegraph-execution.md
+        reference/runtimes/python/python/how-to.md: explanations/runtimes/python-execution.md
+        reference/runtimes/python/openinference/how-to.md: explanations/runtimes/openinference-execution.md
+        reference/runtimes/python/guardrail/how-to.md: explanations/runtimes/guardrail-execution.md
   - mkdocstrings:
       default_handler: python
       handlers:
@@ -31,10 +56,18 @@ plugins:
             show_root_toc_entry: false
             show_labels: false
 
+theme:
+  features:
+    - navigation.path
+    - navigation.top
+    - content.code.copy
+    - content.code.select
+
 nav:
   - Index: index.md
   - Tutorials:
       - Getting Started: tutorials/index.md
+      - First Python function: tutorials/quickstart.md
       - Data Processing & Transformation:
           - ETL Data Processing: tutorials/etl-data-processing.md
           - Database Transformation with DBT: tutorials/dbt-transformation.md
@@ -46,12 +79,23 @@ nav:
           - Large Language Models: tutorials/llm-model.md
   - How-to Guides:
       - Guides: how-to/index.md
-      - What can I do?: how-to/what-can-i-do.md
-      - Quickstart: how-to/quickstart.md
       - Installation: how-to/installation.md
-      - Runtime guide: how-to/runtime-guide.md
       - Kubernetes guide: how-to/kubernetes.md
-      - Environment configuration: reference/configuration/credentials/overview.md
+  - Explanations:
+      - Overview: explanations/index.md
+      - What can I do?: explanations/what-can-i-do.md
+      - Data and artifacts: explanations/data-and-artifacts.md
+      - Choosing a runtime: explanations/choosing-a-runtime.md
+      - Runtime execution models:
+          - Python: explanations/runtimes/python-execution.md
+          - OpenInference: explanations/runtimes/openinference-execution.md
+          - Guardrail: explanations/runtimes/guardrail-execution.md
+          - DBT: explanations/runtimes/dbt-execution.md
+          - Container: explanations/runtimes/container-execution.md
+          - Hera: explanations/runtimes/hera-execution.md
+          - ModelServe: explanations/runtimes/modelserve-execution.md
+          - Flower: explanations/runtimes/flower-execution.md
+          - ServiceGraph: explanations/runtimes/servicegraph-execution.md
   - Reference:
       - Overview: reference/index.md
       - Entities:
@@ -66,56 +110,66 @@ nav:
               - Entity: reference/objects/function/entity.md
               - CRUD: reference/objects/function/crud.md
               - Methods: reference/objects/function/methods.md
-              - Kinds: reference/objects/function/kinds.md
           - Workflows:
               - Entity: reference/objects/workflow/entity.md
               - CRUD: reference/objects/workflow/crud.md
               - Methods: reference/objects/workflow/methods.md
-              - Kinds: reference/objects/workflow/kinds.md
           - Tasks:
               - Entity: reference/objects/task/entity.md
               - CRUD: reference/objects/task/crud.md
               - Methods: reference/objects/task/methods.md
-              - Kinds: reference/objects/task/kinds.md
           - Triggers:
               - Entity: reference/objects/trigger/entity.md
               - CRUD: reference/objects/trigger/crud.md
               - Methods: reference/objects/trigger/methods.md
-              - Kinds: reference/objects/trigger/kinds.md
+              - Kind:
+                  - Scheduler: reference/objects/trigger/kind/scheduler.md
+                  - Lifecycle: reference/objects/trigger/kind/lifecycle.md
           - Runs:
               - Entity: reference/objects/run/entity.md
               - CRUD: reference/objects/run/crud.md
               - Methods: reference/objects/run/methods.md
-              - Kinds: reference/objects/run/kinds.md
-          - Artifacts:
-              - Entity: reference/objects/artifact/entity.md
-              - CRUD: reference/objects/artifact/crud.md
-              - Methods: reference/objects/artifact/methods.md
-              - Kinds: reference/objects/artifact/kinds.md
-          - Dataitems:
-              - Entity: reference/objects/dataitem/entity.md
-              - CRUD: reference/objects/dataitem/crud.md
-              - Methods: reference/objects/dataitem/methods.md
-              - Kinds: reference/objects/dataitem/kinds.md
-          - Models:
-              - Entity: reference/objects/model/entity.md
-              - CRUD: reference/objects/model/crud.md
-              - Methods: reference/objects/model/methods.md
-              - Kinds: reference/objects/model/kinds.md
           - Secrets:
               - Entity: reference/objects/secret/entity.md
               - CRUD: reference/objects/secret/crud.md
               - Methods: reference/objects/secret/methods.md
+              - Kind:
+                  - Secret: reference/objects/secret/kind/secret.md
+          - Artifacts:
+              - Entity: reference/objects/artifact/entity.md
+              - CRUD: reference/objects/artifact/crud.md
+              - Methods: reference/objects/artifact/methods.md
+              - Kind:
+                  - Artifact: reference/objects/artifact/kind/artifact.md
+          - Dataitems:
+              - Entity: reference/objects/dataitem/entity.md
+              - CRUD: reference/objects/dataitem/crud.md
+              - Methods: reference/objects/dataitem/methods.md
+              - Kind:
+                  - Dataitem: reference/objects/dataitem/kind/dataitem.md
+                  - Table: reference/objects/dataitem/kind/table.md
+                  - Croissant: reference/objects/dataitem/kind/croissant.md
+          - Models:
+              - Entity: reference/objects/model/entity.md
+              - CRUD: reference/objects/model/crud.md
+              - Methods: reference/objects/model/methods.md
+              - Kind:
+                  - Model: reference/objects/model/kind/model.md
+                  - MLflow: reference/objects/model/kind/mlflow.md
+                  - Scikit-learn: reference/objects/model/kind/sklearn.md
+                  - Hugging Face: reference/objects/model/kind/huggingface.md
+                  - TVM IR: reference/objects/model/kind/tvm-ir.md
+                  - TVM SO: reference/objects/model/kind/tvm-so.md
           - Container images:
               - Entity: reference/objects/containerimage/entity.md
               - CRUD: reference/objects/containerimage/crud.md
               - Methods: reference/objects/containerimage/methods.md
-              - Kinds: reference/objects/containerimage/kinds.md
+              - Kind:
+                  - Container image: reference/objects/containerimage/kind/container-image.md
       - Runtimes:
           - Index: reference/runtimes/index.md
           - Python:
               - Overview: reference/runtimes/python/python/overview.md
-              - How-to: reference/runtimes/python/python/how-to.md
               - Handler definition: reference/runtimes/python/python/define-function.md
               - Generic handler: reference/runtimes/python/define-function.md
               - Actions:
@@ -125,7 +179,6 @@ nav:
               - Examples: reference/runtimes/python/python/examples.md
           - OpenInference (Python):
               - Overview: reference/runtimes/python/openinference/overview.md
-              - How-to: reference/runtimes/python/openinference/how-to.md
               - Handler definition: reference/runtimes/python/openinference/define-function.md
               - Actions:
                   - openinference serve: reference/runtimes/python/openinference/openinference-serve.md
@@ -133,7 +186,6 @@ nav:
               - Examples: reference/runtimes/python/openinference/examples.md
           - Guardrail (Python):
               - Overview: reference/runtimes/python/guardrail/overview.md
-              - How-to: reference/runtimes/python/guardrail/how-to.md
               - Handler definition: reference/runtimes/python/guardrail/define-function.md
               - Actions:
                   - guardrail serve: reference/runtimes/python/guardrail/guardrail-serve.md
@@ -141,13 +193,11 @@ nav:
               - Examples: reference/runtimes/python/guardrail/examples.md
           - DBT:
               - Overview: reference/runtimes/dbt/overview.md
-              - How-to: reference/runtimes/dbt/how-to.md
               - Actions:
                   - dbt transform: reference/runtimes/dbt/actions/dbt-transform.md
               - Examples: reference/runtimes/dbt/examples.md
           - Container:
               - Overview: reference/runtimes/container/overview.md
-              - How-to: reference/runtimes/container/how-to.md
               - Actions:
                   - container job: reference/runtimes/container/actions/container-job.md
                   - container serve: reference/runtimes/container/actions/container-serve.md
@@ -155,7 +205,6 @@ nav:
               - Examples: reference/runtimes/container/examples.md
           - Hera:
               - Overview: reference/runtimes/hera/overview.md
-              - How-to: reference/runtimes/hera/how-to.md
               - Pipeline definition: reference/runtimes/hera/define-pipeline.md
               - Actions:
                   - hera build: reference/runtimes/hera/actions/hera-build.md
@@ -163,7 +212,6 @@ nav:
               - Examples: reference/runtimes/hera/examples.md
           - Modelserve:
               - Overview: reference/runtimes/modelserve/overview.md
-              - How-to: reference/runtimes/modelserve/how-to.md
               - Actions:
                   - sklearnserve serve: reference/runtimes/modelserve/actions/sklearnserve-serve.md
                   - mlflowserve build: reference/runtimes/modelserve/actions/mlflowserve-build.md
@@ -177,7 +225,6 @@ nav:
               - Examples: reference/runtimes/modelserve/examples.md
           - Flower:
               - Overview: reference/runtimes/flower/overview.md
-              - How-to: reference/runtimes/flower/how-to.md
               - Actions:
                   - flower-app train: reference/runtimes/flower/actions/flower-app-train.md
                   - flower-client build: reference/runtimes/flower/actions/flower-client-build.md
@@ -187,7 +234,6 @@ nav:
               - Examples: reference/runtimes/flower/examples.md
           - ServiceGraph:
               - Overview: reference/runtimes/servicegraph/overview.md
-              - How-to: reference/runtimes/servicegraph/how-to.md
               - Actions:
                   - servicegraph serve: reference/runtimes/servicegraph/actions/servicegraph-serve.md
               - Examples: reference/runtimes/servicegraph/examples.md

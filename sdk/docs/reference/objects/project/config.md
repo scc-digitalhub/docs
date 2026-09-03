@@ -11,3 +11,5 @@ At the moment, the only supported default data store is `s3`. The format of the 
     "default_files_store": "s3://bucket",
 }
 ```
+
+[Back to Project](./entity.md)

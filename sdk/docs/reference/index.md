@@ -1,12 +1,29 @@
 # Reference Overview
 
-A compact map to the SDK reference: core topics and where to find them.
+<div class="index-cards" markdown>
 
-- [Entities](./objects/index.md) — core objects (projects, functions, workflows, runs, artifacts, dataitems, models).
-- [Stores](./configuration/paths/overview.md) — storage types and path schemes (s3, local, http, sql).
-- [Code source](./configuration/code_src/overview.md) — how to provide code: plain, base64, code_src and handler rules.
-- [Kubernetes resources](./configuration/kubernetes/overview.md) — volumes, resources, affinity, service/port conventions.
-- [Environment configuration](./configuration/credentials/overview.md) — runtime and platform environment variables.
-- [Runtimes](./runtimes/index.md) — per-runtime docs (python, dbt, container, hera).
+- [**Entities**](./objects/index.md){ .index-card-link }
 
-Use the sidebar for full API details and examples.
+	Core SDK objects including projects, functions, workflows, runs, artifacts, dataitems, and models.
+
+- [**Stores**](./configuration/paths/overview.md){ .index-card-link }
+
+	Storage types and path schemes for S3, local, HTTP, and SQL resources.
+
+- [**Code source**](./configuration/code_src/overview.md){ .index-card-link }
+
+	Ways to provide executable code, including plain code, base64, code sources, and handlers.
+
+- [**Kubernetes resources**](./configuration/kubernetes/overview.md){ .index-card-link }
+
+	Volumes, resources, affinity, services, and port conventions for remote runs.
+
+- [**Environment configuration**](./configuration/credentials/overview.md){ .index-card-link }
+
+	Runtime and platform environment variables, credentials, and configuration settings.
+
+- [**Runtimes**](./runtimes/index.md){ .index-card-link }
+
+	Per-runtime documentation for Python, DBT, Container, Hera, and other execution models.
+
+</div>

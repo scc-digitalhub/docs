@@ -1,150 +1,144 @@
 # Project methods
 
-The `Project` object comes with three sets of methods: CRUD methods, entity specific CRUD methods and project specific methods.
+The `Project` object is the working context for project state, related entities, and project-level operations. Choose an area below to find the relevant methods.
 
-## CRUD methods
+<div class="grid cards" markdown>
 
-Crud methods are used to interact with the entity object in the backend or locally.
+- [**Manage project state**](#manage-project-state){ .card-link }
 
-- `save()`: Save or update the entity into the backend.
-- `export()`: Export the entity locally as yaml file.
-- `refresh()`: Refresh (read) the entity from the backend.
+    ---
 
-::: digitalhub.entities.project._base.entity.Project.save
-    options:
-        heading_level: 3
-        show_signature: false
-        show_source: false
-        show_root_heading: true
-        show_symbol_type_heading: true
-        show_root_full_path: false
-        show_root_toc_entry: true
+    Persist the project, export it locally, or refresh it from the backend.
 
-::: digitalhub.entities.project._base.entity.Project.export
-    options:
-        heading_level: 3
-        show_signature: false
-        show_source: false
-        show_root_heading: true
-        show_symbol_type_heading: true
-        show_root_full_path: false
-        show_root_toc_entry: true
+- [**Manage related entities**](#manage-related-entities){ .card-link }
 
-::: digitalhub.entities.project._base.entity.Project.refresh
-    options:
-        heading_level: 3
-        show_signature: false
-        show_source: false
-        show_root_heading: true
-        show_symbol_type_heading: true
-        show_root_full_path: false
-        show_root_toc_entry: true
+    ---
 
-## Entity CRUD
+    Create, retrieve, list, import, update, and delete entities in the project.
 
-The project acts as context for other entities as mentioned in the introduction. With a `Project` object, you can create, read, update and delete these entities. The methods exposed are basically the same as the standalone CRUD functions; the only difference is that on the project object you omit the project name parameter. The available methods are:
+- [**Run project operations**](#run-project-operations){ .card-link }
 
-- **`new`**: create a new entity
-- **`log`**: create and upload an entity
-- **`get`**: get an entity from backend
-- **`get_versions`**: get all version for a named entity
-- **`list`**: list entities related to the project
-- **`import`**: import an entity
-- **`update`**: update an entity
-- **`delete`**: delete an entity
+    ---
 
-The project also exposes the following entity-specific operations:
+    Manage project access, search entities, and run workflows.
 
-- **Artifacts**: `new_artifact`, `log_artifact`, `register_artifact`, `get_artifact`, `list_artifacts`, `import_artifact`, `load_artifact`, `update_artifact`, `delete_artifact`.
-- **Dataitems**: `new_dataitem`, `log_dataitem`, `log_table`, `log_croissant`, `register_dataitem`, `register_table`, `register_croissant`, `get_dataitem`, `list_dataitems`, `import_dataitem`, `load_dataitem`, `update_dataitem`, `delete_dataitem`.
-- **Models**: `new_model`, `log_model`, `log_mlflow`, `log_sklearn`, `log_huggingface`, `log_tvm_ir`, `log_tvm_so`, the matching `register_*` methods, `get_model`, `list_models`, `import_model`, `load_model`, `update_model`, `delete_model`.
-- **Functions and workflows**: `new`, `get`, `get_versions`, `list`, `import`, `load`, `update`, `delete`.
-- **Tasks**: `new_task`, `get_task`, `list_tasks`, `import_task`, `load_task`, `update_task`, `delete_task`.
-- **Runs**: `new_run`, `get_run`, `list_runs`, `import_run`, `load_run`, `update_run`, `delete_run`.
-- **Triggers**: `new_trigger`, `get_trigger`, `list_triggers`, `import_trigger`, `load_trigger`, `update_trigger`, `delete_trigger`.
-- **Secrets**: `new_secret`, `get_secret`, `list_secrets`, `import_secret`, `load_secret`, `update_secret`, `delete_secret`.
-- **Container images**: `new_containerimage`, `get_containerimage`, `get_containerimage_versions`, `list_containerimages`, `import_containerimage`, `update_containerimage`, `delete_containerimage`.
+</div>
 
-For more information about the entity methods, see the related entity documentation:
+## Manage project state
 
-- [**`artifacts`**](../artifact/crud.md)
-- [**`dataitems`**](../dataitem/crud.md)
-- [**`models`**](../model/crud.md)
-- [**`functions`**](../function/crud.md)
-- [**`workflows`**](../workflow/crud.md)
-- [**`runs`**](../run/crud.md)
-- [**`secrets`**](../secret/crud.md)
-- [**`tasks`**](../task/crud.md)
-- [**`triggers`**](../trigger/crud.md)
-- [**`container images`**](../containerimage/crud.md)
+Use these methods to persist or synchronize a `Project` object.
 
-## Extensions
+??? example "save"
 
-An extension is a dictionary interpreted by the backend or runtime integration.
-Pass `extensions` when creating a project or a supported material entity to
-persist extension metadata. `Function.run()` and `Workflow.run()` also accept
-`extensions` to attach extension data to the created run.
+    Save or update the project in the backend.
 
-```python
-project = dh.new_project(
-    "my-project",
-    extensions=[{"name": "my-extension", "config": {"enabled": True}}],
-)
+    ::: digitalhub.entities.project._base.entity.Project.save
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
 
-artifact = project.register_artifact(
-    source="s3://bucket/path/file.csv",
-    extensions=[{"name": "catalog", "config": {"owner": "team-a"}}],
-)
-```
+??? example "export"
 
-The available extension names and configuration fields are defined by the
-installed backend and runtime integrations.
+    Export the project locally as a YAML file.
 
-## Project specific methods
+    ::: digitalhub.entities.project._base.entity.Project.export
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
 
-The project object exposes the following methods:
+??? example "refresh"
 
-- **`run`**: execute a workflow from the project
-- **`search_entity`**: search entities related to the project
-- **`share`**: share the project with a user
-- **`unshare`**: remove project access for a user
+    Refresh the project from the backend.
 
-::: digitalhub.entities.project._base.entity.Project.run
-    options:
-        heading_level: 3
-        show_signature: false
-        show_source: false
-        show_root_heading: true
-        show_symbol_type_heading: true
-        show_root_full_path: false
-        show_root_toc_entry: true
+    ::: digitalhub.entities.project._base.entity.Project.refresh
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
 
-::: digitalhub.entities.project._base.entity.Project.search_entity
-    options:
-        heading_level: 3
-        show_signature: false
-        show_source: false
-        show_root_heading: true
-        show_symbol_type_heading: true
-        show_root_full_path: false
-        show_root_toc_entry: true
+## Manage related entities
 
-::: digitalhub.entities.project._base.entity.Project.share
-    options:
-        heading_level: 3
-        show_signature: false
-        show_source: false
-        show_root_heading: true
-        show_symbol_type_heading: true
-        show_root_full_path: false
-        show_root_toc_entry: true
+The `Project` object exposes the CRUD methods for the entities it contains. The project name is inferred from the object. See [Entities](../index.md) for the available entity types and their documentation.
 
-::: digitalhub.entities.project._base.entity.Project.unshare
-    options:
-        heading_level: 3
-        show_signature: false
-        show_source: false
-        show_root_heading: true
-        show_symbol_type_heading: true
-        show_root_full_path: false
-        show_root_toc_entry: true
+## Run project operations
+
+Use these methods to execute workflows, search project entities, and manage access:
+
+??? example "share"
+
+    Share the project with a user.
+
+    ::: digitalhub.entities.project._base.entity.Project.share
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
+
+??? example "unshare"
+
+    Remove project access for a user.
+
+    ::: digitalhub.entities.project._base.entity.Project.unshare
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
+
+??? example "search_entity"
+
+    Search entities related to the project.
+
+    ::: digitalhub.entities.project._base.entity.Project.search_entity
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
+
+??? example "run"
+
+    Execute a workflow from the project.
+
+    ::: digitalhub.entities.project._base.entity.Project.run
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
+
+[Back to Project](./entity.md)

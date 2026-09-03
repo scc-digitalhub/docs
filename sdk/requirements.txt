@@ -1,4 +1,5 @@
 mkdocstrings[python]
+mkdocs-redirects
 digitalhub[full]>=0.16.0b, <0.17
 digitalhub_runtime_python>=0.16.0b, <0.17
 digitalhub_runtime_container>=0.16.0b, <0.17

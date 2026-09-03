@@ -2,10 +2,32 @@
 
 Artifacts are (binary) objects stored in one of the artifact stores of the platform, and available to every process, module and component as files (or data streams).
 
-## Managing artifacts with SDK
+## Choose an artifact kind
 
-Artifacts can be created and managed as *entities* with the SDK CRUD methods. This can be done directly from the package or through the `Project` object.
+Choose the kind that matches the artifact you want to create. The `kind` to use is shown at the end of the card description.
 
-1. In the [CRUD section](./crud.md), we will see how to create, read, update and delete artifacts.
-2. In the [methods section](./methods.md), we will see what can be done with the `Artifact` object.
-3. In the [kinds section](./kinds.md), we will see what kinds are supported.
+<div class="kind-cards" markdown>
+
+- [**Artifact**](./kind/artifact.md){ .kind-card-link } - Store a generic artifact as a file in an artifact store - `artifact`
+
+</div>
+
+## Artifact operations
+
+<div class="grid cards" markdown>
+
+- [**Artifact CRUD**](./crud.md){ .card-link }
+
+	---
+
+	Create, register, read, update, or delete artifacts.
+
+- [**Use the Artifact entity**](./methods.md){ .card-link }
+
+	---
+
+	Persist artifact state and move files between local and artifact storage.
+
+</div>
+
+[Back to Entities](../index.md)

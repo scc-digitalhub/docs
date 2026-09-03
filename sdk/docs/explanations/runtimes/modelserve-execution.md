@@ -58,12 +58,12 @@ ModelServe functions are executed remotely on Kubernetes clusters managed by the
 
 Here are links to the detailed documentation for each ModelServe action:
 
-- [sklearnserve serve](actions/sklearnserve-serve.md) — Deploy scikit-learn models as services
-- [mlflowserve build](actions/mlflowserve-build.md) — Build MLflow model-serving images
-- [mlflowserve serve](actions/mlflowserve-serve.md) — Deploy MLflow models as services
-- [huggingfaceserve serve](actions/huggingfaceserve-serve.md) — Deploy HuggingFace models as services
-- [kubeai-text serve](actions/kubeai-text-serve.md) — Deploy text processing models via KubeAI
-- [kubeai-speech serve](actions/kubeai-speech-serve.md) — Deploy speech processing models via KubeAI
-- [vllmserve-text serve](actions/vllmserve-text-serve.md) — Deploy vLLM text generation models
-- [vllmserve-speech serve](actions/vllmserve-speech-serve.md) — Deploy vLLM speech models
-- [vllmserve-pooling serve](actions/vllmserve-pooling-serve.md) — Deploy vLLM models with pooling support
+- [sklearnserve serve](../../reference/runtimes/modelserve/actions/sklearnserve-serve.md) — Deploy scikit-learn models as services
+- [mlflowserve build](../../reference/runtimes/modelserve/actions/mlflowserve-build.md) — Build MLflow model-serving images
+- [mlflowserve serve](../../reference/runtimes/modelserve/actions/mlflowserve-serve.md) — Deploy MLflow models as services
+- [huggingfaceserve serve](../../reference/runtimes/modelserve/actions/huggingfaceserve-serve.md) — Deploy HuggingFace models as services
+- [kubeai-text serve](../../reference/runtimes/modelserve/actions/kubeai-text-serve.md) — Deploy text processing models via KubeAI
+- [kubeai-speech serve](../../reference/runtimes/modelserve/actions/kubeai-speech-serve.md) — Deploy speech processing models via KubeAI
+- [vllmserve-text serve](../../reference/runtimes/modelserve/actions/vllmserve-text-serve.md) — Deploy vLLM text generation models
+- [vllmserve-speech serve](../../reference/runtimes/modelserve/actions/vllmserve-speech-serve.md) — Deploy vLLM speech models
+- [vllmserve-pooling serve](../../reference/runtimes/modelserve/actions/vllmserve-pooling-serve.md) — Deploy vLLM models with pooling support

@@ -2,223 +2,352 @@
 
 The CRUD methods are used to create, read, update and delete artifacts. There are two ways to use them.
 The first is through the SDK and the second is through the `Project` object.
-The syntax is the same for all CRUD methods. If you want to manage artifacts from the project, you can use the `Project` object and avoid to specify the `project` parameter. In this last case, you need to specify every parameter as keyword argument.
-
-Example:
-
-```python
-import digitalhub as dh
-
-project = dh.get_or_create_project("my-project")
-
-# Use CRUD method on project
-
-artifact = project.new_artifact(name="my-artifact",
-                                kind="artifact",
-                                path="path-to-some-file")
-
-# Use CRUD method from SDK
-
-artifact = dh.new_artifact(project="my-project",
-                           name="my-artifact",
-                           kind="artifact",
-                           path="path-to-some-file")
-```
-
-An `artifact` entity can be managed with the following methods.
-
-Create:
-
-- [**`new_artifact`**](#new)
-- [**`log_artifact`**](#log)
-- [**`log_generic_artifact`**](#log-generic)
-- [**`register_artifact`**](#register)
-- [**`register_generic_artifact`**](#register-generic)
-
-Read:
-
-- [**`get_artifact`**](#get)
-- [**`get_artifact_versions`**](#get-versions)
-- [**`import_artifact`**](#import)
-- [**`list_artifacts`**](#list)
-
-Update:
-
-- [**`update_artifact`**](#update)
-
-Delete:
-
-- [**`delete_artifact`**](#delete)
+The syntax is the same for all CRUD methods. If you want to manage artifacts from the project, you can use the `Project` object and avoid specifying the `project` parameter. In this case, specify every parameter as a keyword argument.
 
 ## Create
 
-You can create an artifact with the `new_artifact()` or with `log_artifact()` method. The main difference between the two methods is that `log_artifact()` also uploads a local file into an artifact store (eg. *S3*), while `new_artifact()` only creates a new entity and saves it into the backend.
-The `kwargs` parameters are determined by the **kind** of the object, and are described in the [kinds section](kinds.md).
-The `kwargs` parameters are the same for both *new* and *log* methods.
+Creation methods differ in how they handle the source:
 
-### New
+- `new_artifact()` creates and saves an entity.
+- `log_<kind>()` creates an entity and uploads the source to an artifact store.
+- `register_<kind>()` creates an entity for an existing source; `name` is optional and can be inferred from the source.
 
-This function create a new entity and saves it into the backend.
+For specification parameters, see the documentation for the relevant [artifact kind](kind/artifact.md). Use the generic methods only for a kind supported by DigitalHub Core but not by the SDK.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - new_artifact
+??? example "new_artifact"
 
-### Log
+    This function creates a new entity and saves it into the backend.
 
-This function create a new entity into the backend and also upload a local file into an artifact store (eg. *S3*).
+    === "Function documentation"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - log_artifact
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - new_artifact
 
-### Log generic
+    === "Creation example"
 
-This function creates an artifact from a local path and uploads it to the artifact store.
+        ```python
+        import digitalhub as dh
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - log_generic_artifact
+        artifact = dh.new_artifact(
+            project="my-project",
+            name="my-artifact",
+            kind="artifact",
+            path="s3://my-bucket/my-artifact",
+        )
+        ```
 
-## Register
+??? example "log_artifact"
 
-Register an artifact whose source already exists in a supported store. Unlike
-`log_artifact()`, registration does not upload local data. The `source` value
-is kept as the artifact path, and `embedded=True` stores the entity reference
-in the project specification when supported.
+    This function creates a new entity in the backend and also uploads a local file into an artifact store (for example, *S3*).
 
-### Register
+    === "Function documentation"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - register_artifact
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - log_artifact
 
-### Register generic
+    === "Creation example"
 
-Use the generic form when the artifact kind is not one of the built-in kinds.
+        ```python
+        import digitalhub as dh
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - register_generic_artifact
+        artifact = dh.log_artifact(
+            project="my-project",
+            name="my-artifact",
+            source="./local-artifact",
+        )
+        ```
+
+??? example "log_generic_artifact"
+
+    This function creates an artifact of a custom kind from a local path and uploads it to the artifact store.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - log_generic_artifact
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        artifact = dh.log_generic_artifact(
+            project="my-project",
+            kind="custom-artifact",
+            source="./local-artifact",
+            name="my-artifact",
+        )
+        ```
+
+??? example "register_artifact"
+
+    Register an artifact whose source already exists in a supported store. Unlike `log_artifact()`, registration does not upload local data. The `source` value is kept as the artifact path, and `embedded=True` stores the entity reference in the project specification when supported.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - register_artifact
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        artifact = dh.register_artifact(
+            project="my-project",
+            source="s3://my-bucket/my-artifact",
+            name="my-artifact",
+        )
+        ```
+
+??? example "register_generic_artifact"
+
+    Use the generic form when the artifact kind is not one of the built-in kinds.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - register_generic_artifact
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        artifact = dh.register_generic_artifact(
+            project="my-project",
+            kind="custom-artifact",
+            source="s3://my-bucket/my-artifact",
+            name="my-artifact",
+        )
+        ```
 
 ## Read
 
-To read artifacts you can use the `get_artifact()`, `get_artifact_versions()`, `list_artifacts()` or `import_artifact()` functions.
+Use the read methods to retrieve artifacts from the backend or load them from a YAML descriptor.
 
-### Get
+??? example "get_artifact"
 
-This function searches for a single artifact into the backend.
-If you want to collect an artifact from the backend using `get_artifact()`, you have two options:
+    Get one artifact by name and project. Omitting `entity_id` returns the latest version.
 
-- The first one is to use the `key` parameter which has the pattern `store://<project-name>/<entity-type>/<entity-kind>/<entity-name>:<entity-id>`.
-- The second one is to use the entity name as `identifier`, the project name as `project` and the entity id as `entity_id` parameters. If you do not specify the entity id, you will get the latest version.
+    === "Function documentation"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_artifact
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - get_artifact
 
-### Get versions
+    === "Example"
 
-This function returns all the versions of an artifact from the backend.
+        ```python
+        import digitalhub as dh
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_artifact_versions
+        artifact = dh.get_artifact(
+            identifier="my-artifact",
+            project="my-project",
+        )
+        ```
 
-### List
+??? example "get_artifact_versions"
 
-This function returns all the latest artifacts from the backend related to a project.
+    Get all versions of an artifact by name and project.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - list_artifacts
+    === "Function documentation"
 
-### Import
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - get_artifact_versions
 
-This function load the artifact from a local yaml file descriptor.
+    === "Example"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - import_artifact
+        ```python
+        import digitalhub as dh
+
+        artifacts = dh.get_artifact_versions(
+            identifier="my-artifact",
+            project="my-project",
+        )
+        ```
+
+??? example "list_artifacts"
+
+    List the latest artifacts in a project.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - list_artifacts
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        artifacts = dh.list_artifacts(project="my-project")
+        ```
+
+??? example "import_artifact"
+
+    Import an artifact from a local YAML descriptor or a storage key.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - import_artifact
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        artifact = dh.import_artifact("my-artifact.yaml")
+        ```
+
+??? example "load_artifact"
+
+    Load an artifact from a local YAML descriptor and update the existing backend entity.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - load_artifact
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        artifact = dh.load_artifact("my-artifact.yaml")
+        ```
 
 ## Update
 
-To update an artifact you can use the `update_artifact()` method.
+Update an artifact after changing its mutable metadata.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - update_artifact
+??? example "update_artifact"
+
+    Update an existing artifact. The artifact specification is immutable.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - update_artifact
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        artifact = dh.get_artifact(
+            identifier="my-artifact",
+            project="my-project",
+        )
+        artifact.set_description("Updated artifact")
+        artifact = dh.update_artifact(artifact)
+        ```
 
 ## Delete
 
-To delete an artifact you can use the `delete_artifact()` method.
+Delete one artifact version or all versions of an artifact.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - delete_artifact
+??? example "delete_artifact"
+
+    Set `delete_all_versions=True` to delete all versions by entity name.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - delete_artifact
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        dh.delete_artifact(
+            identifier="my-artifact",
+            project="my-project",
+            delete_all_versions=True,
+        )
+        ```

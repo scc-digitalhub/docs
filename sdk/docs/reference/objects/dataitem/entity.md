@@ -2,11 +2,36 @@
 
 Dataitems are data objects which contain a dataset of a given type, stored in an addressable repository and accessible to every component able to understand the type (kind) and the source (path). Do note that data items could be stored in the artifact store as artifacts, but that is not a dependency or a requirement.
 
-## Managing dataitems with SDK
+## Choose a dataitem kind
 
-Dataitems can be created and managed as *entities* with the SDK CRUD methods. This can be done directly from the package or through the `Project` object.
-To manage dataitems, you need to have at least `digitalhub[data]` layer installed.
+Choose the kind that matches the dataitem you want to create. The `kind` to use is shown at the end of the card description.
 
-1. In the [CRUD section](./crud.md), we will see how to create, read, update and delete dataitems.
-2. In the [methods section](./methods.md), we will see what can be done with the `Dataitem` object.
-3. In the [kinds section](./kinds.md), we will see what kinds are supported.
+<div class="kind-cards" markdown>
+
+- [**Dataitem**](./kind/dataitem.md){ .kind-card-link } - Store a generic dataitem in an addressable repository - `dataitem`
+
+- [**Table**](./kind/table.md){ .kind-card-link } - Work with tabular data as a dataframe - `table`
+
+- [**Croissant**](./kind/croissant.md){ .kind-card-link } - Store an ML Croissant dataset - `croissant`
+
+</div>
+
+## Dataitem operations
+
+<div class="grid cards" markdown>
+
+- [**Dataitem CRUD**](./crud.md){ .card-link }
+
+	---
+
+	Create, register, read, update, or delete dataitems.
+
+- [**Use the Dataitem entity**](./methods.md){ .card-link }
+
+	---
+
+	Persist dataitems, move data, and use kind-specific operations.
+
+</div>
+
+[Back to Entities](../index.md)

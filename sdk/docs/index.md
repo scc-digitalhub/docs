@@ -1,45 +1,44 @@
-# Digitalhub SDK Documentation
+# Digitalhub SDK
 
-Welcome to the documentation for the [Digitalhub SDK](https://github.com/scc-digitalhub/digitalhub-sdk), a Python package for interacting with the [Digitalhub platform](https://scc-digitalhub.github.io/docs/).
+The [Digitalhub SDK](https://github.com/scc-digitalhub/digitalhub-sdk) is a Python package for creating, running, and tracking workloads on the [Digitalhub platform](https://scc-digitalhub.github.io/docs/).
 
-The SDK is open source under [Apache License 2.0](https://github.com/scc-digitalhub/digitalhub-sdk/blob/main/LICENSE) and is available on [GitHub](https://github.com/scc-digitalhub/digitalhub-sdk) and [PyPI](https://pypi.org/project/digitalhub/).
+Use the cards below to start a new path or jump directly to the information you need.
 
-## 🚀 Get Started
-
-**New to DigitalHub?** Follow these steps to get up and running:
-
-- **[What can I do?](./how-to/what-can-i-do.md)** — Explore the capabilities of the SDK
-- **[Installation Guide](./how-to/installation.md)** — Set up the SDK and required runtimes
-- **[Quickstart Tutorial](./how-to/quickstart.md)** — Your first "Hello World" example
-- **[Runtime Guide](./how-to/runtime-guide.md)** — Choose the perfect runtime for your use case
-- **[Environment Setup and Configuration](./reference/configuration/credentials/overview.md)** — Configure credentials and store clients
-
-## Contents
+## Start here
 
 <div class="grid cards" markdown>
 
-- **Tutorials**
+- [**Start with Python**](how-to/installation.md){ .card-link }
 
     ---
 
-    **Learning-oriented guides** that take you through a series of steps to complete a project. Perfect for building foundational skills.
+    Install the SDK or jump straight to a first function.
 
-    [Tutorials](./tutorials/index.md)
+    [Quickstart](tutorials/quickstart.md)
 
-- **How-to Guides**
-
-    ---
-
-    **Task-oriented guides** for solving specific problems. Focused on practical steps to achieve concrete goals.
-
-    [How to guides](./how-to/index.md)
-
-- **Reference**
+- [**What can I do?**](explanations/what-can-i-do.md){ .card-link }
 
     ---
 
-    **Information-oriented documentation** providing technical details about the SDK's API, parameters, and configuration options.
+    Find the SDK capability you need and go straight to the relevant documentation.
 
-    [Reference Overview](./reference/index.md)
+- [**Tutorials**](tutorials/index.md){ .card-link }
+
+    ---
+
+    Step-by-step examples for learning the SDK by building something complete.
+
+- [**Reference**](reference/index.md){ .card-link }
+
+    ---
+
+    API, parameters, configuration options, and runtime behavior.
 
 </div>
+
+## Documentation map
+
+- **Tutorials** teach by taking you through a complete example.
+- **How-to guides** help you complete a specific task.
+- **Explanations** provide context for choosing and combining SDK capabilities.
+- **Reference** documents the exact API, parameters, and supported values.

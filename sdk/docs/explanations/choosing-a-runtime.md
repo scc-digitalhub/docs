@@ -1,6 +1,6 @@
-# Runtime Guide
+# Choosing a runtime
 
-This guide helps you choose the right runtime for your use case. The Digitalhub platform provides several specialized runtimes, each designed for different types of workloads and execution patterns.
+This explanation helps you choose the right runtime for your use case. The Digitalhub platform provides several specialized runtimes, each designed for different types of workloads and execution patterns.
 
 ## Quick Runtime Selection
 

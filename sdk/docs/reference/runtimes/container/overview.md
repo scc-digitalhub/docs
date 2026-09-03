@@ -28,5 +28,5 @@ To execute container workloads on the platform:
 2. Create a `Function` resource that references your container configuration.
 3. Call `function.run()` to execute the container workload.
 
-See [how to](how-to.md) for detailed instructions on which actions you can execute and how to configure your container workloads.
+See the [Container execution model](../../../explanations/runtimes/container-execution.md) for an overview of actions and workload configuration.
 See [Examples](examples.md) for code samples.

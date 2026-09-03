@@ -45,5 +45,5 @@ To execute a Python-based handler on the platform:
 2. Create a `Function` resource with kind `python`.
 3. Call `function.run()` to execute the handler.
 
-See [how to](how-to.md) for detailed instructions on which actions you can execute and how to configure each function kind.
+See the [Python execution model](../../../../explanations/runtimes/python-execution.md) for supported actions and function configuration.
 See [Examples](examples.md) for code samples.

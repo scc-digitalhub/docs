@@ -34,5 +34,5 @@ To execute dbt transformations on the platform:
 2. Create a `Function` resource that references your dbt SQL code.
 3. Call `function.run()` with the input entity references and output table name to execute the transformation.
 
-See [how to](how-to.md) for detailed instructions on executing dbt transformations.
+See the [DBT execution model](../../../explanations/runtimes/dbt-execution.md) for an overview of DBT transformations.
 See [Examples](examples.md) for code samples.

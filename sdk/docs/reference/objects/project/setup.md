@@ -26,3 +26,5 @@ def setup(project, some_arg1=None, some_arg2=None):
     # Do something with project and args
 
 ```
+
+[Back to Project](./entity.md)

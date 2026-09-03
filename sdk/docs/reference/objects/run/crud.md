@@ -1,132 +1,178 @@
 # CRUD
 
-The CRUD methods are used to create, read, update and delete runs. The syntax is the same for all CRUD methods.
-
-Example:
-
-```python
-import digitalhub as dh
-
-# Use CRUD method from SDK
-
-run = dh.new_run(project="my-project",
-                 kind="python+run",
-                 task="task-string")
-```
-
-A `run` entity can be managed with the following methods.
-
-Create:
-
-- [**`new_run`**](#new)
-
-Read:
-
-- [**`get_run`**](#get)
-- [**`import_run`**](#import)
-- [**`list_runs`**](#list)
-
-Update:
-
-- [**`update_run`**](#update)
-
-Delete:
-
-- [**`delete_run`**](#delete)
+The CRUD methods create, read, update and delete runs. The syntax is the same for all CRUD methods.
 
 ## Create
 
-You can create a run with the `new_run()`.
-The `kwargs` parameters are determined by the **kind** of the object, and are described in the [kinds section](kinds.md).
+`new_run()` creates and saves a run. The `kind` and other specification parameters are determined by the runtime. See the [runtime documentation](../../runtimes/index.md) when creating a run.
 
-### New
+??? example "new_run"
 
-This run create a new entity and saves it into the backend.
+    Create and save a run.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - new_run
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - new_run
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        run = dh.new_run(
+            project="my-project",
+            kind="python+run",
+            task="task-string",
+        )
+        ```
 
 ## Read
 
-To read runs you can use the `get_run()`, `list_runs()` or `import_run()` runs.
+Use the read methods to retrieve runs from the backend or load them from a YAML descriptor.
 
-### Get
+??? example "get_run"
 
-This run searches for a single run into the backend.
-If you want to collect a run from the backend using `get_run()`, you have two options:
+    Get one run by its entity ID and project, or pass a `store://` entity key as `identifier`.
 
-- The first one is to use the `key` parameter which has the pattern `store://<project-name>/<entity-type>/<entity-kind>/<entity-id>`.
-- The second one is to use the entity id as `identifier`, the project name as `project`.
+    === "Function documentation"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_run
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - get_run
 
-### List
+    === "Example"
 
-This run returns all the latest runs from the backend related to a project.
+        ```python
+        import digitalhub as dh
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - list_runs
+        run = dh.get_run(
+            identifier="my-run-id",
+            project="my-project",
+        )
+        ```
 
-### Import
+??? example "list_runs"
 
-This run load the run from a local yaml file descriptor.
+    List the latest runs in a project.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - import_run
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - list_runs
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        runs = dh.list_runs(project="my-project")
+        ```
+
+??? example "import_run"
+
+    Import a run from a local YAML descriptor or a storage key.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - import_run
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        run = dh.import_run("my-run.yaml")
+        ```
 
 ## Update
 
-To update a run you can use the `update_run()` method.
+Update a run after changing its mutable metadata.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - update_run
+??? example "update_run"
+
+    Update an existing run.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - update_run
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        run = dh.get_run(
+            identifier="my-run-id",
+            project="my-project",
+        )
+        run.set_description("Updated run")
+        run = dh.update_run(run)
+        ```
 
 ## Delete
 
-To delete a run you can use the `delete_run()` method.
+Delete a run from the backend.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - delete_run
+??? example "delete_run"
+
+    Delete a run by its entity ID or storage key.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - delete_run
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        dh.delete_run(
+            identifier="my-run-id",
+            project="my-project",
+        )
+        ```

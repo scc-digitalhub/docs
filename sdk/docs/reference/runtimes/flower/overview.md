@@ -38,5 +38,5 @@ To execute federated learning tasks on the platform:
 
 For `flower-client` and `flower-server`, `run()` automatically builds an image when none is configured. Set `auto_build=False` when you want to deploy only an existing image.
 
-See [how to](how-to.md) for detailed instructions on which kind of applications you can execute and how to implement and deploy your Flower application.
+See the [Flower execution model](../../../explanations/runtimes/flower-execution.md) for supported applications and actions.
 See [Examples](examples.md) for code samples.

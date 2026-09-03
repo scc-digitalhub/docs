@@ -2,139 +2,201 @@
 
 The CRUD methods create, read, update and delete tasks. Tasks are unversioned and belong to a project.
 
-Example:
-
-```python
-import digitalhub as dh
-
-# Create a task directly for an executable
-
-task = dh.new_task(
-    project="my-project",
-    kind="python+job",
-    function="python://my-project/my-function:latest",
-)
-```
-
-A `task` entity can be managed with the following methods.
-
-Create:
-
-- [**`new_task`**](#new)
-
-Read:
-
-- [**`get_task`**](#get)
-- [**`import_task`**](#import)
-- [**`load_task`**](#load)
-- [**`list_tasks`**](#list)
-
-Update:
-
-- [**`update_task`**](#update)
-
-Delete:
-
-- [**`delete_task`**](#delete)
-
 ## Create
 
-### New
+`new_task()` creates and saves a task. The task `kind` combines an executable kind and an action, for example `python+job`. See the [runtime documentation](../../runtimes/index.md) when creating a task.
 
-This function creates a task and saves it into the backend. The task `kind` combines an executable kind and an action, for example `python+job`.
+??? example "new_task"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - new_task
+    Create and save a task for an executable.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - new_task
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        task = dh.new_task(
+            project="my-project",
+            kind="python+job",
+            function="python://my-project/my-function:latest",
+        )
+        ```
 
 ## Read
 
-### Get
+Use the read methods to retrieve tasks from the backend or load them from a YAML descriptor.
 
-Get a task by its storage key or ID. When using an ID, provide the project name.
+??? example "get_task"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - get_task
+    Get a task by its storage key or ID. When using an ID, provide the project name.
 
-### List
+    === "Function documentation"
 
-List tasks in a project. Use `function` or `workflow` filters to restrict the results to an executable.
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - get_task
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - list_tasks
+    === "Example"
 
-### Import
+        ```python
+        import digitalhub as dh
 
-Import a task from a local YAML descriptor or a storage key.
+        task = dh.get_task(
+            identifier="my-task-id",
+            project="my-project",
+        )
+        ```
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - import_task
+??? example "list_tasks"
 
-### Load
+    List tasks in a project. Use `function` or `workflow` filters to restrict the results to an executable.
 
-Load a task from a local YAML descriptor and update the existing backend object.
+    === "Function documentation"
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - load_task
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - list_tasks
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        tasks = dh.list_tasks(project="my-project")
+        ```
+
+??? example "import_task"
+
+    Import a task from a local YAML descriptor or a storage key.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - import_task
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        task = dh.import_task("my-task.yaml")
+        ```
+
+??? example "load_task"
+
+    Load a task from a local YAML descriptor and update the existing backend object.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - load_task
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        task = dh.load_task("my-task.yaml")
+        ```
 
 ## Update
 
-Update a task. Its specification is immutable where required by the backend.
+Update a task after changing its mutable metadata. Its specification is immutable where required by the backend.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - update_task
+??? example "update_task"
+
+    Update an existing task.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - update_task
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        task = dh.get_task(
+            identifier="my-task-id",
+            project="my-project",
+        )
+        task.set_description("Updated task")
+        task = dh.update_task(task)
+        ```
 
 ## Delete
 
 Delete a task from the backend.
 
-::: digitalhub.entities
-    options:
-        heading_level: 6
-        show_signature: false
-        show_docstring_description: false
-        show_symbol_type_heading: true
-        show_source: false
-        members:
-            - delete_task
+??? example "delete_task"
+
+    Delete a task by its entity ID or storage key.
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: false
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - delete_task
+
+    === "Example"
+
+        ```python
+        import digitalhub as dh
+
+        dh.delete_task(
+            identifier="my-task-id",
+            project="my-project",
+        )
+        ```

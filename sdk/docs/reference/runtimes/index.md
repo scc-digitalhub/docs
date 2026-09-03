@@ -10,10 +10,34 @@ Runtimes define the key point of extension of the platform: new runtimes may be 
 
 ## Supported runtimes
 
-- [Python](python/python/overview.md) — Python-based functions, including `python`, `guardrail`, and `openinference` kinds.
-- [Container](container/overview.md) — run arbitrary container images as jobs or services.
-- [DBT](dbt/overview.md) — run DBT transformations for data modeling.
-- [Hera](hera/overview.md) — Hera pipelines runtime (DAG/steps orchestration).
-- [ModelServe](modelserve/overview.md) — model serving and inference workloads.
-- [Flower](flower/overview.md) — federated learning with Flower framework.
-- [ServiceGraph](servicegraph/overview.md) — run service pipeline orchestration services.
+<div class="index-cards" markdown>
+
+- [**Python**](python/python/overview.md){ .index-card-link }
+
+	Python-based functions, including `python`, `guardrail`, and `openinference` kinds.
+
+- [**Container**](container/overview.md){ .index-card-link }
+
+	Run arbitrary container images as jobs or services.
+
+- [**DBT**](dbt/overview.md){ .index-card-link }
+
+	Run DBT transformations for data modeling.
+
+- [**Hera**](hera/overview.md){ .index-card-link }
+
+	Build Hera pipelines for DAG and step orchestration.
+
+- [**ModelServe**](modelserve/overview.md){ .index-card-link }
+
+	Run model serving and inference workloads.
+
+- [**Flower**](flower/overview.md){ .index-card-link }
+
+	Build federated learning workloads with the Flower framework.
+
+- [**ServiceGraph**](servicegraph/overview.md){ .index-card-link }
+
+	Run service pipeline orchestration services.
+
+</div>

@@ -2,10 +2,28 @@
 
 Runs are the representation of the execution of a task through a function.
 
+Run kinds are provided by runtimes. See the [runtime documentation](../../runtimes/index.md) to create and configure a run.
+
 ## Managing runs with SDK
 
 Runs are created with a `Function` or `Workflow` object through the `run` method. They can be managed as *entities*.
 
-1. In the [CRUD section](./crud.md), we will see how to create, read, update and delete runs.
-2. In the [methods section](./methods.md), we will see what can be done with the `Run` object.
-3. In the [kinds section](./kinds.md), we will see what kinds are supported.
+## Run operations
+
+<div class="grid cards" markdown>
+
+- [**Run CRUD**](./crud.md){ .card-link }
+
+	---
+
+	Create, read, update, or delete runs.
+
+- [**Use the Run entity**](./methods.md){ .card-link }
+
+	---
+
+	Start, stop, resume, wait for, and inspect runs.
+
+</div>
+
+[Back to Entities](../index.md)

@@ -1,66 +1,193 @@
 # Installation
 
-The Digitalhub SDK is distributed as a Python package and is hosted on [PyPI](https://pypi.org/project/digitalhub/) so you can install it with `pip` or `uv` or any other Python package manager.
+Install the SDK first, then install the runtime required by your workload. Packages are available on [PyPI](https://pypi.org/project/digitalhub/) and can be installed with `uv`, `pip`, or another Python package manager.
 
-## Installing Digitalhub SDK
+## SDK
 
-The most basic command to install the `digitalhub` package in your Python environment is:
+For a complete first installation, install the SDK with all its optional feature dependencies:
 
-```bash
-python -m pip install digitalhub[full]
-```
+=== "uv"
 
-This command will install the SDK with all the dependencies.
+	```bash
+	uv pip install "digitalhub[full]"
+	```
 
-There are more options available:
+=== "pip"
 
-```bash
-# Install SDK plus pandas/polars for dataitems handling
-python -m pip install digitalhub[pandas]
-python -m pip install digitalhub[polars]
+	```bash
+	python -m pip install "digitalhub[full]"
+	```
 
-# Install SDK plus mlcroissant for croissant dataitem support
-python -m pip install digitalhub[mlcroissant]
-```
+This is the recommended SDK installation. It includes the dependencies used by the SDK's data and model features.
 
-## Installing Digitalhub Runtimes
+??? note "Install individual SDK extras"
 
-The Digitalhub runtimes are installed in the same way as the SDK. We have distributed the following runtimes at the moment:
+	The `full` extra already includes these dependencies. Install an individual extra only when you intentionally want a smaller installation.
 
-- [digitalhub-runtime-python](../reference/runtimes/python/python/overview.md)
-- [digitalhub-runtime-container](../reference/runtimes/container/overview.md)
-- [digitalhub-runtime-dbt](../reference/runtimes/dbt/overview.md)
-- [digitalhub-runtime-flower](../reference/runtimes/flower/overview.md)
-- [digitalhub-runtime-hera](../reference/runtimes/hera/overview.md)
-- [digitalhub-runtime-modelserve](../reference/runtimes/modelserve/overview.md)
+	=== "uv"
 
-You can install the runtime directly with pip. It will come with all the required SDK dependencies:
+		```bash
+		uv pip install "digitalhub[pandas]"
+		uv pip install "digitalhub[polars]"
+		uv pip install "digitalhub[mlcroissant]"
+		uv pip install "digitalhub[huggingface]"
+		```
 
-```bash
-# Install python runtime package
-python -m pip install digitalhub-runtime-python
+	=== "pip"
 
-# The same package also enables the guardrail and openinference function kinds
+		```bash
+		python -m pip install "digitalhub[pandas]"
+		python -m pip install "digitalhub[polars]"
+		python -m pip install "digitalhub[mlcroissant]"
+		python -m pip install "digitalhub[huggingface]"
+		```
 
-# Install container runtime
-python -m pip install digitalhub-runtime-container
+## Runtimes
 
-# Install dbt runtime
-python -m pip install digitalhub-runtime-dbt
+Install the runtime required by your workload. The Python, Container, ModelServe, and Hera runtimes cover the most common workloads; the remaining runtimes support more specialized use cases.
 
-# Install dbt runtime with local execution support
-python -m pip install digitalhub-runtime-dbt[local]
+??? note "Python"
 
-# Install flower runtime
-python -m pip install digitalhub-runtime-flower
+	**Use it for:** Create and execute Python functions.
 
-# Install flower runtime with local simulation support
-python -m pip install digitalhub-runtime-flower[local]
+	The Python runtime also provides the `guardrail` and `openinference` function kinds. They do not require separate runtime packages.
 
-# Install hera runtime
-python -m pip install digitalhub-runtime-hera
+	=== "uv"
 
-# Install modelserve runtime
-python -m pip install digitalhub-runtime-modelserve
+		```bash
+		uv pip install digitalhub-runtime-python
+		```
 
-```
+	=== "pip"
+
+		```bash
+		python -m pip install digitalhub-runtime-python
+		```
+
+??? note "Container"
+
+	**Use it for:** Run containerized applications.
+
+	See the [Container runtime reference](../reference/runtimes/container/overview.md) for supported actions and configuration.
+
+	=== "uv"
+
+		```bash
+		uv pip install digitalhub-runtime-container
+		```
+
+	=== "pip"
+
+		```bash
+		python -m pip install digitalhub-runtime-container
+		```
+
+??? note "ModelServe"
+
+	**Use it for:** Serve machine learning models.
+
+	See the [ModelServe runtime reference](../reference/runtimes/modelserve/overview.md) for supported model types and actions.
+
+	=== "uv"
+
+		```bash
+		uv pip install digitalhub-runtime-modelserve
+		```
+
+	=== "pip"
+
+		```bash
+		python -m pip install digitalhub-runtime-modelserve
+		```
+
+??? note "Hera"
+
+	**Use it for:** Build and run workflows.
+
+	See the [Hera runtime reference](../reference/runtimes/hera/overview.md) for pipeline definition and execution.
+
+	=== "uv"
+
+		```bash
+		uv pip install digitalhub-runtime-hera
+		```
+
+	=== "pip"
+
+		```bash
+		python -m pip install digitalhub-runtime-hera
+		```
+
+??? note "DBT"
+
+	**Use it for:** Run DBT transformations.
+
+	Add `[local]` to the package name for local execution. See the [DBT runtime reference](../reference/runtimes/dbt/overview.md) for details.
+
+	=== "uv"
+
+		```bash
+		uv pip install digitalhub-runtime-dbt
+		```
+
+	=== "pip"
+
+		```bash
+		python -m pip install digitalhub-runtime-dbt
+		```
+
+??? note "Flower"
+
+	**Use it for:** Run federated learning workloads.
+
+	Add `[local]` to the package name for local simulation. See the [Flower runtime reference](../reference/runtimes/flower/overview.md) for details.
+
+	=== "uv"
+
+		```bash
+		uv pip install digitalhub-runtime-flower
+		```
+
+	=== "pip"
+
+		```bash
+		python -m pip install digitalhub-runtime-flower
+		```
+
+??? note "ServiceGraph"
+
+	**Use it for:** Deploy service pipelines.
+
+	See the [ServiceGraph runtime reference](../reference/runtimes/servicegraph/overview.md) for details.
+
+	=== "uv"
+
+		```bash
+		uv pip install digitalhub-runtime-servicegraph
+		```
+
+	=== "pip"
+
+		```bash
+		python -m pip install digitalhub-runtime-servicegraph
+		```
+
+??? note "TVM"
+
+	**Use it for:** TVM model support.
+
+	An SDK runtime guide is not available yet.
+
+	=== "uv"
+
+		```bash
+		uv pip install digitalhub-runtime-tvm
+		```
+
+	=== "pip"
+
+		```bash
+		python -m pip install digitalhub-runtime-tvm
+		```
+
+For runtime actions, parameters, and usage details, see the [Runtime reference](../reference/runtimes/index.md).
