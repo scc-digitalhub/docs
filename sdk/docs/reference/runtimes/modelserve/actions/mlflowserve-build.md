@@ -1,86 +1,151 @@
 # ModelServe mlflowserve Build
 
-The `build` action builds an MLflow model-serving container image. A `Task` is created by calling `run()` on the Function; task parameters are passed through that call.
+## Build reference
+
+<div class="list-cards" markdown>
+
+- [**Overview**](#overview){ .list-card-link } - Understand what the build action does.
+
+- [**Function**](#function){ .list-card-link } - Create an MLflow serving Function.
+
+- [**Task**](#task){ .list-card-link } - Configure the MLflow build Task.
+
+- [**Run**](#run){ .list-card-link } - Build the MLflow serving image.
+
+</div>
 
 ## Overview
 
+The `build` action builds an MLflow model-serving container image. A `Task` is created by calling `run()` on the Function; task parameters are passed through that call.
+
 The mlflowserve function kind supports building MLflow models for serving. The model must be saved in MLflow format with an MLmodel file.
 
-## Quick example
+## Function
 
-```python
-function = dh.new_function(
-    name="my-mlflow-build-function",
-    kind="mlflowserve",
-    path=model.key
-)
+??? example "Create a function"
 
-build_run = function.run(
-    action="build",
-    instructions=["pip install -r requirements.txt"]
-)
-```
+    Define the Function with the MLflow model path and serving image.
 
-## Parameters
+    === "Parameters"
 
-### Function Parameters
+        | Name | Type | Description |
+        | --- | --- | --- |
+        | project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
+        | name | str | Name that identifies the object. **Required.** |
+        | kind | str | Function kind. Must be `mlflowserve`. **Required.** |
+        | uuid | str | Object ID in UUID4 format. |
+        | description | str | Description of the object. |
+        | labels | list[str] | List of labels. |
+        | embedded | bool | Whether the object should be embedded in the project. |
+        | [path](#model-path) | str | Model path. |
+        | model_name | str | Name of the model. |
+        | [image](#model-image) | str | Docker image where to serve the model. |
 
-Must be specified when creating the function.
+        #### Model Path
 
-| Name | Type | Description |
-| --- | --- | --- |
-| project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
-| name | str | Name that identifies the object. **Required.** |
-| kind | str | Function kind. Must be `mlflowserve`. **Required.** |
-| uuid | str | Object ID in UUID4 format. |
-| description | str | Description of the object. |
-| labels | list[str] | List of labels. |
-| embedded | bool | Whether the object should be embedded in the project. |
-| [path](#model-path) | str | Model path. |
-| model_name | str | Name of the model. |
-| [image](#model-image) | str | Docker image where to serve the model. |
+        The SDK stores the model path as a string and does not validate its format locally. Provide a model key, an S3 path partition, or a zip archive supported by the platform.
 
-#### Model Path
+        #### Model Image
 
-The SDK stores the model path as a string and does not validate its format locally. Provide a model key, an S3 path partition, or a zip archive supported by the platform.
+        The SDK stores the image as a string and does not validate its format locally. Provide an image compatible with the MLflow serving runtime.
 
-#### Model Image
+    === "Creation example"
 
-The SDK stores the image as a string and does not validate its format locally. Provide an image compatible with the MLflow serving runtime.
+        ```python
+        function = dh.new_function(
+            name="my-mlflow-build-function",
+            kind="mlflowserve",
+            path=model.key
+        )
+        ```
 
-### Task Parameters
+### Function methods
 
-Can only be specified when calling `function.run()`.
+??? example "build"
 
-| Name | Type | Description |
-| --- | --- | --- |
-| action | str | Task action. **Required. Must be `build`** |
-| [volumes](../../../configuration/kubernetes/overview.md#volumes) | list[dict] | List of volumes. |
-| [resources](../../../configuration/kubernetes/overview.md#resources) | dict | Resource limits/requests. |
-| [envs](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[dict] | Environment variables. |
-| [secrets](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[str] | List of secret names. |
-| [profile](../../../configuration/kubernetes/overview.md#profile) | str | Profile template. |
-| [replicas](../../../configuration/kubernetes/overview.md#replicas) | int | Number of replicas. |
-| [service_type](../../../configuration/kubernetes/overview.md#service-port-and-type) | str | Service type. |
-| service_name | str | Service name. |
-| [instructions](#instructions) | list[str] | Build instructions executed as RUN lines in the generated Dockerfile. |
+    Build the MLflow serving function using the build action.
 
-### Run Parameters
+    ::: digitalhub_runtime_modelserve.entities.function.mlflowserve.entity.FunctionMlflowserve.build
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
 
-Can only be specified when calling `function.run()`.
+## Task
 
-No specific parameters for run of this action.
+??? example "Create a task"
 
-## Instructions
+    === "Parameters"
 
-Instructions are executed as `RUN` instructions in the generated Dockerfile. Example:
+        | Name | Type | Description |
+        | --- | --- | --- |
+        | action | str | Task action. **Required. Must be `build`** |
+        | [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
+        | [resources](../../../configuration/kubernetes.md#resources) | dict | Resource limits/requests. |
+        | [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
+        | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
+        | [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
+        | [replicas](../../../configuration/kubernetes.md#replicas) | int | Number of replicas. |
+        | [service_type](../../../configuration/kubernetes.md#service-port-and-type) | str | Service type. |
+        | service_name | str | Service name. |
+        | [instructions](#instructions) | list[str] | Build instructions executed as RUN lines in the generated Dockerfile. |
 
-```python
-instructions = ["apt-get install -y git"]
-```
+        #### Instructions
 
-## Entity methods
+        Instructions are executed as `RUN` instructions in the generated Dockerfile. Example:
+
+        ```python
+        instructions = ["apt-get install -y git"]
+        ```
+
+    === "Creation example"
+
+        ```python
+        build_run = function.run(
+            action="build",
+            instructions=["pip install -r requirements.txt"]
+        )
+        ```
+
+### Task methods
+
+The MLflow build Task does not add runtime-specific methods.
+
+## Run
+
+??? example "Create a run"
+
+    === "Parameters"
+
+        No specific parameters for run of this action.
+
+    === "Creation example"
+
+        ```python
+        build_run = function.run(
+            action="build",
+            instructions=["pip install -r requirements.txt"]
+        )
+        ```
 
 ### Run methods
 
-Once the build run is complete, the generated image reference is available through the `build_run.image` property.
+??? example "image"
+
+    Get the image generated by the build run.
+
+    ::: digitalhub_runtime_modelserve.entities.run.mlflowserve_build_run.entity.RunMlflowserveBuildRun.image
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true

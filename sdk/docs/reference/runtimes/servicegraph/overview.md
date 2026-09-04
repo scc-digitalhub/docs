@@ -39,7 +39,6 @@ Testing the deployed pipeline depends on the pipeline source.
 
 For synchronous pipelines with the HTTP source, call the inference endpoint with `run.invoke()`. By default the `url` is taken from the `run` object; override it with an explicit `url` parameter if needed.
 
-
 ```python
 data = [[...]]  # some array
 json = {

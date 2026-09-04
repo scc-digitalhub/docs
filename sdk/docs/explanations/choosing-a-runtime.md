@@ -1,83 +1,76 @@
 # Choosing a runtime
 
-This explanation helps you choose the right runtime for your use case. The Digitalhub platform provides several specialized runtimes, each designed for different types of workloads and execution patterns.
+Choose a runtime based on your workload, execution model, and dependency requirements. DigitalHub provides specialized runtimes for Python jobs, containers, model serving, workflow orchestration, data transformation, federated learning, and service pipelines.
 
-## Quick Runtime Selection
+<div class="runtime-cards" markdown>
 
-| If you need to... | Use this runtime | Best for |
-| --- | --- | --- |
-| Execute Python code | [Python Runtime](../reference/runtimes/python/python/overview.md) | General-purpose Python execution, guardrails, and OpenInference services |
-| Run containerized applications | [Container Runtime](../reference/runtimes/container/overview.md) | Custom containers, complex dependencies |
-| Orchestrate multiple steps | [Hera Runtime](../reference/runtimes/hera/overview.md) | Workflow orchestration, DAGs |
-| Serve ML models | [ModelServe Runtime](../reference/runtimes/modelserve/overview.md) | Model inference, API serving |
-| Transform tabular data | [DBT Runtime](../reference/runtimes/dbt/overview.md) | Data transformation, SQL workflows |
-| Run federated learning | [Flower Runtime](../reference/runtimes/flower/overview.md) | Federated learning, privacy-preserving ML |
+- [**Python Runtime**](../reference/runtimes/python/python/overview.md){ .runtime-card-link }
 
-## Runtime Capabilities Matrix
+	Execute user-defined Python handlers for jobs, model training, and services.
 
-| Runtime | Local Execution | Remote Execution | Multi-step Workflows | Model Serving | Data Processing | Federated Learning |
-| --- | --- | --- | --- | --- | --- | --- |
-| **Python** | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ |
-| **Container** | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ |
-| **Hera** | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ |
-| **ModelServe** | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
-| **DBT** | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
-| **Flower** | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ |
+	**Use cases**{ .runtime-card-label }
 
-## Detailed Selection Guide
+	Batch jobs; request/response handlers with `guardrail`; inference endpoints with `openinference`.
 
-### Python Runtime
+- [**Container Runtime**](../reference/runtimes/container/overview.md){ .runtime-card-link }
 
-**Choose when:**
+	Run existing containerized applications with custom dependencies.
 
-- You have Python code that needs to run
-- You want simple job execution or model training
-- You need request/response processing through `guardrail`
-- You need inference endpoints with declared tensor schemas through `openinference`
-- Your workload fits within Python's ecosystem
+	**Use cases**{ .runtime-card-label }
 
-### Container Runtime
+	Existing containerized applications; workloads with custom system dependencies; remote jobs and services on Kubernetes.
 
-**Choose when:**
+- [**ModelServe Runtime**](../reference/runtimes/modelserve/overview.md){ .runtime-card-link }
 
-- Your application requires complex dependencies
-- You want to run existing containerized applications
-- Python runtime isn't sufficient for your environment needs
+	Deploy supported machine learning models as scalable inference services.
 
-### Hera Runtime
+	**Use cases**{ .runtime-card-label }
 
-**Choose when:**
+	REST inference endpoints; scikit-learn, MLflow, and Hugging Face models; vLLM text and speech serving.
 
-- You have multiple steps to execute in sequence
-- You want to build DAGs (Directed Acyclic Graphs)
-- You need conditional execution or parallel processing
+- [**Hera Runtime**](../reference/runtimes/hera/overview.md){ .runtime-card-link }
 
-### ModelServe Runtime
+	Build and execute multi-step workflows with Hera.
 
-**Choose when:**
+	**Use cases**{ .runtime-card-label }
 
-- You need to serve machine learning models
-- You want to expose models as REST APIs
-- You need scalable model inference
-- You work with various ML frameworks (scikit-learn, MLflow, HuggingFace, etc.)
+	DAG and Steps pipelines; conditional or parallel workflow execution; workflow definitions compiled for remote runs.
 
-### DBT Runtime
+- [**Flower Runtime**](../reference/runtimes/flower/overview.md){ .runtime-card-link }
 
-**Choose when:**
+	Build privacy-preserving federated-learning workloads.
 
-- You work with tabular data
-- You need SQL-based data transformations
+	**Use cases**{ .runtime-card-label }
 
-### Flower Runtime
+	Federated learning simulations; Flower clients and servers; training across distributed datasets.
 
-**Choose when:**
+- [**DBT Runtime**](../reference/runtimes/dbt/overview.md){ .runtime-card-link }
 
-- You want to implement federated learning
-- You need privacy-preserving machine learning
-- You work with distributed datasets across multiple parties
-- You want to use the Flower framework for FL
+	Transform tabular data with SQL-based workflows.
 
-## Getting Started with Your Chosen Runtime
+	**Use cases**{ .runtime-card-label }
+
+	SQL transformations on tabular data; local or remote DBT runs; PostgreSQL-backed data workflows.
+
+- [**ServiceGraph Runtime**](../reference/runtimes/servicegraph/overview.md){ .runtime-card-link }
+
+	Deploy synchronous or asynchronous pipelines that orchestrate services and streaming data.
+
+	**Use cases**{ .runtime-card-label }
+
+	Synchronous or asynchronous service pipelines; AI service processing chains; streaming inputs and outputs.
+
+- **TVM Runtime**
+
+	Runtime documentation will be added here.
+
+	**Use cases**{ .runtime-card-label }
+
+	To be defined.
+
+</div>
+
+## Next steps
 
 Once you've selected a runtime, follow these steps:
 
@@ -86,13 +79,6 @@ Once you've selected a runtime, follow these steps:
 3. **Review the execution guide** for detailed parameter information
 4. **Explore the entity documentation** for complete API reference
 
-## Need Help Choosing?
+!!! tip "Still unsure?"
 
-If you're still unsure which runtime to use, consider:
-
-- **Start with Python Runtime** if you're new to the platform
-- **Use Container Runtime** if you have complex dependencies
-- **Use Hera Runtime** if you have multiple coordinated steps
-- **Use ModelServe Runtime** if you need to serve ML models
-- **Use DBT Runtime** if you work primarily with SQL and tabular data
-- **Use Flower Runtime** if you need federated learning capabilities
+	Start with the Python Runtime for general-purpose workloads. Choose the Container Runtime for complex dependencies, Hera for coordinated steps, ModelServe for model inference, DBT for SQL transformations, or Flower for federated learning.

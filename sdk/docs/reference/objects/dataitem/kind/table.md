@@ -8,7 +8,7 @@ The `table` kind has the following specification parameters.
 
 | Parameter | Type | Description | Default |
 | --- | --- | --- | --- |
-| [`path`](../../../configuration/paths/overview.md#entity-paths) | *str* | Path of the dataitem, either on the local filesystem or in remote storage. | *required* |
+| [`path`](../../../configuration/paths.md#entity-paths) | *str* | Path of the dataitem, either on the local filesystem or in remote storage. | *required* |
 | `schema` | [*TableSchema*](https://specs.frictionlessdata.io/table-schema/) | Frictionless table schema. | `None` |
 
 ## Table methods

@@ -11,9 +11,9 @@ At the level of the project the secrets are represented as key-value pairs. The 
 
 The SDK provides one concrete secret kind.
 
-<div class="kind-cards" markdown>
+<div class="list-cards" markdown>
 
-- [**Secret**](./kind/secret.md){ .kind-card-link } - Store a project secret through the configured secret provider - `secret`
+- [**Secret**](./kind/secret.md){ .list-card-link } - Store a project secret through the configured secret provider - `secret`
 
 </div>
 

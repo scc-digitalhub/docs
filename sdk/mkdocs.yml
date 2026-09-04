@@ -9,6 +9,7 @@ extra_javascript:
 
 extra_css:
   - stylesheets/cards.css
+  - stylesheets/tables.css
   - !ENV [
       OTHERS_STYLESHEETS_PORTAL_SELECTION,
       "../stylesheets/portal_selection.css",
@@ -47,6 +48,25 @@ plugins:
         reference/runtimes/python/python/how-to.md: explanations/runtimes/python-execution.md
         reference/runtimes/python/openinference/how-to.md: explanations/runtimes/openinference-execution.md
         reference/runtimes/python/guardrail/how-to.md: explanations/runtimes/guardrail-execution.md
+        reference/configuration/paths/overview.md: reference/configuration/paths.md
+        reference/configuration/paths/local.md: reference/configuration/paths.md#local-paths
+        reference/configuration/paths/s3.md: reference/configuration/paths.md#s3-paths
+        reference/configuration/paths/remote.md: reference/configuration/paths.md#remote-paths-https
+        reference/configuration/paths/hf.md: reference/configuration/paths.md#hugging-face-paths
+        reference/configuration/paths/sql.md: reference/configuration/paths.md#sql-paths
+        reference/configuration/code_src/overview.md: reference/configuration/code-sources.md
+        reference/configuration/code_src/local.md: reference/configuration/code-sources.md#local-file
+        reference/configuration/code_src/http.md: reference/configuration/code-sources.md#https-file-or-zip
+        reference/configuration/code_src/git.md: reference/configuration/code-sources.md#git-repository
+        reference/configuration/code_src/s3.md: reference/configuration/code-sources.md#s3-zip-archive
+        reference/configuration/credentials/overview.md: reference/configuration/credentials.md
+        reference/configuration/credentials/dhcore.md: reference/configuration/credentials.md#dhcore-api
+        reference/configuration/credentials/s3.md: reference/configuration/credentials.md#s3-storage
+        reference/configuration/credentials/sql.md: reference/configuration/credentials.md#sql-databases
+        reference/configuration/credentials/git.md: reference/configuration/credentials.md#git-repositories
+        reference/configuration/credentials/helpers.md: reference/configuration/credentials.md#helpers-and-clients
+        reference/configuration/credentials/store-clients.md: reference/configuration/credentials.md#store-clients
+        reference/configuration/kubernetes/overview.md: reference/configuration/kubernetes.md
   - mkdocstrings:
       default_handler: python
       handlers:
@@ -173,23 +193,23 @@ nav:
               - Handler definition: reference/runtimes/python/python/define-function.md
               - Generic handler: reference/runtimes/python/define-function.md
               - Actions:
-                  - python job: reference/runtimes/python/python/python-job.md
-                  - python serve: reference/runtimes/python/python/python-serve.md
-                  - python build: reference/runtimes/python/python/python-build.md
+                  - python job: reference/runtimes/python/python/actions/python-job.md
+                  - python serve: reference/runtimes/python/python/actions/python-serve.md
+                  - python build: reference/runtimes/python/python/actions/python-build.md
               - Examples: reference/runtimes/python/python/examples.md
           - OpenInference (Python):
               - Overview: reference/runtimes/python/openinference/overview.md
               - Handler definition: reference/runtimes/python/openinference/define-function.md
               - Actions:
-                  - openinference serve: reference/runtimes/python/openinference/openinference-serve.md
-                  - openinference build: reference/runtimes/python/openinference/openinference-build.md
+                  - openinference serve: reference/runtimes/python/openinference/actions/openinference-serve.md
+                  - openinference build: reference/runtimes/python/openinference/actions/openinference-build.md
               - Examples: reference/runtimes/python/openinference/examples.md
           - Guardrail (Python):
               - Overview: reference/runtimes/python/guardrail/overview.md
               - Handler definition: reference/runtimes/python/guardrail/define-function.md
               - Actions:
-                  - guardrail serve: reference/runtimes/python/guardrail/guardrail-serve.md
-                  - guardrail build: reference/runtimes/python/guardrail/guardrail-build.md
+                  - guardrail serve: reference/runtimes/python/guardrail/actions/guardrail-serve.md
+                  - guardrail build: reference/runtimes/python/guardrail/actions/guardrail-build.md
               - Examples: reference/runtimes/python/guardrail/examples.md
           - DBT:
               - Overview: reference/runtimes/dbt/overview.md
@@ -238,25 +258,7 @@ nav:
                   - servicegraph serve: reference/runtimes/servicegraph/actions/servicegraph-serve.md
               - Examples: reference/runtimes/servicegraph/examples.md
       - Configuration:
-          - Paths:
-              - Overview: reference/configuration/paths/overview.md
-              - Local: reference/configuration/paths/local.md
-              - S3: reference/configuration/paths/s3.md
-              - Remote: reference/configuration/paths/remote.md
-              - Hugging Face: reference/configuration/paths/hf.md
-              - SQL: reference/configuration/paths/sql.md
-          - Code source:
-              - Overview: reference/configuration/code_src/overview.md
-              - Local: reference/configuration/code_src/local.md
-              - HTTP: reference/configuration/code_src/http.md
-              - Git: reference/configuration/code_src/git.md
-              - S3: reference/configuration/code_src/s3.md
-          - Credentials handling:
-              - Overview: reference/configuration/credentials/overview.md
-              - DHCore: reference/configuration/credentials/dhcore.md
-              - S3: reference/configuration/credentials/s3.md
-              - SQL: reference/configuration/credentials/sql.md
-              - Git: reference/configuration/credentials/git.md
-              - Helpers: reference/configuration/credentials/helpers.md
-              - Store clients: reference/configuration/credentials/store-clients.md
-          - Kubernetes resources: reference/configuration/kubernetes/overview.md
+          - Paths: reference/configuration/paths.md
+          - Code source: reference/configuration/code-sources.md
+          - Credentials: reference/configuration/credentials.md
+          - Kubernetes resources: reference/configuration/kubernetes.md

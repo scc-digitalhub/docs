@@ -1,69 +1,113 @@
 # ServiceGraph Serve
 
-The `serve` action deploys a pipeline as a service on Kubernetes. A `Task` is created by calling `run()` on the Function; task parameters are passed through that call.
+## Serve reference
+
+<div class="list-cards" markdown>
+
+- [**Overview**](#overview){ .list-card-link } - Understand what the serve action does.
+
+- [**Function**](#function){ .list-card-link } - Create a ServiceGraph Function.
+
+- [**Task**](#task){ .list-card-link } - Configure the ServiceGraph serve Task.
+
+- [**Run**](#run){ .list-card-link } - Deploy the ServiceGraph pipeline.
+
+</div>
 
 ## Overview
 
-## Quick example
+The `serve` action deploys a pipeline as a service on Kubernetes. A `Task` is created by calling `run()` on the Function; task parameters are passed through that call.
 
-```python
-function = dh.new_function(
-    name="my-servicegraph-service",
-    kind="servicegraph",
-    code_src="src/flow.yaml"
-)
+## Function
 
-run = function.run(
-    action="serve",
-    parameters={"input.url": "http://videosource:1984"},
-    service_ports=[{"port": 7777, "target_port": 7777}]
-)
+??? example "Create a function"
 
-```
+    Define the Function with a ServiceGraph pipeline definition.
 
-## Parameters
+    === "Parameters"
 
-### Function Parameters
+        | Name | Type | Description |
+        | --- | --- | --- |
+        | project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
+        | name | str | Name that identifies the object. **Required.** |
+        | kind | str | Function kind. Must be `servicegraph`. **Required.** |
+        | uuid | str | Object ID in UUID4 format. |
+        | description | str | Description of the object. |
+        | labels | list[str] | List of labels. |
+        | embedded | bool | Whether the object should be embedded in the project. |
+        | [code_src](../../../configuration/code-sources.md#code-source-uri) | str | URI pointing to the YAML of the pipeline. |
+        | [code](../../../configuration/code-sources.md#plain-text-source) | str | Pipeline code YAML provided as plain text. |
+        | base64 | str | Pipeline definition encoded as base64. |
+        | image | str | Docker image where to serve the model. |
 
-Must be specified when creating the function.
+        The pipeline code should be defined following the specification defined in the [ServiceGraph](https://github.com/scc-digitalhub/digitalhub-servicegraph) project.
 
-| Name | Type | Description |
-| --- | --- | --- |
-| project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
-| name | str | Name that identifies the object. **Required.** |
-| kind | str | Function kind. Must be `servicegraph`. **Required.** |
-| uuid | str | Object ID in UUID4 format. |
-| description | str | Description of the object. |
-| labels | list[str] | List of labels. |
-| embedded | bool | Whether the object should be embedded in the project. |
-| [code_src](../../../configuration/code_src/overview.md#code-source-uri) | str | URI pointing to the YAML of the pipeline. |
-| [code](../../../configuration/code_src/overview.md#plain-text-source) | str | Pipeline code YAML provided as plain text. |
-| base64 | str | Pipeline definition encoded as base64. |
-| image | str | Docker image where to serve the model. |
+    === "Creation example"
 
-The pipeline code should be defined following the specification defined in [ServiceGraph](https://github.com/scc-digitalhub/digitalhub-servicegraph) project.
+        ```python
+        function = dh.new_function(
+            name="my-servicegraph-service",
+            kind="servicegraph",
+            code_src="src/flow.yaml"
+        )
+        ```
 
-### Task Parameters
+### Function methods
 
-Can only be specified when calling `function.run()`.
+The ServiceGraph Function does not add runtime-specific methods.
 
-| Name | Type | Description |
-| --- | --- | --- |
-| action | str | Task action. **Required. Must be `serve`** |
-| service_ports | list[dict] | List of service ports. |
-| [service_type](../../../configuration/kubernetes/overview.md#service-port-and-type) | str | Service type. |
-| service_name | str | Service name. |
-| [replicas](../../../configuration/kubernetes/overview.md#replicas) | int | Number of replicas. |
-| [volumes](../../../configuration/kubernetes/overview.md#volumes) | list[dict] | List of volumes. |
-| [resources](../../../configuration/kubernetes/overview.md#resources) | dict | Resource limits/requests. |
-| [envs](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[dict] | Environment variables. |
-| [secrets](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[str] | List of secret names. |
-| [profile](../../../configuration/kubernetes/overview.md#profile) | str | Profile template. |
+## Task
 
-### Run Parameters
+??? example "Create a task"
 
-Can only be specified when calling `function.run()`.
+    === "Parameters"
 
-| Name | Type | Description |
-| --- | --- | --- |
-| parameters | dict | Task parameters to customize the flow properties. |
+        | Name | Type | Description |
+        | --- | --- | --- |
+        | action | str | Task action. **Required. Must be `serve`** |
+        | service_ports | list[dict] | List of service ports. |
+        | [service_type](../../../configuration/kubernetes.md#service-port-and-type) | str | Service type. |
+        | service_name | str | Service name. |
+        | [replicas](../../../configuration/kubernetes.md#replicas) | int | Number of replicas. |
+        | [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
+        | [resources](../../../configuration/kubernetes.md#resources) | dict | Resource limits/requests. |
+        | [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
+        | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
+        | [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
+
+    === "Creation example"
+
+        ```python
+        run = function.run(
+            action="serve",
+            service_ports=[{"port": 7777, "target_port": 7777}]
+        )
+        ```
+
+### Task methods
+
+The ServiceGraph serve Task does not add runtime-specific methods.
+
+## Run
+
+??? example "Create a run"
+
+    === "Parameters"
+
+        | Name | Type | Description |
+        | --- | --- | --- |
+        | parameters | dict | Task parameters to customize the flow properties. |
+
+    === "Creation example"
+
+        ```python
+        run = function.run(
+            action="serve",
+            parameters={"input.url": "http://videosource:1984"},
+            service_ports=[{"port": 7777, "target_port": 7777}]
+        )
+        ```
+
+### Run methods
+
+The ServiceGraph serve Run does not add runtime-specific methods.

@@ -8,9 +8,9 @@ Container images are versioned context entities and can be managed directly with
 
 Choose the kind that matches the container image you want to create. The `kind` to use is shown at the end of the card description.
 
-<div class="kind-cards" markdown>
+<div class="list-cards" markdown>
 
-- [**Container image**](./kind/container-image.md){ .kind-card-link } - Store a container image reference with image metadata - `container-image`
+- [**Container image**](./kind/container-image.md){ .list-card-link } - Store a container image reference with image metadata - `container-image`
 
 </div>
 

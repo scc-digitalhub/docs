@@ -6,13 +6,13 @@ Dataitems are data objects which contain a dataset of a given type, stored in an
 
 Choose the kind that matches the dataitem you want to create. The `kind` to use is shown at the end of the card description.
 
-<div class="kind-cards" markdown>
+<div class="list-cards" markdown>
 
-- [**Dataitem**](./kind/dataitem.md){ .kind-card-link } - Store a generic dataitem in an addressable repository - `dataitem`
+- [**Dataitem**](./kind/dataitem.md){ .list-card-link } - Store a generic dataitem in an addressable repository - `dataitem`
 
-- [**Table**](./kind/table.md){ .kind-card-link } - Work with tabular data as a dataframe - `table`
+- [**Table**](./kind/table.md){ .list-card-link } - Work with tabular data as a dataframe - `table`
 
-- [**Croissant**](./kind/croissant.md){ .kind-card-link } - Store an ML Croissant dataset - `croissant`
+- [**Croissant**](./kind/croissant.md){ .list-card-link } - Store an ML Croissant dataset - `croissant`
 
 </div>
 

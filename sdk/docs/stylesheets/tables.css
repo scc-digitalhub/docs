@@ -1,0 +1,33 @@
+.md-content .md-typeset table,
+.md-content .md-typeset table p {
+    text-align: left;
+}
+
+.md-typeset table:not([class]) {
+    --table-subtle-color: var(--md-default-fg-color--lightest);
+    width: 100%;
+    border: 1px solid var(--table-subtle-color);
+    border-radius: 0.25rem;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+    padding: 0.65rem 0.8rem;
+    vertical-align: top;
+    border-bottom: 1px solid var(--table-subtle-color);
+}
+
+.md-typeset table:not([class]) th {
+    background-color: var(--table-subtle-color);
+    font-weight: 700;
+}
+
+.md-typeset table:not([class]) tbody tr:nth-child(even) {
+    background-color: var(--table-subtle-color);
+}
+
+.md-typeset table:not([class]) tbody tr:last-child td {
+    border-bottom: 0;
+}

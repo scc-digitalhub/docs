@@ -6,9 +6,9 @@ Workflows allow for organizing the single operations in a advanced management pi
 
 Choose the runtime that matches the workflow you want to create. The `kind` to use is shown at the end of the card description.
 
-<div class="kind-cards" markdown>
+<div class="list-cards" markdown>
 
-- [**Hera**](../../runtimes/hera/overview.md){ .kind-card-link } - Build workflows with Hera pipelines - `hera`
+- [**Hera**](../../runtimes/hera/overview.md){ .list-card-link } - Build workflows with Hera pipelines - `hera`
 
 </div>
 

@@ -10,33 +10,33 @@ Runtimes define the key point of extension of the platform: new runtimes may be 
 
 ## Supported runtimes
 
-<div class="index-cards" markdown>
+<div class="list-cards" markdown>
 
-- [**Python**](python/python/overview.md){ .index-card-link }
+- [**Python**](python/python/overview.md){ .list-card-link }
 
 	Python-based functions, including `python`, `guardrail`, and `openinference` kinds.
 
-- [**Container**](container/overview.md){ .index-card-link }
+- [**Container**](container/overview.md){ .list-card-link }
 
 	Run arbitrary container images as jobs or services.
 
-- [**DBT**](dbt/overview.md){ .index-card-link }
+- [**DBT**](dbt/overview.md){ .list-card-link }
 
 	Run DBT transformations for data modeling.
 
-- [**Hera**](hera/overview.md){ .index-card-link }
+- [**Hera**](hera/overview.md){ .list-card-link }
 
 	Build Hera pipelines for DAG and step orchestration.
 
-- [**ModelServe**](modelserve/overview.md){ .index-card-link }
+- [**ModelServe**](modelserve/overview.md){ .list-card-link }
 
 	Run model serving and inference workloads.
 
-- [**Flower**](flower/overview.md){ .index-card-link }
+- [**Flower**](flower/overview.md){ .list-card-link }
 
 	Build federated learning workloads with the Flower framework.
 
-- [**ServiceGraph**](servicegraph/overview.md){ .index-card-link }
+- [**ServiceGraph**](servicegraph/overview.md){ .list-card-link }
 
 	Run service pipeline orchestration services.
 

@@ -6,9 +6,9 @@ Artifacts are (binary) objects stored in one of the artifact stores of the platf
 
 Choose the kind that matches the artifact you want to create. The `kind` to use is shown at the end of the card description.
 
-<div class="kind-cards" markdown>
+<div class="list-cards" markdown>
 
-- [**Artifact**](./kind/artifact.md){ .kind-card-link } - Store a generic artifact as a file in an artifact store - `artifact`
+- [**Artifact**](./kind/artifact.md){ .list-card-link } - Store a generic artifact as a file in an artifact store - `artifact`
 
 </div>
 

@@ -6,11 +6,11 @@ Triggers are the logical description of how and when jobs should be executed on 
 
 Choose the kind that matches when the trigger should run. The `kind` to use is shown at the end of the card description.
 
-<div class="kind-cards" markdown>
+<div class="list-cards" markdown>
 
-- [**Scheduler**](./kind/scheduler.md){ .kind-card-link } - Run a task on a cron schedule - `scheduler`
+- [**Scheduler**](./kind/scheduler.md){ .list-card-link } - Run a task on a cron schedule - `scheduler`
 
-- [**Lifecycle**](./kind/lifecycle.md){ .kind-card-link } - Run a task when an entity reaches selected states - `lifecycle`
+- [**Lifecycle**](./kind/lifecycle.md){ .list-card-link } - Run a task when an entity reaches selected states - `lifecycle`
 
 </div>
 

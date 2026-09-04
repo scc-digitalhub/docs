@@ -1,76 +1,163 @@
 # Hera Pipeline
 
-The `pipeline` action executes a Hera workflow on the platform. A `Task` is created by calling `run()` on the Workflow; task parameters are passed through that call.
+## Pipeline reference
+
+<div class="list-cards" markdown>
+
+- [**Overview**](#overview){ .list-card-link } - Understand what the pipeline action does.
+
+- [**Function**](#function){ .list-card-link } - Create a Hera Workflow.
+
+- [**Task**](#task){ .list-card-link } - Configure the Hera pipeline Task.
+
+- [**Run**](#run){ .list-card-link } - Execute the Hera pipeline.
+
+</div>
 
 ## Overview
 
+The `pipeline` action executes a Hera workflow on the platform. A `Task` is created by calling `run()` on the Workflow; task parameters are passed through that call.
+
 The workflow is built automatically when `auto_build=True` and `workflow.spec.workflow` is `None`. Hera is used by the remote process that builds and runs the workflow, so it is not required in the client environment.
 
-## Quick example
+## Function
 
-```python
-workflow = dh.new_workflow(
-	name="my-workflow",
-	kind="hera",
-	code_src="pipeline.py",
-	handler="pipeline"
-)
+??? example "Create a function"
 
-run = workflow.run(
-	action="pipeline",
-	auto_build=True,
-	parameters={"url": "https://example.com"},
-	wait=True,
-)
-```
+	Define the Workflow with a Python source and handler that returns a Hera `Workflow`.
 
-After an explicit `workflow.build()`, run the pipeline with `auto_build=False`.
+	=== "Parameters"
 
-## Parameters
+		Must be specified when creating the workflow.
 
-### Workflow Parameters
+		| Name | Type | Description |
+		| --- | --- | --- |
+		| project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
+		| name | str | Name that identifies the object. **Required.** |
+		| kind | str | Workflow kind. Must be `hera`. **Required.** |
+		| uuid | str | Object ID in UUID4 format. |
+		| description | str | Description of the object. |
+		| labels | list[str] | List of labels. |
+		| embedded | bool | Whether the object should be embedded in the project. |
+		| [code_src](../../../configuration/code-sources.md#code-source-uri) | str | URI pointing to the source code. |
+		| [code](../../../configuration/code-sources.md#plain-text-source) | str | Source code provided as plain text. |
+		| base64 | str | Source code encoded as base64. |
+		| [handler](../../../configuration/code-sources.md#code-source-uri) | str | Function entrypoint. **Required.** The handler function must not accept arguments and must return a Hera `Workflow`. |
+		| lang | str | Source code language. Only `python` is supported; defaults to `python`. |
 
-Must be specified when creating the workflow.
+	=== "Creation example"
 
-| Name | Type | Description |
-| --- | --- | --- |
-| project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
-| name | str | Name that identifies the object. **Required.** |
-| kind | str | Workflow kind. Must be `hera`. **Required.** |
-| uuid | str | Object ID in UUID4 format. |
-| description | str | Description of the object. |
-| labels | list[str] | List of labels. |
-| embedded | bool | Whether the object should be embedded in the project. |
-| [code_src](../../../configuration/code_src/overview.md#code-source-uri) | str | URI pointing to the source code. |
-| [code](../../../configuration/code_src/overview.md#plain-text-source) | str | Source code provided as plain text. |
-| base64 | str | Source code encoded as base64. |
-| [handler](../../../configuration/code_src/overview.md#handler) | str | Function entrypoint. **Required.** The handler function must not accept arguments and must return a Hera `Workflow`. |
-| lang | str | Source code language. Only `python` is supported; defaults to `python`. |
+		```python
+		workflow = dh.new_workflow(
+			name="my-workflow",
+			kind="hera",
+			code_src="pipeline.py",
+			handler="pipeline"
+		)
+		```
 
-### Task Parameters
+### Function methods
 
-Can only be specified when calling `workflow.run()`.
+??? example "build"
 
-| Name | Type | Description |
-| --- | --- | --- |
-| action | str | Task action. **Required. Must be `pipeline`** |
-| [volumes](../../../configuration/kubernetes/overview.md#volumes) | list[dict] | List of volumes. |
-| [resources](../../../configuration/kubernetes/overview.md#resources) | dict | Resource limits/requests. |
-| [envs](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[dict] | Environment variables. |
-| [secrets](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[str] | List of secret names. |
-| [profile](../../../configuration/kubernetes/overview.md#profile) | str | Profile template. |
+	Build the workflow using the build action.
 
-### Run Parameters
+	::: digitalhub_runtime_hera.entities.workflow.hera.entity.WorkflowHera.build
+		options:
+			heading_level: 6
+			show_signature: false
+			show_docstring_description: true
+			show_source: false
+			show_root_heading: true
+			show_symbol_type_heading: true
+			show_root_full_path: false
+			show_root_toc_entry: true
 
-Can only be specified when calling `workflow.run()`.
+## Task
 
-| Name | Type | Description |
-| --- | --- | --- |
-| auto_build | bool | Whether to invoke `build()` automatically when `workflow.spec.workflow` is `None`. Defaults to `True`. |
-| parameters | dict | Values for the Hera workflow parameters declared in the pipeline source. |
+??? example "Create a task"
 
-## Entity methods
+	A Task for the `pipeline` action is created when `workflow.run()` is called.
+
+	=== "Parameters"
+
+		Can only be specified when calling `workflow.run()`.
+
+		| Name | Type | Description |
+		| --- | --- | --- |
+		| action | str | Task action. **Required. Must be `pipeline`** |
+		| [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
+		| [resources](../../../configuration/kubernetes.md#resources) | dict | Resource values with optional `cpu`, `mem`, `gpu` and `disk` keys. |
+		| [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
+		| [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
+		| [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
+
+	=== "Creation example"
+
+		```python
+		run = workflow.run(action="pipeline")
+		```
+
+### Task methods
+
+The Hera pipeline Task does not add runtime-specific methods.
+
+## Run
+
+??? example "Create a run"
+
+	Execute the Hera pipeline and return the resulting `Run` entity.
+
+	After an explicit `workflow.build()`, run the pipeline with `auto_build=False`.
+
+	=== "Parameters"
+
+		Can only be specified when calling `workflow.run()`.
+
+		| Name | Type | Description |
+		| --- | --- | --- |
+		| auto_build | bool | Whether to invoke `build()` automatically when `workflow.spec.workflow` is `None`. Defaults to `True`. |
+		| parameters | dict | Values for the Hera workflow parameters declared in the pipeline source. |
+
+	=== "Creation example"
+
+		```python
+		run = workflow.run(
+			action="pipeline",
+			auto_build=True,
+			parameters={"url": "https://example.com"},
+			wait=True,
+		)
+		```
 
 ### Run methods
 
-The run object exposes `results()` and `result(name)` for results returned by the remote pipeline run.
+??? example "results"
+
+	Get the results returned by the run.
+
+	::: digitalhub_runtime_hera.entities.run._base.entity.RunHeraRun.results
+		options:
+			heading_level: 6
+			show_signature: false
+			show_docstring_description: true
+			show_source: false
+			show_root_heading: true
+			show_symbol_type_heading: true
+			show_root_full_path: false
+			show_root_toc_entry: true
+
+??? example "result"
+
+	Get a result by name.
+
+	::: digitalhub_runtime_hera.entities.run._base.entity.RunHeraRun.result
+		options:
+			heading_level: 6
+			show_signature: false
+			show_docstring_description: true
+			show_source: false
+			show_root_heading: true
+			show_symbol_type_heading: true
+			show_root_full_path: false
+			show_root_toc_entry: true

@@ -5,8 +5,8 @@ First, we list the function types and actions, then we examine the usage pattern
 Finally, we provide links to detailed documentation for each parameter category.
 
 ## Function types and Actions
-The function kind in the ServiceGraph runtime is `servicegraph` supporing the `serve` action.
 
+The function kind in the ServiceGraph runtime is `servicegraph` supporing the `serve` action.
 
 ## Usage Pattern
 

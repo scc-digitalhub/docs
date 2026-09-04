@@ -10,7 +10,7 @@ The `croissant` kind has the following specification parameters.
 
 | Parameter | Type | Description | Default |
 | --- | --- | --- | --- |
-| [`path`](../../../configuration/paths/overview.md#entity-paths) | *str* | Path to the Croissant dataset location, a directory or partition containing `metadata.json`. | *required* |
+| [`path`](../../../configuration/paths.md#entity-paths) | *str* | Path to the Croissant dataset location, a directory or partition containing `metadata.json`. | *required* |
 
 ## Croissant methods
 

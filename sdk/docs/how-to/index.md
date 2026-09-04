@@ -26,7 +26,7 @@ These task-oriented guides help you complete a specific job with the SDK. Start 
 
 	Set credentials, stores, and the environment variables used by the SDK.
 
-	[Configuration reference](../reference/configuration/credentials/overview.md)
+	[Configuration reference](../reference/configuration/credentials.md)
 
 - **Use Kubernetes resources**
 

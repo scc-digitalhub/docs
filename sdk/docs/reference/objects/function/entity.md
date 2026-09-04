@@ -6,21 +6,21 @@ Functions are the logical description of something that the platform may execute
 
 Choose the runtime that matches the function you want to create. The `kind` to use is shown at the end of each card description.
 
-<div class="kind-cards" markdown>
+<div class="list-cards" markdown>
 
-- [**Python**](../../runtimes/python/python/overview.md){ .kind-card-link } - Create functions with the Python runtime - `python`
+- [**Python**](../../runtimes/python/python/overview.md){ .list-card-link } - Create functions with the Python runtime - `python`
 
-- [**Container**](../../runtimes/container/overview.md){ .kind-card-link } - Run functions packaged in a container image - `container`
+- [**Container**](../../runtimes/container/overview.md){ .list-card-link } - Run functions packaged in a container image - `container`
 
-- [**Model serving**](../../runtimes/modelserve/overview.md){ .kind-card-link } - Serve trained models through a model serving runtime - `modelserve`
+- [**Model serving**](../../runtimes/modelserve/overview.md){ .list-card-link } - Serve trained models through a model serving runtime - `modelserve`
 
-- [**DBT**](../../runtimes/dbt/overview.md){ .kind-card-link } - Run dbt projects as functions - `dbt`
+- [**DBT**](../../runtimes/dbt/overview.md){ .list-card-link } - Run dbt projects as functions - `dbt`
 
-- [**Federated learning**](../../runtimes/flower/overview.md){ .kind-card-link } - Build federated learning functions with Flower - `flower`
+- [**Federated learning**](../../runtimes/flower/overview.md){ .list-card-link } - Build federated learning functions with Flower - `flower`
 
-- [**Guardrail**](../../runtimes/python/guardrail/overview.md){ .kind-card-link } - Define guardrail functions with the Python runtime - `guardrail`
+- [**Guardrail**](../../runtimes/python/guardrail/overview.md){ .list-card-link } - Define guardrail functions with the Python runtime - `guardrail`
 
-- [**OpenInference**](../../runtimes/python/openinference/overview.md){ .kind-card-link } - Use OpenInference with the Python runtime - `openinference`
+- [**OpenInference**](../../runtimes/python/openinference/overview.md){ .list-card-link } - Use OpenInference with the Python runtime - `openinference`
 
 </div>
 

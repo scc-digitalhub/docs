@@ -1,86 +1,137 @@
 # Container Job
 
-The `job` action executes a container as a one-off job on Kubernetes. A `Task` is created by calling `run()` on the Function; task parameters are passed through that call.
+## Job reference
+
+<div class="list-cards" markdown>
+
+- [**Overview**](#overview){ .list-card-link } - Understand what the job action does.
+
+- [**Function**](#function){ .list-card-link } - Create a container Function.
+
+- [**Task**](#task){ .list-card-link } - Configure the container job Task.
+
+- [**Run**](#run){ .list-card-link } - Execute the container job.
+
+</div>
 
 ## Overview
 
-The job action runs a container to completion and then terminates. It's ideal for batch processing, data transformations, or any workload that runs once and exits.
+The job action runs a container to completion and then terminates.
 
-## Quick example
+## Function
 
-```python
-function = dh.new_function(
-    name="my-job",
-    kind="container",
-    image="my-image:latest",
-    command="python script.py"
-)
+??? example "Create a function"
 
-run = function.run(
-    action="job",
-    args=["arg1", "arg2"]
-)
-```
+    Define the Function with the container image and command.
 
-## Parameters
+    === "Parameters"
 
-### Function Parameters
+        | Name | Type | Description |
+        | --- | --- | --- |
+        | project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
+        | name | str | Name that identifies the object. **Required.** |
+        | kind | str | Function kind. **Required. Must be `container`** |
+        | uuid | str | Object ID in UUID4 format. |
+        | description | str | Description of the object. |
+        | labels | list[str] | List of labels. |
+        | embedded | bool | Whether the object should be embedded in the project. |
+        | [code_src](../../../configuration/code-sources.md#code-source-uri) | str | URI pointing to the source code. |
+        | [code](../../../configuration/code-sources.md#plain-text-source) | str | Source code provided as plain text. |
+        | base64 | str | Source code encoded as base64. |
+        | [handler](../../../configuration/code-sources.md#handler) | str | Function entrypoint. |
+        | lang | str | Source code language (informational). |
+        | image | str | Container image to use for execution (name:tag). |
+        | base_image | str | Base image used when building the execution image. |
+        | image_pull_policy | str | Kubernetes image pull policy: `Always`, `IfNotPresent` or `Never`. |
+        | command | str | Command to run inside the container. |
 
-Must be specified when creating the function.
+    === "Creation example"
 
-| Name | Type | Description |
-| --- | --- | --- |
-| project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
-| name | str | Name that identifies the object. **Required.** |
-| kind | str | Function kind. **Required. Must be `container`** |
-| uuid | str | Object ID in UUID4 format. |
-| description | str | Description of the object. |
-| labels | list[str] | List of labels. |
-| embedded | bool | Whether the object should be embedded in the project. |
-| [code_src](../../../configuration/code_src/overview.md#code-source-uri) | str | URI pointing to the source code. |
-| [code](../../../configuration/code_src/overview.md#plain-text-source) | str | Source code provided as plain text. |
-| base64 | str | Source code encoded as base64. |
-| [handler](../../../configuration/code_src/overview.md#handler) | str | Function entrypoint. |
-| lang | str | Source code language (informational). |
-| image | str | Container image to use for execution (name:tag). |
-| base_image | str | Base image used when building the execution image. |
-| image_pull_policy | str | Kubernetes image pull policy: `Always`, `IfNotPresent` or `Never`. |
-| command | str | Command to run inside the container. |
+        ```python
+        function = dh.new_function(
+            name="my-job",
+            kind="container",
+            image="my-image:latest",
+            command="python script.py"
+        )
+        ```
 
-### Task Parameters
+### Function methods
 
-Can only be specified when calling `function.run()`.
+??? example "build"
 
-#### Shared Parameters
+    Create and execute a build run for the function.
 
-| Name | Type | Description |
-| --- | --- | --- |
-| action | str | Task action. **Required. Must be `job`** |
-| [volumes](../../../configuration/kubernetes/overview.md#volumes) | list[dict] | List of volumes. |
-| [resources](../../../configuration/kubernetes/overview.md#resources) | dict | Resource values with optional `cpu`, `mem`, `gpu` and `disk` keys. Example: `{"cpu": "1", "mem": "512Mi"}`. |
-| [envs](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[dict] | Environment variables. Example: `[{"name": "FOO", "value": "bar"}]`. |
-| [secrets](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[str] | List of secret names. |
-| [profile](../../../configuration/kubernetes/overview.md#profile) | str | Profile template. |
+    ::: digitalhub_runtime_container.entities.function.container.entity.FunctionContainer.build
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
 
-#### Job-Specific Parameters
+## Task
 
-| Name | Type | Description |
-| --- | --- | --- |
-| [fs_group](../../../configuration/kubernetes/overview.md#security-context) | int | File system group ID. Must be positive. |
-| [run_as_user](../../../configuration/kubernetes/overview.md#security-context) | int | User ID to run the container. Must be non-negative. |
-| [run_as_group](../../../configuration/kubernetes/overview.md#security-context) | int | Group ID to run the container. Must be non-negative. |
+??? example "Create a task"
 
-### Run Parameters
+    === "Parameters"
 
-Can only be specified when calling `function.run()`.
+        #### Shared Parameters
 
-| Name | Type | Description |
-| --- | --- | --- |
-| auto_build | bool | Whether to build the function automatically when no image is configured. Defaults to `True`. |
-| args | list[str] | Command-line arguments to pass to the container command. |
+        | Name | Type | Description |
+        | --- | --- | --- |
+        | action | str | Task action. **Required. Must be `job`** |
+        | [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
+        | [resources](../../../configuration/kubernetes.md#resources) | dict | Resource values with optional `cpu`, `mem`, `gpu` and `disk` keys. Example: `{"cpu": "1", "mem": "512Mi"}`. |
+        | [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. Example: `[{"name": "FOO", "value": "bar"}]`. |
+        | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
+        | [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
 
-## Entity methods
+        #### Job-Specific Parameters
+
+        | Name | Type | Description |
+        | --- | --- | --- |
+        | [fs_group](../../../configuration/kubernetes.md#security-context) | int | File system group ID. Must be positive. |
+        | [run_as_user](../../../configuration/kubernetes.md#security-context) | int | User ID to run the container. Must be non-negative. |
+        | [run_as_group](../../../configuration/kubernetes.md#security-context) | int | Group ID to run the container. Must be non-negative. |
+
+    === "Creation example"
+
+        ```python
+        run = function.run(
+            action="job",
+            args=["arg1", "arg2"]
+        )
+        ```
+
+### Task methods
+
+The container job Task does not add runtime-specific methods.
+
+## Run
+
+??? example "Create a run"
+
+    === "Parameters"
+
+        | Name | Type | Description |
+        | --- | --- | --- |
+        | auto_build | bool | Whether to build the function automatically when no image is configured. Defaults to `True`. |
+        | args | list[str] | Command-line arguments to pass to the container command. |
+
+    === "Creation example"
+
+        ```python
+        run = function.run(
+            action="job",
+            auto_build=True,
+            args=["arg1", "arg2"]
+        )
+        ```
 
 ### Run methods
 
-There are no runtime-specific helper methods for container runs.
+The container run does not add runtime-specific methods.

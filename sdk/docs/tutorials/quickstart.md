@@ -14,7 +14,7 @@ def hello(name: str = "world"):
     return f"Hello, {name}!"
 ```
 
-- Create a short script `run_hello.py` that registers the function and runs it:
+- Registers the function and runs it:
 
 ```python
 import digitalhub as dh

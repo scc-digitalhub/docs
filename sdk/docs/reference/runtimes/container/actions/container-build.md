@@ -1,85 +1,135 @@
 # Container Build
 
-The `build` action creates a Docker image with custom instructions on Kubernetes. A `Task` is created by calling `run()` on the Function; task parameters are passed through that call.
+## Build reference
+
+<div class="list-cards" markdown>
+
+- [**Overview**](#overview){ .list-card-link } - Understand what the build action does.
+
+- [**Function**](#function){ .list-card-link } - Create a container Function.
+
+- [**Task**](#task){ .list-card-link } - Configure the container build Task.
+
+- [**Run**](#run){ .list-card-link } - Execute the container build.
+
+</div>
 
 ## Overview
 
-The build action generates a Dockerfile with your custom instructions and builds a container image. It's useful for creating custom images with specific dependencies or configurations.
+The build action generates a Dockerfile with your custom instructions and builds a container image.
 
-## Quick example
+## Function
 
-```python
-function = dh.new_function(
-    name="my-build",
-    kind="container",
-    base_image="python:3.9"
-)
+??? example "Create a function"
 
-run = function.run(
-    action="build",
-    instructions=["pip install numpy", "pip install pandas"]
-)
-```
+    Define the Function with the container image and build settings.
 
-## Parameters
+    === "Parameters"
 
-### Function Parameters
+        | Name | Type | Description |
+        | --- | --- | --- |
+        | project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
+        | name | str | Name that identifies the object. **Required.** |
+        | kind | str | Function kind. **Required. Must be `container`** |
+        | uuid | str | Object ID in UUID4 format. |
+        | description | str | Description of the object. |
+        | labels | list[str] | List of labels. |
+        | embedded | bool | Whether the object should be embedded in the project. |
+        | [code_src](../../../configuration/code-sources.md#code-source-uri) | str | URI pointing to the source code. |
+        | [code](../../../configuration/code-sources.md#plain-text-source) | str | Source code provided as plain text. |
+        | base64 | str | Source code encoded as base64. |
+        | [handler](../../../configuration/code-sources.md#handler) | str | Function entrypoint. |
+        | lang | str | Source code language (informational). |
+        | image | str | Container image to use for execution (name:tag). |
+        | base_image | str | Base image used when building the execution image. |
+        | image_pull_policy | str | Kubernetes image pull policy: `Always`, `IfNotPresent` or `Never`. |
+        | command | str | Command to run inside the container. |
 
-Must be specified when creating the function.
+    === "Creation example"
 
-| Name | Type | Description |
-| --- | --- | --- |
-| project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
-| name | str | Name that identifies the object. **Required.** |
-| kind | str | Function kind. **Required. Must be `container`** |
-| uuid | str | Object ID in UUID4 format. |
-| description | str | Description of the object. |
-| labels | list[str] | List of labels. |
-| embedded | bool | Whether the object should be embedded in the project. |
-| [code_src](../../../configuration/code_src/overview.md#code-source-uri) | str | URI pointing to the source code. |
-| [code](../../../configuration/code_src/overview.md#plain-text-source) | str | Source code provided as plain text. |
-| base64 | str | Source code encoded as base64. |
-| [handler](../../../configuration/code_src/overview.md#handler) | str | Function entrypoint. |
-| lang | str | Source code language (informational). |
-| image | str | Container image to use for execution (name:tag). |
-| base_image | str | Base image used when building the execution image. |
-| image_pull_policy | str | Kubernetes image pull policy: `Always`, `IfNotPresent` or `Never`. |
-| command | str | Command to run inside the container. |
+        ```python
+        function = dh.new_function(
+            name="my-build",
+            kind="container",
+            base_image="python:3.9"
+        )
+        ```
 
-### Task Parameters
+### Function methods
 
-Can only be specified when calling `function.run()`.
+??? example "build"
 
-| Name | Type | Description |
-| --- | --- | --- |
-| action | str | Task action. **Required. Must be `build`** |
-| [volumes](../../../configuration/kubernetes/overview.md#volumes) | list[dict] | List of volumes. |
-| [resources](../../../configuration/kubernetes/overview.md#resources) | dict | Resource values with optional `cpu`, `mem`, `gpu` and `disk` keys. Example: `{"cpu": "1", "mem": "512Mi"}`. |
-| [envs](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[dict] | Environment variables. Example: `[{"name": "FOO", "value": "bar"}]`. |
-| [secrets](../../../configuration/kubernetes/overview.md#secrets-and-envs) | list[str] | List of secret names. |
-| [profile](../../../configuration/kubernetes/overview.md#profile) | str | Profile template. |
-| [instructions](#instructions) | list[str] | Build instructions executed as RUN lines in the generated Dockerfile. |
-| base_image | str | Optional override for the base image used by this build run. |
-| image | str | Optional target image name:tag to build/push. |
+    Create and execute a build run for the function.
 
-#### Instructions
+    ::: digitalhub_runtime_container.entities.function.container.entity.FunctionContainer.build
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
 
-Instructions are executed as `RUN` instructions in the generated Dockerfile. Example:
+## Task
 
-```python
-instructions = ["apt-get install -y git"]
-```
+??? example "Create a task"
 
-### Run Parameters
+    === "Parameters"
 
-Can only be specified when calling `function.run()`.
+        | Name | Type | Description |
+        | --- | --- | --- |
+        | action | str | Task action. **Required. Must be `build`** |
+        | [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
+        | [resources](../../../configuration/kubernetes.md#resources) | dict | Resource values with optional `cpu`, `mem`, `gpu` and `disk` keys. Example: `{"cpu": "1", "mem": "512Mi"}`. |
+        | [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. Example: `[{"name": "FOO", "value": "bar"}]`. |
+        | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
+        | [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
+        | [instructions](#instructions) | list[str] | Build instructions executed as RUN lines in the generated Dockerfile. |
+        | base_image | str | Optional override for the base image used by this build run. |
+        | image | str | Optional target image name:tag to build/push. |
 
-| Name | Type | Description |
-| --- | --- | --- |
-| args | list[str] | Command-line arguments to pass to the container command. |
+        #### Instructions
 
-## Entity methods
+        Instructions are executed as `RUN` instructions in the generated Dockerfile. Example:
+
+        ```python
+        instructions = ["apt-get install -y git"]
+        ```
+
+    === "Creation example"
+
+        ```python
+        run = function.run(
+            action="build",
+            instructions=["pip install numpy", "pip install pandas"]
+        )
+        ```
+
+### Task methods
+
+The container build Task does not add runtime-specific methods.
+
+## Run
+
+??? example "Create a run"
+
+    === "Parameters"
+
+        | Name | Type | Description |
+        | --- | --- | --- |
+        | args | list[str] | Command-line arguments to pass to the container command. |
+
+    === "Creation example"
+
+        ```python
+        run = function.run(
+            action="build",
+            args=["--help"]
+        )
+        ```
 
 ### Run methods
 
-There are no runtime-specific helper methods for container runs.
+The container run does not add runtime-specific methods.

@@ -37,9 +37,10 @@ run = function.run(
     action="serve"  # Task parameter
 )
 ```
+
 ## Parameter Documentation
 
 Here are links to the detailed documentation for each Python action:
 
-- [Guardrail Serve](../../reference/runtimes/python/guardrail/guardrail-serve.md) — Deploy a `guardrail` function as a request/response processor
-- [Guardrail Build](../../reference/runtimes/python/guardrail/guardrail-build.md) — Build a container image for a `guardrail` function
+- [Guardrail Serve](../../reference/runtimes/python/guardrail/actions/guardrail-serve.md) — Deploy a `guardrail` function as a request/response processor
+- [Guardrail Build](../../reference/runtimes/python/guardrail/actions/guardrail-build.md) — Build a container image for a `guardrail` function
