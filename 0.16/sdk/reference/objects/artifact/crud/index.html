@@ -6727,7 +6727,6 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
 <p>For specification parameters, see the documentation for the relevant <a href="../kind/artifact/">artifact kind</a>. Use the generic methods only for a kind supported by DigitalHub Core but not by the SDK.</p>
 <details class="example">
 <summary>new_artifact</summary>
-<p>This function creates a new entity and saves it into the backend.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Function documentation</label><label for="__tabbed_1_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -6771,6 +6770,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
 
     <div class="doc doc-contents ">
 
+        <p>Create a new artifact entity in the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -6809,7 +6809,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object name.</p>
+                <p>Entity name.</p>
               </div>
             </td>
             <td>
@@ -6825,7 +6825,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Kind the object.</p>
+                <p>Entity kind.</p>
               </div>
             </td>
             <td>
@@ -6841,7 +6841,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>ID of the object.</p>
+                <p>Entity identifier.</p>
               </div>
             </td>
             <td>
@@ -6857,7 +6857,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Version stored in entity metadata.</p>
+                <p>Entity version.</p>
               </div>
             </td>
             <td>
@@ -6873,7 +6873,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Description of the object (human readable).</p>
+                <p>Human-readable entity description.</p>
               </div>
             </td>
             <td>
@@ -6889,7 +6889,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of labels.</p>
+                <p>Entity labels.</p>
               </div>
             </td>
             <td>
@@ -6905,7 +6905,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Flag to determine if object spec must be embedded in project spec.</p>
+                <p>Whether to embed the entity specification in the project specification.</p>
               </div>
             </td>
             <td>
@@ -6921,7 +6921,8 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object path on local file system or remote storage. It is also the destination path of upload() method.</p>
+                <p>Entity path on the local file system or remote storage. It is also the
+destination path for uploads.</p>
               </div>
             </td>
             <td>
@@ -6937,7 +6938,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of extensions.</p>
+                <p>Entity extensions.</p>
               </div>
             </td>
             <td>
@@ -6953,7 +6954,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Spec keyword arguments.</p>
+                <p>Additional entity specification parameters.</p>
               </div>
             </td>
             <td>
@@ -6979,20 +6980,12 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Created artifact entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">new_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                   <span class="n">name</span><span class="o">=</span><span class="s2">"my-artifact"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                   <span class="n">kind</span><span class="o">=</span><span class="s2">"artifact"</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gp">&gt;&gt;&gt; </span>                   <span class="n">path</span><span class="o">=</span><span class="s2">"s3://my-bucket/my-key"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7022,7 +7015,6 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
 </details>
 <details class="example">
 <summary>log_artifact</summary>
-<p>This function creates a new entity in the backend and also uploads a local file into an artifact store (for example, <em>S3</em>).</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Function documentation</label><label for="__tabbed_2_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7066,6 +7058,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
 
     <div class="doc doc-contents ">
 
+        <p>Create an artifact entity and upload a local source.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7097,22 +7090,6 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
           </tr>
           <tr class="doc-section-item">
             <td>
-                <code>name</code>
-            </td>
-            <td>
-                  <code><span title="str">str</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Object name.</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
                 <code>source</code>
             </td>
             <td>
@@ -7120,11 +7097,27 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Local artifact source path, or a list of local file paths.</p>
+                <p>Local artifact source path or paths.</p>
               </div>
             </td>
             <td>
                 <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -7136,7 +7129,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to drop existing entity with the same name.</p>
+                <p>Whether to remove an existing entity with the same name.</p>
               </div>
             </td>
             <td>
@@ -7152,7 +7145,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Destination path of the artifact. If not provided, it's generated.</p>
+                <p>Destination path. If omitted, it is generated.</p>
               </div>
             </td>
             <td>
@@ -7168,7 +7161,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Version stored in entity metadata.</p>
+                <p>Entity version.</p>
               </div>
             </td>
             <td>
@@ -7184,7 +7177,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Artifact description.</p>
+                <p>Human-readable entity description.</p>
               </div>
             </td>
             <td>
@@ -7200,7 +7193,23 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Artifact labels.</p>
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>src_path</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Original source path stored in the artifact specification.</p>
               </div>
             </td>
             <td>
@@ -7216,7 +7225,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>New artifact spec parameters.</p>
+                <p>Additional artifact specification parameters.</p>
               </div>
             </td>
             <td>
@@ -7242,19 +7251,12 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Created artifact entity with uploaded files.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">log_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                   <span class="n">name</span><span class="o">=</span><span class="s2">"my-artifact"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                   <span class="n">source</span><span class="o">=</span><span class="s2">"./local-path"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7283,7 +7285,6 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
 </details>
 <details class="example">
 <summary>log_generic_artifact</summary>
-<p>This function creates an artifact of a custom kind from a local path and uploads it to the artifact store.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Function documentation</label><label for="__tabbed_3_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7327,6 +7328,205 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
 
     <div class="doc doc-contents ">
 
+        <p>Create and upload an artifact of a dynamic kind.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>project</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Project name.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>kind</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity kind.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><span title="digitalhub.utils.types.SourcesOrListOfSources">SourcesOrListOfSources</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Local artifact source path or paths.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>drop_existing</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to remove an existing entity with the same name.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>path</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Destination path. If omitted, it is generated.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity version.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>description</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Human-readable entity description.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>labels</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**kwargs</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional entity specification parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="digitalhub.entities.artifact.generic.entity.ArtifactGeneric">ArtifactGeneric</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Created artifact entity with uploaded files.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -7356,7 +7556,6 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
 </details>
 <details class="example">
 <summary>register_artifact</summary>
-<p>Register an artifact whose source already exists in a supported store. Unlike <code>log_artifact()</code>, registration does not upload local data. The <code>source</code> value is kept as the artifact path, and <code>embedded=True</code> stores the entity reference in the project specification when supported.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Function documentation</label><label for="__tabbed_4_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7400,6 +7599,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
 
     <div class="doc doc-contents ">
 
+        <p>Register an artifact entity for an existing source.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7438,8 +7638,7 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Path or URI of the existing artifact. The format must be supported by
-one of the configured stores, for example <code>s3://bucket/key</code>.</p>
+                <p>Path or URI of the existing artifact.</p>
               </div>
             </td>
             <td>
@@ -7455,8 +7654,7 @@ one of the configured stores, for example <code>s3://bucket/key</code>.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Artifact name. If omitted, it is inferred from the final component of
-<code>source</code>.</p>
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
               </div>
             </td>
             <td>
@@ -7472,7 +7670,7 @@ one of the configured stores, for example <code>s3://bucket/key</code>.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>ID of the artifact.</p>
+                <p>Entity identifier.</p>
               </div>
             </td>
             <td>
@@ -7488,7 +7686,7 @@ one of the configured stores, for example <code>s3://bucket/key</code>.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Version stored in artifact metadata.</p>
+                <p>Entity version.</p>
               </div>
             </td>
             <td>
@@ -7504,7 +7702,7 @@ one of the configured stores, for example <code>s3://bucket/key</code>.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Description of the artifact (human readable).</p>
+                <p>Human-readable entity description.</p>
               </div>
             </td>
             <td>
@@ -7520,7 +7718,7 @@ one of the configured stores, for example <code>s3://bucket/key</code>.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of labels.</p>
+                <p>Entity labels.</p>
               </div>
             </td>
             <td>
@@ -7536,8 +7734,7 @@ one of the configured stores, for example <code>s3://bucket/key</code>.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Flag to determine if the artifact specification must be embedded in
-the project specification.</p>
+                <p>Whether to embed the entity specification in the project specification.</p>
               </div>
             </td>
             <td>
@@ -7553,7 +7750,23 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of extension dictionaries.</p>
+                <p>Entity extensions.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>src_path</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Original source path stored in the artifact specification.</p>
               </div>
             </td>
             <td>
@@ -7569,7 +7782,7 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Artifact specification keyword arguments.</p>
+                <p>Additional artifact specification parameters.</p>
               </div>
             </td>
             <td>
@@ -7595,20 +7808,12 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The registered artifact.</p>
+                <p>Registered artifact entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">register_artifact</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">... </span>    <span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">... </span>    <span class="n">source</span><span class="o">=</span><span class="s2">"s3://my-bucket/models/my-model.pkl"</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gp">... </span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7637,7 +7842,6 @@ the project specification.</p>
 </details>
 <details class="example">
 <summary>register_generic_artifact</summary>
-<p>Use the generic form when the artifact kind is not one of the built-in kinds.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Function documentation</label><label for="__tabbed_5_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7681,6 +7885,221 @@ the project specification.</p>
 
     <div class="doc doc-contents ">
 
+        <p>Register an artifact of a dynamic kind for an existing source.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>project</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Project name.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>kind</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity kind.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><span title="digitalhub.utils.types.SourcesOrListOfSources">SourcesOrListOfSources</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path or URI of the existing artifact.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>uuid</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity identifier.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity version.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>description</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Human-readable entity description.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>labels</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>embedded</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to embed the entity specification in the project specification.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extensions</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity extensions.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**kwargs</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional entity specification parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="digitalhub.entities.artifact.generic.entity.ArtifactGeneric">ArtifactGeneric</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Registered artifact entity.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -7712,7 +8131,6 @@ the project specification.</p>
 <p>Use the read methods to retrieve artifacts from the backend or load them from a YAML descriptor.</p>
 <details class="example">
 <summary>get_artifact</summary>
-<p>Get one artifact by name and project. Omitting <code>entity_id</code> returns the latest version.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Function documentation</label><label for="__tabbed_6_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7756,6 +8174,7 @@ the project specification.</p>
 
     <div class="doc doc-contents ">
 
+        <p>Get an artifact entity from the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7778,7 +8197,7 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...) or entity name.</p>
+                <p>Entity name or entity key (<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;(name&gt;:)&lt;uuid&gt;</code>).</p>
               </div>
             </td>
             <td>
@@ -7794,7 +8213,7 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name.</p>
+                <p>Project name. Required when <code>identifier</code> is an entity name.</p>
               </div>
             </td>
             <td>
@@ -7810,7 +8229,7 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity ID.</p>
+                <p>Entity identifier. If omitted, the latest version is returned.</p>
               </div>
             </td>
             <td>
@@ -7836,23 +8255,12 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Retrieved artifact entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <p>Using entity key:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">get_artifact</span><span class="p">(</span><span class="s2">"store://my-artifact-key"</span><span class="p">)</span>
-</span></code></pre></div>
-    <p>Using entity name:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">get_artifact</span><span class="p">(</span><span class="s2">"my-artifact-name"</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                   <span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                   <span class="n">entity_id</span><span class="o">=</span><span class="s2">"my-artifact-id"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7880,7 +8288,6 @@ the project specification.</p>
 </details>
 <details class="example">
 <summary>get_artifact_versions</summary>
-<p>Get all versions of an artifact by name and project.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Function documentation</label><label for="__tabbed_7_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7924,6 +8331,7 @@ the project specification.</p>
 
     <div class="doc doc-contents ">
 
+        <p>Get all versions of an artifact entity from the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7946,7 +8354,7 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...) or entity name.</p>
+                <p>Entity name or entity key (<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;(name&gt;:)&lt;uuid&gt;</code>).</p>
               </div>
             </td>
             <td>
@@ -7962,7 +8370,7 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name.</p>
+                <p>Project name. Required when <code>identifier</code> is an entity name.</p>
               </div>
             </td>
             <td>
@@ -7988,22 +8396,12 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of object instances.</p>
+                <p>All versions of the artifact entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <p>Using entity key:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">get_artifact_versions</span><span class="p">(</span><span class="s2">"store://my-artifact-key"</span><span class="p">)</span>
-</span></code></pre></div>
-    <p>Using entity name:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">get_artifact_versions</span><span class="p">(</span><span class="s2">"my-artifact-name"</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                            <span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -8031,7 +8429,6 @@ the project specification.</p>
 </details>
 <details class="example">
 <summary>list_artifacts</summary>
-<p>List the latest artifacts in a project.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Function documentation</label><label for="__tabbed_8_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -8075,6 +8472,7 @@ the project specification.</p>
 
     <div class="doc doc-contents ">
 
+        <p>List artifact entities in a project.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8113,7 +8511,7 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Query string to filter objects.</p>
+                <p>Query string used to filter entities.</p>
               </div>
             </td>
             <td>
@@ -8129,7 +8527,7 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object name.</p>
+                <p>Entity name used to filter results.</p>
               </div>
             </td>
             <td>
@@ -8145,7 +8543,7 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Kind of the object.</p>
+                <p>Entity kind used to filter results.</p>
               </div>
             </td>
             <td>
@@ -8161,7 +8559,7 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>User that created the object.</p>
+                <p>User who created the entity.</p>
               </div>
             </td>
             <td>
@@ -8177,7 +8575,7 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object state.</p>
+                <p>Entity state used to filter results.</p>
               </div>
             </td>
             <td>
@@ -8225,7 +8623,7 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object version, default is latest.</p>
+                <p>Version filter. Defaults to the latest version.</p>
               </div>
             </td>
             <td>
@@ -8251,17 +8649,12 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of object instances.</p>
+                <p>Artifact entities matching the filters.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">objs</span> <span class="o">=</span> <span class="n">list_artifacts</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -8286,7 +8679,6 @@ the project specification.</p>
 </details>
 <details class="example">
 <summary>import_artifact</summary>
-<p>Import an artifact from a local YAML descriptor or a storage key.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Function documentation</label><label for="__tabbed_9_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -8330,6 +8722,7 @@ the project specification.</p>
 
     <div class="doc doc-contents ">
 
+        <p>Import an artifact entity from a YAML file or entity key.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8352,7 +8745,8 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Path to the YAML file.</p>
+                <p>Path to a YAML file containing the entity descriptor. Provide either
+<code>file</code> or <code>key</code>.</p>
               </div>
             </td>
             <td>
@@ -8368,7 +8762,8 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...).</p>
+                <p>Entity key (<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;(name&gt;:)&lt;uuid&gt;</code>). Provide
+either <code>file</code> or <code>key</code>.</p>
               </div>
             </td>
             <td>
@@ -8384,7 +8779,8 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Flag to determine if the ID of executable entities should be reset.</p>
+                <p>Whether to generate a new entity identifier instead of preserving the
+identifier from the imported entity.</p>
               </div>
             </td>
             <td>
@@ -8400,7 +8796,8 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name to use for context resolution.</p>
+                <p>Project name used for context resolution. If omitted, the project from
+the entity descriptor is used.</p>
               </div>
             </td>
             <td>
@@ -8426,17 +8823,12 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Imported artifact entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">import_artifact</span><span class="p">(</span><span class="s2">"my-artifact.yaml"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -8461,7 +8853,6 @@ the project specification.</p>
 </details>
 <details class="example">
 <summary>load_artifact</summary>
-<p>Load an artifact from a local YAML descriptor and update the existing backend entity.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Function documentation</label><label for="__tabbed_10_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -8505,6 +8896,7 @@ the project specification.</p>
 
     <div class="doc doc-contents ">
 
+        <p>Load an artifact entity from a YAML file.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8527,7 +8919,7 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Path to YAML file.</p>
+                <p>Path to a YAML file containing the entity descriptor.</p>
               </div>
             </td>
             <td>
@@ -8553,17 +8945,13 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Loaded artifact entity. An existing entity is updated when it can be
+identified; otherwise, a new entity is created.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">load_artifact</span><span class="p">(</span><span class="s2">"my-artifact.yaml"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -8590,7 +8978,6 @@ the project specification.</p>
 <p>Update an artifact after changing its mutable metadata.</p>
 <details class="example">
 <summary>update_artifact</summary>
-<p>Update an existing artifact. The artifact specification is immutable.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Function documentation</label><label for="__tabbed_11_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -8634,6 +9021,7 @@ the project specification.</p>
 
     <div class="doc doc-contents ">
 
+        <p>Update an artifact entity in the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8656,7 +9044,7 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object to update.</p>
+                <p>Entity to update. The entity specification is immutable.</p>
               </div>
             </td>
             <td>
@@ -8682,17 +9070,12 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity updated.</p>
+                <p>Updated artifact entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">update_artifact</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -8724,7 +9107,6 @@ the project specification.</p>
 <p>Delete one artifact version or all versions of an artifact.</p>
 <details class="example">
 <summary>delete_artifact</summary>
-<p>Set <code>delete_all_versions=True</code> to delete all versions by entity name.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Function documentation</label><label for="__tabbed_12_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -8768,6 +9150,7 @@ the project specification.</p>
 
     <div class="doc doc-contents ">
 
+        <p>Delete one or more versions of an artifact entity from the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8790,7 +9173,8 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...) or entity name.</p>
+                <p>Entity name or entity key (<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;(name&gt;:)&lt;uuid&gt;</code>). Use an entity name
+when <code>delete_all_versions</code> is True.</p>
               </div>
             </td>
             <td>
@@ -8806,7 +9190,7 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name.</p>
+                <p>Project name. Required when <code>identifier</code> is an entity name.</p>
               </div>
             </td>
             <td>
@@ -8822,7 +9206,9 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity ID.</p>
+                <p>Identifier of the version to delete. Required when
+<code>delete_all_versions</code> is False and <code>identifier</code> does not contain
+the version identifier.</p>
               </div>
             </td>
             <td>
@@ -8838,8 +9224,8 @@ the project specification.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Delete all versions of the named entity.
-If True, use entity name instead of entity key as identifier.</p>
+                <p>Whether to delete all versions of the named entity. When False, only
+one version is deleted.</p>
               </div>
             </td>
             <td>
@@ -8855,7 +9241,7 @@ If True, use entity name instead of entity key as identifier.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Cascade delete.</p>
+                <p>Whether to request cascade deletion from the backend.</p>
               </div>
             </td>
             <td>
@@ -8881,23 +9267,12 @@ If True, use entity name instead of entity key as identifier.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Response from backend.</p>
+                <p>Response data from the backend.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <p>If delete_all_versions is False:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">delete_artifact</span><span class="p">(</span><span class="s2">"store://my-artifact-key"</span><span class="p">)</span>
-</span></code></pre></div>
-    <p>Otherwise:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">delete_artifact</span><span class="p">(</span><span class="s2">"my-artifact-name"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">delete_all_versions</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>

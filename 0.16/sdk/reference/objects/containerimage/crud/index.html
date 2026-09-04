@@ -6632,7 +6632,6 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 <p><code>new_containerimage()</code> creates and saves a reference to an existing container image. The <code>image</code> value is the URI or registry reference. For specification parameters, see the <a href="../kind/container-image/">container-image kind</a> reference.</p>
 <details class="example">
 <summary>new_containerimage</summary>
-<p>Create and save a container image reference.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Function documentation</label><label for="__tabbed_1_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -6676,6 +6675,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 
     <div class="doc doc-contents ">
 
+        <p>Create a new container image entity in the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -6714,7 +6714,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object name.</p>
+                <p>Entity name.</p>
               </div>
             </td>
             <td>
@@ -6730,7 +6730,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Kind the object.</p>
+                <p>Entity kind.</p>
               </div>
             </td>
             <td>
@@ -6746,7 +6746,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>ID of the object.</p>
+                <p>Entity identifier.</p>
               </div>
             </td>
             <td>
@@ -6762,7 +6762,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Version stored in entity metadata.</p>
+                <p>Entity version.</p>
               </div>
             </td>
             <td>
@@ -6778,7 +6778,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Description of the object (human readable).</p>
+                <p>Human-readable entity description.</p>
               </div>
             </td>
             <td>
@@ -6794,7 +6794,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of labels.</p>
+                <p>Entity labels.</p>
               </div>
             </td>
             <td>
@@ -6810,7 +6810,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Flag to determine if object spec must be embedded in project spec.</p>
+                <p>Whether to embed the entity specification in the project specification.</p>
               </div>
             </td>
             <td>
@@ -6826,7 +6826,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Image mapped to the image.</p>
+                <p>Container image URI or registry reference.</p>
               </div>
             </td>
             <td>
@@ -6842,7 +6842,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Spec keyword arguments.</p>
+                <p>Additional entity specification parameters.</p>
               </div>
             </td>
             <td>
@@ -6864,24 +6864,16 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="Image">Image</span></code>
+                  <code><span title="digitalhub.entities.containerimage._base.entity.Containerimage">Containerimage</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Created container image entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">new_containerimage</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                <span class="n">name</span><span class="o">=</span><span class="s2">"my-image"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                <span class="n">kind</span><span class="o">=</span><span class="s2">"image"</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gp">&gt;&gt;&gt; </span>                <span class="n">image</span><span class="o">=</span><span class="s2">"my-image"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -6913,7 +6905,6 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 <p>Use the read methods to retrieve container images from the backend or load them from a YAML descriptor.</p>
 <details class="example">
 <summary>get_containerimage</summary>
-<p>Get one container image by storage key or name and project. Omitting <code>entity_id</code> returns the latest version.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Function documentation</label><label for="__tabbed_2_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -6957,6 +6948,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 
     <div class="doc doc-contents ">
 
+        <p>Get a container image entity from the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -6979,7 +6971,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...) or entity name.</p>
+                <p>Entity name or entity key (<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;(name&gt;:)&lt;uuid&gt;</code>).</p>
               </div>
             </td>
             <td>
@@ -6995,7 +6987,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name.</p>
+                <p>Project name. Required when <code>identifier</code> is an entity name.</p>
               </div>
             </td>
             <td>
@@ -7011,7 +7003,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity ID.</p>
+                <p>Entity identifier. If omitted, the latest version is returned.</p>
               </div>
             </td>
             <td>
@@ -7033,27 +7025,16 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="Image">Image</span></code>
+                  <code><span title="digitalhub.entities.containerimage._base.entity.Containerimage">Containerimage</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Retrieved container image entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <p>Using entity key:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">get_containerimage</span><span class="p">(</span><span class="s2">"store://my-image-key"</span><span class="p">)</span>
-</span></code></pre></div>
-    <p>Using entity name:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">get_containerimage</span><span class="p">(</span><span class="s2">"my-image-name"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                    <span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                    <span class="n">entity_id</span><span class="o">=</span><span class="s2">"my-image-id"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7081,7 +7062,6 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 </details>
 <details class="example">
 <summary>get_containerimage_versions</summary>
-<p>Get all versions of a container image by name and project.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Function documentation</label><label for="__tabbed_3_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7125,6 +7105,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 
     <div class="doc doc-contents ">
 
+        <p>Get all versions of a container image entity from the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7147,7 +7128,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...) or entity name.</p>
+                <p>Entity name or entity key (<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;(name&gt;:)&lt;uuid&gt;</code>).</p>
               </div>
             </td>
             <td>
@@ -7163,7 +7144,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name.</p>
+                <p>Project name. Required when <code>identifier</code> is an entity name.</p>
               </div>
             </td>
             <td>
@@ -7185,26 +7166,16 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="list">list</span>[<span title="Image">Image</span>]</code>
+                  <code><span title="list">list</span>[<span title="digitalhub.entities.containerimage._base.entity.Containerimage">Containerimage</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of object instances.</p>
+                <p>All versions of the container image entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <p>Using entity key:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">get_containerimage_versions</span><span class="p">(</span><span class="s2">"store://my-image-key"</span><span class="p">)</span>
-</span></code></pre></div>
-    <p>Using entity name:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">get_containerimage_versions</span><span class="p">(</span><span class="s2">"my-image-name"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                             <span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7232,7 +7203,6 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 </details>
 <details class="example">
 <summary>list_containerimages</summary>
-<p>List the latest container images in a project.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Function documentation</label><label for="__tabbed_4_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7276,6 +7246,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 
     <div class="doc doc-contents ">
 
+        <p>List container image entities in a project.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7314,7 +7285,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Query string to filter objects.</p>
+                <p>Query string used to filter entities.</p>
               </div>
             </td>
             <td>
@@ -7330,7 +7301,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object name.</p>
+                <p>Entity name used to filter results.</p>
               </div>
             </td>
             <td>
@@ -7346,7 +7317,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Kind of the object.</p>
+                <p>Entity kind used to filter results.</p>
               </div>
             </td>
             <td>
@@ -7362,7 +7333,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>User that created the object.</p>
+                <p>User who created the entity.</p>
               </div>
             </td>
             <td>
@@ -7378,7 +7349,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object state.</p>
+                <p>Entity state used to filter results.</p>
               </div>
             </td>
             <td>
@@ -7426,7 +7397,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object version, default is latest.</p>
+                <p>Version filter. Defaults to the latest version.</p>
               </div>
             </td>
             <td>
@@ -7448,21 +7419,16 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="list">list</span>[<span title="Image">Image</span>]</code>
+                  <code><span title="list">list</span>[<span title="digitalhub.entities.containerimage._base.entity.Containerimage">Containerimage</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of object instances.</p>
+                <p>Container image entities matching the filters.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">objs</span> <span class="o">=</span> <span class="n">list_containerimages</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7487,7 +7453,6 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 </details>
 <details class="example">
 <summary>import_containerimage</summary>
-<p>Import a container image from a local YAML descriptor or a storage key.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Function documentation</label><label for="__tabbed_5_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7531,6 +7496,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 
     <div class="doc doc-contents ">
 
+        <p>Import a container image entity from a YAML file or entity key.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7553,7 +7519,8 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Path to the YAML file.</p>
+                <p>Path to a YAML file containing the entity descriptor. Provide either
+<code>file</code> or <code>key</code>.</p>
               </div>
             </td>
             <td>
@@ -7569,7 +7536,8 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...).</p>
+                <p>Entity key (<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;(name&gt;:)&lt;uuid&gt;</code>). Provide either
+<code>file</code> or <code>key</code>.</p>
               </div>
             </td>
             <td>
@@ -7585,7 +7553,8 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Flag to determine if the ID of executable entities should be reset.</p>
+                <p>Whether to generate a new entity identifier instead of preserving the
+identifier from the imported entity.</p>
               </div>
             </td>
             <td>
@@ -7601,7 +7570,8 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name to use for context resolution.</p>
+                <p>Project name used for context resolution. If omitted, the project from
+the entity descriptor is used.</p>
               </div>
             </td>
             <td>
@@ -7623,21 +7593,16 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="Image">Image</span></code>
+                  <code><span title="digitalhub.entities.containerimage._base.entity.Containerimage">Containerimage</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Imported container image entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">import_containerimage</span><span class="p">(</span><span class="s2">"my-image.yaml"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7662,7 +7627,6 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 </details>
 <details class="example">
 <summary>load_containerimage</summary>
-<p>Load a container image from a local YAML descriptor and update the existing backend object.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Function documentation</label><label for="__tabbed_6_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7706,6 +7670,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 
     <div class="doc doc-contents ">
 
+        <p>Load a container image entity from a YAML file.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7728,7 +7693,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Path to YAML file.</p>
+                <p>Path to a YAML file containing the entity descriptor.</p>
               </div>
             </td>
             <td>
@@ -7750,21 +7715,17 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="Image">Image</span></code>
+                  <code><span title="digitalhub.entities.containerimage._base.entity.Containerimage">Containerimage</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Loaded container image entity. An existing entity is updated when it
+can be identified; otherwise, a new entity is created.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">load_containerimage</span><span class="p">(</span><span class="s2">"my-image.yaml"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7791,7 +7752,6 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 <p>Update a container image after changing its mutable metadata.</p>
 <details class="example">
 <summary>update_containerimage</summary>
-<p>Update an existing container image entity.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Function documentation</label><label for="__tabbed_7_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7835,6 +7795,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 
     <div class="doc doc-contents ">
 
+        <p>Update a container image entity in the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7853,11 +7814,11 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
                 <code>entity</code>
             </td>
             <td>
-                  <code><span title="Image">Image</span></code>
+                  <code><span title="digitalhub.entities.containerimage._base.entity.Containerimage">Containerimage</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object to update.</p>
+                <p>Entity to update. The entity specification is immutable.</p>
               </div>
             </td>
             <td>
@@ -7879,21 +7840,16 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="Image">Image</span></code>
+                  <code><span title="digitalhub.entities.containerimage._base.entity.Containerimage">Containerimage</span></code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity updated.</p>
+                <p>Updated container image entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">update_containerimage</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7925,7 +7881,6 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 <p>Delete one container image version or all versions of an image.</p>
 <details class="example">
 <summary>delete_containerimage</summary>
-<p>Set <code>delete_all_versions=True</code> to delete all versions by entity name.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Function documentation</label><label for="__tabbed_8_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7969,6 +7924,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 
     <div class="doc doc-contents ">
 
+        <p>Delete one or more versions of a container image entity from the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7991,7 +7947,8 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...) or entity name.</p>
+                <p>Entity name or entity key (<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;(name&gt;:)&lt;uuid&gt;</code>). Use an entity name
+when <code>delete_all_versions</code> is True.</p>
               </div>
             </td>
             <td>
@@ -8007,7 +7964,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name.</p>
+                <p>Project name. Required when <code>identifier</code> is an entity name.</p>
               </div>
             </td>
             <td>
@@ -8023,7 +7980,9 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity ID.</p>
+                <p>Identifier of the version to delete. Required when
+<code>delete_all_versions</code> is False and <code>identifier</code> does not contain
+the version identifier.</p>
               </div>
             </td>
             <td>
@@ -8039,8 +7998,8 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Delete all versions of the named entity.
-If True, use entity name instead of entity key as identifier.</p>
+                <p>Whether to delete all versions of the named entity. When False, only
+one version is deleted.</p>
               </div>
             </td>
             <td>
@@ -8056,7 +8015,7 @@ If True, use entity name instead of entity key as identifier.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Cascade delete.</p>
+                <p>Whether to request cascade deletion from the backend.</p>
               </div>
             </td>
             <td>
@@ -8082,23 +8041,12 @@ If True, use entity name instead of entity key as identifier.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Response from backend.</p>
+                <p>Response data from the backend.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <p>If delete_all_versions is False:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">delete_containerimage</span><span class="p">(</span><span class="s2">"store://my-image-key"</span><span class="p">)</span>
-</span></code></pre></div>
-    <p>Otherwise:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">delete_containerimage</span><span class="p">(</span><span class="s2">"my-image-name"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">delete_all_versions</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>

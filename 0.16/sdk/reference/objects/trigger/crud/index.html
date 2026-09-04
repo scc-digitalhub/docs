@@ -6587,7 +6587,6 @@
 <p><code>new_trigger()</code> creates and saves a trigger. Its specification depends on the selected kind. See the <a href="../kind/scheduler/">scheduler kind</a> and <a href="../kind/lifecycle/">lifecycle kind</a> references for the supported parameters.</p>
 <details class="example">
 <summary>new_trigger</summary>
-<p>Create and save a trigger.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Function documentation</label><label for="__tabbed_1_2">Creation examples</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -6631,6 +6630,7 @@
 
     <div class="doc doc-contents ">
 
+        <p>Create a new trigger entity in the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -6669,7 +6669,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object name.</p>
+                <p>Entity name.</p>
               </div>
             </td>
             <td>
@@ -6685,7 +6685,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Kind the object.</p>
+                <p>Entity kind.</p>
               </div>
             </td>
             <td>
@@ -6701,7 +6701,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Task string.</p>
+                <p>Task reference.</p>
               </div>
             </td>
             <td>
@@ -6717,7 +6717,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Function string.</p>
+                <p>Function reference. Provide either <code>function</code> or <code>workflow</code>.</p>
               </div>
             </td>
             <td>
@@ -6733,7 +6733,8 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Workflow string.</p>
+                <p>Workflow reference. Provide either <code>workflow</code> or <code>function</code>. If
+both are provided, the workflow is used.</p>
               </div>
             </td>
             <td>
@@ -6749,7 +6750,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>ID of the object.</p>
+                <p>Entity identifier.</p>
               </div>
             </td>
             <td>
@@ -6765,7 +6766,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Description of the object (human readable).</p>
+                <p>Human-readable entity description.</p>
               </div>
             </td>
             <td>
@@ -6781,7 +6782,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of labels.</p>
+                <p>Entity labels.</p>
               </div>
             </td>
             <td>
@@ -6797,11 +6798,28 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Flag to determine if object spec must be embedded in project spec.</p>
+                <p>Whether to embed the entity specification in the project specification.</p>
               </div>
             </td>
             <td>
                   <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>template</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Trigger template. If omitted, a template is built from <code>task</code> and the
+selected executable reference.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -6813,7 +6831,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Spec keyword arguments.</p>
+                <p>Additional entity specification parameters.</p>
               </div>
             </td>
             <td>
@@ -6839,19 +6857,12 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Created trigger entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">new_trigger</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                  <span class="n">kind</span><span class="o">=</span><span class="s2">"trigger"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                  <span class="n">name</span><span class="o">=</span><span class="s2">"my-trigger"</span><span class="p">,)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -6899,7 +6910,6 @@
 <p>Use the read methods to retrieve triggers from the backend or load them from a YAML descriptor.</p>
 <details class="example">
 <summary>get_trigger</summary>
-<p>Get one trigger by name and project. Omitting <code>entity_id</code> returns the latest version.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Function documentation</label><label for="__tabbed_2_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -6943,6 +6953,7 @@
 
     <div class="doc doc-contents ">
 
+        <p>Get a trigger entity from the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -6965,7 +6976,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...) or entity name.</p>
+                <p>Entity name or entity key (<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;(name&gt;:)&lt;uuid&gt;</code>).</p>
               </div>
             </td>
             <td>
@@ -6981,7 +6992,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name.</p>
+                <p>Project name. Required when <code>identifier</code> is an entity name.</p>
               </div>
             </td>
             <td>
@@ -6997,7 +7008,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity ID.</p>
+                <p>Entity identifier. If omitted, the latest version is returned.</p>
               </div>
             </td>
             <td>
@@ -7023,23 +7034,12 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Retrieved trigger entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <p>Using entity key:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">get_trigger</span><span class="p">(</span><span class="s2">"store://my-trigger-key"</span><span class="p">)</span>
-</span></code></pre></div>
-    <p>Using entity name:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">get_trigger</span><span class="p">(</span><span class="s2">"my-trigger-name"</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">entity_id</span><span class="o">=</span><span class="s2">"my-trigger-id"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7067,7 +7067,6 @@
 </details>
 <details class="example">
 <summary>list_triggers</summary>
-<p>List the latest triggers in a project.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Function documentation</label><label for="__tabbed_3_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7111,6 +7110,7 @@
 
     <div class="doc doc-contents ">
 
+        <p>List trigger entities in a project.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7149,7 +7149,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Query string to filter objects.</p>
+                <p>Query string used to filter entities.</p>
               </div>
             </td>
             <td>
@@ -7165,7 +7165,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object name.</p>
+                <p>Entity name used to filter results.</p>
               </div>
             </td>
             <td>
@@ -7181,7 +7181,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Kind of the object.</p>
+                <p>Entity kind used to filter results.</p>
               </div>
             </td>
             <td>
@@ -7197,7 +7197,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>User that created the object.</p>
+                <p>User who created the entity.</p>
               </div>
             </td>
             <td>
@@ -7213,7 +7213,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object state.</p>
+                <p>Entity state used to filter results.</p>
               </div>
             </td>
             <td>
@@ -7261,7 +7261,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object version, default is latest.</p>
+                <p>Version filter. Defaults to the latest version.</p>
               </div>
             </td>
             <td>
@@ -7277,7 +7277,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Task string filter.</p>
+                <p>Task reference used to filter results.</p>
               </div>
             </td>
             <td>
@@ -7303,17 +7303,12 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of object instances.</p>
+                <p>Trigger entities matching the filters.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">objs</span> <span class="o">=</span> <span class="n">list_triggers</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7338,7 +7333,6 @@
 </details>
 <details class="example">
 <summary>import_trigger</summary>
-<p>Import a trigger from a local YAML descriptor or a storage key.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Function documentation</label><label for="__tabbed_4_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7382,6 +7376,7 @@
 
     <div class="doc doc-contents ">
 
+        <p>Import a trigger entity from a YAML file or entity key.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7404,7 +7399,8 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Path to the YAML file.</p>
+                <p>Path to a YAML file containing the entity descriptor. Provide either
+<code>file</code> or <code>key</code>.</p>
               </div>
             </td>
             <td>
@@ -7420,7 +7416,8 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...).</p>
+                <p>Entity key (<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;(name&gt;:)&lt;uuid&gt;</code>). Provide either
+<code>file</code> or <code>key</code>.</p>
               </div>
             </td>
             <td>
@@ -7436,7 +7433,8 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Flag to determine if the ID of executable entities should be reset.</p>
+                <p>Whether to generate a new entity identifier instead of preserving the
+identifier from the imported entity.</p>
               </div>
             </td>
             <td>
@@ -7452,7 +7450,8 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name to use for context resolution.</p>
+                <p>Project name used for context resolution. If omitted, the project from
+the entity descriptor is used.</p>
               </div>
             </td>
             <td>
@@ -7478,17 +7477,12 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Imported trigger entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">import_trigger</span><span class="p">(</span><span class="s2">"my-trigger.yaml"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7515,7 +7509,6 @@
 <p>Update a trigger after changing its mutable metadata.</p>
 <details class="example">
 <summary>update_trigger</summary>
-<p>Update an existing trigger. Its specification is immutable.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Function documentation</label><label for="__tabbed_5_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7559,6 +7552,7 @@
 
     <div class="doc doc-contents ">
 
+        <p>Update a trigger entity in the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7581,7 +7575,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object to update.</p>
+                <p>Entity to update. The entity specification is immutable.</p>
               </div>
             </td>
             <td>
@@ -7607,17 +7601,12 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity updated.</p>
+                <p>Updated trigger entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">update_trigger</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7649,7 +7638,6 @@
 <p>Delete one trigger version or all versions of a trigger.</p>
 <details class="example">
 <summary>delete_trigger</summary>
-<p>Set <code>delete_all_versions=True</code> to delete all versions by entity name.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Function documentation</label><label for="__tabbed_6_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7693,6 +7681,7 @@
 
     <div class="doc doc-contents ">
 
+        <p>Delete a trigger entity from the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7715,7 +7704,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...) or entity name.</p>
+                <p>Entity name or entity key (<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;(name&gt;:)&lt;uuid&gt;</code>).</p>
               </div>
             </td>
             <td>
@@ -7731,7 +7720,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name.</p>
+                <p>Project name. Required when <code>identifier</code> is an entity name.</p>
               </div>
             </td>
             <td>
@@ -7747,7 +7736,8 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity ID.</p>
+                <p>Identifier of the version to delete. Required when <code>identifier</code> does
+not contain the version identifier.</p>
               </div>
             </td>
             <td>
@@ -7773,22 +7763,12 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Response from backend.</p>
+                <p>Response data from the backend.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <p>If delete_all_versions is False:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">delete_trigger</span><span class="p">(</span><span class="s2">"store://my-trigger-key"</span><span class="p">)</span>
-</span></code></pre></div>
-    <p>Otherwise:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">delete_trigger</span><span class="p">(</span><span class="s2">"my-trigger-name"</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                     <span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>

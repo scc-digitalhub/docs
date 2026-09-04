@@ -6924,7 +6924,6 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 <p>For specification parameters, see the documentation for the relevant <a href="../kind/model/">model kind</a>, <a href="../kind/mlflow/">MLflow kind</a>, <a href="../kind/sklearn/">scikit-learn kind</a>, <a href="../kind/huggingface/">Hugging Face kind</a>, <a href="../kind/tvm-ir/">TVM IR kind</a>, or <a href="../kind/tvm-so/">TVM SO kind</a>. Use the generic methods only for a kind supported by DigitalHub Core but not by the SDK.</p>
 <details class="example">
 <summary>new_model</summary>
-<p>Create and save a model entity.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Function documentation</label><label for="__tabbed_1_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -6968,6 +6967,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 
     <div class="doc doc-contents ">
 
+        <p>Create a new model entity in the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7006,7 +7006,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object name.</p>
+                <p>Entity name.</p>
               </div>
             </td>
             <td>
@@ -7022,7 +7022,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Kind the object.</p>
+                <p>Entity kind.</p>
               </div>
             </td>
             <td>
@@ -7038,7 +7038,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>ID of the object.</p>
+                <p>Entity identifier.</p>
               </div>
             </td>
             <td>
@@ -7054,7 +7054,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Version stored in entity metadata.</p>
+                <p>Entity version.</p>
               </div>
             </td>
             <td>
@@ -7070,7 +7070,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Description of the object (human readable).</p>
+                <p>Human-readable entity description.</p>
               </div>
             </td>
             <td>
@@ -7086,7 +7086,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of labels.</p>
+                <p>Entity labels.</p>
               </div>
             </td>
             <td>
@@ -7102,7 +7102,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Flag to determine if object spec must be embedded in project spec.</p>
+                <p>Whether to embed the entity specification in the project specification.</p>
               </div>
             </td>
             <td>
@@ -7118,7 +7118,8 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object path on local file system or remote storage. It is also the destination path of upload() method.</p>
+                <p>Entity path on the local file system or remote storage. It is also the
+destination path for uploads.</p>
               </div>
             </td>
             <td>
@@ -7134,7 +7135,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of extensions.</p>
+                <p>Entity extensions.</p>
               </div>
             </td>
             <td>
@@ -7150,7 +7151,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Spec keyword arguments.</p>
+                <p>Additional entity specification parameters.</p>
               </div>
             </td>
             <td>
@@ -7176,20 +7177,12 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Created model entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">new_model</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                   <span class="n">name</span><span class="o">=</span><span class="s2">"my-model"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                   <span class="n">kind</span><span class="o">=</span><span class="s2">"model"</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gp">&gt;&gt;&gt; </span>                   <span class="n">path</span><span class="o">=</span><span class="s2">"s3://my-bucket/my-key"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7219,7 +7212,6 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 </details>
 <details class="example">
 <summary>log_model</summary>
-<p>Create a model entity and upload a local source to the model store.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Function documentation</label><label for="__tabbed_2_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7263,6 +7255,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 
     <div class="doc doc-contents ">
 
+        <p>Create and upload a model entity.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7301,7 +7294,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object name.</p>
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
               </div>
             </td>
             <td>
@@ -7317,7 +7310,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model location on local path.</p>
+                <p>Local model source path or paths.</p>
               </div>
             </td>
             <td>
@@ -7349,7 +7342,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Destination path of the model. If not provided, it's generated.</p>
+                <p>Destination path. If omitted, it is generated.</p>
               </div>
             </td>
             <td>
@@ -7365,7 +7358,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Version stored in entity metadata.</p>
+                <p>Entity version.</p>
               </div>
             </td>
             <td>
@@ -7381,7 +7374,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model description.</p>
+                <p>Human-readable entity description.</p>
               </div>
             </td>
             <td>
@@ -7397,7 +7390,55 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model labels.</p>
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framework</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model framework.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>algorithm</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model algorithm.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>parameters</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model parameters.</p>
               </div>
             </td>
             <td>
@@ -7413,7 +7454,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>New model spec parameters.</p>
+                <p>Additional model specification parameters.</p>
               </div>
             </td>
             <td>
@@ -7439,19 +7480,12 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Created model entity with uploaded files.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">log_model</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                <span class="n">name</span><span class="o">=</span><span class="s2">"my-model"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                <span class="n">source</span><span class="o">=</span><span class="s2">"./local-path"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7480,7 +7514,6 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 </details>
 <details class="example">
 <summary>log_generic_model</summary>
-<p>Create a model of a custom kind and upload a local source.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Function documentation</label><label for="__tabbed_3_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7524,6 +7557,205 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 
     <div class="doc doc-contents ">
 
+        <p>Create and upload a model of a dynamic kind.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>project</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Project name.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>kind</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity kind.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><span title="digitalhub.utils.types.SourcesOrListOfSources">SourcesOrListOfSources</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Local model source path or paths.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>drop_existing</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to remove an existing entity with the same name.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>path</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Destination path. If omitted, it is generated.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity version.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>description</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Human-readable entity description.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>labels</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**kwargs</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional entity specification parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="digitalhub.entities.model.generic.entity.ModelGeneric">ModelGeneric</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Created model entity with uploaded files.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -7553,7 +7785,6 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 </details>
 <details class="example">
 <summary>log_mlflow</summary>
-<p>Log an MLflow model from a local MLflow directory.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Function documentation</label><label for="__tabbed_4_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7597,6 +7828,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 
     <div class="doc doc-contents ">
 
+        <p>Create and upload an MLflow model entity.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7635,7 +7867,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object name.</p>
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
               </div>
             </td>
             <td>
@@ -7651,7 +7883,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model location on local path.</p>
+                <p>Local model source path or paths.</p>
               </div>
             </td>
             <td>
@@ -7683,7 +7915,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Destination path of the model. If not provided, it's generated.</p>
+                <p>Destination path. If omitted, it is generated.</p>
               </div>
             </td>
             <td>
@@ -7699,7 +7931,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model description.</p>
+                <p>Human-readable entity description.</p>
               </div>
             </td>
             <td>
@@ -7715,7 +7947,135 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model labels.</p>
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity version.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framework</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model framework.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>algorithm</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model algorithm.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>parameters</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>flavor</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>MLflow model flavor.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>model_config</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>MLflow model configuration.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>input_datasets</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="digitalhub.entities.model.mlflow.models.Dataset">Dataset</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Datasets used as model inputs.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>signature</code>
+            </td>
+            <td>
+                  <code><span title="digitalhub.entities.model.mlflow.models.Signature">Signature</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>MLflow model signature.</p>
               </div>
             </td>
             <td>
@@ -7731,7 +8091,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>New model spec parameters.</p>
+                <p>Additional model specification parameters.</p>
               </div>
             </td>
             <td>
@@ -7757,19 +8117,12 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Created MLflow model entity with uploaded files.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">log_mlflow</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                       <span class="n">name</span><span class="o">=</span><span class="s2">"my-mlflow-model"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                       <span class="n">source</span><span class="o">=</span><span class="s2">"./local-path"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7798,7 +8151,6 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 </details>
 <details class="example">
 <summary>log_sklearn</summary>
-<p>Log a scikit-learn model from a local file or directory.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Function documentation</label><label for="__tabbed_5_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7842,6 +8194,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 
     <div class="doc doc-contents ">
 
+        <p>Create and upload a scikit-learn model entity.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7880,7 +8233,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object name.</p>
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
               </div>
             </td>
             <td>
@@ -7896,7 +8249,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model location on local path.</p>
+                <p>Local model source path or paths.</p>
               </div>
             </td>
             <td>
@@ -7928,7 +8281,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Destination path of the model. If not provided, it's generated.</p>
+                <p>Destination path. If omitted, it is generated.</p>
               </div>
             </td>
             <td>
@@ -7944,7 +8297,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model description.</p>
+                <p>Human-readable entity description.</p>
               </div>
             </td>
             <td>
@@ -7960,7 +8313,71 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model labels.</p>
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity version.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framework</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model framework.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>algorithm</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model algorithm.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>parameters</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model parameters.</p>
               </div>
             </td>
             <td>
@@ -7976,7 +8393,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>New model spec parameters.</p>
+                <p>Additional model specification parameters.</p>
               </div>
             </td>
             <td>
@@ -8002,19 +8419,12 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Created scikit-learn model entity with uploaded files.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">log_sklearn</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                        <span class="n">name</span><span class="o">=</span><span class="s2">"my-sklearn-model"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                        <span class="n">source</span><span class="o">=</span><span class="s2">"./local-path"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -8043,7 +8453,6 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 </details>
 <details class="example">
 <summary>log_huggingface</summary>
-<p>Log a Hugging Face model from a local repository or directory.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Function documentation</label><label for="__tabbed_6_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -8087,6 +8496,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 
     <div class="doc doc-contents ">
 
+        <p>Create and upload a Hugging Face model entity.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8125,7 +8535,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object name.</p>
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
               </div>
             </td>
             <td>
@@ -8141,7 +8551,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model location on local path.</p>
+                <p>Local model source path or paths.</p>
               </div>
             </td>
             <td>
@@ -8173,7 +8583,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Destination path of the model. If not provided, it's generated.</p>
+                <p>Destination path. If omitted, it is generated.</p>
               </div>
             </td>
             <td>
@@ -8189,7 +8599,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model description.</p>
+                <p>Human-readable entity description.</p>
               </div>
             </td>
             <td>
@@ -8205,7 +8615,119 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model labels.</p>
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity version.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framework</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model framework.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>algorithm</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model algorithm.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>parameters</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>base_model</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Base model identifier.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>model_id</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Hugging Face model identifier.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>model_revision</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Hugging Face model revision.</p>
               </div>
             </td>
             <td>
@@ -8221,7 +8743,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>New model spec parameters.</p>
+                <p>Additional model specification parameters.</p>
               </div>
             </td>
             <td>
@@ -8247,19 +8769,12 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Created Hugging Face model entity with uploaded files.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">log_huggingface</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                            <span class="n">name</span><span class="o">=</span><span class="s2">"my-huggingface-model"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                            <span class="n">source</span><span class="o">=</span><span class="s2">"./local-path"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -8288,7 +8803,6 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 </details>
 <details class="example">
 <summary>log_tvm_ir</summary>
-<p>Log a TVM Relax IR model from a local source.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Function documentation</label><label for="__tabbed_7_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -8332,6 +8846,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
 
     <div class="doc doc-contents ">
 
+        <p>Create and upload a TVM IR model entity.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8370,7 +8885,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object name.</p>
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
               </div>
             </td>
             <td>
@@ -8386,7 +8901,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model location on local path.</p>
+                <p>Local model source path or paths.</p>
               </div>
             </td>
             <td>
@@ -8418,7 +8933,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Destination path of the model. If not provided, it's generated.</p>
+                <p>Destination path. If omitted, it is generated.</p>
               </div>
             </td>
             <td>
@@ -8434,7 +8949,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model description.</p>
+                <p>Human-readable entity description.</p>
               </div>
             </td>
             <td>
@@ -8450,7 +8965,167 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model labels.</p>
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity version.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framework</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model framework.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>algorithm</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model algorithm.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>parameters</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>entry</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Relax entry function.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>inputs</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Input tensor signatures.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>outputs</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Output tensor signatures.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>source_format</code>
+            </td>
+            <td>
+                  <code><span title="digitalhub.entities.model.tvm_ir.spec.TvmSourceFormat">TvmSourceFormat</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Source model format.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>keep_params_in_input</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether weights are kept as input variables.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>sanitize_input_names</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether input names were sanitized by the ONNX frontend.</p>
               </div>
             </td>
             <td>
@@ -8466,8 +9141,7 @@ The syntax is the same for all CRUD methods. When using a <code>Project</code> o
             </td>
             <td>
               <div class="doc-md-description">
-                <p>New model spec parameters (entry, inputs, outputs, source_format,
-keep_params_in_input, framework, algorithm, ...).</p>
+                <p>Additional model specification parameters.</p>
               </div>
             </td>
             <td>
@@ -8493,20 +9167,12 @@ keep_params_in_input, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Created TVM IR model entity with uploaded files.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">log_tvm_ir</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">name</span><span class="o">=</span><span class="s2">"my-ir-model"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">source</span><span class="o">=</span><span class="s2">"./out"</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">source_format</span><span class="o">=</span><span class="s2">"onnx"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -8536,7 +9202,6 @@ keep_params_in_input, framework, algorithm, ...).</p>
 </details>
 <details class="example">
 <summary>log_tvm_so</summary>
-<p>Log a TVM compiled shared-object model from a local source.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Function documentation</label><label for="__tabbed_8_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -8580,6 +9245,7 @@ keep_params_in_input, framework, algorithm, ...).</p>
 
     <div class="doc doc-contents ">
 
+        <p>Create and upload a TVM SO model entity.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8618,7 +9284,7 @@ keep_params_in_input, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object name.</p>
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
               </div>
             </td>
             <td>
@@ -8634,7 +9300,7 @@ keep_params_in_input, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model location on local path.</p>
+                <p>Local model source path or paths.</p>
               </div>
             </td>
             <td>
@@ -8666,7 +9332,7 @@ keep_params_in_input, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Destination path of the model. If not provided, it's generated.</p>
+                <p>Destination path. If omitted, it is generated.</p>
               </div>
             </td>
             <td>
@@ -8682,7 +9348,7 @@ keep_params_in_input, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model description.</p>
+                <p>Human-readable entity description.</p>
               </div>
             </td>
             <td>
@@ -8698,7 +9364,167 @@ keep_params_in_input, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Model labels.</p>
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity version.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framework</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model framework.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>algorithm</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model algorithm.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>parameters</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>entry</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Relax entry function.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>inputs</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Input tensor signatures.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>outputs</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Output tensor signatures.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>target</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>TVM compilation target.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>opt_level</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>TVM optimization level.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>manifest</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Parsed compilation manifest.</p>
               </div>
             </td>
             <td>
@@ -8714,8 +9540,7 @@ keep_params_in_input, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>New model spec parameters (entry, inputs, outputs, target, opt_level,
-manifest, framework, algorithm, ...).</p>
+                <p>Additional model specification parameters.</p>
               </div>
             </td>
             <td>
@@ -8741,20 +9566,12 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Created TVM SO model entity with uploaded files.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">log_tvm_so</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">name</span><span class="o">=</span><span class="s2">"my-so-model"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">source</span><span class="o">=</span><span class="s2">"./out"</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gp">&gt;&gt;&gt; </span>                 <span class="n">target</span><span class="o">=</span><span class="s2">"llvm -mcpu=x86-64-v2"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -8784,7 +9601,6 @@ manifest, framework, algorithm, ...).</p>
 </details>
 <details class="example">
 <summary>register_model</summary>
-<p>Register a model whose source already exists in a supported store. The <code>name</code> can be inferred from the source.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Function documentation</label><label for="__tabbed_9_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -8828,6 +9644,253 @@ manifest, framework, algorithm, ...).</p>
 
     <div class="doc doc-contents ">
 
+        <p>Register a model entity for an existing source.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>project</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Project name.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><span title="digitalhub.utils.types.SourcesOrListOfSources">SourcesOrListOfSources</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path or URI of the existing model.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>uuid</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity identifier.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity version.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>description</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Human-readable entity description.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>labels</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>embedded</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to embed the entity specification in the project specification.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extensions</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity extensions.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framework</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model framework.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>algorithm</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model algorithm.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>parameters</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**kwargs</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional model specification parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="digitalhub.entities.model.model.entity.ModelModel">ModelModel</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Registered model entity.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -8855,7 +9918,6 @@ manifest, framework, algorithm, ...).</p>
 </details>
 <details class="example">
 <summary>register_generic_model</summary>
-<p>Register an existing source with a custom model kind.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Function documentation</label><label for="__tabbed_10_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -8899,6 +9961,221 @@ manifest, framework, algorithm, ...).</p>
 
     <div class="doc doc-contents ">
 
+        <p>Register a model of a dynamic kind for an existing source.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>project</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Project name.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>kind</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity kind.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><span title="digitalhub.utils.types.SourcesOrListOfSources">SourcesOrListOfSources</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path or URI of the existing model.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>uuid</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity identifier.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity version.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>description</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Human-readable entity description.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>labels</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>embedded</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to embed the entity specification in the project specification.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extensions</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity extensions.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**kwargs</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional entity specification parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="digitalhub.entities.model.generic.entity.ModelGeneric">ModelGeneric</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Registered model entity.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -8927,7 +10204,6 @@ manifest, framework, algorithm, ...).</p>
 </details>
 <details class="example">
 <summary>register_mlflow</summary>
-<p>Register an existing MLflow model. The <code>name</code> can be inferred from the source.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Function documentation</label><label for="__tabbed_11_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -8971,6 +10247,317 @@ manifest, framework, algorithm, ...).</p>
 
     <div class="doc doc-contents ">
 
+        <p>Register an MLflow model entity for an existing source.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>project</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Project name.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><span title="digitalhub.utils.types.SourcesOrListOfSources">SourcesOrListOfSources</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path or URI of the existing model.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>uuid</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity identifier.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity version.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>description</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Human-readable entity description.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>labels</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>embedded</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to embed the entity specification in the project specification.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extensions</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity extensions.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framework</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model framework.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>algorithm</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model algorithm.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>parameters</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>flavor</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>MLflow model flavor.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>model_config</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>MLflow model configuration.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>input_datasets</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="digitalhub.entities.model.mlflow.models.Dataset">Dataset</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Datasets used as model inputs.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>signature</code>
+            </td>
+            <td>
+                  <code><span title="digitalhub.entities.model.mlflow.models.Signature">Signature</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>MLflow model signature.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**kwargs</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional model specification parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="digitalhub.entities.model.mlflow.entity.ModelMlflow">ModelMlflow</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Registered MLflow model entity.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -8998,7 +10585,6 @@ manifest, framework, algorithm, ...).</p>
 </details>
 <details class="example">
 <summary>register_sklearn</summary>
-<p>Register an existing scikit-learn model. The <code>name</code> can be inferred from the source.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="12:2"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Function documentation</label><label for="__tabbed_12_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -9042,6 +10628,253 @@ manifest, framework, algorithm, ...).</p>
 
     <div class="doc doc-contents ">
 
+        <p>Register a scikit-learn model entity for an existing source.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>project</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Project name.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><span title="digitalhub.utils.types.SourcesOrListOfSources">SourcesOrListOfSources</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path or URI of the existing model.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>uuid</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity identifier.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity version.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>description</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Human-readable entity description.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>labels</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>embedded</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to embed the entity specification in the project specification.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extensions</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity extensions.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framework</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model framework.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>algorithm</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model algorithm.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>parameters</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**kwargs</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional model specification parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="digitalhub.entities.model.sklearn.entity.ModelSklearn">ModelSklearn</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Registered scikit-learn model entity.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -9069,7 +10902,6 @@ manifest, framework, algorithm, ...).</p>
 </details>
 <details class="example">
 <summary>register_huggingface</summary>
-<p>Register an existing Hugging Face model. The <code>name</code> can be inferred from the source.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="13:2"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Function documentation</label><label for="__tabbed_13_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -9113,6 +10945,301 @@ manifest, framework, algorithm, ...).</p>
 
     <div class="doc doc-contents ">
 
+        <p>Register a Hugging Face model entity for an existing source.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>project</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Project name.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><span title="digitalhub.utils.types.SourcesOrListOfSources">SourcesOrListOfSources</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path or URI of the existing model.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>uuid</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity identifier.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity version.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>description</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Human-readable entity description.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>labels</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>embedded</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to embed the entity specification in the project specification.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extensions</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity extensions.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framework</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model framework.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>algorithm</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model algorithm.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>parameters</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>base_model</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Base model identifier.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>model_id</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Hugging Face model identifier.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>model_revision</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Hugging Face model revision.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**kwargs</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional model specification parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="digitalhub.entities.model.huggingface.entity.ModelHuggingface">ModelHuggingface</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Registered Hugging Face model entity.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -9140,7 +11267,6 @@ manifest, framework, algorithm, ...).</p>
 </details>
 <details class="example">
 <summary>register_tvm_ir</summary>
-<p>Register an existing TVM Relax IR model. The <code>name</code> can be inferred from the source.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="14:2"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Function documentation</label><label for="__tabbed_14_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -9184,6 +11310,349 @@ manifest, framework, algorithm, ...).</p>
 
     <div class="doc doc-contents ">
 
+        <p>Register a TVM IR model entity for an existing source.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>project</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Project name.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><span title="digitalhub.utils.types.SourcesOrListOfSources">SourcesOrListOfSources</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path or URI of the existing model.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>uuid</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity identifier.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity version.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>description</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Human-readable entity description.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>labels</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>embedded</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to embed the entity specification in the project specification.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extensions</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity extensions.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framework</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model framework.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>algorithm</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model algorithm.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>parameters</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>entry</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Relax entry function.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>inputs</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Input tensor signatures.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>outputs</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Output tensor signatures.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>source_format</code>
+            </td>
+            <td>
+                  <code><span title="digitalhub.entities.model.tvm_ir.spec.TvmSourceFormat">TvmSourceFormat</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Source model format.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>keep_params_in_input</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether weights are kept as input variables.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>sanitize_input_names</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether input names were sanitized by the ONNX frontend.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**kwargs</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional model specification parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="digitalhub.entities.model.tvm_ir.entity.ModelTvmIr">ModelTvmIr</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Registered TVM IR model entity.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -9211,7 +11680,6 @@ manifest, framework, algorithm, ...).</p>
 </details>
 <details class="example">
 <summary>register_tvm_so</summary>
-<p>Register an existing TVM compiled model. The <code>name</code> can be inferred from the source.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="15:2"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Function documentation</label><label for="__tabbed_15_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -9255,6 +11723,349 @@ manifest, framework, algorithm, ...).</p>
 
     <div class="doc doc-contents ">
 
+        <p>Register a TVM SO model entity for an existing source.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>project</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Project name.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>source</code>
+            </td>
+            <td>
+                  <code><span title="digitalhub.utils.types.SourcesOrListOfSources">SourcesOrListOfSources</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Path or URI of the existing model.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity name. If omitted, it is inferred from <code>source</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>uuid</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity identifier.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>version</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity version.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>description</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Human-readable entity description.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>labels</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity labels.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>embedded</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to embed the entity specification in the project specification.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>extensions</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Entity extensions.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>framework</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model framework.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>algorithm</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model algorithm.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>parameters</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Model parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>entry</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Relax entry function.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>inputs</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Input tensor signatures.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>outputs</code>
+            </td>
+            <td>
+                  <code><span title="list">list</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Output tensor signatures.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>target</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>TVM compilation target.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>opt_level</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>TVM optimization level.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>manifest</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Parsed compilation manifest.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**kwargs</code>
+            </td>
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Additional model specification parameters.</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="digitalhub.entities.model.tvm_so.entity.ModelTvmSo">ModelTvmSo</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Registered TVM SO model entity.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
     </div>
@@ -9284,7 +12095,6 @@ manifest, framework, algorithm, ...).</p>
 <p>Use the read methods to retrieve models from the backend or load them from a YAML descriptor.</p>
 <details class="example">
 <summary>get_model</summary>
-<p>Get one model by name and project. Omitting <code>entity_id</code> returns the latest version.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="16:2"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Function documentation</label><label for="__tabbed_16_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -9328,6 +12138,7 @@ manifest, framework, algorithm, ...).</p>
 
     <div class="doc doc-contents ">
 
+        <p>Get a model entity from the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -9350,7 +12161,7 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...) or entity name.</p>
+                <p>Entity name or entity key (<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;(name&gt;:)&lt;uuid&gt;</code>).</p>
               </div>
             </td>
             <td>
@@ -9366,7 +12177,7 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name.</p>
+                <p>Project name. Required when <code>identifier</code> is an entity name.</p>
               </div>
             </td>
             <td>
@@ -9382,7 +12193,7 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity ID.</p>
+                <p>Entity identifier. If omitted, the latest version is returned.</p>
               </div>
             </td>
             <td>
@@ -9408,23 +12219,12 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Retrieved model entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <p>Using entity key:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="s2">"store://my-model-key"</span><span class="p">)</span>
-</span></code></pre></div>
-    <p>Using entity name:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="s2">"my-model-name"</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                <span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                <span class="n">entity_id</span><span class="o">=</span><span class="s2">"my-model-id"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -9452,7 +12252,6 @@ manifest, framework, algorithm, ...).</p>
 </details>
 <details class="example">
 <summary>get_model_versions</summary>
-<p>Get all versions of a model by name and project.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="17:2"><input checked="checked" id="__tabbed_17_1" name="__tabbed_17" type="radio" /><input id="__tabbed_17_2" name="__tabbed_17" type="radio" /><div class="tabbed-labels"><label for="__tabbed_17_1">Function documentation</label><label for="__tabbed_17_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -9496,6 +12295,7 @@ manifest, framework, algorithm, ...).</p>
 
     <div class="doc doc-contents ">
 
+        <p>Get all versions of a model entity from the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -9518,7 +12318,7 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...) or entity name.</p>
+                <p>Entity name or entity key (<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;(name&gt;:)&lt;uuid&gt;</code>).</p>
               </div>
             </td>
             <td>
@@ -9534,7 +12334,7 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name.</p>
+                <p>Project name. Required when <code>identifier</code> is an entity name.</p>
               </div>
             </td>
             <td>
@@ -9560,22 +12360,12 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of object instances.</p>
+                <p>All versions of the model entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <p>Using entity key:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">objs</span> <span class="o">=</span> <span class="n">get_model_versions</span><span class="p">(</span><span class="s2">"store://my-model-key"</span><span class="p">)</span>
-</span></code></pre></div>
-    <p>Using entity name:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">objs</span> <span class="o">=</span> <span class="n">get_model_versions</span><span class="p">(</span><span class="s2">"my-model-name"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                          <span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -9603,7 +12393,6 @@ manifest, framework, algorithm, ...).</p>
 </details>
 <details class="example">
 <summary>list_models</summary>
-<p>List the latest models in a project.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="18:2"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Function documentation</label><label for="__tabbed_18_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -9647,6 +12436,7 @@ manifest, framework, algorithm, ...).</p>
 
     <div class="doc doc-contents ">
 
+        <p>List model entities in a project.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -9685,7 +12475,7 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Query string to filter objects.</p>
+                <p>Query string used to filter entities.</p>
               </div>
             </td>
             <td>
@@ -9701,7 +12491,7 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object name.</p>
+                <p>Entity name used to filter results.</p>
               </div>
             </td>
             <td>
@@ -9717,7 +12507,7 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Kind of the object.</p>
+                <p>Entity kind used to filter results.</p>
               </div>
             </td>
             <td>
@@ -9733,7 +12523,7 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>User that created the object.</p>
+                <p>User who created the entity.</p>
               </div>
             </td>
             <td>
@@ -9749,7 +12539,7 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object state.</p>
+                <p>Entity state used to filter results.</p>
               </div>
             </td>
             <td>
@@ -9797,7 +12587,7 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object version, default is latest.</p>
+                <p>Version filter. Defaults to the latest version.</p>
               </div>
             </td>
             <td>
@@ -9823,17 +12613,12 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of object instances.</p>
+                <p>Model entities matching the filters.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">objs</span> <span class="o">=</span> <span class="n">list_models</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -9858,7 +12643,6 @@ manifest, framework, algorithm, ...).</p>
 </details>
 <details class="example">
 <summary>import_model</summary>
-<p>Import a model from a local YAML descriptor or a storage key.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="19:2"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Function documentation</label><label for="__tabbed_19_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -9902,6 +12686,7 @@ manifest, framework, algorithm, ...).</p>
 
     <div class="doc doc-contents ">
 
+        <p>Import a model entity from a YAML file or entity key.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -9924,7 +12709,8 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Path to the YAML file.</p>
+                <p>Path to a YAML file containing the entity descriptor. Provide either
+<code>file</code> or <code>key</code>.</p>
               </div>
             </td>
             <td>
@@ -9940,7 +12726,8 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...).</p>
+                <p>Entity key (<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;(name&gt;:)&lt;uuid&gt;</code>). Provide
+either <code>file</code> or <code>key</code>.</p>
               </div>
             </td>
             <td>
@@ -9956,7 +12743,8 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Flag to determine if the ID of executable entities should be reset.</p>
+                <p>Whether to generate a new entity identifier instead of preserving the
+identifier from the imported entity.</p>
               </div>
             </td>
             <td>
@@ -9972,7 +12760,8 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name to use for context resolution.</p>
+                <p>Project name used for context resolution. If omitted, the project from
+the entity descriptor is used.</p>
               </div>
             </td>
             <td>
@@ -9998,17 +12787,12 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Imported model entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">import_model</span><span class="p">(</span><span class="s2">"my-model.yaml"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -10035,7 +12819,6 @@ manifest, framework, algorithm, ...).</p>
 <p>Update a model after changing its mutable metadata.</p>
 <details class="example">
 <summary>update_model</summary>
-<p>Update an existing model. Its specification is immutable.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="20:2"><input checked="checked" id="__tabbed_20_1" name="__tabbed_20" type="radio" /><input id="__tabbed_20_2" name="__tabbed_20" type="radio" /><div class="tabbed-labels"><label for="__tabbed_20_1">Function documentation</label><label for="__tabbed_20_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -10079,6 +12862,7 @@ manifest, framework, algorithm, ...).</p>
 
     <div class="doc doc-contents ">
 
+        <p>Update a model entity in the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -10101,7 +12885,7 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object to update.</p>
+                <p>Entity to update. The entity specification is immutable.</p>
               </div>
             </td>
             <td>
@@ -10127,17 +12911,12 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity updated.</p>
+                <p>Updated model entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">get_model</span><span class="p">(</span><span class="s2">"store://my-model-key"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -10169,7 +12948,6 @@ manifest, framework, algorithm, ...).</p>
 <p>Delete one model version or all versions of a model.</p>
 <details class="example">
 <summary>delete_model</summary>
-<p>Set <code>delete_all_versions=True</code> to delete all versions by entity name.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="21:2"><input checked="checked" id="__tabbed_21_1" name="__tabbed_21" type="radio" /><input id="__tabbed_21_2" name="__tabbed_21" type="radio" /><div class="tabbed-labels"><label for="__tabbed_21_1">Function documentation</label><label for="__tabbed_21_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -10213,6 +12991,7 @@ manifest, framework, algorithm, ...).</p>
 
     <div class="doc doc-contents ">
 
+        <p>Delete one or more versions of a model entity from the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -10235,7 +13014,8 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...) or entity name.</p>
+                <p>Entity name or entity key (<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;(name&gt;:)&lt;uuid&gt;</code>). Use an entity name
+when <code>delete_all_versions</code> is True.</p>
               </div>
             </td>
             <td>
@@ -10251,7 +13031,7 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name.</p>
+                <p>Project name. Required when <code>identifier</code> is an entity name.</p>
               </div>
             </td>
             <td>
@@ -10267,7 +13047,9 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity ID.</p>
+                <p>Identifier of the version to delete. Required when
+<code>delete_all_versions</code> is False and <code>identifier</code> does not contain
+the version identifier.</p>
               </div>
             </td>
             <td>
@@ -10283,8 +13065,8 @@ manifest, framework, algorithm, ...).</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Delete all versions of the named entity.
-If True, use entity name instead of entity key as identifier.</p>
+                <p>Whether to delete all versions of the named entity. When False, only
+one version is deleted.</p>
               </div>
             </td>
             <td>
@@ -10300,7 +13082,7 @@ If True, use entity name instead of entity key as identifier.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Cascade delete.</p>
+                <p>Whether to request cascade deletion from the backend.</p>
               </div>
             </td>
             <td>
@@ -10326,23 +13108,12 @@ If True, use entity name instead of entity key as identifier.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Response from backend.</p>
+                <p>Response data from the backend.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <p>If delete_all_versions is False:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">delete_model</span><span class="p">(</span><span class="s2">"store://my-model-key"</span><span class="p">)</span>
-</span></code></pre></div>
-    <p>Otherwise:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">delete_model</span><span class="p">(</span><span class="s2">"my-model-name"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>                   <span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>                   <span class="n">delete_all_versions</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>

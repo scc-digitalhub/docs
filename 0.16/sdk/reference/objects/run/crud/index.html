@@ -6587,7 +6587,6 @@
 <p><code>new_run()</code> creates and saves a run. The <code>kind</code> and other specification parameters are determined by the runtime. See the <a href="../../../runtimes/">runtime documentation</a> when creating a run.</p>
 <details class="example">
 <summary>new_run</summary>
-<p>Create and save a run.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Function documentation</label><label for="__tabbed_1_2">Creation example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -6631,6 +6630,7 @@
 
     <div class="doc doc-contents ">
 
+        <p>Create a new run entity in the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -6669,7 +6669,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Kind the object.</p>
+                <p>Entity kind.</p>
               </div>
             </td>
             <td>
@@ -6685,7 +6685,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>ID of the object.</p>
+                <p>Entity identifier.</p>
               </div>
             </td>
             <td>
@@ -6701,7 +6701,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Name stored in entity metadata.</p>
+                <p>Entity name.</p>
               </div>
             </td>
             <td>
@@ -6717,7 +6717,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of labels.</p>
+                <p>Entity labels.</p>
               </div>
             </td>
             <td>
@@ -6733,7 +6733,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Name of the task associated with the run.</p>
+                <p>Task reference associated with the run.</p>
               </div>
             </td>
             <td>
@@ -6749,7 +6749,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Spec keyword arguments.</p>
+                <p>Additional entity specification parameters.</p>
               </div>
             </td>
             <td>
@@ -6775,19 +6775,12 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Created run entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">new_run</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>              <span class="n">kind</span><span class="o">=</span><span class="s2">"python+run"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">&gt;&gt;&gt; </span>              <span class="n">task</span><span class="o">=</span><span class="s2">"task-string"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -6818,7 +6811,6 @@
 <p>Use the read methods to retrieve runs from the backend or load them from a YAML descriptor.</p>
 <details class="example">
 <summary>get_run</summary>
-<p>Get one run by its entity ID and project, or pass a <code>store://</code> entity key as <code>identifier</code>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Function documentation</label><label for="__tabbed_2_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -6862,6 +6854,7 @@
 
     <div class="doc doc-contents ">
 
+        <p>Get an unversioned run entity from the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -6884,7 +6877,8 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...) or entity ID.</p>
+                <p>Entity ID or entity key in the format
+<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;uuid&gt;</code>.</p>
               </div>
             </td>
             <td>
@@ -6900,7 +6894,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name.</p>
+                <p>Project name. Required when <code>identifier</code> is an entity ID.</p>
               </div>
             </td>
             <td>
@@ -6926,22 +6920,12 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Retrieved run entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <p>Using entity key:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">get_run</span><span class="p">(</span><span class="s2">"store://my-run-key"</span><span class="p">)</span>
-</span></code></pre></div>
-    <p>Using entity ID:</p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">get_run</span><span class="p">(</span><span class="s2">"my-run-id"</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span>              <span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -6969,7 +6953,6 @@
 </details>
 <details class="example">
 <summary>list_runs</summary>
-<p>List the latest runs in a project.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Function documentation</label><label for="__tabbed_3_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7013,6 +6996,7 @@
 
     <div class="doc doc-contents ">
 
+        <p>List run entities in a project.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7051,7 +7035,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Query string to filter objects.</p>
+                <p>Query string used to filter entities.</p>
               </div>
             </td>
             <td>
@@ -7067,7 +7051,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object name.</p>
+                <p>Entity name used to filter results.</p>
               </div>
             </td>
             <td>
@@ -7083,7 +7067,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Kind of the object.</p>
+                <p>Entity kind used to filter results.</p>
               </div>
             </td>
             <td>
@@ -7099,7 +7083,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>User that created the object.</p>
+                <p>User who created the entity.</p>
               </div>
             </td>
             <td>
@@ -7115,7 +7099,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object state.</p>
+                <p>Entity state used to filter results.</p>
               </div>
             </td>
             <td>
@@ -7163,7 +7147,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Function key filter.</p>
+                <p>Function reference used to filter results.</p>
               </div>
             </td>
             <td>
@@ -7179,7 +7163,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Workflow key filter.</p>
+                <p>Workflow reference used to filter results.</p>
               </div>
             </td>
             <td>
@@ -7195,7 +7179,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Task string filter.</p>
+                <p>Task reference used to filter results.</p>
               </div>
             </td>
             <td>
@@ -7211,7 +7195,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Action name filter.</p>
+                <p>Action name used to filter results.</p>
               </div>
             </td>
             <td>
@@ -7233,21 +7217,16 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="list">list</span>[<span title="Model">Model</span>]</code>
+                  <code><span title="list">list</span>[<span title="digitalhub.entities.run._base.entity.Run">Run</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of object instances.</p>
+                <p>Run entities matching the filters.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">objs</span> <span class="o">=</span> <span class="n">list_runs</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7272,7 +7251,6 @@
 </details>
 <details class="example">
 <summary>import_run</summary>
-<p>Import a run from a local YAML descriptor or a storage key.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Function documentation</label><label for="__tabbed_4_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7316,6 +7294,7 @@
 
     <div class="doc doc-contents ">
 
+        <p>Import a run entity from a YAML file or entity key.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7338,7 +7317,8 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Path to the YAML file.</p>
+                <p>Path to a YAML file containing the entity descriptor. Provide either
+<code>file</code> or <code>key</code>.</p>
               </div>
             </td>
             <td>
@@ -7354,7 +7334,9 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...).</p>
+                <p>Entity key in the format
+<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;uuid&gt;</code>. Provide either
+<code>file</code> or <code>key</code>.</p>
               </div>
             </td>
             <td>
@@ -7370,7 +7352,8 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Flag to determine if the ID of executable entities should be reset.</p>
+                <p>Whether to generate a new entity identifier instead of preserving the
+identifier from the imported entity.</p>
               </div>
             </td>
             <td>
@@ -7386,7 +7369,8 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name to use for context resolution.</p>
+                <p>Project name used for context resolution. If omitted, the project from
+the entity descriptor is used.</p>
               </div>
             </td>
             <td>
@@ -7412,7 +7396,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object instance.</p>
+                <p>Imported run entity.</p>
               </div>
             </td>
           </tr>
@@ -7444,7 +7428,6 @@
 <p>Update a run after changing its mutable metadata.</p>
 <details class="example">
 <summary>update_run</summary>
-<p>Update an existing run.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Function documentation</label><label for="__tabbed_5_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7488,6 +7471,7 @@
 
     <div class="doc doc-contents ">
 
+        <p>Update a run entity in the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7510,7 +7494,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Object to update.</p>
+                <p>Entity to update. The entity specification is immutable.</p>
               </div>
             </td>
             <td>
@@ -7536,17 +7520,12 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity updated.</p>
+                <p>Updated run entity.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">update_run</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
@@ -7578,7 +7557,6 @@
 <p>Delete a run from the backend.</p>
 <details class="example">
 <summary>delete_run</summary>
-<p>Delete a run by its entity ID or storage key.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Function documentation</label><label for="__tabbed_6_2">Example</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -7622,6 +7600,7 @@
 
     <div class="doc doc-contents ">
 
+        <p>Delete an unversioned run entity from the backend.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7644,7 +7623,8 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity key (store://...) or entity name.</p>
+                <p>Entity ID or entity key in the format
+<code>store://&lt;project&gt;/&lt;entity_type&gt;/&lt;kind&gt;/&lt;uuid&gt;</code>.</p>
               </div>
             </td>
             <td>
@@ -7660,7 +7640,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Project name.</p>
+                <p>Project name. Required when <code>identifier</code> is an entity ID.</p>
               </div>
             </td>
             <td>
@@ -7676,7 +7656,8 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Entity ID.</p>
+                <p>Identifier of the entity to delete. If omitted, <code>identifier</code> is
+used.</p>
               </div>
             </td>
             <td>
@@ -7702,21 +7683,12 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Response from backend.</p>
+                <p>Response data from the backend.</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
-
-
-<p><span class="doc-section-title">Examples:</span></p>
-    <div class="language-pycon highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">delete_run</span><span class="p">(</span><span class="s2">"store://my-run-key"</span><span class="p">)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gp">&gt;&gt;&gt; </span><span class="n">obj</span> <span class="o">=</span> <span class="n">delete_run</span><span class="p">(</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gp">... </span>    <span class="s2">"my-run-id"</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gp">... </span>    <span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="gp">... </span><span class="p">)</span>
-</span></code></pre></div>
 
 
     </div>
