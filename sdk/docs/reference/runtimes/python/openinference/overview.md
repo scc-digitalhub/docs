@@ -14,7 +14,7 @@ The OpenInference runtime enables you to execute user-defined Python handlers fo
 
 To execute an OpenInference function, follow this pattern:
 
-1. Implement the handler as described in [handler definition](define-function.md).
+1. Implement the handler as described in [handler definition](../define-function.md).
 2. Use `dh.new_function()` or `project.new_function()` to create the function, passing function parameters.
 3. Call `function.run()` with the desired action, passing task parameters and run parameters.
 
