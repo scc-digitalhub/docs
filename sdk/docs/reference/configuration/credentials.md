@@ -174,7 +174,7 @@ Git credentials are the exception: they are injected as environment variables an
 
 === "Git repositories"
 
-    Git credentials are used when the SDK fetches a private [Git code source](code-sources.md#git-repository).
+    Git credentials are used when the SDK fetches a private [Git code source](code-sources.md#code-source-uri).
     Tokens take precedence over username and password credentials.
 
     Credentials can be provided in the local process environment or through a DigitalHub Secret for managed executions.

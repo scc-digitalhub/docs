@@ -1,48 +1,67 @@
-# OpenInference Runtime
+# OpenInference runtime
 
-The OpenInference runtime enables you to execute user-defined Python handlers for inference-oriented services with explicit tensor schemas
-
-## Supported kinds and actions
-
-| Function Kind | Purpose | Supported Actions |
-| --- | --- | --- |
-| `openinference` | Inference services with declared model/tensor metadata | `serve`, `build` |
-
-The shared actions behave as follows:
-
-- **`serve`**: Deploy a handler as a long-lived service
-- **`build`**: Create a Docker image with the required dependencies
+The OpenInference runtime enables you to execute user-defined Python handlers for inference-oriented services with explicit tensor schemas.
 
 ## Prerequisites
 
-**Package Python requirement:**
+| Requirement | Details |
+| --- | --- |
+| Package Python requirement | >= 3.10, < 3.15 |
+| Execution Python versions | `PYTHON3_10`, `PYTHON3_11`, `PYTHON3_12`, `PYTHON3_13` |
+| Package | `digitalhub-runtime-python` |
 
-- Python >= 3.10, < 3.15
+## Usage pattern
 
-**Execution Python versions:**
-
-- `PYTHON3_10`
-- `PYTHON3_11`
-- `PYTHON3_12`
-- `PYTHON3_13`
-
-**Required packages:**
-
-- `digitalhub-runtime-python`
-
-Install from PyPI:
-
-```bash
-pip install digitalhub-runtime-python
-```
-
-## Usage overview
-
-To execute a Python-based handler on the platform:
+To execute an OpenInference function, follow this pattern:
 
 1. Implement the handler as described in [handler definition](define-function.md).
-2. Create a `Function` resource with kind `openinference`.
-3. Call `function.run()` to execute the handler.
+2. Use `dh.new_function()` or `project.new_function()` to create the function, passing function parameters.
+3. Call `function.run()` with the desired action, passing task parameters and run parameters.
 
-See the [OpenInference execution model](../../../../explanations/runtimes/openinference-execution.md) for supported actions and function configuration.
-See [Examples](examples.md) for code samples.
+??? example "Create and serve an OpenInference function"
+
+	```python
+	function = dh.new_function(
+		name="my-openinference-function",
+		kind="openinference",
+		code_src="inference.py",
+		handler="predict",
+		python_version="PYTHON3_10",
+		model_name="text-classifier",
+		inputs=[{"name": "input-0", "shape": [-1, -1], "datatype": "BYTES"}],
+		outputs=[{"name": "output-0", "shape": [-1, -1], "datatype": "FP32"}]
+	)
+
+	run = function.run(
+		action="serve",
+		replicas=1,
+	)
+	```
+
+The `inputs` and `outputs` parameters declare the tensor names, shapes and data types exposed by the inference service.
+
+## Action documentation
+
+Review the detailed parameters for each OpenInference action:
+
+<div class="list-cards" markdown>
+
+- [**Serve**](actions/openinference-serve.md){ .list-card-link }
+
+	Deploy an OpenInference function as an inference endpoint.
+
+- [**Build**](actions/openinference-build.md){ .list-card-link }
+
+	Build a container image for an OpenInference function.
+
+</div>
+
+## Examples
+
+<div class="list-cards" markdown>
+
+- [**OpenInference examples**](examples.md){ .list-card-link }
+
+	Explore complete examples for OpenInference inference services.
+
+</div>

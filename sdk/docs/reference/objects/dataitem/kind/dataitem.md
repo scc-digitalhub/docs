@@ -8,7 +8,7 @@ The `dataitem` kind has the following specification parameters.
 
 | Parameter | Type | Description | Default |
 | --- | --- | --- | --- |
-| [`path`](../../../configuration/paths.md#entity-paths) | *str* | Target path to the dataitem, either on the local filesystem or in remote storage. | *required* |
+| [`path`](../../../configuration/paths.md#scheme-specific-paths) | *str* | Target path to the dataitem, either on the local filesystem or in remote storage. | *required* |
 
 ## Dataitem methods
 

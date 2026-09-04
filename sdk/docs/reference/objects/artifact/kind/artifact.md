@@ -8,7 +8,7 @@ The `artifact` kind has the following specification parameters.
 
 | Parameter | Type | Description | Default |
 | --- | --- | --- | --- |
-| [`path`](../../../configuration/paths.md#entity-paths) | *str* | Target path to the artifact, either on the local filesystem or in remote storage. | *required* |
+| [`path`](../../../configuration/paths.md#scheme-specific-paths) | *str* | Target path to the artifact, either on the local filesystem or in remote storage. | *required* |
 | `src_path` | *str \| None* | Source path of the artifact. | `None` |
 
 ## Artifact methods

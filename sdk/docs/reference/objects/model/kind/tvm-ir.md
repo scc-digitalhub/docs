@@ -8,7 +8,7 @@ The `tvm-ir` kind has the following specification parameters.
 
 | Parameter | Type | Description | Default |
 | --- | --- | --- | --- |
-| [`path`](../../../configuration/paths.md#entity-paths) | *str* | Path of the model, either on the local filesystem or in remote storage. | *required* |
+| [`path`](../../../configuration/paths.md#scheme-specific-paths) | *str* | Path of the model, either on the local filesystem or in remote storage. | *required* |
 | `framework` | *str \| None* | Model framework, for example `tvm`. | `None` |
 | `algorithm` | *str \| None* | Model algorithm. | `None` |
 | `parameters` | *dict \| None* | Model parameters. | `None` |

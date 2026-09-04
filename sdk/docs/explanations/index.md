@@ -26,13 +26,6 @@ Use these pages to build a mental model of the Digitalhub SDK and choose the rig
 
     Learn how functions and workflows are described, built, and executed in each runtime.
 
-    [Browse execution models](runtimes/python-execution.md)
+    [Browse runtime overviews](../reference/runtimes/python/python/overview.md)
 
 </div>
-
-## How this section fits
-
-- **Tutorials** teach by taking you through a complete example.
-- **How-to guides** help you complete a specific task.
-- **Reference** documents the exact API, parameters, and supported values.
-- **Explanations** provide context for choosing and combining those pieces.

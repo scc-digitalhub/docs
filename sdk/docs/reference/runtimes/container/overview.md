@@ -1,32 +1,92 @@
-# Container Runtime
+# Container runtime
 
-The Container runtime enables launching pods, jobs and services on Kubernetes. It registers Function kind `container` and supports various actions for containerized workloads including jobs, services and builds.
-
-- **`container`**: Execute containerized workloads on Kubernetes
+The Container runtime enables launching pods, jobs and services on Kubernetes with custom images, commands and dependencies.
 
 ## Prerequisites
 
-**Supported Python versions:**
+| Requirement | Details |
+| --- | --- |
+| Python | >= 3.10, < 3.15 |
+| Package | `digitalhub-runtime-container` |
 
-- Python ≥ 3.10, < 3.15
+## Usage pattern
 
-**Required packages:**
+To execute a container workload, follow this pattern:
 
-- `digitalhub-runtime-container`
+1. Use `dh.new_function()` or `project.new_function()` to create the function, passing function parameters.
+2. Call `function.run()` with the desired action, passing task parameters and run parameters.
 
-Install from PyPI:
+??? example "Create and run a container job"
 
-```bash
-pip install digitalhub-runtime-container
-```
+	```python
+	# Create function with function parameters
+	function = dh.new_function(
+		name="my-function",
+		kind="container",
+		image="my-image:latest",
+		command="my-command"
+	)
 
-## Usage overview
+	# Execute with task and run parameters
+	run = function.run(
+		action="job",
+		args=["arg1", "arg2"]
+	)
+	```
 
-To execute container workloads on the platform:
+When a job or service needs additional dependencies, build the execution image before launching it. Configure the base image and the target image on the same `Function`, run `build()` with the required instructions, and then use that function for the `job` or `serve` run.
 
-1. Prepare your container image or build instructions.
-2. Create a `Function` resource that references your container configuration.
-3. Call `function.run()` to execute the container workload.
+??? example "Build and run with dependencies"
 
-See the [Container execution model](../../../explanations/runtimes/container-execution.md) for an overview of actions and workload configuration.
-See [Examples](examples.md) for code samples.
+	```python
+	function = dh.new_function(
+		name="my-function",
+		kind="container",
+		image="registry.example.com/my-function:latest",
+		base_image="python:3.11-slim",
+		command="python app.py"
+	)
+
+	function.build(
+		instructions=["pip install numpy pandas"]
+	)
+
+	run = function.run(
+		action="job",
+		args=["input.csv"]
+	)
+	```
+
+Use `action="serve"` instead of `action="job"` when the built image must run as a long-lived service. The `build()` and `run()` calls operate on the same `Function`.
+
+Container functions are executed remotely on Kubernetes clusters managed by the platform.
+
+## Action documentation
+
+Review the detailed parameters for each container action:
+
+<div class="list-cards" markdown>
+
+- [**Job**](actions/container-job.md){ .list-card-link }
+
+	Execute a container as a one-off job.
+
+- [**Serve**](actions/container-serve.md){ .list-card-link }
+
+	Deploy a container as a long-lived service.
+
+- [**Build**](actions/container-build.md){ .list-card-link }
+
+	Create a Docker image with custom instructions.
+
+</div>
+
+## Examples
+
+<div class="list-cards" markdown>
+
+- [**Container examples**](examples.md){ .list-card-link }
+
+	Explore complete examples for container jobs, builds and services.
+
+</div>

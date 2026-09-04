@@ -46,7 +46,7 @@ Guardrail functions are specialized Python handlers that process inbound request
         | lang | str | Source code language (informational). |
         | image | str | Container image used to execute the function. |
         | [base_image](#base-image) | str | Base image (name:tag) used to build the execution image. |
-        | [requirements](#requirements) | list[str] | List of pip requirements to install into the execution image. |
+        | [requirements](#requirements) | list[str] \| str | List of pip requirements or a path to a supported requirements file. |
         | [processing_mode](#processing-mode) | str | Guardrail processing mode. **Required.** |
 
         #### Python Versions
@@ -68,7 +68,7 @@ Guardrail functions are specialized Python handlers that process inbound request
 
         #### Requirements
 
-        Requirements are a list of strings representing packages to be installed by `pip` in the image where the function will be executed. The SDK normalizes them when the function is saved; an unversioned package found in the local environment is replaced with its installed version and a warning is logged. A build is required to install requirements before remote execution. See [Requirements and automatic builds](../../../../../explanations/runtimes/python-execution.md#requirements-and-automatic-builds) for details.
+        Requirements can be a list of strings or a path to an existing file named `requirements.txt`, `setup.py`, `pyproject.toml`, `conda.yml` or `conda.yaml`. The SDK parses and normalizes them when the function is saved. `requirements.txt` and `setup.py` are parsed as pip requirements, `pyproject.toml` reads `project.dependencies`, and Conda files read pip dependencies from `dependencies.pip`. If a package is specified without a version, the SDK looks for it in the active local virtual environment, adds the installed version when available, and logs a warning. A build is required to install requirements before remote execution. See [Requirements and automatic builds](../../python/overview.md#requirements-and-automatic-builds) for details.
 
         #### Processing Mode
 
@@ -93,7 +93,20 @@ Guardrail functions are specialized Python handlers that process inbound request
 
 ### Function methods
 
-The Guardrail Function does not add runtime-specific methods.
+??? example "build"
+
+    Build the Guardrail function image.
+
+    ::: digitalhub_runtime_python.entities.function._base.entity.FunctionBaseFunction.build
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
 
 ## Task
 
@@ -143,7 +156,7 @@ The Guardrail serve Task does not add runtime-specific methods.
 
         | Name | Type | Description |
         | --- | --- | --- |
-        | auto_build | bool | Build the function automatically when `spec.image` is `None`. Defaults to `True`. If requirements are present, an existing image is not rebuilt automatically. |
+        | auto_build | bool | Build the function automatically when `spec.image` is `None`. Defaults to `False`. If requirements are present, an existing image is not rebuilt automatically. |
         | init_parameters | dict | Parameters supplied to the init function. |
 
     === "Creation example"
@@ -157,8 +170,6 @@ The Guardrail serve Task does not add runtime-specific methods.
         ```
 
 ### Run methods
-
-Once the run is created, you can access its attributes and methods through the `run` object.
 
 ??? example "inputs"
 

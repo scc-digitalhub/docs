@@ -50,7 +50,7 @@ The SDK supports several storage path schemes. Artifacts, Dataitems and Models u
 
     ??? note "Access"
 
-        Ensure the runtime has permission to read the bucket. See [S3 credentials](credentials.md#s3-storage).
+        Ensure the runtime has permission to read the bucket. See [S3 credentials](credentials.md#resource-credentials).
 
 === "Remote HTTP(S)"
 
@@ -110,5 +110,5 @@ The SDK supports several storage path schemes. Artifacts, Dataitems and Models u
 
     ??? note "Access"
 
-        Configure database connection parameters in the environment or runtime settings. See [SQL credentials](credentials.md#sql-databases).
+        Configure database connection parameters in the environment or runtime settings. See [SQL credentials](credentials.md#resource-credentials).
         SQL paths represent tables or queryable objects, not files.

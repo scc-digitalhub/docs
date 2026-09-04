@@ -43,7 +43,7 @@ There are different ways to create a Flower application function, depending on t
         | description | str | Description of the object. |
         | labels | list[str] | List of labels. |
         | embedded | bool | Whether the object should be embedded in the project. |
-        | [git_source](../../../configuration/code-sources.md#git-repository) | str | URI pointing to the **git** repo source code. For this runtime there is no need to specify a handler. |
+        | [git_source](../../../configuration/code-sources.md#code-source-uri) | str | URI pointing to the **git** repo source code. For this runtime there is no need to specify a handler. |
         | [client_code](#string-source-code) | str | Source code of the Flower client application as a string. |
         | [server_code](#string-source-code) | str | Source code of the Flower server application as a string. |
         | [client_src](#local-path-source-code) | str | Local path to the Flower client application source code. |

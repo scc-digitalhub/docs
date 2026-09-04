@@ -48,7 +48,7 @@ The job action supports Python handlers that run to completion.
         | lang | str | Source code language (informational). |
         | image | str | Container image used to execute the function. |
         | [base_image](#base-image) | str | Base image (name:tag) used to build the execution image. |
-        | [requirements](#requirements) | list[str] \| str | List of pip requirements or a supported requirements file path. |
+        | [requirements](#requirements) | list[str] \| str | List of pip requirements or a path to a supported requirements file. |
 
         #### Python Versions
 
@@ -72,7 +72,7 @@ The job action supports Python handlers that run to completion.
 
         #### Requirements
 
-        Requirements can be a list of strings or a path to a supported requirements file. The SDK parses and normalizes them when the function is saved. See [Requirements and automatic builds](../../../../../explanations/runtimes/python-execution.md#requirements-and-automatic-builds) for supported filenames, local version inference, and the build requirement for remote execution.
+        Requirements can be a list of strings or a path to an existing file named `requirements.txt`, `setup.py`, `pyproject.toml`, `conda.yml` or `conda.yaml`. The SDK parses and normalizes them when the function is saved. `requirements.txt` and `setup.py` are parsed as pip requirements, `pyproject.toml` reads `project.dependencies`, and Conda files read pip dependencies from `dependencies.pip`. If a package is specified without a version, the SDK looks for it in the active local virtual environment, adds the installed version when available, and logs a warning. See [Requirements and automatic builds](../overview.md#requirements-and-automatic-builds) for details and the build requirement for remote execution.
 
         ```python
         requirements = ["numpy", "pandas>1,<3", "scikit-learn==1.2.0"]
@@ -92,7 +92,20 @@ The job action supports Python handlers that run to completion.
 
 ### Function methods
 
-The Python Function does not add runtime-specific methods.
+??? example "build"
+
+    Build the Python function image.
+
+    ::: digitalhub_runtime_python.entities.function._base.entity.FunctionBaseFunction.build
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
 
 ## Task
 
@@ -140,7 +153,7 @@ The Python job Task does not add runtime-specific methods.
         | Name | Type | Description |
         | --- | --- | --- |
         | local_execution | bool | Execute the run locally instead of remotely. |
-        | auto_build | bool | Build the function automatically when `spec.image` is `None`. Defaults to `True`. If requirements are present, an existing image is not rebuilt automatically. |
+        | auto_build | bool | Build the function automatically when `spec.image` is `None`. Defaults to `False`. If requirements are present, an existing image is not rebuilt automatically. |
         | inputs | dict | Mapping of function argument names to entity keys. |
         | parameters | dict | Extra parameters passed to the function. |
         | init_parameters | dict | Parameters supplied to the init function. |
@@ -156,8 +169,6 @@ The Python job Task does not add runtime-specific methods.
         ```
 
 ### Run methods
-
-Once the run is created, you can access its attributes and methods through the `run` object.
 
 ??? example "inputs"
 
