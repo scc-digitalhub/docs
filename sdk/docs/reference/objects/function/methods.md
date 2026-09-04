@@ -8,8 +8,6 @@ Crud methods are used to interact with the entity object in the backend or local
 
 ??? example "save"
 
-    Save or update the function in the backend.
-
     ::: digitalhub.entities.function._base.entity.Function.save
         options:
             heading_level: 6
@@ -23,8 +21,6 @@ Crud methods are used to interact with the entity object in the backend or local
 
 ??? example "export"
 
-    Export the function locally as a YAML file.
-
     ::: digitalhub.entities.function._base.entity.Function.export
         options:
             heading_level: 6
@@ -37,8 +33,6 @@ Crud methods are used to interact with the entity object in the backend or local
             show_root_toc_entry: true
 
 ??? example "refresh"
-
-    Refresh the function from the backend.
 
     ::: digitalhub.entities.function._base.entity.Function.refresh
         options:
@@ -60,8 +54,6 @@ runtime-specific options.
 
 ??? example "run"
 
-    Execute the function.
-
     ::: digitalhub.entities.function._base.entity.Function.run
         options:
             heading_level: 6
@@ -79,8 +71,6 @@ The function object exposes the following methods to manage tasks.
 
 ??? example "new_task"
 
-    Create a task for an action.
-
     ::: digitalhub.entities.function._base.entity.Function.new_task
         options:
             heading_level: 6
@@ -93,8 +83,6 @@ The function object exposes the following methods to manage tasks.
             show_root_toc_entry: true
 
 ??? example "get_task"
-
-    Get the task for an action.
 
     ::: digitalhub.entities.function._base.entity.Function.get_task
         options:
@@ -109,8 +97,6 @@ The function object exposes the following methods to manage tasks.
 
 ??? example "list_task"
 
-    List the tasks related to the function.
-
     ::: digitalhub.entities.function._base.entity.Function.list_task
         options:
             heading_level: 6
@@ -123,8 +109,6 @@ The function object exposes the following methods to manage tasks.
             show_root_toc_entry: true
 
 ??? example "import_tasks"
-
-    Import serialized tasks and associate matching tasks with the function.
 
     ::: digitalhub.entities.function._base.entity.Function.import_tasks
         options:
@@ -139,8 +123,6 @@ The function object exposes the following methods to manage tasks.
 
 ??? example "update_task"
 
-    Update the task for an action.
-
     ::: digitalhub.entities.function._base.entity.Function.update_task
         options:
             heading_level: 6
@@ -154,8 +136,6 @@ The function object exposes the following methods to manage tasks.
 
 ??? example "set_task"
 
-    Create or replace the task for an action.
-
     ::: digitalhub.entities.function._base.entity.Function.set_task
         options:
             heading_level: 6
@@ -168,8 +148,6 @@ The function object exposes the following methods to manage tasks.
             show_root_toc_entry: true
 
 ??? example "delete_task"
-
-    Delete the task for an action.
 
     ::: digitalhub.entities.function._base.entity.Function.delete_task
         options:
@@ -188,8 +166,6 @@ The function object exposes the following methods to manage triggers.
 
 ??? example "trigger"
 
-    Create a trigger for the function.
-
     ::: digitalhub.entities.function._base.entity.Function.trigger
         options:
             heading_level: 6
@@ -203,8 +179,6 @@ The function object exposes the following methods to manage triggers.
 
 ??? example "get_trigger"
 
-    Get a trigger by identifier.
-
     ::: digitalhub.entities.function._base.entity.Function.get_trigger
         options:
             heading_level: 6
@@ -217,8 +191,6 @@ The function object exposes the following methods to manage triggers.
             show_root_toc_entry: true
 
 ??? example "list_triggers"
-
-    List the triggers related to the function.
 
     ::: digitalhub.entities.function._base.entity.Function.list_triggers
         options:

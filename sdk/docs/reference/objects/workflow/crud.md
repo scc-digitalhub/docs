@@ -9,15 +9,13 @@ The syntax is the same for all CRUD methods. When using a `Project` object, omit
 
 ??? example "new_workflow"
 
-    Create and save a workflow.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -43,15 +41,13 @@ Use the read methods to retrieve workflows from the backend or load them from a 
 
 ??? example "get_workflow"
 
-    Get one workflow by name and project. Omitting `entity_id` returns the latest version.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -70,15 +66,13 @@ Use the read methods to retrieve workflows from the backend or load them from a 
 
 ??? example "get_workflow_versions"
 
-    Get all versions of a workflow by name and project.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -97,15 +91,13 @@ Use the read methods to retrieve workflows from the backend or load them from a 
 
 ??? example "list_workflows"
 
-    List the latest workflows in a project.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -121,15 +113,13 @@ Use the read methods to retrieve workflows from the backend or load them from a 
 
 ??? example "import_workflow"
 
-    Import a workflow from a local YAML descriptor or a storage key.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -149,15 +139,13 @@ Update a workflow after changing its mutable metadata.
 
 ??? example "update_workflow"
 
-    Update an existing workflow. Its specification is immutable.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -182,15 +170,13 @@ Delete one workflow version or all versions of a workflow.
 
 ??? example "delete_workflow"
 
-    Set `delete_all_versions=True` to delete all versions by entity name.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:

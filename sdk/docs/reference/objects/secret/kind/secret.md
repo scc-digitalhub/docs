@@ -19,8 +19,6 @@ The `secret` kind exposes the standard entity methods and methods for managing s
 
 ??? example "save"
 
-    Save or update the secret in the backend.
-
     ::: digitalhub.entities.secret._base.entity.Secret.save
         options:
             heading_level: 6
@@ -34,8 +32,6 @@ The `secret` kind exposes the standard entity methods and methods for managing s
 
 ??? example "export"
 
-    Export the secret locally as a YAML file.
-
     ::: digitalhub.entities.secret._base.entity.Secret.export
         options:
             heading_level: 6
@@ -48,8 +44,6 @@ The `secret` kind exposes the standard entity methods and methods for managing s
             show_root_toc_entry: true
 
 ??? example "refresh"
-
-    Refresh the secret from the backend.
 
     ::: digitalhub.entities.secret._base.entity.Secret.refresh
         options:

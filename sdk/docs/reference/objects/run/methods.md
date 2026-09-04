@@ -8,8 +8,6 @@ Crud methods are used to interact with the entity object in the backend or local
 
 ??? example "save"
 
-    Save or update the run in the backend.
-
     ::: digitalhub.entities.run._base.entity.Run.save
         options:
             heading_level: 6
@@ -23,8 +21,6 @@ Crud methods are used to interact with the entity object in the backend or local
 
 ??? example "export"
 
-    Export the run locally as a YAML file.
-
     ::: digitalhub.entities.run._base.entity.Run.export
         options:
             heading_level: 6
@@ -37,8 +33,6 @@ Crud methods are used to interact with the entity object in the backend or local
             show_root_toc_entry: true
 
 ??? example "refresh"
-
-    Refresh the run from the backend.
 
     ::: digitalhub.entities.run._base.entity.Run.refresh
         options:
@@ -57,8 +51,6 @@ There are several generic run methods on the `Run` object.
 
 ??? example "run"
 
-    Start the run.
-
     ::: digitalhub.entities.run._base.entity.Run.run
         options:
             heading_level: 6
@@ -71,8 +63,6 @@ There are several generic run methods on the `Run` object.
             show_root_toc_entry: true
 
 ??? example "wait"
-
-    Wait for the run to finish.
 
     ::: digitalhub.entities.run._base.entity.Run.wait
         options:
@@ -87,8 +77,6 @@ There are several generic run methods on the `Run` object.
 
 ??? example "stop"
 
-    Stop the run.
-
     ::: digitalhub.entities.run._base.entity.Run.stop
         options:
             heading_level: 6
@@ -101,8 +89,6 @@ There are several generic run methods on the `Run` object.
             show_root_toc_entry: true
 
 ??? example "resume"
-
-    Resume the run.
 
     ::: digitalhub.entities.run._base.entity.Run.resume
         options:
@@ -117,8 +103,6 @@ There are several generic run methods on the `Run` object.
 
 ??? example "logs"
 
-    Get the logs for the run.
-
     ::: digitalhub.entities.run._base.entity.Run.logs
         options:
             heading_level: 6
@@ -132,8 +116,6 @@ There are several generic run methods on the `Run` object.
 
 ??? example "log_metric"
 
-    Log a metric in the run.
-
     ::: digitalhub.entities.run._base.entity.Run.log_metric
         options:
             heading_level: 6
@@ -146,8 +128,6 @@ There are several generic run methods on the `Run` object.
             show_root_toc_entry: true
 
 ??? example "log_metrics"
-
-    Log multiple metrics in the run.
 
     ::: digitalhub.entities.run._base.entity.Run.log_metrics
         options:

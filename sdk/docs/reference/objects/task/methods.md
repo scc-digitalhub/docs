@@ -6,8 +6,6 @@ The `Task` object provides CRUD methods inherited from its entity base class and
 
 ??? example "save"
 
-    Save or update the task in the backend.
-
     ::: digitalhub.entities.task._base.entity.Task.save
         options:
             heading_level: 6
@@ -21,8 +19,6 @@ The `Task` object provides CRUD methods inherited from its entity base class and
 
 ??? example "export"
 
-    Export the task locally as a YAML file.
-
     ::: digitalhub.entities.task._base.entity.Task.export
         options:
             heading_level: 6
@@ -35,8 +31,6 @@ The `Task` object provides CRUD methods inherited from its entity base class and
             show_root_toc_entry: true
 
 ??? example "refresh"
-
-    Refresh the task from the backend.
 
     ::: digitalhub.entities.task._base.entity.Task.refresh
         options:
@@ -53,8 +47,6 @@ The `Task` object provides CRUD methods inherited from its entity base class and
 
 ??? example "run"
 
-    Start a run for the task.
-
     ::: digitalhub.entities.task._base.entity.Task.run
         options:
             heading_level: 6
@@ -67,8 +59,6 @@ The `Task` object provides CRUD methods inherited from its entity base class and
             show_root_toc_entry: true
 
 ??? example "new_run"
-
-    Create a run for the task.
 
     ::: digitalhub.entities.task._base.entity.Task.new_run
         options:
@@ -83,8 +73,6 @@ The `Task` object provides CRUD methods inherited from its entity base class and
 
 ??? example "get_run"
 
-    Get the run associated with the task.
-
     ::: digitalhub.entities.task._base.entity.Task.get_run
         options:
             heading_level: 6
@@ -97,8 +85,6 @@ The `Task` object provides CRUD methods inherited from its entity base class and
             show_root_toc_entry: true
 
 ??? example "delete_run"
-
-    Delete the run associated with the task.
 
     ::: digitalhub.entities.task._base.entity.Task.delete_run
         options:

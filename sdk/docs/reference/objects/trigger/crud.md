@@ -8,15 +8,13 @@ The CRUD methods create, read, update and delete triggers. The syntax is the sam
 
 ??? example "new_trigger"
 
-    Create and save a trigger.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -61,15 +59,13 @@ Use the read methods to retrieve triggers from the backend or load them from a Y
 
 ??? example "get_trigger"
 
-    Get one trigger by name and project. Omitting `entity_id` returns the latest version.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -88,15 +84,13 @@ Use the read methods to retrieve triggers from the backend or load them from a Y
 
 ??? example "list_triggers"
 
-    List the latest triggers in a project.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -112,15 +106,13 @@ Use the read methods to retrieve triggers from the backend or load them from a Y
 
 ??? example "import_trigger"
 
-    Import a trigger from a local YAML descriptor or a storage key.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -140,15 +132,13 @@ Update a trigger after changing its mutable metadata.
 
 ??? example "update_trigger"
 
-    Update an existing trigger. Its specification is immutable.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -173,15 +163,13 @@ Delete one trigger version or all versions of a trigger.
 
 ??? example "delete_trigger"
 
-    Set `delete_all_versions=True` to delete all versions by entity name.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:

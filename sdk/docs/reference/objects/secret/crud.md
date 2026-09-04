@@ -9,15 +9,13 @@ The syntax is the same for all CRUD methods. When using a `Project` object, omit
 
 ??? example "new_secret"
 
-    Create and save a secret.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -41,15 +39,13 @@ Use the read methods to retrieve secrets from the backend or load them from a YA
 
 ??? example "get_secret"
 
-    Get one secret by name and project. Omitting `entity_id` returns the latest version.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -68,15 +64,13 @@ Use the read methods to retrieve secrets from the backend or load them from a YA
 
 ??? example "list_secrets"
 
-    List the latest secrets in a project.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -92,15 +86,13 @@ Use the read methods to retrieve secrets from the backend or load them from a YA
 
 ??? example "import_secret"
 
-    Import a secret from a local YAML descriptor or a storage key.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -120,15 +112,13 @@ Update a secret after changing its mutable metadata.
 
 ??? example "update_secret"
 
-    Update an existing secret entity.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -153,15 +143,13 @@ Delete one secret version or all versions of a secret.
 
 ??? example "delete_secret"
 
-    Set `delete_all_versions=True` to delete all versions by entity name.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:

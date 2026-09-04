@@ -8,15 +8,13 @@ The CRUD methods create, read, update and delete tasks. Tasks are unversioned an
 
 ??? example "new_task"
 
-    Create and save a task for an executable.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -40,15 +38,13 @@ Use the read methods to retrieve tasks from the backend or load them from a YAML
 
 ??? example "get_task"
 
-    Get a task by its storage key or ID. When using an ID, provide the project name.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -67,15 +63,13 @@ Use the read methods to retrieve tasks from the backend or load them from a YAML
 
 ??? example "list_tasks"
 
-    List tasks in a project. Use `function` or `workflow` filters to restrict the results to an executable.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -91,15 +85,13 @@ Use the read methods to retrieve tasks from the backend or load them from a YAML
 
 ??? example "import_task"
 
-    Import a task from a local YAML descriptor or a storage key.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -115,15 +107,13 @@ Use the read methods to retrieve tasks from the backend or load them from a YAML
 
 ??? example "load_task"
 
-    Load a task from a local YAML descriptor and update the existing backend object.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -143,15 +133,13 @@ Update a task after changing its mutable metadata. Its specification is immutabl
 
 ??? example "update_task"
 
-    Update an existing task.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -176,15 +164,13 @@ Delete a task from the backend.
 
 ??? example "delete_task"
 
-    Delete a task by its entity ID or storage key.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:

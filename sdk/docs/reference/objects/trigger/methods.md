@@ -8,8 +8,6 @@ CRUD methods are used to interact with the entity object in the backend or local
 
 ??? example "save"
 
-    Save or update the trigger in the backend.
-
     ::: digitalhub.entities.trigger._base.entity.Trigger.save
         options:
             heading_level: 6
@@ -23,8 +21,6 @@ CRUD methods are used to interact with the entity object in the backend or local
 
 ??? example "export"
 
-    Export the trigger locally as a YAML file.
-
     ::: digitalhub.entities.trigger._base.entity.Trigger.export
         options:
             heading_level: 6
@@ -37,8 +33,6 @@ CRUD methods are used to interact with the entity object in the backend or local
             show_root_toc_entry: true
 
 ??? example "refresh"
-
-    Refresh the trigger from the backend.
 
     ::: digitalhub.entities.trigger._base.entity.Trigger.refresh
         options:
@@ -56,8 +50,6 @@ CRUD methods are used to interact with the entity object in the backend or local
 The trigger object exposes the following method:
 
 ??? example "stop"
-
-    Stop the trigger.
 
     ::: digitalhub.entities.trigger._base.entity.Trigger.stop
         options:

@@ -8,8 +8,6 @@ Crud methods are used to interact with the entity object in the backend or local
 
 ??? example "save"
 
-    Save or update the artifact in the backend.
-
     ::: digitalhub.entities.artifact._base.entity.Artifact.save
         options:
             heading_level: 6
@@ -23,8 +21,6 @@ Crud methods are used to interact with the entity object in the backend or local
 
 ??? example "export"
 
-    Export the artifact locally as a YAML file.
-
     ::: digitalhub.entities.artifact._base.entity.Artifact.export
         options:
             heading_level: 6
@@ -37,8 +33,6 @@ Crud methods are used to interact with the entity object in the backend or local
             show_root_toc_entry: true
 
 ??? example "refresh"
-
-    Refresh the artifact from the backend.
 
     ::: digitalhub.entities.artifact._base.entity.Artifact.refresh
         options:
@@ -57,8 +51,6 @@ I/O methods are used to handle objects as files.
 
 ??? example "as_file"
 
-    Download the artifact into a local temporary destination.
-
     ::: digitalhub.entities.artifact._base.entity.Artifact.as_file
         options:
             heading_level: 6
@@ -72,8 +64,6 @@ I/O methods are used to handle objects as files.
 
 ??? example "download"
 
-    Download the artifact into a specified path.
-
     ::: digitalhub.entities.artifact._base.entity.Artifact.download
         options:
             heading_level: 6
@@ -86,8 +76,6 @@ I/O methods are used to handle objects as files.
             show_root_toc_entry: true
 
 ??? example "upload"
-
-    Upload the artifact to its specification path.
 
     ::: digitalhub.entities.artifact._base.entity.Artifact.upload
         options:

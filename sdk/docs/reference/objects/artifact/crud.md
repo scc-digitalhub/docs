@@ -16,15 +16,13 @@ For specification parameters, see the documentation for the relevant [artifact k
 
 ??? example "new_artifact"
 
-    This function creates a new entity and saves it into the backend.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -45,15 +43,13 @@ For specification parameters, see the documentation for the relevant [artifact k
 
 ??? example "log_artifact"
 
-    This function creates a new entity in the backend and also uploads a local file into an artifact store (for example, *S3*).
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -73,15 +69,13 @@ For specification parameters, see the documentation for the relevant [artifact k
 
 ??? example "log_generic_artifact"
 
-    This function creates an artifact of a custom kind from a local path and uploads it to the artifact store.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -102,15 +96,13 @@ For specification parameters, see the documentation for the relevant [artifact k
 
 ??? example "register_artifact"
 
-    Register an artifact whose source already exists in a supported store. Unlike `log_artifact()`, registration does not upload local data. The `source` value is kept as the artifact path, and `embedded=True` stores the entity reference in the project specification when supported.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -130,15 +122,13 @@ For specification parameters, see the documentation for the relevant [artifact k
 
 ??? example "register_generic_artifact"
 
-    Use the generic form when the artifact kind is not one of the built-in kinds.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -163,15 +153,13 @@ Use the read methods to retrieve artifacts from the backend or load them from a 
 
 ??? example "get_artifact"
 
-    Get one artifact by name and project. Omitting `entity_id` returns the latest version.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -190,15 +178,13 @@ Use the read methods to retrieve artifacts from the backend or load them from a 
 
 ??? example "get_artifact_versions"
 
-    Get all versions of an artifact by name and project.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -217,15 +203,13 @@ Use the read methods to retrieve artifacts from the backend or load them from a 
 
 ??? example "list_artifacts"
 
-    List the latest artifacts in a project.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -241,15 +225,13 @@ Use the read methods to retrieve artifacts from the backend or load them from a 
 
 ??? example "import_artifact"
 
-    Import an artifact from a local YAML descriptor or a storage key.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -265,15 +247,13 @@ Use the read methods to retrieve artifacts from the backend or load them from a 
 
 ??? example "load_artifact"
 
-    Load an artifact from a local YAML descriptor and update the existing backend entity.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -293,15 +273,13 @@ Update an artifact after changing its mutable metadata.
 
 ??? example "update_artifact"
 
-    Update an existing artifact. The artifact specification is immutable.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -326,15 +304,13 @@ Delete one artifact version or all versions of an artifact.
 
 ??? example "delete_artifact"
 
-    Set `delete_all_versions=True` to delete all versions by entity name.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:

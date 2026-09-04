@@ -8,8 +8,6 @@ Crud methods are used to interact with the entity object in the backend or local
 
 ??? example "save"
 
-    Save or update the secret in the backend.
-
     ::: digitalhub.entities.secret._base.entity.Secret.save
         options:
             heading_level: 6
@@ -23,8 +21,6 @@ Crud methods are used to interact with the entity object in the backend or local
 
 ??? example "export"
 
-    Export the secret locally as a YAML file.
-
     ::: digitalhub.entities.secret._base.entity.Secret.export
         options:
             heading_level: 6
@@ -37,8 +33,6 @@ Crud methods are used to interact with the entity object in the backend or local
             show_root_toc_entry: true
 
 ??? example "refresh"
-
-    Refresh the secret from the backend.
 
     ::: digitalhub.entities.secret._base.entity.Secret.refresh
         options:
@@ -57,8 +51,6 @@ I/O methods are used to handle objects as files.
 
 ??? example "set_secret_value"
 
-    Set or update the secret value.
-
     ::: digitalhub.entities.secret._base.entity.Secret.set_secret_value
         options:
             heading_level: 6
@@ -71,8 +63,6 @@ I/O methods are used to handle objects as files.
             show_root_toc_entry: true
 
 ??? example "read_secret_value"
-
-    Read the secret value.
 
     ::: digitalhub.entities.secret._base.entity.Secret.read_secret_value
         options:

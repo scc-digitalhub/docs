@@ -8,8 +8,6 @@ Crud methods are used to interact with the entity object in the backend or local
 
 ??? example "save"
 
-    Save or update the model in the backend.
-
     ::: digitalhub.entities.model._base.entity.Model.save
         options:
             heading_level: 6
@@ -23,8 +21,6 @@ Crud methods are used to interact with the entity object in the backend or local
 
 ??? example "export"
 
-    Export the model locally as a YAML file.
-
     ::: digitalhub.entities.model._base.entity.Model.export
         options:
             heading_level: 6
@@ -37,8 +33,6 @@ Crud methods are used to interact with the entity object in the backend or local
             show_root_toc_entry: true
 
 ??? example "refresh"
-
-    Refresh the model from the backend.
 
     ::: digitalhub.entities.model._base.entity.Model.refresh
         options:
@@ -57,8 +51,6 @@ I/O methods are used to handle objects as files.
 
 ??? example "as_file"
 
-    Download the model into a local temporary destination.
-
     ::: digitalhub.entities.model._base.entity.Model.as_file
         options:
             heading_level: 6
@@ -72,8 +64,6 @@ I/O methods are used to handle objects as files.
 
 ??? example "download"
 
-    Download the model into a specified path.
-
     ::: digitalhub.entities.model._base.entity.Model.download
         options:
             heading_level: 6
@@ -86,8 +76,6 @@ I/O methods are used to handle objects as files.
             show_root_toc_entry: true
 
 ??? example "upload"
-
-    Upload the model to its specification path.
 
     ::: digitalhub.entities.model._base.entity.Model.upload
         options:
@@ -106,8 +94,6 @@ There are several generic model methods on the `Model` object.
 
 ??? example "log_metric"
 
-    Log a metric in the model.
-
     ::: digitalhub.entities.model._base.entity.Model.log_metric
         options:
             heading_level: 6
@@ -120,8 +106,6 @@ There are several generic model methods on the `Model` object.
             show_root_toc_entry: true
 
 ??? example "log_metrics"
-
-    Log multiple metrics in the model.
 
     ::: digitalhub.entities.model._base.entity.Model.log_metrics
         options:

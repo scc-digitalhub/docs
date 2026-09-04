@@ -16,15 +16,13 @@ For specification parameters, see the documentation for the relevant [dataitem k
 
 ??? example "new_dataitem"
 
-    This function creates a new entity and saves it into the backend.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -45,15 +43,13 @@ For specification parameters, see the documentation for the relevant [dataitem k
 
 ??? example "log_dataitem"
 
-    This function creates a dataitem and uploads a local source to a dataitem store.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -73,15 +69,13 @@ For specification parameters, see the documentation for the relevant [dataitem k
 
 ??? example "log_generic_dataitem"
 
-    This function creates a dataitem of a custom kind and uploads a local source.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -102,15 +96,13 @@ For specification parameters, see the documentation for the relevant [dataitem k
 
 ??? example "log_table"
 
-    This function logs a table dataitem from a dataframe, SQL query, or file source.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -136,15 +128,13 @@ For specification parameters, see the documentation for the relevant [dataitem k
 
 ??? example "log_croissant"
 
-    This function creates a Croissant dataitem by uploading a `metadata.json` file and its referenced local files.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -164,15 +154,13 @@ For specification parameters, see the documentation for the relevant [dataitem k
 
 ??? example "register_dataitem"
 
-    Register a dataitem whose source already exists in a supported store. The `name` can be inferred from the source.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -191,15 +179,13 @@ For specification parameters, see the documentation for the relevant [dataitem k
 
 ??? example "register_generic_dataitem"
 
-    Register an existing source with a custom dataitem kind.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -219,15 +205,13 @@ For specification parameters, see the documentation for the relevant [dataitem k
 
 ??? example "register_table"
 
-    Register an existing table source. The `name` can be inferred from the source.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -246,15 +230,13 @@ For specification parameters, see the documentation for the relevant [dataitem k
 
 ??? example "register_croissant"
 
-    Register an existing Croissant dataset. The `name` can be inferred from the source.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -277,15 +259,13 @@ Use the read methods to retrieve dataitems from the backend or load them from a 
 
 ??? example "get_dataitem"
 
-    Get one dataitem by name and project. Omitting `entity_id` returns the latest version. You can also pass a `store://` entity key as `identifier`.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -304,15 +284,13 @@ Use the read methods to retrieve dataitems from the backend or load them from a 
 
 ??? example "get_dataitem_versions"
 
-    Get all versions of a dataitem by name and project.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -331,15 +309,13 @@ Use the read methods to retrieve dataitems from the backend or load them from a 
 
 ??? example "list_dataitems"
 
-    List the latest dataitems in a project.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -355,15 +331,13 @@ Use the read methods to retrieve dataitems from the backend or load them from a 
 
 ??? example "import_dataitem"
 
-    Import a dataitem from a local YAML descriptor or a storage key.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -379,15 +353,13 @@ Use the read methods to retrieve dataitems from the backend or load them from a 
 
 ??? example "load_dataitem"
 
-    Load a dataitem from a local YAML descriptor and update the existing backend entity.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -407,15 +379,13 @@ Update a dataitem after changing its mutable metadata.
 
 ??? example "update_dataitem"
 
-    Update an existing dataitem. The dataitem specification is immutable.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -440,15 +410,13 @@ Delete one dataitem version or all versions of a dataitem.
 
 ??? example "delete_dataitem"
 
-    Set `delete_all_versions=True` to delete all versions by entity name.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:

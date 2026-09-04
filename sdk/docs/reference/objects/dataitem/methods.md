@@ -8,8 +8,6 @@ Crud methods are used to interact with the entity object in the backend or local
 
 ??? example "save"
 
-    Save or update the dataitem in the backend.
-
     ::: digitalhub.entities.dataitem._base.entity.Dataitem.save
         options:
             heading_level: 6
@@ -23,8 +21,6 @@ Crud methods are used to interact with the entity object in the backend or local
 
 ??? example "export"
 
-    Export the dataitem locally as a YAML file.
-
     ::: digitalhub.entities.dataitem._base.entity.Dataitem.export
         options:
             heading_level: 6
@@ -37,8 +33,6 @@ Crud methods are used to interact with the entity object in the backend or local
             show_root_toc_entry: true
 
 ??? example "refresh"
-
-    Refresh the dataitem from the backend.
 
     ::: digitalhub.entities.dataitem._base.entity.Dataitem.refresh
         options:
@@ -57,8 +51,6 @@ I/O methods are used to handle objects as files.
 
 ??? example "as_file"
 
-    Download the dataitem into a local temporary destination.
-
     ::: digitalhub.entities.dataitem._base.entity.Dataitem.as_file
         options:
             heading_level: 6
@@ -72,8 +64,6 @@ I/O methods are used to handle objects as files.
 
 ??? example "download"
 
-    Download the dataitem into a specified path.
-
     ::: digitalhub.entities.dataitem._base.entity.Dataitem.download
         options:
             heading_level: 6
@@ -86,8 +76,6 @@ I/O methods are used to handle objects as files.
             show_root_toc_entry: true
 
 ??? example "upload"
-
-    Upload the dataitem to its specification path.
 
     ::: digitalhub.entities.dataitem._base.entity.Dataitem.upload
         options:

@@ -8,15 +8,13 @@ The CRUD methods create, read, update and delete runs. The syntax is the same fo
 
 ??? example "new_run"
 
-    Create and save a run.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -40,15 +38,13 @@ Use the read methods to retrieve runs from the backend or load them from a YAML 
 
 ??? example "get_run"
 
-    Get one run by its entity ID and project, or pass a `store://` entity key as `identifier`.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -67,15 +63,13 @@ Use the read methods to retrieve runs from the backend or load them from a YAML 
 
 ??? example "list_runs"
 
-    List the latest runs in a project.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -91,15 +85,13 @@ Use the read methods to retrieve runs from the backend or load them from a YAML 
 
 ??? example "import_run"
 
-    Import a run from a local YAML descriptor or a storage key.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -119,15 +111,13 @@ Update a run after changing its mutable metadata.
 
 ??? example "update_run"
 
-    Update an existing run.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -152,15 +142,13 @@ Delete a run from the backend.
 
 ??? example "delete_run"
 
-    Delete a run by its entity ID or storage key.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:

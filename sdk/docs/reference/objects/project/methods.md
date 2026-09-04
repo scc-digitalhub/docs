@@ -30,8 +30,6 @@ Use these methods to persist or synchronize a `Project` object.
 
 ??? example "save"
 
-    Save or update the project in the backend.
-
     ::: digitalhub.entities.project._base.entity.Project.save
         options:
             heading_level: 6
@@ -45,8 +43,6 @@ Use these methods to persist or synchronize a `Project` object.
 
 ??? example "export"
 
-    Export the project locally as a YAML file.
-
     ::: digitalhub.entities.project._base.entity.Project.export
         options:
             heading_level: 6
@@ -59,8 +55,6 @@ Use these methods to persist or synchronize a `Project` object.
             show_root_toc_entry: true
 
 ??? example "refresh"
-
-    Refresh the project from the backend.
 
     ::: digitalhub.entities.project._base.entity.Project.refresh
         options:
@@ -83,8 +77,6 @@ Use these methods to execute workflows, search project entities, and manage acce
 
 ??? example "share"
 
-    Share the project with a user.
-
     ::: digitalhub.entities.project._base.entity.Project.share
         options:
             heading_level: 6
@@ -97,8 +89,6 @@ Use these methods to execute workflows, search project entities, and manage acce
             show_root_toc_entry: true
 
 ??? example "unshare"
-
-    Remove project access for a user.
 
     ::: digitalhub.entities.project._base.entity.Project.unshare
         options:
@@ -113,8 +103,6 @@ Use these methods to execute workflows, search project entities, and manage acce
 
 ??? example "search_entity"
 
-    Search entities related to the project.
-
     ::: digitalhub.entities.project._base.entity.Project.search_entity
         options:
             heading_level: 6
@@ -127,8 +115,6 @@ Use these methods to execute workflows, search project entities, and manage acce
             show_root_toc_entry: true
 
 ??? example "run"
-
-    Execute a workflow from the project.
 
     ::: digitalhub.entities.project._base.entity.Project.run
         options:

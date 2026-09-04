@@ -9,15 +9,13 @@ The syntax is the same for all CRUD methods. When using a `Project` object, omit
 
 ??? example "new_containerimage"
 
-    Create and save a container image reference.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -42,15 +40,13 @@ Use the read methods to retrieve container images from the backend or load them 
 
 ??? example "get_containerimage"
 
-    Get one container image by storage key or name and project. Omitting `entity_id` returns the latest version.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -69,15 +65,13 @@ Use the read methods to retrieve container images from the backend or load them 
 
 ??? example "get_containerimage_versions"
 
-    Get all versions of a container image by name and project.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -96,15 +90,13 @@ Use the read methods to retrieve container images from the backend or load them 
 
 ??? example "list_containerimages"
 
-    List the latest container images in a project.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -120,15 +112,13 @@ Use the read methods to retrieve container images from the backend or load them 
 
 ??? example "import_containerimage"
 
-    Import a container image from a local YAML descriptor or a storage key.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -144,15 +134,13 @@ Use the read methods to retrieve container images from the backend or load them 
 
 ??? example "load_containerimage"
 
-    Load a container image from a local YAML descriptor and update the existing backend object.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -172,15 +160,13 @@ Update a container image after changing its mutable metadata.
 
 ??? example "update_containerimage"
 
-    Update an existing container image entity.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -205,15 +191,13 @@ Delete one container image version or all versions of an image.
 
 ??? example "delete_containerimage"
 
-    Set `delete_all_versions=True` to delete all versions by entity name.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:

@@ -8,15 +8,13 @@ The CRUD methods create, read, update and delete projects.
 
 ??? example "new_project"
 
-    Create and save a project.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -36,15 +34,13 @@ Use the read methods to retrieve projects from the backend or load them from a Y
 
 ??? example "get_project"
 
-    Get a project by name.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -60,15 +56,13 @@ Use the read methods to retrieve projects from the backend or load them from a Y
 
 ??? example "import_project"
 
-    Import a project from a local YAML descriptor or a storage key.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -84,15 +78,13 @@ Use the read methods to retrieve projects from the backend or load them from a Y
 
 ??? example "load_project"
 
-    Load a project from a local YAML descriptor and update the existing backend object.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -112,15 +104,13 @@ Use `get_or_create_project()` to retrieve a project or create it when it does no
 
 ??? example "get_or_create_project"
 
-    Get or create a project by name.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -140,15 +130,13 @@ Update a project after changing its mutable metadata.
 
 ??? example "update_project"
 
-    Update an existing project.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -170,15 +158,13 @@ Delete a project from the backend.
 
 ??? example "delete_project"
 
-    Delete a project by name.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:

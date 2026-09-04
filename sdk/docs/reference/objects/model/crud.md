@@ -15,15 +15,13 @@ For specification parameters, see the documentation for the relevant [model kind
 
 ??? example "new_model"
 
-    Create and save a model entity.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -44,15 +42,13 @@ For specification parameters, see the documentation for the relevant [model kind
 
 ??? example "log_model"
 
-    Create a model entity and upload a local source to the model store.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -72,15 +68,13 @@ For specification parameters, see the documentation for the relevant [model kind
 
 ??? example "log_generic_model"
 
-    Create a model of a custom kind and upload a local source.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -101,15 +95,13 @@ For specification parameters, see the documentation for the relevant [model kind
 
 ??? example "log_mlflow"
 
-    Log an MLflow model from a local MLflow directory.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -129,15 +121,13 @@ For specification parameters, see the documentation for the relevant [model kind
 
 ??? example "log_sklearn"
 
-    Log a scikit-learn model from a local file or directory.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -157,15 +147,13 @@ For specification parameters, see the documentation for the relevant [model kind
 
 ??? example "log_huggingface"
 
-    Log a Hugging Face model from a local repository or directory.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -185,15 +173,13 @@ For specification parameters, see the documentation for the relevant [model kind
 
 ??? example "log_tvm_ir"
 
-    Log a TVM Relax IR model from a local source.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -214,15 +200,13 @@ For specification parameters, see the documentation for the relevant [model kind
 
 ??? example "log_tvm_so"
 
-    Log a TVM compiled shared-object model from a local source.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -243,15 +227,13 @@ For specification parameters, see the documentation for the relevant [model kind
 
 ??? example "register_model"
 
-    Register a model whose source already exists in a supported store. The `name` can be inferred from the source.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -270,15 +252,13 @@ For specification parameters, see the documentation for the relevant [model kind
 
 ??? example "register_generic_model"
 
-    Register an existing source with a custom model kind.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -298,15 +278,13 @@ For specification parameters, see the documentation for the relevant [model kind
 
 ??? example "register_mlflow"
 
-    Register an existing MLflow model. The `name` can be inferred from the source.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -325,15 +303,13 @@ For specification parameters, see the documentation for the relevant [model kind
 
 ??? example "register_sklearn"
 
-    Register an existing scikit-learn model. The `name` can be inferred from the source.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -352,15 +328,13 @@ For specification parameters, see the documentation for the relevant [model kind
 
 ??? example "register_huggingface"
 
-    Register an existing Hugging Face model. The `name` can be inferred from the source.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -379,15 +353,13 @@ For specification parameters, see the documentation for the relevant [model kind
 
 ??? example "register_tvm_ir"
 
-    Register an existing TVM Relax IR model. The `name` can be inferred from the source.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -406,15 +378,13 @@ For specification parameters, see the documentation for the relevant [model kind
 
 ??? example "register_tvm_so"
 
-    Register an existing TVM compiled model. The `name` can be inferred from the source.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -437,15 +407,13 @@ Use the read methods to retrieve models from the backend or load them from a YAM
 
 ??? example "get_model"
 
-    Get one model by name and project. Omitting `entity_id` returns the latest version.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -464,15 +432,13 @@ Use the read methods to retrieve models from the backend or load them from a YAM
 
 ??? example "get_model_versions"
 
-    Get all versions of a model by name and project.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -491,15 +457,13 @@ Use the read methods to retrieve models from the backend or load them from a YAM
 
 ??? example "list_models"
 
-    List the latest models in a project.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -515,15 +479,13 @@ Use the read methods to retrieve models from the backend or load them from a YAM
 
 ??? example "import_model"
 
-    Import a model from a local YAML descriptor or a storage key.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -543,15 +505,13 @@ Update a model after changing its mutable metadata.
 
 ??? example "update_model"
 
-    Update an existing model. Its specification is immutable.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
@@ -576,15 +536,13 @@ Delete one model version or all versions of a model.
 
 ??? example "delete_model"
 
-    Set `delete_all_versions=True` to delete all versions by entity name.
-
     === "Function documentation"
 
         ::: digitalhub.entities
             options:
                 heading_level: 6
                 show_signature: false
-                show_docstring_description: false
+                show_docstring_description: true
                 show_symbol_type_heading: true
                 show_source: false
                 members:
