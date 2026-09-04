@@ -1,134 +1,123 @@
-.md-typeset .grid.cards > ul > li:has(> p:first-child > a.card-link) {
+.md-typeset :is(.grid.cards, .list-cards, .runtime-cards) > ul > li:has(a:is(.card-link, .list-card-link, .runtime-card-link)) {
     position: relative;
     cursor: pointer;
 }
 
-.md-typeset .grid.cards > ul > li > p:first-child > a.card-link {
+.md-typeset :is(.grid.cards, .list-cards, .runtime-cards) > ul > li a:is(.card-link, .list-card-link, .runtime-card-link) {
     position: static;
     text-decoration: none;
 }
 
-.md-typeset .grid.cards > ul > li > p:first-child > a.card-link::after {
+.md-typeset :is(.grid.cards, .list-cards, .runtime-cards) > ul > li a:is(.card-link, .list-card-link, .runtime-card-link)::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 0;
 }
 
-.md-typeset .grid.cards > ul > li > p:not(:first-child) a {
+.md-typeset :is(.grid.cards, .list-cards, .runtime-cards) > ul > li > p:not(:first-child) a {
     position: relative;
     z-index: 1;
 }
 
-.md-typeset .kind-cards > ul > li:has(a.kind-card-link) {
-    position: relative;
-    cursor: pointer;
+.md-typeset :is(.grid.cards, .list-cards, .runtime-cards) > ul > li {
+    border-radius: 0.25rem;
 }
 
-.md-typeset .kind-cards > ul > li > a.kind-card-link,
-.md-typeset .kind-cards > ul > li > p > a.kind-card-link {
-    position: static;
-    text-decoration: none;
-}
-
-.md-typeset .kind-cards > ul > li a.kind-card-link::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
-.md-typeset .kind-cards > ul {
+.md-typeset :is(.list-cards, .runtime-cards) > ul {
     display: grid;
     gap: 0.4rem;
     margin: 0;
     padding: 0;
 }
 
-.md-typeset .kind-cards > ul > li {
-    list-style: none;
+.md-typeset :is(.list-cards, .runtime-cards) > ul > li {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
     margin: 0;
-    padding: 0.45rem 0.75rem;
+    padding: 0.5rem 0.75rem;
+    list-style: none;
     border: 1px solid var(--md-default-fg-color--lightest);
     border-left: 0.2rem solid var(--md-primary-fg-color);
-    border-radius: 0.25rem;
     background-color: var(--md-default-bg-color);
+    transition: border-color 120ms ease, background-color 120ms ease;
 }
 
-.md-typeset .kind-cards > ul > li > p {
+.md-typeset :is(.list-cards, .runtime-cards) > ul > li:has(a:is(.list-card-link, .runtime-card-link)):hover {
+    border-color: var(--md-primary-fg-color--light);
+    background-color: var(--md-default-fg-color--lightest);
+}
+
+.md-typeset .list-cards > ul > li > p {
     margin: 0;
     line-height: 1.35;
 }
 
-.md-typeset .kind-card-link {
-    text-decoration: none;
+.md-typeset .runtime-cards > ul {
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.md-typeset .runtime-cards > ul > li {
+    display: grid;
+    grid-template-columns: minmax(11rem, 0.3fr) minmax(0, 1fr);
+    column-gap: 1rem;
+    align-items: start;
+    padding: 0.85rem 1rem;
+}
+
+.md-typeset .runtime-cards > ul > li:not(:has(a.runtime-card-link)) {
+    border-left-color: var(--md-default-fg-color--lighter);
+    color: var(--md-default-fg-color--light);
+}
+
+.md-typeset .runtime-cards > ul > li > p:first-child {
+    grid-column: 1;
+    margin: 0;
+    line-height: 1.25;
+}
+
+.md-typeset .runtime-cards > ul > li > p:nth-child(2) {
+    grid-column: 2;
+    margin: 0;
+    color: var(--md-default-fg-color--light);
+    font-size: 0.85rem;
+    line-height: 1.35;
+}
+
+.md-typeset .runtime-cards > ul > li > p:has(.runtime-card-label) {
+    grid-column: 2;
+    margin-top: 0.55rem;
+    margin-bottom: 0.1rem;
+}
+
+.md-typeset .runtime-card-label {
+    color: var(--md-default-fg-color);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.md-typeset .runtime-cards > ul > li > p:nth-child(4) {
+    grid-column: 2;
+    margin: 0;
+    color: var(--md-default-fg-color--light);
+    font-size: 0.82rem;
+    line-height: 1.35;
 }
 
 .md-content .md-typeset p {
     text-align: justify;
 }
 
-.md-content .md-typeset :is(pre, table, .index-cards, .kind-cards, .crud-method-grid) {
+.md-content .md-typeset :is(pre, .list-cards, .runtime-cards, .crud-method-grid) {
     text-align: left;
 }
 
-.md-content .md-typeset :is(table, .index-cards, .kind-cards, .crud-method-grid) p {
+.md-content .md-typeset :is(.list-cards, .runtime-cards, .crud-method-grid) p {
     text-align: left;
-}
-
-.md-typeset .index-cards > ul {
-    display: grid;
-    gap: 0.35rem;
-    margin: 1rem 0;
-    padding: 0;
-}
-
-.md-typeset .index-cards > ul > li:has(a.index-card-link) {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(9rem, 0.35fr) minmax(0, 1fr);
-    column-gap: 0.85rem;
-    align-items: center;
-    list-style: none;
-    min-width: 0;
-    margin: 0;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid var(--md-default-fg-color--lightest);
-    border-left: 0.2rem solid var(--md-primary-fg-color);
-    border-radius: 0.25rem;
-    background-color: var(--md-default-bg-color);
-    transition: border-color 120ms ease, background-color 120ms ease;
-}
-
-.md-typeset .index-cards > ul > li:has(a.index-card-link):hover {
-    border-color: var(--md-primary-fg-color--light);
-    background-color: var(--md-default-fg-color--lightest);
-}
-
-.md-typeset .index-cards > ul > li > p:first-child {
-    grid-column: 1;
-    margin: 0;
-    line-height: 1.25;
-}
-
-.md-typeset .index-cards > ul > li > p:first-child > a.index-card-link {
-    position: static;
-    font-size: 0.95rem;
-    text-decoration: none;
-}
-
-.md-typeset .index-cards > ul > li > p:first-child > a.index-card-link::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-}
-
-.md-typeset .index-cards > ul > li > p:not(:first-child) {
-    grid-column: 2;
-    margin: 0;
-    color: var(--md-default-fg-color--light);
-    font-size: 0.82rem;
-    line-height: 1.35;
 }
 
 .md-typeset .crud-method-grid {
@@ -142,52 +131,21 @@
     min-width: 0;
 }
 
-.md-typeset table:not([class]) {
-    width: 100%;
-    border: 1px solid var(--md-default-fg-color--lightest);
-    border-radius: 0.25rem;
-    border-spacing: 0;
-    overflow: hidden;
-}
-
-.md-typeset table:not([class]) th,
-.md-typeset table:not([class]) td {
-    padding: 0.65rem 0.8rem;
-    vertical-align: top;
-    border-bottom: 1px solid var(--md-default-fg-color--lightest);
-}
-
-.md-typeset table:not([class]) th {
-    background-color: var(--md-default-fg-color--lighter);
-    border-bottom: 2px solid var(--md-primary-fg-color);
-    font-weight: 700;
-}
-
-.md-typeset table:not([class]) tbody tr:nth-child(even) {
-    background-color: var(--md-default-fg-color--lightest);
-}
-
-.md-typeset table:not([class]) tbody tr:last-child td {
-    border-bottom: 0;
-}
-
 @media screen and (max-width: 44.984375em) {
-    .md-typeset .index-cards > ul {
-        gap: 0.35rem;
-    }
-
-    .md-typeset .index-cards > ul > li:has(a.index-card-link) {
+    .md-typeset .runtime-cards > ul > li {
         grid-template-columns: minmax(0, 1fr);
         row-gap: 0.25rem;
     }
 
-    .md-typeset .index-cards > ul > li > p:first-child,
-    .md-typeset .index-cards > ul > li > p:not(:first-child) {
+    .md-typeset .runtime-cards > ul > li > p:first-child,
+    .md-typeset .runtime-cards > ul > li > p:nth-child(2),
+    .md-typeset .runtime-cards > ul > li > p:has(.runtime-card-label),
+    .md-typeset .runtime-cards > ul > li > p:nth-child(4) {
         grid-column: 1;
     }
 
-    .md-typeset .index-cards > ul > li > p:not(:first-child) {
-        margin-top: 0.25rem;
+    .md-typeset .runtime-cards > ul > li > p:has(.runtime-card-label) {
+        margin-top: 0.4rem;
     }
 
     .md-typeset .crud-method-grid {

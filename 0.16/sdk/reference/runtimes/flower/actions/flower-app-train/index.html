@@ -55,6 +55,8 @@
     
       <link rel="stylesheet" href="../../../../../stylesheets/cards.css">
     
+      <link rel="stylesheet" href="../../../../../stylesheets/tables.css">
+    
       <link rel="stylesheet" href="../../../../../../../stylesheets/portal_selection.css">
     
       <link rel="stylesheet" href="../../../../../../../stylesheets/colors.css">
@@ -4139,7 +4141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/python/python-job/" class="md-nav__link">
+      <a href="../../../python/python/actions/python-job/" class="md-nav__link">
         
   
   
@@ -4167,7 +4169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/python/python-serve/" class="md-nav__link">
+      <a href="../../../python/python/actions/python-serve/" class="md-nav__link">
         
   
   
@@ -4195,7 +4197,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/python/python-build/" class="md-nav__link">
+      <a href="../../../python/python/actions/python-build/" class="md-nav__link">
         
   
   
@@ -4417,7 +4419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/openinference/openinference-serve/" class="md-nav__link">
+      <a href="../../../python/openinference/actions/openinference-serve/" class="md-nav__link">
         
   
   
@@ -4445,7 +4447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/openinference/openinference-build/" class="md-nav__link">
+      <a href="../../../python/openinference/actions/openinference-build/" class="md-nav__link">
         
   
   
@@ -4667,7 +4669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/guardrail/guardrail-serve/" class="md-nav__link">
+      <a href="../../../python/guardrail/actions/guardrail-serve/" class="md-nav__link">
         
   
   
@@ -4695,7 +4697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/guardrail/guardrail-build/" class="md-nav__link">
+      <a href="../../../python/guardrail/actions/guardrail-build/" class="md-nav__link">
         
   
   
@@ -6065,6 +6067,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#train-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Train reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6076,38 +6089,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-example-with-bare-minimum-parameters" class="md-nav__link">
+  <a href="#function" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick example with bare minimum parameters
+        Function
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parameters
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Parameters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Function Parameters
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Function Parameters">
+    <nav class="md-nav" aria-label="Function">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6154,32 +6144,60 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#function-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Function methods
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#task-parameters" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Task Parameters
+        Task
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task methods
       
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#run-parameters" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Run Parameters
+        Run
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Run Parameters">
+    <nav class="md-nav" aria-label="Run">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -6192,28 +6210,6 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#entity-methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Entity methods
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Entity methods">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#run-methods" class="md-nav__link">
@@ -6651,20 +6647,9 @@
   
   
   
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../../../../configuration/paths/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_1" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_4_1" id="__nav_5_4_1_label" tabindex="0">
-            
   
   
   <span class="md-ellipsis">
@@ -6678,42 +6663,6 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Paths
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
       </a>
     </li>
   
@@ -6727,167 +6676,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../configuration/paths/local/" class="md-nav__link">
+      <a href="../../../../configuration/code-sources/" class="md-nav__link">
         
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Local
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/s3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    S3
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/remote/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Remote
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/hf/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hugging Face
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/sql/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQL
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_4_2" id="__nav_5_4_2_label" tabindex="0">
-            
   
   
   <span class="md-ellipsis">
@@ -6901,19 +6691,11 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Code source
+      </a>
+    </li>
   
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+              
             
               
                 
@@ -6922,14 +6704,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/overview/" class="md-nav__link">
+      <a href="../../../../configuration/credentials/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Overview
+    Credentials
   
 
     
@@ -6950,378 +6732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/local/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Local
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/http/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    HTTP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/git/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Git
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/s3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    S3
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_4_3" id="__nav_5_4_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Credentials handling
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Credentials handling
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/dhcore/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DHCore
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/s3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    S3
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/sql/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQL
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/git/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Git
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/helpers/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Helpers
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/store-clients/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Store clients
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/kubernetes/overview/" class="md-nav__link">
+      <a href="../../../../configuration/kubernetes/" class="md-nav__link">
         
   
   
@@ -7384,6 +6795,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#train-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Train reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7395,38 +6817,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-example-with-bare-minimum-parameters" class="md-nav__link">
+  <a href="#function" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick example with bare minimum parameters
+        Function
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parameters
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Parameters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Function Parameters
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Function Parameters">
+    <nav class="md-nav" aria-label="Function">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7473,32 +6872,60 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#function-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Function methods
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#task-parameters" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Task Parameters
+        Task
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task methods
       
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#run-parameters" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Run Parameters
+        Run
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Run Parameters">
+    <nav class="md-nav" aria-label="Run">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7511,28 +6938,6 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#entity-methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Entity methods
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Entity methods">
-      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#run-methods" class="md-nav__link">
@@ -7670,8 +7075,25 @@
 
 
 <h1 id="flower-app-train">Flower App Train</h1>
-<p>The <code>train</code> action executes a complete federated learning training process using a Flower application that includes both client and server components. In local execution mode, it uses <a href="https://flower.ai/docs/framework/how-to-run-simulations.html">flower's simulation</a>.</p>
+<h2 id="train-reference">Train reference</h2>
+<div class="list-cards">
+<ul>
+<li>
+<p><a class="list-card-link" href="#overview"><strong>Overview</strong></a> - Understand what the train action does.</p>
+</li>
+<li>
+<p><a class="list-card-link" href="#function"><strong>Function</strong></a> - Create a Flower application Function.</p>
+</li>
+<li>
+<p><a class="list-card-link" href="#task"><strong>Task</strong></a> - Configure the Flower training Task.</p>
+</li>
+<li>
+<p><a class="list-card-link" href="#run"><strong>Run</strong></a> - Execute Flower training.</p>
+</li>
+</ul>
+</div>
 <h2 id="overview">Overview</h2>
+<p>The <code>train</code> action executes a complete federated learning training process using a Flower application that includes both client and server components. In local execution mode, it uses <a href="https://flower.ai/docs/framework/how-to-run-simulations.html">flower's simulation</a>.</p>
 <p>The runtime uses the command <code>flwr run</code> to start the Flower application.</p>
 <p>There are different ways to create a Flower application function, depending on the source of the code:</p>
 <ol>
@@ -7682,54 +7104,13 @@
 <p><strong>From local code references</strong>: The Flower client and server code are provided directly using the <code>client_app</code> and <code>server_app</code> parameters. In this case, the <code>git_source</code> parameter <strong>MUST NOT</strong> be provided. The client and server code <strong>MUST</strong> be valid Flower implementations. The run parameters are used to create a <code>pyproject.toml</code> file that configures the Flower application.</p>
 </li>
 </ol>
-<h2 id="quick-example-with-bare-minimum-parameters">Quick example with bare minimum parameters</h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Use case referrencing Git repo source code</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">f</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"my-flower-app"</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">kind</span><span class="o">=</span><span class="s2">"flower-app"</span><span class="p">,</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">git_source</span><span class="o">=</span><span class="s2">"git+https://github.com/my-org/my-flower-app.git"</span><span class="p">,</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">)</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">run</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"train"</span><span class="p">)</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># Use case using string source code</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">client_code</span> <span class="o">=</span> <span class="s2">"""</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="s2">flower Client code here...</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="s2">app = ClientClass(...)</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="s2">"""</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">server_code</span> <span class="o">=</span> <span class="s2">"""</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="s2">flower Server code here...</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="s2">app = ServerClass(...)</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="s2">"""</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">f</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"my-flower-app"</span><span class="p">,</span>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="n">kind</span><span class="o">=</span><span class="s2">"flower-app"</span><span class="p">,</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="n">client_code</span><span class="o">=</span><span class="n">client_code</span><span class="p">,</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="n">server_code</span><span class="o">=</span><span class="n">server_code</span><span class="p">,</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="n">client_app</span><span class="o">=</span><span class="s2">"name-of-client-class-instance"</span><span class="p">,</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="n">server_app</span><span class="o">=</span><span class="s2">"name-of-server-class-instance"</span><span class="p">,</span>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="p">)</span>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="c1"># Use case with client and server in a file reference</span>
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="n">f</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"my-flower-app"</span><span class="p">,</span>
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    <span class="n">kind</span><span class="o">=</span><span class="s2">"flower-app"</span><span class="p">,</span>
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    <span class="n">client_src</span><span class="o">=</span><span class="s2">"path-to-client-file.py"</span><span class="p">,</span>
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="n">server_src</span><span class="o">=</span><span class="s2">"path-to-server-file.py"</span><span class="p">,</span>
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="n">client_app</span><span class="o">=</span><span class="s2">"name-of-client-class-instance"</span><span class="p">,</span>
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>    <span class="n">server_app</span><span class="o">=</span><span class="s2">"name-of-server-class-instance"</span><span class="p">,</span>
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="p">)</span>
-</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="n">run</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>    <span class="n">action</span><span class="o">=</span><span class="s2">"train"</span><span class="p">,</span>
-</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>    <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="o">...</span><span class="p">},</span>  <span class="c1"># Parameters used to build the pyproject.toml</span>
-</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="p">)</span>
-</span></code></pre></div>
-<h2 id="parameters">Parameters</h2>
-<h3 id="function-parameters">Function Parameters</h3>
-<p>Must be specified when creating the function.</p>
+<h2 id="function">Function</h2>
+<details class="example">
+<summary>Create a function</summary>
+<p>Define the Function using a Git repository or local Flower client and server code.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Parameters</label><label for="__tabbed_1_2">Creation example</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
@@ -7775,7 +7156,7 @@
 <td>Whether the object should be embedded in the project.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/code_src/git/">git_source</a></td>
+<td><a href="../../../../configuration/code-sources/#git-repository">git_source</a></td>
 <td>str</td>
 <td>URI pointing to the <strong>git</strong> repo source code. For this runtime there is no need to specify a handler.</td>
 </tr>
@@ -7832,14 +7213,62 @@
 <p>The <code>client_src</code> and <code>server_src</code> parameters can be specified as local paths to the Flower client and server application source code files. These paths must point to valid Python files. The files will be read and their content encoded in base64 format and included in the <code>fab_source</code> field of the function specification.</p>
 <h4 id="appcode">Appcode</h4>
 <p>The <code>client_app</code> and <code>server_app</code> parameters reference two distinct files that contains valid Flower client and server code respectively. The form they <strong>MUST</strong> take is:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">client_app</span> <span class="o">=</span> <span class="s2">"name-of-ClientClass-instance"</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">server_app</span> <span class="o">=</span> <span class="s2">"name-of-ServerClass-instance"</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">client_app</span> <span class="o">=</span> <span class="s2">"name-of-ClientClass-instance"</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">server_app</span> <span class="o">=</span> <span class="s2">"name-of-ServerClass-instance"</span>
 </span></code></pre></div>
 <p>Where <code>ClientClass</code> and <code>ServerClass</code> are the classes implementing the Flower client and server respectively.</p>
 <h4 id="requirements">Requirements</h4>
 <p><code>requirements</code> accepts a list of requirement strings or a path to a supported requirements file: <code>requirements.txt</code>, <code>setup.py</code>, <code>pyproject.toml</code>, <code>environment.yml</code>, or <code>environment.yaml</code>. The SDK parses the requirements when the function is saved. For an unversioned package found in the local environment, it adds the installed version and logs a warning; use an explicit version or constraint to avoid this inference.</p>
-<h3 id="task-parameters">Task Parameters</h3>
-<p>Can only be specified when calling <code>function.run()</code>.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">f</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"my-flower-app"</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">kind</span><span class="o">=</span><span class="s2">"flower-app"</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">git_source</span><span class="o">=</span><span class="s2">"git+https://github.com/my-org/my-flower-app.git"</span><span class="p">,</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">client_code</span> <span class="o">=</span> <span class="s2">"""</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="s2">flower Client code here...</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="s2">app = ClientClass(...)</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="s2">"""</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">server_code</span> <span class="o">=</span> <span class="s2">"""</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="s2">flower Server code here...</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="s2">app = ServerClass(...)</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="s2">"""</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="n">f</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"my-flower-app"</span><span class="p">,</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    <span class="n">kind</span><span class="o">=</span><span class="s2">"flower-app"</span><span class="p">,</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    <span class="n">client_code</span><span class="o">=</span><span class="n">client_code</span><span class="p">,</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>    <span class="n">server_code</span><span class="o">=</span><span class="n">server_code</span><span class="p">,</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    <span class="n">client_app</span><span class="o">=</span><span class="s2">"name-of-client-class-instance"</span><span class="p">,</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>    <span class="n">server_app</span><span class="o">=</span><span class="s2">"name-of-server-class-instance"</span><span class="p">,</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="p">)</span>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="n">f</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"my-flower-app"</span><span class="p">,</span>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>    <span class="n">kind</span><span class="o">=</span><span class="s2">"flower-app"</span><span class="p">,</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>    <span class="n">client_src</span><span class="o">=</span><span class="s2">"path-to-client-file.py"</span><span class="p">,</span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>    <span class="n">server_src</span><span class="o">=</span><span class="s2">"path-to-server-file.py"</span><span class="p">,</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>    <span class="n">client_app</span><span class="o">=</span><span class="s2">"name-of-client-class-instance"</span><span class="p">,</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>    <span class="n">server_app</span><span class="o">=</span><span class="s2">"name-of-server-class-instance"</span><span class="p">,</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h3 id="function-methods">Function methods</h3>
+<p>The Flower application Function does not add runtime-specific methods.</p>
+<h2 id="task">Task</h2>
+<details class="example">
+<summary>Create a task</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Parameters</label><label for="__tabbed_2_2">Creation example</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
@@ -7860,34 +7289,48 @@
 <td>Quartz cron expression.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#volumes">volumes</a></td>
+<td><a href="../../../../configuration/kubernetes/#volumes">volumes</a></td>
 <td>list[dict]</td>
 <td>List of volumes.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#resources">resources</a></td>
+<td><a href="../../../../configuration/kubernetes/#resources">resources</a></td>
 <td>dict</td>
 <td>Resource limits/requests.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#secrets-and-envs">envs</a></td>
+<td><a href="../../../../configuration/kubernetes/#secrets-and-envs">envs</a></td>
 <td>list[dict]</td>
 <td>Environment variables.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#secrets-and-envs">secrets</a></td>
+<td><a href="../../../../configuration/kubernetes/#secrets-and-envs">secrets</a></td>
 <td>list[str]</td>
 <td>List of secret names.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#profile">profile</a></td>
+<td><a href="../../../../configuration/kubernetes/#profile">profile</a></td>
 <td>str</td>
 <td>Profile template.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="run-parameters">Run Parameters</h3>
-<p>Can only be specified when calling <code>function.run()</code>.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"train"</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h3 id="task-methods">Task methods</h3>
+<p>The Flower training Task does not add runtime-specific methods.</p>
+<h2 id="run">Run</h2>
+<details class="example">
+<summary>Create a run</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Parameters</label><label for="__tabbed_3_2">Creation example</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
@@ -7974,7 +7417,18 @@ Here follws a list of the reserved parameters name used in the file:</p>
 <li>Otherwise, the parameter is added to the <code>[tool.flwr.app.config]</code> section.</li>
 <li><code>serverapp</code> and <code>clientapp</code> in the <code>[tool.flwr.app.components]</code> section are parsed from the parameters of the function.</li>
 </ul>
-<h2 id="entity-methods">Entity methods</h2>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="n">action</span><span class="o">=</span><span class="s2">"train"</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">local_execution</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="o">...</span><span class="p">},</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
 <h3 id="run-methods">Run methods</h3>
 <p><code>run.local_execution()</code> returns whether the run uses local Flower simulation mode.</p>
 

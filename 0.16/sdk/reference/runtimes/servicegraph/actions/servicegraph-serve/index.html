@@ -55,6 +55,8 @@
     
       <link rel="stylesheet" href="../../../../../stylesheets/cards.css">
     
+      <link rel="stylesheet" href="../../../../../stylesheets/tables.css">
+    
       <link rel="stylesheet" href="../../../../../../../stylesheets/portal_selection.css">
     
       <link rel="stylesheet" href="../../../../../../../stylesheets/colors.css">
@@ -4139,7 +4141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/python/python-job/" class="md-nav__link">
+      <a href="../../../python/python/actions/python-job/" class="md-nav__link">
         
   
   
@@ -4167,7 +4169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/python/python-serve/" class="md-nav__link">
+      <a href="../../../python/python/actions/python-serve/" class="md-nav__link">
         
   
   
@@ -4195,7 +4197,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/python/python-build/" class="md-nav__link">
+      <a href="../../../python/python/actions/python-build/" class="md-nav__link">
         
   
   
@@ -4417,7 +4419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/openinference/openinference-serve/" class="md-nav__link">
+      <a href="../../../python/openinference/actions/openinference-serve/" class="md-nav__link">
         
   
   
@@ -4445,7 +4447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/openinference/openinference-build/" class="md-nav__link">
+      <a href="../../../python/openinference/actions/openinference-build/" class="md-nav__link">
         
   
   
@@ -4667,7 +4669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/guardrail/guardrail-serve/" class="md-nav__link">
+      <a href="../../../python/guardrail/actions/guardrail-serve/" class="md-nav__link">
         
   
   
@@ -4695,7 +4697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/guardrail/guardrail-build/" class="md-nav__link">
+      <a href="../../../python/guardrail/actions/guardrail-build/" class="md-nav__link">
         
   
   
@@ -6371,6 +6373,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#serve-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Serve reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6382,55 +6395,78 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-example" class="md-nav__link">
+  <a href="#function" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick example
+        Function
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Function methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
+  <a href="#task" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parameters
+        Task
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Parameters">
+    <nav class="md-nav" aria-label="Task">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#function-parameters" class="md-nav__link">
+  <a href="#task-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Function Parameters
+        Task methods
       
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#task-parameters" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Task Parameters
+        Run
       
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Run">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#run-parameters" class="md-nav__link">
+  <a href="#run-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Run Parameters
+        Run methods
       
     </span>
   </a>
@@ -6556,20 +6592,9 @@
   
   
   
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../../../../configuration/paths/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_1" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_4_1" id="__nav_5_4_1_label" tabindex="0">
-            
   
   
   <span class="md-ellipsis">
@@ -6583,42 +6608,6 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Paths
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
       </a>
     </li>
   
@@ -6632,167 +6621,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../configuration/paths/local/" class="md-nav__link">
+      <a href="../../../../configuration/code-sources/" class="md-nav__link">
         
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Local
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/s3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    S3
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/remote/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Remote
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/hf/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hugging Face
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/sql/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQL
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_4_2" id="__nav_5_4_2_label" tabindex="0">
-            
   
   
   <span class="md-ellipsis">
@@ -6806,19 +6636,11 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Code source
+      </a>
+    </li>
   
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+              
             
               
                 
@@ -6827,14 +6649,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/overview/" class="md-nav__link">
+      <a href="../../../../configuration/credentials/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Overview
+    Credentials
   
 
     
@@ -6855,378 +6677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/local/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Local
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/http/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    HTTP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/git/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Git
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/s3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    S3
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_4_3" id="__nav_5_4_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Credentials handling
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Credentials handling
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/dhcore/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DHCore
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/s3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    S3
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/sql/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQL
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/git/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Git
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/helpers/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Helpers
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/store-clients/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Store clients
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/kubernetes/overview/" class="md-nav__link">
+      <a href="../../../../configuration/kubernetes/" class="md-nav__link">
         
   
   
@@ -7289,6 +6740,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#serve-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Serve reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7300,55 +6762,78 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-example" class="md-nav__link">
+  <a href="#function" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick example
+        Function
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Function methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
+  <a href="#task" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parameters
+        Task
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Parameters">
+    <nav class="md-nav" aria-label="Task">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#function-parameters" class="md-nav__link">
+  <a href="#task-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Function Parameters
+        Task methods
       
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#task-parameters" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Task Parameters
+        Run
       
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Run">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#run-parameters" class="md-nav__link">
+  <a href="#run-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Run Parameters
+        Run methods
       
     </span>
   </a>
@@ -7480,24 +6965,32 @@
 
 
 <h1 id="servicegraph-serve">ServiceGraph Serve</h1>
-<p>The <code>serve</code> action deploys a pipeline as a service on Kubernetes. A <code>Task</code> is created by calling <code>run()</code> on the Function; task parameters are passed through that call.</p>
+<h2 id="serve-reference">Serve reference</h2>
+<div class="list-cards">
+<ul>
+<li>
+<p><a class="list-card-link" href="#overview"><strong>Overview</strong></a> - Understand what the serve action does.</p>
+</li>
+<li>
+<p><a class="list-card-link" href="#function"><strong>Function</strong></a> - Create a ServiceGraph Function.</p>
+</li>
+<li>
+<p><a class="list-card-link" href="#task"><strong>Task</strong></a> - Configure the ServiceGraph serve Task.</p>
+</li>
+<li>
+<p><a class="list-card-link" href="#run"><strong>Run</strong></a> - Deploy the ServiceGraph pipeline.</p>
+</li>
+</ul>
+</div>
 <h2 id="overview">Overview</h2>
-<h2 id="quick-example">Quick example</h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"my-servicegraph-service"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">kind</span><span class="o">=</span><span class="s2">"servicegraph"</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">code_src</span><span class="o">=</span><span class="s2">"src/flow.yaml"</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">"input.url"</span><span class="p">:</span> <span class="s2">"http://videosource:1984"</span><span class="p">},</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">service_ports</span><span class="o">=</span><span class="p">[{</span><span class="s2">"port"</span><span class="p">:</span> <span class="mi">7777</span><span class="p">,</span> <span class="s2">"target_port"</span><span class="p">:</span> <span class="mi">7777</span><span class="p">}]</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">)</span>
-</span></code></pre></div>
-<h2 id="parameters">Parameters</h2>
-<h3 id="function-parameters">Function Parameters</h3>
-<p>Must be specified when creating the function.</p>
+<p>The <code>serve</code> action deploys a pipeline as a service on Kubernetes. A <code>Task</code> is created by calling <code>run()</code> on the Function; task parameters are passed through that call.</p>
+<h2 id="function">Function</h2>
+<details class="example">
+<summary>Create a function</summary>
+<p>Define the Function with a ServiceGraph pipeline definition.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Parameters</label><label for="__tabbed_1_2">Creation example</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
@@ -7543,12 +7036,12 @@
 <td>Whether the object should be embedded in the project.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/code_src/overview/#code-source-uri">code_src</a></td>
+<td><a href="../../../../configuration/code-sources/#code-source-uri">code_src</a></td>
 <td>str</td>
 <td>URI pointing to the YAML of the pipeline.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/code_src/overview/#plain-text-source">code</a></td>
+<td><a href="../../../../configuration/code-sources/#plain-text-source">code</a></td>
 <td>str</td>
 <td>Pipeline code YAML provided as plain text.</td>
 </tr>
@@ -7564,9 +7057,27 @@
 </tr>
 </tbody>
 </table>
-<p>The pipeline code should be defined following the specification defined in <a href="https://github.com/scc-digitalhub/digitalhub-servicegraph">ServiceGraph</a> project.</p>
-<h3 id="task-parameters">Task Parameters</h3>
-<p>Can only be specified when calling <code>function.run()</code>.</p>
+<p>The pipeline code should be defined following the specification defined in the <a href="https://github.com/scc-digitalhub/digitalhub-servicegraph">ServiceGraph</a> project.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"my-servicegraph-service"</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">kind</span><span class="o">=</span><span class="s2">"servicegraph"</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">code_src</span><span class="o">=</span><span class="s2">"src/flow.yaml"</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h3 id="function-methods">Function methods</h3>
+<p>The ServiceGraph Function does not add runtime-specific methods.</p>
+<h2 id="task">Task</h2>
+<details class="example">
+<summary>Create a task</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Parameters</label><label for="__tabbed_2_2">Creation example</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
@@ -7587,7 +7098,7 @@
 <td>List of service ports.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#service-port-and-type">service_type</a></td>
+<td><a href="../../../../configuration/kubernetes/#service-port-and-type">service_type</a></td>
 <td>str</td>
 <td>Service type.</td>
 </tr>
@@ -7597,39 +7108,56 @@
 <td>Service name.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#replicas">replicas</a></td>
+<td><a href="../../../../configuration/kubernetes/#replicas">replicas</a></td>
 <td>int</td>
 <td>Number of replicas.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#volumes">volumes</a></td>
+<td><a href="../../../../configuration/kubernetes/#volumes">volumes</a></td>
 <td>list[dict]</td>
 <td>List of volumes.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#resources">resources</a></td>
+<td><a href="../../../../configuration/kubernetes/#resources">resources</a></td>
 <td>dict</td>
 <td>Resource limits/requests.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#secrets-and-envs">envs</a></td>
+<td><a href="../../../../configuration/kubernetes/#secrets-and-envs">envs</a></td>
 <td>list[dict]</td>
 <td>Environment variables.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#secrets-and-envs">secrets</a></td>
+<td><a href="../../../../configuration/kubernetes/#secrets-and-envs">secrets</a></td>
 <td>list[str]</td>
 <td>List of secret names.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#profile">profile</a></td>
+<td><a href="../../../../configuration/kubernetes/#profile">profile</a></td>
 <td>str</td>
 <td>Profile template.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="run-parameters">Run Parameters</h3>
-<p>Can only be specified when calling <code>function.run()</code>.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">service_ports</span><span class="o">=</span><span class="p">[{</span><span class="s2">"port"</span><span class="p">:</span> <span class="mi">7777</span><span class="p">,</span> <span class="s2">"target_port"</span><span class="p">:</span> <span class="mi">7777</span><span class="p">}]</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h3 id="task-methods">Task methods</h3>
+<p>The ServiceGraph serve Task does not add runtime-specific methods.</p>
+<h2 id="run">Run</h2>
+<details class="example">
+<summary>Create a run</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Parameters</label><label for="__tabbed_3_2">Creation example</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
@@ -7646,6 +7174,20 @@
 </tr>
 </tbody>
 </table>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">"input.url"</span><span class="p">:</span> <span class="s2">"http://videosource:1984"</span><span class="p">},</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">service_ports</span><span class="o">=</span><span class="p">[{</span><span class="s2">"port"</span><span class="p">:</span> <span class="mi">7777</span><span class="p">,</span> <span class="s2">"target_port"</span><span class="p">:</span> <span class="mi">7777</span><span class="p">}]</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h3 id="run-methods">Run methods</h3>
+<p>The ServiceGraph serve Run does not add runtime-specific methods.</p>
 
 
 

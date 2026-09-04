@@ -55,6 +55,8 @@
     
       <link rel="stylesheet" href="../../../../../stylesheets/cards.css">
     
+      <link rel="stylesheet" href="../../../../../stylesheets/tables.css">
+    
       <link rel="stylesheet" href="../../../../../../../stylesheets/portal_selection.css">
     
       <link rel="stylesheet" href="../../../../../../../stylesheets/colors.css">
@@ -4139,7 +4141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/python/python-job/" class="md-nav__link">
+      <a href="../../../python/python/actions/python-job/" class="md-nav__link">
         
   
   
@@ -4167,7 +4169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/python/python-serve/" class="md-nav__link">
+      <a href="../../../python/python/actions/python-serve/" class="md-nav__link">
         
   
   
@@ -4195,7 +4197,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/python/python-build/" class="md-nav__link">
+      <a href="../../../python/python/actions/python-build/" class="md-nav__link">
         
   
   
@@ -4417,7 +4419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/openinference/openinference-serve/" class="md-nav__link">
+      <a href="../../../python/openinference/actions/openinference-serve/" class="md-nav__link">
         
   
   
@@ -4445,7 +4447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/openinference/openinference-build/" class="md-nav__link">
+      <a href="../../../python/openinference/actions/openinference-build/" class="md-nav__link">
         
   
   
@@ -4667,7 +4669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/guardrail/guardrail-serve/" class="md-nav__link">
+      <a href="../../../python/guardrail/actions/guardrail-serve/" class="md-nav__link">
         
   
   
@@ -4695,7 +4697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/guardrail/guardrail-build/" class="md-nav__link">
+      <a href="../../../python/guardrail/actions/guardrail-build/" class="md-nav__link">
         
   
   
@@ -5453,6 +5455,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#pipeline-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5464,55 +5477,67 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-example" class="md-nav__link">
+  <a href="#function" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick example
+        Function
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Function methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Function methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#digitalhub_runtime_hera.entities.workflow.hera.entity.WorkflowHera.build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        build
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
+  <a href="#task" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parameters
+        Task
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Parameters">
+    <nav class="md-nav" aria-label="Task">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#workflow-parameters" class="md-nav__link">
+  <a href="#task-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Workflow Parameters
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#task-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Task Parameters
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Run Parameters
+        Task methods
       
     </span>
   </a>
@@ -5525,15 +5550,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#entity-methods" class="md-nav__link">
+  <a href="#run" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Entity methods
+        Run
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Entity methods">
+    <nav class="md-nav" aria-label="Run">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5544,6 +5569,34 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Run methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#digitalhub_runtime_hera.entities.run._base.entity.RunHeraRun.results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digitalhub_runtime_hera.entities.run._base.entity.RunHeraRun.result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        result
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -6584,20 +6637,9 @@
   
   
   
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../../../../configuration/paths/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_1" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_4_1" id="__nav_5_4_1_label" tabindex="0">
-            
   
   
   <span class="md-ellipsis">
@@ -6611,42 +6653,6 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Paths
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
       </a>
     </li>
   
@@ -6660,167 +6666,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../configuration/paths/local/" class="md-nav__link">
+      <a href="../../../../configuration/code-sources/" class="md-nav__link">
         
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Local
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/s3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    S3
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/remote/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Remote
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/hf/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hugging Face
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/sql/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQL
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_4_2" id="__nav_5_4_2_label" tabindex="0">
-            
   
   
   <span class="md-ellipsis">
@@ -6834,19 +6681,11 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Code source
+      </a>
+    </li>
   
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+              
             
               
                 
@@ -6855,14 +6694,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/overview/" class="md-nav__link">
+      <a href="../../../../configuration/credentials/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Overview
+    Credentials
   
 
     
@@ -6883,378 +6722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/local/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Local
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/http/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    HTTP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/git/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Git
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/s3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    S3
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_4_3" id="__nav_5_4_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Credentials handling
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Credentials handling
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/dhcore/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DHCore
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/s3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    S3
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/sql/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQL
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/git/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Git
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/helpers/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Helpers
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/store-clients/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Store clients
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/kubernetes/overview/" class="md-nav__link">
+      <a href="../../../../configuration/kubernetes/" class="md-nav__link">
         
   
   
@@ -7317,6 +6785,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#pipeline-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pipeline reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7328,55 +6807,67 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-example" class="md-nav__link">
+  <a href="#function" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick example
+        Function
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Function methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Function methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#digitalhub_runtime_hera.entities.workflow.hera.entity.WorkflowHera.build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        build
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
+  <a href="#task" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parameters
+        Task
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Parameters">
+    <nav class="md-nav" aria-label="Task">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#workflow-parameters" class="md-nav__link">
+  <a href="#task-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Workflow Parameters
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#task-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Task Parameters
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Run Parameters
+        Task methods
       
     </span>
   </a>
@@ -7389,15 +6880,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#entity-methods" class="md-nav__link">
+  <a href="#run" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Entity methods
+        Run
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Entity methods">
+    <nav class="md-nav" aria-label="Run">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7408,6 +6899,34 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Run methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#digitalhub_runtime_hera.entities.run._base.entity.RunHeraRun.results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digitalhub_runtime_hera.entities.run._base.entity.RunHeraRun.result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        result
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -7536,27 +7055,33 @@
 
 
 <h1 id="hera-pipeline">Hera Pipeline</h1>
-<p>The <code>pipeline</code> action executes a Hera workflow on the platform. A <code>Task</code> is created by calling <code>run()</code> on the Workflow; task parameters are passed through that call.</p>
+<h2 id="pipeline-reference">Pipeline reference</h2>
+<div class="list-cards">
+<ul>
+<li>
+<p><a class="list-card-link" href="#overview"><strong>Overview</strong></a> - Understand what the pipeline action does.</p>
+</li>
+<li>
+<p><a class="list-card-link" href="#function"><strong>Function</strong></a> - Create a Hera Workflow.</p>
+</li>
+<li>
+<p><a class="list-card-link" href="#task"><strong>Task</strong></a> - Configure the Hera pipeline Task.</p>
+</li>
+<li>
+<p><a class="list-card-link" href="#run"><strong>Run</strong></a> - Execute the Hera pipeline.</p>
+</li>
+</ul>
+</div>
 <h2 id="overview">Overview</h2>
+<p>The <code>pipeline</code> action executes a Hera workflow on the platform. A <code>Task</code> is created by calling <code>run()</code> on the Workflow; task parameters are passed through that call.</p>
 <p>The workflow is built automatically when <code>auto_build=True</code> and <code>workflow.spec.workflow</code> is <code>None</code>. Hera is used by the remote process that builds and runs the workflow, so it is not required in the client environment.</p>
-<h2 id="quick-example">Quick example</h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">workflow</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_workflow</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"my-workflow"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">kind</span><span class="o">=</span><span class="s2">"hera"</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">code_src</span><span class="o">=</span><span class="s2">"pipeline.py"</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">handler</span><span class="o">=</span><span class="s2">"pipeline"</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">run</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">action</span><span class="o">=</span><span class="s2">"pipeline"</span><span class="p">,</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">auto_build</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://example.com"</span><span class="p">},</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">)</span>
-</span></code></pre></div>
-<p>After an explicit <code>workflow.build()</code>, run the pipeline with <code>auto_build=False</code>.</p>
-<h2 id="parameters">Parameters</h2>
-<h3 id="workflow-parameters">Workflow Parameters</h3>
+<h2 id="function">Function</h2>
+<details class="example">
+<summary>Create a function</summary>
+<p>Define the Workflow with a Python source and handler that returns a Hera <code>Workflow</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Parameters</label><label for="__tabbed_1_2">Creation example</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p>Must be specified when creating the workflow.</p>
 <table>
 <thead>
@@ -7603,12 +7128,12 @@
 <td>Whether the object should be embedded in the project.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/code_src/overview/#code-source-uri">code_src</a></td>
+<td><a href="../../../../configuration/code-sources/#code-source-uri">code_src</a></td>
 <td>str</td>
 <td>URI pointing to the source code.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/code_src/overview/#plain-text-source">code</a></td>
+<td><a href="../../../../configuration/code-sources/#plain-text-source">code</a></td>
 <td>str</td>
 <td>Source code provided as plain text.</td>
 </tr>
@@ -7618,7 +7143,7 @@
 <td>Source code encoded as base64.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/code_src/overview/#handler">handler</a></td>
+<td><a href="../../../../configuration/code-sources/#code-source-uri">handler</a></td>
 <td>str</td>
 <td>Function entrypoint. <strong>Required.</strong> The handler function must not accept arguments and must return a Hera <code>Workflow</code>.</td>
 </tr>
@@ -7629,7 +7154,49 @@
 </tr>
 </tbody>
 </table>
-<h3 id="task-parameters">Task Parameters</h3>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">workflow</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_workflow</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"my-workflow"</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">kind</span><span class="o">=</span><span class="s2">"hera"</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">code_src</span><span class="o">=</span><span class="s2">"pipeline.py"</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">handler</span><span class="o">=</span><span class="s2">"pipeline"</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h3 id="function-methods">Function methods</h3>
+<details class="example">
+<summary>build</summary>
+<p>Build the workflow using the build action.</p>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="digitalhub_runtime_hera.entities.workflow.hera.entity.WorkflowHera.build" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">build</span></code>
+
+</h6>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Build the workflow using the build action.</p>
+
+
+    </div>
+
+</div></details>
+<h2 id="task">Task</h2>
+<details class="example">
+<summary>Create a task</summary>
+<p>A Task for the <code>pipeline</code> action is created when <code>workflow.run()</code> is called.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Parameters</label><label for="__tabbed_2_2">Creation example</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p>Can only be specified when calling <code>workflow.run()</code>.</p>
 <table>
 <thead>
@@ -7646,33 +7213,50 @@
 <td>Task action. <strong>Required. Must be <code>pipeline</code></strong></td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#volumes">volumes</a></td>
+<td><a href="../../../../configuration/kubernetes/#volumes">volumes</a></td>
 <td>list[dict]</td>
 <td>List of volumes.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#resources">resources</a></td>
+<td><a href="../../../../configuration/kubernetes/#resources">resources</a></td>
 <td>dict</td>
-<td>Resource limits/requests.</td>
+<td>Resource values with optional <code>cpu</code>, <code>mem</code>, <code>gpu</code> and <code>disk</code> keys.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#secrets-and-envs">envs</a></td>
+<td><a href="../../../../configuration/kubernetes/#secrets-and-envs">envs</a></td>
 <td>list[dict]</td>
 <td>Environment variables.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#secrets-and-envs">secrets</a></td>
+<td><a href="../../../../configuration/kubernetes/#secrets-and-envs">secrets</a></td>
 <td>list[str]</td>
 <td>List of secret names.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#profile">profile</a></td>
+<td><a href="../../../../configuration/kubernetes/#profile">profile</a></td>
 <td>str</td>
 <td>Profile template.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="run-parameters">Run Parameters</h3>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"pipeline"</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h3 id="task-methods">Task methods</h3>
+<p>The Hera pipeline Task does not add runtime-specific methods.</p>
+<h2 id="run">Run</h2>
+<details class="example">
+<summary>Create a run</summary>
+<p>Execute the Hera pipeline and return the resulting <code>Run</code> entity.</p>
+<p>After an explicit <code>workflow.build()</code>, run the pipeline with <code>auto_build=False</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Parameters</label><label for="__tabbed_3_2">Creation example</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <p>Can only be specified when calling <code>workflow.run()</code>.</p>
 <table>
 <thead>
@@ -7695,9 +7279,141 @@
 </tr>
 </tbody>
 </table>
-<h2 id="entity-methods">Entity methods</h2>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">action</span><span class="o">=</span><span class="s2">"pipeline"</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">auto_build</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">"url"</span><span class="p">:</span> <span class="s2">"https://example.com"</span><span class="p">},</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
 <h3 id="run-methods">Run methods</h3>
-<p>The run object exposes <code>results()</code> and <code>result(name)</code> for results returned by the remote pipeline run.</p>
+<details class="example">
+<summary>results</summary>
+<p>Get the results returned by the run.</p>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="digitalhub_runtime_hera.entities.run._base.entity.RunHeraRun.results" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">results</span></code>
+
+</h6>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Get results.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The results.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div></details>
+<details class="example">
+<summary>result</summary>
+<p>Get a result by name.</p>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="digitalhub_runtime_hera.entities.run._base.entity.RunHeraRun.result" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">result</span></code>
+
+</h6>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Get result by name.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>result_name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Name of the result.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Any">Any</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The result.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div></details>
 
 
 

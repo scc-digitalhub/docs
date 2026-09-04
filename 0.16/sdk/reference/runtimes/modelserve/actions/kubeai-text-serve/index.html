@@ -55,6 +55,8 @@
     
       <link rel="stylesheet" href="../../../../../stylesheets/cards.css">
     
+      <link rel="stylesheet" href="../../../../../stylesheets/tables.css">
+    
       <link rel="stylesheet" href="../../../../../../../stylesheets/portal_selection.css">
     
       <link rel="stylesheet" href="../../../../../../../stylesheets/colors.css">
@@ -4139,7 +4141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/python/python-job/" class="md-nav__link">
+      <a href="../../../python/python/actions/python-job/" class="md-nav__link">
         
   
   
@@ -4167,7 +4169,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/python/python-serve/" class="md-nav__link">
+      <a href="../../../python/python/actions/python-serve/" class="md-nav__link">
         
   
   
@@ -4195,7 +4197,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/python/python-build/" class="md-nav__link">
+      <a href="../../../python/python/actions/python-build/" class="md-nav__link">
         
   
   
@@ -4417,7 +4419,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/openinference/openinference-serve/" class="md-nav__link">
+      <a href="../../../python/openinference/actions/openinference-serve/" class="md-nav__link">
         
   
   
@@ -4445,7 +4447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/openinference/openinference-build/" class="md-nav__link">
+      <a href="../../../python/openinference/actions/openinference-build/" class="md-nav__link">
         
   
   
@@ -4667,7 +4669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/guardrail/guardrail-serve/" class="md-nav__link">
+      <a href="../../../python/guardrail/actions/guardrail-serve/" class="md-nav__link">
         
   
   
@@ -4695,7 +4697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../python/guardrail/guardrail-build/" class="md-nav__link">
+      <a href="../../../python/guardrail/actions/guardrail-build/" class="md-nav__link">
         
   
   
@@ -5759,6 +5761,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#serve-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Serve reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5770,38 +5783,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-example" class="md-nav__link">
+  <a href="#function" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick example
+        Function
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parameters
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Parameters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Function Parameters
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Function Parameters">
+    <nav class="md-nav" aria-label="Function">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5848,21 +5838,32 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#task-parameters" class="md-nav__link">
+  <a href="#function-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Task Parameters
+        Function methods
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Task Parameters">
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5876,21 +5877,32 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#run-parameters" class="md-nav__link">
+  <a href="#task-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Run Parameters
+        Task methods
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Run Parameters">
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5943,28 +5955,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#entity-methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Entity methods
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Entity methods">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#run-methods" class="md-nav__link">
     <span class="md-ellipsis">
@@ -5982,6 +5972,17 @@
     <span class="md-ellipsis">
       
         invoke
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.entity.RunKubeaiserveTextRun.list_endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        list_endpoints
       
     </span>
   </a>
@@ -6724,20 +6725,9 @@
   
   
   
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../../../../configuration/paths/" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_1" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_4_1" id="__nav_5_4_1_label" tabindex="0">
-            
   
   
   <span class="md-ellipsis">
@@ -6751,42 +6741,6 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Paths
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
       </a>
     </li>
   
@@ -6800,167 +6754,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../configuration/paths/local/" class="md-nav__link">
+      <a href="../../../../configuration/code-sources/" class="md-nav__link">
         
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Local
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/s3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    S3
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/remote/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Remote
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/hf/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hugging Face
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/paths/sql/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQL
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_4_2" id="__nav_5_4_2_label" tabindex="0">
-            
   
   
   <span class="md-ellipsis">
@@ -6974,19 +6769,11 @@
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Code source
+      </a>
+    </li>
   
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+              
             
               
                 
@@ -6995,14 +6782,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/overview/" class="md-nav__link">
+      <a href="../../../../configuration/credentials/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Overview
+    Credentials
   
 
     
@@ -7023,378 +6810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/local/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Local
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/http/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    HTTP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/git/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Git
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/code_src/s3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    S3
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_5_4_3" id="__nav_5_4_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Credentials handling
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Credentials handling
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/overview/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/dhcore/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    DHCore
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/s3/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    S3
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/sql/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    SQL
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/git/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Git
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/helpers/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Helpers
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/credentials/store-clients/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Store clients
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../configuration/kubernetes/overview/" class="md-nav__link">
+      <a href="../../../../configuration/kubernetes/" class="md-nav__link">
         
   
   
@@ -7457,6 +6873,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#serve-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Serve reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7468,38 +6895,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-example" class="md-nav__link">
+  <a href="#function" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick example
+        Function
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parameters
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Parameters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#function-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Function Parameters
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Function Parameters">
+    <nav class="md-nav" aria-label="Function">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7546,21 +6950,32 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#task-parameters" class="md-nav__link">
+  <a href="#function-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Task Parameters
+        Function methods
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Task Parameters">
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7574,21 +6989,32 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
-  <a href="#run-parameters" class="md-nav__link">
+  <a href="#task-methods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Run Parameters
+        Task methods
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Run Parameters">
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -7641,28 +7067,6 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#entity-methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Entity methods
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Entity methods">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
   <a href="#run-methods" class="md-nav__link">
     <span class="md-ellipsis">
@@ -7680,6 +7084,17 @@
     <span class="md-ellipsis">
       
         invoke
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.entity.RunKubeaiserveTextRun.list_endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        list_endpoints
       
     </span>
   </a>
@@ -7816,25 +7231,33 @@
 
 
 <h1 id="modelserve-kubeai-text-serve">ModelServe kubeai-text Serve</h1>
-<p>The <code>serve</code> action deploys text generation models via KubeAI as services on Kubernetes. A <code>Task</code> is created by calling <code>run()</code> on the Function; task parameters are passed through that call.</p>
+<h2 id="serve-reference">Serve reference</h2>
+<div class="list-cards">
+<ul>
+<li>
+<p><a class="list-card-link" href="#overview"><strong>Overview</strong></a> - Understand what the serve action does.</p>
+</li>
+<li>
+<p><a class="list-card-link" href="#function"><strong>Function</strong></a> - Create a KubeAI text Function.</p>
+</li>
+<li>
+<p><a class="list-card-link" href="#task"><strong>Task</strong></a> - Configure the KubeAI text Task.</p>
+</li>
+<li>
+<p><a class="list-card-link" href="#run"><strong>Run</strong></a> - Serve the KubeAI text model.</p>
+</li>
+</ul>
+</div>
 <h2 id="overview">Overview</h2>
+<p>The <code>serve</code> action deploys text generation models via KubeAI as services on Kubernetes. A <code>Task</code> is created by calling <code>run()</code> on the Function; task parameters are passed through that call.</p>
 <p>The kubeai-text function kind supports deploying text generation and processing models via KubeAI. It supports various features including text generation, text embedding, and can work with different engines like Ollama, VLLM, etc.</p>
-<h2 id="quick-example">Quick example</h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"my-kubeai-text-service"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">kind</span><span class="o">=</span><span class="s2">"kubeai-text"</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">url</span><span class="o">=</span><span class="s2">"hf://microsoft/DialoGPT-medium"</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="s2">"TextGeneration"</span><span class="p">],</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">engine</span><span class="o">=</span><span class="s2">"VLLM"</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">)</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">)</span>
-</span></code></pre></div>
-<h2 id="parameters">Parameters</h2>
-<h3 id="function-parameters">Function Parameters</h3>
-<p>Must be specified when creating the function.</p>
+<h2 id="function">Function</h2>
+<details class="example">
+<summary>Create a function</summary>
+<p>Define the Function with the KubeAI text model URL, features and engine.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Parameters</label><label for="__tabbed_1_2">Creation example</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <table>
 <thead>
 <tr>
@@ -7913,10 +7336,10 @@
 </table>
 <h4 id="adapters">Adapters</h4>
 <p>Adapters is a list of dictionaries with the following keys:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">adapters</span> <span class="o">=</span> <span class="p">[{</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"adapter-name"</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"adapter-url"</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}]</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">adapters</span> <span class="o">=</span> <span class="p">[{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"adapter-name"</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"adapter-url"</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}]</span>
 </span></code></pre></div>
 <h4 id="features">Features</h4>
 <p>Features is a list of strings. It accepts the following values:</p>
@@ -7935,8 +7358,28 @@
 </ul>
 <h4 id="model-url">Model URL</h4>
 <p>The SDK stores the model URL as a string and does not validate its format locally. Provide a URL supported by KubeAI, such as an <code>hf://</code> source.</p>
-<h3 id="task-parameters">Task Parameters</h3>
-<p>Can only be specified when calling <code>function.run()</code>.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">"my-kubeai-text-service"</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">kind</span><span class="o">=</span><span class="s2">"kubeai-text"</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">url</span><span class="o">=</span><span class="s2">"hf://microsoft/DialoGPT-medium"</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="s2">"TextGeneration"</span><span class="p">],</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">engine</span><span class="o">=</span><span class="s2">"VLLM"</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h3 id="function-methods">Function methods</h3>
+<p>The KubeAI text Function does not add runtime-specific methods.</p>
+<h2 id="task">Task</h2>
+<details class="example">
+<summary>Create a task</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Parameters</label><label for="__tabbed_2_2">Creation example</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <h4 id="shared-parameters">Shared Parameters</h4>
 <table>
 <thead>
@@ -7953,24 +7396,38 @@
 <td>Task action. <strong>Required. Must be <code>serve</code></strong></td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#secrets-and-envs">envs</a></td>
+<td><a href="../../../../configuration/kubernetes/#secrets-and-envs">envs</a></td>
 <td>list[dict]</td>
 <td>Environment variables.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#secrets-and-envs">secrets</a></td>
+<td><a href="../../../../configuration/kubernetes/#secrets-and-envs">secrets</a></td>
 <td>list[str]</td>
 <td>List of secret names.</td>
 </tr>
 <tr>
-<td><a href="../../../../configuration/kubernetes/overview/#profile">profile</a></td>
+<td><a href="../../../../configuration/kubernetes/#profile">profile</a></td>
 <td>str</td>
 <td>Profile template.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="run-parameters">Run Parameters</h3>
-<p>Can only be specified when calling <code>function.run()</code>.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
+<h3 id="task-methods">Task methods</h3>
+<p>The KubeAI text Task does not add runtime-specific methods.</p>
+<h2 id="run">Run</h2>
+<details class="example">
+<summary>Create a run</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Parameters</label><label for="__tabbed_3_2">Creation example</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <h4 id="run-function-kind-specific-parameters">Run Function Kind-Specific Parameters</h4>
 <h5 id="kubeai-text">KubeAI Text</h5>
 <table>
@@ -8016,35 +7473,48 @@
 </table>
 <h4 id="files">Files</h4>
 <p>Files is a list of dict with the following keys:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">files</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="p">{</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="s2">"path"</span><span class="p">:</span> <span class="s2">"file-path"</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"file-content"</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="p">}</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">]</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">files</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="p">{</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="s2">"path"</span><span class="p">:</span> <span class="s2">"file-path"</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>        <span class="s2">"content"</span><span class="p">:</span> <span class="s2">"file-content"</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="p">}</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">]</span>
 </span></code></pre></div>
 <h4 id="scaling">Scaling</h4>
 <p>Scaling is a <code>Scaling</code> object that represents the scaling parameters for the run. Its structure is as follows:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">scaling</span> <span class="o">=</span> <span class="p">{</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="s2">"replicas"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="s2">"min_replicas"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="s2">"max_replicas"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="s2">"autoscaling_disabled"</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="s2">"target_request"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="s2">"scale_down_delay_seconds"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="s2">"load_balancing"</span><span class="p">:</span> <span class="p">{</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="s2">"strategy"</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>  <span class="c1"># "LeastLoad" or "PrefixHash"</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>        <span class="s2">"prefix_hash"</span><span class="p">:</span> <span class="p">{</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>            <span class="s2">"mean_load_factor"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>            <span class="s2">"replication"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>            <span class="s2">"prefix_char_length"</span><span class="p">:</span> <span class="nb">int</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="p">}</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="p">}</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="p">}</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">scaling</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="s2">"replicas"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="s2">"min_replicas"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="s2">"max_replicas"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="s2">"autoscaling_disabled"</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="s2">"target_request"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="s2">"scale_down_delay_seconds"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="s2">"load_balancing"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="s2">"strategy"</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>  <span class="c1"># "LeastLoad" or "PrefixHash"</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        <span class="s2">"prefix_hash"</span><span class="p">:</span> <span class="p">{</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>            <span class="s2">"mean_load_factor"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>            <span class="s2">"replication"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>            <span class="s2">"prefix_char_length"</span><span class="p">:</span> <span class="nb">int</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>        <span class="p">}</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="p">}</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="p">}</span>
 </span></code></pre></div>
-<h2 id="entity-methods">Entity methods</h2>
+</div>
+<div class="tabbed-block">
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">processors</span><span class="o">=</span><span class="mi">1</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">)</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+</details>
 <h3 id="run-methods">Run methods</h3>
 <p>Once the run is created, you can access its attributes and methods through the <code>run</code> object.</p>
+<details class="example">
+<summary>invoke</summary>
+<p>Invoke the KubeAI text model serving run with input data.</p>
 
 
 <div class="doc doc-object doc-function">
@@ -8153,7 +7623,52 @@ object.</p>
 
     </div>
 
-</div>
+</div></details>
+<details class="example">
+<summary>list_endpoints</summary>
+<p>List all available endpoints for the served model.</p>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h6 id="digitalhub_runtime_modelserve.entities.run.kubeaiservetext_run.entity.RunKubeaiserveTextRun.list_endpoints" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="n">list_endpoints</span></code>
+
+</h6>
+
+
+    <div class="doc doc-contents first">
+
+        <p>List all available endpoints for the served model.</p>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of available endpoints.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div></details>
 
 
 
