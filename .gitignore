@@ -2,3 +2,4 @@
 .env
 site/
 tutorials-metadata-new.yaml
+__pycache__/
