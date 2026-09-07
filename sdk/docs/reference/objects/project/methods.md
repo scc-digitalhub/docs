@@ -2,28 +2,6 @@
 
 The `Project` object is the working context for project state, related entities, and project-level operations. Choose an area below to find the relevant methods.
 
-<div class="grid cards" markdown>
-
-- [**Manage project state**](#manage-project-state){ .card-link }
-
-    ---
-
-    Persist the project, export it locally, or refresh it from the backend.
-
-- [**Manage related entities**](#manage-related-entities){ .card-link }
-
-    ---
-
-    Create, retrieve, list, import, update, and delete entities in the project.
-
-- [**Run project operations**](#run-project-operations){ .card-link }
-
-    ---
-
-    Manage project access, search entities, and run workflows.
-
-</div>
-
 ## Manage project state
 
 Use these methods to persist or synchronize a `Project` object.

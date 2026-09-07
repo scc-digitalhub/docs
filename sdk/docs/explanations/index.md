@@ -12,20 +12,20 @@ Use these pages to build a mental model of the Digitalhub SDK and choose the rig
 
     [Explore capabilities](what-can-i-do.md)
 
-- **Choose a runtime**
+- **Choose an execution framework**
 
     ---
 
-    Compare runtimes by workload and execution mode before you start implementing.
+    Compare execution frameworks by workload and execution mode before you start implementing.
 
-    [Compare runtimes](choosing-a-runtime.md)
+    [Compare execution frameworks](choosing-a-runtime.md)
 
 - **Understand execution**
 
     ---
 
-    Learn how functions and workflows are described, built, and executed in each runtime.
+    Learn how functions and workflows are described, built, and executed in each execution framework.
 
-    [Browse runtime overviews](../reference/runtimes/python/python/overview.md)
+    [Browse execution framework overviews](../reference/runtimes/python/python/overview.md)
 
 </div>

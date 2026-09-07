@@ -10,13 +10,13 @@ The SDK gives you a small set of building blocks for describing work, running it
 
 	Create and configure a project, then use it to manage workloads and related entities.
 
-- [**Manage data and artifacts**](data-and-artifacts.md){ .card-link }
+- [**Manage data, artifacts, and models**](data-and-artifacts.md){ .card-link }
 
 	---
 
-	Register data sources and files and use them in functions and workflows.
+	Register datasets, files, and machine learning models and use them in functions and workflows.
 
-	[Dataitems](../reference/objects/dataitem/entity.md) · [Artifacts](../reference/objects/artifact/entity.md)
+	[Dataitems](../reference/objects/dataitem/entity.md) · [Artifacts](../reference/objects/artifact/entity.md) · [Models](../reference/objects/model/entity.md)
 
 - [**Create and run functions**](../reference/objects/function/entity.md){ .card-link }
 
@@ -32,11 +32,11 @@ The SDK gives you a small set of building blocks for describing work, running it
 
 	Compose multiple steps, trigger executions, and inspect workflow runs.
 
-- [**Serve models as services and applications**](choosing-a-runtime.md){ .card-link }
+- [**Choose an execution framework**](choosing-a-runtime.md){ .card-link }
 
 	---
 
-	Deploy model-serving, container, Python, or federated-learning workloads.
+	Choose how to run jobs, services, workflows, data transformations, and model inference.
 
 - [**Configure access and storage**](../reference/configuration/credentials.md){ .card-link }
 

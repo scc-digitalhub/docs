@@ -1,37 +1,37 @@
-.md-typeset :is(.grid.cards, .list-cards, .runtime-cards) > ul > li:has(a:is(.card-link, .list-card-link, .runtime-card-link)) {
+.md-typeset :is(.grid.cards, .list-cards) > ul > li:has(a:is(.card-link, .list-card-link)) {
     position: relative;
     cursor: pointer;
 }
 
-.md-typeset :is(.grid.cards, .list-cards, .runtime-cards) > ul > li a:is(.card-link, .list-card-link, .runtime-card-link) {
+.md-typeset :is(.grid.cards, .list-cards) > ul > li a:is(.card-link, .list-card-link) {
     position: static;
     text-decoration: none;
 }
 
-.md-typeset :is(.grid.cards, .list-cards, .runtime-cards) > ul > li a:is(.card-link, .list-card-link, .runtime-card-link)::after {
+.md-typeset :is(.grid.cards, .list-cards) > ul > li a:is(.card-link, .list-card-link)::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: 0;
 }
 
-.md-typeset :is(.grid.cards, .list-cards, .runtime-cards) > ul > li > p:not(:first-child) a {
+.md-typeset :is(.grid.cards, .list-cards) > ul > li > p:not(:first-child) a {
     position: relative;
     z-index: 1;
 }
 
-.md-typeset :is(.grid.cards, .list-cards, .runtime-cards) > ul > li {
+.md-typeset :is(.grid.cards, .list-cards) > ul > li {
     border-radius: 0.25rem;
 }
 
-.md-typeset :is(.list-cards, .runtime-cards) > ul {
+.md-typeset .list-cards > ul {
     display: grid;
     gap: 0.4rem;
     margin: 0;
     padding: 0;
 }
 
-.md-typeset :is(.list-cards, .runtime-cards) > ul > li {
+.md-typeset .list-cards > ul > li {
     position: relative;
     box-sizing: border-box;
     width: 100%;
@@ -45,7 +45,7 @@
     transition: border-color 120ms ease, background-color 120ms ease;
 }
 
-.md-typeset :is(.list-cards, .runtime-cards) > ul > li:has(a:is(.list-card-link, .runtime-card-link)):hover {
+.md-typeset .list-cards > ul > li:has(a.list-card-link):hover {
     border-color: var(--md-primary-fg-color--light);
     background-color: var(--md-default-fg-color--lightest);
 }
@@ -55,68 +55,99 @@
     line-height: 1.35;
 }
 
-.md-typeset .runtime-cards > ul {
-    gap: 0.5rem;
-    margin: 1rem 0;
+.md-typeset .list-cards > ul > li > h2 {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.35;
 }
 
-.md-typeset .runtime-cards > ul > li {
+.md-typeset .framework-card {
+    position: relative;
+    margin: 0 0 1.5rem;
+    padding: 0.75rem;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-left: 0.2rem solid var(--md-primary-fg-color);
+    border-radius: 0.35rem;
+    background-color: var(--md-default-bg-color);
+    cursor: pointer;
+    transition: border-color 120ms ease, background-color 120ms ease;
+}
+
+.md-typeset .framework-card:hover {
+    border-color: var(--md-primary-fg-color--light);
+    background-color: var(--md-default-fg-color--lightest);
+}
+
+.md-typeset .framework-details {
+    position: relative;
+    z-index: 1;
     display: grid;
-    grid-template-columns: minmax(11rem, 0.3fr) minmax(0, 1fr);
-    column-gap: 1rem;
-    align-items: start;
-    padding: 0.85rem 1rem;
-}
-
-.md-typeset .runtime-cards > ul > li:not(:has(a.runtime-card-link)) {
-    border-left-color: var(--md-default-fg-color--lighter);
-    color: var(--md-default-fg-color--light);
-}
-
-.md-typeset .runtime-cards > ul > li > p:first-child {
-    grid-column: 1;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 0.75rem;
     margin: 0;
-    line-height: 1.25;
+    pointer-events: none;
 }
 
-.md-typeset .runtime-cards > ul > li > p:nth-child(2) {
-    grid-column: 2;
+.md-typeset .framework-details > ul {
+    grid-column: 1 / -1;
     margin: 0;
-    color: var(--md-default-fg-color--light);
-    font-size: 0.85rem;
-    line-height: 1.35;
+    padding: 0;
+    list-style: none;
 }
 
-.md-typeset .runtime-cards > ul > li > p:has(.runtime-card-label) {
-    grid-column: 2;
-    margin-top: 0.55rem;
-    margin-bottom: 0.1rem;
+.md-typeset .framework-details > ul > li > h2 {
+    margin: 0;
 }
 
-.md-typeset .runtime-card-label {
+.md-typeset .framework-title-link {
+    position: static;
+    text-decoration: none;
+}
+
+.md-typeset .framework-title-link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.md-typeset .framework-details > div {
+    min-width: 0;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 0.25rem;
+    background-color: var(--md-default-bg-color);
+}
+
+.md-typeset .framework-details a {
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.md-typeset .framework-details > div > p:first-child {
+    margin-top: 0;
     color: var(--md-default-fg-color);
-    font-size: 0.72rem;
     font-weight: 700;
-    text-transform: uppercase;
 }
 
-.md-typeset .runtime-cards > ul > li > p:nth-child(4) {
-    grid-column: 2;
-    margin: 0;
-    color: var(--md-default-fg-color--light);
-    font-size: 0.82rem;
-    line-height: 1.35;
+.md-typeset .framework-details > div > :last-child {
+    margin-bottom: 0;
+}
+
+.md-content .md-typeset .framework-details :is(p, ul) {
+    text-align: left;
 }
 
 .md-content .md-typeset p {
     text-align: justify;
 }
 
-.md-content .md-typeset :is(pre, .list-cards, .runtime-cards, .crud-method-grid) {
+.md-content .md-typeset :is(pre, .list-cards, .crud-method-grid) {
     text-align: left;
 }
 
-.md-content .md-typeset :is(.list-cards, .runtime-cards, .crud-method-grid) p {
+.md-content .md-typeset :is(.list-cards, .crud-method-grid) p {
     text-align: left;
 }
 
@@ -132,20 +163,8 @@
 }
 
 @media screen and (max-width: 44.984375em) {
-    .md-typeset .runtime-cards > ul > li {
+    .md-typeset .framework-details {
         grid-template-columns: minmax(0, 1fr);
-        row-gap: 0.25rem;
-    }
-
-    .md-typeset .runtime-cards > ul > li > p:first-child,
-    .md-typeset .runtime-cards > ul > li > p:nth-child(2),
-    .md-typeset .runtime-cards > ul > li > p:has(.runtime-card-label),
-    .md-typeset .runtime-cards > ul > li > p:nth-child(4) {
-        grid-column: 1;
-    }
-
-    .md-typeset .runtime-cards > ul > li > p:has(.runtime-card-label) {
-        margin-top: 0.4rem;
     }
 
     .md-typeset .crud-method-grid {

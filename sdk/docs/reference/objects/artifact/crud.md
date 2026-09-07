@@ -8,11 +8,72 @@ The syntax is the same for all CRUD methods. If you want to manage artifacts fro
 
 Creation methods differ in how they handle the source:
 
-- `new_artifact()` creates and saves an entity.
-- `log_<kind>()` creates an entity and uploads the source to an artifact store.
-- `register_<kind>()` creates an entity for an existing source; `name` is optional and can be inferred from the source.
+- `log_<kind>()` creates an entity and uploads a local source to an artifact store.
+- `register_<kind>()` creates an entity for a source that already exists in a store; `name` is optional and can be inferred from the source.
+- `new_artifact()` creates and saves an entity from its specification and path without uploading a source.
 
 For specification parameters, see the documentation for the relevant [artifact kind](kind/artifact.md).
+
+### Log
+
+??? example "log_artifact"
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: true
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - log_artifact
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        artifact = dh.log_artifact(
+            project="my-project",
+            name="training-report",
+            source="./outputs/training-report.json",
+            src_path="outputs/training-report.json",
+            labels=["training", "report"],
+        )
+        ```
+
+### Register
+
+??? example "register_artifact"
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: true
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - register_artifact
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        artifact = dh.register_artifact(
+            project="my-project",
+            name="registered-training-report",
+            source="s3://my-bucket/reports/training-report.json",
+            src_path="outputs/training-report.json",
+        )
+        ```
+
+### New
 
 ??? example "new_artifact"
 
@@ -38,58 +99,6 @@ For specification parameters, see the documentation for the relevant [artifact k
             name="my-artifact",
             kind="artifact",
             path="s3://my-bucket/my-artifact",
-        )
-        ```
-
-??? example "log_artifact"
-
-    === "Function documentation"
-
-        ::: digitalhub.entities
-            options:
-                heading_level: 6
-                show_signature: false
-                show_docstring_description: true
-                show_symbol_type_heading: true
-                show_source: false
-                members:
-                    - log_artifact
-
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        artifact = dh.log_artifact(
-            project="my-project",
-            name="my-artifact",
-            source="./local-artifact",
-        )
-        ```
-
-??? example "register_artifact"
-
-    === "Function documentation"
-
-        ::: digitalhub.entities
-            options:
-                heading_level: 6
-                show_signature: false
-                show_docstring_description: true
-                show_symbol_type_heading: true
-                show_source: false
-                members:
-                    - register_artifact
-
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        artifact = dh.register_artifact(
-            project="my-project",
-            source="s3://my-bucket/my-artifact",
-            name="my-artifact",
         )
         ```
 

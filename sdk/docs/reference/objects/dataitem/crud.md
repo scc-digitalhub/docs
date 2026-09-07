@@ -8,11 +8,194 @@ The syntax is the same for all CRUD methods. If you want to manage dataitems fro
 
 Creation methods differ in how they handle the source:
 
-- `new_dataitem()` creates and saves an entity.
-- `log_<kind>()` creates an entity and uploads the source to a dataitem store.
-- `register_<kind>()` creates an entity for an existing source; `name` is optional and can be inferred from the source.
+- `log_<kind>()` creates an entity and uploads a local source to a dataitem store.
+- `register_<kind>()` creates an entity for a source that already exists in a store; `name` is optional and can be inferred from the source.
+- `new_dataitem()` creates and saves an entity from its specification and path without uploading a source.
 
 For specification parameters, see the documentation for the relevant [dataitem kind](kind/dataitem.md), [table kind](kind/table.md), or [croissant kind](kind/croissant.md).
+
+### Log
+
+??? example "log_dataitem"
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: true
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - log_dataitem
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.log_dataitem(
+            project="my-project",
+            name="raw-events",
+            source="./data/events.jsonl",
+            labels=["raw", "events"],
+        )
+        ```
+
+??? example "log_table"
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: true
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - log_table
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+        import pandas as pd
+
+        table_from_source = dh.log_table(
+            project="my-project",
+            name="sales-from-file",
+            source="./data/sales.csv",
+            file_format="csv",
+        )
+
+        table_from_data = dh.log_table(
+            project="my-project",
+            name="sales-from-dataframe",
+            data=pd.DataFrame(
+                {
+                    "customer_id": [101, 102],
+                    "amount": [12.50, 8.75],
+                }
+            ),
+        )
+        ```
+
+??? example "log_croissant"
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: true
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - log_croissant
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.log_croissant(
+            project="my-project",
+            name="catalog",
+            source="./data/croissant/metadata.json",
+            description="Product catalog described with Croissant metadata.",
+        )
+        ```
+
+### Register
+
+??? example "register_dataitem"
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: true
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - register_dataitem
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.register_dataitem(
+            project="my-project",
+            name="registered-events",
+            source="s3://my-bucket/data/events.jsonl",
+        )
+        ```
+
+??? example "register_table"
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: true
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - register_table
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.register_table(
+            project="my-project",
+            name="registered-sales",
+            source="s3://my-bucket/data/sales.parquet",
+            schema={
+                "fields": [
+                    {"name": "customer_id", "type": "integer"},
+                    {"name": "amount", "type": "float"},
+                ]
+            },
+        )
+        ```
+
+??? example "register_croissant"
+
+    === "Function documentation"
+
+        ::: digitalhub.entities
+            options:
+                heading_level: 6
+                show_signature: false
+                show_docstring_description: true
+                show_symbol_type_heading: true
+                show_source: false
+                members:
+                    - register_croissant
+
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.register_croissant(
+            project="my-project",
+            name="registered-catalog",
+            source="s3://my-bucket/data/croissant/metadata.json",
+        )
+        ```
+
+### New
 
 ??? example "new_dataitem"
 
@@ -38,140 +221,6 @@ For specification parameters, see the documentation for the relevant [dataitem k
             name="my-table",
             kind="table",
             path="s3://my-bucket/my-table.parquet",
-        )
-        ```
-
-??? example "log_dataitem"
-
-    === "Function documentation"
-
-        ::: digitalhub.entities
-            options:
-                heading_level: 6
-                show_signature: false
-                show_docstring_description: true
-                show_symbol_type_heading: true
-                show_source: false
-                members:
-                    - log_dataitem
-
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        dataitem = dh.log_dataitem(
-            project="my-project",
-            name="my-dataitem",
-            source="./local-dataitem",
-        )
-        ```
-
-??? example "log_table"
-
-    === "Function documentation"
-
-        ::: digitalhub.entities
-            options:
-                heading_level: 6
-                show_signature: false
-                show_docstring_description: true
-                show_symbol_type_heading: true
-                show_source: false
-                members:
-                    - log_table
-
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        dataitem = dh.log_table(
-            project="my-project",
-            name="my-table",
-            source="./my-table.csv",
-        )
-
-        dataitem = dh.log_table(
-            project="my-project",
-            name="my-table-2",
-            data=pandas-dataframe,
-        )
-        ```
-
-??? example "log_croissant"
-
-    === "Function documentation"
-
-        ::: digitalhub.entities
-            options:
-                heading_level: 6
-                show_signature: false
-                show_docstring_description: true
-                show_symbol_type_heading: true
-                show_source: false
-                members:
-                    - log_croissant
-
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        dataitem = dh.log_croissant(
-            project="my-project",
-            name="my-croissant",
-            source="./metadata.json",
-        )
-        ```
-
-??? example "register_table"
-
-    === "Function documentation"
-
-        ::: digitalhub.entities
-            options:
-                heading_level: 6
-                show_signature: false
-                show_docstring_description: true
-                show_symbol_type_heading: true
-                show_source: false
-                members:
-                    - register_table
-
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        dataitem = dh.register_table(
-            project="my-project",
-            source="s3://my-bucket/my-table.parquet",
-        )
-        ```
-
-??? example "register_croissant"
-
-    === "Function documentation"
-
-        ::: digitalhub.entities
-            options:
-                heading_level: 6
-                show_signature: false
-                show_docstring_description: true
-                show_symbol_type_heading: true
-                show_source: false
-                members:
-                    - register_croissant
-
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        dataitem = dh.register_croissant(
-            project="my-project",
-            source="s3://my-bucket/my-croissant/",
         )
         ```
 

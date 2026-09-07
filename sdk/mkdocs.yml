@@ -34,6 +34,7 @@ markdown_extensions:
 
 plugins:
   - search: {}
+  - macros: { render_by_default: false }
   - mkdocstrings:
       default_handler: python
       handlers:
@@ -72,7 +73,7 @@ nav:
       - Overview: explanations/index.md
       - What can I do?: explanations/what-can-i-do.md
       - Data and artifacts: explanations/data-and-artifacts.md
-      - Choosing a runtime: explanations/choosing-a-runtime.md
+      - Execution frameworks: explanations/choosing-a-runtime.md
   - Reference:
       - Overview: reference/index.md
       - Entities:
