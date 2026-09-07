@@ -12,7 +12,7 @@ Creation methods differ in how they handle the source:
 - `log_<kind>()` creates an entity and uploads the source to an artifact store.
 - `register_<kind>()` creates an entity for an existing source; `name` is optional and can be inferred from the source.
 
-For specification parameters, see the documentation for the relevant [artifact kind](kind/artifact.md). Use the generic methods only for a kind supported by DigitalHub Core but not by the SDK.
+For specification parameters, see the documentation for the relevant [artifact kind](kind/artifact.md).
 
 ??? example "new_artifact"
 
@@ -67,33 +67,6 @@ For specification parameters, see the documentation for the relevant [artifact k
         )
         ```
 
-??? example "log_generic_artifact"
-
-    === "Function documentation"
-
-        ::: digitalhub.entities
-            options:
-                heading_level: 6
-                show_signature: false
-                show_docstring_description: true
-                show_symbol_type_heading: true
-                show_source: false
-                members:
-                    - log_generic_artifact
-
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        artifact = dh.log_generic_artifact(
-            project="my-project",
-            kind="custom-artifact",
-            source="./local-artifact",
-            name="my-artifact",
-        )
-        ```
-
 ??? example "register_artifact"
 
     === "Function documentation"
@@ -115,33 +88,6 @@ For specification parameters, see the documentation for the relevant [artifact k
 
         artifact = dh.register_artifact(
             project="my-project",
-            source="s3://my-bucket/my-artifact",
-            name="my-artifact",
-        )
-        ```
-
-??? example "register_generic_artifact"
-
-    === "Function documentation"
-
-        ::: digitalhub.entities
-            options:
-                heading_level: 6
-                show_signature: false
-                show_docstring_description: true
-                show_symbol_type_heading: true
-                show_source: false
-                members:
-                    - register_generic_artifact
-
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        artifact = dh.register_generic_artifact(
-            project="my-project",
-            kind="custom-artifact",
             source="s3://my-bucket/my-artifact",
             name="my-artifact",
         )

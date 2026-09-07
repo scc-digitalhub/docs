@@ -12,7 +12,7 @@ Creation methods differ in how they handle the source:
 - `log_<kind>()` creates an entity and uploads the source to a dataitem store.
 - `register_<kind>()` creates an entity for an existing source; `name` is optional and can be inferred from the source.
 
-For specification parameters, see the documentation for the relevant [dataitem kind](kind/dataitem.md), [table kind](kind/table.md), or [croissant kind](kind/croissant.md). Use the generic methods only for a kind supported by DigitalHub Core but not by the SDK.
+For specification parameters, see the documentation for the relevant [dataitem kind](kind/dataitem.md), [table kind](kind/table.md), or [croissant kind](kind/croissant.md).
 
 ??? example "new_dataitem"
 
@@ -64,33 +64,6 @@ For specification parameters, see the documentation for the relevant [dataitem k
             project="my-project",
             name="my-dataitem",
             source="./local-dataitem",
-        )
-        ```
-
-??? example "log_generic_dataitem"
-
-    === "Function documentation"
-
-        ::: digitalhub.entities
-            options:
-                heading_level: 6
-                show_signature: false
-                show_docstring_description: true
-                show_symbol_type_heading: true
-                show_source: false
-                members:
-                    - log_generic_dataitem
-
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        dataitem = dh.log_generic_dataitem(
-            project="my-project",
-            kind="custom-dataitem",
-            source="./local-dataitem",
-            name="my-dataitem",
         )
         ```
 
@@ -149,57 +122,6 @@ For specification parameters, see the documentation for the relevant [dataitem k
             project="my-project",
             name="my-croissant",
             source="./metadata.json",
-        )
-        ```
-
-??? example "register_dataitem"
-
-    === "Function documentation"
-
-        ::: digitalhub.entities
-            options:
-                heading_level: 6
-                show_signature: false
-                show_docstring_description: true
-                show_symbol_type_heading: true
-                show_source: false
-                members:
-                    - register_dataitem
-
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        dataitem = dh.register_dataitem(
-            project="my-project",
-            source="s3://my-bucket/my-dataitem",
-        )
-        ```
-
-??? example "register_generic_dataitem"
-
-    === "Function documentation"
-
-        ::: digitalhub.entities
-            options:
-                heading_level: 6
-                show_signature: false
-                show_docstring_description: true
-                show_symbol_type_heading: true
-                show_source: false
-                members:
-                    - register_generic_dataitem
-
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        dataitem = dh.register_generic_dataitem(
-            project="my-project",
-            kind="custom-dataitem",
-            source="s3://my-bucket/my-dataitem",
         )
         ```
 

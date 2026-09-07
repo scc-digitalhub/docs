@@ -11,7 +11,7 @@ Creation methods differ in how they handle the source:
 - `log_<kind>()` creates an entity and uploads the source to a model store.
 - `register_<kind>()` creates an entity for an existing source; `name` is optional and can be inferred from the source.
 
-For specification parameters, see the documentation for the relevant [model kind](kind/model.md), [MLflow kind](kind/mlflow.md), [scikit-learn kind](kind/sklearn.md), [Hugging Face kind](kind/huggingface.md), [TVM IR kind](kind/tvm-ir.md), or [TVM SO kind](kind/tvm-so.md). Use the generic methods only for a kind supported by DigitalHub Core but not by the SDK.
+For specification parameters, see the documentation for the relevant [model kind](kind/model.md), [MLflow kind](kind/mlflow.md), [scikit-learn kind](kind/sklearn.md), [Hugging Face kind](kind/huggingface.md), [TVM IR kind](kind/tvm-ir.md), or [TVM SO kind](kind/tvm-so.md).
 
 ??? example "new_model"
 
@@ -63,33 +63,6 @@ For specification parameters, see the documentation for the relevant [model kind
             project="my-project",
             name="my-model",
             source="./local-model",
-        )
-        ```
-
-??? example "log_generic_model"
-
-    === "Function documentation"
-
-        ::: digitalhub.entities
-            options:
-                heading_level: 6
-                show_signature: false
-                show_docstring_description: true
-                show_symbol_type_heading: true
-                show_source: false
-                members:
-                    - log_generic_model
-
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        model = dh.log_generic_model(
-            project="my-project",
-            kind="custom-model",
-            source="./local-model",
-            name="my-model",
         )
         ```
 
@@ -246,32 +219,6 @@ For specification parameters, see the documentation for the relevant [model kind
 
         model = dh.register_model(
             project="my-project",
-            source="s3://my-bucket/my-model",
-        )
-        ```
-
-??? example "register_generic_model"
-
-    === "Function documentation"
-
-        ::: digitalhub.entities
-            options:
-                heading_level: 6
-                show_signature: false
-                show_docstring_description: true
-                show_symbol_type_heading: true
-                show_source: false
-                members:
-                    - register_generic_model
-
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        model = dh.register_generic_model(
-            project="my-project",
-            kind="custom-model",
             source="s3://my-bucket/my-model",
         )
         ```
