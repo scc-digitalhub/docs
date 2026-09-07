@@ -136,6 +136,29 @@
     margin-bottom: 0;
 }
 
+.md-typeset details.example {
+    --md-admonition-fg-color: var(--md-primary-fg-color);
+    --md-admonition-bg-color: var(--md-accent-fg-color--transparent);
+    border-color: var(--md-primary-fg-color);
+}
+
+.md-typeset details.example > summary {
+    background-color: var(--md-accent-fg-color--transparent);
+    color: var(--md-primary-fg-color);
+}
+
+.md-typeset details.example > summary::before {
+    background-color: var(--md-primary-fg-color);
+}
+
+.md-typeset details.example > summary::after {
+    color: var(--md-primary-fg-color);
+}
+
+.md-typeset details.example:focus-within {
+    box-shadow: 0 0 0 0.2rem var(--md-accent-fg-color--transparent);
+}
+
 .md-content .md-typeset .framework-details :is(p, ul) {
     text-align: left;
 }
