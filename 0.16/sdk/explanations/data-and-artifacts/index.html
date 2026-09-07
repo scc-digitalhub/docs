@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#data-and-artifacts" class="md-skip">
+        <a href="#data-artifacts-and-models" class="md-skip">
           Skip to content
         </a>
       
@@ -1096,7 +1096,7 @@
   <span class="md-ellipsis">
     
   
-    Choosing a runtime
+    Execution frameworks
   
 
     
@@ -6228,18 +6228,21 @@
 
 
 
-<h1 id="data-and-artifacts">Data and artifacts</h1>
-<p>Use a <a href="../../reference/objects/dataitem/entity/">Dataitem</a> when the object is a typed dataset that should be understood by data-aware components (e.g. a pandas dataframe). Use an <a href="../../reference/objects/artifact/entity/">Artifact</a> when you need to store and move a file or another binary object.</p>
+<h1 id="data-artifacts-and-models">Data, artifacts, and models</h1>
+<p>Use a <a href="../../reference/objects/dataitem/entity/">Dataitem</a> when the object is a typed dataset that should be understood by data-aware components (e.g. a pandas dataframe). Use an <a href="../../reference/objects/artifact/entity/">Artifact</a> when you need to store and move a file or another binary object.
+Use a <a href="../../reference/objects/model/entity/">Model</a> when you need to store and manage a machine learning model with model-specific metadata.</p>
 <pre class="mermaid"><code>flowchart LR
     input["Data or file"] --&gt; decision{"What are you managing?"}
     decision --&gt;|Typed dataset| dataitem["Dataitem"]
-    decision --&gt;|File or binary object| artifact["Artifact"]</code></pre>
+    decision --&gt;|File or binary object| artifact["Artifact"]
+    decision --&gt;|Machine learning model| model["Model"]</code></pre>
 <table>
 <thead>
 <tr>
 <th></th>
 <th>Dataitem</th>
 <th>Artifact</th>
+<th>Model</th>
 </tr>
 </thead>
 <tbody>
@@ -6247,21 +6250,25 @@
 <td>Represents</td>
 <td>A typed dataset</td>
 <td>A file or binary object</td>
+<td>A machine learning model</td>
 </tr>
 <tr>
 <td>Choose it when</td>
 <td>The data kind and dataset semantics matter</td>
 <td>File storage and transfer are the primary concerns</td>
+<td>Model metadata and model-specific operations matter</td>
 </tr>
 <tr>
 <td>Supported kinds</td>
 <td><code>table</code>, <code>croissant</code>, <code>dataitem</code></td>
 <td><code>artifact</code></td>
+<td><code>model</code>, <code>mlflow</code>, <code>sklearn</code>, <code>huggingface</code>, <code>tvm-ir</code>, <code>tvm-so</code></td>
 </tr>
 <tr>
 <td>Typical operations</td>
 <td>Load data with kind-specific methods, upload, download, represent as dataframe</td>
 <td>Upload, download, and access as a file</td>
+<td>Upload or register models, move model files, and log metrics</td>
 </tr>
 </tbody>
 </table>
