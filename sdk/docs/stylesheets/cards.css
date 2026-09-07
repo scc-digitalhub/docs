@@ -102,6 +102,7 @@
 .md-typeset .framework-title-link {
     position: static;
     text-decoration: none;
+    pointer-events: auto;
 }
 
 .md-typeset .framework-title-link::after {
@@ -119,7 +120,7 @@
     background-color: var(--md-default-bg-color);
 }
 
-.md-typeset .framework-details a {
+.md-typeset .framework-details > div a {
     position: relative;
     z-index: 2;
     pointer-events: auto;
