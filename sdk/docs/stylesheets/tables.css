@@ -9,7 +9,12 @@
     border: 1px solid var(--table-subtle-color);
     border-radius: 0.25rem;
     border-spacing: 0;
+    color: var(--md-default-fg-color);
     overflow: hidden;
+}
+
+.md-typeset table:not([class]) a {
+    color: inherit;
 }
 
 .md-typeset table:not([class]) th,
