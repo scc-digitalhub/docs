@@ -3,6 +3,7 @@ site_url: http://docs/user
 
 extra:
   portal_name: User
+  portal_path: ""
 
 extra_css:
   - !ENV [USER_STYLESHEETS_PORTAL_SELECTION, "stylesheets/portal_selection.css"]

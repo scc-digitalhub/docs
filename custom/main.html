@@ -61,7 +61,7 @@
               {% endif %}
               {% for version in versions[:config.extra.n_display_versions|int] %}
                 {% if version != docsVersion|string %}
-                  <a href="{{ config.extra.site }}/{{ version }}">{{ version }}
+                  <a href="{{ config.extra.site }}/{{ version }}{{ config.extra.portal_path }}">{{ version }}
                     {% if version == config.extra.stable_version|string %}
                       <span id="stable-text"> (stable)</span>
                     {% endif %}

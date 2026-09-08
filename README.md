@@ -61,6 +61,7 @@ site_url: http://docs/example
 
 extra:
   portal_name: Example
+  portal_path: "/example" # Same as directory's name, prefixed with /
 
 extra_css:
   - !ENV [OTHERS_STYLESHEETS_PORTAL_SELECTION, "../stylesheets/portal_selection.css"]
@@ -83,7 +84,7 @@ extra:
     - name: Admin
       path: "/admin"
     - name: Example    # Same as portal_name
-      path: "/example" # Same as directory's name, prefixed with /
+      path: "/example" # Same as portal_path
 ```
 
 Finally, you must update the `.github/workflows/update-docs.yaml` file, which defines the GitHub workflow, where some commands must be added.

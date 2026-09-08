@@ -3,6 +3,7 @@ site_url: http://docs/sdk
 
 extra:
   portal_name: SDK
+  portal_path: "/sdk"
 
 extra_css:
   - !ENV [OTHERS_STYLESHEETS_PORTAL_SELECTION, "../stylesheets/portal_selection.css"]
