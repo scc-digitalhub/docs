@@ -173,6 +173,13 @@ nav:
                   - vllmserve-speech serve: reference/runtimes/modelserve/actions/vllmserve-speech-serve.md
                   - vllmserve-pooling serve: reference/runtimes/modelserve/actions/vllmserve-pooling-serve.md
               - Examples: reference/runtimes/modelserve/examples.md
+          - TVM:
+              - Overview: reference/runtimes/tvm/overview.md
+              - Actions:
+                  - tvm build: reference/runtimes/tvm/actions/tvm-build.md
+                  - tvm compile: reference/runtimes/tvm/actions/tvm-compile.md
+                  - tvm serve: reference/runtimes/tvm/actions/tvm-serve.md
+              - Examples: reference/runtimes/tvm/examples.md
           - Hera:
               - Overview: reference/runtimes/hera/overview.md
               - Pipeline definition: reference/runtimes/hera/define-pipeline.md

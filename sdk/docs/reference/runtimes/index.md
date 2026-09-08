@@ -14,30 +14,42 @@ Runtimes define the key point of extension of the platform: new runtimes may be 
 
 - [**Python**](python/python/overview.md){ .list-card-link }
 
-	Python-based functions, including `python`, `guardrail`, and `openinference` kinds.
+	Run Python functions as jobs or services.
 
 - [**Container**](container/overview.md){ .list-card-link }
 
 	Run arbitrary container images as jobs or services.
 
-- [**DBT**](dbt/overview.md){ .list-card-link }
+- [**ModelServe**](modelserve/overview.md){ .list-card-link }
 
-	Run DBT transformations for data modeling.
+	Run model serving and inference workloads.
 
 - [**Hera**](hera/overview.md){ .list-card-link }
 
 	Build Hera pipelines for DAG and step orchestration.
 
-- [**ModelServe**](modelserve/overview.md){ .list-card-link }
+- [**DBT**](dbt/overview.md){ .list-card-link }
 
-	Run model serving and inference workloads.
+	Run DBT transformations for data modeling.
 
 - [**Flower**](flower/overview.md){ .list-card-link }
 
 	Build federated learning workloads with the Flower framework.
 
+- [**Guardrail**](python/guardrail/overview.md){ .list-card-link }
+
+	Run Guardrails AI validation functions as jobs or services.
+
+- [**OpenInference**](python/openinference/overview.md){ .list-card-link }
+
+	Run OpenInference instrumentation functions as jobs or services.
+
 - [**ServiceGraph**](servicegraph/overview.md){ .list-card-link }
 
 	Run service pipeline orchestration services.
+
+- [**TVM**](tvm/overview.md){ .list-card-link }
+
+	Build, compile, and serve models with Apache TVM.
 
 </div>

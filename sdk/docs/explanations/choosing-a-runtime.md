@@ -104,6 +104,17 @@ Choose an execution framework based on what you need to run, how it should run, 
 	]
 ) }}
 
+{{ framework_card(
+	title="TVM",
+	link="../reference/runtimes/tvm/overview.md",
+	description="Build, compile, and serve machine learning models with Apache TVM.",
+	use_cases=[
+		"Converting ONNX and TFLite models to Relax IR.",
+		"Compiling models for a target architecture.",
+		"Deploying compiled models as inference services.",
+	]
+) }}
+
 ## Next steps
 
 Once you've selected an execution framework, follow these steps:
