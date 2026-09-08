@@ -449,6 +449,26 @@
          <lastmod>2026-09-08</lastmod>
     </url>
     <url>
+         <loc>http://docs/sdk/reference/runtimes/tvm/examples/</loc>
+         <lastmod>2026-09-08</lastmod>
+    </url>
+    <url>
+         <loc>http://docs/sdk/reference/runtimes/tvm/overview/</loc>
+         <lastmod>2026-09-08</lastmod>
+    </url>
+    <url>
+         <loc>http://docs/sdk/reference/runtimes/tvm/actions/tvm-build/</loc>
+         <lastmod>2026-09-08</lastmod>
+    </url>
+    <url>
+         <loc>http://docs/sdk/reference/runtimes/tvm/actions/tvm-compile/</loc>
+         <lastmod>2026-09-08</lastmod>
+    </url>
+    <url>
+         <loc>http://docs/sdk/reference/runtimes/tvm/actions/tvm-serve/</loc>
+         <lastmod>2026-09-08</lastmod>
+    </url>
+    <url>
          <loc>http://docs/sdk/tutorials/</loc>
          <lastmod>2026-09-08</lastmod>
     </url>
