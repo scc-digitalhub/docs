@@ -8,7 +8,7 @@ With the CLI, each run reads its fields from a small YAML file; the commands exp
 
 === "Console"
 
-    Open **Models** and click `CREATE`. Choose the kind `model`, enter the name `yolo` and upload `yolov8n.onnx` at the bottom of the form.
+    Open **Models** and click `CREATE`. Choose the kind `onnx`, enter the name `yolo` and upload `yolov8n.onnx` at the bottom of the form.
 
 === "CLI"
 
@@ -17,7 +17,7 @@ With the CLI, each run reads its fields from a small YAML file; the commands exp
     dhcli list models -p tvm-test
     ```
 
-The Model path ends with `.onnx`, so the runtime recognizes the format by itself.
+The runtime recognizes the format by itself: from the kind `onnx` of the Model, or from the `.onnx` extension of the file uploaded with the CLI (a Model of the generic kind `model`).
 
 ## 2. Create the function
 
@@ -27,7 +27,7 @@ The Model path ends with `.onnx`, so the runtime recognizes the format by itself
 
     | Field | Value |
     | --- | --- |
-    | `model` | the key of the `yolo` Model, shown in its detail page, e.g. `store://tvm-test/model/model/yolo:<id>` |
+    | `model` | the key of the `yolo` Model, shown in its detail page, e.g. `store://tvm-test/model/onnx/yolo:<id>` |
     | `format` | `auto` |
 
 === "CLI"
@@ -42,7 +42,7 @@ The Model path ends with `.onnx`, so the runtime recognizes the format by itself
       format: auto
     ```
 
-    A key without `:<id>` refers to the latest version of the Model.
+    A key without `:<id>` refers to the latest version of the Model. `dhcli upload` creates a Model of kind `model`, hence `model/model` in the key.
 
     ```sh
     dhcli create function -p tvm-test -f yolo-function.yaml
@@ -79,7 +79,7 @@ The Model path ends with `.onnx`, so the runtime recognizes the format by itself
     dhcli log <run-id> -p tvm-test
     ```
 
-When the run is **COMPLETED**, the Model `yolo-function-ir` contains the IR, and the function field `ir_model` points to it.
+When the run is **COMPLETED**, the Model `yolo-function-ir`, of kind `tvm-ir`, contains the IR, and the function field `ir_model` points to it.
 
 !!! note "Leave `target_opset` empty"
 
@@ -95,7 +95,7 @@ When the run is **COMPLETED**, the Model `yolo-function-ir` contains the IR, and
 
     | Field | Value | Why |
     | --- | --- | --- |
-    | `target_architecture`{: style="white-space: nowrap" } | `x86` | runs on any x86-64 node |
+    | `target_architecture`{: style="white-space: nowrap" } | `x86` | runs on any x86-64 node (`x86_v3` is faster on CPUs with AVX2) |
     | `tag` | `x86` | names the Model `yolo-function-x86` |
     | `opt_level` | `3` | full optimization |
     | `resources` | CPU `4`, memory `8Gi` | compiling needs memory |
@@ -119,7 +119,7 @@ When the run is **COMPLETED**, the Model `yolo-function-ir` contains the IR, and
     dhcli list runs -p tvm-test
     ```
 
-When the run is **COMPLETED**, the Model `yolo-function-x86` contains `model.so` and `metadata.json`, and the function field `so_model` points to it.
+When the run is **COMPLETED**, the Model `yolo-function-x86`, of kind `tvm-so`, contains `model.so` and `metadata.json`, and the function field `so_model` points to it. The `benchmark` section of `metadata.json` shows how long an inference takes.
 
 ## 5. Serve
 
@@ -131,8 +131,7 @@ When the run is **COMPLETED**, the Model `yolo-function-x86` contains `model.so`
 
     | Field | Value | Why |
     | --- | --- | --- |
-    | `resources` | CPU `2`, memory `2Gi` | enough for YOLOv8n |
-    | `envs` | `TVM_NUM_THREADS` = `2` | as many TVM threads as CPUs |
+    | `resources` | CPU `2`, memory `2Gi` | enough for YOLOv8n; TVM uses one thread per CPU |
 
 === "CLI"
 
@@ -143,9 +142,6 @@ When the run is **COMPLETED**, the Model `yolo-function-x86` contains `model.so`
       resources:
         cpu: "2"
         mem: 2Gi
-      envs:
-        - name: TVM_NUM_THREADS
-          value: "2"
     ```
 
     ```sh
@@ -160,7 +156,7 @@ NAME          ID                                 FUNCTION        KIND           
 cloudy-lynx   7398740f73b14fdd957f10c2e54c8ed2   yolo-function   tvm+serve:run   s-tvmserve-7398740f73b14fdd957f10c2e54c8ed2.dev-platform:8080   RUNNING
 ```
 
-The model is served with the name of the function, `yolo-function`. The next part shows how to [test it](test.md).
+The model is served with the name of the function, `yolo-function`. The platform starts the service on a node with the architecture of the model, here an x86 node. The next part shows how to [test it](test.md).
 
 ## 6. Compile for ARM devices (optional)
 
@@ -176,7 +172,7 @@ uname -m     # aarch64 -> use arm64 · armv7l -> use armv7l
 
     | Field | Value |
     | --- | --- |
-    | `target_architecture`{: style="white-space: nowrap" } | `arm64` |
+    | `target_architecture`{: style="white-space: nowrap" } | `arm64` (or `arm64_pi5` for a Raspberry Pi 5) |
     | `tag` | `arm64` |
     | `cross_cc` | leave empty: the right compiler is chosen automatically |
     | `opt_level` | `3` |
@@ -232,6 +228,6 @@ uname -m     # aarch64 -> use arm64 · armv7l -> use armv7l
 
 !!! warning "Serving after an ARM compile"
 
-    Each compile writes its Model into `so_model`, and `serve` deploys `so_model` by default. After an ARM compile, `so_model` points to the ARM library, which does not run on the cluster: to start a new service, set the serve field `model_path` to `store://tvm-test/model/model/yolo-function-x86`. A service that is already running is not affected.
+    Each compile writes its Model into `so_model`, and `serve` deploys `so_model` by default. After an ARM compile, `so_model` points to the ARM library, which the platform serves only on ARM nodes: without ARM nodes in the cluster the service stays **PENDING**. To serve the x86 build, set the serve field `model_path` to `store://tvm-test/model/tvm-so/yolo-function-x86`. A service that is already running is not affected.
 
-The ARM Models are run on the device, as shown in [Test the model](test.md#run-the-model-on-a-raspberry-pi).
+The ARM Models can run on the device, as shown in [Test the model](test.md#run-the-model-on-a-raspberry-pi), or be served by the platform when the device is a node of the cluster.

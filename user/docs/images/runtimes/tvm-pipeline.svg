@@ -20,11 +20,11 @@
 
   <rect x="40" y="190" width="260" height="80" rx="12" fill="#f5f7fa" stroke="#90a4ae" stroke-width="2"/>
   <text x="170" y="222" text-anchor="middle" font-size="19" font-weight="700" fill="#263238">Relax IR</text>
-  <text x="170" y="250" text-anchor="middle" font-size="15" fill="#546e7a">Model &lt;function&gt;-ir</text>
+  <text x="170" y="250" text-anchor="middle" font-size="15" fill="#546e7a">tvm-ir · &lt;function&gt;-ir</text>
 
   <rect x="40" y="330" width="260" height="80" rx="12" fill="#f5f7fa" stroke="#90a4ae" stroke-width="2"/>
   <text x="170" y="362" text-anchor="middle" font-size="19" font-weight="700" fill="#263238">Compiled model.so</text>
-  <text x="170" y="390" text-anchor="middle" font-size="15" fill="#546e7a">Model &lt;function&gt;-&lt;tag&gt;</text>
+  <text x="170" y="390" text-anchor="middle" font-size="15" fill="#546e7a">tvm-so · &lt;function&gt;-&lt;tag&gt;</text>
 
   <rect x="40" y="470" width="260" height="80" rx="12" fill="#e8f5e9" stroke="#66bb6a" stroke-width="2"/>
   <text x="170" y="502" text-anchor="middle" font-size="19" font-weight="700" fill="#1b5e20">Inference service</text>
