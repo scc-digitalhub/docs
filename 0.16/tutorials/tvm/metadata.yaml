@@ -1,0 +1,1 @@
+description: In this tutorial we compile a YOLOv8n ONNX model into native code with the TVM runtime, serve it through the Open Inference v2 protocol and test it from a local computer with a CLI port-forward.
