@@ -2807,7 +2807,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Console</label><label for="__tabbed_1_2">CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Open <strong>Models</strong> and click <code>CREATE</code>. Choose the kind <code>model</code>, enter the name <code>yolo</code> and upload <code>yolov8n.onnx</code> at the bottom of the form.</p>
+<p>Open <strong>Models</strong> and click <code>CREATE</code>. Choose the kind <code>onnx</code>, enter the name <code>yolo</code> and upload <code>yolov8n.onnx</code> at the bottom of the form.</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>upload<span class="w"> </span>model<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo<span class="w"> </span>-f<span class="w"> </span>yolov8n.onnx
@@ -2816,7 +2816,7 @@ dhcli<span class="w"> </span>list<span class="w"> </span>models<span class="w"> 
 </div>
 </div>
 </div>
-<p>The Model path ends with <code>.onnx</code>, so the runtime recognizes the format by itself.</p>
+<p>The runtime recognizes the format by itself: from the kind <code>onnx</code> of the Model, or from the <code>.onnx</code> extension of the file uploaded with the CLI (a Model of the generic kind <code>model</code>).</p>
 <h2 id="2-create-the-function">2. Create the function</h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Console</label><label for="__tabbed_2_2">CLI</label></div>
 <div class="tabbed-content">
@@ -2832,7 +2832,7 @@ dhcli<span class="w"> </span>list<span class="w"> </span>models<span class="w"> 
 <tbody>
 <tr>
 <td><code>model</code></td>
-<td>the key of the <code>yolo</code> Model, shown in its detail page, e.g. <code>store://tvm-test/model/model/yolo:&lt;id&gt;</code></td>
+<td>the key of the <code>yolo</code> Model, shown in its detail page, e.g. <code>store://tvm-test/model/onnx/yolo:&lt;id&gt;</code></td>
 </tr>
 <tr>
 <td><code>format</code></td>
@@ -2849,7 +2849,7 @@ dhcli<span class="w"> </span>list<span class="w"> </span>models<span class="w"> 
 <span class="w">  </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">store://tvm-test/model/model/yolo</span>
 <span class="w">  </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span>
 </code></pre></div>
-<p>A key without <code>:&lt;id&gt;</code> refers to the latest version of the Model.</p>
+<p>A key without <code>:&lt;id&gt;</code> refers to the latest version of the Model. <code>dhcli upload</code> creates a Model of kind <code>model</code>, hence <code>model/model</code> in the key.</p>
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>create<span class="w"> </span><span class="k">function</span><span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-f<span class="w"> </span>yolo-function.yaml
 </code></pre></div>
 </div>
@@ -2891,7 +2891,7 @@ dhcli<span class="w"> </span>log<span class="w"> </span>&lt;run-id&gt;<span clas
 </div>
 </div>
 </div>
-<p>When the run is <strong>COMPLETED</strong>, the Model <code>yolo-function-ir</code> contains the IR, and the function field <code>ir_model</code> points to it.</p>
+<p>When the run is <strong>COMPLETED</strong>, the Model <code>yolo-function-ir</code>, of kind <code>tvm-ir</code>, contains the IR, and the function field <code>ir_model</code> points to it.</p>
 <div class="admonition note">
 <p class="admonition-title">Leave <code>target_opset</code> empty</p>
 <p>Set <code>target_opset</code> only if the model really needs an opset conversion: ONNX cannot convert every operator to every version, and the build fails with <code>No Adapter From Version ...</code>. All the build options are described in the <a href="../../../runtimes/tvm/#build-options">runtime reference</a>.</p>
@@ -2914,7 +2914,7 @@ dhcli<span class="w"> </span>log<span class="w"> </span>&lt;run-id&gt;<span clas
 <tr>
 <td><code style="white-space: nowrap">target_architecture</code></td>
 <td><code>x86</code></td>
-<td>runs on any x86-64 node</td>
+<td>runs on any x86-64 node (<code>x86_v3</code> is faster on CPUs with AVX2)</td>
 </tr>
 <tr>
 <td><code>tag</code></td>
@@ -2950,7 +2950,7 @@ dhcli<span class="w"> </span>list<span class="w"> </span>runs<span class="w"> </
 </div>
 </div>
 </div>
-<p>When the run is <strong>COMPLETED</strong>, the Model <code>yolo-function-x86</code> contains <code>model.so</code> and <code>metadata.json</code>, and the function field <code>so_model</code> points to it.</p>
+<p>When the run is <strong>COMPLETED</strong>, the Model <code>yolo-function-x86</code>, of kind <code>tvm-so</code>, contains <code>model.so</code> and <code>metadata.json</code>, and the function field <code>so_model</code> points to it. The <code>benchmark</code> section of <code>metadata.json</code> shows how long an inference takes.</p>
 <h2 id="5-serve">5. Serve</h2>
 <p><code>serve</code> deploys the model in <code>so_model</code> as an Open Inference v2 service, on port <code>8080</code> (REST) and <code>9000</code> (gRPC).</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Console</label><label for="__tabbed_5_2">CLI</label></div>
@@ -2969,12 +2969,7 @@ dhcli<span class="w"> </span>list<span class="w"> </span>runs<span class="w"> </
 <tr>
 <td><code>resources</code></td>
 <td>CPU <code>2</code>, memory <code>2Gi</code></td>
-<td>enough for YOLOv8n</td>
-</tr>
-<tr>
-<td><code>envs</code></td>
-<td><code>TVM_NUM_THREADS</code> = <code>2</code></td>
-<td>as many TVM threads as CPUs</td>
+<td>enough for YOLOv8n; TVM uses one thread per CPU</td>
 </tr>
 </tbody>
 </table>
@@ -2985,9 +2980,6 @@ dhcli<span class="w"> </span>list<span class="w"> </span>runs<span class="w"> </
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"2"</span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
-<span class="w">  </span><span class="nt">envs</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TVM_NUM_THREADS</span>
-<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"2"</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>run<span class="w"> </span>tvm+serve<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo-function<span class="w"> </span>-f<span class="w"> </span>serve.yaml
 dhcli<span class="w"> </span>services<span class="w"> </span>-p<span class="w"> </span>tvm-test
@@ -2999,7 +2991,7 @@ dhcli<span class="w"> </span>services<span class="w"> </span>-p<span class="w"> 
 <div class="highlight"><pre><span></span><code>NAME          ID                                 FUNCTION        KIND            SERVICE                                                         STATE
 cloudy-lynx   7398740f73b14fdd957f10c2e54c8ed2   yolo-function   tvm+serve:run   s-tvmserve-7398740f73b14fdd957f10c2e54c8ed2.dev-platform:8080   RUNNING
 </code></pre></div>
-<p>The model is served with the name of the function, <code>yolo-function</code>. The next part shows how to <a href="../test/">test it</a>.</p>
+<p>The model is served with the name of the function, <code>yolo-function</code>. The platform starts the service on a node with the architecture of the model, here an x86 node. The next part shows how to <a href="../test/">test it</a>.</p>
 <h2 id="6-compile-for-arm-devices-optional">6. Compile for ARM devices (optional)</h2>
 <p>The same IR can be compiled for ARM devices, such as a Raspberry Pi. The Job still runs on the cluster: the ARM library is cross-compiled. Check the device first:</p>
 <div class="highlight"><pre><span></span><code>uname<span class="w"> </span>-m<span class="w">     </span><span class="c1"># aarch64 -&gt; use arm64 · armv7l -&gt; use armv7l</span>
@@ -3018,7 +3010,7 @@ cloudy-lynx   7398740f73b14fdd957f10c2e54c8ed2   yolo-function   tvm+serve:run  
 <tbody>
 <tr>
 <td><code style="white-space: nowrap">target_architecture</code></td>
-<td><code>arm64</code></td>
+<td><code>arm64</code> (or <code>arm64_pi5</code> for a Raspberry Pi 5)</td>
 </tr>
 <tr>
 <td><code>tag</code></td>
@@ -3100,9 +3092,9 @@ cloudy-lynx   7398740f73b14fdd957f10c2e54c8ed2   yolo-function   tvm+serve:run  
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Serving after an ARM compile</p>
-<p>Each compile writes its Model into <code>so_model</code>, and <code>serve</code> deploys <code>so_model</code> by default. After an ARM compile, <code>so_model</code> points to the ARM library, which does not run on the cluster: to start a new service, set the serve field <code>model_path</code> to <code>store://tvm-test/model/model/yolo-function-x86</code>. A service that is already running is not affected.</p>
+<p>Each compile writes its Model into <code>so_model</code>, and <code>serve</code> deploys <code>so_model</code> by default. After an ARM compile, <code>so_model</code> points to the ARM library, which the platform serves only on ARM nodes: without ARM nodes in the cluster the service stays <strong>PENDING</strong>. To serve the x86 build, set the serve field <code>model_path</code> to <code>store://tvm-test/model/tvm-so/yolo-function-x86</code>. A service that is already running is not affected.</p>
 </div>
-<p>The ARM Models are run on the device, as shown in <a href="../test/#run-the-model-on-a-raspberry-pi">Test the model</a>.</p>
+<p>The ARM Models can run on the device, as shown in <a href="../test/#run-the-model-on-a-raspberry-pi">Test the model</a>, or be served by the platform when the device is a node of the cluster.</p>
 
 
 

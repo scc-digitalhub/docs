@@ -1877,6 +1877,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#source-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source Models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#function" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1988,6 +1999,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#making-models-fast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Making models fast
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Making models fast">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tuning-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tuning options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuning-on-a-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tuning on a device
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#serve-action" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2004,6 +2065,17 @@
     <span class="md-ellipsis">
       
         Serve options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-the-service-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the service runs
       
     </span>
   </a>
@@ -2042,6 +2114,17 @@
     <span class="md-ellipsis">
       
         Common run options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inside-the-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inside the Jobs
       
     </span>
   </a>
@@ -2549,6 +2632,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#source-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Source Models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#function" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2660,6 +2754,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#making-models-fast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Making models fast
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Making models fast">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tuning-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tuning options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuning-on-a-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tuning on a device
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tips
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#serve-action" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2676,6 +2820,17 @@
     <span class="md-ellipsis">
       
         Serve options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-the-service-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the service runs
       
     </span>
   </a>
@@ -2714,6 +2869,17 @@
     <span class="md-ellipsis">
       
         Common run options
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inside-the-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inside the Jobs
       
     </span>
   </a>
@@ -2881,13 +3047,13 @@
 <td><code>build</code></td>
 <td>Converts the source model into Relax IR, the intermediate representation of TVM</td>
 <td>Kubernetes Job</td>
-<td>Model <code>&lt;function&gt;-ir</code></td>
+<td>Model <code>&lt;function&gt;-ir</code>, kind <code>tvm-ir</code></td>
 </tr>
 <tr>
 <td><code>compile</code></td>
 <td>Compiles the Relax IR into a native library, <code>model.so</code>, for a target architecture</td>
 <td>Kubernetes Job</td>
-<td>Model <code>&lt;function&gt;-so</code></td>
+<td>Model <code>&lt;function&gt;-&lt;tag&gt;</code>, kind <code>tvm-so</code></td>
 </tr>
 <tr>
 <td><code>serve</code></td>
@@ -2901,8 +3067,9 @@
 <ul>
 <li><strong>The function links the steps.</strong> When <code>build</code> completes, the platform writes the key of the new IR Model into the function field <code>ir_model</code>; when <code>compile</code> completes, it writes the key of the compiled Model into <code>so_model</code>. The next action reads that field, so no key has to be copied by hand.</li>
 <li><strong>One build, many targets.</strong> The Relax IR does not depend on the hardware: the same IR can be compiled once for each target architecture.</li>
-<li><strong>Everything is a Model.</strong> The IR and the compiled library are stored as Models, with their input and output signature, so they can be inspected, versioned and reused.</li>
+<li><strong>Everything is a Model.</strong> The IR and the compiled library are stored as Models of kind <code>tvm-ir</code> and <code>tvm-so</code>, with their input and output signature, so they can be inspected, versioned and reused.</li>
 <li><strong>No image per model.</strong> The <code>serve</code> action starts a generic serve image and downloads the compiled Model into it. Two serve images are available, in Go (default) and in Rust.</li>
+<li><strong>The right node for each model.</strong> A model compiled for ARM is served only on the ARM nodes of the cluster, and an x86 model only on the x86 nodes: see <a href="#where-the-service-runs">Where the service runs</a>.</li>
 </ul>
 <h2 id="from-a-model-to-a-prediction">From a model to a prediction</h2>
 <table>
@@ -2916,8 +3083,8 @@
 <tbody>
 <tr>
 <td>1. Upload the model</td>
-<td>Create a Model and upload the <code>.onnx</code> or <code>.tflite</code> file</td>
-<td><a href="../../ml-tasks/models/">Models</a></td>
+<td>Create a Model of kind <code>onnx</code> or <code>tflite</code> and upload the file</td>
+<td><a href="#source-models">Source Models</a></td>
 </tr>
 <tr>
 <td>2. Create the function</td>
@@ -2948,6 +3115,29 @@
 </table>
 <p>The <a href="../../tutorials/tvm/intro/">TVM tutorial</a> walks through all the steps with a YOLOv8 model, from the console and from the CLI.</p>
 <hr />
+<h2 id="source-models">Source Models</h2>
+<p>Upload the model as a Model of kind <code>onnx</code> or <code>tflite</code>. The fields only describe the model and are all optional: the <code>build</code> action reads the real signature from the file.</p>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>onnx</code></td>
+<td><code>inputs</code>, <code>outputs</code>, <code>parameters</code>, <code>opset</code> (the operator set version used at export)</td>
+</tr>
+<tr>
+<td><code>tflite</code></td>
+<td><code>inputs</code>, <code>outputs</code>, <code>parameters</code></td>
+</tr>
+</tbody>
+</table>
+<p>Each tensor in <code>inputs</code> and <code>outputs</code> has <code>name</code>, <code>dtype</code> and <code>shape</code>; quantized tensors also have <code>scale</code>, <code>zero_point</code> and <code>quantized_dimension</code>.</p>
+<p>A Model of the generic kind <code>model</code> also works, for example one uploaded with <code>dhcli upload</code>: its format is then taken from the file extension.</p>
+<hr />
 <h2 id="function">Function</h2>
 <p>A function of kind <code>tvm</code> describes the model to compile and serve.</p>
 <table>
@@ -2962,12 +3152,12 @@
 <tr>
 <td><code>model</code></td>
 <td>yes</td>
-<td>The key of the source Model (<code>store://&lt;project&gt;/model/model/&lt;name&gt;:&lt;id&gt;</code>, or without <code>:&lt;id&gt;</code> for the latest version), or an <code>s3://</code> or <code>https://</code> path.</td>
+<td>The key of the source Model (<code>store://&lt;project&gt;/model/&lt;kind&gt;/&lt;name&gt;:&lt;id&gt;</code>, or without <code>:&lt;id&gt;</code> for the latest version), or an <code>s3://</code> or <code>https://</code> path.</td>
 </tr>
 <tr>
 <td><code>format</code></td>
 <td>no</td>
-<td><code>auto</code> (default), <code>onnx</code> or <code>tflite</code>. With <code>auto</code> the format is taken from the file extension.</td>
+<td><code>auto</code> (default), <code>onnx</code> or <code>tflite</code>. <code>auto</code> uses the kind of the Model, otherwise the file extension.</td>
 </tr>
 <tr>
 <td><code>ir_model</code></td>
@@ -2984,16 +3174,16 @@
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tvm</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yolo-function</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">store://my-project/model/model/yolo</span>
+<span class="w">  </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">store://my-project/model/onnx/yolo</span>
 <span class="w">  </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">When to set the format</p>
-<p><code>auto</code> works when the model path ends with <code>.onnx</code> or <code>.tflite</code>. If the Model points to a folder or to a file without extension, set <code>format</code> to <code>onnx</code> or <code>tflite</code>.</p>
+<p><code>auto</code> works with a Model of kind <code>onnx</code> or <code>tflite</code>, and with any path ending with <code>.onnx</code> or <code>.tflite</code>. If a generic Model points to a folder or to a file without extension, set <code>format</code> to <code>onnx</code> or <code>tflite</code>.</p>
 </div>
 <hr />
 <h2 id="build-action">Build action</h2>
-<p>The <code>build</code> action runs a Job that converts the source model into Relax IR and saves it as the Model <code>&lt;function&gt;-ir</code>.</p>
+<p>The <code>build</code> action runs a Job that converts the source model into Relax IR and saves it as the Model <code>&lt;function&gt;-ir</code>, of kind <code>tvm-ir</code>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">ONNX</label><label for="__tabbed_1_2">TFLite</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3097,7 +3287,7 @@
 </table>
 <hr />
 <h2 id="compile-action">Compile action</h2>
-<p>The <code>compile</code> action runs a Job that compiles the Relax IR into <code>model.so</code> for a target architecture and saves it as the Model <code>&lt;function&gt;-&lt;tag&gt;</code> (<code>&lt;function&gt;-so</code> by default), linked to the IR Model it comes from.</p>
+<p>The <code>compile</code> action runs a Job that compiles the Relax IR into <code>model.so</code> for a target architecture and saves it as the Model <code>&lt;function&gt;-&lt;tag&gt;</code> (<code>&lt;function&gt;-so</code> by default), of kind <code>tvm-so</code>, linked to the IR Model it comes from.</p>
 <h3 id="target-architectures">Target architectures</h3>
 <table>
 <thead>
@@ -3111,17 +3301,32 @@
 <tr>
 <td><code>cpu</code> (default)</td>
 <td>The architecture of the cluster node that runs the Job, with generic code</td>
-<td>Servers of the cluster</td>
+<td>Nodes of the cluster</td>
 </tr>
 <tr>
 <td><code>x86</code></td>
-<td>Any x86-64 CPU with SSE4.2 (x86-64-v2)</td>
+<td>Any x86-64 CPU with SSE4.2 (x86-64-v2, about 2009 and newer)</td>
 <td>Servers, PCs, x86 cluster nodes</td>
+</tr>
+<tr>
+<td><code>x86_v3</code></td>
+<td>x86-64 CPUs with AVX2 (Intel Haswell, AMD Excavator and newer)</td>
+<td>Recent servers and PCs</td>
+</tr>
+<tr>
+<td><code>x86_native</code></td>
+<td>Exactly the CPU model of the node that runs the Job</td>
+<td>Nodes identical to the compile node</td>
 </tr>
 <tr>
 <td><code>arm64</code></td>
 <td>64-bit ARM (aarch64)</td>
 <td>Raspberry Pi 3, 4, 5 with a 64-bit OS, NVIDIA Jetson, ARM servers</td>
+</tr>
+<tr>
+<td><code>arm64_pi5</code></td>
+<td>Raspberry Pi 5 (Cortex-A76, 4 cores)</td>
+<td>Raspberry Pi 5 with a 64-bit OS</td>
 </tr>
 <tr>
 <td><code>armv7l</code></td>
@@ -3130,7 +3335,11 @@
 </tr>
 </tbody>
 </table>
-<p>The ARM targets are <strong>cross-compiled</strong>: the Job runs on the usual cluster nodes and links the library with the ARM compiler included in the toolkit image.</p>
+<p>The more specific the target, the faster the code, but it only runs on that kind of CPU.</p>
+<ul>
+<li>The <strong>ARM targets are cross-compiled</strong>: the Job runs on any node of the cluster and links the library with the ARM compiler included in the toolkit image.</li>
+<li>The <strong>x86 targets</strong> are compiled on an x86 (<code>amd64</code>) node, which the platform selects by itself.</li>
+</ul>
 <h3 id="compile-options">Compile options</h3>
 <p>All fields are optional.</p>
 <table>
@@ -3146,6 +3355,11 @@
 <td><code style="white-space: nowrap">target_architecture</code></td>
 <td><code>cpu</code></td>
 <td>Target architecture, from the table above.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">target_num_cores</code></td>
+<td><code>resources.cpu</code></td>
+<td>Number of cores the generated code is optimized for. Serve with the same number of threads.</td>
 </tr>
 <tr>
 <td><code>tag</code></td>
@@ -3170,7 +3384,12 @@
 <tr>
 <td><code>cross_cc</code></td>
 <td>set by target</td>
-<td>C++ cross compiler. Filled in automatically for <code>arm64</code> (<code>aarch64-linux-gnu-g++</code>) and <code>armv7l</code> (<code>arm-linux-gnueabihf-g++</code>): set it only to use another compiler.</td>
+<td>C++ cross compiler. Filled in automatically for the ARM targets (<code>aarch64-linux-gnu-g++</code>, <code>arm-linux-gnueabihf-g++</code>): set it only to use another compiler.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">benchmark_runs</code></td>
+<td><code>10</code></td>
+<td>Timed inferences of the finished <code>model.so</code>, saved in <code>metadata.json</code>. <code>0</code> turns it off. Skipped for cross-compiled targets.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">relax_pipeline</code></td>
@@ -3199,6 +3418,7 @@
 </tr>
 </tbody>
 </table>
+<p>The tuning options are described in <a href="#making-models-fast">Making models fast</a>.</p>
 <h3 id="compile-examples">Compile examples</h3>
 <p>In the console, open the function, select the <strong>compile</strong> tab and click <code>CREATE</code>: enter these values in the fields with the same name. With the CLI, save the YAML in a file and run <code>dhcli run tvm+compile -p &lt;project&gt; -n &lt;function&gt; -f &lt;file&gt;</code>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">x86 server</label><label for="__tabbed_2_2">ARM 64-bit (arm64)</label><label for="__tabbed_2_3">ARM 32-bit (armv7l)</label><label for="__tabbed_2_4">A specific IR version</label></div>
@@ -3239,7 +3459,7 @@
 <span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
 </code></pre></div>
-<p>Result: the Model <code>&lt;function&gt;-x86</code>, which the <code>serve</code> action can deploy on the cluster.</p>
+<p>Result: the Model <code>&lt;function&gt;-x86</code>, which the <code>serve</code> action deploys on the x86 nodes of the cluster.</p>
 </div>
 <div class="tabbed-block">
 <p>For a Raspberry Pi 3, 4 or 5 with a 64-bit OS (<code>uname -m</code> prints <code>aarch64</code>) and other 64-bit ARM devices.</p>
@@ -3253,7 +3473,7 @@
 <tbody>
 <tr>
 <td><code style="white-space: nowrap">target_architecture</code></td>
-<td><code>arm64</code></td>
+<td><code>arm64</code> (or <code>arm64_pi5</code> for a Raspberry Pi 5)</td>
 </tr>
 <tr>
 <td><code>tag</code></td>
@@ -3281,7 +3501,7 @@
 <span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
 </code></pre></div>
-<p>Result: the Model <code>&lt;function&gt;-arm64</code>, whose <code>model.so</code> is an aarch64 library. Run it on the device as shown in <a href="#test-the-service">Test the service</a>.</p>
+<p>Result: the Model <code>&lt;function&gt;-arm64</code>, whose <code>model.so</code> is an aarch64 library. Serve it on an ARM node of the cluster, or run it on the device as shown in <a href="#test-the-service">Test the service</a>.</p>
 </div>
 <div class="tabbed-block">
 <p>For a Raspberry Pi 2, 3 or 4 with a 32-bit OS (<code>uname -m</code> prints <code>armv7l</code>).</p>
@@ -3323,7 +3543,7 @@
 <span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
 </code></pre></div>
-<p>Result: the Model <code>&lt;function&gt;-armv7l</code>, whose <code>model.so</code> is a 32-bit hard-float ARM library.</p>
+<p>Result: the Model <code>&lt;function&gt;-armv7l</code>, whose <code>model.so</code> is a 32-bit hard-float ARM library. Run it on the device as shown in <a href="#test-the-service">Test the service</a>.</p>
 </div>
 <div class="tabbed-block">
 <p>To compile an older IR instead of the latest one written in <code>ir_model</code>.</p>
@@ -3337,7 +3557,7 @@
 <tbody>
 <tr>
 <td><code style="white-space: nowrap">model_path</code></td>
-<td>the IR Model key, e.g. <code>store://my-project/model/model/yolo-function-ir:&lt;id&gt;</code></td>
+<td>the IR Model key, e.g. <code>store://my-project/model/tvm-ir/yolo-function-ir:&lt;id&gt;</code></td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">target_architecture</code></td>
@@ -3350,7 +3570,7 @@
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">model_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">store://my-project/model/model/yolo-function-ir:&lt;id&gt;</span>
+<span class="w">  </span><span class="nt">model_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">store://my-project/model/tvm-ir/yolo-function-ir:&lt;id&gt;</span>
 <span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86</span>
 <span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86-v1</span>
 </code></pre></div>
@@ -3359,7 +3579,7 @@
 </div>
 <div class="admonition warning">
 <p class="admonition-title"><code>so_model</code> points to the last compile</p>
-<p>Every <code>compile</code> run writes its Model into the function field <code>so_model</code>, and <code>serve</code> deploys <code>so_model</code> by default. After compiling for ARM, <code>so_model</code> points to the ARM library, which cannot run on x86 cluster nodes: to serve the x86 build, set the serve field <code>model_path</code> to its key (e.g. <code>store://my-project/model/model/yolo-function-x86</code>).</p>
+<p>Every <code>compile</code> run writes its Model into the function field <code>so_model</code>, and <code>serve</code> deploys <code>so_model</code> by default. After compiling for ARM, <code>so_model</code> points to the ARM library, which the platform serves only on ARM nodes: to serve the x86 build, set the serve field <code>model_path</code> to its key (e.g. <code>store://my-project/model/tvm-so/yolo-function-x86</code>).</p>
 </div>
 <h3 id="compile-output">Compile output</h3>
 <table>
@@ -3376,10 +3596,173 @@
 </tr>
 <tr>
 <td><code style="white-space: nowrap">metadata.json</code></td>
-<td>The IR metadata plus <code>target</code>, <code>opt_level</code>, <code>exec_mode</code>, <code>relax_pipeline</code>, <code>tir_pipeline</code> and <code>tag</code>.</td>
+<td>The IR metadata plus how the library was built: <code>target</code>, <code>target_triple</code>, <code>tvm_version</code>, <code>tvm_git_commit</code>, <code>opt_level</code>, <code>exec_mode</code>, <code>relax_pipeline</code>, <code>tir_pipeline</code>, <code>tag</code>, and the <code>benchmark</code> and <code>meta_schedule</code> sections when present.</td>
+</tr>
+<tr>
+<td><code>tuning/</code></td>
+<td>The tuning database, only for tuned models.</td>
 </tr>
 </tbody>
 </table>
+<p><code>target_triple</code> is the architecture of the code, such as <code>x86_64-pc-linux-gnu</code> or <code>aarch64-linux-gnu</code>: the platform reads it to choose the nodes of the service.</p>
+<hr />
+<h2 id="making-models-fast">Making models fast</h2>
+<p>On CPU, an untuned model works, but it can be several times slower than ONNX Runtime: TVM has no ready-made optimized code for the operators. <strong>Tuning</strong> with MetaSchedule measures many variants of each operator on the real hardware and keeps the fastest ones. The result is saved in the <code>tuning/</code> folder of the compiled Model and can be reused.</p>
+<p><strong>1. Tune once</strong>, on the same kind of CPU used for serving:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86_native</span>
+<span class="w">  </span><span class="nt">target_num_cores</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">  </span><span class="nt">tuning_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tune</span>
+<span class="w">  </span><span class="nt">tuning_trials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">  </span><span class="nt">max_trials_per_task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">256</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
+<span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
+</code></pre></div>
+<p><strong>2. Reuse the result</strong> to recompile the same IR for the same target, without measuring again:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86_native</span>
+<span class="w">  </span><span class="nt">target_num_cores</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">  </span><span class="nt">tuning_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apply</span>
+<span class="w">  </span><span class="nt">tuning_model_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">store://my-project/model/tvm-so/yolo-function-so:&lt;id&gt;</span>
+</code></pre></div>
+<h3 id="tuning-options">Tuning options</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Default</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tuning_mode</code></td>
+<td><code>off</code></td>
+<td><code>off</code>, <code>tune</code> (search the fastest code) or <code>apply</code> (reuse an earlier search).</td>
+</tr>
+<tr>
+<td><code>tuning_trials</code></td>
+<td>empty</td>
+<td>Total number of variants to measure. <strong>Required</strong> with <code>tune</code>.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">max_trials_per_task</code></td>
+<td><code>16</code></td>
+<td>Most variants a single task (operator) may use.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">tuning_trials_per_iter</code></td>
+<td><code>64</code></td>
+<td>Variants measured for each task in one round.</td>
+</tr>
+<tr>
+<td><code>tuning_ops</code></td>
+<td>all</td>
+<td>Tune only the tasks whose name contains one of these words, e.g. <code>conv2d</code>.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">tuning_model_path</code></td>
+<td>empty</td>
+<td>An earlier compiled Model: <code>tune</code> continues its search, <code>apply</code> uses it. <strong>Required</strong> with <code>apply</code>.</td>
+</tr>
+<tr>
+<td><code>tuning_workers</code></td>
+<td><code>resources.cpu</code></td>
+<td>Variants compiled in parallel.</td>
+</tr>
+<tr>
+<td><code>tuning_seed</code></td>
+<td><code>0</code></td>
+<td>Random seed, for repeatable searches.</td>
+</tr>
+<tr>
+<td><code>tuning_number</code></td>
+<td><code>3</code></td>
+<td>Runs averaged in one measurement.</td>
+</tr>
+<tr>
+<td><code>tuning_repeat</code></td>
+<td><code>1</code></td>
+<td>Measurements taken for each variant.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">tuning_min_repeat_ms</code></td>
+<td><code>100</code></td>
+<td>Minimum length of one measurement, in milliseconds.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">tuning_alloc_repeat</code></td>
+<td><code>1</code></td>
+<td>Input buffers rotated between measurements, to reduce cache effects.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">tuning_enable_cpu_cache_flush</code></td>
+<td><code>false</code></td>
+<td>Flushes the CPU caches before each measurement.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">tuning_builder_timeout_sec</code></td>
+<td><code>30</code></td>
+<td>Time limit to compile one variant.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">tuning_runner_timeout_sec</code></td>
+<td><code>30</code></td>
+<td>Time limit to run one variant.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">allow_partial_tuning</code></td>
+<td><code>false</code></td>
+<td>Accepts a budget or a database that does not cover every task. For quick tests only.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tuning-on-a-device">Tuning on a device</h3>
+<p>A Job running on an x86 node cannot measure ARM code. To tune for an ARM device, register the device with a TVM RPC tracker and let the Job measure on it, or <code>apply</code> a database tuned on the device.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Default</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tuning_runner</code></td>
+<td><code>local</code></td>
+<td><code>local</code> measures in the compile Job, <code>rpc</code> on a device registered with the tracker.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">rpc_tracker_host</code></td>
+<td>empty</td>
+<td>Host of the TVM RPC tracker. <strong>Required</strong> with <code>rpc</code>.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">rpc_tracker_port</code></td>
+<td>empty</td>
+<td>Port of the TVM RPC tracker. <strong>Required</strong> with <code>rpc</code>.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">rpc_tracker_key</code></td>
+<td>empty</td>
+<td>Key the device is registered with. <strong>Required</strong> with <code>rpc</code>.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">rpc_session_timeout_sec</code></td>
+<td><code>60</code></td>
+<td>Time limit of one RPC session.</td>
+</tr>
+</tbody>
+</table>
+<p>Settings that cannot work stop the run at once, in state <strong>ERROR</strong> with a message that explains why: for example <code>tune</code> without <code>tuning_trials</code>, <code>apply</code> without <code>tuning_model_path</code>, or local tuning of an ARM target.</p>
+<h3 id="tips">Tips</h3>
+<ul>
+<li><strong>Budget.</strong> Give at least <code>tasks × min(64, max_trials_per_task)</code> trials, so that every task is measured once. The compile log prints the number of tasks and this minimum; 64 to 256 trials per task is a good range.</li>
+<li><strong>Threads.</strong> Serve with the same number of threads per worker as <code>target_num_cores</code>.</li>
+<li><strong>Compare.</strong> The <code>benchmark</code> section of <code>metadata.json</code> holds the timings of every compiled model.</li>
+</ul>
 <hr />
 <h2 id="serve-action">Serve action</h2>
 <p>The <code>serve</code> action deploys the compiled Model. An init container downloads <code>model.so</code> and <code>metadata.json</code> into the pod; the serve image loads them and exposes the model on port <code>8080</code> (REST) and <code>9000</code> (gRPC).</p>
@@ -3427,24 +3810,48 @@
 <tr>
 <td><code>image</code></td>
 <td>Go serve image</td>
-<td>Another serve image, for example <code>ghcr.io/scc-digitalhub/tvm-runtime-rust:0.25</code>.</td>
-</tr>
-<tr>
-<td><code>envs</code></td>
-<td>empty</td>
-<td>Add <code>TVM_NUM_THREADS</code> with the number of CPUs of the pod, so that TVM does not start more threads than the pod can use.</td>
+<td>Another serve image, for example <code>ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0</code>.</td>
 </tr>
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">workers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"2"</span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
-<span class="w">  </span><span class="nt">envs</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TVM_NUM_THREADS</span>
-<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"2"</span>
 </code></pre></div>
+<p>When the run requests CPUs, each worker uses <code>resources.cpu / workers</code> TVM threads. To choose the number yourself, add <code>TVM_NUM_THREADS</code> to <code>envs</code>.</p>
 <p>When the run is <strong>RUNNING</strong>, its <code>status.service</code> field shows the address, for example <code>s-tvmserve-&lt;run-id&gt;.&lt;namespace&gt;:8080</code>.</p>
+<h3 id="where-the-service-runs">Where the service runs</h3>
+<p>A <code>model.so</code> runs only on the CPU architecture it was compiled for. The platform reads the architecture from the compiled Model and starts the service only on the nodes of the same architecture (the node label <code>kubernetes.io/arch</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Compiled for</th>
+<th>Nodes of the service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x86</code>, <code>x86_v3</code>, <code>x86_native</code>, <code>cpu</code> on an x86 node</td>
+<td><code>amd64</code></td>
+</tr>
+<tr>
+<td><code>arm64</code>, <code>arm64_pi5</code>, <code>cpu</code> on an ARM node</td>
+<td><code>arm64</code></td>
+</tr>
+<tr>
+<td><code>armv7l</code></td>
+<td><code>arm</code></td>
+</tr>
+</tbody>
+</table>
+<p>The serve images are published for all three architectures, and each node downloads its own variant. So an ARM model can be served inside the platform when the cluster has ARM nodes, for example a Raspberry Pi joined to the cluster.</p>
+<div class="admonition warning">
+<p class="admonition-title">No node of the right architecture</p>
+<p>If the cluster has no node of the model architecture, the service stays <strong>PENDING</strong>. Delete the run, and serve a Model compiled for the nodes of the cluster.</p>
+</div>
+<p>A <code>profile</code> that sets its own node selector takes precedence over this choice.</p>
 <h3 id="endpoints">Endpoints</h3>
 <table>
 <thead>
@@ -3560,7 +3967,7 @@ curl<span class="w"> </span>http://localhost:18080/v2/models/yolo-function
 docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/yolo-model:/shared/model"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">TVM_MODEL_NAME</span><span class="o">=</span>yolo-function<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.25
+<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0
 </code></pre></div>
 <p>In another terminal:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:8080/v2/models/yolo-function
@@ -3574,7 +3981,7 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/yolo-model:/shared/model"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">TVM_MODEL_NAME</span><span class="o">=</span>yolo-function<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.25
+<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0
 </code></pre></div>
 <p>Use the <code>arm64</code> build on a 64-bit OS and the <code>armv7l</code> build on a 32-bit OS. Docker picks the image variant of the device automatically.</p>
 </div>
@@ -3606,17 +4013,55 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 <td><code>compile</code></td>
 <td>4</td>
 <td>8 Gi</td>
-<td>With less memory the Job may be killed (exit code 137).</td>
+<td>With less memory the Job may be killed (exit code 137). Tuning is faster with more CPUs.</td>
 </tr>
 <tr>
 <td><code>serve</code></td>
 <td>1–4</td>
 <td>1–2 Gi</td>
-<td>Set <code>TVM_NUM_THREADS</code> to the number of CPUs.</td>
+<td>The CPUs are split among the <code>workers</code>.</td>
 </tr>
 </tbody>
 </table>
 <p><code>resources.disk</code> sets the size of the working volume of the Jobs (default <code>4Gi</code>).</p>
+<hr />
+<h2 id="inside-the-jobs">Inside the Jobs</h2>
+<p>The <code>build</code> and <code>compile</code> Jobs run the <code>tvm-toolkit</code> image, which contains only the tools: Apache TVM, LLVM, the ARM compilers and the ONNX and TFLite importers. The scripts that do the work are part of the runtime: the platform mounts them into each Job, so a new version of the platform updates them without a new image.</p>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>entrypoint.sh</code></td>
+<td>Prepares the working folders and starts the script of the action.</td>
+</tr>
+<tr>
+<td><code>build_onnx.py</code>, <code>build_tflite.py</code></td>
+<td>Convert the source model into Relax IR (<code>build</code>).</td>
+</tr>
+<tr>
+<td><code>compile_model.py</code></td>
+<td>Compiles the IR into <code>model.so</code> (<code>compile</code>).</td>
+</tr>
+<tr>
+<td><code>tuning.py</code>, <code>benchmark.py</code></td>
+<td>MetaSchedule tuning and the timing of the library, used by <code>compile_model.py</code>.</td>
+</tr>
+<tr>
+<td><code>publish.py</code></td>
+<td>Uploads the result as a Model of kind <code>tvm-ir</code> or <code>tvm-so</code> and records it in the run.</td>
+</tr>
+<tr>
+<td><code>common.py</code></td>
+<td>Helpers shared by the other scripts.</td>
+</tr>
+</tbody>
+</table>
+<p>The platform chooses the script from the action and the source format, and passes every option of the run as an environment variable (<code>TVM_TARGET</code>, <code>TVM_OPT_LEVEL</code>, ...). When the script ends, the platform copies the key of the published Model into the function field <code>ir_model</code> or <code>so_model</code>.</p>
 <hr />
 <h2 id="serving-runtimes">Serving runtimes</h2>
 <p>The <code>serve</code> action can use two images. They read the same model folder, expose the same endpoints on the same ports and accept the same requests: switch between them with the <code>image</code> field.</p>
@@ -3631,8 +4076,8 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 <tbody>
 <tr>
 <td>Image</td>
-<td><code>ghcr.io/scc-digitalhub/tvm-runtime-go:0.25</code></td>
-<td><code>ghcr.io/scc-digitalhub/tvm-runtime-rust:0.25</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0</code></td>
 </tr>
 <tr>
 <td>Server</td>
@@ -3698,18 +4143,29 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 </tr>
 <tr>
 <td><code style="white-space: nowrap">TVM_NUM_THREADS</code></td>
-<td>one per detected core</td>
-<td>Threads used by TVM for each inference. Not set by the platform: add it to <code>envs</code>.</td>
+<td>every core</td>
+<td>Threads used by TVM for each worker. Set by the platform from <code>resources.cpu / workers</code>, unless <code>envs</code> sets it.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">TVM_SERVE_PORT</code></td>
+<td><code>8080</code></td>
+<td>REST port.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">TVM_SERVE_GRPC_PORT</code></td>
+<td><code>9000</code></td>
+<td>gRPC port.</td>
 </tr>
 </tbody>
 </table>
+<p>At startup, both images refuse a model, with a clear error, when it was compiled with another TVM release or for another CPU architecture, or when it uses an unsupported data type.</p>
 <div class="admonition note">
 <p class="admonition-title">Use images of the same release</p>
-<p>Compile and serve with images of the same release, such as <code>tvm-toolkit:0.25</code> and <code>tvm-runtime-go:0.25</code>: a <code>model.so</code> built with another TVM version may fail to load.</p>
+<p>Compile and serve with images of the same release, such as <code>tvm-toolkit:0.26.0</code> and <code>tvm-runtime-go:0.26.0</code>: the serve images check that <code>model.so</code> was built with their own TVM version and commit. Recompile the models after upgrading the images.</p>
 </div>
 <hr />
 <h2 id="models-produced">Models produced</h2>
-<p>The <code>build</code> and <code>compile</code> actions publish Models named <code>&lt;function&gt;-ir</code> and <code>&lt;function&gt;-&lt;tag&gt;</code>. Depending on the SDK version in the toolkit image, they have the kinds <code>tvm-ir</code> and <code>tvm-so</code>, or the generic kind <code>model</code>. The framework is always <code>tvm</code>, the algorithm <code>tvm-relax-ir</code> or <code>tvm-compiled-so</code>, and the specification contains:</p>
+<p>The <code>build</code> and <code>compile</code> actions publish Models named <code>&lt;function&gt;-ir</code> (kind <code>tvm-ir</code>) and <code>&lt;function&gt;-&lt;tag&gt;</code> (kind <code>tvm-so</code>). The framework is <code>tvm</code>, the algorithm <code>tvm-relax-ir</code> or <code>tvm-compiled-so</code>, and the specification contains:</p>
 <table>
 <thead>
 <tr>
@@ -3728,15 +4184,14 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 </tr>
 <tr>
 <td><code>source_format</code>, <code>keep_params_in_input</code>, <code>sanitize_input_names</code></td>
-<td>How the IR was built (IR Model).</td>
+<td>How the IR was built (<code>tvm-ir</code>).</td>
 </tr>
 <tr>
 <td><code>target</code>, <code>opt_level</code>, <code>manifest</code></td>
-<td>How the library was compiled, and its full <code>metadata.json</code> (compiled Model).</td>
+<td>How the library was compiled, and its full <code>metadata.json</code> (<code>tvm-so</code>).</td>
 </tr>
 </tbody>
 </table>
-<p>With the generic kind <code>model</code>, these fields are under <code>parameters</code>.</p>
 <hr />
 <h2 id="platform-configuration">Platform configuration</h2>
 <p>Administrators choose the images with these environment variables of the Core:</p>
@@ -3751,22 +4206,22 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 <tbody>
 <tr>
 <td><code style="white-space: nowrap">RUNTIME_TVM_BUILDER_ONNX</code></td>
-<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.25</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0</code></td>
 <td>Image of <code>build</code> for ONNX models.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">RUNTIME_TVM_BUILDER_TFLITE</code></td>
-<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.25</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0</code></td>
 <td>Image of <code>build</code> for TFLite models.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">RUNTIME_TVM_COMPILER</code></td>
-<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.25</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0</code></td>
 <td>Image of <code>compile</code>.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">RUNTIME_TVM_SERVE</code></td>
-<td><code>ghcr.io/scc-digitalhub/tvm-runtime-go:0.25</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0</code></td>
 <td>Image of <code>serve</code>.</td>
 </tr>
 <tr>
@@ -3806,7 +4261,7 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 </tr>
 <tr>
 <td>Build error <code>cannot detect the TVM source format</code></td>
-<td>The model path has no <code>.onnx</code> or <code>.tflite</code> extension: set <code>format</code> in the function.</td>
+<td>The Model is of kind <code>model</code> and its path has no <code>.onnx</code> or <code>.tflite</code> extension: use a Model of kind <code>onnx</code> or <code>tflite</code>, or set <code>format</code> in the function.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">tvm+compile needs an IR model</code></td>
@@ -3817,8 +4272,16 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 <td>Run <code>compile</code> first, or set <code>model_path</code> to a compiled Model.</td>
 </tr>
 <tr>
+<td>The compile run goes to <strong>ERROR</strong> at once, with a message about tuning</td>
+<td>The tuning options do not fit together, for example <code>tune</code> without <code>tuning_trials</code>: see <a href="#tuning-options">Tuning options</a>.</td>
+</tr>
+<tr>
+<td>The compile or serve run stays <strong>PENDING</strong></td>
+<td>No node of the cluster has the architecture the run needs: see <a href="#where-the-service-runs">Where the service runs</a>. Delete the run and choose another target or Model.</td>
+</tr>
+<tr>
 <td>The serve pod restarts right after starting</td>
-<td>The model was compiled for another architecture (for example the last compile was for ARM), with another TVM release, or with <code>system_lib</code>. Set <code>model_path</code> to a Model compiled for the cluster, with images of the same release.</td>
+<td>The log explains why: the model was compiled with another TVM release, with <code>system_lib</code>, or uses an unsupported data type. Recompile it with the toolkit of the same release.</td>
 </tr>
 <tr>
 <td><code>404</code> on <code>/v2/models/&lt;name&gt;</code></td>
@@ -3842,23 +4305,23 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/scc-digitalhub/digitalhub-core/tree/main/runtimes/runtime-tvm">runtime-tvm</a></td>
-<td>The runtime in the Core: tasks, options and the scripts run by the Jobs.</td>
+<td><a href="https://github.com/scc-digitalhub/digitalhub-core/tree/runtime-tvm/runtimes/runtime-tvm">runtime-tvm</a></td>
+<td>The runtime in the Core: actions, options and the scripts run by the Jobs.</td>
 </tr>
 <tr>
 <td><a href="https://github.com/scc-digitalhub/digitalhub-core/tree/runtime-tvm/runtimes/runtime-tvm/test_infer">test_infer</a></td>
 <td>Test scripts for detection and pose models, with guides for a remote platform.</td>
 </tr>
 <tr>
-<td><a href="https://github.com/scc-digitalhub/digitalhub-tvm-toolkit/tree/0.25">digitalhub-tvm-toolkit</a></td>
+<td><a href="https://github.com/scc-digitalhub/digitalhub-tvm-toolkit/tree/0.26.0">digitalhub-tvm-toolkit</a></td>
 <td>The image of <code>build</code> and <code>compile</code>: Apache TVM, LLVM, ARM compilers, ONNX and TFLite importers.</td>
 </tr>
 <tr>
-<td><a href="https://github.com/scc-digitalhub/digitalhub-serverless/blob/tvm-0.25/pkg/processor/runtime/tvm/README.md">Go serve runtime</a></td>
+<td><a href="https://github.com/scc-digitalhub/digitalhub-serverless/blob/tvm-0.26.0/pkg/processor/runtime/tvm/README.md">Go serve runtime</a></td>
 <td>The default serve image, in <code>digitalhub-serverless</code>.</td>
 </tr>
 <tr>
-<td><a href="https://github.com/scc-digitalhub/digitalhub-tvm-rust/tree/0.25">digitalhub-tvm-rust</a></td>
+<td><a href="https://github.com/scc-digitalhub/digitalhub-tvm-rust/tree/0.26.0">digitalhub-tvm-rust</a></td>
 <td>The Rust serve image.</td>
 </tr>
 </tbody>

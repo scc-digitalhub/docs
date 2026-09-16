@@ -2989,9 +2989,9 @@ ls<span class="w"> </span>yolo-model<span class="w">        </span><span class="
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/yolo-model:/shared/model"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">TVM_MODEL_NAME</span><span class="o">=</span>yolo-function<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.25
+<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0
 </code></pre></div>
-<p>To use the Rust server instead, replace the image with <code>ghcr.io/scc-digitalhub/tvm-runtime-rust:0.25</code>.</p>
+<p>To use the Rust server instead, replace the image with <code>ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0</code>.</p>
 <p><strong>3. Test it</strong> in another terminal: set <code>URL = "http://localhost:8080"</code> in <code>client.py</code>, or use the test scripts, also over gRPC:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:8080/v2/models/yolo-function
 python3<span class="w"> </span>client.py
@@ -3009,9 +3009,13 @@ dhcli<span class="w"> </span>download<span class="w"> </span>model<span class="w
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/yolo-model:/shared/model"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">TVM_MODEL_NAME</span><span class="o">=</span>yolo-function<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.25
+<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0
 </code></pre></div>
 <p><strong>3. Test it</strong> from any computer of the same network, with <code>URL = "http://&lt;device&gt;:8080"</code> in <code>client.py</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">A Raspberry Pi in the cluster</p>
+<p>When the Raspberry Pi is a node of the cluster, there is no need for Docker: run <code>serve</code> with <code>model_path</code> set to the ARM Model, and the platform starts the service on the Pi. Test it with the port-forward, as in <a href="#test-the-service-on-the-platform">the first section</a>.</p>
+</div>
 <h2 id="clean-up">Clean up</h2>
 <ul>
 <li>Press <strong>Ctrl+C</strong> to close the port-forward and to stop the Docker containers.</li>
