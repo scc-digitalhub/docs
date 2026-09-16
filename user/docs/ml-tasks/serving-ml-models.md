@@ -60,24 +60,6 @@ Users can view the API endpoints for their deployed services in the 'services' t
 
 ---
 
-## TVM Compiled Model Serving
-
-The [**TVM runtime**](../runtimes/tvm.md) compiles ONNX and TFLite models into native code with Apache TVM, for x86 servers or ARM devices, and serves them through the Open Inference v2 protocol over REST and gRPC. It is useful when inference has to be fast on CPU, or when the same model has to run both in the platform and on edge devices.
-
-### Example runtime tasks
-
-**Compile once, serve on CPU**
-
-A model is converted, compiled for a target architecture and deployed, without writing code or building images.
-
-Example:
-
-- Upload a YOLOv8n object detector exported to ONNX, run the `build` and `compile` actions of a `tvm` function for the `x86` target, and deploy the compiled model with the `serve` action.
-
-From the Core Manage UI, users can create the three runs from the `build`, `compile` and `serve` tabs of the function. The [TVM tutorial](../../tutorials/tvm/intro/) shows the whole flow, including how to test the service from a local computer with the CLI.
-
----
-
 ## Custom Model Serving
 
 It is possible to expose a custom model through the [**python serverless**](../runtimes/python.md) or [**openinference**](../runtimes/oi.md) runtimes. In the first case, the API is not limited to a specific format or protocol, and it is possible to define arbitrary HTTP API for interacting with the model. In the second case the exposed API is defined by the Open Inference v2 protocol, and allows for both HTTP and gRPC protocols. A custom model can be loaded from a local file or from a remote URL.

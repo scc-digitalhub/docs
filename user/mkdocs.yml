@@ -58,7 +58,6 @@ nav:
       - "Model Serving: LLMs": "runtimes/llmserve.md"
       - "Model Serving: MLflow": "runtimes/mlflowserve.md"
       - "Model Serving: Scikit-learn": "runtimes/sklearnserve.md"
-      - "Model Serving: TVM": "runtimes/tvm.md"
       - Open Inference (Python): "runtimes/oi.md"
       - Guardrail (Python): "runtimes/guardrail.md"
       - "Federated Learning": "runtimes/fl.md"
