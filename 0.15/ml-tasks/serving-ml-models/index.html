@@ -1183,6 +1183,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tvm-compiled-model-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TVM Compiled Model Serving
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TVM Compiled Model Serving">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-runtime-tasks_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example runtime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#custom-model-serving" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1195,7 +1223,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-runtime-tasks_2" class="md-nav__link">
+  <a href="#example-runtime-tasks_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         Example runtime tasks
@@ -2050,6 +2078,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../runtimes/tvm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Serving: TVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../runtimes/oi/" class="md-nav__link">
         
   
@@ -2520,6 +2576,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tvm-compiled-model-serving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TVM Compiled Model Serving
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TVM Compiled Model Serving">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-runtime-tasks_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example runtime tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#custom-model-serving" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2532,7 +2616,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-runtime-tasks_2" class="md-nav__link">
+  <a href="#example-runtime-tasks_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         Example runtime tasks
@@ -2795,9 +2879,20 @@
 <p>Users can view the API endpoints for their deployed services in the 'services' tab.</p>
 <p><img alt="services" src="../../images/runtimes/mlflowserve-services.png" /></p>
 <hr />
+<h2 id="tvm-compiled-model-serving">TVM Compiled Model Serving</h2>
+<p>The <a href="../../runtimes/tvm/"><strong>TVM runtime</strong></a> compiles ONNX and TFLite models into native code with Apache TVM, for x86 servers or ARM devices, and serves them through the Open Inference v2 protocol over REST and gRPC. It is useful when inference has to be fast on CPU, or when the same model has to run both in the platform and on edge devices.</p>
+<h3 id="example-runtime-tasks_2">Example runtime tasks</h3>
+<p><strong>Compile once, serve on CPU</strong></p>
+<p>A model is converted, compiled for a target architecture and deployed, without writing code or building images.</p>
+<p>Example:</p>
+<ul>
+<li>Upload a YOLOv8n object detector exported to ONNX, run the <code>build</code> and <code>compile</code> actions of a <code>tvm</code> function for the <code>x86</code> target, and deploy the compiled model with the <code>serve</code> action.</li>
+</ul>
+<p>From the Core Manage UI, users can create the three runs from the <code>build</code>, <code>compile</code> and <code>serve</code> tabs of the function. The <a href="../../tutorials/tvm/intro/">TVM tutorial</a> shows the whole flow, including how to test the service from a local computer with the CLI.</p>
+<hr />
 <h2 id="custom-model-serving">Custom Model Serving</h2>
 <p>It is possible to expose a custom model through the <a href="../../runtimes/python/"><strong>python serverless</strong></a> or <a href="../../runtimes/oi/"><strong>openinference</strong></a> runtimes. In the first case, the API is not limited to a specific format or protocol, and it is possible to define arbitrary HTTP API for interacting with the model. In the second case the exposed API is defined by the Open Inference v2 protocol, and allows for both HTTP and gRPC protocols. A custom model can be loaded from a local file or from a remote URL.</p>
-<h3 id="example-runtime-tasks_2">Example runtime tasks</h3>
+<h3 id="example-runtime-tasks_3">Example runtime tasks</h3>
 <ul>
 <li>Train a computer vision object detector using HuggingFace transformers library and publish the model on huggingface.co</li>
 <li>Define a Python inference function that accespts the image as byte array input and returns a prediction</li>
