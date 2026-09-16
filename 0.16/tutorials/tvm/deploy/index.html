@@ -2347,10 +2347,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-compile-relax-ir-to-modelso" class="md-nav__link">
+  <a href="#4-compile-for-the-cluster-x86" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Compile: Relax IR to model.so
+        4. Compile for the cluster (x86)
       
     </span>
   </a>
@@ -2358,10 +2358,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-serve-deploy-the-model" class="md-nav__link">
+  <a href="#5-serve" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Serve: deploy the model
+        5. Serve
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-compile-for-arm-devices-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Compile for ARM devices (optional)
       
     </span>
   </a>
@@ -2692,10 +2703,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-compile-relax-ir-to-modelso" class="md-nav__link">
+  <a href="#4-compile-for-the-cluster-x86" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Compile: Relax IR to model.so
+        4. Compile for the cluster (x86)
       
     </span>
   </a>
@@ -2703,10 +2714,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-serve-deploy-the-model" class="md-nav__link">
+  <a href="#5-serve" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Serve: deploy the model
+        5. Serve
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-compile-for-arm-devices-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Compile for ARM devices (optional)
       
     </span>
   </a>
@@ -2779,13 +2801,13 @@
 
 
 <h1 id="build-compile-and-serve-the-model">Build, compile and serve the model</h1>
-<p>In this part we upload the ONNX model, create a TVM function and run its three actions: <code>build</code>, <code>compile</code> and <code>serve</code>. Each action is a run; wait for a run to be <strong>COMPLETED</strong> before starting the next one.</p>
-<p>With the CLI, keep the specification of each run in a small YAML file: the commands below expect them in the current folder.</p>
+<p>In this part we upload the model, create a TVM function and run its three actions. Each action is a <strong>run</strong>: wait until a run is <strong>COMPLETED</strong> before starting the next one.</p>
+<p>With the CLI, each run reads its fields from a small YAML file; the commands expect the files in the current folder.</p>
 <h2 id="1-upload-the-model">1. Upload the model</h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Console</label><label for="__tabbed_1_2">CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Open <strong>Models</strong> and click <code>CREATE</code>. Choose the kind <code>model</code>, set the name <code>yolo</code> and upload <code>yolov8n.onnx</code> at the bottom of the form.</p>
+<p>Open <strong>Models</strong> and click <code>CREATE</code>. Choose the kind <code>model</code>, enter the name <code>yolo</code> and upload <code>yolov8n.onnx</code> at the bottom of the form.</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>upload<span class="w"> </span>model<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo<span class="w"> </span>-f<span class="w"> </span>yolov8n.onnx
@@ -2794,17 +2816,30 @@ dhcli<span class="w"> </span>list<span class="w"> </span>models<span class="w"> 
 </div>
 </div>
 </div>
-<p>The Model now points to a file ending with <code>.onnx</code>, so the TVM runtime will recognize the format by itself.</p>
+<p>The Model path ends with <code>.onnx</code>, so the runtime recognizes the format by itself.</p>
 <h2 id="2-create-the-function">2. Create the function</h2>
-<p>The function tells the runtime which model to compile.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Console</label><label for="__tabbed_2_2">CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Open <strong>Functions</strong>, click <code>CREATE</code>, choose the kind <code>tvm</code> and set the name <code>yolo-function</code>. In the specification set:</p>
-<ul>
-<li><strong><code>model</code></strong>: the key of the <code>yolo</code> Model, shown in its detail page (for example <code>store://tvm-test/model/model/yolo:&lt;id&gt;</code>);</li>
-<li><strong><code>format</code></strong>: <code>auto</code>.</li>
-</ul>
+<p>Open <strong>Functions</strong>, click <code>CREATE</code>, choose the kind <code>tvm</code> and enter the name <code>yolo-function</code>. In the specification:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>model</code></td>
+<td>the key of the <code>yolo</code> Model, shown in its detail page, e.g. <code>store://tvm-test/model/model/yolo:&lt;id&gt;</code></td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td><code>auto</code></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="tabbed-block">
 <p>Create <code>yolo-function.yaml</code>:</p>
@@ -2814,18 +2849,33 @@ dhcli<span class="w"> </span>list<span class="w"> </span>models<span class="w"> 
 <span class="w">  </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">store://tvm-test/model/model/yolo</span>
 <span class="w">  </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span>
 </code></pre></div>
-<p>A key without <code>:&lt;id&gt;</code> refers to the latest version of the Model. Create the function:</p>
+<p>A key without <code>:&lt;id&gt;</code> refers to the latest version of the Model.</p>
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>create<span class="w"> </span><span class="k">function</span><span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-f<span class="w"> </span>yolo-function.yaml
 </code></pre></div>
 </div>
 </div>
 </div>
 <h2 id="3-build-onnx-to-relax-ir">3. Build: ONNX to Relax IR</h2>
-<p>The <code>build</code> action converts the ONNX model into Relax IR, the intermediate representation of TVM. No option is needed for YOLOv8n; we only give the Job enough resources.</p>
+<p><code>build</code> converts the model into Relax IR. YOLOv8n needs no conversion option: we only give the Job enough resources.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Console</label><label for="__tabbed_3_2">CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Open the function, select the <code>build</code> tab and click <code>CREATE</code>. In the first step set the resources to 4 CPUs and 8Gi of memory, then complete the form.</p>
+<p>Open the function, select the <strong>build</strong> tab and click <code>CREATE</code>. In the first step:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resources</code></td>
+<td>CPU <code>4</code>, memory <code>8Gi</code></td>
+</tr>
+</tbody>
+</table>
+<p>Leave the other fields empty and complete the form.</p>
 </div>
 <div class="tabbed-block">
 <p>Create <code>build.yaml</code>:</p>
@@ -2834,7 +2884,6 @@ dhcli<span class="w"> </span>list<span class="w"> </span>models<span class="w"> 
 <span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
 </code></pre></div>
-<p>Start the run and follow it:</p>
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>run<span class="w"> </span>tvm+build<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo-function<span class="w"> </span>-f<span class="w"> </span>build.yaml
 dhcli<span class="w"> </span>list<span class="w"> </span>runs<span class="w"> </span>-p<span class="w"> </span>tvm-test
 dhcli<span class="w"> </span>log<span class="w"> </span>&lt;run-id&gt;<span class="w"> </span>-p<span class="w"> </span>tvm-test
@@ -2842,48 +2891,93 @@ dhcli<span class="w"> </span>log<span class="w"> </span>&lt;run-id&gt;<span clas
 </div>
 </div>
 </div>
-<p>When the run is <strong>COMPLETED</strong>:</p>
-<ul>
-<li>a new Model <code>yolo-function-ir</code> contains the IR (<code>model.relax.json</code>) and its <code>metadata.json</code>;</li>
-<li>the function field <code>ir_model</code> points to it, so the next action finds it automatically.</li>
-</ul>
+<p>When the run is <strong>COMPLETED</strong>, the Model <code>yolo-function-ir</code> contains the IR, and the function field <code>ir_model</code> points to it.</p>
 <div class="admonition note">
 <p class="admonition-title">Leave <code>target_opset</code> empty</p>
-<p>The build options (<code>simplify</code>, <code>target_opset</code>, ...) are described in the <a href="../../../runtimes/tvm/#build-options">runtime reference</a>. Set <code>target_opset</code> only when you really need an opset conversion: ONNX cannot convert every operator to every version, and the build fails with <code>No Adapter From Version ...</code>.</p>
+<p>Set <code>target_opset</code> only if the model really needs an opset conversion: ONNX cannot convert every operator to every version, and the build fails with <code>No Adapter From Version ...</code>. All the build options are described in the <a href="../../../runtimes/tvm/#build-options">runtime reference</a>.</p>
 </div>
-<h2 id="4-compile-relax-ir-to-modelso">4. Compile: Relax IR to model.so</h2>
-<p>The <code>compile</code> action turns the IR into a native library for a target architecture. We compile for any x86-64 CPU.</p>
+<h2 id="4-compile-for-the-cluster-x86">4. Compile for the cluster (x86)</h2>
+<p><code>compile</code> turns the IR into <code>model.so</code> for a target architecture. First we compile for x86, to serve the model on the cluster.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Console</label><label for="__tabbed_4_2">CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Select the <code>compile</code> tab of the function and click <code>CREATE</code>. Set <strong><code>target_architecture</code></strong> to <code>x86</code>, <strong><code>opt_level</code></strong> to <code>3</code>, and the resources to 4 CPUs and 8Gi of memory.</p>
+<p>Select the <strong>compile</strong> tab of the function and click <code>CREATE</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code style="white-space: nowrap">target_architecture</code></td>
+<td><code>x86</code></td>
+<td>runs on any x86-64 node</td>
+</tr>
+<tr>
+<td><code>tag</code></td>
+<td><code>x86</code></td>
+<td>names the Model <code>yolo-function-x86</code></td>
+</tr>
+<tr>
+<td><code>opt_level</code></td>
+<td><code>3</code></td>
+<td>full optimization</td>
+</tr>
+<tr>
+<td><code>resources</code></td>
+<td>CPU <code>4</code>, memory <code>8Gi</code></td>
+<td>compiling needs memory</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="tabbed-block">
-<p>Create <code>compile.yaml</code>:</p>
+<p>Create <code>compile-x86.yaml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86</span>
+<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86</span>
 <span class="w">  </span><span class="nt">opt_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>run<span class="w"> </span>tvm+compile<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo-function<span class="w"> </span>-f<span class="w"> </span>compile.yaml
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>run<span class="w"> </span>tvm+compile<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo-function<span class="w"> </span>-f<span class="w"> </span>compile-x86.yaml
 dhcli<span class="w"> </span>list<span class="w"> </span>runs<span class="w"> </span>-p<span class="w"> </span>tvm-test
 </code></pre></div>
 </div>
 </div>
 </div>
-<p>When the run is <strong>COMPLETED</strong>, the new Model <code>yolo-function-so</code> contains <code>model.so</code> and <code>metadata.json</code>, and the function field <code>so_model</code> points to it.</p>
-<div class="admonition info">
-<p class="admonition-title">Other targets</p>
-<p>The same IR can be compiled again for <code>arm64</code> or <code>armv7l</code>, to run the model on ARM devices such as a Raspberry Pi: see the <a href="../../../runtimes/tvm/#target-architectures">target architectures</a>.</p>
-</div>
-<h2 id="5-serve-deploy-the-model">5. Serve: deploy the model</h2>
-<p>The <code>serve</code> action deploys <code>model.so</code> as an Open Inference v2 service, on port <code>8080</code> (REST) and <code>9000</code> (gRPC).</p>
+<p>When the run is <strong>COMPLETED</strong>, the Model <code>yolo-function-x86</code> contains <code>model.so</code> and <code>metadata.json</code>, and the function field <code>so_model</code> points to it.</p>
+<h2 id="5-serve">5. Serve</h2>
+<p><code>serve</code> deploys the model in <code>so_model</code> as an Open Inference v2 service, on port <code>8080</code> (REST) and <code>9000</code> (gRPC).</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Console</label><label for="__tabbed_5_2">CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Select the <code>serve</code> tab of the function and click <code>CREATE</code>. Set the resources to 2 CPUs and 2Gi of memory, and add the environment variable <code>TVM_NUM_THREADS</code> with value <code>2</code>.</p>
+<p>Select the <strong>serve</strong> tab of the function and click <code>CREATE</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resources</code></td>
+<td>CPU <code>2</code>, memory <code>2Gi</code></td>
+<td>enough for YOLOv8n</td>
+</tr>
+<tr>
+<td><code>envs</code></td>
+<td><code>TVM_NUM_THREADS</code> = <code>2</code></td>
+<td>as many TVM threads as CPUs</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="tabbed-block">
 <p>Create <code>serve.yaml</code>:</p>
@@ -2901,11 +2995,114 @@ dhcli<span class="w"> </span>services<span class="w"> </span>-p<span class="w"> 
 </div>
 </div>
 </div>
-<p><code>TVM_NUM_THREADS</code> makes TVM use as many threads as the CPUs of the pod. When the service is <strong>RUNNING</strong>, <code>dhcli services</code> shows its address:</p>
+<p>When the service is <strong>RUNNING</strong>, <code>dhcli services</code> shows it:</p>
 <div class="highlight"><pre><span></span><code>NAME          ID                                 FUNCTION        KIND            SERVICE                                                         STATE
 cloudy-lynx   7398740f73b14fdd957f10c2e54c8ed2   yolo-function   tvm+serve:run   s-tvmserve-7398740f73b14fdd957f10c2e54c8ed2.dev-platform:8080   RUNNING
 </code></pre></div>
-<p>The model is served with the name of the function, <code>yolo-function</code>. The address is internal to the platform: in the <a href="../test/">next part</a> we reach it from our computer.</p>
+<p>The model is served with the name of the function, <code>yolo-function</code>. The next part shows how to <a href="../test/">test it</a>.</p>
+<h2 id="6-compile-for-arm-devices-optional">6. Compile for ARM devices (optional)</h2>
+<p>The same IR can be compiled for ARM devices, such as a Raspberry Pi. The Job still runs on the cluster: the ARM library is cross-compiled. Check the device first:</p>
+<div class="highlight"><pre><span></span><code>uname<span class="w"> </span>-m<span class="w">     </span><span class="c1"># aarch64 -&gt; use arm64 · armv7l -&gt; use armv7l</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">arm64 (64-bit OS)</label><label for="__tabbed_6_2">armv7l (32-bit OS)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>Console</strong>: in the <strong>compile</strong> tab click <code>CREATE</code> and enter:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code style="white-space: nowrap">target_architecture</code></td>
+<td><code>arm64</code></td>
+</tr>
+<tr>
+<td><code>tag</code></td>
+<td><code>arm64</code></td>
+</tr>
+<tr>
+<td><code>cross_cc</code></td>
+<td>leave empty: the right compiler is chosen automatically</td>
+</tr>
+<tr>
+<td><code>opt_level</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>resources</code></td>
+<td>CPU <code>4</code>, memory <code>8Gi</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>CLI</strong>: create <code>compile-arm64.yaml</code> and start the run:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arm64</span>
+<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arm64</span>
+<span class="w">  </span><span class="nt">opt_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
+<span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>run<span class="w"> </span>tvm+compile<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo-function<span class="w"> </span>-f<span class="w"> </span>compile-arm64.yaml
+</code></pre></div>
+<p>Result: the Model <code>yolo-function-arm64</code>.</p>
+</div>
+<div class="tabbed-block">
+<p><strong>Console</strong>: in the <strong>compile</strong> tab click <code>CREATE</code> and enter:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code style="white-space: nowrap">target_architecture</code></td>
+<td><code>armv7l</code></td>
+</tr>
+<tr>
+<td><code>tag</code></td>
+<td><code>armv7l</code></td>
+</tr>
+<tr>
+<td><code>cross_cc</code></td>
+<td>leave empty: the right compiler is chosen automatically</td>
+</tr>
+<tr>
+<td><code>opt_level</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>resources</code></td>
+<td>CPU <code>4</code>, memory <code>8Gi</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>CLI</strong>: create <code>compile-armv7l.yaml</code> and start the run:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">armv7l</span>
+<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">armv7l</span>
+<span class="w">  </span><span class="nt">opt_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
+<span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>run<span class="w"> </span>tvm+compile<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo-function<span class="w"> </span>-f<span class="w"> </span>compile-armv7l.yaml
+</code></pre></div>
+<p>Result: the Model <code>yolo-function-armv7l</code>.</p>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Serving after an ARM compile</p>
+<p>Each compile writes its Model into <code>so_model</code>, and <code>serve</code> deploys <code>so_model</code> by default. After an ARM compile, <code>so_model</code> points to the ARM library, which does not run on the cluster: to start a new service, set the serve field <code>model_path</code> to <code>store://tvm-test/model/model/yolo-function-x86</code>. A service that is already running is not affected.</p>
+</div>
+<p>The ARM Models are run on the device, as shown in <a href="../test/#run-the-model-on-a-raspberry-pi">Test the model</a>.</p>
 
 
 
