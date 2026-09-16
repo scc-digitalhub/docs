@@ -2549,16 +2549,14 @@
 
 
 <h1 id="compiled-models-with-tvm-introduction">Compiled models with TVM: introduction</h1>
-<p>This scenario shows how to take a trained model, compile it into fast native code with the <a href="../../../runtimes/tvm/">TVM runtime</a> and serve it through the Open Inference v2 protocol. The model is <strong>YOLOv8n</strong>, an object detector exported to ONNX.</p>
+<p>This scenario takes a trained model, compiles it into fast native code with the <a href="../../../runtimes/tvm/">TVM runtime</a> and serves it through the Open Inference v2 protocol. The model is <strong>YOLOv8n</strong>, an object detector exported to ONNX.</p>
+<p><img alt="TVM runtime pipeline" src="../../images/tvm/tvm-pipeline.svg" /></p>
 <p>The scenario has two parts:</p>
 <ol>
-<li><a href="../deploy/"><strong>Build, compile and serve</strong></a>: upload the ONNX model, create a TVM function and run its three actions.</li>
-<li><a href="../test/"><strong>Test the model</strong></a>: reach the service from your computer with a CLI port-forward and send it a picture.</li>
+<li><a href="../deploy/"><strong>Build, compile and serve</strong></a>: upload the model, create a TVM function, run <code>build</code>, <code>compile</code> and <code>serve</code>, and compile the same model for ARM devices.</li>
+<li><a href="../test/"><strong>Test the model</strong></a>: send a picture to the service from your computer, run the model locally with Docker, or on a Raspberry Pi.</li>
 </ol>
-<div class="highlight"><pre><span></span><code> yolov8n.onnx ──► Model "yolo" ──► build ──► compile ──► serve ──► dhcli port-forward ──► your computer
-                                   (IR)      (model.so)  (REST :8080)                     curl / Python
-</code></pre></div>
-<p>Every step can be done from the console or from the command line. The command-line version uses the platform <a href="../../../components/cli/">CLI</a> (<code>dhcli</code>).</p>
+<p>Every step can be done from the <strong>console</strong> or from the <strong>CLI</strong> (<code>dhcli</code>): each page shows both.</p>
 <h2 id="names-used-in-this-scenario">Names used in this scenario</h2>
 <table>
 <thead>
@@ -2581,26 +2579,31 @@
 <td><code>yolo-function</code></td>
 </tr>
 <tr>
-<td>Compiled Model</td>
-<td><code>yolo-function-so</code> (created by the platform)</td>
+<td>IR Model</td>
+<td><code>yolo-function-ir</code> (created by <code>build</code>)</td>
+</tr>
+<tr>
+<td>Compiled Models</td>
+<td><code>yolo-function-x86</code>, <code>yolo-function-arm64</code>, <code>yolo-function-armv7l</code> (created by <code>compile</code>)</td>
 </tr>
 </tbody>
 </table>
-<p>Use your own names if you prefer: the commands only need to be changed accordingly.</p>
+<p>Use your own names if you prefer, and change the commands accordingly.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
-<li>Access to the platform, and a project you can work in. To create the project from the CLI: <code>dhcli create project -n tvm-test</code>.</li>
+<li><strong>A project</strong> on the platform. To create it from the CLI: <code>dhcli create project -n tvm-test</code>.</li>
 <li>
-<p>The <a href="../../../components/cli/">CLI</a>, version 0.15 or later (for the <code>port-forward</code> command), registered on your platform and logged in:</p>
+<p><strong>The <a href="../../../components/cli/">CLI</a></strong>, version 0.15 or later (it provides <code>port-forward</code>), registered on your platform and logged in:</p>
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>register<span class="w"> </span>https://core.my-digitalhub-instance.it
 dhcli<span class="w"> </span>login
 </code></pre></div>
 </li>
 <li>
-<p>Python 3 with <code>numpy</code> and <code>Pillow</code>, to test the model.</p>
+<p><strong>Python 3</strong> with <code>numpy</code> and <code>Pillow</code>, to test the model.</p>
 </li>
+<li><strong>Docker</strong>, only to run the model on your computer or on a device.</li>
 <li>
-<p>The ONNX model. You can export YOLOv8n with the Ultralytics package:</p>
+<p><strong>The ONNX model.</strong> Export YOLOv8n with the Ultralytics package:</p>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>ultralytics
 yolo<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">model</span><span class="o">=</span>yolov8n.pt<span class="w"> </span><span class="nv">format</span><span class="o">=</span>onnx
 </code></pre></div>
