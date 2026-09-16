@@ -63,6 +63,11 @@ nav:
 
   - Open Inference Model Serving:
     - "openinference/openinference.md"
+
+  - "MLOps: Compiled models with TVM":
+    - "tvm/intro.md"
+    - "tvm/deploy.md"
+    - "tvm/test.md"
     
   - AI and Service Guardrails:
     - "guardrails/basic.md"
