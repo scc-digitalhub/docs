@@ -50,7 +50,7 @@ The runtime recognizes the format by itself: from the kind `onnx` of the Model, 
 
 ## 3. Build: ONNX to Relax IR
 
-`build` converts the model into Relax IR. YOLOv8n needs no conversion option: we only give the Job enough resources.
+`build` converts the model into Relax IR. YOLOv8n needs no conversion option: we only give the Job enough resources. The build log shows that the graph is simplified with onnxsim by itself: with TVM 0.26 this is expected for YOLOv8, see [Outputs without a shape](../../../runtimes/tvm/#outputs-without-a-shape).
 
 === "Console"
 

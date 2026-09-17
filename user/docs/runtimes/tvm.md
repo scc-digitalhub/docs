@@ -88,7 +88,8 @@ The `build` action runs a Job that converts the source model into Relax IR and s
     3. Optionally simplify the graph with onnxsim (`simplify`).
     4. Run the ONNX shape inference.
     5. Convert the graph into Relax IR, with `float32` as default data type.
-    6. Save the IR with its `metadata.json` and publish the Model.
+    6. If some outputs of the IR have no shape, simplify the graph with onnxsim and convert it again (see [Outputs without a shape](#outputs-without-a-shape)).
+    7. Save the IR with its `metadata.json` and publish the Model.
 
 === "TFLite"
 
@@ -102,7 +103,7 @@ All fields are optional: for most models the defaults are enough. The conversion
 
 | Field | Default | What it does |
 | --- | --- | --- |
-| `simplify` | `false` | Simplifies the graph with onnxsim before converting it. |
+| `simplify` | `false` | Simplifies the graph with onnxsim before converting it. When `false`, the build still does it by itself if the converted outputs have no shape. |
 | `target_opset`{: style="white-space: nowrap" } | empty | Converts the model to this ONNX operator set version first. Leave it empty unless the model needs it: the conversion fails when ONNX has no converter for an operator. |
 | `opset_override`{: style="white-space: nowrap" } | model opset | Operator set version the TVM importer assumes, instead of the one declared by the model. |
 | `strict_shape_inference`{: style="white-space: nowrap" } | `false` | Runs the ONNX shape inference in strict mode. |
@@ -110,6 +111,17 @@ All fields are optional: for most models the defaults are enough. The conversion
 | `keep_params_in_input`{: style="white-space: nowrap" } | `false` | Keeps the weights in a separate `params.bin`; `compile` embeds them again. |
 | `sanitize_input_names`{: style="white-space: nowrap" } | `true` | Rewrites the input names into valid identifiers. |
 | `image` | toolkit image | Another image for this run. |
+
+### Outputs without a shape
+
+TVM 0.26 converts some shape arithmetic into slices whose size is known only at run time, for example the box decoding at the end of YOLOv8. The outputs of the IR then have no shape, and `compile` cannot generate code for them.
+
+The build handles this by itself: when `simplify` is `false` and some outputs have no shape, it simplifies the graph with onnxsim, which computes those values in advance, and converts it again. Nothing has to be set:
+
+- the log of the build shows `some outputs have no shape: simplifying the graph with onnxsim and converting again`;
+- `metadata.json` of the IR Model has `"simplify": true` and `"simplified_automatically": true`.
+
+If onnxsim cannot simplify the graph, the build keeps the first conversion and warns that the outputs `still have no shape`: `compile` will then fail, see [Troubleshooting](#troubleshooting).
 
 ### Build output
 
@@ -275,14 +287,34 @@ In the console, open the function, select the **compile** tab and click `CREATE`
 
 ## Making models fast
 
-On CPU, an untuned model works, but it can be several times slower than ONNX Runtime: TVM has no ready-made optimized code for the operators. **Tuning** with MetaSchedule measures many variants of each operator on the real hardware and keeps the fastest ones. The result is saved in the `tuning/` folder of the compiled Model and can be reused.
+On CPU, an untuned model works, but it can be several times slower than ONNX Runtime: TVM has no ready-made optimized code for the operators. **Tuning** with MetaSchedule measures many variants of each operator on the real hardware and keeps the fastest ones.
 
-**1. Tune once**, on the same kind of CPU used for serving:
+Tuning is slow, so it is done once and then reused:
+
+| | Automatic | What you do |
+| --- | --- | --- |
+| Saving the result | Yes: every `compile` with `tuning_mode: tune` saves the tuning database in the `tuning/` folder of the compiled Model. | Nothing. |
+| Reusing the result | **No**: a `compile` never looks for earlier tunings by itself. | Set `tuning_mode` and `tuning_model_path` in the new `compile` run. |
+
+### Tune once
+
+Run a `compile` with tuning, on the same kind of CPU used for serving. In the console, set these fields in the **compile** tab:
+
+| Field | Value |
+| --- | --- |
+| `target_architecture`{: style="white-space: nowrap" } | `x86_native` |
+| `target_num_cores` | `4` |
+| `tag` | `tuned` |
+| `tuning_mode` | `tune` |
+| `tuning_trials` | `8000` |
+| `max_trials_per_task`{: style="white-space: nowrap" } | `256` |
+| `resources` | CPU `4`, memory `8Gi` |
 
 ```yaml
 spec:
   target_architecture: x86_native
   target_num_cores: 4
+  tag: tuned
   tuning_mode: tune
   tuning_trials: 8000
   max_trials_per_task: 256
@@ -291,15 +323,44 @@ spec:
     mem: 8Gi
 ```
 
-**2. Reuse the result** to recompile the same IR for the same target, without measuring again:
+Result: the Model `<function>-tuned`, whose `tuning/` folder holds the database. Its key, shown in the detail page of the Model, is what the next compiles need, for example `store://my-project/model/tvm-so/yolo-function-tuned:<id>`.
+
+### Reuse a tuning
+
+To compile again without measuring, start a new `compile` and fill in **two fields**:
+
+| Field | Value |
+| --- | --- |
+| `tuning_mode` | `apply` |
+| `tuning_model_path`{: style="white-space: nowrap" } | the key of the tuned Model, e.g. `store://my-project/model/tvm-so/yolo-function-tuned:<id>` |
+
+Keep **the same `target_architecture` and `target_num_cores`** as the tuning; fields such as `tag` or `exec_mode` can change.
 
 ```yaml
 spec:
   target_architecture: x86_native
   target_num_cores: 4
+  tag: fast
   tuning_mode: apply
-  tuning_model_path: store://my-project/model/tvm-so/yolo-function-so:<id>
+  tuning_model_path: store://my-project/model/tvm-so/yolo-function-tuned:<id>
 ```
+
+The Job downloads the `tuning/` folder of that Model, checks it and uses its best variants: the run takes minutes instead of hours. The `meta_schedule` section of the new `metadata.json` shows `"mode": "apply"` and `"database_reused": true`. The new Model has its own copy of `tuning/`, so it can be reused in turn.
+
+A tuning can be reused only when these match:
+
+| Must match | Why it matters |
+| --- | --- |
+| TVM version and commit | Use the toolkit image of the same release, e.g. `tvm-toolkit:0.26.0`. |
+| Target | Same `target_architecture` **and** same `target_num_cores`. When `target_num_cores` is empty it comes from `resources.cpu`: changing the CPUs of the run makes the database incompatible. With `x86_native` the CPU model of the node counts too. |
+| IR | Same IR Model: same source model and same `build` options. |
+| Coverage | The database must cover every operator of the model, unless `allow_partial_tuning` is `true`. |
+
+When something does not match, the run stops in **ERROR** with `incompatible MetaSchedule database` and the list of differences, or with `does not cover every selected function`.
+
+### Continue a tuning
+
+To add more measurements to an existing database, run `compile` with `tuning_mode: tune`, the key of the tuned Model in `tuning_model_path` and the extra `tuning_trials`. The search restarts from the variants already measured.
 
 ### Tuning options
 
@@ -629,6 +690,7 @@ Administrators choose the images with these environment variables of the Core:
 | The compile Job is killed (`OOMKilled`, exit code 137) | Not enough memory: set at least `mem: 8Gi` and `cpu: "4"`. |
 | Build error `No Adapter From Version <n> for <operator>` | `target_opset` asks for a conversion ONNX cannot do: leave `target_opset` empty, or choose a version supported by all the operators. |
 | Build error `cannot detect the TVM source format` | The Model is of kind `model` and its path has no `.onnx` or `.tflite` extension: use a Model of kind `onnx` or `tflite`, or set `format` in the function. |
+| Compile error `CodeGenVM cannot handle this intrinsic now` | The IR has outputs without a shape and onnxsim could not fix them: the build log shows `still have no shape`. Build with `simplify: true` to see the onnxsim error, or export the model again with fixed shapes. See [Outputs without a shape](#outputs-without-a-shape). |
 | `tvm+compile needs an IR model`{: style="white-space: nowrap" } | Run `build` first, or set `model_path` to an IR Model. |
 | `tvm+serve needs a compiled .so model`{: style="white-space: nowrap" } | Run `compile` first, or set `model_path` to a compiled Model. |
 | The compile run goes to **ERROR** at once, with a message about tuning | The tuning options do not fit together, for example `tune` without `tuning_trials`: see [Tuning options](#tuning-options). |
