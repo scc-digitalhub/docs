@@ -2856,7 +2856,7 @@ dhcli<span class="w"> </span>list<span class="w"> </span>models<span class="w"> 
 </div>
 </div>
 <h2 id="3-build-onnx-to-relax-ir">3. Build: ONNX to Relax IR</h2>
-<p><code>build</code> converts the model into Relax IR. YOLOv8n needs no conversion option: we only give the Job enough resources.</p>
+<p><code>build</code> converts the model into Relax IR. YOLOv8n needs no conversion option: we only give the Job enough resources. The build log shows that the graph is simplified with onnxsim by itself: with TVM 0.26 this is expected for YOLOv8, see <a href="../../../runtimes/tvm/#outputs-without-a-shape">Outputs without a shape</a>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Console</label><label for="__tabbed_3_2">CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">

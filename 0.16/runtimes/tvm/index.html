@@ -1922,6 +1922,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#outputs-without-a-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outputs without a shape
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#build-output" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2009,6 +2020,39 @@
   
     <nav class="md-nav" aria-label="Making models fast">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tune-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tune once
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reuse-a-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reuse a tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue-a-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continue a tuning
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#tuning-options" class="md-nav__link">
@@ -2677,6 +2721,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#outputs-without-a-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outputs without a shape
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#build-output" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2764,6 +2819,39 @@
   
     <nav class="md-nav" aria-label="Making models fast">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tune-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tune once
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reuse-a-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reuse a tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continue-a-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Continue a tuning
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#tuning-options" class="md-nav__link">
@@ -3193,6 +3281,7 @@
 <li>Optionally simplify the graph with onnxsim (<code>simplify</code>).</li>
 <li>Run the ONNX shape inference.</li>
 <li>Convert the graph into Relax IR, with <code>float32</code> as default data type.</li>
+<li>If some outputs of the IR have no shape, simplify the graph with onnxsim and convert it again (see <a href="#outputs-without-a-shape">Outputs without a shape</a>).</li>
 <li>Save the IR with its <code>metadata.json</code> and publish the Model.</li>
 </ol>
 </div>
@@ -3219,7 +3308,7 @@
 <tr>
 <td><code>simplify</code></td>
 <td><code>false</code></td>
-<td>Simplifies the graph with onnxsim before converting it.</td>
+<td>Simplifies the graph with onnxsim before converting it. When <code>false</code>, the build still does it by itself if the converted outputs have no shape.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">target_opset</code></td>
@@ -3258,6 +3347,14 @@
 </tr>
 </tbody>
 </table>
+<h3 id="outputs-without-a-shape">Outputs without a shape</h3>
+<p>TVM 0.26 converts some shape arithmetic into slices whose size is known only at run time, for example the box decoding at the end of YOLOv8. The outputs of the IR then have no shape, and <code>compile</code> cannot generate code for them.</p>
+<p>The build handles this by itself: when <code>simplify</code> is <code>false</code> and some outputs have no shape, it simplifies the graph with onnxsim, which computes those values in advance, and converts it again. Nothing has to be set:</p>
+<ul>
+<li>the log of the build shows <code>some outputs have no shape: simplifying the graph with onnxsim and converting again</code>;</li>
+<li><code>metadata.json</code> of the IR Model has <code>"simplify": true</code> and <code>"simplified_automatically": true</code>.</li>
+</ul>
+<p>If onnxsim cannot simplify the graph, the build keeps the first conversion and warns that the outputs <code>still have no shape</code>: <code>compile</code> will then fail, see <a href="#troubleshooting">Troubleshooting</a>.</p>
 <h3 id="build-output">Build output</h3>
 <table>
 <thead>
@@ -3607,11 +3704,73 @@
 <p><code>target_triple</code> is the architecture of the code, such as <code>x86_64-pc-linux-gnu</code> or <code>aarch64-linux-gnu</code>: the platform reads it to choose the nodes of the service.</p>
 <hr />
 <h2 id="making-models-fast">Making models fast</h2>
-<p>On CPU, an untuned model works, but it can be several times slower than ONNX Runtime: TVM has no ready-made optimized code for the operators. <strong>Tuning</strong> with MetaSchedule measures many variants of each operator on the real hardware and keeps the fastest ones. The result is saved in the <code>tuning/</code> folder of the compiled Model and can be reused.</p>
-<p><strong>1. Tune once</strong>, on the same kind of CPU used for serving:</p>
+<p>On CPU, an untuned model works, but it can be several times slower than ONNX Runtime: TVM has no ready-made optimized code for the operators. <strong>Tuning</strong> with MetaSchedule measures many variants of each operator on the real hardware and keeps the fastest ones.</p>
+<p>Tuning is slow, so it is done once and then reused:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Automatic</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Saving the result</td>
+<td>Yes: every <code>compile</code> with <code>tuning_mode: tune</code> saves the tuning database in the <code>tuning/</code> folder of the compiled Model.</td>
+<td>Nothing.</td>
+</tr>
+<tr>
+<td>Reusing the result</td>
+<td><strong>No</strong>: a <code>compile</code> never looks for earlier tunings by itself.</td>
+<td>Set <code>tuning_mode</code> and <code>tuning_model_path</code> in the new <code>compile</code> run.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tune-once">Tune once</h3>
+<p>Run a <code>compile</code> with tuning, on the same kind of CPU used for serving. In the console, set these fields in the <strong>compile</strong> tab:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code style="white-space: nowrap">target_architecture</code></td>
+<td><code>x86_native</code></td>
+</tr>
+<tr>
+<td><code>target_num_cores</code></td>
+<td><code>4</code></td>
+</tr>
+<tr>
+<td><code>tag</code></td>
+<td><code>tuned</code></td>
+</tr>
+<tr>
+<td><code>tuning_mode</code></td>
+<td><code>tune</code></td>
+</tr>
+<tr>
+<td><code>tuning_trials</code></td>
+<td><code>8000</code></td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">max_trials_per_task</code></td>
+<td><code>256</code></td>
+</tr>
+<tr>
+<td><code>resources</code></td>
+<td>CPU <code>4</code>, memory <code>8Gi</code></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86_native</span>
 <span class="w">  </span><span class="nt">target_num_cores</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tuned</span>
 <span class="w">  </span><span class="nt">tuning_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tune</span>
 <span class="w">  </span><span class="nt">tuning_trials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
 <span class="w">  </span><span class="nt">max_trials_per_task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">256</span>
@@ -3619,13 +3778,66 @@
 <span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
 </code></pre></div>
-<p><strong>2. Reuse the result</strong> to recompile the same IR for the same target, without measuring again:</p>
+<p>Result: the Model <code>&lt;function&gt;-tuned</code>, whose <code>tuning/</code> folder holds the database. Its key, shown in the detail page of the Model, is what the next compiles need, for example <code>store://my-project/model/tvm-so/yolo-function-tuned:&lt;id&gt;</code>.</p>
+<h3 id="reuse-a-tuning">Reuse a tuning</h3>
+<p>To compile again without measuring, start a new <code>compile</code> and fill in <strong>two fields</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tuning_mode</code></td>
+<td><code>apply</code></td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">tuning_model_path</code></td>
+<td>the key of the tuned Model, e.g. <code>store://my-project/model/tvm-so/yolo-function-tuned:&lt;id&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>Keep <strong>the same <code>target_architecture</code> and <code>target_num_cores</code></strong> as the tuning; fields such as <code>tag</code> or <code>exec_mode</code> can change.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86_native</span>
 <span class="w">  </span><span class="nt">target_num_cores</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fast</span>
 <span class="w">  </span><span class="nt">tuning_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apply</span>
-<span class="w">  </span><span class="nt">tuning_model_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">store://my-project/model/tvm-so/yolo-function-so:&lt;id&gt;</span>
+<span class="w">  </span><span class="nt">tuning_model_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">store://my-project/model/tvm-so/yolo-function-tuned:&lt;id&gt;</span>
 </code></pre></div>
+<p>The Job downloads the <code>tuning/</code> folder of that Model, checks it and uses its best variants: the run takes minutes instead of hours. The <code>meta_schedule</code> section of the new <code>metadata.json</code> shows <code>"mode": "apply"</code> and <code>"database_reused": true</code>. The new Model has its own copy of <code>tuning/</code>, so it can be reused in turn.</p>
+<p>A tuning can be reused only when these match:</p>
+<table>
+<thead>
+<tr>
+<th>Must match</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TVM version and commit</td>
+<td>Use the toolkit image of the same release, e.g. <code>tvm-toolkit:0.26.0</code>.</td>
+</tr>
+<tr>
+<td>Target</td>
+<td>Same <code>target_architecture</code> <strong>and</strong> same <code>target_num_cores</code>. When <code>target_num_cores</code> is empty it comes from <code>resources.cpu</code>: changing the CPUs of the run makes the database incompatible. With <code>x86_native</code> the CPU model of the node counts too.</td>
+</tr>
+<tr>
+<td>IR</td>
+<td>Same IR Model: same source model and same <code>build</code> options.</td>
+</tr>
+<tr>
+<td>Coverage</td>
+<td>The database must cover every operator of the model, unless <code>allow_partial_tuning</code> is <code>true</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>When something does not match, the run stops in <strong>ERROR</strong> with <code>incompatible MetaSchedule database</code> and the list of differences, or with <code>does not cover every selected function</code>.</p>
+<h3 id="continue-a-tuning">Continue a tuning</h3>
+<p>To add more measurements to an existing database, run <code>compile</code> with <code>tuning_mode: tune</code>, the key of the tuned Model in <code>tuning_model_path</code> and the extra <code>tuning_trials</code>. The search restarts from the variants already measured.</p>
 <h3 id="tuning-options">Tuning options</h3>
 <table>
 <thead>
@@ -4262,6 +4474,10 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 <tr>
 <td>Build error <code>cannot detect the TVM source format</code></td>
 <td>The Model is of kind <code>model</code> and its path has no <code>.onnx</code> or <code>.tflite</code> extension: use a Model of kind <code>onnx</code> or <code>tflite</code>, or set <code>format</code> in the function.</td>
+</tr>
+<tr>
+<td>Compile error <code>CodeGenVM cannot handle this intrinsic now</code></td>
+<td>The IR has outputs without a shape and onnxsim could not fix them: the build log shows <code>still have no shape</code>. Build with <code>simplify: true</code> to see the onnxsim error, or export the model again with fixed shapes. See <a href="#outputs-without-a-shape">Outputs without a shape</a>.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">tvm+compile needs an IR model</code></td>
