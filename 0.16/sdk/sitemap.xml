@@ -337,6 +337,22 @@
          <lastmod>2026-09-21</lastmod>
     </url>
     <url>
+         <loc>http://docs/sdk/reference/runtimes/hydra/examples/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>http://docs/sdk/reference/runtimes/hydra/overview/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>http://docs/sdk/reference/runtimes/hydra/actions/hydra-build/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
+         <loc>http://docs/sdk/reference/runtimes/hydra/actions/hydra-job/</loc>
+         <lastmod>2026-09-21</lastmod>
+    </url>
+    <url>
          <loc>http://docs/sdk/reference/runtimes/modelserve/examples/</loc>
          <lastmod>2026-09-21</lastmod>
     </url>
