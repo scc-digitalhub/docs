@@ -52,4 +52,7 @@ Runtimes define the key point of extension of the platform: new runtimes may be 
 
 	Build, compile, and serve models with Apache TVM.
 
+- [**Hydra**](hydra/overview.md){ .list-card-link }
+
+	Run Hydra Python functions as jobs.
 </div>

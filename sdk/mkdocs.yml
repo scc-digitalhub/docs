@@ -219,6 +219,12 @@ nav:
               - Actions:
                   - servicegraph serve: reference/runtimes/servicegraph/actions/servicegraph-serve.md
               - Examples: reference/runtimes/servicegraph/examples.md
+          - Hydra:
+              - Overview: reference/runtimes/hydra/overview.md
+              - Actions:
+                  - hydra build: reference/runtimes/hydra/actions/hydra-build.md
+                  - hydra job: reference/runtimes/hydra/actions/hydra-job.md
+              - Examples: reference/runtimes/hydra/examples.md
       - Configuration:
           - Paths: reference/configuration/paths.md
           - Code source: reference/configuration/code-sources.md

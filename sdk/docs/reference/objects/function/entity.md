@@ -22,6 +22,10 @@ Choose the runtime that matches the function you want to create. The `kind` to u
 
 - [**OpenInference**](../../runtimes/python/openinference/overview.md){ .list-card-link } - Use OpenInference with the Python runtime - `openinference`
 
+- [**TVM**](../../runtimes/tvm/overview.md){ .list-card-link } - Create TVM models and services with the TVM runtime - `tvm`
+
+- [**Hydra**](../../runtimes/hydra/overview.md){ .list-card-link } - Create Hydra Python functions with the Hydra runtime - `hydra`
+
 </div>
 
 ## Managing functions with SDK

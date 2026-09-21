@@ -190,4 +190,20 @@ Install the runtime required by your workload. The Python, Container, ModelServe
 		python -m pip install digitalhub-runtime-tvm
 		```
 
+??? note "Hydra"
+
+	**Use it for:** Create and execute Hydra Python application functions.
+
+	=== "uv"
+
+		```bash
+		uv pip install digitalhub-runtime-hydra
+		```
+
+	=== "pip"
+
+		```bash
+		python -m pip install digitalhub-runtime-hydra
+		```
+		
 For runtime actions, parameters, and usage details, see the [Runtime reference](../reference/runtimes/index.md).

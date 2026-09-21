@@ -10,3 +10,4 @@ digitalhub_runtime_hera>=0.16.0b, <0.17
 digitalhub_runtime_flower>=0.16.0b, <0.17
 digitalhub_runtime_servicegraph>=0.16.0b, <0.17
 digitalhub_runtime_tvm>=0.16.0b, <0.17
+digitalhub_runtime_hydra>=0.16.0b, <0.17

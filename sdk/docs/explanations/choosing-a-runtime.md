@@ -115,6 +115,16 @@ Choose an execution framework based on what you need to run, how it should run, 
 	]
 ) }}
 
+{{ framework_card(
+	title="Hydra",
+	link="../reference/runtimes/hydra/overview.md",
+	description="Run Hydra Python Job applications.",
+	use_cases=[
+		"Complex Python jobs with multiple confgurations.",
+		"Hyper Parameter Optimization with Optuna.",
+	]
+) }}
+
 ## Next steps
 
 Once you've selected an execution framework, follow these steps:

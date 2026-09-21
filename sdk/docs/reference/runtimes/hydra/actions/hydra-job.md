@@ -1,0 +1,229 @@
+# Hydra Job
+
+## Job reference
+
+<div class="list-cards" markdown>
+
+- [**Overview**](#overview){ .list-card-link } - Understand what the job action does.
+
+- [**Function**](#function){ .list-card-link } - Create a Hydra Function.
+
+- [**Task**](#task){ .list-card-link } - Configure the Hydra job Task.
+
+- [**Run**](#run){ .list-card-link } - Execute the Hydra function as a job.
+
+</div>
+
+## Overview
+
+The `job` action executes a Hydra function as a one-off Hydra multirun task on Kubernetes. A `Task` is created by calling `run()` on the Function; task parameters are passed through that call.
+
+The job action supports Hydra handlers that run to completion.
+
+## Function
+
+??? example "Create a function"
+
+    Define the Function with the Python source, handler and dependencies.
+
+    === "Parameters"
+
+        Must be specified when creating the function.
+
+        | Name | Type | Description |
+        | --- | --- | --- |
+        | project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
+        | name | str | Name that identifies the object. **Required.** |
+        | kind | str | Function kind. Must be `python`. **Required.** |
+        | uuid | str | Object ID in UUID4 format. |
+        | description | str | Description of the object. |
+        | labels | list[str] | List of labels. |
+        | embedded | bool | Whether the object should be embedded in the project. |
+        | [code_src](../../../../configuration/code-sources.md#code-source-uri) | str | URI pointing to the source code. |
+        | [code](../../../../configuration/code-sources.md#plain-text-source) | str | Source code provided as plain text. |
+        | base64 | str | Source code encoded as base64. |
+        | config_src | str | URI pointing to the configuration. |
+        | config | str | Configuration YAML provided as plain text. |
+        | config_base64 | str | Configuration YAML encoded as base64. |
+        | config_path | str | Path to the configuration folder relative to the function source folder. |
+        | [handler](../../../../configuration/code-sources.md#handler) | str | Function entrypoint. |
+        | [init_function](#init-function) | str | Init function name for remote  execution. |
+        | [complete_function](#complete-function) | str | Finalize function name for remote execution. |
+        | [python_version](#python-versions) | str | Python version to use. **Required.** |
+        | lang | str | Source code language (informational). |
+        | image | str | Container image used to execute the function. |
+        | [base_image](#base-image) | str | Base image (name:tag) used to build the execution image. |
+        | [requirements](#requirements) | list[str] \| str | List of pip requirements or a path to a supported requirements file. |
+
+        #### Python Versions
+
+        The Python runtime supports versions 3.10, 3.11, 3.12, and 3.13 expressed as:
+
+        - `PYTHON3_10`
+        - `PYTHON3_11`
+        - `PYTHON3_12`
+        - `PYTHON3_13`
+
+        #### Init Function
+
+        The init function is the entrypoint used by the init wrapper. Specify the init function name via the `init_function` parameter.
+
+        #### Complete Function
+
+        The `complete` function is the entrypoint used by the finilizer wrapper. Specify the `complete` function name via the `complete_function` parameter.
+
+        #### Base Image
+
+        The base image is the image (name:tag) used as the foundation when building the execution image for the function.
+
+        !!! warning
+            Deploying jobs built from certain base images may be restricted by cluster security policies. Confirm allowed base images with your cluster administrator.
+
+        #### Requirements
+
+        Requirements can be a list of strings or a path to an existing file named `requirements.txt`, `setup.py`, `pyproject.toml`, `conda.yml` or `conda.yaml`. The SDK parses and normalizes them when the function is saved. `requirements.txt` and `setup.py` are parsed as pip requirements, `pyproject.toml` reads `project.dependencies`, and Conda files read pip dependencies from `dependencies.pip`. If a package is specified without a version, the SDK looks for it in the active local virtual environment, adds the installed version when available, and logs a warning. See [Requirements and automatic builds](../overview.md#requirements-and-automatic-builds) for details and the build requirement for remote execution.
+
+        ```python
+        requirements = ["numpy", "pandas>1,<3", "scikit-learn==1.2.0"]
+        ```
+
+    === "Creation example"
+
+        ```python
+        func = project.new_function(
+            "test-hydra-function", 
+            kind="hydra", 
+            code_src="./example/my_app.py", 
+            config_src="./example/config-dh.yaml", 
+            python_version="PYTHON3_13", 
+            handler="my_app",
+            init_function="init",
+            complete_function="complete",
+            requirements=["hydra-optuna-sweeper==1.2.0"]
+        ) 
+		```
+
+### Function methods
+
+??? example "build"
+
+    Build the Python function image.
+
+    ::: digitalhub_runtime_python.entities.function._base.entity.FunctionBaseFunction.build
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
+
+## Task
+
+??? example "Create a task"
+
+    A Task for the `job` action is created when `function.run()` is called.
+	The profile and resource configurations apply to a single subtask, not to the orchestrating launcher. 
+
+    === "Parameters"
+
+        Can only be specified when calling `function.run()`.
+
+        | Name | Type | Description |
+        | --- | --- | --- |
+        | action | str | Task action. **Required. Must be `job`** |
+        | [volumes](../../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
+        | [resources](../../../../configuration/kubernetes.md#resources) | dict | Resource limits/requests. |
+        | [envs](../../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
+        | [secrets](../../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
+        | [profile](../../../../configuration/kubernetes.md#profile) | str | Profile template. |
+
+    === "Creation example"
+
+        ```python
+		run = func.run(
+			action="job",
+			parameters={
+				"trainer.max_epochs": 1,
+				"hparams_search": "mnist_optuna",
+				"hydra.sweeper.storage": "sqlite:///hpo.db",
+				"hydra.sweeper.study_name": "hpo",
+				"hydra.sweep.dir": "./hpo_results"
+			},
+			workers=5,
+			local_execution=False
+		)
+        ```
+
+### Task methods
+
+The Python job Task does not add runtime-specific methods.
+
+## Run
+
+??? example "Create a run"
+
+    Execute the Hydra function as a one-off job and return the resulting `Run` entity.
+
+    === "Parameters"
+
+        Can only be specified when calling `function.run()`.
+
+        | Name | Type | Description |
+        | --- | --- | --- |
+        | local_execution | bool | Execute the run locally instead of remotely. |
+        | auto_build | bool | Build the function automatically when `spec.image` is `None`. Defaults to `False`. If requirements are present, an existing image is not rebuilt automatically. |
+        | parameters | dict | Extra parameters as Hydra overrides passed to the function execution. |
+        | init_parameters | dict | Parameters supplied to the init function. |
+		| workers | int | Number of workers available for parallel execution. |
+
+    === "Creation example"
+
+        ```python
+		run = func.run(
+			action="job",
+			parameters={
+				"trainer.max_epochs": 1,
+				"hparams_search": "mnist_optuna",
+				"hydra.sweeper.storage": "sqlite:///hpo.db",
+				"hydra.sweeper.study_name": "hpo",
+				"hydra.sweep.dir": "./hpo_results"
+			},
+			workers=5,
+			local_execution=False
+		)
+        ```
+
+### Run methods
+
+??? example "result"
+
+    Get result by name.
+
+    ::: digitalhub_runtime_python.entities.run._base.entity.RunBaseRun.result
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
+
+??? example "results"
+
+    Get results.
+
+    ::: digitalhub_runtime_python.entities.run._base.entity.RunBaseRun.results
+        options:
+            heading_level: 6
+            show_signature: false
+            show_docstring_description: true
+            show_source: false
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_root_full_path: false
+            show_root_toc_entry: true
