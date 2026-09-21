@@ -38,13 +38,6 @@ nav:
     - "ml/deploy.md"
   - "MLOps: Migrating an existing ML model to platform":
     - "ml-migration/migration.md"
-  - Dremio transformation:
-    - "dremio_grafana/scenario.md"
-  - API via PostgREST:
-    - "postgrest/intro.md"
-    - "postgrest/data.md"
-    - "postgrest/postgrest.md"
-    - "postgrest/apigw.md"
   - Retrieval-Augmented Generation:
     - "rag/intro.md"
     - "rag/llm.md"
@@ -60,7 +53,16 @@ nav:
     - "flower/flower.md"
   - Data validation:
     - "data_validation/scenario.md"
+  - Dremio transformation:
+    - "dremio_grafana/scenario.md"
+  - API via PostgREST:
+    - "postgrest/intro.md"
+    - "postgrest/data.md"
+    - "postgrest/postgrest.md"
+    - "postgrest/apigw.md"
 
+  - "Hydra training and HPO template": 
+    - "hydra/hydra-lightning.md"
   - Open Inference Model Serving:
     - "openinference/openinference.md"
 

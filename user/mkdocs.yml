@@ -60,6 +60,7 @@ nav:
       - "Model Serving: TVM": "runtimes/tvm.md"
       - Open Inference (Python): "runtimes/oi.md"
       - Guardrail (Python): "runtimes/guardrail.md"
+      - Hydra (Python): "runtimes/hydra.md"
       - "Federated Learning": "runtimes/fl.md"
       - DBT: "runtimes/dbt.md"
       - Service Graph: "runtimes/servicegraph.md"
