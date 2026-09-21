@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="http://docs/tutorials/tvm/intro/">
+        <link rel="canonical" href="http://docs/tutorials/hydra/hydra-lightning/">
       
       
-        <link rel="prev" href="../../openinference/openinference/">
+        <link rel="prev" href="../../postgrest/apigw/">
       
       
-        <link rel="next" href="../deploy/">
+        <link rel="next" href="../../openinference/openinference/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Compiled models with TVM: introduction - Digital Hub</title>
+        <title>Lighting Hydra Template - Digital Hub</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#compiled-models-with-tvm-introduction" class="md-skip">
+        <a href="#lighting-hydra-template" class="md-skip">
           Skip to content
         </a>
       
@@ -199,7 +199,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Compiled models with TVM: introduction
+              Lighting Hydra Template
             
           </span>
         </div>
@@ -2092,18 +2092,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
         
           
           <label class="md-nav__link" for="__nav_16" id="__nav_16_label" tabindex="0">
@@ -2124,7 +2126,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_16">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2139,10 +2141,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../hydra/hydra-lightning/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lighting Hydra Template
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2158,6 +2187,109 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adapting-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adapting the Code
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executing-the-hydra-job-within-the-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executing the Hydra job within the platform
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Executing the Hydra job within the platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#define-the-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Define the context
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#register-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-a-container-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building a container image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executing-the-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executing the function
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2256,20 +2388,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
         
           
           <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
@@ -2290,7 +2420,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_18">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2305,37 +2435,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Compiled models with TVM: introduction
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../tvm/intro/" class="md-nav__link">
         
   
   
@@ -2351,48 +2454,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#names-used-in-this-scenario" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Names used in this scenario
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Prerequisites
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2405,7 +2466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../deploy/" class="md-nav__link">
+      <a href="../../tvm/deploy/" class="md-nav__link">
         
   
   
@@ -2433,7 +2494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../test/" class="md-nav__link">
+      <a href="../../tvm/test/" class="md-nav__link">
         
   
   
@@ -2708,10 +2769,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#names-used-in-this-scenario" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Names used in this scenario
+        Overview
       
     </span>
   </a>
@@ -2719,13 +2780,74 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#adapting-the-code" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prerequisites
+        Adapting the Code
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executing-the-hydra-job-within-the-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executing the Hydra job within the platform
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Executing the Hydra job within the platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#define-the-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Define the context
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#register-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register function
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-a-container-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building a container image
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executing-the-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Executing the function
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2775,7 +2897,7 @@
         <a href="./" class="md-path__link">
           
   <span class="md-ellipsis">
-    MLOps: Compiled models with TVM
+    Hydra training and HPO template
   </span>
 
         </a>
@@ -2794,68 +2916,127 @@
 
 
 
-<h1 id="compiled-models-with-tvm-introduction">Compiled models with TVM: introduction</h1>
-<p>This scenario takes a trained model, compiles it into fast native code with the <a href="../../../runtimes/tvm/">TVM runtime</a> and serves it through the Open Inference v2 protocol. The model is <strong>YOLOv8n</strong>, an object detector exported to ONNX.</p>
-<p><img alt="TVM runtime pipeline" src="../../images/tvm/tvm-pipeline.svg" /></p>
-<p>The scenario has two parts:</p>
-<ol>
-<li><a href="../deploy/"><strong>Build, compile and serve</strong></a>: upload the model, create a TVM function, run <code>build</code>, <code>compile</code> and <code>serve</code>, and compile the same model for ARM devices.</li>
-<li><a href="../test/"><strong>Test the model</strong></a>: send a picture to the service from your computer, run the model locally with Docker, or on a Raspberry Pi.</li>
-</ol>
-<p>Every step can be done from the <strong>console</strong> or from the <strong>CLI</strong> (<code>dhcli</code>): each page shows both.</p>
-<h2 id="names-used-in-this-scenario">Names used in this scenario</h2>
-<table>
-<thead>
-<tr>
-<th>What</th>
-<th>Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Project</td>
-<td><code>tvm-test</code></td>
-</tr>
-<tr>
-<td>Source Model</td>
-<td><code>yolo</code></td>
-</tr>
-<tr>
-<td>Function</td>
-<td><code>yolo-function</code></td>
-</tr>
-<tr>
-<td>IR Model</td>
-<td><code>yolo-function-ir</code>, kind <code>tvm-ir</code> (created by <code>build</code>)</td>
-</tr>
-<tr>
-<td>Compiled Models</td>
-<td><code>yolo-function-x86</code>, <code>yolo-function-arm64</code>, <code>yolo-function-armv7l</code>, kind <code>tvm-so</code> (created by <code>compile</code>)</td>
-</tr>
-</tbody>
-</table>
-<p>Use your own names if you prefer, and change the commands accordingly.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h1 id="lighting-hydra-template">Lighting Hydra Template</h1>
+<p>This tutorial is based on the Pytorch Lightning training and validation scenario template as defined in the following <a href="https://github.com/ashleve/lightning-hydra-template">GitHub repository</a>. </p>
+<h2 id="overview">Overview</h2>
+<p>In the tutorial we adopt the original project in order to execute it in the platform using the corresponding <strong>Hydra runtime</strong>. The original project
+implements two main functionalities: train and evaluate. They are defined as the Hydra application (annotated with <code>@hydra.main</code>) and allow for wide range of the configurations and customizations. More specifically, </p>
 <ul>
-<li><strong>A project</strong> on the platform. To create it from the CLI: <code>dhcli create project -n tvm-test</code>.</li>
-<li>
-<p><strong>The <a href="../../../components/cli/">CLI</a></strong>, version 0.15 or later (it provides <code>port-forward</code>), registered on your platform and logged in:</p>
-<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>register<span class="w"> </span>https://core.my-digitalhub-instance.it
-dhcli<span class="w"> </span>login
-</code></pre></div>
-</li>
-<li>
-<p><strong>Python 3</strong> with <code>numpy</code> and <code>Pillow</code>, to test the model.</p>
-</li>
-<li><strong>Docker</strong>, only to run the model on your computer or on a device.</li>
-<li>
-<p><strong>The ONNX model.</strong> Export YOLOv8n with the Ultralytics package:</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>ultralytics
-yolo<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">model</span><span class="o">=</span>yolov8n.pt<span class="w"> </span><span class="nv">format</span><span class="o">=</span>onnx
-</code></pre></div>
-<p>This creates <code>yolov8n.onnx</code>, with input <code>images</code> <code>[1, 3, 640, 640]</code> and output <code>output0</code> <code>[1, 84, 8400]</code>.</p>
-</li>
+<li>the source code files the main functions refer to are defined in the <code>src</code> module of the project.</li>
+<li>the configurations are defined in the <code>configs</code> folder of the project and define the different variations of the application execution, such as hyper parameter search with Optuna, wide range of loggers, experiment configurations, MNIST model parameters, etc.</li>
+<li>The core logic adapts <a href="https://lightning.ai/docs/pytorch/stable">PyTorch Lightning</a> library.</li>
 </ul>
+<p>While it is possible to run the different configurations directly with the Hydra runtime in the platform, for the sake of this tutorial we introduce an extra step, which allows us to perform Hyper Parameter Optimization and identify the best model configuration and checkpoints to be stored in the platform catalog.</p>
+<p>The adopted version of the template project is available at the following <a href="https://github.com/scc-digitalhub/digitalhub-tutorials/blob/0.16.x/s14-lightning-hydra-template">GitHub repository</a>.</p>
+<h2 id="adapting-the-code">Adapting the Code</h2>
+<p>To perform the extra steps, without modifying the original code, we introduce a new Python script, namely <code>train_dh.py</code>. This script is used to wrap the original train function and adds the initialization and finalizer to our project: 
+the latter is used to upload the best checkpoint.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">hydra</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">omegaconf</span><span class="w"> </span><span class="kn">import</span> <span class="n">DictConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"./s14-lightning-hydra-template/"</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">"./s14-lightning-hydra-template/src/"</span><span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">src</span><span class="w"> </span><span class="kn">import</span> <span class="n">train</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"init() called"</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">complete</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"complete() called"</span><span class="p">)</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">optuna</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">study</span> <span class="o">=</span> <span class="n">optuna</span><span class="o">.</span><span class="n">load_study</span><span class="p">(</span>
+            <span class="n">study_name</span><span class="o">=</span><span class="s2">"hpo"</span><span class="p">,</span> 
+            <span class="n">storage</span><span class="o">=</span><span class="s2">"sqlite:///hpo.db"</span>
+        <span class="p">)</span>
+        <span class="n">best_run</span> <span class="o">=</span> <span class="n">study</span><span class="o">.</span><span class="n">best_trial</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Best Trial: #</span><span class="si">{</span><span class="n">best_run</span><span class="o">.</span><span class="n">number</span><span class="si">}</span><span class="s2"> with Value: </span><span class="si">{</span><span class="n">best_run</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"/shared/hpo_results/</span><span class="si">{</span><span class="n">best_run</span><span class="o">.</span><span class="n">number</span><span class="si">}</span><span class="s2">/checkpoints/last.ckpt"</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Checkpoint: </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">, exists: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">except</span>  <span class="ne">Exception</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"loading best model failed"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"complete() finished"</span><span class="p">)</span>
+
+<span class="nd">@hydra</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">version_base</span><span class="o">=</span><span class="s2">"1.3"</span><span class="p">,</span> <span class="n">config_path</span><span class="o">=</span><span class="s2">"../configs"</span><span class="p">,</span> <span class="n">config_name</span><span class="o">=</span><span class="s2">"train.yaml"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">cfg</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="n">train</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+</code></pre></div>
+<p>As you can see from the code, </p>
+<ul>
+<li>the <code>main()</code> function simply wraps the original <code>train()</code> function.</li>
+<li>the <code>init()</code> function does not do anything particular. The experiment setup and storage will be configured by Hydra overrides. </li>
+<li>the <code>complete()</code> function is used to identify the best checkpoint so it can be uploaded to the platform.  It loads the stody from the optuna storage, identifies the best run of the study, prints the parameters and the checkpoint path. </li>
+</ul>
+<p>Please note some relevant considerations to take into account:</p>
+<ul>
+<li>when the GitHub project is cloned, the execution starts from the project root, so the  modules in subpaths should be explicitly added to the system path.</li>
+<li>when executed in the platform, Hydra runtime creates and mounts the ReadWriteMAny persistent volume available to all the subtasks under <code>/shared</code> path. So as in this case, if the results of the multirun are stored in a subfolder of this shared volume, the <code>complete</code> operation can access them. </li>
+</ul>
+<h2 id="executing-the-hydra-job-within-the-platform">Executing the Hydra job within the platform</h2>
+<p>Once the code is ready, we can execute it in the platform. As all the operations of the platform, we start from defining the context of our experiments and executions, or <strong>project</strong>. Project is a logical container for data, artifacts, models, executable operations, and their executions.</p>
+<h3 id="define-the-context">Define the context</h3>
+<p>It is possible to create the project via platform UI or programmatically using the platform SDK:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
+
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"hydra-example"</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="register-function">Register function</h3>
+<p>Next, we need to describe and register our Hydra training function. Our code is pure Hydra Job application, so we can use <code>hydra</code> runtime for this purpose. Again, it is possible to do it via UI or programmatically:</p>
+<div class="highlight"><pre><span></span><code><span class="n">func</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
+    <span class="s2">"lightning-hpo"</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">"hydra"</span><span class="p">,</span>
+    <span class="n">code_src</span><span class="o">=</span><span class="s2">"git+https://github.com/scc-digitalhub/digitalhub-tutorials#0.16.x"</span><span class="p">,</span>
+    <span class="n">handler</span><span class="o">=</span><span class="s2">"s14-lightning-hydra-template.src.train_dh:main"</span><span class="p">,</span>
+    <span class="n">init_function</span><span class="o">=</span><span class="s2">"init"</span><span class="p">,</span>
+    <span class="n">complete_function</span><span class="o">=</span><span class="s2">"complete"</span><span class="p">,</span>
+    <span class="n">config_path</span><span class="o">=</span><span class="s2">"s14-lightning-hydra-template/configs"</span><span class="p">,</span>
+    <span class="n">python_version</span><span class="o">=</span><span class="s2">"PYTHON3_13"</span><span class="p">,</span>
+    <span class="n">requirements</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">"torch&gt;=2.0.0"</span><span class="p">,</span> <span class="s2">"torchvision&gt;=0.15.0"</span><span class="p">,</span> <span class="s2">"lightning&gt;=2.0.0"</span><span class="p">,</span> <span class="s2">"torchmetrics&gt;=0.11.4"</span><span class="p">,</span> <span class="s2">"hydra-colorlog==1.2.0"</span><span class="p">,</span> <span class="s2">"hydra-optuna-sweeper==1.2.0"</span><span class="p">,</span> <span class="s2">"SQLAlchemy==1.4.46"</span><span class="p">,</span> <span class="s2">"rootutils"</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Note the reference to the git repository where the training function is located: by default it will point out to the <strong>current</strong> version of the code in the <code>0.16.x</code> branch. So each time the function is executed, the latest version of the code at this branch will be used.</p>
+<p>If the code is at the private repository, it is possile to <a href="https://scc-digitalhub.github.io/docs/tasks/code-source/#remote-git-repository">configure the credentials</a> to access it, using environment variables or <a href="https://scc-digitalhub.github.io/docs/tasks/secrets/">secrets</a>, such as, e.g, <code>GITHUB_TOKEN</code>. </p>
+<p>The entry point is defined as <code>handler</code> attribute composed of python path to the containing module and the function name. The <code>config_path</code> define the relative path to the folder containg the Hydra configuration files.</p>
+<p>The dependencies are listed explicitly with their versions. A specific version of the SQLAlchemy is required as it is used by the Hydra Optuna Sweeper storage support.</p>
+<p>The Hydra runtime allows for executing the code either <code>locally</code> or <code>remotely</code> (controlled by local_execution=True/False when <code>function.run</code> method is called).  Local execution means the code will be downloaded and executed in the same space where SDK is being called. This may be your PC or an interactive workspace like Jupyter notebook. Provided the dependencies are already installed (and GPU is available if necessary), the SDK will download the repo and call the function directly. This may work for testing purposes, but may be not practical for heavy and long-running tasks. In this case we should use remote execution.</p>
+<p>In case of remote execution, the execution takes place in the computational cluster behind the platform. The SDK will call the platform API to trigger this execution, and the plaform will instantiate a <strong>Kubernetes Job</strong>, that will be scheduled on the cluster and will download the code and execute it with the parameters and configuration specified. For this to happen the underlying function container image should be created.</p>
+<h3 id="building-a-container-image">Building a container image</h3>
+<p>The build operation may be triggered by the UI or programmatically:</p>
+<div class="highlight"><pre><span></span><code><span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"build"</span><span class="p">)</span>
+</code></pre></div>
+<p>This will result in the container image being created within the platform cluster, the image will be published in the internal image registry, and the function will be associated with the image. If the list of the dependencies changes, the container image should be rebuild. The images with the same dependencies and base image may be reused across different functions and executions.</p>
+<p>If the build operation is not performed, the each new execution will require the dependencies to be installed from scratch. Note that in some enivroments the platform may be configured to skip the custom dependency installation for performance purposes, in which case the execution will fail.</p>
+<h3 id="executing-the-function">Executing the function</h3>
+<p>The function can be executed via UI or programmatically:</p>
+<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">"trainer.max_epochs"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"hparams_search"</span><span class="p">:</span> <span class="s2">"mnist_optuna"</span><span class="p">,</span>
+        <span class="s2">"hydra.sweeper.storage"</span><span class="p">:</span> <span class="s2">"sqlite:///hpo.db"</span><span class="p">,</span>
+        <span class="s2">"hydra.sweeper.study_name"</span><span class="p">:</span> <span class="s2">"hpo"</span><span class="p">,</span>
+        <span class="s2">"hydra.sweep.dir"</span><span class="p">:</span> <span class="s2">"./hpo_results"</span>
+    <span class="p">},</span>
+    <span class="n">workers</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">local_execution</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>As you can see, here we run the job with 5 workers available for parallel execution, and a set of custom parameters to override the default configuration and use HPO with Optuna, custom sweeper storage and study name, and a custom directory to store the results (relative to the project root at <code>/shared</code> folder).</p>
+<p>Once the execution terminates successfully, the resulting information is logged:</p>
+<div class="highlight"><pre><span></span><code>complete() called 
+Best Trial: #9 with Value: FrozenTrial(number=9, values=[0.9696000218391418], datetime_start=datetime.datetime(2026, 9, 20, 18, 52, 15, 767308), datetime_complete=datetime.datetime(2026, 9, 20, 19, 5, 31, 18455), params={'data.batch_size': 32, 'model.net.lin1_size': 256, 'model.net.lin2_size': 64, 'model.net.lin3_size': 32, 'model.optimizer.lr': 0.013488718479284397}, distributions={'data.batch_size': CategoricalDistribution(choices=(32, 64, 128, 256)), 'model.net.lin1_size': CategoricalDistribution(choices=(64, 128, 256)), 'model.net.lin2_size': CategoricalDistribution(choices=(64, 128, 256)), 'model.net.lin3_size': CategoricalDistribution(choices=(32, 64, 128, 256)), 'model.optimizer.lr': UniformDistribution(high=0.1, low=0.0001)}, user_attrs={'hparams_search': 'mnist_optuna', 'trainer.max_epochs': '1'}, system_attrs={}, intermediate_values={}, trial_id=10, state=TrialState.COMPLETE, value=None) 
+Checkpoint: /shared/hpo_results/9/checkpoints/last.ckpt, exists: True 
+complete() finished 
+</code></pre></div>
+<p>It is possible to further extend this scenario to, e.g., upload the best model to the model registry, to perform some post-processing of the results, or to add custom logging callback support to log execution metrics for single runs.</p>
 
 
 
