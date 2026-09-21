@@ -6928,7 +6928,7 @@
 <li>Call <code>function.run()</code> with the desired action, passing task parameters and run parameters.</li>
 </ol>
 <details class="example">
-<summary>Create and run a Python function</summary>
+<summary>Create and run a Hydra function</summary>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Create function with function parameters</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
@@ -6971,7 +6971,7 @@
 <p>When the function is saved, the SDK parses a requirements file and normalizes the resulting list. If a package is specified without a version, the SDK looks for it in the active local virtual environment, adds the installed version when available, and logs a warning. Use an explicit version or version constraint to avoid this inference; pin an exact version for reproducible builds.</p>
 <p>For remote <code>job</code> and <code>serve</code> runs, a non-empty <code>requirements</code> list requires a build so that the dependencies are installed in the execution image. With the default <code>auto_build=True</code>, the runtime calls <code>function.build()</code> when <code>spec.image</code> is <code>None</code>. It does not rebuild when an image is already configured, even if requirements are present; after changing requirements, call <code>function.build()</code> explicitly or provide an image that already contains them.</p>
 <h2 id="action-documentation">Action documentation</h2>
-<p>Review the detailed parameters for each Python action:</p>
+<p>Review the detailed parameters for each Hydra action:</p>
 <div class="list-cards">
 <ul>
 <li>
@@ -6988,7 +6988,7 @@
 <div class="list-cards">
 <ul>
 <li>
-<p><a class="list-card-link" href="../examples/"><strong>Python examples</strong></a></p>
+<p><a class="list-card-link" href="../examples/"><strong>Hydra examples</strong></a></p>
 <p>Explore complete examples for Hydra jobs and builds.</p>
 </li>
 </ul>
