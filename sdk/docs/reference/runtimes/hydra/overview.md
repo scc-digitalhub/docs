@@ -16,7 +16,7 @@ The Hydra runtime enables the execuiton of Python jobs using [Hydra](https://hyd
 4. Use `dh.new_function()` or `project.new_function()` to create the Hydra function, passing function parameters and configuration definition.
 5. Call `function.run()` with the desired action, passing task parameters and run parameters.
 
-??? example "Create and run a Python function"
+??? example "Create and run a Hydra function"
 
 	```python
 	# Create function with function parameters
@@ -68,7 +68,7 @@ For remote `job` and `serve` runs, a non-empty `requirements` list requires a bu
 
 ## Action documentation
 
-Review the detailed parameters for each Python action:
+Review the detailed parameters for each Hydra action:
 
 <div class="list-cards" markdown>
 
@@ -87,7 +87,7 @@ Review the detailed parameters for each Python action:
 
 <div class="list-cards" markdown>
 
-- [**Python examples**](examples.md){ .list-card-link }
+- [**Hydra examples**](examples.md){ .list-card-link }
 
 	Explore complete examples for Hydra jobs and builds.
 

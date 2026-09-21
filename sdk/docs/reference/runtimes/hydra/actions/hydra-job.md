@@ -24,7 +24,7 @@ The job action supports Hydra handlers that run to completion.
 
 ??? example "Create a function"
 
-    Define the Function with the Python source, handler and dependencies.
+    Define the Function with the Hydra Python source, handler and dependencies.
 
     === "Parameters"
 
@@ -159,7 +159,7 @@ The job action supports Hydra handlers that run to completion.
 
 ### Task methods
 
-The Python job Task does not add runtime-specific methods.
+The Hydra job Task does not add runtime-specific methods.
 
 ## Run
 

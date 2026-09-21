@@ -22,7 +22,7 @@ The `build` action creates a container image containing the Hydra function and i
 
 ??? example "Create a function"
 
-    Define the Function with the Python source, handler and dependencies.
+    Define the Function with the Hydra Python source, handler and dependencies.
 
     === "Parameters"
 
@@ -159,7 +159,7 @@ The `build` action creates a container image containing the Hydra function and i
 
 ### Task methods
 
-The Python build Task does not add runtime-specific methods.
+The Hydra build Task does not add runtime-specific methods.
 
 ## Run
 
