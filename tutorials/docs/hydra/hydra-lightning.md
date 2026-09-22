@@ -1,4 +1,4 @@
-# Lighting Hydra Template
+# Lightning Hydra Template
 
 This tutorial is based on the Pytorch Lightning training and validation scenario template as defined in the following [GitHub repository](https://github.com/ashleve/lightning-hydra-template). 
 
