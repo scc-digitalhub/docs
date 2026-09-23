@@ -11,7 +11,7 @@
         <link rel="canonical" href="http://docs/user/cli/commands/">
       
       
-        <link rel="prev" href="../../extensions/envoygw/">
+        <link rel="prev" href="../usage/">
       
       
       
@@ -2150,6 +2150,62 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -2426,6 +2482,17 @@
     <span class="md-ellipsis">
       
         services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#port-forward" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        port-forward
       
     </span>
   </a>
@@ -2755,6 +2822,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#port-forward" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        port-forward
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#proxy" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2830,7 +2908,7 @@
     
     
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="../installation/" class="md-path__link">
           
   <span class="md-ellipsis">
     CLI Reference
@@ -2868,6 +2946,7 @@
 <ul>
 <li><code>-v, --verbose</code> <em>Optional</em>. Boolean. Enable verbose output.</li>
 <li><code>--debug</code> <em>Optional</em>. Boolean. Enable HTTP debug logging (implies verbose).</li>
+<li><code>--version</code> <em>Optional</em>. Boolean. Print version information and exit.</li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Project fallback</p>
@@ -2899,10 +2978,11 @@ This will set the default environment.</p>
 <p><code>login</code> is to be used after registering an environment with the <code>register</code> command. It takes the following parameters:</p>
 <ul>
 <li><code>-e environment</code> <em>Optional</em>.</li>
+<li><code>--pat token</code> <em>Optional</em>. Personal access token for non-interactive authentication. Can also be set via the <code>DHCORE_PERSONAL_ACCESS_TOKEN</code> or <code>DHCORE_PAT</code> environment variables.</li>
 </ul>
 <p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>login<span class="w"> </span>-e<span class="w"> </span>example
 </code></pre></div>
-It will read the corresponding section from the configuration file and start the log in procedure (OAuth2 PKCE flow). It will update this section with the access token obtained. If no environment is specified, it will use the default one.</p>
+It will read the corresponding section from the configuration file and start the log in procedure (OAuth2 PKCE flow). It will update this section with the access token obtained. If no environment is specified, it will use the default one. Use <code>--pat</code> to authenticate non-interactively.</p>
 <h3 id="refresh"><code>refresh</code></h3>
 <p><code>refresh</code> is to be used after the <code>login</code> command, to update <code>access_token</code> and <code>refresh_token</code>. It takes the following parameters:</p>
 <ul>
@@ -3108,15 +3188,29 @@ It will match core's minor version as indicated in the specified environment. If
 <p>List services in a project:
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>services<span class="w"> </span>-p<span class="w"> </span>my-project
 </code></pre></div></p>
-<h3 id="proxy"><code>proxy</code></h3>
-<p>Starts a local HTTP proxy that forwards requests to the <code>baseUrl</code> resolved from a run, going through the configured remote proxy with the appropriate <code>Authorization</code> header. It takes the following parameters:</p>
+<h3 id="port-forward"><code>port-forward</code></h3>
+<p>Starts a local port-forward that tunnels requests to the service URL resolved from the run resource, through the configured remote proxy. It takes the following parameters:</p>
 <ul>
 <li><code>-e environment</code> <em>Optional</em></li>
 <li><code>-p project</code> <strong>Mandatory</strong></li>
 <li><code>-l, --local-port port</code> <em>Optional</em>. Local port to listen on. If missing, a random port is chosen.</li>
-<li><code>run-id</code> <strong>Mandatory</strong></li>
+<li><code>-f, --function name</code> <em>Optional</em>. Function name. If provided, the most recent <code>RUNNING</code> run for that function is used instead of a run ID.</li>
+<li><code>-n, --name name</code> <em>Optional</em>. Run name. If provided, the most recent <code>RUNNING</code> run with that name is used instead of a run ID.</li>
+<li><code>run-id</code> <em>Optional</em>. ID of the run. Alternative to <code>-f</code> and <code>-n</code>.</li>
 </ul>
-<p>Start a proxy for a run:
+<p>Start a port-forward for a run:
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>port-forward<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>my-run-id
+</code></pre></div></p>
+<h3 id="proxy"><code>proxy</code></h3>
+<p>Bootstraps an authenticated browser session to the service exposed by a run. The CLI starts a temporary localhost HTTP server, opens the browser, and serves a single page that automatically posts credentials to the remote proxy's <code>/auth</code> endpoint. The browser then communicates directly with the remote service. Unlike <code>port-forward</code>, no HTTP traffic is proxied through the CLI; this command is intended for browser access (WebSockets, SSE, and cookies all work naturally). It takes the following parameters:</p>
+<ul>
+<li><code>-e environment</code> <em>Optional</em></li>
+<li><code>-p project</code> <strong>Mandatory</strong></li>
+<li><code>-f, --function name</code> <em>Optional</em>. Function name. If provided, the most recent <code>RUNNING</code> run for that function is used instead of a run ID.</li>
+<li><code>-n, --name name</code> <em>Optional</em>. Run name. If provided, the most recent <code>RUNNING</code> run with that name is used instead of a run ID.</li>
+<li><code>run-id</code> <em>Optional</em>. ID of the run. Alternative to <code>-f</code> and <code>-n</code>.</li>
+</ul>
+<p>Open browser with authenticated access to a run's remote service:
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>proxy<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>my-run-id
 </code></pre></div></p>
 <h3 id="config"><code>config</code></h3>
