@@ -17,6 +17,7 @@ The following flags are available on every command:
 
 - `-v, --verbose` *Optional*. Boolean. Enable verbose output.
 - `--debug` *Optional*. Boolean. Enable HTTP debug logging (implies verbose).
+- `--version` *Optional*. Boolean. Print version information and exit.
 
 !!! info "Project fallback"
 
@@ -55,11 +56,12 @@ This will set the default environment.
 `login` is to be used after registering an environment with the `register` command. It takes the following parameters:
 
 - `-e environment` *Optional*.
+- `--pat token` *Optional*. Personal access token for non-interactive authentication. Can also be set via the `DHCORE_PERSONAL_ACCESS_TOKEN` or `DHCORE_PAT` environment variables.
 
 ``` sh
 dhcli login -e example
 ```
-It will read the corresponding section from the configuration file and start the log in procedure (OAuth2 PKCE flow). It will update this section with the access token obtained. If no environment is specified, it will use the default one.
+It will read the corresponding section from the configuration file and start the log in procedure (OAuth2 PKCE flow). It will update this section with the access token obtained. If no environment is specified, it will use the default one. Use `--pat` to authenticate non-interactively.
 
 ### `refresh`
 `refresh` is to be used after the `login` command, to update `access_token` and `refresh_token`. It takes the following parameters:
@@ -316,15 +318,31 @@ List services in a project:
 dhcli services -p my-project
 ```
 
-### `proxy`
-Starts a local HTTP proxy that forwards requests to the `baseUrl` resolved from a run, going through the configured remote proxy with the appropriate `Authorization` header. It takes the following parameters:
+### `port-forward`
+Starts a local port-forward that tunnels requests to the service URL resolved from the run resource, through the configured remote proxy. It takes the following parameters:
 
 - `-e environment` *Optional*
 - `-p project` **Mandatory**
 - `-l, --local-port port` *Optional*. Local port to listen on. If missing, a random port is chosen.
-- `run-id` **Mandatory**
+- `-f, --function name` *Optional*. Function name. If provided, the most recent `RUNNING` run for that function is used instead of a run ID.
+- `-n, --name name` *Optional*. Run name. If provided, the most recent `RUNNING` run with that name is used instead of a run ID.
+- `run-id` *Optional*. ID of the run. Alternative to `-f` and `-n`.
 
-Start a proxy for a run:
+Start a port-forward for a run:
+``` sh
+dhcli port-forward -p my-project my-run-id
+```
+
+### `proxy`
+Bootstraps an authenticated browser session to the service exposed by a run. The CLI starts a temporary localhost HTTP server, opens the browser, and serves a single page that automatically posts credentials to the remote proxy's `/auth` endpoint. The browser then communicates directly with the remote service. Unlike `port-forward`, no HTTP traffic is proxied through the CLI; this command is intended for browser access (WebSockets, SSE, and cookies all work naturally). It takes the following parameters:
+
+- `-e environment` *Optional*
+- `-p project` **Mandatory**
+- `-f, --function name` *Optional*. Function name. If provided, the most recent `RUNNING` run for that function is used instead of a run ID.
+- `-n, --name name` *Optional*. Run name. If provided, the most recent `RUNNING` run with that name is used instead of a run ID.
+- `run-id` *Optional*. ID of the run. Alternative to `-f` and `-n`.
+
+Open browser with authenticated access to a run's remote service:
 ``` sh
 dhcli proxy -p my-project my-run-id
 ```
@@ -348,3 +366,5 @@ Prints the credentials (secret values) stored for the current (or specified) env
 ``` sh
 dhcli credentials
 ```
+
+
