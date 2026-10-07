@@ -152,7 +152,8 @@ The `compile` action runs a Job that compiles the Relax IR into `model.so` for a
 
 The more specific the target, the faster the code, but it only runs on that kind of CPU.
 
-- The **ARM targets are cross-compiled**: the Job runs on any node of the cluster and links the library with the ARM compiler included in the toolkit image.
+- The **ARM targets are cross-compiled**: the Job runs on any `amd64` or `arm64` node of the cluster and links the library with the ARM compiler included in the toolkit image.
+- The `build` and `compile` Jobs never run on 32-bit ARM nodes, such as a Raspberry Pi with a 32-bit OS: the toolkit image is not published for them. Those nodes can still run the `serve` action.
 - The **x86 targets** are compiled on an x86 (`amd64`) node, which the platform selects by itself.
 
 ### Compile options
