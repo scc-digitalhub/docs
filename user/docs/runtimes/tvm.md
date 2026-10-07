@@ -175,7 +175,7 @@ All fields are optional.
 | `params_path`{: style="white-space: nowrap" } | `params.bin` of the IR | Path, inside the Job, of the weights file to embed. |
 | `image` | toolkit image | Another image for this run. |
 
-The tuning options are described in [Making models fast](#making-models-fast).
+The tuning options are described in [Model Optimization](#model-optimization).
 
 ### Compile examples
 
@@ -285,7 +285,7 @@ In the console, open the function, select the **compile** tab and click `CREATE`
 
 ---
 
-## Making models fast
+## Model Optimization
 
 On CPU, an untuned model works, but it can be several times slower than ONNX Runtime: TVM has no ready-made optimized code for the operators. **Tuning** with MetaSchedule measures many variants of each operator on the real hardware and keeps the fastest ones.
 
@@ -421,7 +421,8 @@ All fields are optional.
 | `workers` | `1` | Requests handled in parallel by each pod; each worker loads its own copy of the model. |
 | `service_type`{: style="white-space: nowrap" } | `ClusterIP` | Kubernetes Service type: `ClusterIP`, `NodePort` or `LoadBalancer`. |
 | `service_name`{: style="white-space: nowrap" } | empty | Extra Service name, `<function>-<service_name>`. |
-| `image` | Go serve image | Another serve image, for example `ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0`. |
+| `serve_runtime`{: style="white-space: nowrap" } | `go` | Server that runs the model: `go` or `rust`. See [Serving runtimes](#serving-runtimes). |
+| `image` | image of `serve_runtime` | A custom serve image, used in place of the one of `serve_runtime`. |
 
 ```yaml
 spec:
@@ -622,7 +623,14 @@ The platform chooses the script from the action and the source format, and passe
 
 ## Serving runtimes
 
-The `serve` action can use two images. They read the same model folder, expose the same endpoints on the same ports and accept the same requests: switch between them with the `image` field.
+The `serve` action can use two images. They read the same model folder, expose the same endpoints on the same ports and accept the same requests: choose one with the `serve_runtime` field, `go` (the default) or `rust`.
+
+```yaml
+spec:
+  serve_runtime: rust
+```
+
+Each image is multi-arch: the same tag serves `amd64`, `arm64` and `arm/v7` nodes, and each node downloads its own variant. There is no image to choose per architecture.
 
 | | Go (default) | Rust |
 | --- | --- | --- |
@@ -676,10 +684,13 @@ Administrators choose the images with these environment variables of the Core:
 | `RUNTIME_TVM_BUILDER_ONNX`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0` | Image of `build` for ONNX models. |
 | `RUNTIME_TVM_BUILDER_TFLITE`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0` | Image of `build` for TFLite models. |
 | `RUNTIME_TVM_COMPILER`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0` | Image of `compile`. |
-| `RUNTIME_TVM_SERVE`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0` | Image of `serve`. |
+| `RUNTIME_TVM_SERVE_GO`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0` | Image of `serve` with `serve_runtime: go`, the default. |
+| `RUNTIME_TVM_SERVE_RUST`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0` | Image of `serve` with `serve_runtime: rust`. |
 | `RUNTIME_TVM_HOME_DIR`{: style="white-space: nowrap" } | `/shared` | Working folder inside the pods. |
 | `RUNTIME_TVM_VOLUME_SIZE`{: style="white-space: nowrap" } | `4Gi` | Default size of the working volume. |
 | `RUNTIME_TVM_USER_ID`, `RUNTIME_TVM_GROUP_ID` | platform user and group | User and group the pods run as. |
+
+`RUNTIME_TVM_SERVE`, the single serve image of earlier releases, still sets the Go image. A custom image must be multi-arch like the default ones, otherwise the services on the nodes of the missing architectures cannot start.
 
 ---
 
