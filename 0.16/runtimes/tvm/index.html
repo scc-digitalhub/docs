@@ -2010,15 +2010,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#making-models-fast" class="md-nav__link">
+  <a href="#model-optimization" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Making models fast
+        Model Optimization
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Making models fast">
+    <nav class="md-nav" aria-label="Model Optimization">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2893,15 +2893,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#making-models-fast" class="md-nav__link">
+  <a href="#model-optimization" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Making models fast
+        Model Optimization
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Making models fast">
+    <nav class="md-nav" aria-label="Model Optimization">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3599,7 +3599,7 @@
 </tr>
 </tbody>
 </table>
-<p>The tuning options are described in <a href="#making-models-fast">Making models fast</a>.</p>
+<p>The tuning options are described in <a href="#model-optimization">Model Optimization</a>.</p>
 <h3 id="compile-examples">Compile examples</h3>
 <p>In the console, open the function, select the <strong>compile</strong> tab and click <code>CREATE</code>: enter these values in the fields with the same name. With the CLI, save the YAML in a file and run <code>dhcli run tvm+compile -p &lt;project&gt; -n &lt;function&gt; -f &lt;file&gt;</code>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">x86 server</label><label for="__tabbed_2_2">ARM 64-bit (arm64)</label><label for="__tabbed_2_3">ARM 32-bit (armv7l)</label><label for="__tabbed_2_4">A specific IR version</label></div>
@@ -3787,7 +3787,7 @@
 </table>
 <p><code>target_triple</code> is the architecture of the code, such as <code>x86_64-pc-linux-gnu</code> or <code>aarch64-linux-gnu</code>: the platform reads it to choose the nodes of the service.</p>
 <hr />
-<h2 id="making-models-fast">Making models fast</h2>
+<h2 id="model-optimization">Model Optimization</h2>
 <p>On CPU, an untuned model works, but it can be several times slower than ONNX Runtime: TVM has no ready-made optimized code for the operators. <strong>Tuning</strong> with MetaSchedule measures many variants of each operator on the real hardware and keeps the fastest ones.</p>
 <p>Tuning is slow, so it is done once and then reused:</p>
 <table>
@@ -4104,9 +4104,14 @@
 <td>Extra Service name, <code>&lt;function&gt;-&lt;service_name&gt;</code>.</td>
 </tr>
 <tr>
+<td><code style="white-space: nowrap">serve_runtime</code></td>
+<td><code>go</code></td>
+<td>Server that runs the model: <code>go</code> or <code>rust</code>. See <a href="#serving-runtimes">Serving runtimes</a>.</td>
+</tr>
+<tr>
 <td><code>image</code></td>
-<td>Go serve image</td>
-<td>Another serve image, for example <code>ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0</code>.</td>
+<td>image of <code>serve_runtime</code></td>
+<td>A custom serve image, used in place of the one of <code>serve_runtime</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -4360,7 +4365,11 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 <p>The platform chooses the script from the action and the source format, and passes every option of the run as an environment variable (<code>TVM_TARGET</code>, <code>TVM_OPT_LEVEL</code>, ...). When the script ends, the platform copies the key of the published Model into the function field <code>ir_model</code> or <code>so_model</code>.</p>
 <hr />
 <h2 id="serving-runtimes">Serving runtimes</h2>
-<p>The <code>serve</code> action can use two images. They read the same model folder, expose the same endpoints on the same ports and accept the same requests: switch between them with the <code>image</code> field.</p>
+<p>The <code>serve</code> action can use two images. They read the same model folder, expose the same endpoints on the same ports and accept the same requests: choose one with the <code>serve_runtime</code> field, <code>go</code> (the default) or <code>rust</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">serve_runtime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rust</span>
+</code></pre></div>
+<p>Each image is multi-arch: the same tag serves <code>amd64</code>, <code>arm64</code> and <code>arm/v7</code> nodes, and each node downloads its own variant. There is no image to choose per architecture.</p>
 <table>
 <thead>
 <tr>
@@ -4516,9 +4525,14 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 <td>Image of <code>compile</code>.</td>
 </tr>
 <tr>
-<td><code style="white-space: nowrap">RUNTIME_TVM_SERVE</code></td>
+<td><code style="white-space: nowrap">RUNTIME_TVM_SERVE_GO</code></td>
 <td><code>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0</code></td>
-<td>Image of <code>serve</code>.</td>
+<td>Image of <code>serve</code> with <code>serve_runtime: go</code>, the default.</td>
+</tr>
+<tr>
+<td><code style="white-space: nowrap">RUNTIME_TVM_SERVE_RUST</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0</code></td>
+<td>Image of <code>serve</code> with <code>serve_runtime: rust</code>.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">RUNTIME_TVM_HOME_DIR</code></td>
@@ -4537,6 +4551,7 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 </tr>
 </tbody>
 </table>
+<p><code>RUNTIME_TVM_SERVE</code>, the single serve image of earlier releases, still sets the Go image. A custom image must be multi-arch like the default ones, otherwise the services on the nodes of the missing architectures cannot start.</p>
 <hr />
 <h2 id="troubleshooting">Troubleshooting</h2>
 <table>
