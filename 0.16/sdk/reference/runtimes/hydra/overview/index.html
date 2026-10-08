@@ -6531,6 +6531,228 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_13" id="__nav_5_3_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ray
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ray
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ray/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_13_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_13_2" id="__nav_5_3_13_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_3_13_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_13_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Actions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ray/actions/ray-build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ray build
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ray/actions/ray-job/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ray job
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ray/examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -6969,7 +7191,7 @@
 <li><code>conda.yml</code> or <code>conda.yaml</code>, reading pip dependencies from the <code>dependencies.pip</code> section</li>
 </ul>
 <p>When the function is saved, the SDK parses a requirements file and normalizes the resulting list. If a package is specified without a version, the SDK looks for it in the active local virtual environment, adds the installed version when available, and logs a warning. Use an explicit version or version constraint to avoid this inference; pin an exact version for reproducible builds.</p>
-<p>For remote <code>job</code> and <code>serve</code> runs, a non-empty <code>requirements</code> list requires a build so that the dependencies are installed in the execution image. With the default <code>auto_build=True</code>, the runtime calls <code>function.build()</code> when <code>spec.image</code> is <code>None</code>. It does not rebuild when an image is already configured, even if requirements are present; after changing requirements, call <code>function.build()</code> explicitly or provide an image that already contains them.</p>
+<p>For remote <code>job</code> runs, a non-empty <code>requirements</code> list requires a build so that the dependencies are installed in the execution image. With the default <code>auto_build=True</code>, the runtime calls <code>function.build()</code> when <code>spec.image</code> is <code>None</code>. It does not rebuild when an image is already configured, even if requirements are present; after changing requirements, call <code>function.build()</code> explicitly or provide an image that already contains them.</p>
 <h2 id="action-documentation">Action documentation</h2>
 <p>Review the detailed parameters for each Hydra action:</p>
 <div class="list-cards">
