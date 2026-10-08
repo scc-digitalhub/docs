@@ -55,4 +55,8 @@ Runtimes define the key point of extension of the platform: new runtimes may be 
 - [**Hydra**](hydra/overview.md){ .list-card-link }
 
 	Run Hydra Python functions as jobs.
+
+- [**Ray**](ray/overview.md){ .list-card-link }
+
+	Run Ray Python functions as jobs.
 </div>

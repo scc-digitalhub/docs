@@ -63,7 +63,7 @@ The `requirements` function parameter accepts a list of requirement strings or a
 
 When the function is saved, the SDK parses a requirements file and normalizes the resulting list. If a package is specified without a version, the SDK looks for it in the active local virtual environment, adds the installed version when available, and logs a warning. Use an explicit version or version constraint to avoid this inference; pin an exact version for reproducible builds.
 
-For remote `job` and `serve` runs, a non-empty `requirements` list requires a build so that the dependencies are installed in the execution image. With the default `auto_build=True`, the runtime calls `function.build()` when `spec.image` is `None`. It does not rebuild when an image is already configured, even if requirements are present; after changing requirements, call `function.build()` explicitly or provide an image that already contains them.
+For remote `job` runs, a non-empty `requirements` list requires a build so that the dependencies are installed in the execution image. With the default `auto_build=True`, the runtime calls `function.build()` when `spec.image` is `None`. It does not rebuild when an image is already configured, even if requirements are present; after changing requirements, call `function.build()` explicitly or provide an image that already contains them.
 
 
 ## Action documentation

@@ -61,6 +61,7 @@ nav:
       - Open Inference (Python): "runtimes/oi.md"
       - Guardrail (Python): "runtimes/guardrail.md"
       - Hydra (Python): "runtimes/hydra.md"
+      - Ray (Python): "runtimes/ray.md"
       - "Federated Learning": "runtimes/fl.md"
       - DBT: "runtimes/dbt.md"
       - Service Graph: "runtimes/servicegraph.md"
