@@ -152,8 +152,8 @@ The `compile` action runs a Job that compiles the Relax IR into `model.so` for a
 
 The more specific the target, the faster the code, but it only runs on that kind of CPU.
 
-- The **ARM targets are cross-compiled**: the Job runs on any `amd64` or `arm64` node of the cluster and links the library with the ARM compiler included in the toolkit image.
-- The `build` and `compile` Jobs never run on 32-bit ARM nodes, such as a Raspberry Pi with a 32-bit OS: the toolkit image is not published for them. Those nodes can still run the `serve` action.
+- The **ARM targets are cross-compiled** with the ARM compiler included in the toolkit image: the Job does not need to run on the target device.
+- The toolkit image supports `amd64` and `arm64`. In a mixed-architecture cluster, use a resource `profile` with a suitable node selector to place `build` and `compile` Jobs on compatible nodes; the runtime does not automatically enforce this restriction for every Job.
 - The **x86 targets** are compiled on an x86 (`amd64`) node, which the platform selects by itself.
 
 ### Compile options
@@ -422,8 +422,7 @@ All fields are optional.
 | `workers` | `1` | Requests handled in parallel by each pod; each worker loads its own copy of the model. |
 | `service_type`{: style="white-space: nowrap" } | `ClusterIP` | Kubernetes Service type: `ClusterIP`, `NodePort` or `LoadBalancer`. |
 | `service_name`{: style="white-space: nowrap" } | empty | Extra Service name, `<function>-<service_name>`. |
-| `serve_runtime`{: style="white-space: nowrap" } | `go` | Server that runs the model: `go` or `rust`. See [Serving runtimes](#serving-runtimes). |
-| `image` | image of `serve_runtime` | A custom serve image, used in place of the one of `serve_runtime`. |
+| `image` | platform serve image (Go by default) | Custom serve image for this run, overriding `RUNTIME_TVM_SERVE`. See [Serving runtimes](#serving-runtimes). |
 
 ```yaml
 spec:
@@ -624,11 +623,11 @@ The platform chooses the script from the action and the source format, and passe
 
 ## Serving runtimes
 
-The `serve` action can use two images. They read the same model folder, expose the same endpoints on the same ports and accept the same requests: choose one with the `serve_runtime` field, `go` (the default) or `rust`.
+The `serve` action can use two images. They read the same model folder, expose the same endpoints on the same ports and accept the same requests. Go is the platform default; use the `image` field to choose another serve image for a single run:
 
 ```yaml
 spec:
-  serve_runtime: rust
+  image: ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0
 ```
 
 Each image is multi-arch: the same tag serves `amd64`, `arm64` and `arm/v7` nodes, and each node downloads its own variant. There is no image to choose per architecture.
@@ -685,13 +684,14 @@ Administrators choose the images with these environment variables of the Core:
 | `RUNTIME_TVM_BUILDER_ONNX`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0` | Image of `build` for ONNX models. |
 | `RUNTIME_TVM_BUILDER_TFLITE`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0` | Image of `build` for TFLite models. |
 | `RUNTIME_TVM_COMPILER`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0` | Image of `compile`. |
-| `RUNTIME_TVM_SERVE_GO`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0` | Image of `serve` with `serve_runtime: go`, the default. |
-| `RUNTIME_TVM_SERVE_RUST`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0` | Image of `serve` with `serve_runtime: rust`. |
+| `RUNTIME_TVM_SERVE`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0` | Default image of `serve`, overridden by the run's `image` field. |
 | `RUNTIME_TVM_HOME_DIR`{: style="white-space: nowrap" } | `/shared` | Working folder inside the pods. |
 | `RUNTIME_TVM_VOLUME_SIZE`{: style="white-space: nowrap" } | `4Gi` | Default size of the working volume. |
 | `RUNTIME_TVM_USER_ID`, `RUNTIME_TVM_GROUP_ID` | platform user and group | User and group the pods run as. |
 
-`RUNTIME_TVM_SERVE`, the single serve image of earlier releases, still sets the Go image. A custom image must be multi-arch like the default ones, otherwise the services on the nodes of the missing architectures cannot start.
+To use Rust as the platform default, set `RUNTIME_TVM_SERVE=ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0` on Core. A single run can still select another image with `image`.
+
+A custom image must support the architecture of the nodes on which the model is served. A multi-arch image allows the same tag to be used across different architectures.
 
 ---
 
