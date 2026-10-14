@@ -1,41 +1,69 @@
+---
+render_macros: true
+---
+
 # MLflow
 
-The `mlflow` kind stores an MLflow model together with its flavor, configuration, input datasets, and signature metadata.
+The `mlflow` kind stores an MLflow model together with its flavor, configuration, input datasets, and signature metadata. Kind-specific fields are documented with the creation functions.
 
-## MLflow spec
+## Create
 
-The `mlflow` kind has the following specification parameters.
+### Log
 
-| Parameter | Type | Description | Default |
-| --- | --- | --- | --- |
-| [`path`](../../../configuration/paths.md#scheme-specific-paths) | *str* | Path of the model, either on the local filesystem or in remote storage. | *required* |
-| `framework` | *str \| None* | Model framework, for example `pytorch`. | `None` |
-| `algorithm` | *str \| None* | Model algorithm, for example `resnet`. | `None` |
-| `parameters` | *dict \| None* | Model parameters. | `None` |
-| `flavor` | *str \| None* | MLflow model flavor. | `None` |
-| `model_config` | *dict \| None* | MLflow model configuration. | `None` |
-| `input_datasets` | *list[Dataset] \| None* | Datasets used as model inputs. | `None` |
-| `signature` | *Signature \| None* | MLflow model signature. | `None` |
+{% call function_doc("log_mlflow", "digitalhub_runtime_modelserve.entities.model.mlflow.crud") %}
+    === "Creation example"
 
-### Dataset
+        ```python
+        import digitalhub as dh
 
-| Parameter | Type | Description | Default |
-| --- | --- | --- | --- |
-| `name` | *str \| None* | Dataset name. | `None` |
-| `digest` | *str \| None* | Dataset digest. | `None` |
-| `profile` | *str \| None* | Dataset profile. | `None` |
-| `dataset_schema` | *str \| None* | Dataset schema. | `None` |
-| `source` | *str \| None* | Dataset source. | `None` |
-| `source_type` | *str \| None* | Dataset source type. | `None` |
+        model = dh.log_mlflow(
+            project="my-project",
+            name="fraud-detector",
+            source="./mlruns/0/abc123/artifacts/model",
+            flavor="sklearn",
+        )
+        ```
+{% endcall %}
 
-### Signature
+### Register
 
-| Parameter | Type | Description | Default |
-| --- | --- | --- | --- |
-| `inputs` | *str \| None* | Signature inputs. | `None` |
-| `outputs` | *str \| None* | Signature outputs. | `None` |
-| `params` | *str \| None* | Signature parameters. | `None` |
+{% call function_doc("register_mlflow", "digitalhub_runtime_modelserve.entities.model.mlflow.crud") %}
+    === "Creation example"
 
-## MLflow methods
+        ```python
+        import digitalhub as dh
 
-The `mlflow` kind has no additional methods.
+        model = dh.register_mlflow(
+            project="my-project",
+            name="registered-fraud-detector",
+            source="s3://my-bucket/models/fraud-detector",
+            flavor="sklearn",
+        )
+        ```
+{% endcall %}
+
+### New
+
+{% call function_doc("new_model", "digitalhub.entities") %}
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        model = dh.new_model(
+            project="my-project",
+            name="fraud-detector",
+            kind="mlflow",
+            path="s3://my-bucket/models/fraud-detector",
+            flavor="sklearn",
+        )
+        ```
+{% endcall %}
+
+## Retrieve and manage
+
+Use the shared [Model management reference](../manage.md) to retrieve, update, or delete an MLflow Model.
+
+## Related runtime
+
+See the [ModelServe runtime](../../../runtimes/modelserve/overview.md) and its [MLflow serving action](../../../runtimes/modelserve/actions/mlflowserve-serve.md).

@@ -15,5 +15,5 @@ flowchart LR
 | --- | --- | --- | --- |
 | Represents | A typed dataset | A file or binary object | A machine learning model |
 | Choose it when | The data kind and dataset semantics matter | File storage and transfer are the primary concerns | Model metadata and model-specific operations matter |
-| Supported kinds | `table`, `croissant`, `dataitem` | `artifact` | `model`, `mlflow`, `sklearn`, `huggingface`, `tvm-ir`, `tvm-so` |
+| Supported kinds | `table`, `croissant`, `dataitem` | `artifact` | `model`, `mlflow`, `sklearn`, `tvm-ir`, `tvm-so` |
 | Typical operations | Load data with kind-specific methods, upload, download, represent as dataframe | Upload, download, and access as a file | Upload or register models, move model files, and log metrics |

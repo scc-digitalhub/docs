@@ -1,32 +1,71 @@
+---
+render_macros: true
+---
+
 # TVM IR
 
-The `tvm-ir` kind stores a Relax IR model produced by `tvm` and `tvm+build`.
+The `tvm-ir` kind stores a Relax IR model produced by `tvm` or `tvm+build`. Kind-specific fields, including source format, tensor signatures, and input handling, are documented with the creation functions.
 
-## TVM IR spec
+## Create
 
-The `tvm-ir` kind has the following specification parameters.
+### Log
 
-| Parameter | Type | Description | Default |
-| --- | --- | --- | --- |
-| [`path`](../../../configuration/paths.md#scheme-specific-paths) | *str* | Path of the model, either on the local filesystem or in remote storage. | *required* |
-| `framework` | *str \| None* | Model framework, for example `tvm`. | `None` |
-| `algorithm` | *str \| None* | Model algorithm. | `None` |
-| `parameters` | *dict \| None* | Model parameters. | `None` |
-| `entry` | *str \| None* | Relax entry function, for example `main`. | `None` |
-| `inputs` | *list[TensorSpec] \| None* | Input tensor signatures. | `None` |
-| `outputs` | *list[TensorSpec] \| None* | Output tensor signatures. | `None` |
-| `source_format` | *str \| None* | Source format: `auto`, `onnx`, `pytorch`, or `tvmscript`. | `None` |
-| `keep_params_in_input` | *bool \| None* | Keep weights as input variables in `params.bin` instead of folding them into the IR. | `None` |
-| `sanitize_input_names` | *bool \| None* | Sanitize input names in the ONNX frontend. | `None` |
+{% call function_doc("log_tvm_ir", "digitalhub_runtime_tvm.entities.model.tvm_ir.crud") %}
+    === "Creation example"
 
-### TensorSpec
+        ```python
+        import digitalhub as dh
 
-| Parameter | Type | Description | Default |
-| --- | --- | --- | --- |
-| `name` | *str \| None* | Tensor name. | `None` |
-| `dtype` | *str \| None* | Tensor data type, for example `float32`. | `None` |
-| `shape` | *list[int] \| None* | Tensor shape; `-1` marks a symbolic dimension. | `None` |
+        model = dh.log_tvm_ir(
+            project="my-project",
+            name="resnet18-relax",
+            source="./models/resnet18.onnx",
+            source_format="onnx",
+            entry="main",
+        )
+        ```
+{% endcall %}
 
-## TVM IR methods
+### Register
 
-The `tvm-ir` kind has no additional methods.
+{% call function_doc("register_tvm_ir", "digitalhub_runtime_tvm.entities.model.tvm_ir.crud") %}
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        model = dh.register_tvm_ir(
+            project="my-project",
+            name="registered-resnet18-relax",
+            source="s3://my-bucket/models/resnet18.relax",
+            entry="main",
+        )
+        ```
+{% endcall %}
+
+### New
+
+{% call function_doc("new_model", "digitalhub.entities") %}
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        model = dh.new_model(
+            project="my-project",
+            name="resnet18-relax",
+            kind="tvm-ir",
+            path="s3://my-bucket/models/resnet18.relax",
+            source_format="onnx",
+            entry="main",
+        )
+        ```
+{% endcall %}
+
+## Retrieve and manage
+
+Use the shared [Model management reference](../manage.md) to retrieve, update, or delete a TVM IR Model.
+
+## Related runtime
+
+See the [TVM runtime](../../../runtimes/tvm/overview.md), including its [build](../../../runtimes/tvm/actions/tvm-build.md) and [compile](../../../runtimes/tvm/actions/tvm-compile.md) workflows.

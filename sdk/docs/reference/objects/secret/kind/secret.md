@@ -1,89 +1,38 @@
+---
+render_macros: true
+---
+
 # Secret
 
-The `secret` kind stores a project-level sensitive value through the configured secret provider. Secret values are managed separately from the entity metadata.
+The `secret` kind stores a project-level sensitive value through the configured secret provider. Secret values are managed separately from entity metadata.
 
 ## Secret spec
-
-The `secret` kind has the following specification parameters.
 
 | Parameter | Type | Description | Default |
 | --- | --- | --- | --- |
 | `path` | *str \| None* | Path to the secret. | `None` |
 | `provider` | *str \| None* | Secret provider. | `None` |
 
-## Secret methods
+## Create
 
-The `secret` kind exposes the standard entity methods and methods for managing secret values.
+### New
 
-### CRUD methods
+{% call function_doc("new_secret", "digitalhub.entities") %}
+    === "Creation example"
 
-??? example "save"
+        ```python
+        import digitalhub as dh
 
-    ::: digitalhub.entities.secret._base.entity.Secret.save
-        options:
-            heading_level: 6
-            show_signature: false
-            show_docstring_description: true
-            show_source: false
-            show_root_heading: true
-            show_symbol_type_heading: true
-            show_root_full_path: false
-            show_root_toc_entry: true
+        secret = dh.new_secret(
+            project="my-project",
+            name="my-secret",
+            secret_value="my-secret-value",
+        )
+        ```
+{% endcall %}
 
-??? example "export"
+## Methods
 
-    ::: digitalhub.entities.secret._base.entity.Secret.export
-        options:
-            heading_level: 6
-            show_signature: false
-            show_docstring_description: true
-            show_source: false
-            show_root_heading: true
-            show_symbol_type_heading: true
-            show_root_full_path: false
-            show_root_toc_entry: true
+Secret values and common entity methods are documented in [Use a secret](../use.md).
 
-??? example "refresh"
-
-    ::: digitalhub.entities.secret._base.entity.Secret.refresh
-        options:
-            heading_level: 6
-            show_signature: false
-            show_docstring_description: true
-            show_source: false
-            show_root_heading: true
-            show_symbol_type_heading: true
-            show_root_full_path: false
-            show_root_toc_entry: true
-
-### Secret value methods
-
-??? example "set_secret_value"
-
-    Set or update the secret value.
-
-    ::: digitalhub.entities.secret._base.entity.Secret.set_secret_value
-        options:
-            heading_level: 6
-            show_signature: false
-            show_docstring_description: true
-            show_source: false
-            show_root_heading: true
-            show_symbol_type_heading: true
-            show_root_full_path: false
-            show_root_toc_entry: true
-
-??? example "read_secret_value"
-
-    Read the secret value.
-
-    ::: digitalhub.entities.secret._base.entity.Secret.read_secret_value
-        options:
-            heading_level: 6
-            show_signature: false
-            show_docstring_description: true
-            show_source: false
-            show_root_heading: true
-            show_symbol_type_heading: true
-            show_root_full_path: false
-            show_root_toc_entry: true
+[Back to secret kind selection](../create.md)

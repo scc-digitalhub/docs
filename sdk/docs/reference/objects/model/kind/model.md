@@ -1,18 +1,68 @@
+---
+render_macros: true
+---
+
 # Model
 
-The `model` kind stores a generic machine learning model in an addressable repository. Use it when the model does not require the metadata or behavior of a specialized kind.
+The `model` kind stores a generic machine-learning model when no specialized kind metadata is needed. The `log_model()` and `register_model()` functions are provided by the SDK.
 
-## Model spec
+## Create
 
-The `model` kind has the following specification parameters.
+### Log
 
-| Parameter | Type | Description | Default |
-| --- | --- | --- | --- |
-| [`path`](../../../configuration/paths.md#scheme-specific-paths) | *str* | Path of the model, either on the local filesystem or in remote storage. | *required* |
-| `framework` | *str \| None* | Model framework, for example `pytorch`. | `None` |
-| `algorithm` | *str \| None* | Model algorithm, for example `resnet`. | `None` |
-| `parameters` | *dict \| None* | Model parameters. | `None` |
+{% call function_doc("log_model", "digitalhub.entities") %}
+    === "Creation example"
 
-## Model methods
+        ```python
+        import digitalhub as dh
 
-The `model` kind has no additional methods.
+        model = dh.log_model(
+            project="my-project",
+            name="image-classifier",
+            source="./models/image-classifier",
+            framework="pytorch",
+            algorithm="resnet18",
+        )
+        ```
+{% endcall %}
+
+### Register
+
+{% call function_doc("register_model", "digitalhub.entities") %}
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        model = dh.register_model(
+            project="my-project",
+            name="registered-image-classifier",
+            source="s3://my-bucket/models/image-classifier",
+            framework="pytorch",
+            algorithm="resnet18",
+        )
+        ```
+{% endcall %}
+
+### New
+
+{% call function_doc("new_model", "digitalhub.entities") %}
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        model = dh.new_model(
+            project="my-project",
+            name="image-classifier",
+            kind="model",
+            path="s3://my-bucket/models/image-classifier",
+            framework="pytorch",
+            algorithm="resnet18",
+        )
+        ```
+{% endcall %}
+
+## Retrieve and manage
+
+Use the shared [Model management reference](../manage.md) to retrieve, update, or delete a Model.

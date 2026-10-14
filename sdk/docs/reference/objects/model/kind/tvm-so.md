@@ -1,32 +1,72 @@
+---
+render_macros: true
+---
+
 # TVM SO
 
-The `tvm-so` kind stores a compiled shared-object model produced by `tvm+compile`.
+The `tvm-so` kind stores a compiled TVM shared-object model. Kind-specific fields, including target, optimization level, manifest, and tensor signatures, are documented with the creation functions.
 
-## TVM SO spec
+## Create
 
-The `tvm-so` kind has the following specification parameters.
+### Log
 
-| Parameter | Type | Description | Default |
-| --- | --- | --- | --- |
-| [`path`](../../../configuration/paths.md#scheme-specific-paths) | *str* | Path of the model, either on the local filesystem or in remote storage. | *required* |
-| `framework` | *str \| None* | Model framework, for example `tvm`. | `None` |
-| `algorithm` | *str \| None* | Model algorithm. | `None` |
-| `parameters` | *dict \| None* | Model parameters. | `None` |
-| `entry` | *str \| None* | Model entry function. | `None` |
-| `inputs` | *list[TensorSpec] \| None* | Input tensor signatures. | `None` |
-| `outputs` | *list[TensorSpec] \| None* | Output tensor signatures. | `None` |
-| `target` | *str \| None* | TVM hardware target used to compile the shared object. | `None` |
-| `opt_level` | *int \| None* | TVM optimization level used during compilation, from 0 to 3. | `None` |
-| `manifest` | *dict \| None* | Parsed `manifest.json` produced by the compile job. | `None` |
+{% call function_doc("log_tvm_so", "digitalhub_runtime_tvm.entities.model.tvm_so.crud") %}
+    === "Creation example"
 
-### TensorSpec
+        ```python
+        import digitalhub as dh
 
-| Parameter | Type | Description | Default |
-| --- | --- | --- | --- |
-| `name` | *str \| None* | Tensor name. | `None` |
-| `dtype` | *str \| None* | Tensor data type, for example `float32`. | `None` |
-| `shape` | *list[int] \| None* | Tensor shape; `-1` marks a symbolic dimension. | `None` |
+        model = dh.log_tvm_so(
+            project="my-project",
+            name="resnet18-tvm",
+            source="./build/resnet18.so",
+            target="llvm -mcpu=x86-64-v2",
+            opt_level=3,
+        )
+        ```
+{% endcall %}
 
-## TVM SO methods
+### Register
 
-The `tvm-so` kind has no additional methods.
+{% call function_doc("register_tvm_so", "digitalhub_runtime_tvm.entities.model.tvm_so.crud") %}
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        model = dh.register_tvm_so(
+            project="my-project",
+            name="registered-resnet18-tvm",
+            source="s3://my-bucket/models/resnet18.so",
+            target="llvm -mcpu=x86-64-v2",
+            opt_level=3,
+        )
+        ```
+{% endcall %}
+
+### New
+
+{% call function_doc("new_model", "digitalhub.entities") %}
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        model = dh.new_model(
+            project="my-project",
+            name="resnet18-tvm",
+            kind="tvm-so",
+            path="s3://my-bucket/models/resnet18.so",
+            target="llvm -mcpu=x86-64-v2",
+            opt_level=3,
+        )
+        ```
+{% endcall %}
+
+## Retrieve and manage
+
+Use the shared [Model management reference](../manage.md) to retrieve, update, or delete a TVM SO Model.
+
+## Related runtime
+
+See the [TVM runtime](../../../runtimes/tvm/overview.md), including its [compile](../../../runtimes/tvm/actions/tvm-compile.md) and [serve](../../../runtimes/tvm/actions/tvm-serve.md) workflows.

@@ -1,4 +1,4 @@
-# Data validation 
+# Data validation
 
 This scenario implements a simple data validation function, which evaluates the correctness of a CSV table by leveraging an open source library, [Frictionless](https://github.com/frictionlessdata/frictionless-py).
 
@@ -47,18 +47,18 @@ def main(project, di):
     path = di.download(destination=di.name, overwrite=True)
     # validate
     report = validate(path)
-    # update artifact with label    
+    # update artifact with label
     label = "VALID" if report.valid else "INVALID"
     di.metadata.labels = di.metadata.labels.append(label) if di.metadata.labels else [label]
-    di.save(update=True)    
+    di.update()
     #cleanup
-    os.remove(path) 
+    os.remove(path)
 
     with open("report.json", "w") as f:
       f.write(report.to_json())
 
     project.log_artifact(kind="artifact", name=f"{di.name}_validation-report.json", source="report.json")
-        
+
     # persist report
     return report.to_json()
 ```

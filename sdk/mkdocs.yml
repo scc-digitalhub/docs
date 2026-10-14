@@ -81,68 +81,80 @@ nav:
           - Index: reference/objects/index.md
           - Projects:
               - Entity: reference/objects/project/entity.md
-              - CRUD: reference/objects/project/crud.md
-              - Methods: reference/objects/project/methods.md
+              - Create: reference/objects/project/create.md
+              - Manage: reference/objects/project/manage.md
+              - Use: reference/objects/project/use.md
               - Config: reference/objects/project/config.md
               - Setup: reference/objects/project/setup.md
           - Artifacts:
               - Entity: reference/objects/artifact/entity.md
-              - CRUD: reference/objects/artifact/crud.md
-              - Methods: reference/objects/artifact/methods.md
+              - Create: reference/objects/artifact/create.md
+              - Manage: reference/objects/artifact/manage.md
+              - Use: reference/objects/artifact/use.md
               - Kind:
                   - Artifact: reference/objects/artifact/kind/artifact.md
           - Dataitems:
               - Entity: reference/objects/dataitem/entity.md
-              - CRUD: reference/objects/dataitem/crud.md
-              - Methods: reference/objects/dataitem/methods.md
+              - Create: reference/objects/dataitem/create.md
+              - Manage: reference/objects/dataitem/manage.md
+              - Use: reference/objects/dataitem/use.md
               - Kind:
                   - Dataitem: reference/objects/dataitem/kind/dataitem.md
                   - Table: reference/objects/dataitem/kind/table.md
                   - Croissant: reference/objects/dataitem/kind/croissant.md
           - Models:
               - Entity: reference/objects/model/entity.md
-              - CRUD: reference/objects/model/crud.md
-              - Methods: reference/objects/model/methods.md
+              - Create: reference/objects/model/create.md
+              - Manage: reference/objects/model/manage.md
+              - Use: reference/objects/model/use.md
               - Kind:
                   - Model: reference/objects/model/kind/model.md
                   - MLflow: reference/objects/model/kind/mlflow.md
                   - Scikit-learn: reference/objects/model/kind/sklearn.md
-                  - Hugging Face: reference/objects/model/kind/huggingface.md
+                  - ONNX: reference/objects/model/kind/onnx.md
+                  - TFLite: reference/objects/model/kind/tflite.md
                   - TVM IR: reference/objects/model/kind/tvm-ir.md
                   - TVM SO: reference/objects/model/kind/tvm-so.md
           - Functions:
               - Entity: reference/objects/function/entity.md
-              - CRUD: reference/objects/function/crud.md
-              - Methods: reference/objects/function/methods.md
+              - Create: reference/objects/function/create.md
+              - Manage: reference/objects/function/manage.md
+              - Use: reference/objects/function/use.md
           - Workflows:
               - Entity: reference/objects/workflow/entity.md
-              - CRUD: reference/objects/workflow/crud.md
-              - Methods: reference/objects/workflow/methods.md
+              - Create: reference/objects/workflow/create.md
+              - Manage: reference/objects/workflow/manage.md
+              - Use: reference/objects/workflow/use.md
           - Runs:
               - Entity: reference/objects/run/entity.md
-              - CRUD: reference/objects/run/crud.md
-              - Methods: reference/objects/run/methods.md
+              - Create: reference/objects/run/create.md
+              - Manage: reference/objects/run/manage.md
+              - Use: reference/objects/run/use.md
           - Tasks:
               - Entity: reference/objects/task/entity.md
-              - CRUD: reference/objects/task/crud.md
-              - Methods: reference/objects/task/methods.md
+              - Create: reference/objects/task/create.md
+              - Manage: reference/objects/task/manage.md
+              - Use: reference/objects/task/use.md
           - Triggers:
               - Entity: reference/objects/trigger/entity.md
-              - CRUD: reference/objects/trigger/crud.md
-              - Methods: reference/objects/trigger/methods.md
+              - Create: reference/objects/trigger/create.md
+              - Manage: reference/objects/trigger/manage.md
+              - Use: reference/objects/trigger/use.md
               - Kind:
                   - Scheduler: reference/objects/trigger/kind/scheduler.md
                   - Lifecycle: reference/objects/trigger/kind/lifecycle.md
           - Secrets:
               - Entity: reference/objects/secret/entity.md
-              - CRUD: reference/objects/secret/crud.md
-              - Methods: reference/objects/secret/methods.md
+              - Create: reference/objects/secret/create.md
+              - Manage: reference/objects/secret/manage.md
+              - Use: reference/objects/secret/use.md
               - Kind:
                   - Secret: reference/objects/secret/kind/secret.md
           - Container images:
               - Entity: reference/objects/containerimage/entity.md
-              - CRUD: reference/objects/containerimage/crud.md
-              - Methods: reference/objects/containerimage/methods.md
+              - Create: reference/objects/containerimage/create.md
+              - Manage: reference/objects/containerimage/manage.md
+              - Use: reference/objects/containerimage/use.md
               - Kind:
                   - Container image: reference/objects/containerimage/kind/container-image.md
       - Runtimes:
@@ -167,7 +179,6 @@ nav:
                   - sklearnserve serve: reference/runtimes/modelserve/actions/sklearnserve-serve.md
                   - mlflowserve build: reference/runtimes/modelserve/actions/mlflowserve-build.md
                   - mlflowserve serve: reference/runtimes/modelserve/actions/mlflowserve-serve.md
-                  - huggingfaceserve serve: reference/runtimes/modelserve/actions/huggingfaceserve-serve.md
                   - kubeai-text serve: reference/runtimes/modelserve/actions/kubeai-text-serve.md
                   - kubeai-speech serve: reference/runtimes/modelserve/actions/kubeai-speech-serve.md
                   - vllmserve-text serve: reference/runtimes/modelserve/actions/vllmserve-text-serve.md

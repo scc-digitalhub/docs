@@ -1,32 +1,69 @@
+---
+render_macros: true
+---
+
 # Croissant
 
-The `croissant` kind stores an ML Croissant dataset defined by a `metadata.json` file and its referenced local files. Use this kind to load the dataset through the `mlcroissant` library.
+The `croissant` kind stores an ML Croissant dataset defined by a `metadata.json` file and its referenced local files. Use this kind to load the dataset through the `mlcroissant` library, which is available through the `digitalhub[mlcroissant]` extra in the [SDK installation guide](../../../../how-to/installation.md).
 
-When logging a Croissant dataitem, ensure the metadata file is named `metadata.json`. If you set an explicit `path`, it must be an S3 partition path ending with `/`.
+When logging a Croissant dataitem, the metadata file must be named `metadata.json`; its referenced local files are uploaded with it. An explicit destination `path` must be an S3 partition path ending with `/`. See [supported paths](../../../configuration/paths.md#scheme-specific-paths).
 
-## Croissant spec
+## Create
 
-The `croissant` kind has the following specification parameters.
+### Log
 
-| Parameter | Type | Description | Default |
-| --- | --- | --- | --- |
-| [`path`](../../../configuration/paths.md#scheme-specific-paths) | *str* | Path to the Croissant dataset location, a directory or partition containing `metadata.json`. | *required* |
+{% call function_doc("log_croissant", "digitalhub.entities") %}
+    === "Creation example"
 
-## Croissant methods
+        ```python
+        import digitalhub as dh
 
-The `croissant` kind has the following additional methods.
+        dataitem = dh.log_croissant(
+            project="my-project",
+            name="catalog",
+            source="./data/croissant/metadata.json",
+            description="Product catalog described with Croissant metadata.",
+        )
+        ```
+{% endcall %}
 
-??? example "as_dataset"
+### Register
 
-    Load the Croissant dataitem as a dataset.
+{% call function_doc("register_croissant", "digitalhub.entities") %}
+    === "Creation example"
 
-    ::: digitalhub.entities.dataitem.croissant.entity.DataitemCroissant.as_dataset
-        options:
-            heading_level: 6
-            show_signature: false
-            show_docstring_description: true
-            show_source: false
-            show_root_heading: true
-            show_symbol_type_heading: true
-            show_root_full_path: false
-            show_root_toc_entry: true
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.register_croissant(
+            project="my-project",
+            name="registered-catalog",
+            source="s3://my-bucket/data/croissant/metadata.json",
+        )
+        ```
+{% endcall %}
+
+### New
+
+{% call function_doc("new_dataitem", "digitalhub.entities") %}
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.new_dataitem(
+            project="my-project",
+            name="catalog",
+            kind="croissant",
+            path="s3://my-bucket/data/croissant/catalog/",
+        )
+        ```
+{% endcall %}
+
+## Methods
+
+The `croissant` kind adds dataset loading to the [common Dataitem methods](../use.md).
+
+{{ member_doc("as_dataset", "digitalhub.entities.dataitem.croissant.entity.DataitemCroissant") }}
+
+[Back to dataitem kind selection](../create.md)

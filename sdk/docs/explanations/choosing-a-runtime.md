@@ -33,7 +33,7 @@ Choose an execution framework based on what you need to run, how it should run, 
 	description="Deploy supported machine learning models as scalable inference services.",
 	use_cases=[
 		"REST inference endpoints.",
-		"scikit-learn, MLflow, and Hugging Face models.",
+		"scikit-learn, MLflow, and other supported models.",
 		"vLLM text and speech serving.",
 	]
 ) }}

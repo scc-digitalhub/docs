@@ -1,18 +1,69 @@
+---
+render_macros: true
+---
+
 # Scikit-learn
 
-The `sklearn` kind stores a scikit-learn model in an addressable repository.
+The `sklearn` kind stores a scikit-learn model. Kind-specific fields are documented with the creation functions.
 
-## Scikit-learn spec
+## Create
 
-The `sklearn` kind has the following specification parameters.
+### Log
 
-| Parameter | Type | Description | Default |
-| --- | --- | --- | --- |
-| [`path`](../../../configuration/paths.md#scheme-specific-paths) | *str* | Path of the model, either on the local filesystem or in remote storage. | *required* |
-| `framework` | *str \| None* | Model framework, for example `pytorch`. | `None` |
-| `algorithm` | *str \| None* | Model algorithm, for example `resnet`. | `None` |
-| `parameters` | *dict \| None* | Model parameters. | `None` |
+{% call function_doc("log_sklearn", "digitalhub_runtime_modelserve.entities.model.sklearn.crud") %}
+    === "Creation example"
 
-## Scikit-learn methods
+        ```python
+        import digitalhub as dh
 
-The `sklearn` kind has no additional methods.
+        model = dh.log_sklearn(
+            project="my-project",
+            name="churn-classifier",
+            source="./models/churn-classifier.joblib",
+            algorithm="RandomForestClassifier",
+        )
+        ```
+{% endcall %}
+
+### Register
+
+{% call function_doc("register_sklearn", "digitalhub_runtime_modelserve.entities.model.sklearn.crud") %}
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        model = dh.register_sklearn(
+            project="my-project",
+            name="registered-churn-classifier",
+            source="s3://my-bucket/models/churn-classifier.joblib",
+            algorithm="RandomForestClassifier",
+        )
+        ```
+{% endcall %}
+
+### New
+
+{% call function_doc("new_model", "digitalhub.entities") %}
+    === "Creation example"
+
+        ```python
+        import digitalhub as dh
+
+        model = dh.new_model(
+            project="my-project",
+            name="churn-classifier",
+            kind="sklearn",
+            path="s3://my-bucket/models/churn-classifier.joblib",
+            algorithm="RandomForestClassifier",
+        )
+        ```
+{% endcall %}
+
+## Retrieve and manage
+
+Use the shared [Model management reference](../manage.md) to retrieve, update, or delete a scikit-learn Model.
+
+## Related runtime
+
+See the [ModelServe runtime](../../../runtimes/modelserve/overview.md) and its [scikit-learn serving action](../../../runtimes/modelserve/actions/sklearnserve-serve.md).

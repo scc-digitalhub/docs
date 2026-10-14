@@ -1,45 +1,13 @@
+---
+render_macros: true
+---
+
 # Secrets
 
-Working with different operations may imply the usage of a sensitive values, such as external API credentials, storage credentials, etc.
-In order to avoid embedding the credentials in the code of functions, you can explicitly manage credentials as secrets. This operation exploits the underlying secret management subsystem, such as Kubernetes Secret Manager.
+Secrets store sensitive values such as external API or storage credentials through the configured secret provider. They can be managed as project-level entities, while secret values are handled separately from entity metadata.
 
-It is possible to define custom secrets at the level of a single project. The project secrets are managed as any other project-related entities, such as functions, dataitems, etc.
+The SDK currently supports Kubernetes Secret Manager. Each project stores its secret key-value pairs through its configured provider.
 
-At the level of the project the secrets are represented as key-value pairs. The management of secrets is delegated to a secret provider, and currently only Kubernetes Secret Manager is supported. Each project has its own Kubernetes secret, where all the key-value pairs are stored.
-
-## Choose a secret kind
-
-The SDK provides one concrete secret kind.
-
-<div class="list-cards" markdown>
-
-- [**Secret**](./kind/secret.md){ .list-card-link } - Store a project secret through the configured secret provider - `secret`
-
-</div>
-
-## Managing secrets with SDK
-
-Secrets can be created and managed as *entities* with the SDK CRUD methods. This can be done directly from the package or through the `Project` object.
-
-1. In the [CRUD section](./crud.md), we will see how to create, read, update and delete secrets.
-2. In the [methods section](./methods.md), we will see what can be done with the `Secret` object.
-
-## Secret operations
-
-<div class="grid cards" markdown>
-
-- [**Secret CRUD**](./crud.md){ .card-link }
-
-	---
-
-	Create, read, update, or delete secrets.
-
-- [**Use the Secret entity**](./methods.md){ .card-link }
-
-	---
-
-	Set and read secret values.
-
-</div>
+{{ entity_overview_cards("secret") }}
 
 [Back to Entities](../index.md)

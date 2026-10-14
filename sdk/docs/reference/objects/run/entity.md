@@ -1,3 +1,7 @@
+---
+render_macros: true
+---
+
 # Runs
 
 Runs are the representation of the execution of a task through a function.
@@ -8,22 +12,6 @@ Run kinds are provided by runtimes. See the [runtime documentation](../../runtim
 
 Runs are created with a `Function` or `Workflow` object through the `run` method. They can be managed as *entities*.
 
-## Run operations
-
-<div class="grid cards" markdown>
-
-- [**Run CRUD**](./crud.md){ .card-link }
-
-	---
-
-	Create, read, update, or delete runs.
-
-- [**Use the Run entity**](./methods.md){ .card-link }
-
-	---
-
-	Start, stop, resume, wait for, and inspect runs.
-
-</div>
+{{ entity_overview_cards("run") }}
 
 [Back to Entities](../index.md)

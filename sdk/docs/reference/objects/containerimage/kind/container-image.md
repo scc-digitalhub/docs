@@ -1,15 +1,34 @@
+---
+render_macros: true
+---
+
 # Container image
 
-The `container-image` kind represents an existing container image reference in a project. The backend may populate image metadata such as its digest, media type, size, tags, and manifest information.
+The `container-image` kind represents an existing container image reference in a project. Its required `image` field is the image URI or registry reference. The backend may populate metadata such as the digest, media type, size, tags, and manifest information.
 
-## Container image spec
+Creating a Containerimage entity records the reference; it does not build or push the image.
 
-The `container-image` kind has the following specification parameters.
+## Create
 
-| Parameter | Type | Description | Default |
-| --- | --- | --- | --- |
-| `image` | *str* | Image URI or registry reference. | *required* |
+### New
 
-## Container image methods
+{% call function_doc("new_containerimage", "digitalhub.entities") %}
+    === "Creation example"
 
-The `container-image` kind has no additional methods.
+        ```python
+        import digitalhub as dh
+
+        image = dh.new_containerimage(
+            project="my-project",
+            name="my-image",
+            kind="container-image",
+            image="registry.example.com/my-image:latest",
+        )
+        ```
+{% endcall %}
+
+## Methods
+
+The `container-image` kind adds no instance methods. See [Use a container image](../use.md) for the common methods.
+
+[Back to container image kind selection](../create.md)

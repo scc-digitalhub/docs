@@ -1,3 +1,7 @@
+---
+render_macros: true
+---
+
 # Function
 
 Functions are the logical description of something that the platform may execute and track for you. A function may represent code to run as a job, an ML function inference to be used as batch procedure or as a service, a data validation, etc.
@@ -28,24 +32,6 @@ Choose the runtime that matches the function you want to create. The `kind` to u
 
 </div>
 
-## Managing functions with SDK
-
-Functions can be created and managed as *entities* with the SDK CRUD methods. This can be done directly from the package or through the `Project` object.
-
-<div class="grid cards" markdown>
-
-- [**Function CRUD**](./crud.md){ .card-link }
-
-	---
-
-	Create, read, update, or delete functions.
-
-- [**Use the Function entity**](./methods.md){ .card-link }
-
-	---
-
-	Run functions and manage their tasks and triggers.
-
-</div>
+{{ entity_overview_cards("function") }}
 
 [Back to Entities](../index.md)

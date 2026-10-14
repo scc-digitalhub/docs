@@ -15,7 +15,6 @@ The ModelServe runtime enables deploying ML models as services on Kubernetes. It
 | --- | --- | --- |
 | `sklearnserve` | `serve` | Serve scikit-learn models |
 | `mlflowserve` | `build`, `serve` | Build or serve MLflow models |
-| `huggingfaceserve` | `serve` | Serve HuggingFace models |
 | `kubeai-text` | `serve` | Serve text generation models via KubeAI |
 | `kubeai-speech` | `serve` | Serve speech processing models via KubeAI |
 | `vllmserve-text` | `serve` | Serve vLLM text generation models |
@@ -96,10 +95,6 @@ Review the detailed parameters for each ModelServe action:
 - [**mlflowserve serve**](actions/mlflowserve-serve.md){ .list-card-link }
 
     Deploy an MLflow model as a service.
-
-- [**huggingfaceserve serve**](actions/huggingfaceserve-serve.md){ .list-card-link }
-
-    Deploy a HuggingFace model as a service.
 
 - [**kubeai-text serve**](actions/kubeai-text-serve.md){ .list-card-link }
 

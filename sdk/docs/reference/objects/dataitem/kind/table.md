@@ -1,61 +1,89 @@
+---
+render_macros: true
+---
+
 # Table
 
-The `table` kind represents tabular data that can be read and written as a dataframe. The default dataframe engine is `pandas`.
+The `table` kind represents tabular data that can be read and written as a dataframe. The default dataframe engine is `pandas`; `polars` is also supported. Install the optional SDK extra for the engine you use, as described in the [SDK installation guide](../../../../how-to/installation.md).
 
-## Table spec
+The `path` identifies the table data and can use a supported [local or remote scheme](../../../configuration/paths.md#scheme-specific-paths). `log_table()` generates a destination path when one is not supplied. An optional `schema` follows the [Frictionless Table Schema](https://specs.frictionlessdata.io/table-schema/) format; `log_table()` infers it from the data when omitted.
 
-The `table` kind has the following specification parameters.
+## Create
 
-| Parameter | Type | Description | Default |
-| --- | --- | --- | --- |
-| [`path`](../../../configuration/paths.md#scheme-specific-paths) | *str* | Path of the dataitem, either on the local filesystem or in remote storage. | *required* |
-| `schema` | [*TableSchema*](https://specs.frictionlessdata.io/table-schema/) | Frictionless table schema. | `None` |
+### Log
 
-## Table methods
+{% call function_doc("log_table", "digitalhub.entities") %}
+    === "Creation example"
 
-The `table` kind has the following additional methods.
+        ```python
+        import digitalhub as dh
+        import pandas as pd
 
-??? example "as_df"
+        table_from_source = dh.log_table(
+            project="my-project",
+            name="sales-from-file",
+            source="./data/sales.csv",
+            file_format="csv",
+        )
 
-    Read the table as a dataframe.
+        table_from_data = dh.log_table(
+            project="my-project",
+            name="sales-from-dataframe",
+            data=pd.DataFrame(
+                {
+                    "customer_id": [101, 102],
+                    "amount": [12.50, 8.75],
+                }
+            ),
+        )
+        ```
+{% endcall %}
 
-    ::: digitalhub.entities.dataitem.table.entity.DataitemTable.as_df
-        options:
-            heading_level: 6
-            show_signature: false
-            show_docstring_description: true
-            show_source: false
-            show_root_heading: true
-            show_symbol_type_heading: true
-            show_root_full_path: false
-            show_root_toc_entry: true
+### Register
 
-??? example "write_df"
+{% call function_doc("register_table", "digitalhub.entities") %}
+    === "Creation example"
 
-    Write a dataframe to the table.
+        ```python
+        import digitalhub as dh
 
-    ::: digitalhub.entities.dataitem.table.entity.DataitemTable.write_df
-        options:
-            heading_level: 6
-            show_signature: false
-            show_docstring_description: true
-            show_source: false
-            show_root_heading: true
-            show_symbol_type_heading: true
-            show_root_full_path: false
-            show_root_toc_entry: true
+        dataitem = dh.register_table(
+            project="my-project",
+            name="registered-sales",
+            source="s3://my-bucket/data/sales.parquet",
+            schema={
+                "fields": [
+                    {"name": "customer_id", "type": "integer"},
+                    {"name": "amount", "type": "float"},
+                ]
+            },
+        )
+        ```
+{% endcall %}
 
-??? example "query"
+### New
 
-    Query the table.
+{% call function_doc("new_dataitem", "digitalhub.entities") %}
+    === "Creation example"
 
-    ::: digitalhub.entities.dataitem.table.entity.DataitemTable.query
-        options:
-            heading_level: 6
-            show_signature: false
-            show_docstring_description: true
-            show_source: false
-            show_root_heading: true
-            show_symbol_type_heading: true
-            show_root_full_path: false
-            show_root_toc_entry: true
+        ```python
+        import digitalhub as dh
+
+        dataitem = dh.new_dataitem(
+            project="my-project",
+            name="sales",
+            kind="table",
+            path="s3://my-bucket/data/sales.parquet",
+        )
+        ```
+{% endcall %}
+
+## Methods
+
+The `table` kind adds dataframe operations to the [common Dataitem methods](../use.md).
+
+{{ member_doc("as_df", "digitalhub.entities.dataitem.table.entity.DataitemTable") }}
+
+{{ member_doc("write_df", "digitalhub.entities.dataitem.table.entity.DataitemTable") }}
+
+[Back to dataitem kind selection](../create.md)
