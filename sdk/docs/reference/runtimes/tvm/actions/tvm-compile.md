@@ -18,6 +18,11 @@
 
 The `compile` action compiles a Relax IR model for a target architecture and produces a deployable `model.so` artifact.
 
+`amd64` means Intel/AMD 64-bit (x86-64-v2); `arm64` means ARM 64-bit (AArch64);
+`arm32` requires ARMv7 hard-float with NEON. `auto` uses the compile node's architecture.
+Older names remain accepted aliases: `cpu`/`llvm`, `x86`, `x86_v3`, `x86_native` and
+`armv7l` map to `auto`, `amd64`, `amd64_v3`, `amd64_native` and `arm32`, respectively.
+
 ## Function
 
 ??? example "Create a function"
@@ -50,7 +55,7 @@ The `compile` action compiles a Relax IR model for a target architecture and pro
         | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
         | [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
         | model_path | str | Relax IR model path or store key. |
-        | target_architecture | str | Target architecture: `cpu`, `llvm`, `x86`, `arm64`, or `armv7l`. |
+        | target_architecture | str | Target CPU profile: `auto` (default), `amd64`, `amd64_v3`, `amd64_native`, `arm64`, `arm64_pi5`, or `arm32`. |
         | opt_level | int | TVM optimization level. |
         | cross_cc | str | Cross-compiler command. |
         | exec_mode | str | TVM execution mode. |
@@ -67,7 +72,7 @@ The `compile` action compiles a Relax IR model for a target architecture and pro
         run = function.run(
             action="compile",
             model_path="store://my-project/model/model-relax:version",
-            target_architecture="llvm",
+            target_architecture="auto",
             opt_level=3,
         )
         ```
@@ -89,7 +94,7 @@ The TVM compile Task does not add runtime-specific methods.
         | ir_model | str | Store key of the Relax IR model. |
         | so_model | str | Store key for the compiled `model.so` output. |
         | model_path | str | Relax IR model path or store key. |
-        | target_architecture | str | Target architecture: `cpu`, `llvm`, `x86`, `arm64`, or `armv7l`. |
+        | target_architecture | str | Target CPU profile: `auto` (default), `amd64`, `amd64_v3`, `amd64_native`, `arm64`, `arm64_pi5`, or `arm32`. |
         | opt_level | int | TVM optimization level. |
         | cross_cc | str | Cross-compiler command. |
         | exec_mode | str | TVM execution mode. |
@@ -107,7 +112,7 @@ The TVM compile Task does not add runtime-specific methods.
         run = function.run(
             action="compile",
             model_path="store://my-project/model/model-relax:version",
-            target_architecture="llvm",
+            target_architecture="auto",
             wait=True,
         )
         ```

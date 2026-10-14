@@ -138,23 +138,43 @@ If onnxsim cannot simplify the graph, the build keeps the first conversion and w
 
 The `compile` action runs a Job that compiles the Relax IR into `model.so` for a target architecture and saves it as the Model `<function>-<tag>` (`<function>-so` by default), of kind `tvm-so`, linked to the IR Model it comes from.
 
-### Target architectures
+### Target CPU profiles
+
+The console displays **Target CPU Profile**: the architecture comes first, followed by
+an optional CPU feature level or board profile. `amd64` means Intel/AMD 64-bit,
+`arm64` means ARM 64-bit (AArch64), and our `arm32` profile requires ARMv7 hard-float
+with NEON. Armv7/Armv8/Armv9 are architecture generations, not synonyms for bitness.
 
 | `target_architecture`{: style="white-space: nowrap" } | Where the model runs | Typical devices |
 | --- | --- | --- |
-| `cpu` (default) | The architecture of the cluster node that runs the Job, with generic code | Nodes of the cluster |
-| `x86` | Any x86-64 CPU with SSE4.2 (x86-64-v2, about 2009 and newer) | Servers, PCs, x86 cluster nodes |
-| `x86_v3` | x86-64 CPUs with AVX2 (Intel Haswell, AMD Excavator and newer) | Recent servers and PCs |
-| `x86_native` | Exactly the CPU model of the node that runs the Job | Nodes identical to the compile node |
+| `auto` (default) | The architecture of the cluster node that runs the Job, with generic code | Nodes of the cluster |
+| `amd64` | Intel/AMD 64-bit CPUs with the full x86-64-v2 feature set | Compatible servers, PCs and cluster nodes |
+| `amd64_v3` | Intel/AMD 64-bit CPUs with the full x86-64-v3 feature set, including AVX2 and FMA | Compatible recent servers and PCs |
+| `amd64_native` | CPU features matching the node that runs the Job | Nodes compatible with the compile node |
 | `arm64` | 64-bit ARM (aarch64) | Raspberry Pi 3, 4, 5 with a 64-bit OS, NVIDIA Jetson, ARM servers |
 | `arm64_pi5` | Raspberry Pi 5 (Cortex-A76, 4 cores) | Raspberry Pi 5 with a 64-bit OS |
-| `armv7l` | 32-bit ARM with hardware floating point and NEON (armhf) | Raspberry Pi 2, 3, 4 with a 32-bit OS |
+| `arm32` | ARMv7-compatible 32-bit ARM with the hard-float ABI and NEON (armhf) | Raspberry Pi 2, 3, 4 with a 32-bit OS |
 
-The more specific the target, the faster the code, but it only runs on that kind of CPU.
+A more specific profile can improve performance, but requires compatible CPU features.
+The model, OS and runtime must also agree on bitness and ABI. `auto` does not enable
+native CPU optimization; `arm64_pi5` is not portable to Pi 3/4.
+
+Legacy API values remain accepted: `cpu`/`llvm` → `auto`, `x86` → `amd64`,
+`x86_v3` → `amd64_v3`, `x86_native` → `amd64_native`, `armv7l` → `arm32`.
+New saves use the new names. Existing database records are not migrated automatically:
+reselect the profile once when editing an old task in the console.
+LLVM triples, compiler names and container platforms keep their standard names.
+
+!!! note "Runtime images and CORE's init image"
+
+    Go and Rust runtime image builds cover AMD64, ARM64 and ARMv7. ARM32 compilation
+    and inference remain supported. CORE's default init image covers only AMD64 and
+    ARM64, so serving on an ARM32 cluster node also requires an ARMv7-compatible init
+    image to download the model. Standalone serving with a mounted model does not use it.
 
 - The **ARM targets are cross-compiled** with the ARM compiler included in the toolkit image: the Job does not need to run on the target device.
 - The toolkit image supports `amd64` and `arm64`. In a mixed-architecture cluster, use a resource `profile` with a suitable node selector to place `build` and `compile` Jobs on compatible nodes; the runtime does not automatically enforce this restriction for every Job.
-- The **x86 targets** are compiled on an x86 (`amd64`) node, which the platform selects by itself.
+- The **AMD64 profiles** are compiled on an `amd64` node, which the platform selects by itself.
 
 ### Compile options
 
@@ -162,9 +182,9 @@ All fields are optional.
 
 | Field | Default | What it does |
 | --- | --- | --- |
-| `target_architecture`{: style="white-space: nowrap" } | `cpu` | Target architecture, from the table above. |
+| `target_architecture`{: style="white-space: nowrap" } | `auto` | Target CPU profile, from the table above. |
 | `target_num_cores`{: style="white-space: nowrap" } | `resources.cpu` | Number of cores the generated code is optimized for. Serve with the same number of threads. |
-| `tag` | `so` | Suffix of the compiled Model name, `<function>-<tag>`. Use one tag per target, for example `x86` or `arm64`. |
+| `tag` | `so` | Suffix of the compiled Model name, `<function>-<tag>`. Use one tag per target, for example `amd64` or `arm64`. |
 | `opt_level` | `3` | TVM optimization level, from `0` to `3`. |
 | `exec_mode` | `bytecode` | How the model graph runs: `bytecode` (interpreted by the Relax virtual machine) or `compiled` (native code). |
 | `model_path`{: style="white-space: nowrap" } | function `ir_model` | Key of another IR Model to compile. |
@@ -182,28 +202,28 @@ The tuning options are described in [Model Optimization](#model-optimization).
 
 In the console, open the function, select the **compile** tab and click `CREATE`: enter these values in the fields with the same name. With the CLI, save the YAML in a file and run `dhcli run tvm+compile -p <project> -n <function> -f <file>`.
 
-=== "x86 server"
+=== "Intel/AMD 64-bit (amd64)"
 
-    Runs on any x86-64 server of the cluster, and on x86 PCs.
+    Runs on Intel/AMD 64-bit servers and PCs with the x86-64-v2 feature set.
 
     | Field | Value |
     | --- | --- |
-    | `target_architecture`{: style="white-space: nowrap" } | `x86` |
-    | `tag` | `x86` |
+    | `target_architecture`{: style="white-space: nowrap" } | `amd64` |
+    | `tag` | `amd64` |
     | `opt_level` | `3` |
     | `resources` | CPU `4`, memory `8Gi` |
 
     ```yaml
     spec:
-      target_architecture: x86
-      tag: x86
+      target_architecture: amd64
+      tag: amd64
       opt_level: 3
       resources:
         cpu: "4"
         mem: 8Gi
     ```
 
-    Result: the Model `<function>-x86`, which the `serve` action deploys on the x86 nodes of the cluster.
+    Result: the Model `<function>-amd64`, which the `serve` action deploys on the AMD64 nodes of the cluster.
 
 === "ARM 64-bit (arm64)"
 
@@ -229,29 +249,29 @@ In the console, open the function, select the **compile** tab and click `CREATE`
 
     Result: the Model `<function>-arm64`, whose `model.so` is an aarch64 library. Serve it on an ARM node of the cluster, or run it on the device as shown in [Test the service](#test-the-service).
 
-=== "ARM 32-bit (armv7l)"
+=== "ARM 32-bit (arm32, ARMv7 hard-float)"
 
     For a Raspberry Pi 2, 3 or 4 with a 32-bit OS (`uname -m` prints `armv7l`).
 
     | Field | Value |
     | --- | --- |
-    | `target_architecture`{: style="white-space: nowrap" } | `armv7l` |
-    | `tag` | `armv7l` |
+    | `target_architecture`{: style="white-space: nowrap" } | `arm32` |
+    | `tag` | `arm32` |
     | `cross_cc` | leave empty: `arm-linux-gnueabihf-g++` is used |
     | `opt_level` | `3` |
     | `resources` | CPU `4`, memory `8Gi` |
 
     ```yaml
     spec:
-      target_architecture: armv7l
-      tag: armv7l
+      target_architecture: arm32
+      tag: arm32
       opt_level: 3
       resources:
         cpu: "4"
         mem: 8Gi
     ```
 
-    Result: the Model `<function>-armv7l`, whose `model.so` is a 32-bit hard-float ARM library. Run it on the device as shown in [Test the service](#test-the-service).
+    Result: the Model `<function>-arm32`, whose `model.so` is an ARMv7 hard-float library requiring NEON. It runs with the ARMv7 Go or Rust runtime image on a compatible device. Serving through CORE also requires an ARMv7-compatible init image.
 
 === "A specific IR version"
 
@@ -260,19 +280,19 @@ In the console, open the function, select the **compile** tab and click `CREATE`
     | Field | Value |
     | --- | --- |
     | `model_path`{: style="white-space: nowrap" } | the IR Model key, e.g. `store://my-project/model/tvm-ir/yolo-function-ir:<id>` |
-    | `target_architecture`{: style="white-space: nowrap" } | `x86` |
-    | `tag` | `x86-v1` |
+    | `target_architecture`{: style="white-space: nowrap" } | `amd64` |
+    | `tag` | `amd64-v1` |
 
     ```yaml
     spec:
       model_path: store://my-project/model/tvm-ir/yolo-function-ir:<id>
-      target_architecture: x86
-      tag: x86-v1
+      target_architecture: amd64
+      tag: amd64-v1
     ```
 
 !!! warning "`so_model` points to the last compile"
 
-    Every `compile` run writes its Model into the function field `so_model`, and `serve` deploys `so_model` by default. After compiling for ARM, `so_model` points to the ARM library, which the platform serves only on ARM nodes: to serve the x86 build, set the serve field `model_path` to its key (e.g. `store://my-project/model/tvm-so/yolo-function-x86`).
+    Every `compile` run writes its Model into the function field `so_model`, and `serve` deploys `so_model` by default. After compiling for ARM, `so_model` points to the ARM library, which the platform serves only on ARM nodes: to serve the AMD64 build, set the serve field `model_path` to its key (e.g. `store://my-project/model/tvm-so/yolo-function-amd64`).
 
 ### Compile output
 
@@ -303,7 +323,7 @@ Run a `compile` with tuning, on the same kind of CPU used for serving. In the co
 
 | Field | Value |
 | --- | --- |
-| `target_architecture`{: style="white-space: nowrap" } | `x86_native` |
+| `target_architecture`{: style="white-space: nowrap" } | `amd64_native` |
 | `target_num_cores` | `4` |
 | `tag` | `tuned` |
 | `tuning_mode` | `tune` |
@@ -313,7 +333,7 @@ Run a `compile` with tuning, on the same kind of CPU used for serving. In the co
 
 ```yaml
 spec:
-  target_architecture: x86_native
+  target_architecture: amd64_native
   target_num_cores: 4
   tag: tuned
   tuning_mode: tune
@@ -339,7 +359,7 @@ Keep **the same `target_architecture` and `target_num_cores`** as the tuning; fi
 
 ```yaml
 spec:
-  target_architecture: x86_native
+  target_architecture: amd64_native
   target_num_cores: 4
   tag: fast
   tuning_mode: apply
@@ -353,7 +373,7 @@ A tuning can be reused only when these match:
 | Must match | Why it matters |
 | --- | --- |
 | TVM version and commit | Use the toolkit image of the same release, e.g. `tvm-toolkit:0.26.0`. |
-| Target | Same `target_architecture` **and** same `target_num_cores`. When `target_num_cores` is empty it comes from `resources.cpu`: changing the CPUs of the run makes the database incompatible. With `x86_native` the CPU model of the node counts too. |
+| Target | Same `target_architecture` **and** same `target_num_cores`. When `target_num_cores` is empty it comes from `resources.cpu`: changing the CPUs of the run makes the database incompatible. With `amd64_native` the CPU model of the node counts too. |
 | IR | Same IR Model: same source model and same `build` options. |
 | Coverage | The database must cover every operator of the model, unless `allow_partial_tuning` is `true`. |
 
@@ -442,11 +462,16 @@ A `model.so` runs only on the CPU architecture it was compiled for. The platform
 
 | Compiled for | Nodes of the service |
 | --- | --- |
-| `x86`, `x86_v3`, `x86_native`, `cpu` on an x86 node | `amd64` |
-| `arm64`, `arm64_pi5`, `cpu` on an ARM node | `arm64` |
-| `armv7l` | `arm` |
+| `amd64`, `amd64_v3`, `amd64_native`, `auto` on an AMD64 node | `amd64` |
+| `arm64`, `arm64_pi5`, `auto` on an ARM64 node | `arm64` |
+| `arm32` | `arm` (ARMv7, hard-float, NEON) |
 
-The serve images are published for all three architectures, and each node downloads its own variant. So an ARM model can be served inside the platform when the cluster has ARM nodes, for example a Raspberry Pi joined to the cluster.
+Go and Rust runtime image builds include all three architectures. Each node downloads
+its image variant. An ARM64 model can be served inside the platform when the cluster
+has ARM64 nodes, for example a Raspberry Pi running a 64-bit OS and joined to the cluster.
+ARM32 nodes also need an ARMv7-compatible init image: CORE's default init image covers
+only AMD64 and ARM64. Matching the architecture does not replace CPU-feature and ABI
+compatibility checks; for example, an `arm64_pi5` model needs a compatible Cortex-A76 CPU.
 
 !!! warning "No node of the right architecture"
 
@@ -551,7 +576,7 @@ The service is reachable only from inside the platform. There are three ways to 
     Download the compiled Model and run the same serve image on your computer. REST and gRPC both work.
 
     ```sh
-    dhcli download model -p my-project -n yolo-function-x86 -d ./yolo-model
+    dhcli download model -p my-project -n yolo-function-amd64 -d ./yolo-model
 
     docker run --rm -p 8080:8080 -p 9000:9000 \
       -v "$PWD/yolo-model:/shared/model" \
@@ -565,11 +590,11 @@ The service is reachable only from inside the platform. There are three ways to 
     curl http://localhost:8080/v2/models/yolo-function
     ```
 
-    The model must be compiled for the architecture of your computer (`x86` or `cpu` on a PC).
+    The model must be compiled for the architecture of your computer (`amd64` or `auto` on a compatible Intel/AMD 64-bit PC).
 
 === "On an ARM device"
 
-    The serve images are published for `linux/arm64` and `linux/arm/v7`, so the same command runs on a Raspberry Pi with Docker. Download the Model compiled for the device and start the image there:
+    Use a device with Docker and either a 64-bit ARM OS or an ARMv7 hard-float 32-bit OS with NEON. Download the matching Model and start the image there. For a 64-bit OS:
 
     ```sh
     dhcli download model -p my-project -n yolo-function-arm64 -d ./yolo-model
@@ -580,7 +605,7 @@ The service is reachable only from inside the platform. There are three ways to 
       ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0
     ```
 
-    Use the `arm64` build on a 64-bit OS and the `armv7l` build on a 32-bit OS. Docker picks the image variant of the device automatically.
+    For a 32-bit OS, download `yolo-function-arm32` instead. For a 64-bit OS, use `arm64` (or `arm64_pi5` on Pi 5). Docker picks the image variant of the device automatically. This standalone example does not use CORE's init image.
 
 To send a real picture, use the Python client of the [tutorial](../../tutorials/tvm/test/), or the ready-made [test scripts](https://github.com/scc-digitalhub/digitalhub-core/tree/runtime-tvm/runtimes/runtime-tvm/test_infer) (`yolo.py` for detection, `xinet.py` for pose models), which also draw the results on the picture:
 

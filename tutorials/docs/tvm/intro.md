@@ -19,7 +19,7 @@ Every step can be done from the **console** or from the **CLI** (`dhcli`): each 
 | Source Model | `yolo` |
 | Function | `yolo-function` |
 | IR Model | `yolo-function-ir`, kind `tvm-ir` (created by `build`) |
-| Compiled Models | `yolo-function-x86`, `yolo-function-arm64`, `yolo-function-armv7l`, kind `tvm-so` (created by `compile`) |
+| Compiled Models | `yolo-function-amd64`, `yolo-function-arm64`, `yolo-function-arm32`, kind `tvm-so` (created by `compile`) |
 
 Use your own names if you prefer, and change the commands accordingly.
 

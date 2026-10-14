@@ -26,7 +26,7 @@ compile = function.run(
     model_path=ir_model,
     ir_model=ir_model,
     so_model=so_model,
-    target_architecture="llvm",
+    target_architecture="auto",
     opt_level=3,
     wait=True,
 )

@@ -178,12 +178,12 @@ The [README](https://github.com/scc-digitalhub/digitalhub-core/blob/runtime-tvm/
 
 ## Run the model on your computer
 
-The compiled Model can run outside the platform with the same serve image. This works on an x86 computer with the `yolo-function-x86` build.
+The compiled Model can run outside the platform with the same serve image. This works on a compatible Intel/AMD 64-bit computer with the `yolo-function-amd64` build.
 
 **1. Download the compiled Model:**
 
 ```sh
-dhcli download model -p tvm-test -n yolo-function-x86 -d ./yolo-model
+dhcli download model -p tvm-test -n yolo-function-amd64 -d ./yolo-model
 ls yolo-model        # metadata.json  model.so
 ```
 
@@ -209,13 +209,20 @@ python3 yolo.py --url http://localhost:8080 --grpc-url localhost:9000 --mode grp
 
 ## Run the model on a Raspberry Pi
 
-The serve images are also published for `linux/arm64` and `linux/arm/v7`. On the device, with Docker installed:
+Use a Raspberry Pi with Docker and either a 64-bit OS (`linux/arm64`) or an
+ARMv7-compatible 32-bit OS (`linux/arm/v7`, hard-float ABI and NEON). Both Go and Rust
+runtime image builds include these platforms. Use a model matching the OS and CPU.
 
 **1. Download the build for the device** (see [Compile for ARM devices](deploy.md#6-compile-for-arm-devices-optional)):
 
 ```sh
 dhcli download model -p tvm-test -n yolo-function-arm64 -d ./yolo-model     # 64-bit OS
-dhcli download model -p tvm-test -n yolo-function-armv7l -d ./yolo-model    # 32-bit OS
+```
+
+For an ARMv7-compatible 32-bit OS, use this command instead:
+
+```sh
+dhcli download model -p tvm-test -n yolo-function-arm32 -d ./yolo-model
 ```
 
 If the CLI is not installed on the device, download the Model on your computer and copy the folder, for example with `scp -r yolo-model pi@<device>:`.
@@ -233,7 +240,7 @@ docker run --rm -p 8080:8080 -p 9000:9000 \
 
 !!! tip "A Raspberry Pi in the cluster"
 
-    When the Raspberry Pi is a node of the cluster, there is no need for Docker: run `serve` with `model_path` set to the ARM Model, and the platform starts the service on the Pi. Test it with the port-forward, as in [the first section](#test-the-service-on-the-platform).
+    When the Raspberry Pi is a node of the cluster, there is no need to start Docker manually: run `serve` with `model_path` set to the ARM Model. Both the runtime and init images must support the node architecture. CORE's default init image covers only AMD64 and ARM64, so an ARM32 node requires an ARMv7-compatible init image to download the model. Test the service with the port-forward, as in [the first section](#test-the-service-on-the-platform).
 
 ## Clean up
 

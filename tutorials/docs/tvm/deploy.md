@@ -85,9 +85,9 @@ When the run is **COMPLETED**, the Model `yolo-function-ir`, of kind `tvm-ir`, c
 
     Set `target_opset` only if the model really needs an opset conversion: ONNX cannot convert every operator to every version, and the build fails with `No Adapter From Version ...`. All the build options are described in the [runtime reference](../../../runtimes/tvm/#build-options).
 
-## 4. Compile for the cluster (x86)
+## 4. Compile for the cluster (AMD64)
 
-`compile` turns the IR into `model.so` for a target architecture. First we compile for x86, to serve the model on the cluster.
+`compile` turns the IR into `model.so` for a target architecture. First we compile for AMD64 (Intel/AMD 64-bit), to serve the model on the cluster.
 
 === "Console"
 
@@ -95,19 +95,19 @@ When the run is **COMPLETED**, the Model `yolo-function-ir`, of kind `tvm-ir`, c
 
     | Field | Value | Why |
     | --- | --- | --- |
-    | `target_architecture`{: style="white-space: nowrap" } | `x86` | runs on any x86-64 node (`x86_v3` is faster on CPUs with AVX2) |
-    | `tag` | `x86` | names the Model `yolo-function-x86` |
+    | `target_architecture`{: style="white-space: nowrap" } | `amd64` | requires x86-64-v2 (`amd64_v3` requires x86-64-v3, including AVX2 and FMA) |
+    | `tag` | `amd64` | names the Model `yolo-function-amd64` |
     | `opt_level` | `3` | full optimization |
     | `resources` | CPU `4`, memory `8Gi` | compiling needs memory |
 
 === "CLI"
 
-    Create `compile-x86.yaml`:
+    Create `compile-amd64.yaml`:
 
     ```yaml
     spec:
-      target_architecture: x86
-      tag: x86
+      target_architecture: amd64
+      tag: amd64
       opt_level: 3
       resources:
         cpu: "4"
@@ -115,11 +115,11 @@ When the run is **COMPLETED**, the Model `yolo-function-ir`, of kind `tvm-ir`, c
     ```
 
     ```sh
-    dhcli run tvm+compile -p tvm-test -n yolo-function -f compile-x86.yaml
+    dhcli run tvm+compile -p tvm-test -n yolo-function -f compile-amd64.yaml
     dhcli list runs -p tvm-test
     ```
 
-When the run is **COMPLETED**, the Model `yolo-function-x86`, of kind `tvm-so`, contains `model.so` and `metadata.json`, and the function field `so_model` points to it. The `benchmark` section of `metadata.json` shows how long an inference takes.
+When the run is **COMPLETED**, the Model `yolo-function-amd64`, of kind `tvm-so`, contains `model.so` and `metadata.json`, and the function field `so_model` points to it. The `benchmark` section of `metadata.json` shows how long an inference takes.
 
 ## 5. Serve
 
@@ -156,14 +156,15 @@ NAME          ID                                 FUNCTION        KIND           
 cloudy-lynx   7398740f73b14fdd957f10c2e54c8ed2   yolo-function   tvm+serve:run   s-tvmserve-7398740f73b14fdd957f10c2e54c8ed2.dev-platform:8080   RUNNING
 ```
 
-The model is served with the name of the function, `yolo-function`. The platform starts the service on a node with the architecture of the model, here an x86 node. The next part shows how to [test it](test.md).
+The model is served with the name of the function, `yolo-function`. The platform starts the service on a node with the architecture of the model, here an AMD64 node. The next part shows how to [test it](test.md).
 
 ## 6. Compile for ARM devices (optional)
 
 The same IR can be compiled for ARM devices, such as a Raspberry Pi. The Job still runs on the cluster: the ARM library is cross-compiled. Check the device first:
 
 ```sh
-uname -m     # aarch64 -> use arm64 · armv7l -> use armv7l
+uname -m          # kernel: aarch64 or armv7l
+getconf LONG_BIT  # userspace: 64 -> arm64, 32 -> arm32 (ARMv7 hard-float + NEON)
 ```
 
 === "arm64 (64-bit OS)"
@@ -196,24 +197,24 @@ uname -m     # aarch64 -> use arm64 · armv7l -> use armv7l
 
     Result: the Model `yolo-function-arm64`.
 
-=== "armv7l (32-bit OS)"
+=== "arm32 (ARMv7-compatible 32-bit OS)"
 
     **Console**: in the **compile** tab click `CREATE` and enter:
 
     | Field | Value |
     | --- | --- |
-    | `target_architecture`{: style="white-space: nowrap" } | `armv7l` |
-    | `tag` | `armv7l` |
+    | `target_architecture`{: style="white-space: nowrap" } | `arm32` |
+    | `tag` | `arm32` |
     | `cross_cc` | leave empty: the right compiler is chosen automatically |
     | `opt_level` | `3` |
     | `resources` | CPU `4`, memory `8Gi` |
 
-    **CLI**: create `compile-armv7l.yaml` and start the run:
+    **CLI**: create `compile-arm32.yaml` and start the run:
 
     ```yaml
     spec:
-      target_architecture: armv7l
-      tag: armv7l
+      target_architecture: arm32
+      tag: arm32
       opt_level: 3
       resources:
         cpu: "4"
@@ -221,13 +222,17 @@ uname -m     # aarch64 -> use arm64 · armv7l -> use armv7l
     ```
 
     ```sh
-    dhcli run tvm+compile -p tvm-test -n yolo-function -f compile-armv7l.yaml
+    dhcli run tvm+compile -p tvm-test -n yolo-function -f compile-arm32.yaml
     ```
 
-    Result: the Model `yolo-function-armv7l`.
+    Result: the Model `yolo-function-arm32`.
+
+    This model runs with the ARMv7 Go or Rust runtime image on a device with a compatible
+    32-bit OS, hard-float ABI and NEON. Serving through CORE on an ARM32 cluster node also
+    requires an ARMv7-compatible init image; the default init image is AMD64/ARM64 only.
 
 !!! warning "Serving after an ARM compile"
 
-    Each compile writes its Model into `so_model`, and `serve` deploys `so_model` by default. After an ARM compile, `so_model` points to the ARM library, which the platform serves only on ARM nodes: without ARM nodes in the cluster the service stays **PENDING**. To serve the x86 build, set the serve field `model_path` to `store://tvm-test/model/tvm-so/yolo-function-x86`. A service that is already running is not affected.
+    Each compile writes its Model into `so_model`, and `serve` deploys `so_model` by default. After an ARM compile, `so_model` points to the ARM library, which the platform serves only on ARM nodes: without ARM nodes in the cluster the service stays **PENDING**. To serve the AMD64 build, set the serve field `model_path` to `store://tvm-test/model/tvm-so/yolo-function-amd64`. A service that is already running is not affected.
 
-The ARM Models can run on the device, as shown in [Test the model](test.md#run-the-model-on-a-raspberry-pi), or be served by the platform when the device is a node of the cluster.
+The ARM64 and ARM32 Models can run on compatible devices, as shown in [Test the model](test.md#run-the-model-on-a-raspberry-pi). They can also be served by the platform on matching cluster nodes, provided the runtime and init images both support the node architecture.
