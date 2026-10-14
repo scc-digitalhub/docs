@@ -1874,6 +1874,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="From a model to a prediction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-settings-and-run-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task settings and run options
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2785,6 +2802,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="From a model to a prediction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task-settings-and-run-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Task settings and run options
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3314,6 +3348,21 @@
 </tbody>
 </table>
 <p>The <a href="../../tutorials/tvm/intro/">TVM tutorial</a> walks through all the steps with a YOLOv8 model, from the console and from the CLI.</p>
+<h3 id="task-settings-and-run-options">Task settings and run options</h3>
+<p>The reusable <strong>Task</strong> holds the function reference and common execution settings:
+<code>profile</code>, <code>resources</code>, <code>envs</code>, <code>secrets</code> and <code>volumes</code>. A Run can override these common
+settings for one execution.</p>
+<p>All TVM-specific options belong to the <strong>Run</strong>: build conversion flags; compile target,
+optimization and tuning; serve model, image, replicas, workers and service configuration.
+In the console, fill common settings in the <strong>Task</strong> step and TVM options in the <strong>Run</strong>
+step. Compile options are grouped under <strong>Advanced compilation</strong> and <strong>MetaSchedule tuning</strong>.
+Each new run has its own options; it does not inherit TVM options from the task or a previous run.</p>
+<p>With the CLI, keep passing these values in the run YAML as shown below. With the API,
+use <code>tvm+build:run</code>, <code>tvm+compile:run</code> or <code>tvm+serve:run</code> and reference the corresponding
+task in <code>spec.task</code>. TVM options previously stored in tasks are not used or migrated:
+move them into the new run payload. Model types and function model references are unchanged.
+For a trigger, put these run options in <code>spec.template</code>; the trigger still references the
+reusable task through <code>spec.task</code>.</p>
 <hr />
 <h2 id="source-models">Source Models</h2>
 <p>Upload the model as a Model of kind <code>onnx</code> or <code>tflite</code>. The fields only describe the model and are all optional: the <code>build</code> action reads the real signature from the file.</p>
@@ -3648,7 +3697,7 @@ image to download the model. Standalone serving with a mounted model does not us
 </table>
 <p>The tuning options are described in <a href="#model-optimization">Model Optimization</a>.</p>
 <h3 id="compile-examples">Compile examples</h3>
-<p>In the console, open the function, select the <strong>compile</strong> tab and click <code>CREATE</code>: enter these values in the fields with the same name. With the CLI, save the YAML in a file and run <code>dhcli run tvm+compile -p &lt;project&gt; -n &lt;function&gt; -f &lt;file&gt;</code>.</p>
+<p>In the console, open the function, select the <strong>compile</strong> tab and click <code>CREATE</code>: set resources and the run profile in the <strong>Task</strong> step, then the target and TVM options in the <strong>Run</strong> step. With the CLI, save the YAML in a file and run <code>dhcli run tvm+compile -p &lt;project&gt; -n &lt;function&gt; -f &lt;file&gt;</code>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Intel/AMD 64-bit (amd64)</label><label for="__tabbed_2_2">ARM 64-bit (arm64)</label><label for="__tabbed_2_3">ARM 32-bit (arm32, ARMv7 hard-float)</label><label for="__tabbed_2_4">A specific IR version</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -3859,7 +3908,7 @@ image to download the model. Standalone serving with a mounted model does not us
 </tbody>
 </table>
 <h3 id="tune-once">Tune once</h3>
-<p>Run a <code>compile</code> with tuning, on the same kind of CPU used for serving. In the console, set these fields in the <strong>compile</strong> tab:</p>
+<p>Run a <code>compile</code> with tuning, on the same kind of CPU used for serving. In the console, open the <strong>compile</strong> tab, set resources in the <strong>Task</strong> step, then the target and <strong>MetaSchedule tuning</strong> in the <strong>Run</strong> step:</p>
 <table>
 <thead>
 <tr>

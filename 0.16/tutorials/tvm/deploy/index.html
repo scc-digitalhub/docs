@@ -2885,6 +2885,10 @@
 <h1 id="build-compile-and-serve-the-model">Build, compile and serve the model</h1>
 <p>In this part we upload the model, create a TVM function and run its three actions. Each action is a <strong>run</strong>: wait until a run is <strong>COMPLETED</strong> before starting the next one.</p>
 <p>With the CLI, each run reads its fields from a small YAML file; the commands expect the files in the current folder.</p>
+<p>In the console, the <strong>Task</strong> step contains common settings such as resources and the
+run profile. The <strong>Run</strong> step contains the options for that execution: conversion flags,
+compile target/optimization/tuning, or serve model/image/workers. TVM options are no
+longer task settings; values stored in old tasks are not inherited by new runs.</p>
 <h2 id="1-upload-the-model">1. Upload the model</h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Console</label><label for="__tabbed_1_2">CLI</label></div>
 <div class="tabbed-content">
@@ -2983,7 +2987,8 @@ dhcli<span class="w"> </span>log<span class="w"> </span>&lt;run-id&gt;<span clas
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Console</label><label for="__tabbed_4_2">CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Select the <strong>compile</strong> tab of the function and click <code>CREATE</code>:</p>
+<p>Select the <strong>compile</strong> tab of the function and click <code>CREATE</code>. Set <code>resources</code> in the
+<strong>Task</strong> step, then <code>target_architecture</code>, <code>tag</code> and <strong>Advanced compilation</strong> in the <strong>Run</strong> step:</p>
 <table>
 <thead>
 <tr>
