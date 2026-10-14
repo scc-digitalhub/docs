@@ -7225,6 +7225,10 @@
 </div>
 <h2 id="overview">Overview</h2>
 <p>The <code>compile</code> action compiles a Relax IR model for a target architecture and produces a deployable <code>model.so</code> artifact.</p>
+<p><code>amd64</code> means Intel/AMD 64-bit (x86-64-v2); <code>arm64</code> means ARM 64-bit (AArch64);
+<code>arm32</code> requires ARMv7 hard-float with NEON. <code>auto</code> uses the compile node's architecture.
+Older names remain accepted aliases: <code>cpu</code>/<code>llvm</code>, <code>x86</code>, <code>x86_v3</code>, <code>x86_native</code> and
+<code>armv7l</code> map to <code>auto</code>, <code>amd64</code>, <code>amd64_v3</code>, <code>amd64_native</code> and <code>arm32</code>, respectively.</p>
 <h2 id="function">Function</h2>
 <details class="example">
 <summary>Create a function</summary>
@@ -7296,7 +7300,7 @@
 <tr>
 <td>target_architecture</td>
 <td>str</td>
-<td>Target architecture: <code>cpu</code>, <code>llvm</code>, <code>x86</code>, <code>arm64</code>, or <code>armv7l</code>.</td>
+<td>Target CPU profile: <code>auto</code> (default), <code>amd64</code>, <code>amd64_v3</code>, <code>amd64_native</code>, <code>arm64</code>, <code>arm64_pi5</code>, or <code>arm32</code>.</td>
 </tr>
 <tr>
 <td>opt_level</td>
@@ -7350,7 +7354,7 @@
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">action</span><span class="o">=</span><span class="s2">"compile"</span><span class="p">,</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">model_path</span><span class="o">=</span><span class="s2">"store://my-project/model/model-relax:version"</span><span class="p">,</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">target_architecture</span><span class="o">=</span><span class="s2">"llvm"</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">target_architecture</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">)</span>
 </span></code></pre></div>
@@ -7403,7 +7407,7 @@
 <tr>
 <td>target_architecture</td>
 <td>str</td>
-<td>Target architecture: <code>cpu</code>, <code>llvm</code>, <code>x86</code>, <code>arm64</code>, or <code>armv7l</code>.</td>
+<td>Target CPU profile: <code>auto</code> (default), <code>amd64</code>, <code>amd64_v3</code>, <code>amd64_native</code>, <code>arm64</code>, <code>arm64_pi5</code>, or <code>arm32</code>.</td>
 </tr>
 <tr>
 <td>opt_level</td>
@@ -7462,7 +7466,7 @@
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">action</span><span class="o">=</span><span class="s2">"compile"</span><span class="p">,</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">model_path</span><span class="o">=</span><span class="s2">"store://my-project/model/model-relax:version"</span><span class="p">,</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">target_architecture</span><span class="o">=</span><span class="s2">"llvm"</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">target_architecture</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">)</span>
 </span></code></pre></div>

@@ -2429,10 +2429,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-compile-for-the-cluster-x86" class="md-nav__link">
+  <a href="#4-compile-for-the-cluster-amd64" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Compile for the cluster (x86)
+        4. Compile for the cluster (AMD64)
       
     </span>
   </a>
@@ -2785,10 +2785,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-compile-for-the-cluster-x86" class="md-nav__link">
+  <a href="#4-compile-for-the-cluster-amd64" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Compile for the cluster (x86)
+        4. Compile for the cluster (AMD64)
       
     </span>
   </a>
@@ -2978,8 +2978,8 @@ dhcli<span class="w"> </span>log<span class="w"> </span>&lt;run-id&gt;<span clas
 <p class="admonition-title">Leave <code>target_opset</code> empty</p>
 <p>Set <code>target_opset</code> only if the model really needs an opset conversion: ONNX cannot convert every operator to every version, and the build fails with <code>No Adapter From Version ...</code>. All the build options are described in the <a href="../../../runtimes/tvm/#build-options">runtime reference</a>.</p>
 </div>
-<h2 id="4-compile-for-the-cluster-x86">4. Compile for the cluster (x86)</h2>
-<p><code>compile</code> turns the IR into <code>model.so</code> for a target architecture. First we compile for x86, to serve the model on the cluster.</p>
+<h2 id="4-compile-for-the-cluster-amd64">4. Compile for the cluster (AMD64)</h2>
+<p><code>compile</code> turns the IR into <code>model.so</code> for a target architecture. First we compile for AMD64 (Intel/AMD 64-bit), to serve the model on the cluster.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Console</label><label for="__tabbed_4_2">CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2995,13 +2995,13 @@ dhcli<span class="w"> </span>log<span class="w"> </span>&lt;run-id&gt;<span clas
 <tbody>
 <tr>
 <td><code style="white-space: nowrap">target_architecture</code></td>
-<td><code>x86</code></td>
-<td>runs on any x86-64 node (<code>x86_v3</code> is faster on CPUs with AVX2)</td>
+<td><code>amd64</code></td>
+<td>requires x86-64-v2 (<code>amd64_v3</code> requires x86-64-v3, including AVX2 and FMA)</td>
 </tr>
 <tr>
 <td><code>tag</code></td>
-<td><code>x86</code></td>
-<td>names the Model <code>yolo-function-x86</code></td>
+<td><code>amd64</code></td>
+<td>names the Model <code>yolo-function-amd64</code></td>
 </tr>
 <tr>
 <td><code>opt_level</code></td>
@@ -3017,22 +3017,22 @@ dhcli<span class="w"> </span>log<span class="w"> </span>&lt;run-id&gt;<span clas
 </table>
 </div>
 <div class="tabbed-block">
-<p>Create <code>compile-x86.yaml</code>:</p>
+<p>Create <code>compile-amd64.yaml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86</span>
-<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86</span>
+<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64</span>
+<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64</span>
 <span class="w">  </span><span class="nt">opt_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>run<span class="w"> </span>tvm+compile<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo-function<span class="w"> </span>-f<span class="w"> </span>compile-x86.yaml
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>run<span class="w"> </span>tvm+compile<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo-function<span class="w"> </span>-f<span class="w"> </span>compile-amd64.yaml
 dhcli<span class="w"> </span>list<span class="w"> </span>runs<span class="w"> </span>-p<span class="w"> </span>tvm-test
 </code></pre></div>
 </div>
 </div>
 </div>
-<p>When the run is <strong>COMPLETED</strong>, the Model <code>yolo-function-x86</code>, of kind <code>tvm-so</code>, contains <code>model.so</code> and <code>metadata.json</code>, and the function field <code>so_model</code> points to it. The <code>benchmark</code> section of <code>metadata.json</code> shows how long an inference takes.</p>
+<p>When the run is <strong>COMPLETED</strong>, the Model <code>yolo-function-amd64</code>, of kind <code>tvm-so</code>, contains <code>model.so</code> and <code>metadata.json</code>, and the function field <code>so_model</code> points to it. The <code>benchmark</code> section of <code>metadata.json</code> shows how long an inference takes.</p>
 <h2 id="5-serve">5. Serve</h2>
 <p><code>serve</code> deploys the model in <code>so_model</code> as an Open Inference v2 service, on port <code>8080</code> (REST) and <code>9000</code> (gRPC).</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Console</label><label for="__tabbed_5_2">CLI</label></div>
@@ -3073,12 +3073,13 @@ dhcli<span class="w"> </span>services<span class="w"> </span>-p<span class="w"> 
 <div class="highlight"><pre><span></span><code>NAME          ID                                 FUNCTION        KIND            SERVICE                                                         STATE
 cloudy-lynx   7398740f73b14fdd957f10c2e54c8ed2   yolo-function   tvm+serve:run   s-tvmserve-7398740f73b14fdd957f10c2e54c8ed2.dev-platform:8080   RUNNING
 </code></pre></div>
-<p>The model is served with the name of the function, <code>yolo-function</code>. The platform starts the service on a node with the architecture of the model, here an x86 node. The next part shows how to <a href="../test/">test it</a>.</p>
+<p>The model is served with the name of the function, <code>yolo-function</code>. The platform starts the service on a node with the architecture of the model, here an AMD64 node. The next part shows how to <a href="../test/">test it</a>.</p>
 <h2 id="6-compile-for-arm-devices-optional">6. Compile for ARM devices (optional)</h2>
 <p>The same IR can be compiled for ARM devices, such as a Raspberry Pi. The Job still runs on the cluster: the ARM library is cross-compiled. Check the device first:</p>
-<div class="highlight"><pre><span></span><code>uname<span class="w"> </span>-m<span class="w">     </span><span class="c1"># aarch64 -&gt; use arm64 · armv7l -&gt; use armv7l</span>
+<div class="highlight"><pre><span></span><code>uname<span class="w"> </span>-m<span class="w">          </span><span class="c1"># kernel: aarch64 or armv7l</span>
+getconf<span class="w"> </span>LONG_BIT<span class="w">  </span><span class="c1"># userspace: 64 -&gt; arm64, 32 -&gt; arm32 (ARMv7 hard-float + NEON)</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">arm64 (64-bit OS)</label><label for="__tabbed_6_2">armv7l (32-bit OS)</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">arm64 (64-bit OS)</label><label for="__tabbed_6_2">arm32 (ARMv7-compatible 32-bit OS)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><strong>Console</strong>: in the <strong>compile</strong> tab click <code>CREATE</code> and enter:</p>
@@ -3137,11 +3138,11 @@ cloudy-lynx   7398740f73b14fdd957f10c2e54c8ed2   yolo-function   tvm+serve:run  
 <tbody>
 <tr>
 <td><code style="white-space: nowrap">target_architecture</code></td>
-<td><code>armv7l</code></td>
+<td><code>arm32</code></td>
 </tr>
 <tr>
 <td><code>tag</code></td>
-<td><code>armv7l</code></td>
+<td><code>arm32</code></td>
 </tr>
 <tr>
 <td><code>cross_cc</code></td>
@@ -3157,26 +3158,29 @@ cloudy-lynx   7398740f73b14fdd957f10c2e54c8ed2   yolo-function   tvm+serve:run  
 </tr>
 </tbody>
 </table>
-<p><strong>CLI</strong>: create <code>compile-armv7l.yaml</code> and start the run:</p>
+<p><strong>CLI</strong>: create <code>compile-arm32.yaml</code> and start the run:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">armv7l</span>
-<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">armv7l</span>
+<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arm32</span>
+<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arm32</span>
 <span class="w">  </span><span class="nt">opt_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>run<span class="w"> </span>tvm+compile<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo-function<span class="w"> </span>-f<span class="w"> </span>compile-armv7l.yaml
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>run<span class="w"> </span>tvm+compile<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo-function<span class="w"> </span>-f<span class="w"> </span>compile-arm32.yaml
 </code></pre></div>
-<p>Result: the Model <code>yolo-function-armv7l</code>.</p>
+<p>Result: the Model <code>yolo-function-arm32</code>.</p>
+<p>This model runs with the ARMv7 Go or Rust runtime image on a device with a compatible
+32-bit OS, hard-float ABI and NEON. Serving through CORE on an ARM32 cluster node also
+requires an ARMv7-compatible init image; the default init image is AMD64/ARM64 only.</p>
 </div>
 </div>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Serving after an ARM compile</p>
-<p>Each compile writes its Model into <code>so_model</code>, and <code>serve</code> deploys <code>so_model</code> by default. After an ARM compile, <code>so_model</code> points to the ARM library, which the platform serves only on ARM nodes: without ARM nodes in the cluster the service stays <strong>PENDING</strong>. To serve the x86 build, set the serve field <code>model_path</code> to <code>store://tvm-test/model/tvm-so/yolo-function-x86</code>. A service that is already running is not affected.</p>
+<p>Each compile writes its Model into <code>so_model</code>, and <code>serve</code> deploys <code>so_model</code> by default. After an ARM compile, <code>so_model</code> points to the ARM library, which the platform serves only on ARM nodes: without ARM nodes in the cluster the service stays <strong>PENDING</strong>. To serve the AMD64 build, set the serve field <code>model_path</code> to <code>store://tvm-test/model/tvm-so/yolo-function-amd64</code>. A service that is already running is not affected.</p>
 </div>
-<p>The ARM Models can run on the device, as shown in <a href="../test/#run-the-model-on-a-raspberry-pi">Test the model</a>, or be served by the platform when the device is a node of the cluster.</p>
+<p>The ARM64 and ARM32 Models can run on compatible devices, as shown in <a href="../test/#run-the-model-on-a-raspberry-pi">Test the model</a>. They can also be served by the platform on matching cluster nodes, provided the runtime and init images both support the node architecture.</p>
 
 
 

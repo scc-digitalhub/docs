@@ -1961,10 +1961,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#target-architectures" class="md-nav__link">
+  <a href="#target-cpu-profiles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Target architectures
+        Target CPU profiles
       
     </span>
   </a>
@@ -2872,10 +2872,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#target-architectures" class="md-nav__link">
+  <a href="#target-cpu-profiles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Target architectures
+        Target CPU profiles
       
     </span>
   </a>
@@ -3497,7 +3497,11 @@
 <hr />
 <h2 id="compile-action">Compile action</h2>
 <p>The <code>compile</code> action runs a Job that compiles the Relax IR into <code>model.so</code> for a target architecture and saves it as the Model <code>&lt;function&gt;-&lt;tag&gt;</code> (<code>&lt;function&gt;-so</code> by default), of kind <code>tvm-so</code>, linked to the IR Model it comes from.</p>
-<h3 id="target-architectures">Target architectures</h3>
+<h3 id="target-cpu-profiles">Target CPU profiles</h3>
+<p>The console displays <strong>Target CPU Profile</strong>: the architecture comes first, followed by
+an optional CPU feature level or board profile. <code>amd64</code> means Intel/AMD 64-bit,
+<code>arm64</code> means ARM 64-bit (AArch64), and our <code>arm32</code> profile requires ARMv7 hard-float
+with NEON. Armv7/Armv8/Armv9 are architecture generations, not synonyms for bitness.</p>
 <table>
 <thead>
 <tr>
@@ -3508,24 +3512,24 @@
 </thead>
 <tbody>
 <tr>
-<td><code>cpu</code> (default)</td>
+<td><code>auto</code> (default)</td>
 <td>The architecture of the cluster node that runs the Job, with generic code</td>
 <td>Nodes of the cluster</td>
 </tr>
 <tr>
-<td><code>x86</code></td>
-<td>Any x86-64 CPU with SSE4.2 (x86-64-v2, about 2009 and newer)</td>
-<td>Servers, PCs, x86 cluster nodes</td>
+<td><code>amd64</code></td>
+<td>Intel/AMD 64-bit CPUs with the full x86-64-v2 feature set</td>
+<td>Compatible servers, PCs and cluster nodes</td>
 </tr>
 <tr>
-<td><code>x86_v3</code></td>
-<td>x86-64 CPUs with AVX2 (Intel Haswell, AMD Excavator and newer)</td>
-<td>Recent servers and PCs</td>
+<td><code>amd64_v3</code></td>
+<td>Intel/AMD 64-bit CPUs with the full x86-64-v3 feature set, including AVX2 and FMA</td>
+<td>Compatible recent servers and PCs</td>
 </tr>
 <tr>
-<td><code>x86_native</code></td>
-<td>Exactly the CPU model of the node that runs the Job</td>
-<td>Nodes identical to the compile node</td>
+<td><code>amd64_native</code></td>
+<td>CPU features matching the node that runs the Job</td>
+<td>Nodes compatible with the compile node</td>
 </tr>
 <tr>
 <td><code>arm64</code></td>
@@ -3538,17 +3542,31 @@
 <td>Raspberry Pi 5 with a 64-bit OS</td>
 </tr>
 <tr>
-<td><code>armv7l</code></td>
-<td>32-bit ARM with hardware floating point and NEON (armhf)</td>
+<td><code>arm32</code></td>
+<td>ARMv7-compatible 32-bit ARM with the hard-float ABI and NEON (armhf)</td>
 <td>Raspberry Pi 2, 3, 4 with a 32-bit OS</td>
 </tr>
 </tbody>
 </table>
-<p>The more specific the target, the faster the code, but it only runs on that kind of CPU.</p>
+<p>A more specific profile can improve performance, but requires compatible CPU features.
+The model, OS and runtime must also agree on bitness and ABI. <code>auto</code> does not enable
+native CPU optimization; <code>arm64_pi5</code> is not portable to Pi 3/4.</p>
+<p>Legacy API values remain accepted: <code>cpu</code>/<code>llvm</code> → <code>auto</code>, <code>x86</code> → <code>amd64</code>,
+<code>x86_v3</code> → <code>amd64_v3</code>, <code>x86_native</code> → <code>amd64_native</code>, <code>armv7l</code> → <code>arm32</code>.
+New saves use the new names. Existing database records are not migrated automatically:
+reselect the profile once when editing an old task in the console.
+LLVM triples, compiler names and container platforms keep their standard names.</p>
+<div class="admonition note">
+<p class="admonition-title">Runtime images and CORE's init image</p>
+<p>Go and Rust runtime image builds cover AMD64, ARM64 and ARMv7. ARM32 compilation
+and inference remain supported. CORE's default init image covers only AMD64 and
+ARM64, so serving on an ARM32 cluster node also requires an ARMv7-compatible init
+image to download the model. Standalone serving with a mounted model does not use it.</p>
+</div>
 <ul>
 <li>The <strong>ARM targets are cross-compiled</strong> with the ARM compiler included in the toolkit image: the Job does not need to run on the target device.</li>
 <li>The toolkit image supports <code>amd64</code> and <code>arm64</code>. In a mixed-architecture cluster, use a resource <code>profile</code> with a suitable node selector to place <code>build</code> and <code>compile</code> Jobs on compatible nodes; the runtime does not automatically enforce this restriction for every Job.</li>
-<li>The <strong>x86 targets</strong> are compiled on an x86 (<code>amd64</code>) node, which the platform selects by itself.</li>
+<li>The <strong>AMD64 profiles</strong> are compiled on an <code>amd64</code> node, which the platform selects by itself.</li>
 </ul>
 <h3 id="compile-options">Compile options</h3>
 <p>All fields are optional.</p>
@@ -3563,8 +3581,8 @@
 <tbody>
 <tr>
 <td><code style="white-space: nowrap">target_architecture</code></td>
-<td><code>cpu</code></td>
-<td>Target architecture, from the table above.</td>
+<td><code>auto</code></td>
+<td>Target CPU profile, from the table above.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">target_num_cores</code></td>
@@ -3574,7 +3592,7 @@
 <tr>
 <td><code>tag</code></td>
 <td><code>so</code></td>
-<td>Suffix of the compiled Model name, <code>&lt;function&gt;-&lt;tag&gt;</code>. Use one tag per target, for example <code>x86</code> or <code>arm64</code>.</td>
+<td>Suffix of the compiled Model name, <code>&lt;function&gt;-&lt;tag&gt;</code>. Use one tag per target, for example <code>amd64</code> or <code>arm64</code>.</td>
 </tr>
 <tr>
 <td><code>opt_level</code></td>
@@ -3631,10 +3649,10 @@
 <p>The tuning options are described in <a href="#model-optimization">Model Optimization</a>.</p>
 <h3 id="compile-examples">Compile examples</h3>
 <p>In the console, open the function, select the <strong>compile</strong> tab and click <code>CREATE</code>: enter these values in the fields with the same name. With the CLI, save the YAML in a file and run <code>dhcli run tvm+compile -p &lt;project&gt; -n &lt;function&gt; -f &lt;file&gt;</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">x86 server</label><label for="__tabbed_2_2">ARM 64-bit (arm64)</label><label for="__tabbed_2_3">ARM 32-bit (armv7l)</label><label for="__tabbed_2_4">A specific IR version</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Intel/AMD 64-bit (amd64)</label><label for="__tabbed_2_2">ARM 64-bit (arm64)</label><label for="__tabbed_2_3">ARM 32-bit (arm32, ARMv7 hard-float)</label><label for="__tabbed_2_4">A specific IR version</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Runs on any x86-64 server of the cluster, and on x86 PCs.</p>
+<p>Runs on Intel/AMD 64-bit servers and PCs with the x86-64-v2 feature set.</p>
 <table>
 <thead>
 <tr>
@@ -3645,11 +3663,11 @@
 <tbody>
 <tr>
 <td><code style="white-space: nowrap">target_architecture</code></td>
-<td><code>x86</code></td>
+<td><code>amd64</code></td>
 </tr>
 <tr>
 <td><code>tag</code></td>
-<td><code>x86</code></td>
+<td><code>amd64</code></td>
 </tr>
 <tr>
 <td><code>opt_level</code></td>
@@ -3662,14 +3680,14 @@
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86</span>
-<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86</span>
+<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64</span>
+<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64</span>
 <span class="w">  </span><span class="nt">opt_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
 </code></pre></div>
-<p>Result: the Model <code>&lt;function&gt;-x86</code>, which the <code>serve</code> action deploys on the x86 nodes of the cluster.</p>
+<p>Result: the Model <code>&lt;function&gt;-amd64</code>, which the <code>serve</code> action deploys on the AMD64 nodes of the cluster.</p>
 </div>
 <div class="tabbed-block">
 <p>For a Raspberry Pi 3, 4 or 5 with a 64-bit OS (<code>uname -m</code> prints <code>aarch64</code>) and other 64-bit ARM devices.</p>
@@ -3725,11 +3743,11 @@
 <tbody>
 <tr>
 <td><code style="white-space: nowrap">target_architecture</code></td>
-<td><code>armv7l</code></td>
+<td><code>arm32</code></td>
 </tr>
 <tr>
 <td><code>tag</code></td>
-<td><code>armv7l</code></td>
+<td><code>arm32</code></td>
 </tr>
 <tr>
 <td><code>cross_cc</code></td>
@@ -3746,14 +3764,14 @@
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">armv7l</span>
-<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">armv7l</span>
+<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arm32</span>
+<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arm32</span>
 <span class="w">  </span><span class="nt">opt_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
 </code></pre></div>
-<p>Result: the Model <code>&lt;function&gt;-armv7l</code>, whose <code>model.so</code> is a 32-bit hard-float ARM library. Run it on the device as shown in <a href="#test-the-service">Test the service</a>.</p>
+<p>Result: the Model <code>&lt;function&gt;-arm32</code>, whose <code>model.so</code> is an ARMv7 hard-float library requiring NEON. It runs with the ARMv7 Go or Rust runtime image on a compatible device. Serving through CORE also requires an ARMv7-compatible init image.</p>
 </div>
 <div class="tabbed-block">
 <p>To compile an older IR instead of the latest one written in <code>ir_model</code>.</p>
@@ -3771,25 +3789,25 @@
 </tr>
 <tr>
 <td><code style="white-space: nowrap">target_architecture</code></td>
-<td><code>x86</code></td>
+<td><code>amd64</code></td>
 </tr>
 <tr>
 <td><code>tag</code></td>
-<td><code>x86-v1</code></td>
+<td><code>amd64-v1</code></td>
 </tr>
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">model_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">store://my-project/model/tvm-ir/yolo-function-ir:&lt;id&gt;</span>
-<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86</span>
-<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86-v1</span>
+<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64</span>
+<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64-v1</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 <div class="admonition warning">
 <p class="admonition-title"><code>so_model</code> points to the last compile</p>
-<p>Every <code>compile</code> run writes its Model into the function field <code>so_model</code>, and <code>serve</code> deploys <code>so_model</code> by default. After compiling for ARM, <code>so_model</code> points to the ARM library, which the platform serves only on ARM nodes: to serve the x86 build, set the serve field <code>model_path</code> to its key (e.g. <code>store://my-project/model/tvm-so/yolo-function-x86</code>).</p>
+<p>Every <code>compile</code> run writes its Model into the function field <code>so_model</code>, and <code>serve</code> deploys <code>so_model</code> by default. After compiling for ARM, <code>so_model</code> points to the ARM library, which the platform serves only on ARM nodes: to serve the AMD64 build, set the serve field <code>model_path</code> to its key (e.g. <code>store://my-project/model/tvm-so/yolo-function-amd64</code>).</p>
 </div>
 <h3 id="compile-output">Compile output</h3>
 <table>
@@ -3852,7 +3870,7 @@
 <tbody>
 <tr>
 <td><code style="white-space: nowrap">target_architecture</code></td>
-<td><code>x86_native</code></td>
+<td><code>amd64_native</code></td>
 </tr>
 <tr>
 <td><code>target_num_cores</code></td>
@@ -3881,7 +3899,7 @@
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86_native</span>
+<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64_native</span>
 <span class="w">  </span><span class="nt">target_num_cores</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 <span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tuned</span>
 <span class="w">  </span><span class="nt">tuning_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tune</span>
@@ -3914,7 +3932,7 @@
 </table>
 <p>Keep <strong>the same <code>target_architecture</code> and <code>target_num_cores</code></strong> as the tuning; fields such as <code>tag</code> or <code>exec_mode</code> can change.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x86_native</span>
+<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64_native</span>
 <span class="w">  </span><span class="nt">target_num_cores</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 <span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fast</span>
 <span class="w">  </span><span class="nt">tuning_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apply</span>
@@ -3936,7 +3954,7 @@
 </tr>
 <tr>
 <td>Target</td>
-<td>Same <code>target_architecture</code> <strong>and</strong> same <code>target_num_cores</code>. When <code>target_num_cores</code> is empty it comes from <code>resources.cpu</code>: changing the CPUs of the run makes the database incompatible. With <code>x86_native</code> the CPU model of the node counts too.</td>
+<td>Same <code>target_architecture</code> <strong>and</strong> same <code>target_num_cores</code>. When <code>target_num_cores</code> is empty it comes from <code>resources.cpu</code>: changing the CPUs of the run makes the database incompatible. With <code>amd64_native</code> the CPU model of the node counts too.</td>
 </tr>
 <tr>
 <td>IR</td>
@@ -4158,20 +4176,25 @@
 </thead>
 <tbody>
 <tr>
-<td><code>x86</code>, <code>x86_v3</code>, <code>x86_native</code>, <code>cpu</code> on an x86 node</td>
+<td><code>amd64</code>, <code>amd64_v3</code>, <code>amd64_native</code>, <code>auto</code> on an AMD64 node</td>
 <td><code>amd64</code></td>
 </tr>
 <tr>
-<td><code>arm64</code>, <code>arm64_pi5</code>, <code>cpu</code> on an ARM node</td>
+<td><code>arm64</code>, <code>arm64_pi5</code>, <code>auto</code> on an ARM64 node</td>
 <td><code>arm64</code></td>
 </tr>
 <tr>
-<td><code>armv7l</code></td>
-<td><code>arm</code></td>
+<td><code>arm32</code></td>
+<td><code>arm</code> (ARMv7, hard-float, NEON)</td>
 </tr>
 </tbody>
 </table>
-<p>The serve images are published for all three architectures, and each node downloads its own variant. So an ARM model can be served inside the platform when the cluster has ARM nodes, for example a Raspberry Pi joined to the cluster.</p>
+<p>Go and Rust runtime image builds include all three architectures. Each node downloads
+its image variant. An ARM64 model can be served inside the platform when the cluster
+has ARM64 nodes, for example a Raspberry Pi running a 64-bit OS and joined to the cluster.
+ARM32 nodes also need an ARMv7-compatible init image: CORE's default init image covers
+only AMD64 and ARM64. Matching the architecture does not replace CPU-feature and ABI
+compatibility checks; for example, an <code>arm64_pi5</code> model needs a compatible Cortex-A76 CPU.</p>
 <div class="admonition warning">
 <p class="admonition-title">No node of the right architecture</p>
 <p>If the cluster has no node of the model architecture, the service stays <strong>PENDING</strong>. Delete the run, and serve a Model compiled for the nodes of the cluster.</p>
@@ -4287,7 +4310,7 @@ curl<span class="w"> </span>http://localhost:18080/v2/models/yolo-function
 </div>
 <div class="tabbed-block">
 <p>Download the compiled Model and run the same serve image on your computer. REST and gRPC both work.</p>
-<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>download<span class="w"> </span>model<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-n<span class="w"> </span>yolo-function-x86<span class="w"> </span>-d<span class="w"> </span>./yolo-model
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>download<span class="w"> </span>model<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-n<span class="w"> </span>yolo-function-amd64<span class="w"> </span>-d<span class="w"> </span>./yolo-model
 
 docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/yolo-model:/shared/model"</span><span class="w"> </span><span class="se">\</span>
@@ -4297,10 +4320,10 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 <p>In another terminal:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:8080/v2/models/yolo-function
 </code></pre></div>
-<p>The model must be compiled for the architecture of your computer (<code>x86</code> or <code>cpu</code> on a PC).</p>
+<p>The model must be compiled for the architecture of your computer (<code>amd64</code> or <code>auto</code> on a compatible Intel/AMD 64-bit PC).</p>
 </div>
 <div class="tabbed-block">
-<p>The serve images are published for <code>linux/arm64</code> and <code>linux/arm/v7</code>, so the same command runs on a Raspberry Pi with Docker. Download the Model compiled for the device and start the image there:</p>
+<p>Use a device with Docker and either a 64-bit ARM OS or an ARMv7 hard-float 32-bit OS with NEON. Download the matching Model and start the image there. For a 64-bit OS:</p>
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>download<span class="w"> </span>model<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-n<span class="w"> </span>yolo-function-arm64<span class="w"> </span>-d<span class="w"> </span>./yolo-model
 
 docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
@@ -4308,7 +4331,7 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">TVM_MODEL_NAME</span><span class="o">=</span>yolo-function<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0
 </code></pre></div>
-<p>Use the <code>arm64</code> build on a 64-bit OS and the <code>armv7l</code> build on a 32-bit OS. Docker picks the image variant of the device automatically.</p>
+<p>For a 32-bit OS, download <code>yolo-function-arm32</code> instead. For a 64-bit OS, use <code>arm64</code> (or <code>arm64_pi5</code> on Pi 5). Docker picks the image variant of the device automatically. This standalone example does not use CORE's init image.</p>
 </div>
 </div>
 </div>

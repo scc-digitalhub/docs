@@ -3062,9 +3062,9 @@ picture:   .../test_infer/output/yolo-function.jpg
 </table>
 <p>The <a href="https://github.com/scc-digitalhub/digitalhub-core/blob/runtime-tvm/runtimes/runtime-tvm/test_infer/README.md">README</a> lists all the options.</p>
 <h2 id="run-the-model-on-your-computer">Run the model on your computer</h2>
-<p>The compiled Model can run outside the platform with the same serve image. This works on an x86 computer with the <code>yolo-function-x86</code> build.</p>
+<p>The compiled Model can run outside the platform with the same serve image. This works on a compatible Intel/AMD 64-bit computer with the <code>yolo-function-amd64</code> build.</p>
 <p><strong>1. Download the compiled Model:</strong></p>
-<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>download<span class="w"> </span>model<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo-function-x86<span class="w"> </span>-d<span class="w"> </span>./yolo-model
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>download<span class="w"> </span>model<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo-function-amd64<span class="w"> </span>-d<span class="w"> </span>./yolo-model
 ls<span class="w"> </span>yolo-model<span class="w">        </span><span class="c1"># metadata.json  model.so</span>
 </code></pre></div>
 <p><strong>2. Start the serve image</strong> with the model folder mounted in <code>/shared/model</code>:</p>
@@ -3081,10 +3081,14 @@ python3<span class="w"> </span>yolo.py<span class="w"> </span>--url<span class="
 python3<span class="w"> </span>yolo.py<span class="w"> </span>--url<span class="w"> </span>http://localhost:8080<span class="w"> </span>--grpc-url<span class="w"> </span>localhost:9000<span class="w"> </span>--mode<span class="w"> </span>grpc<span class="w"> </span>--function<span class="w"> </span>yolo-function
 </code></pre></div>
 <h2 id="run-the-model-on-a-raspberry-pi">Run the model on a Raspberry Pi</h2>
-<p>The serve images are also published for <code>linux/arm64</code> and <code>linux/arm/v7</code>. On the device, with Docker installed:</p>
+<p>Use a Raspberry Pi with Docker and either a 64-bit OS (<code>linux/arm64</code>) or an
+ARMv7-compatible 32-bit OS (<code>linux/arm/v7</code>, hard-float ABI and NEON). Both Go and Rust
+runtime image builds include these platforms. Use a model matching the OS and CPU.</p>
 <p><strong>1. Download the build for the device</strong> (see <a href="../deploy/#6-compile-for-arm-devices-optional">Compile for ARM devices</a>):</p>
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>download<span class="w"> </span>model<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo-function-arm64<span class="w"> </span>-d<span class="w"> </span>./yolo-model<span class="w">     </span><span class="c1"># 64-bit OS</span>
-dhcli<span class="w"> </span>download<span class="w"> </span>model<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo-function-armv7l<span class="w"> </span>-d<span class="w"> </span>./yolo-model<span class="w">    </span><span class="c1"># 32-bit OS</span>
+</code></pre></div>
+<p>For an ARMv7-compatible 32-bit OS, use this command instead:</p>
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>download<span class="w"> </span>model<span class="w"> </span>-p<span class="w"> </span>tvm-test<span class="w"> </span>-n<span class="w"> </span>yolo-function-arm32<span class="w"> </span>-d<span class="w"> </span>./yolo-model
 </code></pre></div>
 <p>If the CLI is not installed on the device, download the Model on your computer and copy the folder, for example with <code>scp -r yolo-model pi@&lt;device&gt;:</code>.</p>
 <p><strong>2. Start the serve image</strong>: Docker picks the ARM variant by itself.</p>
@@ -3096,7 +3100,7 @@ dhcli<span class="w"> </span>download<span class="w"> </span>model<span class="w
 <p><strong>3. Test it</strong> from any computer of the same network, with <code>URL = "http://&lt;device&gt;:8080"</code> in <code>client.py</code>.</p>
 <div class="admonition tip">
 <p class="admonition-title">A Raspberry Pi in the cluster</p>
-<p>When the Raspberry Pi is a node of the cluster, there is no need for Docker: run <code>serve</code> with <code>model_path</code> set to the ARM Model, and the platform starts the service on the Pi. Test it with the port-forward, as in <a href="#test-the-service-on-the-platform">the first section</a>.</p>
+<p>When the Raspberry Pi is a node of the cluster, there is no need to start Docker manually: run <code>serve</code> with <code>model_path</code> set to the ARM Model. Both the runtime and init images must support the node architecture. CORE's default init image covers only AMD64 and ARM64, so an ARM32 node requires an ARMv7-compatible init image to download the model. Test the service with the port-forward, as in <a href="#test-the-service-on-the-platform">the first section</a>.</p>
 </div>
 <h2 id="clean-up">Clean up</h2>
 <ul>

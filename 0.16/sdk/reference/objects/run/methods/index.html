@@ -7677,11 +7677,11 @@ In case of local execution, logs are printed to console.</p>
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><span title="list">list</span>[<span title="digitalhub.entities.log._base.entity.Log">Log</span>]</code>
+                  <code><span title="list">list</span>[<span title="digitalhub.entities.log._base.entity.Log">Log</span>] | <span title="list">list</span>[<span title="str">str</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of run logs.</p>
+                <p>List of run logs. If <code>as_entity</code> is True, returns a list of <code>Log</code> objects, otherwise returns a list of log texts.</p>
               </div>
             </td>
           </tr>
