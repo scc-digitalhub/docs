@@ -4,6 +4,11 @@ In this part we upload the model, create a TVM function and run its three action
 
 With the CLI, each run reads its fields from a small YAML file; the commands expect the files in the current folder.
 
+In the console, the **Task** step contains common settings such as resources and the
+run profile. The **Run** step contains the options for that execution: conversion flags,
+compile target/optimization/tuning, or serve model/image/workers. TVM options are no
+longer task settings; values stored in old tasks are not inherited by new runs.
+
 ## 1. Upload the model
 
 === "Console"
@@ -91,7 +96,8 @@ When the run is **COMPLETED**, the Model `yolo-function-ir`, of kind `tvm-ir`, c
 
 === "Console"
 
-    Select the **compile** tab of the function and click `CREATE`:
+    Select the **compile** tab of the function and click `CREATE`. Set `resources` in the
+    **Task** step, then `target_architecture`, `tag` and **Advanced compilation** in the **Run** step:
 
     | Field | Value | Why |
     | --- | --- | --- |

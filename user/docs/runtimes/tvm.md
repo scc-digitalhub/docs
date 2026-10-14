@@ -35,6 +35,25 @@ The runtime has three actions, run one after the other:
 
 The [TVM tutorial](../../tutorials/tvm/intro/) walks through all the steps with a YOLOv8 model, from the console and from the CLI.
 
+### Task settings and run options
+
+The reusable **Task** holds the function reference and common execution settings:
+`profile`, `resources`, `envs`, `secrets` and `volumes`. A Run can override these common
+settings for one execution.
+
+All TVM-specific options belong to the **Run**: build conversion flags; compile target,
+optimization and tuning; serve model, image, replicas, workers and service configuration.
+In the console, fill common settings in the **Task** step and TVM options in the **Run**
+step. Compile options are grouped under **Advanced compilation** and **MetaSchedule tuning**.
+Each new run has its own options; it does not inherit TVM options from the task or a previous run.
+
+With the CLI, keep passing these values in the run YAML as shown below. With the API,
+use `tvm+build:run`, `tvm+compile:run` or `tvm+serve:run` and reference the corresponding
+task in `spec.task`. TVM options previously stored in tasks are not used or migrated:
+move them into the new run payload. Model types and function model references are unchanged.
+For a trigger, put these run options in `spec.template`; the trigger still references the
+reusable task through `spec.task`.
+
 ---
 
 ## Source Models
@@ -200,7 +219,7 @@ The tuning options are described in [Model Optimization](#model-optimization).
 
 ### Compile examples
 
-In the console, open the function, select the **compile** tab and click `CREATE`: enter these values in the fields with the same name. With the CLI, save the YAML in a file and run `dhcli run tvm+compile -p <project> -n <function> -f <file>`.
+In the console, open the function, select the **compile** tab and click `CREATE`: set resources and the run profile in the **Task** step, then the target and TVM options in the **Run** step. With the CLI, save the YAML in a file and run `dhcli run tvm+compile -p <project> -n <function> -f <file>`.
 
 === "Intel/AMD 64-bit (amd64)"
 
@@ -319,7 +338,7 @@ Tuning is slow, so it is done once and then reused:
 
 ### Tune once
 
-Run a `compile` with tuning, on the same kind of CPU used for serving. In the console, set these fields in the **compile** tab:
+Run a `compile` with tuning, on the same kind of CPU used for serving. In the console, open the **compile** tab, set resources in the **Task** step, then the target and **MetaSchedule tuning** in the **Run** step:
 
 | Field | Value |
 | --- | --- |
