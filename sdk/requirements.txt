@@ -2,12 +2,12 @@ mkdocstrings[python]
 mkdocs-macros-plugin
 mkdocs-redirects
 digitalhub[full]>=0.16.0b, <0.17
-digitalhub_runtime_python>=0.16.0b, <0.17
-digitalhub_runtime_container>=0.16.0b, <0.17
-digitalhub_runtime_modelserve>=0.16.0b, <0.17
-digitalhub_runtime_dbt>=0.16.0b, <0.17
-digitalhub_runtime_hera>=0.16.0b, <0.17
-digitalhub_runtime_flower>=0.16.0b, <0.17
-digitalhub_runtime_servicegraph>=0.16.0b, <0.17
-digitalhub_runtime_tvm>=0.16.0b, <0.17
-digitalhub_runtime_hydra>=0.16.0b, <0.17
+digitalhub-runtime-python>=0.16.0b, <0.17
+digitalhub-runtime-container>=0.16.0b, <0.17
+digitalhub-runtime-modelserve>=0.16.0b, <0.17
+digitalhub-runtime-dbt>=0.16.0b, <0.17
+digitalhub-runtime-hera>=0.16.0b, <0.17
+digitalhub-runtime-flower>=0.16.0b, <0.17
+digitalhub-runtime-servicegraph>=0.16.0b, <0.17
+digitalhub-runtime-tvm>=0.16.0b, <0.17
+digitalhub-runtime-hydra>=0.16.0b, <0.17
