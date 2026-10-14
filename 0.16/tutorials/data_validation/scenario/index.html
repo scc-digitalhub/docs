@@ -2848,12 +2848,12 @@
     <span class="n">path</span> <span class="o">=</span> <span class="n">di</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">destination</span><span class="o">=</span><span class="n">di</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="c1"># validate</span>
     <span class="n">report</span> <span class="o">=</span> <span class="n">validate</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-    <span class="c1"># update artifact with label    </span>
+    <span class="c1"># update artifact with label</span>
     <span class="n">label</span> <span class="o">=</span> <span class="s2">"VALID"</span> <span class="k">if</span> <span class="n">report</span><span class="o">.</span><span class="n">valid</span> <span class="k">else</span> <span class="s2">"INVALID"</span>
     <span class="n">di</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">di</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="k">if</span> <span class="n">di</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">labels</span> <span class="k">else</span> <span class="p">[</span><span class="n">label</span><span class="p">]</span>
-    <span class="n">di</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">update</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    
+    <span class="n">di</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
     <span class="c1">#cleanup</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> 
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"report.json"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
       <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">to_json</span><span class="p">())</span>
