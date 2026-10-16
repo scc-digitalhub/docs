@@ -41,18 +41,6 @@ plugins:
       default_handler: python
       handlers:
         python:
-          paths:
-            - ../../digitalhub-sdk
-            - ../../digitalhub-sdk-runtime-container
-            - ../../digitalhub-sdk-runtime-dbt
-            - ../../digitalhub-sdk-runtime-flower
-            - ../../digitalhub-sdk-runtime-hera
-            - ../../digitalhub-sdk-runtime-hydra
-            - ../../digitalhub-sdk-runtime-modelserve
-            - ../../digitalhub-sdk-runtime-python
-            - ../../digitalhub-sdk-runtime-ray
-            - ../../digitalhub-sdk-runtime-servicegraph
-            - ../../digitalhub-sdk-runtime-tvm
           options:
             docstring_style: numpy
             show_root_toc_entry: false
