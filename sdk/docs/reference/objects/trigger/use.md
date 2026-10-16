@@ -19,3 +19,5 @@ The common `Trigger` methods let you persist or refresh a trigger entity and sto
 ## Control a trigger
 
 {{ member_doc("stop", "digitalhub.entities.trigger._base.entity.Trigger") }}
+
+{{ page_navigation(("Manage", "manage.md"), ("Entity", "entity.md")) }}

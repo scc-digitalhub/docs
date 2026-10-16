@@ -39,14 +39,14 @@ The job action supports Hydra handlers that run to completion.
         | description | str | Description of the object. |
         | labels | list[str] | List of labels. |
         | embedded | bool | Whether the object should be embedded in the project. |
-        | [code_src](../../../../configuration/code-sources.md#code-source-uri) | str | URI pointing to the source code. |
-        | [code](../../../../configuration/code-sources.md#plain-text-source) | str | Source code provided as plain text. |
+        | [code_src](../../../configuration/code-sources.md#code-source-uri) | str | URI pointing to the source code. |
+        | [code](../../../configuration/code-sources.md#plain-text-source) | str | Source code provided as plain text. |
         | base64 | str | Source code encoded as base64. |
         | config_src | str | URI pointing to the configuration. |
         | config | str | Configuration YAML provided as plain text. |
         | config_base64 | str | Configuration YAML encoded as base64. |
         | config_path | str | Path to the configuration folder relative to the function source folder. |
-        | [handler](../../../../configuration/code-sources.md#handler) | str | Function entrypoint. |
+        | [handler](../../../configuration/code-sources.md#handler) | str | Function entrypoint. |
         | [init_function](#init-function) | str | Init function name for remote  execution. |
         | [complete_function](#complete-function) | str | Finalize function name for remote execution. |
         | [python_version](#python-versions) | str | Python version to use. **Required.** |
@@ -91,16 +91,16 @@ The job action supports Hydra handlers that run to completion.
 
         ```python
         func = project.new_function(
-            "test-hydra-function", 
-            kind="hydra", 
-            code_src="./example/my_app.py", 
-            config_src="./example/config-dh.yaml", 
-            python_version="PYTHON3_13", 
+            "test-hydra-function",
+            kind="hydra",
+            code_src="./example/my_app.py",
+            config_src="./example/config-dh.yaml",
+            python_version="PYTHON3_13",
             handler="my_app",
             init_function="init",
             complete_function="complete",
             requirements=["hydra-optuna-sweeper==1.2.0"]
-        ) 
+        )
 		```
 
 ### Function methods
@@ -125,7 +125,7 @@ The job action supports Hydra handlers that run to completion.
 ??? example "Create a task"
 
     A Task for the `job` action is created when `function.run()` is called.
-	The profile and resource configurations apply to a single subtask, not to the orchestrating launcher. 
+	The profile and resource configurations apply to a single subtask, not to the orchestrating launcher.
 
     === "Parameters"
 
@@ -134,11 +134,11 @@ The job action supports Hydra handlers that run to completion.
         | Name | Type | Description |
         | --- | --- | --- |
         | action | str | Task action. **Required. Must be `job`** |
-        | [volumes](../../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
-        | [resources](../../../../configuration/kubernetes.md#resources) | dict | Resource limits/requests. |
-        | [envs](../../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
-        | [secrets](../../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
-        | [profile](../../../../configuration/kubernetes.md#profile) | str | Profile template. |
+        | [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
+        | [resources](../../../configuration/kubernetes.md#resources) | dict | Resource limits/requests. |
+        | [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
+        | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
+        | [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
 
     === "Creation example"
 

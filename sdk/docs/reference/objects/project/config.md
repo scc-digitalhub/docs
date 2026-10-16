@@ -1,3 +1,7 @@
+---
+render_macros: true
+---
+
 # Config
 
 The **`config`** parameter can be used to provide a dictionary containing the project configuration like default store where to log artifacts, dataitems and models.
@@ -12,4 +16,4 @@ At the moment, the only supported default data store is `s3`. The format of the 
 }
 ```
 
-[Back to Project](./entity.md)
+{{ page_navigation(("Create", "create.md")) }}

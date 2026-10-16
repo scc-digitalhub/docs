@@ -10,74 +10,22 @@ The CRUD methods create, read, update, and delete secrets. They can be called di
 
 Use the read methods to retrieve secrets from the backend or load them from a YAML descriptor.
 
-{% call function_doc("get_secret", "digitalhub.entities") %}
-    === "Example"
+{{ function_doc("get_secret", "digitalhub.entities", separate_examples=True) }}
 
-        ```python
-        import digitalhub as dh
+{{ function_doc("list_secrets", "digitalhub.entities", separate_examples=True) }}
 
-        secret = dh.get_secret(
-            identifier="my-secret",
-            project="my-project",
-        )
-        ```
-{% endcall %}
-
-{% call function_doc("list_secrets", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        secrets = dh.list_secrets(project="my-project")
-        ```
-{% endcall %}
-
-{% call function_doc("import_secret", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        secret = dh.import_secret("my-secret.yaml")
-        ```
-{% endcall %}
+{{ function_doc("import_secret", "digitalhub.entities", separate_examples=True) }}
 
 ## Update
 
 Update a secret after changing its mutable metadata.
 
-{% call function_doc("update_secret", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        secret = dh.get_secret(
-            identifier="my-secret",
-            project="my-project",
-        )
-        secret.set_description("Updated secret")
-        secret = dh.update_secret(secret)
-        ```
-{% endcall %}
+{{ function_doc("update_secret", "digitalhub.entities", separate_examples=True) }}
 
 ## Delete
 
 Delete one secret version or all versions of a secret.
 
-{% call function_doc("delete_secret", "digitalhub.entities") %}
-    === "Example"
+{{ function_doc("delete_secret", "digitalhub.entities", separate_examples=True) }}
 
-        ```python
-        import digitalhub as dh
-
-        dh.delete_secret(
-            identifier="my-secret",
-            project="my-project",
-            delete_all_versions=True,
-        )
-        ```
-{% endcall %}
-
-[Back to Secrets](./entity.md)
+{{ page_navigation(("Create", "create.md"), ("Use", "use.md")) }}

@@ -36,4 +36,4 @@ The `Run` object provides methods to inspect and control an execution.
 
 Run kinds are provided by runtimes. See the [runtime documentation](../../runtimes/index.md) for the corresponding runtime behavior.
 
-[Back to Run](./entity.md)
+{{ page_navigation(("Manage", "manage.md"), ("Entity", "entity.md")) }}

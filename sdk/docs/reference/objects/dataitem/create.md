@@ -18,14 +18,10 @@ The creation functions are part of the SDK. Kind-specific features may need opti
 
 The kind references document the corresponding `log_<kind>()` and `register_<kind>()` functions.
 
-<div class="list-cards" markdown>
+{{ kind_cards([
+    ("Dataitem", "./kind/dataitem.md", "Store a generic dataset in an addressable repository", "dataitem"),
+    ("Table", "./kind/table.md", "Work with tabular data as a dataframe", "table"),
+    ("Croissant", "./kind/croissant.md", "Store and load an ML Croissant dataset", "croissant"),
+]) }}
 
-- [**Dataitem**](./kind/dataitem.md){ .list-card-link } - Store a generic dataset in an addressable repository - `dataitem`
-
-- [**Table**](./kind/table.md){ .list-card-link } - Work with tabular data as a dataframe - `table`
-
-- [**Croissant**](./kind/croissant.md){ .list-card-link } - Store and load an ML Croissant dataset - `croissant`
-
-</div>
-
-[Back to Dataitems](./entity.md)
+{{ page_navigation(("Entity", "entity.md"), ("Manage", "manage.md")) }}

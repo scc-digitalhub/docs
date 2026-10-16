@@ -10,39 +10,11 @@ The `model` kind stores a generic machine-learning model when no specialized kin
 
 ### Log
 
-{% call function_doc("log_model", "digitalhub.entities") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        model = dh.log_model(
-            project="my-project",
-            name="image-classifier",
-            source="./models/image-classifier",
-            framework="pytorch",
-            algorithm="resnet18",
-        )
-        ```
-{% endcall %}
+{{ function_doc("log_model", "digitalhub.entities", separate_examples=True) }}
 
 ### Register
 
-{% call function_doc("register_model", "digitalhub.entities") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        model = dh.register_model(
-            project="my-project",
-            name="registered-image-classifier",
-            source="s3://my-bucket/models/image-classifier",
-            framework="pytorch",
-            algorithm="resnet18",
-        )
-        ```
-{% endcall %}
+{{ function_doc("register_model", "digitalhub.entities", separate_examples=True) }}
 
 ### New
 

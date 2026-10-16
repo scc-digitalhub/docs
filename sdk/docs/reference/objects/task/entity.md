@@ -12,4 +12,4 @@ Task kinds are derived from the executable kind and action provided by a runtime
 
 {{ entity_overview_cards("task") }}
 
-[Back to Entities](../index.md)
+{{ page_navigation(("Entities", "../index.md")) }}

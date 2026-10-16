@@ -1,3 +1,7 @@
+---
+render_macros: true
+---
+
 # Setup kwargs
 
 The **`setup_kwargs`** parameter can be used to provide a dictionary containing the project hook setup arguments. The concept behind this parameter is that at the beginning of the project lifecycle, the project can be configured with an hook script that will be executed when the project is created / got.
@@ -27,4 +31,4 @@ def setup(project, some_arg1=None, some_arg2=None):
 
 ```
 
-[Back to Project](./entity.md)
+{{ page_navigation(("Create", "create.md")) }}

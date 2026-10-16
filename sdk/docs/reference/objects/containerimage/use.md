@@ -17,3 +17,5 @@ The common `Containerimage` object methods let you persist an entity, export it 
 ## Kind-specific methods
 
 The `container-image` kind does not add instance methods. See the [container-image kind reference](./kind/container-image.md).
+
+{{ page_navigation(("Manage", "manage.md"), ("Entity", "entity.md")) }}

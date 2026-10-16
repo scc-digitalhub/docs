@@ -14,4 +14,4 @@ Runs are created with a `Function` or `Workflow` object through the `run` method
 
 {{ entity_overview_cards("run") }}
 
-[Back to Entities](../index.md)
+{{ page_navigation(("Entities", "../index.md")) }}

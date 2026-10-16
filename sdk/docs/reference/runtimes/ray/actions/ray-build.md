@@ -37,14 +37,14 @@ The `build` action creates a container image containing the Ray function depende
         | description | str | Description of the object. |
         | labels | list[str] | List of labels. |
         | embedded | bool | Whether the object should be embedded in the project. |
-        | [code_src](../../../../configuration/code-sources.md#code-source-uri) | str | URI pointing to the source code. |
-        | [code](../../../../configuration/code-sources.md#plain-text-source) | str | Source code provided as plain text. |
+        | [code_src](../../../configuration/code-sources.md#code-source-uri) | str | URI pointing to the source code. |
+        | [code](../../../configuration/code-sources.md#plain-text-source) | str | Source code provided as plain text. |
         | base64 | str | Source code encoded as base64. |
-        | [handler](../../../../configuration/code-sources.md#handler) | str | Function entrypoint. |
+        | [handler](../../../configuration/code-sources.md#handler) | str | Function entrypoint. |
         | image | str | Container image used to execute the function. |
         | [base_image](#base-image) | str | Base image (name:tag) used to build the execution image. |
         | [requirements](#requirements) | list[str] \| str | List of pip requirements or a path to a supported requirements file. |
-        | [ray_version](#ray-versions) | str | Ray version to use. |
+        | `ray_version` | str | Ray version to use. |
 
         #### Base Image
 
@@ -70,7 +70,7 @@ The `build` action creates a container image containing the Ray function depende
             requirements=["torch==2.2.2", "torchvision==0.17.2", "numpy==1.24.1"],
             code_src="src/ray_train.py",
             handler="ray_handler"
-        ) 
+        )
 		```
 
 ### Function methods
@@ -105,11 +105,11 @@ The `build` action creates a container image containing the Ray function depende
         | Name | Type | Description |
         | --- | --- | --- |
         | action | str | Task action. **Required. Must be `build`** |
-        | [volumes](../../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
-        | [resources](../../../../configuration/kubernetes.md#resources) | dict | Resource limits/requests. |
-        | [envs](../../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
-        | [secrets](../../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
-        | [profile](../../../../configuration/kubernetes.md#profile) | str | Profile template. |
+        | [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
+        | [resources](../../../configuration/kubernetes.md#resources) | dict | Resource limits/requests. |
+        | [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
+        | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
+        | [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
         | [instructions](#instructions) | list[str] | Build instructions executed as RUN lines in the generated Dockerfile. |
 
         #### Instructions
@@ -173,7 +173,6 @@ The Ray build Task does not add runtime-specific methods.
             show_symbol_type_heading: true
             show_root_full_path: false
             show_root_toc_entry: true
-
 
 ??? example "result"
 

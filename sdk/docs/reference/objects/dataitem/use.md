@@ -31,3 +31,5 @@ Use these methods to handle dataitem files.
 ## Kind-specific methods
 
 The `table` and `croissant` kinds add methods for working with their data. See the [dataitem kind references](./create.md#choose-a-dataitem-kind).
+
+{{ page_navigation(("Manage", "manage.md"), ("Entity", "entity.md")) }}

@@ -52,4 +52,4 @@ The Function object exposes methods to create, retrieve, and list its triggers.
 
 Methods specific to a function kind are documented in the reference documentation for the corresponding runtime.
 
-[Back to Function](./entity.md)
+{{ page_navigation(("Manage", "manage.md"), ("Entity", "entity.md")) }}

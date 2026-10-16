@@ -1,16 +1,17 @@
+---
+render_macros: true
+---
+
 # Create a trigger
 
 Choose a trigger kind based on when it should run. Each kind page documents the corresponding `new_trigger()` example and its specification.
 
 ## Choose a trigger kind
 
-<div class="list-cards" markdown>
-
-- [**Scheduler**](./kind/scheduler.md){ .list-card-link } - Run a task on a cron schedule - `scheduler`
-
-- [**Lifecycle**](./kind/lifecycle.md){ .list-card-link } - Run a task when an entity reaches selected states - `lifecycle`
-
-</div>
+{{ kind_cards([
+    ("Scheduler", "./kind/scheduler.md", "Run a task on a cron schedule", "scheduler"),
+    ("Lifecycle", "./kind/lifecycle.md", "Run a task when an entity reaches selected states", "lifecycle"),
+]) }}
 
 ## Create from a function or workflow
 
@@ -34,7 +35,7 @@ Functions and workflows also provide a `trigger()` method for creating triggers 
         name="validate-on-upload",
         key="store://project/artifact/*",
         states=["READY"],
-        template={"inputs": {"my-param": "{{input.key}}"}},
+        template={"inputs": {"my-param": "{% raw %}{{input.key}}{% endraw %}"}},
     )
     ```
 
@@ -56,8 +57,8 @@ Functions and workflows also provide a `trigger()` method for creating triggers 
         name="validation-pipeline-on-upload",
         key="store://project/artifact/*",
         states=["READY"],
-        template={"parameters": {"param-name": "{{input.key}}"}},
+        template={"parameters": {"param-name": "{% raw %}{{input.key}}{% endraw %}"}},
     )
     ```
 
-[Back to Triggers](./entity.md)
+{{ page_navigation(("Entity", "entity.md"), ("Manage", "manage.md")) }}

@@ -8,4 +8,4 @@ Artifacts are (binary) objects stored in one of the artifact stores of the platf
 
 {{ entity_overview_cards("artifact") }}
 
-[Back to Entities](../index.md)
+{{ page_navigation(("Entities", "../index.md")) }}

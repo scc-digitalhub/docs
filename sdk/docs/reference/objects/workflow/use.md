@@ -52,4 +52,4 @@ The Workflow object exposes methods to create, retrieve, and list its triggers.
 
 Methods specific to a workflow kind are documented in the reference documentation for the corresponding runtime.
 
-[Back to Workflow](./entity.md)
+{{ page_navigation(("Manage", "manage.md"), ("Entity", "entity.md")) }}

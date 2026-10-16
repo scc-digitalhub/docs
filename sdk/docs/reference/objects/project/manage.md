@@ -10,64 +10,22 @@ The methods below retrieve, import, update, or delete projects. For project crea
 
 Use the read methods to retrieve projects from the backend or load them from a YAML descriptor.
 
-{% call function_doc("get_project", "digitalhub.entities") %}
-    === "Example"
+{{ function_doc("get_project", "digitalhub.entities", separate_examples=True) }}
 
-        ```python
-        import digitalhub as dh
+{{ function_doc("import_project", "digitalhub.entities", separate_examples=True) }}
 
-        project = dh.get_project("my-project")
-        ```
-{% endcall %}
-
-{% call function_doc("import_project", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        project = dh.import_project("my-project.yaml")
-        ```
-{% endcall %}
-
-{% call function_doc("load_project", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        project = dh.load_project("my-project.yaml")
-        ```
-{% endcall %}
+{{ function_doc("load_project", "digitalhub.entities", separate_examples=True) }}
 
 ## Update
 
 Update a project after changing its mutable metadata.
 
-{% call function_doc("update_project", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        project = dh.get_project("my-project")
-        project.set_description("Updated project")
-        project = dh.update_project(project)
-        ```
-{% endcall %}
+{{ function_doc("update_project", "digitalhub.entities", separate_examples=True) }}
 
 ## Delete
 
 Delete a project from the backend.
 
-{% call function_doc("delete_project", "digitalhub.entities") %}
-    === "Example"
+{{ function_doc("delete_project", "digitalhub.entities", separate_examples=True) }}
 
-        ```python
-        import digitalhub as dh
-
-        dh.delete_project("my-project")
-        ```
-{% endcall %}
-
-[Back to Project](./entity.md)
+{{ page_navigation(("Create", "create.md"), ("Use", "use.md")) }}

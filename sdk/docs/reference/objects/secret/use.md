@@ -23,3 +23,5 @@ Secret values are separate from the entity metadata.
 {{ member_doc("set_secret_value", "digitalhub.entities.secret._base.entity.Secret") }}
 
 {{ member_doc("read_secret_value", "digitalhub.entities.secret._base.entity.Secret") }}
+
+{{ page_navigation(("Manage", "manage.md"), ("Entity", "entity.md")) }}

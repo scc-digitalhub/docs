@@ -256,17 +256,17 @@ The OpenInference serve Task does not add runtime-specific methods.
 
 ### Invocation payloads
 
-The request body should follow the tensor schema defined by the function, for example:
+The request body should follow the tensor schema defined by the function.
 
 ```json
 {
-  "inputs": [
+"inputs": [
     {
-      "name": "input-0",
-      "shape": [-1],
-      "datatype": "BYTES",
-      "data": ["hello world"]
+    "name": "input-0",
+    "shape": [-1],
+    "datatype": "BYTES",
+    "data": ["hello world"]
     }
-  ]
+]
 }
 ```

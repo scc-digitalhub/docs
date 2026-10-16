@@ -4,22 +4,18 @@ render_macros: true
 
 # Create a workflow
 
-Use `new_workflow()` to create and save a workflow. The `kind` and specification parameters are determined by the Hera runtime. See the [Hera runtime documentation](../../runtimes/hera/overview.md) for runtime-specific requirements.
+Choose the runtime guide for instructions on creating, configuring, and executing that kind of workflow.
 
-{% call function_doc("new_workflow", "digitalhub.entities") %}
-    === "Creation example"
+## Choose a workflow kind
 
-        ```python
-        import digitalhub as dh
+{{ kind_cards([
+    ("Hera", "../../runtimes/hera/overview.md", "Build workflows with Hera pipelines", "hera"),
+]) }}
 
-        workflow = dh.new_workflow(
-            project="my-project",
-            name="my-workflow",
-            kind="hera",
-            code_src="pipeline.py",
-            handler="pipeline-handler",
-        )
-        ```
-{% endcall %}
+## Create a workflow
 
-[Back to Workflow](./entity.md)
+Use `new_workflow()` to create and save a workflow. See the [Hera runtime documentation](../../runtimes/hera/overview.md) for runtime-specific requirements.
+
+{{ function_doc("new_workflow", "digitalhub.entities", separate_examples=True) }}
+
+{{ page_navigation(("Entity", "entity.md"), ("Manage", "manage.md")) }}

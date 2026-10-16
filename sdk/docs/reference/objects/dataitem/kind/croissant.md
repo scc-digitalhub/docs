@@ -12,36 +12,11 @@ When logging a Croissant dataitem, the metadata file must be named `metadata.jso
 
 ### Log
 
-{% call function_doc("log_croissant", "digitalhub.entities") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        dataitem = dh.log_croissant(
-            project="my-project",
-            name="catalog",
-            source="./data/croissant/metadata.json",
-            description="Product catalog described with Croissant metadata.",
-        )
-        ```
-{% endcall %}
+{{ function_doc("log_croissant", "digitalhub.entities", separate_examples=True) }}
 
 ### Register
 
-{% call function_doc("register_croissant", "digitalhub.entities") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        dataitem = dh.register_croissant(
-            project="my-project",
-            name="registered-catalog",
-            source="s3://my-bucket/data/croissant/metadata.json",
-        )
-        ```
-{% endcall %}
+{{ function_doc("register_croissant", "digitalhub.entities", separate_examples=True) }}
 
 ### New
 

@@ -10,38 +10,11 @@ The `tvm-ir` kind stores a Relax IR model produced by `tvm` or `tvm+build`. Kind
 
 ### Log
 
-{% call function_doc("log_tvm_ir", "digitalhub_runtime_tvm.entities.model.tvm_ir.crud") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        model = dh.log_tvm_ir(
-            project="my-project",
-            name="resnet18-relax",
-            source="./models/resnet18.onnx",
-            source_format="onnx",
-            entry="main",
-        )
-        ```
-{% endcall %}
+{{ function_doc("log_tvm_ir", "digitalhub_runtime_tvm.entities.model.tvm_ir.crud", separate_examples=True) }}
 
 ### Register
 
-{% call function_doc("register_tvm_ir", "digitalhub_runtime_tvm.entities.model.tvm_ir.crud") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        model = dh.register_tvm_ir(
-            project="my-project",
-            name="registered-resnet18-relax",
-            source="s3://my-bucket/models/resnet18.relax",
-            entry="main",
-        )
-        ```
-{% endcall %}
+{{ function_doc("register_tvm_ir", "digitalhub_runtime_tvm.entities.model.tvm_ir.crud", separate_examples=True) }}
 
 ### New
 

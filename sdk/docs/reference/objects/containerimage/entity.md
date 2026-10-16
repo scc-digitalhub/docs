@@ -10,4 +10,4 @@ Container images are versioned context entities and can be managed directly with
 
 {{ entity_overview_cards("containerimage") }}
 
-[Back to Entities](../index.md)
+{{ page_navigation(("Entities", "../index.md")) }}

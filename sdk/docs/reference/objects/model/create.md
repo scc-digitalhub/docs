@@ -24,22 +24,14 @@ Choose the creation method based on where the model source is and whether you wa
 
 Each kind page documents its `log` and `register` functions, including their parameters and examples.
 
-<div class="list-cards" markdown>
+{{ kind_cards([
+    ("Model", "./kind/model.md", "Store a generic machine-learning model", "model"),
+    ("MLflow", "./kind/mlflow.md", "Store an MLflow model with its metadata", "mlflow"),
+    ("Scikit-learn", "./kind/sklearn.md", "Store a scikit-learn model", "sklearn"),
+    ("ONNX", "./kind/onnx.md", "Store an ONNX model", "onnx"),
+    ("TFLite", "./kind/tflite.md", "Store a TensorFlow Lite model", "tflite"),
+    ("TVM IR", "./kind/tvm-ir.md", "Store a Relax IR model produced by TVM", "tvm-ir"),
+    ("TVM SO", "./kind/tvm-so.md", "Store a compiled TVM shared-object model", "tvm-so"),
+]) }}
 
-- [**Model**](./kind/model.md){ .list-card-link } - Store a generic machine-learning model - `model`
-
-- [**MLflow**](./kind/mlflow.md){ .list-card-link } - Store an MLflow model with its metadata - `mlflow`
-
-- [**Scikit-learn**](./kind/sklearn.md){ .list-card-link } - Store a scikit-learn model - `sklearn`
-
-- [**ONNX**](./kind/onnx.md){ .list-card-link } - Store an ONNX model - `onnx`
-
-- [**TFLite**](./kind/tflite.md){ .list-card-link } - Store a TensorFlow Lite model - `tflite`
-
-- [**TVM IR**](./kind/tvm-ir.md){ .list-card-link } - Store a Relax IR model produced by TVM - `tvm-ir`
-
-- [**TVM SO**](./kind/tvm-so.md){ .list-card-link } - Store a compiled TVM shared-object model - `tvm-so`
-
-</div>
-
-[Back to Models](./entity.md)
+{{ page_navigation(("Entity", "entity.md"), ("Manage", "manage.md")) }}

@@ -10,37 +10,11 @@ The `sklearn` kind stores a scikit-learn model. Kind-specific fields are documen
 
 ### Log
 
-{% call function_doc("log_sklearn", "digitalhub_runtime_modelserve.entities.model.sklearn.crud") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        model = dh.log_sklearn(
-            project="my-project",
-            name="churn-classifier",
-            source="./models/churn-classifier.joblib",
-            algorithm="RandomForestClassifier",
-        )
-        ```
-{% endcall %}
+{{ function_doc("log_sklearn", "digitalhub_runtime_modelserve.entities.model.sklearn.crud", separate_examples=True) }}
 
 ### Register
 
-{% call function_doc("register_sklearn", "digitalhub_runtime_modelserve.entities.model.sklearn.crud") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        model = dh.register_sklearn(
-            project="my-project",
-            name="registered-churn-classifier",
-            source="s3://my-bucket/models/churn-classifier.joblib",
-            algorithm="RandomForestClassifier",
-        )
-        ```
-{% endcall %}
+{{ function_doc("register_sklearn", "digitalhub_runtime_modelserve.entities.model.sklearn.crud", separate_examples=True) }}
 
 ### New
 

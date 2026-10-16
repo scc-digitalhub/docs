@@ -17,19 +17,7 @@ The `secret` kind stores a project-level sensitive value through the configured 
 
 ### New
 
-{% call function_doc("new_secret", "digitalhub.entities") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        secret = dh.new_secret(
-            project="my-project",
-            name="my-secret",
-            secret_value="my-secret-value",
-        )
-        ```
-{% endcall %}
+{{ function_doc("new_secret", "digitalhub.entities", separate_examples=True) }}
 
 ## Methods
 

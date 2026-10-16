@@ -10,87 +10,24 @@ The methods below retrieve, import, update, or delete workflows. They can be cal
 
 Use the read methods to retrieve workflows from the backend or import them from a YAML descriptor.
 
-{% call function_doc("get_workflow", "digitalhub.entities") %}
-    === "Example"
+{{ function_doc("get_workflow", "digitalhub.entities", separate_examples=True) }}
 
-        ```python
-        import digitalhub as dh
+{{ function_doc("get_workflow_versions", "digitalhub.entities", separate_examples=True) }}
 
-        workflow = dh.get_workflow(
-            identifier="my-workflow",
-            project="my-project",
-        )
-        ```
-{% endcall %}
+{{ function_doc("list_workflows", "digitalhub.entities", separate_examples=True) }}
 
-{% call function_doc("get_workflow_versions", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        workflows = dh.get_workflow_versions(
-            identifier="my-workflow",
-            project="my-project",
-        )
-        ```
-{% endcall %}
-
-{% call function_doc("list_workflows", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        workflows = dh.list_workflows(project="my-project")
-        ```
-{% endcall %}
-
-{% call function_doc("import_workflow", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        workflow = dh.import_workflow("my-workflow.yaml")
-        ```
-{% endcall %}
+{{ function_doc("import_workflow", "digitalhub.entities", separate_examples=True) }}
 
 ## Update
 
 Update a workflow after changing its mutable metadata.
 
-{% call function_doc("update_workflow", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        workflow = dh.get_workflow(
-            identifier="my-workflow",
-            project="my-project",
-        )
-        workflow.set_description("Updated workflow")
-        workflow = dh.update_workflow(workflow)
-        ```
-{% endcall %}
+{{ function_doc("update_workflow", "digitalhub.entities", separate_examples=True) }}
 
 ## Delete
 
 Delete one workflow version or all versions of a workflow.
 
-{% call function_doc("delete_workflow", "digitalhub.entities") %}
-    === "Example"
+{{ function_doc("delete_workflow", "digitalhub.entities", separate_examples=True) }}
 
-        ```python
-        import digitalhub as dh
-
-        dh.delete_workflow(
-            identifier="my-workflow",
-            project="my-project",
-            delete_all_versions=True,
-        )
-        ```
-{% endcall %}
-
-[Back to Workflow](./entity.md)
+{{ page_navigation(("Create", "create.md"), ("Use", "use.md")) }}

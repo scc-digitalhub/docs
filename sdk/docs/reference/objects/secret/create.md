@@ -10,10 +10,8 @@ Secrets are project-level entities. The `secret` kind stores values through the 
 
 The SDK provides one concrete secret kind.
 
-<div class="list-cards" markdown>
+{{ kind_cards([
+    ("Secret", "./kind/secret.md", "Store a project secret through the configured secret provider", "secret"),
+]) }}
 
-- [**Secret**](./kind/secret.md){ .list-card-link } - Store a project secret through the configured secret provider - `secret`
-
-</div>
-
-[Back to Secrets](./entity.md)
+{{ page_navigation(("Entity", "entity.md"), ("Manage", "manage.md")) }}

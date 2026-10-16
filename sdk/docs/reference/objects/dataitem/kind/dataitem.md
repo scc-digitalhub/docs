@@ -12,36 +12,11 @@ When creating a dataitem with `new_dataitem()`, provide a `path` to its data. Fo
 
 ### Log
 
-{% call function_doc("log_dataitem", "digitalhub.entities") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        dataitem = dh.log_dataitem(
-            project="my-project",
-            name="raw-events",
-            source="./data/events.jsonl",
-            labels=["raw", "events"],
-        )
-        ```
-{% endcall %}
+{{ function_doc("log_dataitem", "digitalhub.entities", separate_examples=True) }}
 
 ### Register
 
-{% call function_doc("register_dataitem", "digitalhub.entities") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        dataitem = dh.register_dataitem(
-            project="my-project",
-            name="registered-events",
-            source="s3://my-bucket/data/events.jsonl",
-        )
-        ```
-{% endcall %}
+{{ function_doc("register_dataitem", "digitalhub.entities", separate_examples=True) }}
 
 ### New
 

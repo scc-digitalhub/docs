@@ -37,14 +37,14 @@ The `job` action executes a Ray function as a one-off job on a dynamically creat
         | description | str | Description of the object. |
         | labels | list[str] | List of labels. |
         | embedded | bool | Whether the object should be embedded in the project. |
-        | [code_src](../../../../configuration/code-sources.md#code-source-uri) | str | URI pointing to the source code. |
-        | [code](../../../../configuration/code-sources.md#plain-text-source) | str | Source code provided as plain text. |
+        | [code_src](../../../configuration/code-sources.md#code-source-uri) | str | URI pointing to the source code. |
+        | [code](../../../configuration/code-sources.md#plain-text-source) | str | Source code provided as plain text. |
         | base64 | str | Source code encoded as base64. |
-        | [handler](../../../../configuration/code-sources.md#handler) | str | Function entrypoint. |
+        | [handler](../../../configuration/code-sources.md#handler) | str | Function entrypoint. |
         | image | str | Container image used to execute the function. |
         | [base_image](#base-image) | str | Base image (name:tag) used to build the execution image. |
         | [requirements](#requirements) | list[str] \| str | List of pip requirements or a path to a supported requirements file. |
-        | [ray_version](#ray-versions) | str | Ray version to use. |
+        | `ray_version` | str | Ray version to use. |
 
         #### Base Image
 
@@ -70,7 +70,7 @@ The `job` action executes a Ray function as a one-off job on a dynamically creat
             requirements=["torch==2.2.2", "torchvision==0.17.2", "numpy==1.24.1"],
             code_src="src/ray_train.py",
             handler="ray_handler"
-        ) 
+        )
 		```
 
 ### Function methods
@@ -95,7 +95,7 @@ The `job` action executes a Ray function as a one-off job on a dynamically creat
 ??? example "Create a task"
 
     A Task for the `job` action is created when `function.run()` is called.
-	The profile and resource configurations apply to a single subtask, not to the orchestrating launcher. 
+	The profile and resource configurations apply to a single subtask, not to the orchestrating launcher.
 
     === "Parameters"
 
@@ -104,14 +104,14 @@ The `job` action executes a Ray function as a one-off job on a dynamically creat
         | Name | Type | Description |
         | --- | --- | --- |
         | action | str | Task action. **Required. Must be `job`** |
-        | [volumes](../../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
-        | [resources](../../../../configuration/kubernetes.md#resources) | dict | Resource limits/requests. |
-        | [envs](../../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
-        | [secrets](../../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
-        | [profile](../../../../configuration/kubernetes.md#profile) | str | Profile template. |
-        | [replicas](#replicas) | num | Number of replicas to start for the task. |
-        | [min_replicas](#min-replicas) | num | Minimum number of replicas to allow for the task. |
-        | [max_replicas](#max-replicas) | num | Maximum number of replicas to allow for the task. |
+        | [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
+        | [resources](../../../configuration/kubernetes.md#resources) | dict | Resource limits/requests. |
+        | [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
+        | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
+        | [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
+        | `replicas` | num | Number of replicas to start for the task. |
+        | `min_replicas` | num | Minimum number of replicas to allow for the task. |
+        | `max_replicas` | num | Maximum number of replicas to allow for the task. |
 
     === "Creation example"
 
@@ -127,7 +127,7 @@ The `job` action executes a Ray function as a one-off job on a dynamically creat
                     "name": "data",
                     "mount_path": "/data",
                     "volume_type": "persistent_volume_claim",
-                    "spec": {"size": "1Gi"} 
+                    "spec": {"size": "1Gi"}
                 }
             ]
 		)
@@ -151,9 +151,9 @@ The Ray job Task does not add runtime-specific methods.
         | --- | --- | --- |
         | auto_build | bool | Build the function automatically when `spec.image` is `None`. Defaults to `False`. If requirements are present, an existing image is not rebuilt automatically. |
         | parameters | dict | Extra parameters as Ray overrides passed to the function execution. |
-        | [replicas](#replicas) | num | Number of replicas to start for the task. |
-        | [min_replicas](#min-replicas) | num | Minimum number of replicas to allow for the task. |
-        | [max_replicas](#max-replicas) | num | Maximum number of replicas to allow for the task. |
+        | `replicas` | num | Number of replicas to start for the task. |
+        | `min_replicas` | num | Minimum number of replicas to allow for the task. |
+        | `max_replicas` | num | Maximum number of replicas to allow for the task. |
 
     === "Creation example"
 
@@ -169,7 +169,7 @@ The Ray job Task does not add runtime-specific methods.
                     "name": "data",
                     "mount_path": "/data",
                     "volume_type": "persistent_volume_claim",
-                    "spec": {"size": "1Gi"} 
+                    "spec": {"size": "1Gi"}
                 }
             ]
 		)

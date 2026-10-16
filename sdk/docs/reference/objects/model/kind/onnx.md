@@ -10,37 +10,11 @@ The `onnx` kind stores an ONNX model. Kind-specific fields, including tensor sig
 
 ### Log
 
-{% call function_doc("log_onnx", "digitalhub_runtime_tvm.entities.model.onnx.crud") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        model = dh.log_onnx(
-            project="my-project",
-            name="image-classifier",
-            source="./models/image-classifier.onnx",
-            opset=17,
-        )
-        ```
-{% endcall %}
+{{ function_doc("log_onnx", "digitalhub_runtime_tvm.entities.model.onnx.crud", separate_examples=True) }}
 
 ### Register
 
-{% call function_doc("register_onnx", "digitalhub_runtime_tvm.entities.model.onnx.crud") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        model = dh.register_onnx(
-            project="my-project",
-            name="registered-image-classifier",
-            source="s3://my-bucket/models/image-classifier.onnx",
-            opset=17,
-        )
-        ```
-{% endcall %}
+{{ function_doc("register_onnx", "digitalhub_runtime_tvm.entities.model.onnx.crud", separate_examples=True) }}
 
 ### New
 

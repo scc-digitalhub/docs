@@ -12,54 +12,11 @@ The `path` identifies the table data and can use a supported [local or remote sc
 
 ### Log
 
-{% call function_doc("log_table", "digitalhub.entities") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-        import pandas as pd
-
-        table_from_source = dh.log_table(
-            project="my-project",
-            name="sales-from-file",
-            source="./data/sales.csv",
-            file_format="csv",
-        )
-
-        table_from_data = dh.log_table(
-            project="my-project",
-            name="sales-from-dataframe",
-            data=pd.DataFrame(
-                {
-                    "customer_id": [101, 102],
-                    "amount": [12.50, 8.75],
-                }
-            ),
-        )
-        ```
-{% endcall %}
+{{ function_doc("log_table", "digitalhub.entities", separate_examples=True) }}
 
 ### Register
 
-{% call function_doc("register_table", "digitalhub.entities") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        dataitem = dh.register_table(
-            project="my-project",
-            name="registered-sales",
-            source="s3://my-bucket/data/sales.parquet",
-            schema={
-                "fields": [
-                    {"name": "customer_id", "type": "integer"},
-                    {"name": "amount", "type": "float"},
-                ]
-            },
-        )
-        ```
-{% endcall %}
+{{ function_doc("register_table", "digitalhub.entities", separate_examples=True) }}
 
 ### New
 

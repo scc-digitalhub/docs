@@ -10,35 +10,11 @@ The `tflite` kind stores a TensorFlow Lite model. Kind-specific fields, includin
 
 ### Log
 
-{% call function_doc("log_tflite", "digitalhub_runtime_tvm.entities.model.tflite.crud") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        model = dh.log_tflite(
-            project="my-project",
-            name="mobile-classifier",
-            source="./models/mobile-classifier.tflite",
-        )
-        ```
-{% endcall %}
+{{ function_doc("log_tflite", "digitalhub_runtime_tvm.entities.model.tflite.crud", separate_examples=True) }}
 
 ### Register
 
-{% call function_doc("register_tflite", "digitalhub_runtime_tvm.entities.model.tflite.crud") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        model = dh.register_tflite(
-            project="my-project",
-            name="registered-mobile-classifier",
-            source="s3://my-bucket/models/mobile-classifier.tflite",
-        )
-        ```
-{% endcall %}
+{{ function_doc("register_tflite", "digitalhub_runtime_tvm.entities.model.tflite.crud", separate_examples=True) }}
 
 ### New
 

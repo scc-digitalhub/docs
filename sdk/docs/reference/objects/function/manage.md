@@ -10,87 +10,24 @@ The methods below retrieve, import, update, or delete functions. They can be cal
 
 Use the read methods to retrieve functions from the backend or import them from a YAML descriptor.
 
-{% call function_doc("get_function", "digitalhub.entities") %}
-    === "Example"
+{{ function_doc("get_function", "digitalhub.entities", separate_examples=True) }}
 
-        ```python
-        import digitalhub as dh
+{{ function_doc("get_function_versions", "digitalhub.entities", separate_examples=True) }}
 
-        function = dh.get_function(
-            identifier="my-function",
-            project="my-project",
-        )
-        ```
-{% endcall %}
+{{ function_doc("list_functions", "digitalhub.entities", separate_examples=True) }}
 
-{% call function_doc("get_function_versions", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        functions = dh.get_function_versions(
-            identifier="my-function",
-            project="my-project",
-        )
-        ```
-{% endcall %}
-
-{% call function_doc("list_functions", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        functions = dh.list_functions(project="my-project")
-        ```
-{% endcall %}
-
-{% call function_doc("import_function", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        function = dh.import_function("my-function.yaml")
-        ```
-{% endcall %}
+{{ function_doc("import_function", "digitalhub.entities", separate_examples=True) }}
 
 ## Update
 
 Update a function after changing its mutable metadata.
 
-{% call function_doc("update_function", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        function = dh.get_function(
-            identifier="my-function",
-            project="my-project",
-        )
-        function.set_description("Updated function")
-        function = dh.update_function(function)
-        ```
-{% endcall %}
+{{ function_doc("update_function", "digitalhub.entities", separate_examples=True) }}
 
 ## Delete
 
 Delete one function version or all versions of a function.
 
-{% call function_doc("delete_function", "digitalhub.entities") %}
-    === "Example"
+{{ function_doc("delete_function", "digitalhub.entities", separate_examples=True) }}
 
-        ```python
-        import digitalhub as dh
-
-        dh.delete_function(
-            identifier="my-function",
-            project="my-project",
-            delete_all_versions=True,
-        )
-        ```
-{% endcall %}
-
-[Back to Function](./entity.md)
+{{ page_navigation(("Create", "create.md"), ("Use", "use.md")) }}

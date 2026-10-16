@@ -18,10 +18,8 @@ Artifact creation functions are provided by the SDK and do not require an additi
 
 The `artifact` kind stores a generic artifact as a file in an artifact store.
 
-<div class="list-cards" markdown>
+{{ kind_cards([
+    ("Artifact", "./kind/artifact.md", "Store a generic artifact as a file in an artifact store", "artifact"),
+]) }}
 
-- [**Artifact**](./kind/artifact.md){ .list-card-link } - Store a generic artifact as a file in an artifact store - `artifact`
-
-</div>
-
-[Back to Artifacts](./entity.md)
+{{ page_navigation(("Entity", "entity.md"), ("Manage", "manage.md")) }}

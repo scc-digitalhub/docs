@@ -10,4 +10,4 @@ The SDK currently supports Kubernetes Secret Manager. Each project stores its se
 
 {{ entity_overview_cards("secret") }}
 
-[Back to Entities](../index.md)
+{{ page_navigation(("Entities", "../index.md")) }}

@@ -28,4 +28,4 @@ The `Task` object provides CRUD methods and methods for managing its runs.
 
 Task kinds are provided by runtimes. See the [runtime documentation](../../runtimes/index.md) for the corresponding runtime behavior.
 
-[Back to Task](./entity.md)
+{{ page_navigation(("Manage", "manage.md"), ("Entity", "entity.md")) }}

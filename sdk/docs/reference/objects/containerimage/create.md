@@ -16,10 +16,8 @@ Containerimage has no `log_<kind>()` or `register_<kind>()` functions.
 
 The `container-image` kind stores the image URI or registry reference.
 
-<div class="list-cards" markdown>
+{{ kind_cards([
+    ("Container image", "./kind/container-image.md", "Store an image reference and its backend metadata", "container-image"),
+]) }}
 
-- [**Container image**](./kind/container-image.md){ .list-card-link } - Store an image reference and its backend metadata - `container-image`
-
-</div>
-
-[Back to Container images](./entity.md)
+{{ page_navigation(("Entity", "entity.md"), ("Manage", "manage.md")) }}

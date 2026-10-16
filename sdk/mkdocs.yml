@@ -7,6 +7,7 @@ extra:
 
 extra_javascript:
   - https://unpkg.com/mermaid@11/dist/mermaid.min.js
+  - javascripts/open-details-on-anchor.js
 
 extra_css:
   - stylesheets/cards.css
@@ -40,6 +41,18 @@ plugins:
       default_handler: python
       handlers:
         python:
+          paths:
+            - ../../digitalhub-sdk
+            - ../../digitalhub-sdk-runtime-container
+            - ../../digitalhub-sdk-runtime-dbt
+            - ../../digitalhub-sdk-runtime-flower
+            - ../../digitalhub-sdk-runtime-hera
+            - ../../digitalhub-sdk-runtime-hydra
+            - ../../digitalhub-sdk-runtime-modelserve
+            - ../../digitalhub-sdk-runtime-python
+            - ../../digitalhub-sdk-runtime-ray
+            - ../../digitalhub-sdk-runtime-servicegraph
+            - ../../digitalhub-sdk-runtime-tvm
           options:
             docstring_style: numpy
             show_root_toc_entry: false
@@ -161,6 +174,7 @@ nav:
           - Index: reference/runtimes/index.md
           - Python:
               - Overview: reference/runtimes/python/python/overview.md
+              - Handler definition: reference/runtimes/python/define-function.md
               - Actions:
                   - python job: reference/runtimes/python/python/actions/python-job.md
                   - python serve: reference/runtimes/python/python/actions/python-serve.md
@@ -214,7 +228,11 @@ nav:
           - DBT:
               - Overview: reference/runtimes/dbt/overview.md
               - Actions:
-                  - dbt transform: reference/runtimes/dbt/actions/dbt-transform.md
+                  - dbt transform:
+                      - Action: reference/runtimes/dbt/dbt-transform/action.md
+                      - Create: reference/runtimes/dbt/dbt-transform/create.md
+                      - Run: reference/runtimes/dbt/dbt-transform/run.md
+                      - Use: reference/runtimes/dbt/dbt-transform/use.md
               - Examples: reference/runtimes/dbt/examples.md
           - Flower:
               - Overview: reference/runtimes/flower/overview.md

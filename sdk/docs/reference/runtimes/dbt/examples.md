@@ -1,3 +1,7 @@
+---
+render_macros: true
+---
+
 # Examples
 
 ```python
@@ -6,12 +10,13 @@ import digitalhub as dh
 project = dh.get_or_create_project("my_project")
 
 sql = """
-SELECT * FROM {{ ref("my_table_ref") }}
+SELECT * FROM {% raw %}{{ ref("my_table_ref") }}{% endraw %}
 """
 
 dataitem = project.new_dataitem("my_dataitem", kind="table", path="path-to-some-data")
 
 function = dh.new_function(
+    project="my_project",
     kind="dbt",
     name="my_function",
     code=sql
@@ -32,3 +37,5 @@ run = function.run(
 ## Tutorials
 
 Find additional examples in the [tutorial repository](https://github.com/scc-digitalhub/digitalhub-tutorials) of the DSLab GitHub organization.
+
+{{ page_navigation(("Overview", "overview.md")) }}

@@ -45,3 +45,5 @@ The common `Model` object can record one or more metrics and exposes them throug
 Runtime-specific model classes only define their constructors and kind-specific data; they do not add instance methods beyond the common `Model` interface documented above. Kind-specific `log_*()` and `register_*()` APIs are functions, not `Model` methods; see the [kind pages](create.md).
 
 Serving is a separate runtime workflow that uses a runtime `Function`, not a `Model` method. See the [ModelServe runtime](../../runtimes/modelserve/overview.md) or the [TVM runtime](../../runtimes/tvm/overview.md).
+
+{{ page_navigation(("Manage", "manage.md"), ("Entity", "entity.md")) }}

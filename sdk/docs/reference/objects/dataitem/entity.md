@@ -8,4 +8,4 @@ Dataitems are data objects which contain a dataset of a given type, stored in an
 
 {{ entity_overview_cards("dataitem") }}
 
-[Back to Entities](../index.md)
+{{ page_navigation(("Entities", "../index.md")) }}

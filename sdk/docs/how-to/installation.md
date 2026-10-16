@@ -118,6 +118,8 @@ Install the runtime required by your workload. The Python, Container, ModelServe
 		python -m pip install digitalhub-runtime-hera
 		```
 
+<div id="dbt"></div>
+
 ??? note "DBT"
 
 	**Use it for:** Run DBT transformations.

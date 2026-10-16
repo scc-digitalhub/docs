@@ -33,3 +33,5 @@ Use these methods to handle artifact files.
 ## Kind-specific methods
 
 The `artifact` kind does not add instance methods. See the [Artifact kind reference](kind/artifact.md).
+
+{{ page_navigation(("Manage", "manage.md"), ("Entity", "entity.md")) }}

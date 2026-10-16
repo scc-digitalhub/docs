@@ -40,4 +40,4 @@ Use these methods to execute workflows, search project entities, and manage acce
 
 {{ member_doc("run", "digitalhub.entities.project._base.entity.Project") }}
 
-[Back to Project](./entity.md)
+{{ page_navigation(("Manage", "manage.md"), ("Entity", "entity.md")) }}

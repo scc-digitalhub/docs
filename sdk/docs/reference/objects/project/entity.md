@@ -10,4 +10,4 @@ A `Project` represents a data and AI application. It contains the code, assets, 
 
 Project [configuration](./config.md) and [setup](./setup.md) are documented separately.
 
-[Back to Entities](../index.md)
+{{ page_navigation(("Entities", "../index.md")) }}

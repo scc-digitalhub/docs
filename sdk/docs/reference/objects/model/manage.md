@@ -10,85 +10,24 @@ The CRUD methods are used to read, update, and delete models. They can be called
 
 Use the read methods to retrieve models from the backend or load them from a YAML descriptor.
 
-{% call function_doc("get_model", "digitalhub.entities") %}
-    === "Example"
+{{ function_doc("get_model", "digitalhub.entities", separate_examples=True) }}
 
-        ```python
-        import digitalhub as dh
+{{ function_doc("get_model_versions", "digitalhub.entities", separate_examples=True) }}
 
-        model = dh.get_model(
-            identifier="my-model",
-            project="my-project",
-        )
-        ```
-{% endcall %}
+{{ function_doc("list_models", "digitalhub.entities", separate_examples=True) }}
 
-{% call function_doc("get_model_versions", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        models = dh.get_model_versions(
-            identifier="my-model",
-            project="my-project",
-        )
-        ```
-{% endcall %}
-
-{% call function_doc("list_models", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        models = dh.list_models(project="my-project")
-        ```
-{% endcall %}
-
-{% call function_doc("import_model", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        model = dh.import_model("my-model.yaml")
-        ```
-{% endcall %}
+{{ function_doc("import_model", "digitalhub.entities", separate_examples=True) }}
 
 ## Update
 
 Update a model after changing its mutable metadata.
 
-{% call function_doc("update_model", "digitalhub.entities") %}
-    === "Example"
-
-        ```python
-        import digitalhub as dh
-
-        model = dh.get_model(
-            identifier="my-model",
-            project="my-project",
-        )
-        model.set_description("Updated model")
-        model = dh.update_model(model)
-        ```
-{% endcall %}
+{{ function_doc("update_model", "digitalhub.entities", separate_examples=True) }}
 
 ## Delete
 
 Delete one model version or all versions of a model.
 
-{% call function_doc("delete_model", "digitalhub.entities") %}
-    === "Example"
+{{ function_doc("delete_model", "digitalhub.entities", separate_examples=True) }}
 
-        ```python
-        import digitalhub as dh
-
-        dh.delete_model(
-            identifier="my-model",
-            project="my-project",
-            delete_all_versions=True,
-        )
-        ```
-{% endcall %}
+{{ page_navigation(("Create", "create.md"), ("Use", "use.md")) }}

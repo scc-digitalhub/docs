@@ -8,4 +8,4 @@ Triggers describe how and when jobs run on the platform. They can schedule tasks
 
 {{ entity_overview_cards("trigger") }}
 
-[Back to Entities](../index.md)
+{{ page_navigation(("Entities", "../index.md")) }}

@@ -12,20 +12,7 @@ Creating a Containerimage entity records the reference; it does not build or pus
 
 ### New
 
-{% call function_doc("new_containerimage", "digitalhub.entities") %}
-    === "Creation example"
-
-        ```python
-        import digitalhub as dh
-
-        image = dh.new_containerimage(
-            project="my-project",
-            name="my-image",
-            kind="container-image",
-            image="registry.example.com/my-image:latest",
-        )
-        ```
-{% endcall %}
+{{ function_doc("new_containerimage", "digitalhub.entities", separate_examples=True) }}
 
 ## Methods
 
