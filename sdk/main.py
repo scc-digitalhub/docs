@@ -26,6 +26,73 @@ def define_env(env):
         """Render overview cards from title, link, and description entries."""
         return render_overview_cards(cards)
 
+    def render_runtime_list_cards(cards):
+        card_markdown = "\n\n".join(
+            f'- [**{name}**]({link}){{ .list-card-link }}\n\n    {description}'
+            for name, link, description in cards
+        )
+        return f"""<div class="list-cards" markdown>
+
+{card_markdown}
+
+</div>"""
+
+    @env.macro
+    def runtime_prerequisites(
+        python_package,
+        installation_path="../../../how-to/installation.md",
+    ):
+        """Render the Python requirement and installation instructions for a runtime."""
+        install_section = python_package.removeprefix("digitalhub-runtime-")
+        return f"""## Prerequisites
+
+- Python >= 3.10, < 3.15.
+- Install `{python_package}` using the [installation instructions]({installation_path}#{install_section})."""
+
+    @env.macro
+    def runtime_installation(package, local_description=None, div=None):
+        """Render package installation instructions with an optional local extra."""
+        anchor = f'<div id="{div}"></div>\n\n' if div else ""
+        uv_local = (
+            f'\n\n        **Local installation:** {local_description}\n\n'
+            f'        ```bash\n        uv pip install "{package}[local]"\n        ```'
+            if local_description
+            else ""
+        )
+        pip_local = (
+            f'\n\n        **Local installation:** {local_description}\n\n'
+            f'        ```bash\n        python -m pip install "{package}[local]"\n        ```'
+            if local_description
+            else ""
+        )
+        return f"""{anchor}??? note "{package}"
+
+    === "uv"
+
+        ```bash
+        uv pip install {package}
+        ```{uv_local}
+
+    === "pip"
+
+        ```bash
+        python -m pip install {package}
+        ```{pip_local}"""
+
+    @env.macro
+    def runtime_actions(actions):
+        """Render action cards from name, link, and description entries."""
+        return f"""## Actions
+
+{render_runtime_list_cards(actions)}"""
+
+    @env.macro
+    def runtime_examples(description):
+        """Render the examples card for a runtime."""
+        return f"""## Examples
+
+{render_runtime_list_cards([("Examples", "examples.md", description)])}"""
+
     @env.macro
     def page_navigation(left=None, right=None):
         """Render optional left and right page navigation buttons."""
@@ -151,7 +218,7 @@ def define_env(env):
             show_signature: false
             show_docstring_description: true
             show_source: false
-            show_root_heading: true
-            show_symbol_type_heading: true
+            show_root_heading: false
+            show_symbol_type_heading: false
             show_root_full_path: false
             show_root_toc_entry: true"""

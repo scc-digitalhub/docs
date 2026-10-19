@@ -8,8 +8,6 @@ The common `Secret` methods let you persist or refresh a secret entity and manag
 
 ## Persist and refresh
 
-{{ member_doc("save", "digitalhub.entities.secret._base.entity.Secret") }}
-
 {{ member_doc("update", "digitalhub.entities.secret._base.entity.Secret") }}
 
 {{ member_doc("export", "digitalhub.entities.secret._base.entity.Secret") }}

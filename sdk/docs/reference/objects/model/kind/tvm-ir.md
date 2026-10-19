@@ -41,4 +41,4 @@ Use the shared [Model management reference](../manage.md) to retrieve, update, o
 
 ## Related runtime
 
-See the [TVM runtime](../../../runtimes/tvm/overview.md), including its [build](../../../runtimes/tvm/actions/tvm-build.md) and [compile](../../../runtimes/tvm/actions/tvm-compile.md) workflows.
+See the [TVM runtime](../../../runtimes/tvm/overview.md), including its [build](../../../runtimes/tvm/tvm-build/action.md) and [compile](../../../runtimes/tvm/tvm-compile/action.md) workflows.

@@ -164,54 +164,146 @@ nav:
               - Overview: reference/runtimes/python/python/overview.md
               - Handler definition: reference/runtimes/python/define-function.md
               - Actions:
-                  - python job: reference/runtimes/python/python/actions/python-job.md
-                  - python serve: reference/runtimes/python/python/actions/python-serve.md
-                  - python build: reference/runtimes/python/python/actions/python-build.md
+                  - python job:
+                      - Action: reference/runtimes/python/python/python-job/action.md
+                      - Create: reference/runtimes/python/python/python-job/create.md
+                      - Run: reference/runtimes/python/python/python-job/run.md
+                      - Use: reference/runtimes/python/python/python-job/use.md
+                  - python serve:
+                      - Action: reference/runtimes/python/python/python-serve/action.md
+                      - Create: reference/runtimes/python/python/python-serve/create.md
+                      - Run: reference/runtimes/python/python/python-serve/run.md
+                      - Use: reference/runtimes/python/python/python-serve/use.md
+                  - python build:
+                      - Action: reference/runtimes/python/python/python-build/action.md
+                      - Create: reference/runtimes/python/python/python-build/create.md
+                      - Run: reference/runtimes/python/python/python-build/run.md
+                      - Use: reference/runtimes/python/python/python-build/use.md
               - Examples: reference/runtimes/python/python/examples.md
           - Container:
               - Overview: reference/runtimes/container/overview.md
               - Actions:
-                  - container job: reference/runtimes/container/actions/container-job.md
-                  - container serve: reference/runtimes/container/actions/container-serve.md
-                  - container build: reference/runtimes/container/actions/container-build.md
+                  - container job:
+                      - Action: reference/runtimes/container/container-job/action.md
+                      - Create: reference/runtimes/container/container-job/create.md
+                      - Run: reference/runtimes/container/container-job/run.md
+                      - Use: reference/runtimes/container/container-job/use.md
+                  - container serve:
+                      - Action: reference/runtimes/container/container-serve/action.md
+                      - Create: reference/runtimes/container/container-serve/create.md
+                      - Run: reference/runtimes/container/container-serve/run.md
+                      - Use: reference/runtimes/container/container-serve/use.md
+                  - container build:
+                      - Action: reference/runtimes/container/container-build/action.md
+                      - Create: reference/runtimes/container/container-build/create.md
+                      - Run: reference/runtimes/container/container-build/run.md
+                      - Use: reference/runtimes/container/container-build/use.md
               - Examples: reference/runtimes/container/examples.md
           - Modelserve:
               - Overview: reference/runtimes/modelserve/overview.md
               - Actions:
-                  - sklearnserve serve: reference/runtimes/modelserve/actions/sklearnserve-serve.md
-                  - mlflowserve build: reference/runtimes/modelserve/actions/mlflowserve-build.md
-                  - mlflowserve serve: reference/runtimes/modelserve/actions/mlflowserve-serve.md
-                  - kubeai-text serve: reference/runtimes/modelserve/actions/kubeai-text-serve.md
-                  - kubeai-speech serve: reference/runtimes/modelserve/actions/kubeai-speech-serve.md
-                  - vllmserve-text serve: reference/runtimes/modelserve/actions/vllmserve-text-serve.md
-                  - vllmserve-speech serve: reference/runtimes/modelserve/actions/vllmserve-speech-serve.md
-                  - vllmserve-pooling serve: reference/runtimes/modelserve/actions/vllmserve-pooling-serve.md
+                  - sklearnserve serve:
+                      - Action: reference/runtimes/modelserve/sklearnserve-serve/action.md
+                      - Create: reference/runtimes/modelserve/sklearnserve-serve/create.md
+                      - Run: reference/runtimes/modelserve/sklearnserve-serve/run.md
+                      - Use: reference/runtimes/modelserve/sklearnserve-serve/use.md
+                  - mlflowserve build:
+                      - Action: reference/runtimes/modelserve/mlflowserve-build/action.md
+                      - Create: reference/runtimes/modelserve/mlflowserve-build/create.md
+                      - Run: reference/runtimes/modelserve/mlflowserve-build/run.md
+                      - Use: reference/runtimes/modelserve/mlflowserve-build/use.md
+                  - mlflowserve serve:
+                      - Action: reference/runtimes/modelserve/mlflowserve-serve/action.md
+                      - Create: reference/runtimes/modelserve/mlflowserve-serve/create.md
+                      - Run: reference/runtimes/modelserve/mlflowserve-serve/run.md
+                      - Use: reference/runtimes/modelserve/mlflowserve-serve/use.md
+                  - kubeai-text serve:
+                      - Action: reference/runtimes/modelserve/kubeai-text-serve/action.md
+                      - Create: reference/runtimes/modelserve/kubeai-text-serve/create.md
+                      - Run: reference/runtimes/modelserve/kubeai-text-serve/run.md
+                      - Use: reference/runtimes/modelserve/kubeai-text-serve/use.md
+                  - kubeai-speech serve:
+                      - Action: reference/runtimes/modelserve/kubeai-speech-serve/action.md
+                      - Create: reference/runtimes/modelserve/kubeai-speech-serve/create.md
+                      - Run: reference/runtimes/modelserve/kubeai-speech-serve/run.md
+                      - Use: reference/runtimes/modelserve/kubeai-speech-serve/use.md
+                  - vllmserve-text serve:
+                      - Action: reference/runtimes/modelserve/vllmserve-text-serve/action.md
+                      - Create: reference/runtimes/modelserve/vllmserve-text-serve/create.md
+                      - Run: reference/runtimes/modelserve/vllmserve-text-serve/run.md
+                      - Use: reference/runtimes/modelserve/vllmserve-text-serve/use.md
+                  - vllmserve-speech serve:
+                      - Action: reference/runtimes/modelserve/vllmserve-speech-serve/action.md
+                      - Create: reference/runtimes/modelserve/vllmserve-speech-serve/create.md
+                      - Run: reference/runtimes/modelserve/vllmserve-speech-serve/run.md
+                      - Use: reference/runtimes/modelserve/vllmserve-speech-serve/use.md
+                  - vllmserve-pooling serve:
+                      - Action: reference/runtimes/modelserve/vllmserve-pooling-serve/action.md
+                      - Create: reference/runtimes/modelserve/vllmserve-pooling-serve/create.md
+                      - Run: reference/runtimes/modelserve/vllmserve-pooling-serve/run.md
+                      - Use: reference/runtimes/modelserve/vllmserve-pooling-serve/use.md
               - Examples: reference/runtimes/modelserve/examples.md
           - TVM:
               - Overview: reference/runtimes/tvm/overview.md
               - Actions:
-                  - tvm build: reference/runtimes/tvm/actions/tvm-build.md
-                  - tvm compile: reference/runtimes/tvm/actions/tvm-compile.md
-                  - tvm serve: reference/runtimes/tvm/actions/tvm-serve.md
+                  - tvm build:
+                      - Action: reference/runtimes/tvm/tvm-build/action.md
+                      - Create: reference/runtimes/tvm/tvm-build/create.md
+                      - Run: reference/runtimes/tvm/tvm-build/run.md
+                      - Use: reference/runtimes/tvm/tvm-build/use.md
+                  - tvm compile:
+                      - Action: reference/runtimes/tvm/tvm-compile/action.md
+                      - Create: reference/runtimes/tvm/tvm-compile/create.md
+                      - Run: reference/runtimes/tvm/tvm-compile/run.md
+                      - Use: reference/runtimes/tvm/tvm-compile/use.md
+                  - tvm serve:
+                      - Action: reference/runtimes/tvm/tvm-serve/action.md
+                      - Create: reference/runtimes/tvm/tvm-serve/create.md
+                      - Run: reference/runtimes/tvm/tvm-serve/run.md
+                      - Use: reference/runtimes/tvm/tvm-serve/use.md
               - Examples: reference/runtimes/tvm/examples.md
           - Hera:
               - Overview: reference/runtimes/hera/overview.md
               - Pipeline definition: reference/runtimes/hera/define-pipeline.md
               - Actions:
-                  - hera build: reference/runtimes/hera/actions/hera-build.md
-                  - hera pipeline: reference/runtimes/hera/actions/hera-pipeline.md
+                  - hera build:
+                      - Action: reference/runtimes/hera/hera-build/action.md
+                      - Create: reference/runtimes/hera/hera-build/create.md
+                      - Run: reference/runtimes/hera/hera-build/run.md
+                      - Use: reference/runtimes/hera/hera-build/use.md
+                  - hera pipeline:
+                      - Action: reference/runtimes/hera/hera-pipeline/action.md
+                      - Create: reference/runtimes/hera/hera-pipeline/create.md
+                      - Run: reference/runtimes/hera/hera-pipeline/run.md
+                      - Use: reference/runtimes/hera/hera-pipeline/use.md
               - Examples: reference/runtimes/hera/examples.md
           - OpenInference:
               - Overview: reference/runtimes/python/openinference/overview.md
               - Actions:
-                  - openinference serve: reference/runtimes/python/openinference/actions/openinference-serve.md
-                  - openinference build: reference/runtimes/python/openinference/actions/openinference-build.md
+                  - openinference serve:
+                      - Action: reference/runtimes/python/openinference/openinference-serve/action.md
+                      - Create: reference/runtimes/python/openinference/openinference-serve/create.md
+                      - Run: reference/runtimes/python/openinference/openinference-serve/run.md
+                      - Use: reference/runtimes/python/openinference/openinference-serve/use.md
+                  - openinference build:
+                      - Action: reference/runtimes/python/openinference/openinference-build/action.md
+                      - Create: reference/runtimes/python/openinference/openinference-build/create.md
+                      - Run: reference/runtimes/python/openinference/openinference-build/run.md
+                      - Use: reference/runtimes/python/openinference/openinference-build/use.md
               - Examples: reference/runtimes/python/openinference/examples.md
           - Guardrail:
               - Overview: reference/runtimes/python/guardrail/overview.md
               - Actions:
-                  - guardrail serve: reference/runtimes/python/guardrail/actions/guardrail-serve.md
-                  - guardrail build: reference/runtimes/python/guardrail/actions/guardrail-build.md
+                  - guardrail serve:
+                      - Action: reference/runtimes/python/guardrail/guardrail-serve/action.md
+                      - Create: reference/runtimes/python/guardrail/guardrail-serve/create.md
+                      - Run: reference/runtimes/python/guardrail/guardrail-serve/run.md
+                      - Use: reference/runtimes/python/guardrail/guardrail-serve/use.md
+                  - guardrail build:
+                      - Action: reference/runtimes/python/guardrail/guardrail-build/action.md
+                      - Create: reference/runtimes/python/guardrail/guardrail-build/create.md
+                      - Run: reference/runtimes/python/guardrail/guardrail-build/run.md
+                      - Use: reference/runtimes/python/guardrail/guardrail-build/use.md
               - Examples: reference/runtimes/python/guardrail/examples.md
           - DBT:
               - Overview: reference/runtimes/dbt/overview.md
@@ -225,29 +317,69 @@ nav:
           - Flower:
               - Overview: reference/runtimes/flower/overview.md
               - Actions:
-                  - flower-app train: reference/runtimes/flower/actions/flower-app-train.md
-                  - flower-client build: reference/runtimes/flower/actions/flower-client-build.md
-                  - flower-client deploy: reference/runtimes/flower/actions/flower-client-deploy.md
-                  - flower-server build: reference/runtimes/flower/actions/flower-server-build.md
-                  - flower-server deploy: reference/runtimes/flower/actions/flower-server-deploy.md
+                  - flower-app train:
+                      - Action: reference/runtimes/flower/flower-app-train/action.md
+                      - Create: reference/runtimes/flower/flower-app-train/create.md
+                      - Run: reference/runtimes/flower/flower-app-train/run.md
+                      - Use: reference/runtimes/flower/flower-app-train/use.md
+                  - flower-client build:
+                      - Action: reference/runtimes/flower/flower-client-build/action.md
+                      - Create: reference/runtimes/flower/flower-client-build/create.md
+                      - Run: reference/runtimes/flower/flower-client-build/run.md
+                      - Use: reference/runtimes/flower/flower-client-build/use.md
+                  - flower-client deploy:
+                      - Action: reference/runtimes/flower/flower-client-deploy/action.md
+                      - Create: reference/runtimes/flower/flower-client-deploy/create.md
+                      - Run: reference/runtimes/flower/flower-client-deploy/run.md
+                      - Use: reference/runtimes/flower/flower-client-deploy/use.md
+                  - flower-server build:
+                      - Action: reference/runtimes/flower/flower-server-build/action.md
+                      - Create: reference/runtimes/flower/flower-server-build/create.md
+                      - Run: reference/runtimes/flower/flower-server-build/run.md
+                      - Use: reference/runtimes/flower/flower-server-build/use.md
+                  - flower-server deploy:
+                      - Action: reference/runtimes/flower/flower-server-deploy/action.md
+                      - Create: reference/runtimes/flower/flower-server-deploy/create.md
+                      - Run: reference/runtimes/flower/flower-server-deploy/run.md
+                      - Use: reference/runtimes/flower/flower-server-deploy/use.md
               - Examples: reference/runtimes/flower/examples.md
           - ServiceGraph:
               - Overview: reference/runtimes/servicegraph/overview.md
               - Actions:
-                  - servicegraph serve: reference/runtimes/servicegraph/actions/servicegraph-serve.md
+                  - servicegraph serve:
+                      - Action: reference/runtimes/servicegraph/servicegraph-serve/action.md
+                      - Create: reference/runtimes/servicegraph/servicegraph-serve/create.md
+                      - Run: reference/runtimes/servicegraph/servicegraph-serve/run.md
+                      - Use: reference/runtimes/servicegraph/servicegraph-serve/use.md
               - Examples: reference/runtimes/servicegraph/examples.md
           - Hydra:
               - Overview: reference/runtimes/hydra/overview.md
               - Actions:
-                  - hydra build: reference/runtimes/hydra/actions/hydra-build.md
-                  - hydra job: reference/runtimes/hydra/actions/hydra-job.md
+                  - hydra build:
+                      - Action: reference/runtimes/hydra/hydra-build/action.md
+                      - Create: reference/runtimes/hydra/hydra-build/create.md
+                      - Run: reference/runtimes/hydra/hydra-build/run.md
+                      - Use: reference/runtimes/hydra/hydra-build/use.md
+                  - hydra job:
+                      - Action: reference/runtimes/hydra/hydra-job/action.md
+                      - Create: reference/runtimes/hydra/hydra-job/create.md
+                      - Run: reference/runtimes/hydra/hydra-job/run.md
+                      - Use: reference/runtimes/hydra/hydra-job/use.md
               - Examples: reference/runtimes/hydra/examples.md
 
           - Ray:
               - Overview: reference/runtimes/ray/overview.md
               - Actions:
-                  - ray build: reference/runtimes/ray/actions/ray-build.md
-                  - ray job: reference/runtimes/ray/actions/ray-job.md
+                  - ray build:
+                      - Action: reference/runtimes/ray/ray-build/action.md
+                      - Create: reference/runtimes/ray/ray-build/create.md
+                      - Run: reference/runtimes/ray/ray-build/run.md
+                      - Use: reference/runtimes/ray/ray-build/use.md
+                  - ray job:
+                      - Action: reference/runtimes/ray/ray-job/action.md
+                      - Create: reference/runtimes/ray/ray-job/create.md
+                      - Run: reference/runtimes/ray/ray-job/run.md
+                      - Use: reference/runtimes/ray/ray-job/use.md
               - Examples: reference/runtimes/ray/examples.md
       - Configuration:
           - Paths: reference/configuration/paths.md

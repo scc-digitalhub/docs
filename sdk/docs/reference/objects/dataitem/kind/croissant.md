@@ -41,4 +41,4 @@ The `croissant` kind adds dataset loading to the [common Dataitem methods](../us
 
 {{ member_doc("as_dataset", "digitalhub.entities.dataitem.croissant.entity.DataitemCroissant") }}
 
-[Back to dataitem kind selection](../create.md)
+{{ page_navigation(("Create", "../create.md")) }}

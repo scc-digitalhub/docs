@@ -35,10 +35,3 @@ Use the cards below to start a new path or jump directly to the information you 
     API, parameters, configuration options, and runtime behavior.
 
 </div>
-
-## Documentation map
-
-- **Tutorials** teach by taking you through a complete example.
-- **How-to guides** help you complete a specific task.
-- **Explanations** provide context for choosing and combining SDK capabilities.
-- **Reference** documents the exact API, parameters, and supported values.

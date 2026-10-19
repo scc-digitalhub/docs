@@ -43,4 +43,4 @@ The `table` kind adds dataframe operations to the [common Dataitem methods](../u
 
 {{ member_doc("write_df", "digitalhub.entities.dataitem.table.entity.DataitemTable") }}
 
-[Back to dataitem kind selection](../create.md)
+{{ page_navigation(("Create", "../create.md")) }}

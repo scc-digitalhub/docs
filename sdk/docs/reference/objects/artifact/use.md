@@ -10,8 +10,6 @@ The common `Artifact` object methods apply across artifact kinds. They let you p
 
 These methods interact with the entity in the backend or locally.
 
-{{ member_doc("save", "digitalhub.entities.artifact._base.entity.Artifact") }}
-
 {{ member_doc("update", "digitalhub.entities.artifact._base.entity.Artifact") }}
 
 {{ member_doc("export", "digitalhub.entities.artifact._base.entity.Artifact") }}
@@ -29,9 +27,5 @@ Use these methods to handle artifact files.
 {{ member_doc("upload", "digitalhub.entities.artifact._base.entity.Artifact") }}
 
 {{ member_doc("files", "digitalhub.entities.artifact._base.entity.Artifact") }}
-
-## Kind-specific methods
-
-The `artifact` kind does not add instance methods. See the [Artifact kind reference](kind/artifact.md).
 
 {{ page_navigation(("Manage", "manage.md"), ("Entity", "entity.md")) }}

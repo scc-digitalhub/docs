@@ -1,7 +1,12 @@
+---
+render_macros: true
+---
+
 # Examples
 
 ## Pipeline Definition Example
 
+{% raw %}
 ```python
 from hera.workflows import Workflow, DAG, Parameter
 from digitalhub_runtime_hera.dsl import step
@@ -29,6 +34,7 @@ def pipeline():
 
     return w
 ```
+{% endraw %}
 
 ## Workflow Creation Example
 
@@ -90,3 +96,5 @@ run_pipeline = workflow.run(
 ## Tutorials
 
 Find additional examples in the [tutorial repository](https://github.com/scc-digitalhub/digitalhub-tutorials) of the DSLab GitHub organization.
+
+{{ page_navigation(("Overview", "overview.md")) }}

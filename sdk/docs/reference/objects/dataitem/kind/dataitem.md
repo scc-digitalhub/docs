@@ -39,4 +39,4 @@ When creating a dataitem with `new_dataitem()`, provide a `path` to its data. Fo
 
 The generic `dataitem` kind adds no instance methods. See [Use a dataitem](../use.md) for the common methods.
 
-[Back to dataitem kind selection](../create.md)
+{{ page_navigation(("Create", "../create.md")) }}

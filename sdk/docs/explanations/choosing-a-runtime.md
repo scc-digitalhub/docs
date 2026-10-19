@@ -129,10 +129,11 @@ Choose an execution framework based on what you need to run, how it should run, 
 
 Once you've selected an execution framework, follow these steps:
 
-1. **Read the overview** for your chosen execution framework
-2. **Check the examples** to see common usage patterns
-3. **Review the execution guide** for detailed parameter information
-4. **Explore the entity documentation** for complete API reference
+1. **Read the overview** for your chosen execution framework.
+2. **Select an action** from its Actions section.
+3. **Follow the Action, Create, Run and Use pages** for the action's behavior, parameters and results.
+4. **Check the examples** for complete usage patterns.
+5. **Explore the entity documentation** for the complete API reference.
 
 !!! tip "Still unsure?"
 

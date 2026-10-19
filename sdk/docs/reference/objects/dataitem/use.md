@@ -10,8 +10,6 @@ The common `Dataitem` object methods apply across dataitem kinds. They let you p
 
 These methods interact with the entity in the backend or locally.
 
-{{ member_doc("save", "digitalhub.entities.dataitem._base.entity.Dataitem") }}
-
 {{ member_doc("update", "digitalhub.entities.dataitem._base.entity.Dataitem") }}
 
 {{ member_doc("export", "digitalhub.entities.dataitem._base.entity.Dataitem") }}

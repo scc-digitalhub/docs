@@ -40,4 +40,4 @@ Use the shared [Model management reference](../manage.md) to retrieve, update, o
 
 ## Related runtime
 
-See the [ModelServe runtime](../../../runtimes/modelserve/overview.md) and its [scikit-learn serving action](../../../runtimes/modelserve/actions/sklearnserve-serve.md).
+See the [ModelServe runtime](../../../runtimes/modelserve/overview.md) and its [scikit-learn serving action](../../../runtimes/modelserve/sklearnserve-serve/action.md).

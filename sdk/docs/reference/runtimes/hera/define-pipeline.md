@@ -1,3 +1,7 @@
+---
+render_macros: true
+---
+
 # Define a Hera Pipeline
 
 This section describes how to define a Hera pipeline function. A pipeline function is a Python function that returns a Hera `Workflow` object. The function must not accept arguments; define workflow parameters inside the returned Hera `Workflow` object instead.
@@ -37,7 +41,7 @@ The runtime provides DSL helpers in `digitalhub_runtime_hera.dsl`:
 
 | Parameter | Type | Example | Description |
 | --- | --- | --- | --- |
-| template | dict | {"action": "job"} | Parameters template to pass to the DigitalHub function run. The `action` key is required. To pass inputs from other steps use the `{{inputs.parameters.parameter_name}}` template syntax. |
+| template | dict | {"action": "job"} | Parameters template to pass to the DigitalHub function run. The `action` key is required. To pass inputs from other steps use the `{% raw %}{{inputs.parameters.parameter_name}}{% endraw %}` template syntax. |
 | function | str | "download-data" | Name of the DigitalHub function to execute. |
 | function_id | str | "abc123" | Function ID (optional). |
 | name | str | "step1" | Step name. |
@@ -50,6 +54,8 @@ Other keyword arguments are forwarded to the underlying container template. `ste
 
 Step inputs are defined via the `inputs` argument to `step(...)`. This is a dictionary where keys are input names and values can reference outputs from other steps using the `get_parameter(...)` method. For example:
 
+{% raw %}
+
 ```python
 
 # Here the step A (let say a python function) produces an output named "data"
@@ -61,11 +67,15 @@ A = step(template={"action":"job"}, function="step-a", outputs=["data"])
 B = step(template={"action":"job", "inputs": {"parameter-name": "{{inputs.parameters.data-from-b}}"}}, function="step-b", inputs={"data-from-b": A.get_parameter("data")})
 ```
 
+{% endraw %}
+
 ### `container_template` function
 
 `container_template(...)` builds a Hera container template for a workflow step. It returns a Hera `Container` object and requires `template` and `function`. Unlike `step`, its `inputs` argument is a list of input names. Use it directly for advanced scenarios or custom templates. `DHCORE_WORKFLOW_IMAGE` must be set; the value is used as the stepper image.
 
 ## Pipeline Definition Example
+
+{% raw %}
 
 ```python
 from hera.workflows import Workflow, DAG, Parameter
@@ -94,3 +104,7 @@ def pipeline():
 
     return w
 ```
+
+{% endraw %}
+
+{{ page_navigation(("Overview", "overview.md")) }}

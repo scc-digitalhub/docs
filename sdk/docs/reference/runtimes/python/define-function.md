@@ -1,3 +1,7 @@
+---
+render_macros: true
+---
+
 # Define a Python Function
 
 This section describes the shared handler contract for Python-runtime functions. The same common model is used by `python`, `guardrail`, and `openinference` functions. A handler is a Python function declared with the standard `def` keyword. Handlers can be simple or accept platform-provided objects and inputs. The runtime injects reserved arguments and provides helpers to map inputs and outputs.
@@ -190,3 +194,5 @@ D - To distinguish the ExtProc processing phase, the processing-phase header is 
    - process request body: 2
    - process response headers: 4
    - process response body: 5
+
+{{ page_navigation(("Overview", "python/overview.md")) }}

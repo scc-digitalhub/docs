@@ -10,8 +10,6 @@ The common `Model` object methods apply across model kinds. They let you persist
 
 These methods interact with the entity in the backend or locally.
 
-{{ member_doc("save", "digitalhub.entities.model._base.entity.Model") }}
-
 {{ member_doc("update", "digitalhub.entities.model._base.entity.Model") }}
 
 {{ member_doc("export", "digitalhub.entities.model._base.entity.Model") }}

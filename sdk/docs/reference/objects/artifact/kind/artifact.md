@@ -26,4 +26,4 @@ The destination `path` and original `src_path` are documented with the creation 
 
 The `artifact` kind does not add instance methods. See [Use an artifact](../use.md) for the common methods.
 
-[Back to artifact creation](../create.md)
+{{ page_navigation(("Create", "../create.md")) }}

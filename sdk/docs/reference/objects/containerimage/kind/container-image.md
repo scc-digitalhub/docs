@@ -18,4 +18,4 @@ Creating a Containerimage entity records the reference; it does not build or pus
 
 The `container-image` kind adds no instance methods. See [Use a container image](../use.md) for the common methods.
 
-[Back to container image kind selection](../create.md)
+{{ page_navigation(("Create", "../create.md")) }}

@@ -1,3 +1,7 @@
+---
+render_macros: true
+---
+
 # Examples
 
 ## Function Creation
@@ -60,3 +64,5 @@ run = function.run(
 ## Tutorials
 
 Find additional examples in the [tutorial repository](https://github.com/scc-digitalhub/digitalhub-tutorials) of the DSLab GitHub organization.
+
+{{ page_navigation(("Overview", "overview.md")) }}

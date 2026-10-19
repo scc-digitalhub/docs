@@ -8,8 +8,6 @@ The common `Trigger` methods let you persist or refresh a trigger entity and sto
 
 ## Persist and refresh
 
-{{ member_doc("save", "digitalhub.entities.trigger._base.entity.Trigger") }}
-
 {{ member_doc("update", "digitalhub.entities.trigger._base.entity.Trigger") }}
 
 {{ member_doc("export", "digitalhub.entities.trigger._base.entity.Trigger") }}

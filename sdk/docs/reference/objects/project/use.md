@@ -8,8 +8,6 @@ The `Project` object is the working context for project state, related entities,
 
 ## Persist and refresh
 
-{{ member_doc("save", "digitalhub.entities.project._base.entity.Project") }}
-
 {{ member_doc("update", "digitalhub.entities.project._base.entity.Project") }}
 
 {{ member_doc("export", "digitalhub.entities.project._base.entity.Project") }}

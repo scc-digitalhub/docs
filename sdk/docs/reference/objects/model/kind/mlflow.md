@@ -40,4 +40,4 @@ Use the shared [Model management reference](../manage.md) to retrieve, update, o
 
 ## Related runtime
 
-See the [ModelServe runtime](../../../runtimes/modelserve/overview.md) and its [MLflow serving action](../../../runtimes/modelserve/actions/mlflowserve-serve.md).
+See the [ModelServe runtime](../../../runtimes/modelserve/overview.md) and its [MLflow serving action](../../../runtimes/modelserve/mlflowserve-serve/action.md).

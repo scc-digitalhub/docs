@@ -6,8 +6,6 @@ render_macros: true
 
 The common `Containerimage` object methods let you persist an entity, export it locally, or refresh it from the backend.
 
-{{ member_doc("save", "digitalhub.entities.containerimage._base.entity.Containerimage") }}
-
 {{ member_doc("update", "digitalhub.entities.containerimage._base.entity.Containerimage") }}
 
 {{ member_doc("export", "digitalhub.entities.containerimage._base.entity.Containerimage") }}

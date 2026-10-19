@@ -40,4 +40,4 @@ Use the shared [Model management reference](../manage.md) to retrieve, update, o
 
 ## Related runtime
 
-ONNX models can be used as source models in the [TVM build workflow](../../../runtimes/tvm/actions/tvm-build.md). See the [TVM runtime](../../../runtimes/tvm/overview.md) for the full workflow.
+ONNX models can be used as source models in the [TVM build workflow](../../../runtimes/tvm/tvm-build/action.md). See the [TVM runtime](../../../runtimes/tvm/overview.md) for the full workflow.
