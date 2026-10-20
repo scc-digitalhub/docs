@@ -4,7 +4,7 @@ render_macros: true
 
 # Run a Hera Pipeline
 
-Call `workflow.run(action="pipeline", ...)` to execute the workflow on the platform. Set `auto_build=True` to build it first when its compiled definition is missing.
+Call `workflow.run(action="pipeline", ...)` to execute a compiled workflow on the platform. If its compiled definition is missing, call `workflow.build()` first.
 
 ## Parameters
 
@@ -16,15 +16,15 @@ Call `workflow.run(action="pipeline", ...)` to execute the workflow on the platf
 | [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
 | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
 | [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
-| auto_build | bool | Build automatically when the compiled workflow is missing. Defaults to `False`. Set to `True` to build automatically, or leave it `False` after calling `workflow.build()`. |
 | parameters | dict | Values for Hera workflow parameters declared in the pipeline source. |
 
 ## Example
 
 ```python
+build_run = workflow.build(wait=True)
+
 run = workflow.run(
     action="pipeline",
-    auto_build=True,
     parameters={"url": "https://example.com"},
     wait=True,
 )

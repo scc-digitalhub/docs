@@ -23,7 +23,6 @@ Call `function.run(action="serve", ...)` to deploy the container as a service. P
 | [run_as_user](../../../configuration/kubernetes.md#security-context) | int | User ID to run the container. Must be non-negative. |
 | [run_as_group](../../../configuration/kubernetes.md#security-context) | int | Group ID to run the container. Must be non-negative. |
 | [fs_group](../../../configuration/kubernetes.md#security-context) | int | File system group ID. Must be positive. |
-| auto_build | bool | Whether to build the function automatically when no image is configured. Defaults to `True`. |
 | args | list[str] | Command-line arguments to pass to the container command. |
 
 ## Example

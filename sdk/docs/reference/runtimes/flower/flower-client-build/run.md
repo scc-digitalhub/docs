@@ -23,7 +23,6 @@ Call `function.run(action="build", ...)` to build the Flower client image.
 | private_key_secret | str | Secret containing the private key for secure communication. |
 | public_key_secret | str | Secret containing the public key for secure communication. |
 | isolation | str | Isolation mode: `process` or `subprocess`. |
-| auto_build | bool | Whether to build automatically when no image is configured. Defaults to `True`. |
 
 ## Example
 

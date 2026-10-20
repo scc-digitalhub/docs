@@ -39,6 +39,4 @@ function = dh.new_function(
 
 ## Function methods
 
-{{ member_doc("build", "digitalhub_runtime_container.entities.function.container.entity.FunctionContainer") }}
-
 {{ page_navigation(("Action", "action.md"), ("Run", "run.md")) }}

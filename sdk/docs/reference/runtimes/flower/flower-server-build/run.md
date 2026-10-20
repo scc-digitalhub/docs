@@ -19,7 +19,6 @@ Call `function.run(action="build", ...)` to build the Flower server image.
 | instructions | list[str] | Custom instructions to execute during the container build. |
 | auth_public_keys | list[str] | Public keys for authentication. |
 | insecure | bool | Disable TLS verification. |
-| auto_build | bool | Whether to build automatically when no image is configured. Defaults to `True`. |
 
 ## Example
 

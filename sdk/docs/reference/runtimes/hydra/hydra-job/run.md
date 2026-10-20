@@ -17,7 +17,6 @@ Call `function.run(action="job", ...)` to execute a Hydra function as a one-off 
 | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
 | [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. Applied to a single subtask, not the orchestrating launcher. |
 | local_execution | bool | Execute locally instead of remotely. Defaults to `False`. Local dependencies must already be installed. |
-| auto_build | bool | Build when the Function has no image. Defaults to `False`. An existing image is not rebuilt automatically when requirements change. |
 | parameters | dict | Hydra configuration overrides passed to the function. |
 | init_parameters | dict | Parameters supplied to the init function. |
 | workers | int | Number of workers available for parallel execution. |

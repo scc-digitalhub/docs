@@ -12,7 +12,7 @@ Runtimes define the key point of extension of the platform: new runtimes may be 
 
 <div class="list-cards" markdown>
 
-- [**Python**](python/python/overview.md){ .list-card-link }
+- [**Python**](python/overview.md){ .list-card-link }
 
 	Run Python functions as jobs or services.
 
@@ -36,11 +36,11 @@ Runtimes define the key point of extension of the platform: new runtimes may be 
 
 	Build federated learning workloads with the Flower framework.
 
-- [**Guardrail**](python/guardrail/overview.md){ .list-card-link }
+- [**Guardrail**](guardrail/overview.md){ .list-card-link }
 
 	Run Guardrails AI validation functions as jobs or services.
 
-- [**OpenInference**](python/openinference/overview.md){ .list-card-link }
+- [**OpenInference**](openinference/overview.md){ .list-card-link }
 
 	Run OpenInference instrumentation functions as jobs or services.
 

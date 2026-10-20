@@ -36,6 +36,4 @@ workflow = dh.new_workflow(
 )
 ```
 
-{{ member_doc("build", "digitalhub_runtime_hera.entities.workflow.hera.entity.WorkflowHera") }}
-
 {{ page_navigation(("Action", "action.md"), ("Run", "run.md")) }}

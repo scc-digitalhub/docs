@@ -10,6 +10,9 @@ Use the `job` action to run a container to completion; the container terminates 
 
 The job action executes the configured container image as a one-off workload on Kubernetes.
 
+!!! warning "Build custom images first"
+    If the image needs custom Dockerfile instructions, run the [Container Build action](../container-build/action.md) first and use its resulting image for the job.
+
 {{ overview_cards([
     ("Create", "create.md", "Configure the Function with the container image and command."),
     ("Run", "run.md", "Execute the container as a one-off job."),

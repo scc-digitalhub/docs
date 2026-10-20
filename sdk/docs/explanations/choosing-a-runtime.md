@@ -8,7 +8,7 @@ Choose an execution framework based on what you need to run, how it should run, 
 
 {{ framework_card(
 	title="Python",
-	link="../reference/runtimes/python/python/overview.md",
+	link="../reference/runtimes/python/overview.md",
 	description="Execute user-defined Python handlers for jobs, model training, and services.",
 	use_cases=[
 		"Batch jobs and model training.",
@@ -84,7 +84,7 @@ Choose an execution framework based on what you need to run, how it should run, 
 
 {{ framework_card(
 	title="Guardrail",
-	link="../reference/runtimes/python/guardrail/overview.md",
+	link="../reference/runtimes/guardrail/overview.md",
 	description="Execute Python handlers for request/response processing using EnvoyProxy ExtProc specifications.",
 	use_cases=[
 		"Request and response processing.",
@@ -95,7 +95,7 @@ Choose an execution framework based on what you need to run, how it should run, 
 
 {{ framework_card(
 	title="Openinference",
-	link="../reference/runtimes/python/openinference/overview.md",
+	link="../reference/runtimes/openinference/overview.md",
 	description="Execute Python handlers for inference-oriented services with explicit tensor schemas.",
 	use_cases=[
 		"Inference endpoints.",

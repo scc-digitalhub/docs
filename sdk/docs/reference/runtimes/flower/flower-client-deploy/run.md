@@ -22,7 +22,6 @@ Call `function.run(action="deploy", ...)` to deploy the client to its federation
 | private_key_secret | str | [Secret](../../../objects/secret/entity.md) containing the private key for secure communication. |
 | public_key_secret | str | [Secret](../../../objects/secret/entity.md) containing the public key for secure communication. |
 | isolation | str | Isolation mode: `process` or `subprocess`. |
-| auto_build | bool | Build automatically when no image is configured. Defaults to `True`. Set to `False` to deploy only an existing image. |
 
 ## Example
 
@@ -30,7 +29,6 @@ Call `function.run(action="deploy", ...)` to deploy the client to its federation
 run = function.run(
     action="deploy",
     superlink="superlink-service",
-    auto_build=True,
 )
 ```
 

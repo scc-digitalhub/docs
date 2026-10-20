@@ -161,25 +161,26 @@ nav:
       - Runtimes:
           - Index: reference/runtimes/index.md
           - Python:
-              - Overview: reference/runtimes/python/python/overview.md
+              - Overview: reference/runtimes/python/overview.md
               - Handler definition: reference/runtimes/python/define-function.md
+              - Parameters: reference/runtimes/python/params.md
               - Actions:
                   - python job:
-                      - Action: reference/runtimes/python/python/python-job/action.md
-                      - Create: reference/runtimes/python/python/python-job/create.md
-                      - Run: reference/runtimes/python/python/python-job/run.md
-                      - Use: reference/runtimes/python/python/python-job/use.md
+                      - Action: reference/runtimes/python/python-job/action.md
+                      - Create: reference/runtimes/python/python-job/create.md
+                      - Run: reference/runtimes/python/python-job/run.md
+                      - Use: reference/runtimes/python/python-job/use.md
                   - python serve:
-                      - Action: reference/runtimes/python/python/python-serve/action.md
-                      - Create: reference/runtimes/python/python/python-serve/create.md
-                      - Run: reference/runtimes/python/python/python-serve/run.md
-                      - Use: reference/runtimes/python/python/python-serve/use.md
+                      - Action: reference/runtimes/python/python-serve/action.md
+                      - Create: reference/runtimes/python/python-serve/create.md
+                      - Run: reference/runtimes/python/python-serve/run.md
+                      - Use: reference/runtimes/python/python-serve/use.md
                   - python build:
-                      - Action: reference/runtimes/python/python/python-build/action.md
-                      - Create: reference/runtimes/python/python/python-build/create.md
-                      - Run: reference/runtimes/python/python/python-build/run.md
-                      - Use: reference/runtimes/python/python/python-build/use.md
-              - Examples: reference/runtimes/python/python/examples.md
+                      - Action: reference/runtimes/python/python-build/action.md
+                      - Create: reference/runtimes/python/python-build/create.md
+                      - Run: reference/runtimes/python/python-build/run.md
+                      - Use: reference/runtimes/python/python-build/use.md
+              - Examples: reference/runtimes/python/examples.md
           - Container:
               - Overview: reference/runtimes/container/overview.md
               - Actions:
@@ -278,33 +279,35 @@ nav:
                       - Use: reference/runtimes/hera/hera-pipeline/use.md
               - Examples: reference/runtimes/hera/examples.md
           - OpenInference:
-              - Overview: reference/runtimes/python/openinference/overview.md
+              - Overview: reference/runtimes/openinference/overview.md
+              - Handler definition: reference/runtimes/openinference/handler.md
               - Actions:
                   - openinference serve:
-                      - Action: reference/runtimes/python/openinference/openinference-serve/action.md
-                      - Create: reference/runtimes/python/openinference/openinference-serve/create.md
-                      - Run: reference/runtimes/python/openinference/openinference-serve/run.md
-                      - Use: reference/runtimes/python/openinference/openinference-serve/use.md
+                      - Action: reference/runtimes/openinference/openinference-serve/action.md
+                      - Create: reference/runtimes/openinference/openinference-serve/create.md
+                      - Run: reference/runtimes/openinference/openinference-serve/run.md
+                      - Use: reference/runtimes/openinference/openinference-serve/use.md
                   - openinference build:
-                      - Action: reference/runtimes/python/openinference/openinference-build/action.md
-                      - Create: reference/runtimes/python/openinference/openinference-build/create.md
-                      - Run: reference/runtimes/python/openinference/openinference-build/run.md
-                      - Use: reference/runtimes/python/openinference/openinference-build/use.md
-              - Examples: reference/runtimes/python/openinference/examples.md
+                      - Action: reference/runtimes/openinference/openinference-build/action.md
+                      - Create: reference/runtimes/openinference/openinference-build/create.md
+                      - Run: reference/runtimes/openinference/openinference-build/run.md
+                      - Use: reference/runtimes/openinference/openinference-build/use.md
+              - Examples: reference/runtimes/openinference/examples.md
           - Guardrail:
-              - Overview: reference/runtimes/python/guardrail/overview.md
+              - Overview: reference/runtimes/guardrail/overview.md
+              - Handler definition: reference/runtimes/guardrail/handler.md
               - Actions:
                   - guardrail serve:
-                      - Action: reference/runtimes/python/guardrail/guardrail-serve/action.md
-                      - Create: reference/runtimes/python/guardrail/guardrail-serve/create.md
-                      - Run: reference/runtimes/python/guardrail/guardrail-serve/run.md
-                      - Use: reference/runtimes/python/guardrail/guardrail-serve/use.md
+                      - Action: reference/runtimes/guardrail/guardrail-serve/action.md
+                      - Create: reference/runtimes/guardrail/guardrail-serve/create.md
+                      - Run: reference/runtimes/guardrail/guardrail-serve/run.md
+                      - Use: reference/runtimes/guardrail/guardrail-serve/use.md
                   - guardrail build:
-                      - Action: reference/runtimes/python/guardrail/guardrail-build/action.md
-                      - Create: reference/runtimes/python/guardrail/guardrail-build/create.md
-                      - Run: reference/runtimes/python/guardrail/guardrail-build/run.md
-                      - Use: reference/runtimes/python/guardrail/guardrail-build/use.md
-              - Examples: reference/runtimes/python/guardrail/examples.md
+                      - Action: reference/runtimes/guardrail/guardrail-build/action.md
+                      - Create: reference/runtimes/guardrail/guardrail-build/create.md
+                      - Run: reference/runtimes/guardrail/guardrail-build/run.md
+                      - Use: reference/runtimes/guardrail/guardrail-build/use.md
+              - Examples: reference/runtimes/guardrail/examples.md
           - DBT:
               - Overview: reference/runtimes/dbt/overview.md
               - Actions:

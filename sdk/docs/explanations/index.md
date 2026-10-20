@@ -26,6 +26,6 @@ Use these pages to build a mental model of the Digitalhub SDK and choose the rig
 
     Learn how functions and workflows are described, built, and executed in each execution framework.
 
-    [Browse execution framework overviews](../reference/runtimes/python/python/overview.md)
+    [Browse execution framework overviews](../reference/runtimes/python/overview.md)
 
 </div>

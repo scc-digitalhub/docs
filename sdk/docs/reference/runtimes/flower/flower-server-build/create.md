@@ -36,6 +36,4 @@ function = dh.new_function(
 )
 ```
 
-{{ member_doc("build", "digitalhub_runtime_flower.entities.function._base.entity.FunctionFlowerBuild") }}
-
 {{ page_navigation(("Action", "action.md"), ("Run", "run.md")) }}

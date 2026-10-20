@@ -62,6 +62,4 @@ function = dh.new_function(
 )
 ```
 
-{{ member_doc("build", "digitalhub_runtime_python.entities.function._base.entity.FunctionBaseFunction") }}
-
 {{ page_navigation(("Action", "action.md"), ("Run", "run.md")) }}

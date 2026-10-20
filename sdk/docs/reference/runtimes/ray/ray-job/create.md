@@ -34,7 +34,7 @@ The base image is the foundation used to build the execution image. Some base im
 
 Requirements can be a list of strings or a path to `requirements.txt`, `setup.py`, `pyproject.toml`, `conda.yml`, or `conda.yaml`. The SDK parses requirements when saving the Function. If a package is available in the local environment without a version, the SDK may add its installed version; use explicit versions or constraints to avoid this inference.
 
-For remote jobs, non-empty requirements must be installed in the execution image. If no image is configured, set `auto_build=True` when running the job or build the Function explicitly. An existing image is not rebuilt automatically after requirements change.
+For remote jobs, non-empty requirements must be installed in the execution image. Build the Function first or provide an image that already contains the required packages.
 
 ## Example
 
@@ -47,7 +47,5 @@ function = dh.new_function(
     requirements=["torch==2.2.2", "numpy==1.24.1"],
 )
 ```
-
-{{ member_doc("build", "digitalhub_runtime_python.entities.function._base.entity.FunctionBaseFunction") }}
 
 {{ page_navigation(("Action", "action.md"), ("Run", "run.md")) }}

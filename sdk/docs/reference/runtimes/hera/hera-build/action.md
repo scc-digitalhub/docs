@@ -8,7 +8,7 @@ Use the `build` action to compile a Hera Workflow definition into Argo Workflows
 
 ## What the action does
 
-The build imports the source, calls the handler without arguments and serializes the returned Hera `Workflow`. It does not execute the generated workflow. An explicit build is optional before a Pipeline run because `auto_build=True` builds when needed.
+The build imports the source, calls the handler without arguments and serializes the returned Hera `Workflow`. It does not execute the generated workflow. Run this action before Pipeline when the workflow does not have a compiled definition.
 
 {{ overview_cards([
     ("Create", "create.md", "Define a Workflow source and a handler that returns a Hera Workflow."),

@@ -18,7 +18,6 @@ Call `function.run(action="deploy", ...)` to deploy the server and coordinate fe
 | [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
 | auth_public_keys | list[str] | Public keys for client authentication. |
 | insecure | bool | Disable TLS verification. Defaults to `False`. |
-| auto_build | bool | Build automatically when no image is configured. Defaults to `True`. |
 
 ## Example
 
@@ -26,7 +25,6 @@ Call `function.run(action="deploy", ...)` to deploy the server and coordinate fe
 run = function.run(
     action="deploy",
     auth_public_keys=["client-public-key"],
-    auto_build=True,
 )
 ```
 

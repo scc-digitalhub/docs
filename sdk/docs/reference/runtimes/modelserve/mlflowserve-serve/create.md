@@ -41,6 +41,4 @@ function = dh.new_function(
 
 ## Function methods
 
-{{ member_doc("build", "digitalhub_runtime_modelserve.entities.function.mlflowserve.entity.FunctionMlflowserve") }}
-
 {{ page_navigation(("Action", "action.md"), ("Run", "run.md")) }}

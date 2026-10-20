@@ -64,18 +64,6 @@ workflow = dh.new_workflow(
 ## Build and Pipeline Example
 
 ```python
-# Recommended: build automatically when needed and execute the pipeline.
-run_pipeline = workflow.run(
-    action="pipeline",
-    auto_build=True,
-    parameters={"url": "https://example.com"},
-    wait=True,
-)
-```
-
-To keep build and execution as separate runs:
-
-```python
 # The handler is called without arguments and must return a Hera Workflow.
 run_build = workflow.build(
     wait=True,
@@ -87,7 +75,6 @@ workflow_yaml_base64 = run_build.result("workflow")
 # Execute the already-built workflow
 run_pipeline = workflow.run(
     action="pipeline",
-    auto_build=False,
     parameters={"url": "https://example.com"},
     wait=True,
 )

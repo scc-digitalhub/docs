@@ -8,7 +8,10 @@ Use the `deploy` action to deploy a Flower client that joins a federation and pa
 
 ## What the action does
 
-If the Function has no image and `auto_build=True`, the runtime builds the image before deployment.
+The deployment uses the image configured on the Flower client Function.
+
+!!! warning "Build requirements first"
+    If the Function has `requirements`, run the [Flower Client Build action](../flower-client-build/action.md) before deploying it so the dependencies are installed in its image.
 
 {{ overview_cards([
     ("Create", "create.md", "Configure the Flower client image and dependencies."),

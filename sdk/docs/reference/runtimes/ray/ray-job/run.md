@@ -19,7 +19,6 @@ Call `function.run(action="job", ...)` to execute a Ray function on a dynamicall
 | replicas | int | Initial number of worker replicas. |
 | min_replicas | int | Minimum number of worker replicas. |
 | max_replicas | int | Maximum number of worker replicas. |
-| auto_build | bool | Build when the Function has no image. Defaults to `False`. An existing image is not rebuilt automatically when requirements change. |
 | parameters | dict | Parameters passed to the Ray application. |
 
 ## Example

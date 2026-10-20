@@ -8,13 +8,11 @@ Use the cards below to start a new path or jump directly to the information you 
 
 <div class="grid cards" markdown>
 
-- [**Start with Python**](how-to/installation.md){ .card-link }
+- [**Installation**](how-to/installation.md){ .card-link }
 
     ---
 
-    Install the SDK or jump straight to a first function.
-
-    [Quickstart](tutorials/quickstart.md)
+    Install the SDK and its runtimes.
 
 - [**What can I do?**](explanations/what-can-i-do.md){ .card-link }
 
@@ -27,6 +25,8 @@ Use the cards below to start a new path or jump directly to the information you 
     ---
 
     Step-by-step examples for learning the SDK by building something complete.
+
+    [Quickstart](tutorials/quickstart.md)
 
 - [**Reference**](reference/index.md){ .card-link }
 

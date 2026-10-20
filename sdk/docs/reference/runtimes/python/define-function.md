@@ -2,9 +2,9 @@
 render_macros: true
 ---
 
-# Define a Python Function
+# Define a Python Handler
 
-This section describes the shared handler contract for Python-runtime functions. The same common model is used by `python`, `guardrail`, and `openinference` functions. A handler is a Python function declared with the standard `def` keyword. Handlers can be simple or accept platform-provided objects and inputs. The runtime injects reserved arguments and provides helpers to map inputs and outputs.
+This section describes how to define a handler for Python-runtime functions. A handler is a Python function declared with the standard `def` keyword. Handlers can be simple or accept platform-provided objects and inputs. The runtime injects reserved arguments and provides helpers to map inputs and outputs.
 
 ??? example "Example"
 
@@ -37,8 +37,9 @@ There are 4 components to know when defining a Python function for the runtime:
 - [Inputs and parameters](#inputs-and-parameters){ .list-card-link }
 - [Handler and outputs](#handler-and-outputs){ .list-card-link }
 - [Init function](#init-function){ .list-card-link }
-- [Runtime-specific behavior](#runtime-specific-behavior){ .list-card-link }
 </div>
+
+For runtime-specific handler behavior, see the [OpenInference handler definition](../openinference/handler.md) or the [Guardrail handler definition](../guardrail/handler.md).
 
 ## Reserved arguments
 
@@ -93,7 +94,6 @@ Decorating a function with `@handler` (from `digitalhub_runtime_python`) allows 
         # produce a Dataitem and a primitive
         return pd.DataFrame, "some value"
 
-
     run = sdk_function.run(inputs={"di": sdk_dataitem.key},
                         parameters={"param1": "some value"},
                         ...)
@@ -141,58 +141,9 @@ When executing remotely, the Nuclio wrapper calls an `init` function (if present
         # initialization logic
         ...
 
-
     run = sdk_function.run(...,
                         init_parameters={"param1": "some value",
                                             "param2": "some value"})
     ```
 
-## Runtime-specific behavior
-
-The runtime-specific behavior section describes differences in how various runtimes handle function execution, inputs, outputs, and other aspects of the function lifecycle.
-
-### Openinference
-
-In addition to the common `project`, `run`, `context`, and `event` arguments, an OpenInference handler receives `request`, an OpenInference `InferRequest` object.
-
-The handler returns a response object containing the protocol outputs.
-
-??? example "Example"
-
-    ```python
-    def func(project, run, context, event, request):
-        run.log_metric("my-metric", -14.6)
-        image_bytes = request.inputs[0].data
-
-        return {
-            "outputs": [
-                {
-                    "name": "caption",
-                    "datatype": "BYTES",
-                    "data": [caption],
-                    "shape": [1, len(caption)],
-                }
-            ]
-        }
-    ```
-
-See the [Open Inference Protocol](https://github.com/open-inference/open-inference-protocol) for the protocol details.
-
-### Guardrail
-
-For a guardrail handler, the following assumptions apply:
-
-A - Eventual processing errors are suppressed and ignored by the middleware; the request passes through.
-
-B - To change the response status in pre-processing or post-processing mode, return a `nuclio_sdk.Response` structure containing a non-zero `status_code`.
-
-C - In `wrapprocessor` mode, return a `nuclio_sdk.Response` with the corresponding status code to prevent propagation to the upstream service.
-
-D - To distinguish the ExtProc processing phase, the processing-phase header is appended to the event object. Possible values are:
-
-   - process request headers: 1
-   - process request body: 2
-   - process response headers: 4
-   - process response body: 5
-
-{{ page_navigation(("Overview", "python/overview.md")) }}
+{{ page_navigation(("Overview", "overview.md")) }}

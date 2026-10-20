@@ -4,7 +4,7 @@ render_macros: true
 
 # Create a Flower Client Function
 
-Define a `flower-client` Function with an existing image or the source settings used by an automatic build.
+Define a `flower-client` Function with an image created by the client Build action.
 
 ## Parameters
 
@@ -17,13 +17,13 @@ Define a `flower-client` Function with an existing image or the source settings 
 | description | str | Description of the object. |
 | labels | list[str] | List of labels. |
 | embedded | bool | Whether to embed the object in the project. |
-| image | str | Existing Flower client container image. If omitted, `auto_build=True` builds it before deployment. |
-| base_image | str | Base Docker image used for an automatic build. |
-| [requirements](#requirements) | list[str] \| str | Python requirements used for an automatic build. |
+| image | str | Flower client container image used for deployment. |
+| base_image | str | Base Docker image used by the client Build action. |
+| [requirements](#requirements) | list[str] \| str | Python requirements installed by the client Build action. |
 
 ## Requirements
 
-Requirements can be a list of strings or a path to a supported requirements file. The SDK parses them when saving the Function. For an unversioned package available in the local environment, it may add the installed version; use an explicit version or constraint to avoid this inference.
+Requirements can be a list of strings or a path to a supported requirements file. The SDK parses them when saving the Function. For an unversioned package available in the local environment, it may add the installed version; use an explicit version or constraint to avoid this inference. Include the requirements in the [Flower Client Build action](../flower-client-build/action.md) before deployment.
 
 ## Example
 
@@ -34,7 +34,5 @@ function = dh.new_function(
     image="my-registry/my-flower-client:latest",
 )
 ```
-
-{{ member_doc("build", "digitalhub_runtime_flower.entities.function._base.entity.FunctionFlowerBuild") }}
 
 {{ page_navigation(("Action", "action.md"), ("Run", "run.md")) }}

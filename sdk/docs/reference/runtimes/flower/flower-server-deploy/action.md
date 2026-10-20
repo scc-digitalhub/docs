@@ -8,7 +8,10 @@ Use the `deploy` action to deploy a Flower server that coordinates federated-lea
 
 ## What the action does
 
-The server manages client communications and training rounds. If the Function has no image and `auto_build=True`, the runtime builds the image before deployment.
+The server manages client communications and training rounds using the image configured on the Function.
+
+!!! warning "Build requirements first"
+    If the Function has `requirements`, run the [Flower Server Build action](../flower-server-build/action.md) before deploying it so the dependencies are installed in its image.
 
 {{ overview_cards([
     ("Create", "create.md", "Configure the Flower server image and dependencies."),
