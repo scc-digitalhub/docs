@@ -2333,6 +2333,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../objects/model/kind/huggingface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugging Face
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../objects/model/kind/onnx/" class="md-nav__link">
         
   
@@ -12253,6 +12281,7 @@
 <tr>
 <th>Name</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -12260,116 +12289,139 @@
 <tr>
 <td>action</td>
 <td>str</td>
-<td>Action to execute. <strong>Required. Must be <code>compile</code>.</strong></td>
+<td>✓</td>
+<td>Action to execute. Must be <code>compile</code>.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#volumes">volumes</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>List of volumes.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#resources">resources</a></td>
 <td>dict</td>
+<td></td>
 <td>Resource values with optional <code>cpu</code>, <code>mem</code>, <code>gpu</code>, and <code>disk</code> keys.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">envs</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>Environment variables.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">secrets</a></td>
 <td>list[str]</td>
+<td></td>
 <td>List of secret names.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#profile">profile</a></td>
 <td>str</td>
+<td></td>
 <td>Profile template.</td>
 </tr>
 <tr>
 <td>model_path</td>
 <td>str</td>
+<td></td>
 <td>Relax IR model path or store key.</td>
 </tr>
 <tr>
 <td>target_architecture</td>
 <td>str</td>
+<td></td>
 <td>Target CPU profile. See <a href="../action/#target-architecture">target architectures</a>.</td>
 </tr>
 <tr>
 <td>opt_level</td>
 <td>int</td>
+<td></td>
 <td>TVM optimization level.</td>
 </tr>
 <tr>
 <td>cross_cc</td>
 <td>str</td>
+<td></td>
 <td>Cross-compiler command.</td>
 </tr>
 <tr>
 <td>exec_mode</td>
 <td>str</td>
+<td></td>
 <td>TVM execution mode.</td>
 </tr>
 <tr>
 <td>relax_pipeline</td>
 <td>str</td>
+<td></td>
 <td>Relax compilation pipeline.</td>
 </tr>
 <tr>
 <td>tir_pipeline</td>
 <td>str</td>
+<td></td>
 <td>TIR compilation pipeline.</td>
 </tr>
 <tr>
 <td>system_lib</td>
 <td>bool</td>
+<td></td>
 <td>Build a system library.</td>
 </tr>
 <tr>
 <td>params_path</td>
 <td>str</td>
+<td></td>
 <td>Model parameters path or store key.</td>
 </tr>
 <tr>
 <td>tag</td>
 <td>str</td>
+<td></td>
 <td>Tag for the compiled model.</td>
 </tr>
 <tr>
 <td>image</td>
 <td>str</td>
+<td></td>
 <td>TVM execution image.</td>
 </tr>
 <tr>
 <td>model</td>
 <td>str</td>
+<td></td>
 <td>Source model path or store key.</td>
 </tr>
 <tr>
 <td>format</td>
 <td>str</td>
+<td></td>
 <td>Source model format: <code>auto</code>, <code>onnx</code>, or <code>tflite</code>.</td>
 </tr>
 <tr>
 <td>ir_model</td>
 <td>str</td>
+<td></td>
 <td>Store key for the Relax IR model.</td>
 </tr>
 <tr>
 <td>so_model</td>
 <td>str</td>
+<td></td>
 <td>Store key for the compiled <code>model.so</code>.</td>
 </tr>
 <tr>
 <td>inputs</td>
 <td>dict[str, str]</td>
+<td></td>
 <td>Mapping of input names to Dataitem or store keys.</td>
 </tr>
 <tr>
 <td>local_execution</td>
 <td>bool</td>
+<td></td>
 <td>Execute the run locally instead of remotely.</td>
 </tr>
 </tbody>

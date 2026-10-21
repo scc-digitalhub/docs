@@ -2333,6 +2333,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../objects/model/kind/huggingface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugging Face
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../objects/model/kind/onnx/" class="md-nav__link">
         
   
@@ -12275,6 +12303,7 @@
 <tr>
 <th>Name</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -12282,56 +12311,67 @@
 <tr>
 <td>project</td>
 <td>str</td>
+<td>(✓)</td>
 <td>Project name. Required only when creating from the library; otherwise <strong>MUST NOT</strong> be set.</td>
 </tr>
 <tr>
 <td>name</td>
 <td>str</td>
-<td>Name that identifies the object. <strong>Required.</strong></td>
+<td>✓</td>
+<td>Name that identifies the object.</td>
 </tr>
 <tr>
 <td>kind</td>
 <td>str</td>
-<td>Function kind. Must be <code>vllmserve-speech</code>. <strong>Required.</strong></td>
+<td>✓</td>
+<td>Function kind. Must be <code>vllmserve-speech</code>.</td>
 </tr>
 <tr>
 <td>uuid</td>
 <td>str</td>
+<td></td>
 <td>Object ID in UUID4 format.</td>
 </tr>
 <tr>
 <td>description</td>
 <td>str</td>
+<td></td>
 <td>Description of the object.</td>
 </tr>
 <tr>
 <td>labels</td>
 <td>list[str]</td>
+<td></td>
 <td>List of labels.</td>
 </tr>
 <tr>
 <td>embedded</td>
 <td>bool</td>
+<td></td>
 <td>Whether to embed the object in the project.</td>
 </tr>
 <tr>
 <td>model_name</td>
 <td>str</td>
+<td></td>
 <td>Name of the model.</td>
 </tr>
 <tr>
 <td>image</td>
 <td>str</td>
+<td></td>
 <td>Docker image used to serve the model.</td>
 </tr>
 <tr>
 <td>url</td>
 <td>str</td>
+<td></td>
 <td>Model source URL.</td>
 </tr>
 <tr>
 <td><a href="#adapters">adapters</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>List of model adapters.</td>
 </tr>
 </tbody>

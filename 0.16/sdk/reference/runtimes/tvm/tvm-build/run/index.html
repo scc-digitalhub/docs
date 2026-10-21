@@ -2333,6 +2333,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../objects/model/kind/huggingface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugging Face
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../objects/model/kind/onnx/" class="md-nav__link">
         
   
@@ -12253,6 +12281,7 @@
 <tr>
 <th>Name</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -12260,101 +12289,121 @@
 <tr>
 <td>action</td>
 <td>str</td>
-<td>Action to execute. <strong>Required. Must be <code>build</code>.</strong></td>
+<td>✓</td>
+<td>Action to execute. Must be <code>build</code>.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#volumes">volumes</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>List of volumes.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#resources">resources</a></td>
 <td>dict</td>
+<td></td>
 <td>Resource values with optional <code>cpu</code>, <code>mem</code>, <code>gpu</code>, and <code>disk</code> keys.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">envs</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>Environment variables.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">secrets</a></td>
 <td>list[str]</td>
+<td></td>
 <td>List of secret names.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#profile">profile</a></td>
 <td>str</td>
+<td></td>
 <td>Profile template.</td>
 </tr>
 <tr>
 <td>image</td>
 <td>str</td>
+<td></td>
 <td>TVM execution image.</td>
 </tr>
 <tr>
 <td>simplify</td>
 <td>bool</td>
+<td></td>
 <td>Simplify the source model during conversion.</td>
 </tr>
 <tr>
 <td>target_opset</td>
 <td>int</td>
+<td></td>
 <td>Target ONNX opset.</td>
 </tr>
 <tr>
 <td>opset_override</td>
 <td>int</td>
+<td></td>
 <td>Override the source ONNX opset.</td>
 </tr>
 <tr>
 <td>strict_shape_inference</td>
 <td>bool</td>
+<td></td>
 <td>Enable strict shape inference.</td>
 </tr>
 <tr>
 <td>data_prop</td>
 <td>bool</td>
+<td></td>
 <td>Enable data propagation.</td>
 </tr>
 <tr>
 <td>keep_params_in_input</td>
 <td>bool</td>
+<td></td>
 <td>Keep model parameters as inputs.</td>
 </tr>
 <tr>
 <td>sanitize_input_names</td>
 <td>bool</td>
+<td></td>
 <td>Sanitize model input names.</td>
 </tr>
 <tr>
 <td>model</td>
 <td>str</td>
+<td></td>
 <td>Source model path or store key. Uses the Function's <code>model</code> when omitted.</td>
 </tr>
 <tr>
 <td>format</td>
 <td>str</td>
+<td></td>
 <td>Source model format: <code>auto</code>, <code>onnx</code>, or <code>tflite</code>.</td>
 </tr>
 <tr>
 <td>ir_model</td>
 <td>str</td>
+<td></td>
 <td>Store key for the Relax IR output.</td>
 </tr>
 <tr>
 <td>so_model</td>
 <td>str</td>
+<td></td>
 <td>Store key for a compiled model output.</td>
 </tr>
 <tr>
 <td>inputs</td>
 <td>dict[str, str]</td>
+<td></td>
 <td>Mapping of input names to Dataitem or store keys.</td>
 </tr>
 <tr>
 <td>local_execution</td>
 <td>bool</td>
+<td></td>
 <td>Execute the run locally instead of remotely.</td>
 </tr>
 </tbody>

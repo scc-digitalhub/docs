@@ -2333,6 +2333,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../objects/model/kind/huggingface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugging Face
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../objects/model/kind/onnx/" class="md-nav__link">
         
   
@@ -12253,6 +12281,7 @@
 <tr>
 <th>Name</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -12260,51 +12289,61 @@
 <tr>
 <td>action</td>
 <td>str</td>
-<td>Action to execute. <strong>Required. Must be <code>job</code>.</strong></td>
+<td>✓</td>
+<td>Action to execute. Must be <code>job</code>.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#volumes">volumes</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>List of volumes.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#resources">resources</a></td>
 <td>dict</td>
+<td></td>
 <td>Resource limits and requests. Applied to a single subtask, not the orchestrating launcher.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">envs</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>Environment variables.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">secrets</a></td>
 <td>list[str]</td>
+<td></td>
 <td>List of secret names.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#profile">profile</a></td>
 <td>str</td>
+<td></td>
 <td>Profile template. Applied to a single subtask, not the orchestrating launcher.</td>
 </tr>
 <tr>
 <td>local_execution</td>
 <td>bool</td>
+<td></td>
 <td>Execute locally instead of remotely. Defaults to <code>False</code>. Local dependencies must already be installed.</td>
 </tr>
 <tr>
 <td>parameters</td>
 <td>dict</td>
+<td></td>
 <td>Hydra configuration overrides passed to the function.</td>
 </tr>
 <tr>
 <td>init_parameters</td>
 <td>dict</td>
+<td></td>
 <td>Parameters supplied to the init function.</td>
 </tr>
 <tr>
 <td>workers</td>
 <td>int</td>
+<td></td>
 <td>Number of workers available for parallel execution.</td>
 </tr>
 </tbody>

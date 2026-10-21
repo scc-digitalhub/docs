@@ -2333,6 +2333,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../objects/model/kind/huggingface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugging Face
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../objects/model/kind/onnx/" class="md-nav__link">
         
   
@@ -12253,6 +12281,7 @@
 <tr>
 <th>Name</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -12260,71 +12289,85 @@
 <tr>
 <td>action</td>
 <td>str</td>
-<td>Action to execute. <strong>Required. Must be <code>serve</code></strong></td>
+<td>✓</td>
+<td>Action to execute. Must be <code>serve</code></td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#volumes">volumes</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>List of volumes.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#resources">resources</a></td>
 <td>dict</td>
+<td></td>
 <td>Resource values with optional <code>cpu</code>, <code>mem</code>, <code>gpu</code> and <code>disk</code> keys. Example: <code>{"cpu": "1", "mem": "512Mi"}</code>.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">envs</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>Environment variables. Example: <code>[{"name": "FOO", "value": "bar"}]</code>.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">secrets</a></td>
 <td>list[str]</td>
+<td></td>
 <td>List of secret names.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#profile">profile</a></td>
 <td>str</td>
+<td></td>
 <td>Profile template.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#replicas">replicas</a></td>
 <td>int</td>
+<td></td>
 <td>Number of replicas. Must be non-negative.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#service-port-and-type">service_ports</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>Ports to expose for the service. Each port and target port must be an integer. Example: <code>[{"port": 80, "target_port": 8080}]</code>.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#service-port-and-type">service_type</a></td>
 <td>str</td>
+<td></td>
 <td>Service type: <code>ClusterIP</code>, <code>LoadBalancer</code>, <code>NodePort</code> or <code>ExternalName</code>.</td>
 </tr>
 <tr>
 <td>service_name</td>
 <td>str</td>
+<td></td>
 <td>Service name.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#security-context">run_as_user</a></td>
 <td>int</td>
+<td></td>
 <td>User ID to run the container. Must be non-negative.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#security-context">run_as_group</a></td>
 <td>int</td>
+<td></td>
 <td>Group ID to run the container. Must be non-negative.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#security-context">fs_group</a></td>
 <td>int</td>
+<td></td>
 <td>File system group ID. Must be positive.</td>
 </tr>
 <tr>
 <td>args</td>
 <td>list[str]</td>
+<td></td>
 <td>Command-line arguments to pass to the container command.</td>
 </tr>
 </tbody>

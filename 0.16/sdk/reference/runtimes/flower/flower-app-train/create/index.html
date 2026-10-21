@@ -2333,6 +2333,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../objects/model/kind/huggingface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugging Face
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../objects/model/kind/onnx/" class="md-nav__link">
         
   
@@ -12319,6 +12347,7 @@
 <tr>
 <th>Name</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -12326,86 +12355,103 @@
 <tr>
 <td>project</td>
 <td>str</td>
+<td>(✓)</td>
 <td>Project name. Required only when creating from the library; otherwise <strong>MUST NOT</strong> be set.</td>
 </tr>
 <tr>
 <td>name</td>
 <td>str</td>
-<td>Name that identifies the object. <strong>Required.</strong></td>
+<td>✓</td>
+<td>Name that identifies the object.</td>
 </tr>
 <tr>
 <td>kind</td>
 <td>str</td>
-<td>Function kind. Must be <code>flower-app</code>. <strong>Required.</strong></td>
+<td>✓</td>
+<td>Function kind. Must be <code>flower-app</code>.</td>
 </tr>
 <tr>
 <td>uuid</td>
 <td>str</td>
+<td></td>
 <td>Object ID in UUID4 format.</td>
 </tr>
 <tr>
 <td>description</td>
 <td>str</td>
+<td></td>
 <td>Description of the object.</td>
 </tr>
 <tr>
 <td>labels</td>
 <td>list[str]</td>
+<td></td>
 <td>List of labels.</td>
 </tr>
 <tr>
 <td>embedded</td>
 <td>bool</td>
+<td></td>
 <td>Whether to embed the object in the project.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/code-sources/#code-source-uri">git_source</a></td>
 <td>str</td>
+<td></td>
 <td>Git repository URI containing a Flower application and its <code>pyproject.toml</code>. Do not set <code>client_app</code> or <code>server_app</code> when using this source.</td>
 </tr>
 <tr>
 <td><a href="#source-code">client_code</a></td>
 <td>str</td>
+<td></td>
 <td>Flower client source code as a Python string.</td>
 </tr>
 <tr>
 <td><a href="#source-code">server_code</a></td>
 <td>str</td>
+<td></td>
 <td>Flower server source code as a Python string.</td>
 </tr>
 <tr>
 <td><a href="#source-code">client_src</a></td>
 <td>str</td>
+<td></td>
 <td>Local path to a Flower client Python file.</td>
 </tr>
 <tr>
 <td><a href="#source-code">server_src</a></td>
 <td>str</td>
+<td></td>
 <td>Local path to a Flower server Python file.</td>
 </tr>
 <tr>
 <td><a href="#application-instances">client_app</a></td>
 <td>str</td>
+<td></td>
 <td>Name of the Flower client application instance.</td>
 </tr>
 <tr>
 <td><a href="#application-instances">server_app</a></td>
 <td>str</td>
+<td></td>
 <td>Name of the Flower server application instance.</td>
 </tr>
 <tr>
 <td>image</td>
 <td>str</td>
+<td></td>
 <td>Custom Docker image for execution.</td>
 </tr>
 <tr>
 <td>base_image</td>
 <td>str</td>
+<td></td>
 <td>Base Docker image to use.</td>
 </tr>
 <tr>
 <td><a href="#requirements">requirements</a></td>
 <td>list[str] | str</td>
+<td></td>
 <td>Additional Python requirements or a supported requirements file path.</td>
 </tr>
 </tbody>

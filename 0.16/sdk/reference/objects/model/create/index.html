@@ -2406,6 +2406,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../kind/huggingface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugging Face
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../kind/onnx/" class="md-nav__link">
         
   
@@ -12203,7 +12231,7 @@
 <p class="admonition-title">Install the model runtime</p>
 <p>Kind-specific <code>new_model(kind=...)</code>, <code>log_&lt;kind&gt;()</code>, and <code>register_&lt;kind&gt;()</code> operations depend on runtime packages. Install the matching package in the same Python environment as the SDK before using them:</p>
 <ul>
-<li><code>mlflow</code> and <code>sklearn</code>: <code>digitalhub-runtime-modelserve</code></li>
+<li><code>mlflow</code>, <code>sklearn</code>, and <code>huggingface</code>: <code>digitalhub-runtime-modelserve</code></li>
 <li><code>onnx</code>, <code>tflite</code>, <code>tvm-ir</code>, and <code>tvm-so</code>: <code>digitalhub-runtime-tvm</code></li>
 </ul>
 <p>The generic <code>model</code> kind is provided by the SDK and does not require an additional runtime. See the <a href="../../../../how-to/installation/">installation guide</a> for install commands.</p>
@@ -12215,7 +12243,7 @@
 <li><strong>Create with <code>new_model()</code></strong> creates an entity from an explicit kind and path without uploading a source. Each kind page below includes an example with its corresponding kind.</li>
 </ul>
 <h2 id="choose-a-model-kind">Choose a model kind</h2>
-<p>Each kind page documents its <code>log</code> and <code>register</code> functions, including their parameters and examples.</p>
+<p>Creation methods vary by kind. Each kind page documents the available functions, parameters, and examples.</p>
 <div class="list-cards">
 <ul>
 <li>
@@ -12226,6 +12254,9 @@
 </li>
 <li>
 <p><a class="list-card-link" href="../kind/sklearn/"><strong>Scikit-learn</strong></a> - Store a scikit-learn model - <code>sklearn</code></p>
+</li>
+<li>
+<p><a class="list-card-link" href="../kind/huggingface/"><strong>Hugging Face</strong></a> - Register or reference a Hugging Face model - <code>huggingface</code></p>
 </li>
 <li>
 <p><a class="list-card-link" href="../kind/onnx/"><strong>ONNX</strong></a> - Store an ONNX model - <code>onnx</code></p>

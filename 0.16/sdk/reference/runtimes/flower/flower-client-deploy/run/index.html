@@ -2333,6 +2333,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../objects/model/kind/huggingface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugging Face
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../objects/model/kind/onnx/" class="md-nav__link">
         
   
@@ -12253,6 +12281,7 @@
 <tr>
 <th>Name</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -12260,61 +12289,73 @@
 <tr>
 <td>action</td>
 <td>str</td>
-<td>Action to execute. <strong>Required. Must be <code>deploy</code>.</strong></td>
+<td>✓</td>
+<td>Action to execute. Must be <code>deploy</code>.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#volumes">volumes</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>List of volumes for deployment.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#resources">resources</a></td>
 <td>dict</td>
+<td></td>
 <td>Resource limits and requests.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">envs</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>Environment variables.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">secrets</a></td>
 <td>list[str]</td>
+<td></td>
 <td>List of secret names.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#profile">profile</a></td>
 <td>str</td>
+<td></td>
 <td>Profile template.</td>
 </tr>
 <tr>
 <td>superlink</td>
 <td>str</td>
+<td></td>
 <td>Flower SuperLink service endpoint.</td>
 </tr>
 <tr>
 <td>node_config</td>
 <td>dict</td>
+<td></td>
 <td>Flower client node configuration.</td>
 </tr>
 <tr>
 <td>root_certificates</td>
 <td>str</td>
+<td></td>
 <td>Root certificate content for secure communication.</td>
 </tr>
 <tr>
 <td>private_key_secret</td>
 <td>str</td>
+<td></td>
 <td><a href="../../../../objects/secret/entity/">Secret</a> containing the private key for secure communication.</td>
 </tr>
 <tr>
 <td>public_key_secret</td>
 <td>str</td>
+<td></td>
 <td><a href="../../../../objects/secret/entity/">Secret</a> containing the public key for secure communication.</td>
 </tr>
 <tr>
 <td>isolation</td>
 <td>str</td>
+<td></td>
 <td>Isolation mode: <code>process</code> or <code>subprocess</code>.</td>
 </tr>
 </tbody>

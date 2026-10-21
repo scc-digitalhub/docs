@@ -2333,6 +2333,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../objects/model/kind/huggingface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugging Face
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../objects/model/kind/onnx/" class="md-nav__link">
         
   
@@ -12275,6 +12303,7 @@
 <tr>
 <th>Name</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -12282,51 +12311,61 @@
 <tr>
 <td>action</td>
 <td>str</td>
-<td>Action to execute. <strong>Required. Must be <code>build</code></strong></td>
+<td>✓</td>
+<td>Action to execute. Must be <code>build</code></td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#volumes">volumes</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>List of volumes.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#resources">resources</a></td>
 <td>dict</td>
+<td></td>
 <td>Resource limits and requests.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">envs</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>Environment variables.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">secrets</a></td>
 <td>list[str]</td>
+<td></td>
 <td>List of secret names.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#profile">profile</a></td>
 <td>str</td>
+<td></td>
 <td>Profile template.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#replicas">replicas</a></td>
 <td>int</td>
+<td></td>
 <td>Number of replicas.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#service-port-and-type">service_type</a></td>
 <td>str</td>
+<td></td>
 <td>Service type.</td>
 </tr>
 <tr>
 <td>service_name</td>
 <td>str</td>
+<td></td>
 <td>Service name.</td>
 </tr>
 <tr>
 <td><a href="#instructions">instructions</a></td>
 <td>list[str]</td>
+<td></td>
 <td>Build instructions executed as <code>RUN</code> lines in the generated Dockerfile.</td>
 </tr>
 </tbody>

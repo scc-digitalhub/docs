@@ -2333,6 +2333,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../objects/model/kind/huggingface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugging Face
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../objects/model/kind/onnx/" class="md-nav__link">
         
   
@@ -12253,6 +12281,7 @@
 <tr>
 <th>Name</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -12260,71 +12289,85 @@
 <tr>
 <td>action</td>
 <td>str</td>
-<td>Action to execute. <strong>Required. Must be <code>serve</code></strong></td>
+<td>✓</td>
+<td>Action to execute. Must be <code>serve</code></td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#volumes">volumes</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>List of volumes.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#resources">resources</a></td>
 <td>dict</td>
+<td></td>
 <td>Resource limits and requests.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">envs</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>Environment variables.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">secrets</a></td>
 <td>list[str]</td>
+<td></td>
 <td>List of secret names.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#profile">profile</a></td>
 <td>str</td>
+<td></td>
 <td>Profile template.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#replicas">replicas</a></td>
 <td>int</td>
+<td></td>
 <td>Number of replicas.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#service-port-and-type">service_type</a></td>
 <td>str</td>
+<td></td>
 <td>Service type.</td>
 </tr>
 <tr>
 <td>service_name</td>
 <td>str</td>
+<td></td>
 <td>Service name.</td>
 </tr>
 <tr>
 <td>url</td>
 <td>str</td>
+<td></td>
 <td>URL of the vLLM service.</td>
 </tr>
 <tr>
 <td>args</td>
 <td>list[str]</td>
+<td></td>
 <td>Arguments for the vLLM server.</td>
 </tr>
 <tr>
 <td>enable_telemetry</td>
 <td>bool</td>
+<td></td>
 <td>Enable or disable telemetry.</td>
 </tr>
 <tr>
 <td>use_cpu_image</td>
 <td>bool</td>
+<td></td>
 <td>Use a CPU image for serving.</td>
 </tr>
 <tr>
 <td>storage_space</td>
 <td>str</td>
+<td></td>
 <td>Storage space for model artifacts.</td>
 </tr>
 </tbody>

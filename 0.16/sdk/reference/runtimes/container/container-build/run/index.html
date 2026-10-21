@@ -2333,6 +2333,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../objects/model/kind/huggingface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hugging Face
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../objects/model/kind/onnx/" class="md-nav__link">
         
   
@@ -12297,6 +12325,7 @@
 <tr>
 <th>Name</th>
 <th>Type</th>
+<th>Required</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -12304,51 +12333,61 @@
 <tr>
 <td>action</td>
 <td>str</td>
-<td>Action to execute. <strong>Required. Must be <code>build</code></strong></td>
+<td>✓</td>
+<td>Action to execute. Must be <code>build</code></td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#volumes">volumes</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>List of volumes.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#resources">resources</a></td>
 <td>dict</td>
+<td></td>
 <td>Resource values with optional <code>cpu</code>, <code>mem</code>, <code>gpu</code> and <code>disk</code> keys. Example: <code>{"cpu": "1", "mem": "512Mi"}</code>.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">envs</a></td>
 <td>list[dict]</td>
+<td></td>
 <td>Environment variables. Example: <code>[{"name": "FOO", "value": "bar"}]</code>.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#secrets-and-envs">secrets</a></td>
 <td>list[str]</td>
+<td></td>
 <td>List of secret names.</td>
 </tr>
 <tr>
 <td><a href="../../../../configuration/kubernetes/#profile">profile</a></td>
 <td>str</td>
+<td></td>
 <td>Profile template.</td>
 </tr>
 <tr>
 <td><a href="#instructions">instructions</a></td>
 <td>list[str]</td>
+<td></td>
 <td>Build instructions executed as <code>RUN</code> lines in the generated Dockerfile.</td>
 </tr>
 <tr>
 <td>base_image</td>
 <td>str</td>
+<td></td>
 <td>Optional override for the base image used by this build run.</td>
 </tr>
 <tr>
 <td>image</td>
 <td>str</td>
+<td></td>
 <td>Optional target image name:tag to build/push.</td>
 </tr>
 <tr>
 <td>args</td>
 <td>list[str]</td>
+<td></td>
 <td>Command-line arguments to pass to the container command.</td>
 </tr>
 </tbody>
