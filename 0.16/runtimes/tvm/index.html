@@ -1989,6 +1989,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#configurable-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurable profiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicit-target-for-one-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicit target for one run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#compile-options" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2917,6 +2939,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#configurable-profiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurable profiles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicit-target-for-one-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicit target for one run
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#compile-options" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3602,8 +3646,8 @@ The model, OS and runtime must also agree on bitness and ABI. <code>auto</code> 
 native CPU optimization; <code>arm64_pi5</code> is not portable to Pi 3/4.</p>
 <p>Legacy API values remain accepted: <code>cpu</code>/<code>llvm</code> → <code>auto</code>, <code>x86</code> → <code>amd64</code>,
 <code>x86_v3</code> → <code>amd64_v3</code>, <code>x86_native</code> → <code>amd64_native</code>, <code>armv7l</code> → <code>arm32</code>.
-New saves use the new names. Existing database records are not migrated automatically:
-reselect the profile once when editing an old task in the console.
+Aliases are resolved from the configuration; stored run values are not rewritten.
+The console shows the canonical profile names.
 LLVM triples, compiler names and container platforms keep their standard names.</p>
 <div class="admonition note">
 <p class="admonition-title">Runtime images and CORE's init image</p>
@@ -3612,11 +3656,67 @@ and inference remain supported. CORE's default init image covers only AMD64 and
 ARM64, so serving on an ARM32 cluster node also requires an ARMv7-compatible init
 image to download the model. Standalone serving with a mounted model does not use it.</p>
 </div>
-<ul>
-<li>The <strong>ARM targets are cross-compiled</strong> with the ARM compiler included in the toolkit image: the Job does not need to run on the target device.</li>
-<li>The toolkit image supports <code>amd64</code> and <code>arm64</code>. In a mixed-architecture cluster, use a resource <code>profile</code> with a suitable node selector to place <code>build</code> and <code>compile</code> Jobs on compatible nodes; the runtime does not automatically enforce this restriction for every Job.</li>
-<li>The <strong>AMD64 profiles</strong> are compiled on an <code>amd64</code> node, which the platform selects by itself.</li>
-</ul>
+<p>The compiler host and the model destination are independent:</p>
+<table>
+<thead>
+<tr>
+<th>Toolkit host</th>
+<th>Model destinations included in the image</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AMD64</td>
+<td>AMD64, ARM64, ARM32 (ARMv7 hard-float)</td>
+</tr>
+<tr>
+<td>ARM64</td>
+<td>AMD64, ARM64, ARM32 (ARMv7 hard-float)</td>
+</tr>
+</tbody>
+</table>
+<p>Only <code>amd64_native</code> requires an AMD64 compile node. <code>auto</code> generates generic code
+for the compile node. Use the existing run profile to select a compatible toolkit
+node; there is no ARM32 toolkit image.</p>
+<h3 id="configurable-profiles">Configurable profiles</h3>
+<p>Platform administrators configure profiles in CORE's <code>runtime-tvm.yaml</code>. The YAML
+reader supplies the same catalogue to the compiler and console schema; neither Java
+nor the SDK contains a fixed target enumeration.</p>
+<p>Mount an override file and set <code>RUNTIME_TVM_CONFIG=file:/etc/digitalhub/runtime-tvm.yaml</code>,
+then restart CORE. Entries merge with the bundled profiles:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">runtime</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tvm</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">targets</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">arm64_pi4</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Raspberry Pi 4 - ARM 64-bit (Cortex-A72)</span>
+<span class="w">        </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="s">'{"kind":"llvm","mtriple":"aarch64-linux-gnu","mcpu":"cortex-a72"}'</span>
+<span class="w">        </span><span class="nt">cross-cc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aarch64-linux-gnu-g++</span>
+</code></pre></div>
+<p>The new profile is selected as <code>target_architecture: arm64_pi4</code>. Optional profile
+fields are <code>cross-cc-options</code> (a list of arguments), <code>aliases</code> (alternative names),
+and <code>compiler-architecture</code> (a Kubernetes architecture label for the compile node).
+Compiler settings supplied on the Run take precedence.
+For compiler arguments, choose <strong>Profile defaults</strong> to inherit the YAML configuration,
+or <strong>Custom arguments</strong> to replace it. An explicit empty list clears those defaults.</p>
+<h3 id="explicit-target-for-one-run">Explicit target for one run</h3>
+<p>For an advanced, one-off configuration, omit <code>target_architecture</code> or leave it at
+<code>auto</code>, then provide a standard TVM LLVM target:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">target</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llvm</span>
+<span class="w">  </span><span class="nt">mtriple</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aarch64-linux-gnu</span>
+<span class="w">  </span><span class="nt">mcpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cortex-a72</span>
+<span class="nt">optimization</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cross_cc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aarch64-linux-gnu-g++</span>
+<span class="w">  </span><span class="nt">cross_cc_options</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+</code></pre></div>
+<p>Do not combine an explicit target with another profile. <code>cross_cc_options</code> passes
+arguments separately; for example <code>["--sysroot=/opt/sysroots/arm64"]</code> uses target
+libraries at that path <strong>inside the compile container</strong>.</p>
+<p>The compiler links a small LLVM object before processing the model, so a missing
+or incompatible toolchain fails early. Another CPU family may require a custom
+<code>image</code> with its LLVM backend, compiler and target libraries. Configuring its name
+does not add a runtime image. This integration remains Linux/CPU; Jetson Orin CUDA
+needs a separate GPU integration.</p>
 <h3 id="compile-options">Compile options</h3>
 <p>All fields are optional.</p>
 <table>
@@ -3632,6 +3732,11 @@ image to download the model. Standalone serving with a mounted model does not us
 <td><code style="white-space: nowrap">target_architecture</code></td>
 <td><code>auto</code></td>
 <td>Target CPU profile, from the table above.</td>
+</tr>
+<tr>
+<td><code>target</code></td>
+<td>—</td>
+<td>Explicit standard LLVM target object, instead of a non-auto profile.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">target_num_cores</code></td>
@@ -3660,13 +3765,18 @@ image to download the model. Standalone serving with a mounted model does not us
 </tr>
 <tr>
 <td><code>cross_cc</code></td>
-<td>set by target</td>
-<td>C++ cross compiler. Filled in automatically for the ARM targets (<code>aarch64-linux-gnu-g++</code>, <code>arm-linux-gnueabihf-g++</code>): set it only to use another compiler.</td>
+<td>set by profile</td>
+<td>C++ compiler linking <code>model.so</code>. Explicit cross targets must supply the matching compiler.</td>
+</tr>
+<tr>
+<td><code>cross_cc_options</code></td>
+<td><code>[]</code></td>
+<td>Compiler argument list, including optional sysroot/library paths inside the Job.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">benchmark_runs</code></td>
 <td><code>10</code></td>
-<td>Timed inferences of the finished <code>model.so</code>, saved in <code>metadata.json</code>. <code>0</code> turns it off. Skipped for cross-compiled targets.</td>
+<td>Timed inferences saved in <code>metadata.json</code>; <code>0</code> disables them. Skipped when the target cannot execute on the compile host.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">relax_pipeline</code></td>
@@ -3882,6 +3992,9 @@ image to download the model. Standalone serving with a mounted model does not us
 </tbody>
 </table>
 <p><code>target_triple</code> is the architecture of the code, such as <code>x86_64-pc-linux-gnu</code> or <code>aarch64-linux-gnu</code>: the platform reads it to choose the nodes of the service.</p>
+<p><code>toolchain</code> records the compiler executable, its argument list and the compiler
+host triple. These identify how the library was linked; they do not change where
+the compiled model can run.</p>
 <hr />
 <h2 id="model-optimization">Model Optimization</h2>
 <p>On CPU, an untuned model works, but it can be several times slower than ONNX Runtime: TVM has no ready-made optimized code for the operators. <strong>Tuning</strong> with MetaSchedule measures many variants of each operator on the real hardware and keeps the fastest ones.</p>
@@ -4110,6 +4223,10 @@ image to download the model. Standalone serving with a mounted model does not us
 </tr>
 </tbody>
 </table>
+<p>Failed candidates are counted in <code>tuning/errors.json</code>, which also records the first
+error returned by TVM. The Job log shows that cause directly. On a busy node, set
+larger builder/runner timeouts explicitly. Compilation stops before publication
+when the database has no valid records.</p>
 <h3 id="tuning-on-a-device">Tuning on a device</h3>
 <p>A Job running on an x86 node cannot measure ARM code. To tune for an ARM device, register the device with a TVM RPC tracker and let the Job measure on it, or <code>apply</code> a database tuned on the device.</p>
 <table>
@@ -4148,7 +4265,13 @@ image to download the model. Standalone serving with a mounted model does not us
 </tr>
 </tbody>
 </table>
-<p>Settings that cannot work stop the run at once, in state <strong>ERROR</strong> with a message that explains why: for example <code>tune</code> without <code>tuning_trials</code>, <code>apply</code> without <code>tuning_model_path</code>, or local tuning of an ARM target.</p>
+<p>CORE rejects missing tuning budgets and databases. The compile Job checks the actual
+host architecture, ABI and CPU instructions detectable by LLVM before local
+measurements; this is not an exhaustive CPU compatibility certification. ARM targets can
+be tuned locally on compatible ARM nodes; using <code>cross_cc</code> is not itself a reason
+to reject local tuning or skip a benchmark. Otherwise use RPC or apply a matching
+database. RPC receives candidates linked with the same compiler/options as the
+final model. CPU-feature checks are conservative, not a certification of every device.</p>
 <h3 id="tips">Tips</h3>
 <ul>
 <li><strong>Budget.</strong> Give at least <code>tasks × min(64, max_trials_per_task)</code> trials, so that every task is measured once. The compile log prints the number of tasks and this minimum; 64 to 256 trials per task is a good range.</li>
@@ -4459,6 +4582,10 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 </tbody>
 </table>
 <p>The platform chooses the script from the action and the source format, and passes every option of the run as an environment variable (<code>TVM_TARGET</code>, <code>TVM_OPT_LEVEL</code>, ...). When the script ends, the platform copies the key of the published Model into the function field <code>ir_model</code> or <code>so_model</code>.</p>
+<p>Publication uses direct HTTP calls to Core, not the DigitalHub SDK. Core supplies
+signed upload URLs and the storage path. The scripts upload the artifacts, including
+large files through multipart uploads, register the Model and verify the run output.
+The <code>DHCORE_*</code> credentials are used only for Core and are not forwarded to storage.</p>
 <hr />
 <h2 id="serving-runtimes">Serving runtimes</h2>
 <p>The <code>serve</code> action can use two images. They read the same model folder, expose the same endpoints on the same ports and accept the same requests. Go is the platform default; use the <code>image</code> field to choose another serve image for a single run:</p>

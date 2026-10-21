@@ -12254,7 +12254,15 @@
 <li>Python &gt;= 3.10, &lt; 3.15.</li>
 <li>Install <code>digitalhub-runtime-tvm</code> using the <a href="../../../../how-to/installation/#tvm">installation instructions</a>.</li>
 </ul>
-<p>Run the actions in order: <strong>Build → Compile → Serve</strong>. Configure the Function with the source model and format; use <code>ir_model</code> and <code>so_model</code> store keys to pass artifacts between actions.</p>
+<p>Run the actions in order: <strong>Build → Compile → Serve</strong>. Configure the Function with
+the source model and format. CORE updates its <code>ir_model</code> and <code>so_model</code> references
+after successful runs; the next action uses them unless the Run sets <code>model_path</code>.</p>
+<p>TVM-specific options belong to each <strong>Run</strong>. Reusable <strong>Tasks</strong> contain common
+settings: resources, profiles, environment variables, secrets and volumes.
+Compile CPU profiles come from CORE's <code>runtime-tvm.yaml</code>; advanced runs can provide
+a standard LLVM target instead.</p>
+<p>TVM actions run on Kubernetes through CORE. Running a compiled model directly in
+a local Go/Rust container is distinct from an SDK <code>local_execution</code> implementation.</p>
 <h2 id="actions">Actions</h2>
 <div class="list-cards">
 <ul>

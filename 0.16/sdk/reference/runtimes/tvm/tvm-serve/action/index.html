@@ -12254,7 +12254,9 @@
 <h1 id="tvm-serve">TVM Serve</h1>
 <p>Use the <code>serve</code> action to deploy a compiled TVM <code>model.so</code> as a service on Kubernetes.</p>
 <h2 id="what-the-action-does">What the action does</h2>
-<p>Configure the compiled model path, served model name, replicas and workers for the service.</p>
+<p>The Run uses <code>function.so_model</code> unless it supplies <code>model_path</code>. Configure the
+served model name, replicas and workers on the Run; reusable Tasks contain common
+infrastructure settings.</p>
 <div class="grid cards entity-overview-cards">
 <ul>
 <li>

@@ -7391,6 +7391,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#optimization-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optimization settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tuning-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tuning settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explicit-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicit target
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12128,6 +12161,39 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#optimization-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optimization settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tuning-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tuning settings
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explicit-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Explicit target
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -12274,7 +12340,8 @@
 
 
 <h1 id="compile-a-tvm-model">Compile a TVM Model</h1>
-<p>Call <code>function.run(action="compile", ...)</code> with the Relax IR path and target settings.</p>
+<p>Call <code>function.run(action="compile", ...)</code> with the target settings. The Run uses
+<code>function.ir_model</code> unless you set <code>model_path</code> explicitly.</p>
 <h2 id="parameters">Parameters</h2>
 <table>
 <thead>
@@ -12326,55 +12393,31 @@
 <td>model_path</td>
 <td>str</td>
 <td></td>
-<td>Relax IR model path or store key.</td>
+<td>Optional IR override; otherwise uses <code>function.ir_model</code>.</td>
 </tr>
 <tr>
 <td>target_architecture</td>
 <td>str</td>
 <td></td>
-<td>Target CPU profile. See <a href="../action/#target-architecture">target architectures</a>.</td>
+<td>Profile from CORE's YAML catalogue; default <code>auto</code>. See <a href="../action/#target-architecture">target architectures</a>.</td>
 </tr>
 <tr>
-<td>opt_level</td>
-<td>int</td>
+<td>target</td>
+<td>dict</td>
 <td></td>
-<td>TVM optimization level.</td>
+<td>Explicit standard LLVM target; omit the profile or leave it at <code>auto</code>.</td>
 </tr>
 <tr>
-<td>cross_cc</td>
-<td>str</td>
+<td>optimization</td>
+<td>dict</td>
 <td></td>
-<td>Cross-compiler command.</td>
+<td>Compiler settings described below.</td>
 </tr>
 <tr>
-<td>exec_mode</td>
-<td>str</td>
+<td>tuning</td>
+<td>dict</td>
 <td></td>
-<td>TVM execution mode.</td>
-</tr>
-<tr>
-<td>relax_pipeline</td>
-<td>str</td>
-<td></td>
-<td>Relax compilation pipeline.</td>
-</tr>
-<tr>
-<td>tir_pipeline</td>
-<td>str</td>
-<td></td>
-<td>TIR compilation pipeline.</td>
-</tr>
-<tr>
-<td>system_lib</td>
-<td>bool</td>
-<td></td>
-<td>Build a system library.</td>
-</tr>
-<tr>
-<td>params_path</td>
-<td>str</td>
-<td></td>
-<td>Model parameters path or store key.</td>
+<td>MetaSchedule settings described below; mode defaults to <code>off</code>.</td>
 </tr>
 <tr>
 <td>tag</td>
@@ -12389,52 +12432,119 @@
 <td>TVM execution image.</td>
 </tr>
 <tr>
-<td>model</td>
-<td>str</td>
-<td></td>
-<td>Source model path or store key.</td>
-</tr>
-<tr>
-<td>format</td>
-<td>str</td>
-<td></td>
-<td>Source model format: <code>auto</code>, <code>onnx</code>, or <code>tflite</code>.</td>
-</tr>
-<tr>
-<td>ir_model</td>
-<td>str</td>
-<td></td>
-<td>Store key for the Relax IR model.</td>
-</tr>
-<tr>
-<td>so_model</td>
-<td>str</td>
-<td></td>
-<td>Store key for the compiled <code>model.so</code>.</td>
-</tr>
-<tr>
 <td>inputs</td>
 <td>dict[str, str]</td>
 <td></td>
 <td>Mapping of input names to Dataitem or store keys.</td>
 </tr>
+</tbody>
+</table>
+<p>TVM options belong to the Run. Reusable Tasks contain only common infrastructure
+settings, for example:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">task</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">new_task</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"compile"</span><span class="p">,</span> <span class="n">resources</span><span class="o">=</span><span class="p">{</span><span class="s2">"cpu"</span><span class="p">:</span> <span class="s2">"4"</span><span class="p">,</span> <span class="s2">"mem"</span><span class="p">:</span> <span class="s2">"8Gi"</span><span class="p">})</span>
+</span></code></pre></div>
+<h2 id="example">Example</h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">action</span><span class="o">=</span><span class="s2">"compile"</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">target_architecture</span><span class="o">=</span><span class="s2">"amd64"</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">optimization</span><span class="o">=</span><span class="p">{</span><span class="s2">"opt_level"</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">)</span>
+</span></code></pre></div>
+<h2 id="optimization-settings">Optimization settings</h2>
+<p>These fields go inside <code>optimization</code>. Flat keyword arguments are also accepted;
+explicit grouped values take precedence.</p>
+<table>
+<thead>
 <tr>
-<td>local_execution</td>
-<td>bool</td>
-<td></td>
-<td>Execute the run locally instead of remotely.</td>
+<th>Field</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>target_num_cores</code></td>
+<td>Job CPU request</td>
+<td>Threads used to optimize the target.</td>
+</tr>
+<tr>
+<td><code>opt_level</code></td>
+<td><code>3</code></td>
+<td>TVM optimization level, 0–3.</td>
+</tr>
+<tr>
+<td><code>cross_cc</code></td>
+<td>profile default</td>
+<td>C++ compiler linking <code>model.so</code>.</td>
+</tr>
+<tr>
+<td><code>cross_cc_options</code></td>
+<td>profile defaults</td>
+<td>Separate compiler arguments; e.g. <code>["--sysroot=/opt/sysroots/arm64"]</code>. An explicit <code>[]</code> clears profile arguments.</td>
+</tr>
+<tr>
+<td><code>exec_mode</code></td>
+<td><code>bytecode</code></td>
+<td>Relax VM <code>bytecode</code> or <code>compiled</code> graph execution.</td>
+</tr>
+<tr>
+<td><code>relax_pipeline</code>, <code>tir_pipeline</code></td>
+<td><code>default</code></td>
+<td>Standard TVM pipeline names.</td>
+</tr>
+<tr>
+<td><code>benchmark_runs</code></td>
+<td><code>10</code></td>
+<td>Timed inferences on a compatible compile host; <code>0</code> disables them.</td>
+</tr>
+<tr>
+<td><code>system_lib</code></td>
+<td><code>false</code></td>
+<td>Static/system library mode; not supported by the serve images.</td>
+</tr>
+<tr>
+<td><code>params_path</code></td>
+<td>IR <code>params.bin</code></td>
+<td>Optional weights path inside the compile container.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="example">Example</h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">action</span><span class="o">=</span><span class="s2">"compile"</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">model_path</span><span class="o">=</span><span class="s2">"store://my-project/model/model-relax:version"</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">target_architecture</span><span class="o">=</span><span class="s2">"auto"</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">opt_level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">)</span>
+<h2 id="tuning-settings">Tuning settings</h2>
+<p>Use <code>tuning={"tuning_mode": "off"}</code> to compile without tuning. Inactive values are
+preserved but not applied. <code>apply</code> needs <code>tuning_model_path</code>; <code>tune</code> needs a positive
+<code>tuning_trials</code> budget. Databases must match the model, effective target and TVM build.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="s2">"compile"</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">target_architecture</span><span class="o">=</span><span class="s2">"amd64_native"</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">optimization</span><span class="o">=</span><span class="p">{</span><span class="s2">"target_num_cores"</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">tuning</span><span class="o">=</span><span class="p">{</span><span class="s2">"tuning_mode"</span><span class="p">:</span> <span class="s2">"tune"</span><span class="p">,</span> <span class="s2">"tuning_trials"</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span> <span class="s2">"tuning_runner"</span><span class="p">:</span> <span class="s2">"local"</span><span class="p">},</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">)</span>
 </span></code></pre></div>
+<p>Further tuning fields:</p>
+<ul>
+<li>Search: <code>max_trials_per_task</code>, <code>tuning_trials_per_iter</code>, <code>tuning_workers</code>,
+  <code>tuning_seed</code>, <code>tuning_ops</code>, <code>allow_partial_tuning</code>.</li>
+<li>Measurements: <code>tuning_number</code>, <code>tuning_repeat</code>, <code>tuning_min_repeat_ms</code>,
+  <code>tuning_alloc_repeat</code>, <code>tuning_enable_cpu_cache_flush</code>.</li>
+<li>Timeouts: <code>tuning_builder_timeout_sec</code>, <code>tuning_runner_timeout_sec</code>.</li>
+<li>RPC: <code>rpc_tracker_host</code>, <code>rpc_tracker_port</code>, <code>rpc_tracker_key</code>,
+  <code>rpc_session_timeout_sec</code>, with <code>tuning_runner="rpc"</code>.</li>
+</ul>
+<p>Local tuning checks the actual compile host, not the presence of <code>cross_cc</code>.
+For an incompatible target, measure on an RPC device or apply an existing database.</p>
+<h2 id="explicit-target">Explicit target</h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="s2">"compile"</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">target</span><span class="o">=</span><span class="p">{</span><span class="s2">"kind"</span><span class="p">:</span> <span class="s2">"llvm"</span><span class="p">,</span> <span class="s2">"mtriple"</span><span class="p">:</span> <span class="s2">"aarch64-linux-gnu"</span><span class="p">,</span> <span class="s2">"mcpu"</span><span class="p">:</span> <span class="s2">"cortex-a72"</span><span class="p">},</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">optimization</span><span class="o">=</span><span class="p">{</span><span class="s2">"cross_cc"</span><span class="p">:</span> <span class="s2">"aarch64-linux-gnu-g++"</span><span class="p">},</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>The target uses standard TVM keys. The selected <code>image</code> must contain the matching
+LLVM backend, compiler and libraries. Adding a target does not add a serving image,
+and this pipeline does not enable GPU/CUDA execution.</p>
 <div class="runtime-page-navigation">
 <p><a class="md-button" href="../create/">Create</a></p>
 <p><a class="md-button" href="../use/">Use</a></p>

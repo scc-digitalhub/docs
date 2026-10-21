@@ -2984,6 +2984,11 @@ dhcli<span class="w"> </span>log<span class="w"> </span>&lt;run-id&gt;<span clas
 </div>
 <h2 id="4-compile-for-the-cluster-amd64">4. Compile for the cluster (AMD64)</h2>
 <p><code>compile</code> turns the IR into <code>model.so</code> for a target architecture. First we compile for AMD64 (Intel/AMD 64-bit), to serve the model on the cluster.</p>
+<p>The model destination is not the compiler node: the toolkit can compile this AMD64
+model on AMD64 or ARM64. Only <code>amd64_native</code> requires an AMD64 compile node.
+The profile menu comes from CORE's <code>runtime-tvm.yaml</code>; administrators can add profiles
+without changing the SDK. Advanced runs can instead set a standard LLVM <code>target</code>
+object and compiler options, as described in the <a href="../../../runtimes/tvm/#configurable-profiles">target guide</a>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Console</label><label for="__tabbed_4_2">CLI</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">

@@ -12254,7 +12254,9 @@
 <h1 id="tvm-build">TVM Build</h1>
 <p>Use the <code>build</code> action to convert an ONNX or TFLite source model into Relax IR.</p>
 <h2 id="what-the-action-does">What the action does</h2>
-<p>The resulting Relax IR artifact can be passed to the <code>compile</code> action as <code>model_path</code> or referenced through the Function's <code>ir_model</code> field.</p>
+<p>CORE records the resulting Relax IR artifact in the Function's <code>ir_model</code> field.
+The <code>compile</code> action uses it automatically; set its Run's <code>model_path</code> only to
+choose a different IR artifact. Conversion options belong to the Run, not the Task.</p>
 <div class="grid cards entity-overview-cards">
 <ul>
 <li>

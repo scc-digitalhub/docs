@@ -12276,9 +12276,19 @@
 <h1 id="tvm-compile">TVM Compile</h1>
 <p>Use the <code>compile</code> action to compile a Relax IR model for a target architecture and produce a deployable <code>model.so</code>.</p>
 <h2 id="what-the-action-does">What the action does</h2>
-<p>Select a target CPU profile and optional compiler and TVM pipeline settings to produce the compiled artifact.</p>
+<p>Select a target CPU profile and optional compiler and TVM pipeline settings to produce
+the compiled artifact. These settings belong to the Run; reusable Tasks contain only
+common infrastructure settings. CORE records the result in <code>function.so_model</code>.</p>
 <h2 id="target-architecture">Target architecture</h2>
-<p>Supported targets include <code>auto</code>, <code>amd64</code>, <code>amd64_v3</code>, <code>amd64_native</code>, <code>arm64</code>, <code>arm64_pi5</code>, and <code>arm32</code>. <code>auto</code> uses the compile node's architecture. Older aliases <code>cpu</code>/<code>llvm</code>, <code>x86</code>, <code>x86_v3</code>, <code>x86_native</code>, and <code>armv7l</code> map to <code>auto</code>, <code>amd64</code>, <code>amd64_v3</code>, <code>amd64_native</code>, and <code>arm32</code>.</p>
+<p>Profiles come from CORE's <code>runtime-tvm.yaml</code>; the SDK accepts configured names rather
+than a fixed enumeration. The bundled profiles are <code>auto</code>, <code>amd64</code>, <code>amd64_v3</code>,
+<code>amd64_native</code>, <code>arm64</code>, <code>arm64_pi5</code>, and <code>arm32</code>.</p>
+<p><code>amd64</code> means Intel/AMD 64-bit (x86-64-v2); <code>arm64</code> means ARM 64-bit (AArch64);
+<code>arm32</code> requires ARMv7 hard-float with NEON. <code>auto</code> uses the compile node's architecture.
+Older aliases <code>cpu</code>/<code>llvm</code>, <code>x86</code>, <code>x86_v3</code>, <code>x86_native</code>, and <code>armv7l</code> map to <code>auto</code>,
+<code>amd64</code>, <code>amd64_v3</code>, <code>amd64_native</code>, and <code>arm32</code>.</p>
+<p>Advanced runs can provide an <a href="../run/#explicit-target">explicit LLVM target</a> instead
+of selecting a profile.</p>
 <div class="grid cards entity-overview-cards">
 <ul>
 <li>
