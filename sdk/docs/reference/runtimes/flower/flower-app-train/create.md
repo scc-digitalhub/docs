@@ -8,25 +8,25 @@ Create a `flower-app` Function from a Flower project in Git or provide the clien
 
 ## Parameters
 
-| Name | Type | Description |
-| --- | --- | --- |
-| project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
-| name | str | Name that identifies the object. **Required.** |
-| kind | str | Function kind. Must be `flower-app`. **Required.** |
-| uuid | str | Object ID in UUID4 format. |
-| description | str | Description of the object. |
-| labels | list[str] | List of labels. |
-| embedded | bool | Whether to embed the object in the project. |
-| [git_source](../../../configuration/code-sources.md#code-source-uri) | str | Git repository URI containing a Flower application and its `pyproject.toml`. Do not set `client_app` or `server_app` when using this source. |
-| [client_code](#source-code) | str | Flower client source code as a Python string. |
-| [server_code](#source-code) | str | Flower server source code as a Python string. |
-| [client_src](#source-code) | str | Local path to a Flower client Python file. |
-| [server_src](#source-code) | str | Local path to a Flower server Python file. |
-| [client_app](#application-instances) | str | Name of the Flower client application instance. |
-| [server_app](#application-instances) | str | Name of the Flower server application instance. |
-| image | str | Custom Docker image for execution. |
-| base_image | str | Base Docker image to use. |
-| [requirements](#requirements) | list[str] \| str | Additional Python requirements or a supported requirements file path. |
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| project | str | (✓) | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
+| name | str | ✓ | Name that identifies the object. |
+| kind | str | ✓ | Function kind. Must be `flower-app`. |
+| uuid | str | | Object ID in UUID4 format. |
+| description | str | | Description of the object. |
+| labels | list[str] | | List of labels. |
+| embedded | bool | | Whether to embed the object in the project. |
+| [git_source](../../../configuration/code-sources.md#code-source-uri) | str | | Git repository URI containing a Flower application and its `pyproject.toml`. Do not set `client_app` or `server_app` when using this source. |
+| [client_code](#source-code) | str | | Flower client source code as a Python string. |
+| [server_code](#source-code) | str | | Flower server source code as a Python string. |
+| [client_src](#source-code) | str | | Local path to a Flower client Python file. |
+| [server_src](#source-code) | str | | Local path to a Flower server Python file. |
+| [client_app](#application-instances) | str | | Name of the Flower client application instance. |
+| [server_app](#application-instances) | str | | Name of the Flower server application instance. |
+| image | str | | Custom Docker image for execution. |
+| base_image | str | | Base Docker image to use. |
+| [requirements](#requirements) | list[str] \| str | | Additional Python requirements or a supported requirements file path. |
 
 ## Source code
 

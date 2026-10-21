@@ -8,18 +8,18 @@ Define a `flower-client` Function with its source dependencies and optional imag
 
 ## Parameters
 
-| Name | Type | Description |
-| --- | --- | --- |
-| project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
-| name | str | Name that identifies the object. **Required.** |
-| kind | str | Function kind. Must be `flower-client`. **Required.** |
-| uuid | str | Object ID in UUID4 format. |
-| description | str | Description of the object. |
-| labels | list[str] | List of labels. |
-| embedded | bool | Whether to embed the object in the project. |
-| image | str | Custom image name for the built container. |
-| base_image | str | Base Docker image to use for the build. |
-| [requirements](#requirements) | list[str] \| str | Additional Python requirements or a supported requirements file path. |
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| project | str | (✓) | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
+| name | str | ✓ | Name that identifies the object. |
+| kind | str | ✓ | Function kind. Must be `flower-client`. |
+| uuid | str | | Object ID in UUID4 format. |
+| description | str | | Description of the object. |
+| labels | list[str] | | List of labels. |
+| embedded | bool | | Whether to embed the object in the project. |
+| image | str | | Custom image name for the built container. |
+| base_image | str | | Base Docker image to use for the build. |
+| [requirements](#requirements) | list[str] \| str | | Additional Python requirements or a supported requirements file path. |
 
 ## Requirements
 

@@ -8,30 +8,30 @@ Define a `hydra` Function with its Python source, configuration and execution se
 
 ## Parameters
 
-| Name | Type | Description |
-| --- | --- | --- |
-| project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
-| name | str | Name that identifies the object. **Required.** |
-| kind | str | Function kind. Must be `hydra`. **Required.** |
-| uuid | str | Object ID in UUID4 format. |
-| description | str | Description of the object. |
-| labels | list[str] | List of labels. |
-| embedded | bool | Whether to embed the object in the project. |
-| [code_src](../../../configuration/code-sources.md#code-source-uri) | str | URI pointing to the source code. |
-| [code](../../../configuration/code-sources.md#plain-text-source) | str | Source code provided as plain text. |
-| base64 | str | Source code encoded as base64. |
-| config_src | str | URI pointing to the Hydra configuration. |
-| config | str | Configuration YAML provided as plain text. |
-| config_base64 | str | Configuration YAML encoded as base64. |
-| config_path | str | Configuration folder path relative to the function source folder. |
-| [handler](../../../configuration/code-sources.md#handler) | str | Function entrypoint. |
-| [init_function](#lifecycle-functions) | str | Init function name for remote execution. |
-| [complete_function](#lifecycle-functions) | str | Finalize function name for remote execution. |
-| [python_version](#python-versions) | str | Python version to use. **Required.** |
-| lang | str | Source code language (informational). |
-| image | str | Container image used to execute the function. |
-| [base_image](#base-image) | str | Base image (name:tag) used to build the execution image. |
-| [requirements](#requirements) | list[str] \| str | Python requirements or a supported requirements file path. |
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| project | str | (✓) | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
+| name | str | ✓ | Name that identifies the object. |
+| kind | str | ✓ | Function kind. Must be `hydra`. |
+| uuid | str | | Object ID in UUID4 format. |
+| description | str | | Description of the object. |
+| labels | list[str] | | List of labels. |
+| embedded | bool | | Whether to embed the object in the project. |
+| [code_src](../../../configuration/code-sources.md#code-source-uri) | str | | URI pointing to the source code. |
+| [code](../../../configuration/code-sources.md#plain-text-source) | str | | Source code provided as plain text. |
+| base64 | str | | Source code encoded as base64. |
+| config_src | str | | URI pointing to the Hydra configuration. |
+| config | str | | Configuration YAML provided as plain text. |
+| config_base64 | str | | Configuration YAML encoded as base64. |
+| config_path | str | | Configuration folder path relative to the function source folder. |
+| [handler](../../../configuration/code-sources.md#handler) | str | | Function entrypoint. |
+| [init_function](#lifecycle-functions) | str | | Init function name for remote execution. |
+| [complete_function](#lifecycle-functions) | str | | Finalize function name for remote execution. |
+| [python_version](#python-versions) | str | ✓ | Python version to use. |
+| lang | str | | Source code language (informational). |
+| image | str | | Container image used to execute the function. |
+| [base_image](#base-image) | str | | Base image (name:tag) used to build the execution image. |
+| [requirements](#requirements) | list[str] \| str | | Python requirements or a supported requirements file path. |
 
 ## Python versions
 

@@ -8,15 +8,15 @@ Call `workflow.run(action="build", ...)` or `workflow.build()` to compile the wo
 
 ## Parameters
 
-| Name | Type | Description |
-| --- | --- | --- |
-| action | str | Action to execute. **Required. Must be `build`.** |
-| [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
-| [resources](../../../configuration/kubernetes.md#resources) | dict | Resource values with optional `cpu`, `mem`, `gpu`, and `disk` keys. |
-| [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
-| [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
-| [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
-| parameters | dict | Stored in the run specification but ignored by the current build executor. |
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| action | str | ✓ | Action to execute. Must be `build`. |
+| [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | | List of volumes. |
+| [resources](../../../configuration/kubernetes.md#resources) | dict | | Resource values with optional `cpu`, `mem`, `gpu`, and `disk` keys. |
+| [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | | Environment variables. |
+| [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | | List of secret names. |
+| [profile](../../../configuration/kubernetes.md#profile) | str | | Profile template. |
+| parameters | dict | | Stored in the run specification but ignored by the current build executor. |
 
 Hera is used by the remote process that builds and runs the workflow; it is not required in the client environment.
 

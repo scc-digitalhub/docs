@@ -8,21 +8,21 @@ Define the Function with the KubeAI text model URL, features and engine.
 
 ## Parameters
 
-| Name | Type | Description |
-| --- | --- | --- |
-| project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
-| name | str | Name that identifies the object. **Required.** |
-| kind | str | Function kind. Must be `kubeai-text`. **Required.** |
-| uuid | str | Object ID in UUID4 format. |
-| description | str | Description of the object. |
-| labels | list[str] | List of labels. |
-| embedded | bool | Whether to embed the object in the project. |
-| model_name | str | Name of the model. |
-| image | str | Docker image used to serve the model. |
-| [url](#model-url) | str | Model URL. |
-| [adapters](#adapters) | list[dict] | Model adapters. |
-| [features](#features) | list[str] | Supported model features. |
-| [engine](#engine) | KubeaiEngine | Engine used to serve the model. |
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| project | str | (✓) | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
+| name | str | ✓ | Name that identifies the object. |
+| kind | str | ✓ | Function kind. Must be `kubeai-text`. |
+| uuid | str | | Object ID in UUID4 format. |
+| description | str | | Description of the object. |
+| labels | list[str] | | List of labels. |
+| embedded | bool | | Whether to embed the object in the project. |
+| model_name | str | | Name of the model. |
+| image | str | | Docker image used to serve the model. |
+| [url](#model-url) | str | | Model URL. |
+| [adapters](#adapters) | list[dict] | | Model adapters. |
+| [features](#features) | list[str] | | Supported model features. |
+| [engine](#engine) | KubeaiEngine | | Engine used to serve the model. |
 
 ## Adapters
 

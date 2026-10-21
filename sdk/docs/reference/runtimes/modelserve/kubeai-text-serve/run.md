@@ -8,18 +8,18 @@ Call `function.run(action="serve", ...)` to deploy the KubeAI text model. Config
 
 ## Parameters
 
-| Name | Type | Description |
-| --- | --- | --- |
-| action | str | Action to execute. **Required. Must be `serve`** |
-| [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
-| [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
-| [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
-| env | dict | Environment variables for the serving function. |
-| args | list[str] | Arguments. |
-| cache_profile | str | Cache profile. |
-| [files](#files) | list[KubeaiFile] | Files to make available to the model. |
-| [scaling](#scaling) | Scaling | Scaling parameters. |
-| processors | int | Number of processors. |
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| action | str | ✓ | Action to execute. Must be `serve` |
+| [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | | Environment variables. |
+| [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | | List of secret names. |
+| [profile](../../../configuration/kubernetes.md#profile) | str | | Profile template. |
+| env | dict | | Environment variables for the serving function. |
+| args | list[str] | | Arguments. |
+| cache_profile | str | | Cache profile. |
+| [files](#files) | list[KubeaiFile] | | Files to make available to the model. |
+| [scaling](#scaling) | Scaling | | Scaling parameters. |
+| processors | int | | Number of processors. |
 
 ## Files
 

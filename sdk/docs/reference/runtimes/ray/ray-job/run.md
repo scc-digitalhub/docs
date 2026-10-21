@@ -8,18 +8,18 @@ Call `function.run(action="job", ...)` to execute a Ray function on a dynamicall
 
 ## Parameters
 
-| Name | Type | Description |
-| --- | --- | --- |
-| action | str | Action to execute. **Required. Must be `job`.** |
-| [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
-| [resources](../../../configuration/kubernetes.md#resources) | dict | Resource limits and requests for each worker task. |
-| [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
-| [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
-| [profile](../../../configuration/kubernetes.md#profile) | str | Profile template for each worker task. |
-| replicas | int | Initial number of worker replicas. |
-| min_replicas | int | Minimum number of worker replicas. |
-| max_replicas | int | Maximum number of worker replicas. |
-| parameters | dict | Parameters passed to the Ray application. |
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| action | str | ✓ | Action to execute. Must be `job`. |
+| [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | | List of volumes. |
+| [resources](../../../configuration/kubernetes.md#resources) | dict | | Resource limits and requests for each worker task. |
+| [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | | Environment variables. |
+| [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | | List of secret names. |
+| [profile](../../../configuration/kubernetes.md#profile) | str | | Profile template for each worker task. |
+| replicas | int | | Initial number of worker replicas. |
+| min_replicas | int | | Minimum number of worker replicas. |
+| max_replicas | int | | Maximum number of worker replicas. |
+| parameters | dict | | Parameters passed to the Ray application. |
 
 ## Example
 

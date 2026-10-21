@@ -112,6 +112,7 @@ nav:
                   - Model: reference/objects/model/kind/model.md
                   - MLflow: reference/objects/model/kind/mlflow.md
                   - Scikit-learn: reference/objects/model/kind/sklearn.md
+                  - Hugging Face: reference/objects/model/kind/huggingface.md
                   - ONNX: reference/objects/model/kind/onnx.md
                   - TFLite: reference/objects/model/kind/tflite.md
                   - TVM IR: reference/objects/model/kind/tvm-ir.md

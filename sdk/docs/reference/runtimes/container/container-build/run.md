@@ -8,18 +8,18 @@ Call `function.run(action="build", ...)` to build the configured container image
 
 ## Parameters
 
-| Name | Type | Description |
-| --- | --- | --- |
-| action | str | Action to execute. **Required. Must be `build`** |
-| [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
-| [resources](../../../configuration/kubernetes.md#resources) | dict | Resource values with optional `cpu`, `mem`, `gpu` and `disk` keys. Example: `{"cpu": "1", "mem": "512Mi"}`. |
-| [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. Example: `[{"name": "FOO", "value": "bar"}]`. |
-| [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
-| [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
-| [instructions](#instructions) | list[str] | Build instructions executed as `RUN` lines in the generated Dockerfile. |
-| base_image | str | Optional override for the base image used by this build run. |
-| image | str | Optional target image name:tag to build/push. |
-| args | list[str] | Command-line arguments to pass to the container command. |
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| action | str | ✓ | Action to execute. Must be `build` |
+| [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | | List of volumes. |
+| [resources](../../../configuration/kubernetes.md#resources) | dict | | Resource values with optional `cpu`, `mem`, `gpu` and `disk` keys. Example: `{"cpu": "1", "mem": "512Mi"}`. |
+| [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | | Environment variables. Example: `[{"name": "FOO", "value": "bar"}]`. |
+| [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | | List of secret names. |
+| [profile](../../../configuration/kubernetes.md#profile) | str | | Profile template. |
+| [instructions](#instructions) | list[str] | | Build instructions executed as `RUN` lines in the generated Dockerfile. |
+| base_image | str | | Optional override for the base image used by this build run. |
+| image | str | | Optional target image name:tag to build/push. |
+| args | list[str] | | Command-line arguments to pass to the container command. |
 
 ## Instructions
 

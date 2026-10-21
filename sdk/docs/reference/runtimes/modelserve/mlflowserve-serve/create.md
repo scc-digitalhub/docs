@@ -8,18 +8,18 @@ Define the Function with the MLflow model path and serving image.
 
 ## Parameters
 
-| Name | Type | Description |
-| --- | --- | --- |
-| project | str | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
-| name | str | Name that identifies the object. **Required.** |
-| kind | str | Function kind. Must be `mlflowserve`. **Required.** |
-| uuid | str | Object ID in UUID4 format. |
-| description | str | Description of the object. |
-| labels | list[str] | List of labels. |
-| embedded | bool | Whether to embed the object in the project. |
-| [path](#model-path) | str | Model path. |
-| model_name | str | Name of the model. |
-| [image](#model-image) | str | Docker image used to serve the model. |
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| project | str | (✓) | Project name. Required only when creating from the library; otherwise **MUST NOT** be set. |
+| name | str | ✓ | Name that identifies the object. |
+| kind | str | ✓ | Function kind. Must be `mlflowserve`. |
+| uuid | str | | Object ID in UUID4 format. |
+| description | str | | Description of the object. |
+| labels | list[str] | | List of labels. |
+| embedded | bool | | Whether to embed the object in the project. |
+| [path](#model-path) | str | | Model path. |
+| model_name | str | | Name of the model. |
+| [image](#model-image) | str | | Docker image used to serve the model. |
 
 ## Model path
 

@@ -8,18 +8,18 @@ Call `function.run(action="job", ...)` to execute the handler as a one-off task.
 
 ## Task and run parameters
 
-| Name | Type | Description |
-| --- | --- | --- |
-| action | str | Action to execute. **Required. Must be `job`.** |
-| [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
-| [resources](../../../configuration/kubernetes.md#resources) | dict | Resource values with optional `cpu`, `mem`, `gpu`, and `disk` keys. |
-| [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
-| [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
-| [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
-| local_execution | bool | Execute the handler locally instead of remotely. Defaults to `False`; local dependencies must already be installed. |
-| inputs | dict | Mapping of handler argument names to platform entity keys. |
-| parameters | dict | Extra values passed to handler arguments. |
-| init_parameters | dict | Values supplied to the init function. |
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| action | str | ✓ | Action to execute. Must be `job`. |
+| [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | | List of volumes. |
+| [resources](../../../configuration/kubernetes.md#resources) | dict | | Resource values with optional `cpu`, `mem`, `gpu`, and `disk` keys. |
+| [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | | Environment variables. |
+| [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | | List of secret names. |
+| [profile](../../../configuration/kubernetes.md#profile) | str | | Profile template. |
+| local_execution | bool | | Execute the handler locally instead of remotely. Defaults to `False`; local dependencies must already be installed. |
+| inputs | dict | | Mapping of handler argument names to platform entity keys. |
+| parameters | dict | | Extra values passed to handler arguments. |
+| init_parameters | dict | | Values supplied to the init function. |
 
 For remote execution, ensure the configured image contains the required dependencies. For local execution, dependencies must already be installed locally.
 

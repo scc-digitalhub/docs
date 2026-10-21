@@ -8,15 +8,15 @@ Call `workflow.run(action="pipeline", ...)` to execute a compiled workflow on th
 
 ## Parameters
 
-| Name | Type | Description |
-| --- | --- | --- |
-| action | str | Action to execute. **Required. Must be `pipeline`.** |
-| [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | List of volumes. |
-| [resources](../../../configuration/kubernetes.md#resources) | dict | Resource values with optional `cpu`, `mem`, `gpu`, and `disk` keys. |
-| [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | Environment variables. |
-| [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | List of secret names. |
-| [profile](../../../configuration/kubernetes.md#profile) | str | Profile template. |
-| parameters | dict | Values for Hera workflow parameters declared in the pipeline source. |
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| action | str | ✓ | Action to execute. Must be `pipeline`. |
+| [volumes](../../../configuration/kubernetes.md#volumes) | list[dict] | | List of volumes. |
+| [resources](../../../configuration/kubernetes.md#resources) | dict | | Resource values with optional `cpu`, `mem`, `gpu`, and `disk` keys. |
+| [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | | Environment variables. |
+| [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | | List of secret names. |
+| [profile](../../../configuration/kubernetes.md#profile) | str | | Profile template. |
+| parameters | dict | | Values for Hera workflow parameters declared in the pipeline source. |
 
 ## Example
 
