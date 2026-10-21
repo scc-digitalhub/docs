@@ -204,9 +204,10 @@ node; there is no ARM32 toolkit image.
 
 ### Configurable profiles
 
-Platform administrators configure profiles in CORE's `runtime-tvm.yaml`. The YAML
-reader supplies the same catalogue to the compiler and console schema; neither Java
-nor the SDK contains a fixed target enumeration.
+Platform administrators configure profiles in CORE's `runtime-tvm.yaml`. Each entry
+separates its display name (`label`), standard TVM options (`target`) and C++ linker
+settings (`linker`). The reader supplies the same catalogue to the compiler and
+console schema; neither Java nor the SDK contains a fixed target enumeration.
 
 Mount an override file and set `RUNTIME_TVM_CONFIG=file:/etc/digitalhub/runtime-tvm.yaml`,
 then restart CORE. Entries merge with the bundled profiles:
@@ -217,16 +218,39 @@ runtime:
     targets:
       arm64_pi4:
         label: Raspberry Pi 4 - ARM 64-bit (Cortex-A72)
-        target: '{"kind":"llvm","mtriple":"aarch64-linux-gnu","mcpu":"cortex-a72"}'
-        cross-cc: aarch64-linux-gnu-g++
+        target:
+          kind: llvm
+          mtriple: aarch64-linux-gnu
+          mcpu: cortex-a72
+          mattr: [+neon]
+          num-cores: 4
+        linker:
+          command: aarch64-linux-gnu-g++
+          options: []
 ```
 
-The new profile is selected as `target_architecture: arm64_pi4`. Optional profile
-fields are `cross-cc-options` (a list of arguments), `aliases` (alternative names),
-and `compiler-architecture` (a Kubernetes architecture label for the compile node).
-Compiler settings supplied on the Run take precedence.
+The new profile is selected as `target_architecture: arm64_pi4`. `target` contains
+standard TVM keys: `mtriple` identifies the architecture/OS/ABI, `mcpu` selects the
+CPU, `mattr` lists instruction features and `num-cores` sets the target thread count.
+CORE converts this mapping to the existing TVM JSON format, preserving value types.
+
+`linker.command` is the C++ compiler used to link `model.so`; `linker.options` is a
+list of extra arguments, such as `["--sysroot=/opt/sysroots/arm64"]`. Optional profile
+fields are `aliases` (alternative names) and `compiler-architecture` (a Kubernetes
+architecture constraint for the compile node, needed by `amd64_native`). The separate
+Run `profile` chooses where the Job executes; it does not select the model's target.
+
+Run options keep their names: `optimization.cross_cc` overrides `linker.command`,
+and `optimization.cross_cc_options` overrides `linker.options`.
 For compiler arguments, choose **Profile defaults** to inherit the YAML configuration,
 or **Custom arguments** to replace it. An explicit empty list clears those defaults.
+
+An override file keeps omitted profiles and fields. Supplying `target` replaces its
+whole definition rather than inheriting potentially incompatible CPU features.
+To migrate an old override file, expand the quoted JSON target into a YAML mapping
+and move `cross-cc` / `cross-cc-options` under `linker.command` / `linker.options`.
+Old forms are rejected with a configuration error. SDK requests and model metadata
+are unchanged.
 
 ### Explicit target for one run
 
