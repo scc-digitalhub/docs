@@ -3679,9 +3679,10 @@ image to download the model. Standalone serving with a mounted model does not us
 for the compile node. Use the existing run profile to select a compatible toolkit
 node; there is no ARM32 toolkit image.</p>
 <h3 id="configurable-profiles">Configurable profiles</h3>
-<p>Platform administrators configure profiles in CORE's <code>runtime-tvm.yaml</code>. The YAML
-reader supplies the same catalogue to the compiler and console schema; neither Java
-nor the SDK contains a fixed target enumeration.</p>
+<p>Platform administrators configure profiles in CORE's <code>runtime-tvm.yaml</code>. Each entry
+separates its display name (<code>label</code>), standard TVM options (<code>target</code>) and C++ linker
+settings (<code>linker</code>). The reader supplies the same catalogue to the compiler and
+console schema; neither Java nor the SDK contains a fixed target enumeration.</p>
 <p>Mount an override file and set <code>RUNTIME_TVM_CONFIG=file:/etc/digitalhub/runtime-tvm.yaml</code>,
 then restart CORE. Entries merge with the bundled profiles:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">runtime</span><span class="p">:</span>
@@ -3689,15 +3690,35 @@ then restart CORE. Entries merge with the bundled profiles:</p>
 <span class="w">    </span><span class="nt">targets</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">arm64_pi4</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Raspberry Pi 4 - ARM 64-bit (Cortex-A72)</span>
-<span class="w">        </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="s">'{"kind":"llvm","mtriple":"aarch64-linux-gnu","mcpu":"cortex-a72"}'</span>
-<span class="w">        </span><span class="nt">cross-cc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aarch64-linux-gnu-g++</span>
+<span class="w">        </span><span class="nt">target</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">llvm</span>
+<span class="w">          </span><span class="nt">mtriple</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aarch64-linux-gnu</span>
+<span class="w">          </span><span class="nt">mcpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cortex-a72</span>
+<span class="w">          </span><span class="nt">mattr</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">+neon</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">num-cores</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">        </span><span class="nt">linker</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aarch64-linux-gnu-g++</span>
+<span class="w">          </span><span class="nt">options</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
 </code></pre></div>
-<p>The new profile is selected as <code>target_architecture: arm64_pi4</code>. Optional profile
-fields are <code>cross-cc-options</code> (a list of arguments), <code>aliases</code> (alternative names),
-and <code>compiler-architecture</code> (a Kubernetes architecture label for the compile node).
-Compiler settings supplied on the Run take precedence.
+<p>The new profile is selected as <code>target_architecture: arm64_pi4</code>. <code>target</code> contains
+standard TVM keys: <code>mtriple</code> identifies the architecture/OS/ABI, <code>mcpu</code> selects the
+CPU, <code>mattr</code> lists instruction features and <code>num-cores</code> sets the target thread count.
+CORE converts this mapping to the existing TVM JSON format, preserving value types.</p>
+<p><code>linker.command</code> is the C++ compiler used to link <code>model.so</code>; <code>linker.options</code> is a
+list of extra arguments, such as <code>["--sysroot=/opt/sysroots/arm64"]</code>. Optional profile
+fields are <code>aliases</code> (alternative names) and <code>compiler-architecture</code> (a Kubernetes
+architecture constraint for the compile node, needed by <code>amd64_native</code>). The separate
+Run <code>profile</code> chooses where the Job executes; it does not select the model's target.</p>
+<p>Run options keep their names: <code>optimization.cross_cc</code> overrides <code>linker.command</code>,
+and <code>optimization.cross_cc_options</code> overrides <code>linker.options</code>.
 For compiler arguments, choose <strong>Profile defaults</strong> to inherit the YAML configuration,
 or <strong>Custom arguments</strong> to replace it. An explicit empty list clears those defaults.</p>
+<p>An override file keeps omitted profiles and fields. Supplying <code>target</code> replaces its
+whole definition rather than inheriting potentially incompatible CPU features.
+To migrate an old override file, expand the quoted JSON target into a YAML mapping
+and move <code>cross-cc</code> / <code>cross-cc-options</code> under <code>linker.command</code> / <code>linker.options</code>.
+Old forms are rejected with a configuration error. SDK requests and model metadata
+are unchanged.</p>
 <h3 id="explicit-target-for-one-run">Explicit target for one run</h3>
 <p>For an advanced, one-off configuration, omit <code>target_architecture</code> or leave it at
 <code>auto</code>, then provide a standard TVM LLVM target:</p>
