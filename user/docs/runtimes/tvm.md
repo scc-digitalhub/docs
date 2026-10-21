@@ -180,8 +180,8 @@ native CPU optimization; `arm64_pi5` is not portable to Pi 3/4.
 
 Legacy API values remain accepted: `cpu`/`llvm` → `auto`, `x86` → `amd64`,
 `x86_v3` → `amd64_v3`, `x86_native` → `amd64_native`, `armv7l` → `arm32`.
-New saves use the new names. Existing database records are not migrated automatically:
-reselect the profile once when editing an old task in the console.
+Aliases are resolved from the configuration; stored run values are not rewritten.
+The console shows the canonical profile names.
 LLVM triples, compiler names and container platforms keep their standard names.
 
 !!! note "Runtime images and CORE's init image"
@@ -191,9 +191,67 @@ LLVM triples, compiler names and container platforms keep their standard names.
     ARM64, so serving on an ARM32 cluster node also requires an ARMv7-compatible init
     image to download the model. Standalone serving with a mounted model does not use it.
 
-- The **ARM targets are cross-compiled** with the ARM compiler included in the toolkit image: the Job does not need to run on the target device.
-- The toolkit image supports `amd64` and `arm64`. In a mixed-architecture cluster, use a resource `profile` with a suitable node selector to place `build` and `compile` Jobs on compatible nodes; the runtime does not automatically enforce this restriction for every Job.
-- The **AMD64 profiles** are compiled on an `amd64` node, which the platform selects by itself.
+The compiler host and the model destination are independent:
+
+| Toolkit host | Model destinations included in the image |
+| --- | --- |
+| AMD64 | AMD64, ARM64, ARM32 (ARMv7 hard-float) |
+| ARM64 | AMD64, ARM64, ARM32 (ARMv7 hard-float) |
+
+Only `amd64_native` requires an AMD64 compile node. `auto` generates generic code
+for the compile node. Use the existing run profile to select a compatible toolkit
+node; there is no ARM32 toolkit image.
+
+### Configurable profiles
+
+Platform administrators configure profiles in CORE's `runtime-tvm.yaml`. The YAML
+reader supplies the same catalogue to the compiler and console schema; neither Java
+nor the SDK contains a fixed target enumeration.
+
+Mount an override file and set `RUNTIME_TVM_CONFIG=file:/etc/digitalhub/runtime-tvm.yaml`,
+then restart CORE. Entries merge with the bundled profiles:
+
+```yaml
+runtime:
+  tvm:
+    targets:
+      arm64_pi4:
+        label: Raspberry Pi 4 - ARM 64-bit (Cortex-A72)
+        target: '{"kind":"llvm","mtriple":"aarch64-linux-gnu","mcpu":"cortex-a72"}'
+        cross-cc: aarch64-linux-gnu-g++
+```
+
+The new profile is selected as `target_architecture: arm64_pi4`. Optional profile
+fields are `cross-cc-options` (a list of arguments), `aliases` (alternative names),
+and `compiler-architecture` (a Kubernetes architecture label for the compile node).
+Compiler settings supplied on the Run take precedence.
+For compiler arguments, choose **Profile defaults** to inherit the YAML configuration,
+or **Custom arguments** to replace it. An explicit empty list clears those defaults.
+
+### Explicit target for one run
+
+For an advanced, one-off configuration, omit `target_architecture` or leave it at
+`auto`, then provide a standard TVM LLVM target:
+
+```yaml
+target:
+  kind: llvm
+  mtriple: aarch64-linux-gnu
+  mcpu: cortex-a72
+optimization:
+  cross_cc: aarch64-linux-gnu-g++
+  cross_cc_options: []
+```
+
+Do not combine an explicit target with another profile. `cross_cc_options` passes
+arguments separately; for example `["--sysroot=/opt/sysroots/arm64"]` uses target
+libraries at that path **inside the compile container**.
+
+The compiler links a small LLVM object before processing the model, so a missing
+or incompatible toolchain fails early. Another CPU family may require a custom
+`image` with its LLVM backend, compiler and target libraries. Configuring its name
+does not add a runtime image. This integration remains Linux/CPU; Jetson Orin CUDA
+needs a separate GPU integration.
 
 ### Compile options
 
@@ -202,13 +260,15 @@ All fields are optional.
 | Field | Default | What it does |
 | --- | --- | --- |
 | `target_architecture`{: style="white-space: nowrap" } | `auto` | Target CPU profile, from the table above. |
+| `target` | — | Explicit standard LLVM target object, instead of a non-auto profile. |
 | `target_num_cores`{: style="white-space: nowrap" } | `resources.cpu` | Number of cores the generated code is optimized for. Serve with the same number of threads. |
 | `tag` | `so` | Suffix of the compiled Model name, `<function>-<tag>`. Use one tag per target, for example `amd64` or `arm64`. |
 | `opt_level` | `3` | TVM optimization level, from `0` to `3`. |
 | `exec_mode` | `bytecode` | How the model graph runs: `bytecode` (interpreted by the Relax virtual machine) or `compiled` (native code). |
 | `model_path`{: style="white-space: nowrap" } | function `ir_model` | Key of another IR Model to compile. |
-| `cross_cc` | set by target | C++ cross compiler. Filled in automatically for the ARM targets (`aarch64-linux-gnu-g++`, `arm-linux-gnueabihf-g++`): set it only to use another compiler. |
-| `benchmark_runs`{: style="white-space: nowrap" } | `10` | Timed inferences of the finished `model.so`, saved in `metadata.json`. `0` turns it off. Skipped for cross-compiled targets. |
+| `cross_cc` | set by profile | C++ compiler linking `model.so`. Explicit cross targets must supply the matching compiler. |
+| `cross_cc_options` | `[]` | Compiler argument list, including optional sysroot/library paths inside the Job. |
+| `benchmark_runs`{: style="white-space: nowrap" } | `10` | Timed inferences saved in `metadata.json`; `0` disables them. Skipped when the target cannot execute on the compile host. |
 | `relax_pipeline`{: style="white-space: nowrap" } | `default` | Name of the Relax optimization pipeline. |
 | `tir_pipeline`{: style="white-space: nowrap" } | `default` | Name of the TIR optimization pipeline. |
 | `system_lib`{: style="white-space: nowrap" } | `false` | Advanced: builds a system-library module, which the serve images cannot load. |
@@ -323,6 +383,10 @@ In the console, open the function, select the **compile** tab and click `CREATE`
 
 `target_triple` is the architecture of the code, such as `x86_64-pc-linux-gnu` or `aarch64-linux-gnu`: the platform reads it to choose the nodes of the service.
 
+`toolchain` records the compiler executable, its argument list and the compiler
+host triple. These identify how the library was linked; they do not change where
+the compiled model can run.
+
 ---
 
 ## Model Optimization
@@ -423,6 +487,11 @@ To add more measurements to an existing database, run `compile` with `tuning_mod
 | `tuning_runner_timeout_sec`{: style="white-space: nowrap" } | `30` | Time limit to run one variant. |
 | `allow_partial_tuning`{: style="white-space: nowrap" } | `false` | Accepts a budget or a database that does not cover every task. For quick tests only. |
 
+Failed candidates are counted in `tuning/errors.json`, which also records the first
+error returned by TVM. The Job log shows that cause directly. On a busy node, set
+larger builder/runner timeouts explicitly. Compilation stops before publication
+when the database has no valid records.
+
 ### Tuning on a device
 
 A Job running on an x86 node cannot measure ARM code. To tune for an ARM device, register the device with a TVM RPC tracker and let the Job measure on it, or `apply` a database tuned on the device.
@@ -435,7 +504,13 @@ A Job running on an x86 node cannot measure ARM code. To tune for an ARM device,
 | `rpc_tracker_key`{: style="white-space: nowrap" } | empty | Key the device is registered with. **Required** with `rpc`. |
 | `rpc_session_timeout_sec`{: style="white-space: nowrap" } | `60` | Time limit of one RPC session. |
 
-Settings that cannot work stop the run at once, in state **ERROR** with a message that explains why: for example `tune` without `tuning_trials`, `apply` without `tuning_model_path`, or local tuning of an ARM target.
+CORE rejects missing tuning budgets and databases. The compile Job checks the actual
+host architecture, ABI and CPU instructions detectable by LLVM before local
+measurements; this is not an exhaustive CPU compatibility certification. ARM targets can
+be tuned locally on compatible ARM nodes; using `cross_cc` is not itself a reason
+to reject local tuning or skip a benchmark. Otherwise use RPC or apply a matching
+database. RPC receives candidates linked with the same compiler/options as the
+final model. CPU-feature checks are conservative, not a certification of every device.
 
 ### Tips
 
@@ -662,6 +737,11 @@ The `build` and `compile` Jobs run the `tvm-toolkit` image, which contains only 
 | `common.py` | Helpers shared by the other scripts. |
 
 The platform chooses the script from the action and the source format, and passes every option of the run as an environment variable (`TVM_TARGET`, `TVM_OPT_LEVEL`, ...). When the script ends, the platform copies the key of the published Model into the function field `ir_model` or `so_model`.
+
+Publication uses direct HTTP calls to Core, not the DigitalHub SDK. Core supplies
+signed upload URLs and the storage path. The scripts upload the artifacts, including
+large files through multipart uploads, register the Model and verify the run output.
+The `DHCORE_*` credentials are used only for Core and are not forwarded to storage.
 
 ---
 

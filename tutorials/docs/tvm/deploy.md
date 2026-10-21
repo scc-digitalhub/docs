@@ -94,6 +94,12 @@ When the run is **COMPLETED**, the Model `yolo-function-ir`, of kind `tvm-ir`, c
 
 `compile` turns the IR into `model.so` for a target architecture. First we compile for AMD64 (Intel/AMD 64-bit), to serve the model on the cluster.
 
+The model destination is not the compiler node: the toolkit can compile this AMD64
+model on AMD64 or ARM64. Only `amd64_native` requires an AMD64 compile node.
+The profile menu comes from CORE's `runtime-tvm.yaml`; administrators can add profiles
+without changing the SDK. Advanced runs can instead set a standard LLVM `target`
+object and compiler options, as described in the [target guide](../../../runtimes/tvm/#configurable-profiles).
+
 === "Console"
 
     Select the **compile** tab of the function and click `CREATE`. Set `resources` in the

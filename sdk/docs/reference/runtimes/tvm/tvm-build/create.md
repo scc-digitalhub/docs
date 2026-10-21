@@ -19,8 +19,8 @@ Define a `tvm` Function with the source model and optional artifact store keys.
 | embedded | bool | | Whether to embed the object in the project. |
 | model | str | ✓ | Source model path or store key. |
 | format | str | | Source model format: `auto`, `onnx`, or `tflite`. |
-| ir_model | str | | Store key for the Relax IR model produced by `build`. |
-| so_model | str | | Store key for the compiled `model.so` produced by `compile`. |
+| ir_model | str | | Relax IR model reference; CORE updates it after a successful `build`. |
+| so_model | str | | Compiled model reference; CORE updates it after a successful `compile`. |
 
 The source model can be a local path, store key, or supported repository/archive URI. See the [code source reference](../../../configuration/code-sources.md) for URI formats.
 

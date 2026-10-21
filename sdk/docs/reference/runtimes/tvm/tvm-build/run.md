@@ -16,20 +16,24 @@ Call `function.run(action="build", ...)` to convert the source model to Relax IR
 | [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | | Environment variables. |
 | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | | List of secret names. |
 | [profile](../../../configuration/kubernetes.md#profile) | str | | Profile template. |
-| image | str | | TVM execution image. |
-| simplify | bool | | Simplify the source model during conversion. |
-| target_opset | int | | Target ONNX opset. |
-| opset_override | int | | Override the source ONNX opset. |
+| image | str | | Optional toolkit image override. |
+| simplify | bool | | Simplify the ONNX model before conversion. |
+| target_opset | int | | Convert to this ONNX opset. |
+| opset_override | int | | Importer opset override, without converting the model. |
 | strict_shape_inference | bool | | Enable strict shape inference. |
-| data_prop | bool | | Enable data propagation. |
-| keep_params_in_input | bool | | Keep model parameters as inputs. |
-| sanitize_input_names | bool | | Sanitize model input names. |
-| model | str | | Source model path or store key. Uses the Function's `model` when omitted. |
-| format | str | | Source model format: `auto`, `onnx`, or `tflite`. |
-| ir_model | str | | Store key for the Relax IR output. |
-| so_model | str | | Store key for a compiled model output. |
+| data_prop | bool | | Enable shape inference data propagation. |
+| keep_params_in_input | bool | | Save weights separately in `params.bin`; compile embeds them again. |
+| sanitize_input_names | bool | | Sanitize model input names; default `true`. |
 | inputs | dict[str, str] | | Mapping of input names to Dataitem or store keys. |
-| local_execution | bool | | Execute the run locally instead of remotely. |
+
+Conversion settings apply to ONNX. The source `model` and `format` belong to the
+Function; CORE records the generated IR reference after success.
+
+Reusable Tasks contain only common infrastructure settings, for example:
+
+```python
+task = function.new_task(action="build", resources={"cpu": "2", "mem": "4Gi"})
+```
 
 ## Example
 
@@ -37,8 +41,7 @@ Call `function.run(action="build", ...)` to convert the source model to Relax IR
 run = function.run(
     action="build",
     simplify=True,
-    ir_model="store://my-project/model/model-relax:version",
-    resources={"cpu": 2, "mem": "4Gi"},
+    resources={"cpu": "2", "mem": "4Gi"},
     wait=True,
 )
 ```

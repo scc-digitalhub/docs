@@ -9,9 +9,6 @@ import digitalhub as dh
 
 project = dh.get_or_create_project("my_project")
 
-ir_model = "store://my_project/model/mobilenet-relax:version"
-so_model = "store://my_project/model/mobilenet-so:version"
-
 function = project.new_function(
     name="mobilenet",
     kind="tvm",
@@ -21,30 +18,44 @@ function = project.new_function(
 
 build = function.run(
     action="build",
-    ir_model=ir_model,
     wait=True,
 )
 
 compile = function.run(
     action="compile",
-    model_path=ir_model,
-    ir_model=ir_model,
-    so_model=so_model,
     target_architecture="auto",
-    opt_level=3,
+    optimization={"opt_level": 3},
     wait=True,
 )
 
 serve = function.run(
     action="serve",
-    model_path=so_model,
-    ir_model=ir_model,
-    so_model=so_model,
     served_name="mobilenet",
     replicas=1,
     wait=True,
 )
 ```
+
+CORE updates the function's `ir_model` and `so_model` after successful runs. The next
+action uses those references unless you explicitly set `model_path`.
+TVM options belong to the Run; Task settings cover resources, profiles and volumes.
+
+## Explicit CPU target
+
+Profile names come from CORE's `runtime-tvm.yaml`. Instead of selecting a profile,
+an advanced run can provide the target directly:
+
+```python
+compile = function.run(
+    "compile",
+    target={"kind": "llvm", "mtriple": "aarch64-linux-gnu", "mcpu": "cortex-a72"},
+    optimization={"cross_cc": "aarch64-linux-gnu-g++"},
+    wait=True,
+)
+```
+
+The compiler must exist in the selected compile image. See the
+[compile reference](tvm-compile/run.md) for tuning and toolchain options.
 
 ## Tutorials
 
