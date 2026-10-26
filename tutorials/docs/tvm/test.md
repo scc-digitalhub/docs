@@ -151,10 +151,10 @@ ls yolo-model        # metadata.json  model.so
 docker run --rm -p 8080:8080 -p 9000:9000 \
   -v "$PWD/yolo-model:/shared/model" \
   -e TVM_MODEL_NAME=yolo-function \
-  ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0
+  ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2
 ```
 
-To use the Rust server instead, replace the image with `ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0`.
+To use the Rust server instead, replace the image with `ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r1`.
 
 **3. Test it** in another terminal: set `URL = "http://localhost:8080"` in `client.py`:
 
@@ -192,7 +192,7 @@ If the CLI is not installed on the device, download the Model on your computer a
 docker run --rm -p 8080:8080 -p 9000:9000 \
   -v "$PWD/yolo-model:/shared/model" \
   -e TVM_MODEL_NAME=yolo-function \
-  ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0
+  ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2
 ```
 
 **3. Test it** from any computer of the same network, with `URL = "http://<device>:8080"` in `client.py`.

@@ -448,7 +448,7 @@ A tuning can be reused only when these match:
 
 | Must match | Why it matters |
 | --- | --- |
-| TVM version and commit | Use the toolkit image of the same release, e.g. `tvm-toolkit:0.26.0`. |
+| TVM version and commit | Use a toolkit containing the same Apache TVM version and commit, e.g. `tvm-toolkit:0.26.0-r1`. |
 | Target | Same effective target, including CPU features **and** `target_num_cores`. When `target_num_cores` is empty it comes from `resources.cpu`: changing the CPUs of the run makes the database incompatible. With `amd64_native` the CPU model of the node counts too. |
 | IR | Matching source/IR identity; changing the model or conversion can invalidate the database. |
 | Coverage | All selected tunable functions need valid records unless `allow_partial_tuning` is `true`. Unselected operations keep default schedules. |
@@ -661,7 +661,7 @@ test it; NodePort/LoadBalancer access depends on the platform network configurat
     docker run --rm -p 8080:8080 -p 9000:9000 \
       -v "$PWD/yolo-model:/shared/model" \
       -e TVM_MODEL_NAME=yolo-function \
-      ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0
+      ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2
     ```
 
     In another terminal:
@@ -682,7 +682,7 @@ test it; NodePort/LoadBalancer access depends on the platform network configurat
     docker run --rm -p 8080:8080 -p 9000:9000 \
       -v "$PWD/yolo-model:/shared/model" \
       -e TVM_MODEL_NAME=yolo-function \
-      ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0
+      ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2
     ```
 
     For a 32-bit OS, download `yolo-function-arm32` instead. For a 64-bit OS, use `arm64` (or `arm64_pi5` on Pi 5). Docker picks the image variant of the device automatically. This standalone example does not use CORE's init image.
@@ -735,14 +735,14 @@ The `serve` action can use two images. They read the same model folder, expose t
 
 ```yaml
 spec:
-  image: ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0
+  image: ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r1
 ```
 
 Each image is multi-arch: the same tag serves `amd64`, `arm64` and `arm/v7` nodes, and each node downloads its own variant. There is no image to choose per architecture.
 
 | | Go (default) | Rust |
 | --- | --- | --- |
-| Image | `ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0` | `ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0` |
+| Image | `ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2` | `ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r1` |
 | Server | Nuclio processor with a native `tvm` runtime | Standalone `tvm-serve` server |
 | How it calls TVM | Go, through cgo and the TVM C API | Rust, through the TVM C API |
 | Parallel requests | One Nuclio worker per `workers`, each with its own model copy | One thread per `workers`, each with its own model copy |
@@ -797,15 +797,19 @@ Administrators choose the images with these environment variables of the Core:
 | Variable | Default | Description |
 | --- | --- | --- |
 | `RUNTIME_TVM_CONFIG` | bundled YAML only | Optional external YAML location, e.g. `file:/etc/digitalhub/runtime-tvm.yaml`; restart CORE after changing it. |
-| `RUNTIME_TVM_BUILDER_ONNX`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0` | Image of `build` for ONNX models. |
-| `RUNTIME_TVM_BUILDER_TFLITE`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0` | Image of `build` for TFLite models. |
-| `RUNTIME_TVM_COMPILER`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0` | Image of `compile`. |
-| `RUNTIME_TVM_SERVE`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0` | Default image of `serve`, overridden by the run's `image` field. |
+| `RUNTIME_TVM_BUILDER_ONNX`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r1` | Image of `build` for ONNX models. |
+| `RUNTIME_TVM_BUILDER_TFLITE`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r1` | Image of `build` for TFLite models. |
+| `RUNTIME_TVM_COMPILER`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r1` | Image of `compile`. |
+| `RUNTIME_TVM_SERVE`{: style="white-space: nowrap" } | `ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2` | Default image of `serve`, overridden by the run's `image` field. |
 | `RUNTIME_TVM_HOME_DIR`{: style="white-space: nowrap" } | `/shared` | Working folder inside the pods. |
 | `RUNTIME_TVM_VOLUME_SIZE`{: style="white-space: nowrap" } | `4Gi` | Default size of the working volume. |
 | `RUNTIME_TVM_USER_ID`, `RUNTIME_TVM_GROUP_ID` | platform user and group | User and group the pods run as. |
 
-To use Rust as the platform default, set `RUNTIME_TVM_SERVE=ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0` on Core. A single run can still select another image with `image`.
+To use Rust as the platform default, set `RUNTIME_TVM_SERVE=ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r1` on Core. A single run can still select another image with `image`.
+
+These images contain Apache TVM `0.26.0`: toolkit and Rust use image revision
+`0.26.0-r1`, while Go uses `0.26.0-r2`. Different image revisions can contain the
+same Apache TVM version and commit.
 
 A custom image must support the architecture of the nodes on which the model is served. A multi-arch image allows the same tag to be used across different architectures.
 
@@ -818,6 +822,9 @@ publishes the multi-arch tag after all architecture builds succeed. A merge into
 [toolkit](https://github.com/scc-digitalhub/digitalhub-tvm-toolkit#release),
 [Go runtime](https://github.com/scc-digitalhub/digitalhub-serverless/tree/main/pkg/processor/runtime/tvm#versions-and-release)
 and [Rust runtime](https://github.com/scc-digitalhub/digitalhub-tvm-rust#versions-and-release).
+
+The serverless repository's Git release, such as `0.16.0b13`, is separate from the
+TVM image revision. Publishing that Git release does not publish a new TVM image.
 
 After testing a published revision, set `RUNTIME_TVM_BUILDER_ONNX`,
 `RUNTIME_TVM_BUILDER_TFLITE` and `RUNTIME_TVM_COMPILER` to the new toolkit image, and
