@@ -4048,7 +4048,7 @@ effective target and core count:</p>
 <tbody>
 <tr>
 <td>TVM version and commit</td>
-<td>Use the toolkit image of the same release, e.g. <code>tvm-toolkit:0.26.0</code>.</td>
+<td>Use a toolkit containing the same Apache TVM version and commit, e.g. <code>tvm-toolkit:0.26.0-r1</code>.</td>
 </tr>
 <tr>
 <td>Target</td>
@@ -4417,7 +4417,7 @@ dhcli<span class="w"> </span>port-forward<span class="w"> </span>-p<span class="
 docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/yolo-model:/shared/model"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">TVM_MODEL_NAME</span><span class="o">=</span>yolo-function<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0
+<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2
 </code></pre></div>
 <p>In another terminal:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:8080/v2/models/yolo-function
@@ -4431,7 +4431,7 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/yolo-model:/shared/model"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">TVM_MODEL_NAME</span><span class="o">=</span>yolo-function<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0
+<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2
 </code></pre></div>
 <p>For a 32-bit OS, download <code>yolo-function-arm32</code> instead. For a 64-bit OS, use <code>arm64</code> (or <code>arm64_pi5</code> on Pi 5). Docker picks the image variant of the device automatically. This standalone example does not use CORE's init image.</p>
 </div>
@@ -4521,7 +4521,7 @@ The <code>DHCORE_*</code> credentials are used only for Core and are not forward
 <h2 id="serving-runtimes">Serving runtimes</h2>
 <p>The <code>serve</code> action can use two images. They read the same model folder, expose the same endpoints on the same ports and accept the same requests. Go is the platform default; use the <code>image</code> field to choose another serve image for a single run:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r1</span>
 </code></pre></div>
 <p>Each image is multi-arch: the same tag serves <code>amd64</code>, <code>arm64</code> and <code>arm/v7</code> nodes, and each node downloads its own variant. There is no image to choose per architecture.</p>
 <table>
@@ -4535,8 +4535,8 @@ The <code>DHCORE_*</code> credentials are used only for Core and are not forward
 <tbody>
 <tr>
 <td>Image</td>
-<td><code>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0</code></td>
-<td><code>ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r1</code></td>
 </tr>
 <tr>
 <td>Server</td>
@@ -4681,22 +4681,22 @@ new image before deployment. CPU, ABI and data-type requirements still apply.</p
 </tr>
 <tr>
 <td><code style="white-space: nowrap">RUNTIME_TVM_BUILDER_ONNX</code></td>
-<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r1</code></td>
 <td>Image of <code>build</code> for ONNX models.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">RUNTIME_TVM_BUILDER_TFLITE</code></td>
-<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r1</code></td>
 <td>Image of <code>build</code> for TFLite models.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">RUNTIME_TVM_COMPILER</code></td>
-<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r1</code></td>
 <td>Image of <code>compile</code>.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">RUNTIME_TVM_SERVE</code></td>
-<td><code>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2</code></td>
 <td>Default image of <code>serve</code>, overridden by the run's <code>image</code> field.</td>
 </tr>
 <tr>
@@ -4716,7 +4716,10 @@ new image before deployment. CPU, ABI and data-type requirements still apply.</p
 </tr>
 </tbody>
 </table>
-<p>To use Rust as the platform default, set <code>RUNTIME_TVM_SERVE=ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0</code> on Core. A single run can still select another image with <code>image</code>.</p>
+<p>To use Rust as the platform default, set <code>RUNTIME_TVM_SERVE=ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r1</code> on Core. A single run can still select another image with <code>image</code>.</p>
+<p>These images contain Apache TVM <code>0.26.0</code>: toolkit and Rust use image revision
+<code>0.26.0-r1</code>, while Go uses <code>0.26.0-r2</code>. Different image revisions can contain the
+same Apache TVM version and commit.</p>
 <p>A custom image must support the architecture of the nodes on which the model is served. A multi-arch image allows the same tag to be used across different architectures.</p>
 <p>Image maintainers can publish a new revision from <code>main</code> with the dedicated
 GitHub Actions workflow in each component repository. The manual inputs separate
@@ -4727,6 +4730,8 @@ publishes the multi-arch tag after all architecture builds succeed. A merge into
 <a href="https://github.com/scc-digitalhub/digitalhub-tvm-toolkit#release">toolkit</a>,
 <a href="https://github.com/scc-digitalhub/digitalhub-serverless/tree/main/pkg/processor/runtime/tvm#versions-and-release">Go runtime</a>
 and <a href="https://github.com/scc-digitalhub/digitalhub-tvm-rust#versions-and-release">Rust runtime</a>.</p>
+<p>The serverless repository's Git release, such as <code>0.16.0b13</code>, is separate from the
+TVM image revision. Publishing that Git release does not publish a new TVM image.</p>
 <p>After testing a published revision, set <code>RUNTIME_TVM_BUILDER_ONNX</code>,
 <code>RUNTIME_TVM_BUILDER_TFLITE</code> and <code>RUNTIME_TVM_COMPILER</code> to the new toolkit image, and
 <code>RUNTIME_TVM_SERVE</code> to the new Go or Rust image, then restart Core. The settings
