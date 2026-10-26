@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -2795,14 +2795,16 @@
 
 
 <h1 id="compiled-models-with-tvm-introduction">Compiled models with TVM: introduction</h1>
-<p>This scenario takes a trained model, compiles it into fast native code with the <a href="../../../runtimes/tvm/">TVM runtime</a> and serves it through the Open Inference v2 protocol. The model is <strong>YOLOv8n</strong>, an object detector exported to ONNX.</p>
+<p>This scenario takes a trained model, compiles it into native CPU code with the <a href="../../../runtimes/tvm/">TVM runtime</a> and serves it through the Open Inference v2 protocol. The model is <strong>YOLOv8n</strong>, an object detector exported to ONNX.</p>
 <p><img alt="TVM runtime pipeline" src="../../images/tvm/tvm-pipeline.svg" /></p>
 <p>The scenario has two parts:</p>
 <ol>
 <li><a href="../deploy/"><strong>Build, compile and serve</strong></a>: upload the model, create a TVM function, run <code>build</code>, <code>compile</code> and <code>serve</code>, and compile the same model for ARM devices.</li>
 <li><a href="../test/"><strong>Test the model</strong></a>: send a picture to the service from your computer, run the model locally with Docker, or on a Raspberry Pi.</li>
 </ol>
-<p>Every step can be done from the <strong>console</strong> or from the <strong>CLI</strong> (<code>dhcli</code>): each page shows both.</p>
+<p>Deployment steps show both the <strong>console</strong> and <strong>CLI</strong> (<code>dhcli</code>). The test page
+provides a Python client. Start with untuned compilation to check the pipeline;
+use <a href="../../../runtimes/tvm/#model-optimization">MetaSchedule</a> to investigate performance.</p>
 <h2 id="names-used-in-this-scenario">Names used in this scenario</h2>
 <table>
 <thead>
@@ -2851,9 +2853,11 @@ dhcli<span class="w"> </span>login
 <li>
 <p><strong>The ONNX model.</strong> Export YOLOv8n with the Ultralytics package:</p>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>ultralytics
-yolo<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">model</span><span class="o">=</span>yolov8n.pt<span class="w"> </span><span class="nv">format</span><span class="o">=</span>onnx
+yolo<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">model</span><span class="o">=</span>yolov8n.pt<span class="w"> </span><span class="nv">format</span><span class="o">=</span>onnx<span class="w"> </span><span class="nv">imgsz</span><span class="o">=</span><span class="m">640</span><span class="w"> </span><span class="nv">batch</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">dynamic</span><span class="o">=</span>False<span class="w"> </span><span class="nv">nms</span><span class="o">=</span>False
 </code></pre></div>
-<p>This creates <code>yolov8n.onnx</code>, with input <code>images</code> <code>[1, 3, 640, 640]</code> and output <code>output0</code> <code>[1, 84, 8400]</code>.</p>
+<p>This normally creates <code>yolov8n.onnx</code> with input <code>images</code> <code>[1, 3, 640, 640]</code> and
+output <code>[1, 84, 8400]</code>. Check the exported signature: the test client assumes
+this detection layout and does its own non-maximum suppression.</p>
 </li>
 </ul>
 
@@ -2888,10 +2892,10 @@ yolo<span class="w"> </span><span class="nb">export</span><span class="w"> </spa
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.path", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.path", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

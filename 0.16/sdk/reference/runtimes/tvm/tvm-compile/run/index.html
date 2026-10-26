@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -12387,7 +12387,7 @@
 <td><a href="../../../../configuration/kubernetes/#profile">profile</a></td>
 <td>str</td>
 <td></td>
-<td>Profile template.</td>
+<td>Scheduling/resource profile; does not select the model target.</td>
 </tr>
 <tr>
 <td>model_path</td>
@@ -12423,19 +12423,19 @@
 <td>tag</td>
 <td>str</td>
 <td></td>
-<td>Tag for the compiled model.</td>
+<td>Model suffix <code>&lt;function&gt;-&lt;tag&gt;</code>; default <code>so</code>.</td>
 </tr>
 <tr>
 <td>image</td>
 <td>str</td>
 <td></td>
-<td>TVM execution image.</td>
+<td>Toolkit image override for this Run.</td>
 </tr>
 <tr>
 <td>inputs</td>
 <td>dict[str, str]</td>
 <td></td>
-<td>Mapping of input names to Dataitem or store keys.</td>
+<td>Consumed entity keys for lineage, not inference tensor values.</td>
 </tr>
 </tbody>
 </table>
@@ -12465,8 +12465,8 @@ explicit grouped values take precedence.</p>
 <tbody>
 <tr>
 <td><code>target_num_cores</code></td>
-<td>Job CPU request</td>
-<td>Threads used to optimize the target.</td>
+<td>Job CPU request, rounded up</td>
+<td>Cores used to optimize the target. This field wins over the CPU request; both override preset <code>num-cores</code>.</td>
 </tr>
 <tr>
 <td><code>opt_level</code></td>
@@ -12501,7 +12501,7 @@ explicit grouped values take precedence.</p>
 <tr>
 <td><code>system_lib</code></td>
 <td><code>false</code></td>
-<td>Static/system library mode; not supported by the serve images.</td>
+<td>System-library mode; not loadable by the Go/Rust serve images.</td>
 </tr>
 <tr>
 <td><code>params_path</code></td>
@@ -12518,20 +12518,42 @@ preserved but not applied. <code>apply</code> needs <code>tuning_model_path</cod
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="s2">"compile"</span><span class="p">,</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">target_architecture</span><span class="o">=</span><span class="s2">"amd64_native"</span><span class="p">,</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">optimization</span><span class="o">=</span><span class="p">{</span><span class="s2">"target_num_cores"</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">tuning</span><span class="o">=</span><span class="p">{</span><span class="s2">"tuning_mode"</span><span class="p">:</span> <span class="s2">"tune"</span><span class="p">,</span> <span class="s2">"tuning_trials"</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span> <span class="s2">"tuning_runner"</span><span class="p">:</span> <span class="s2">"local"</span><span class="p">},</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">resources</span><span class="o">=</span><span class="p">{</span><span class="s2">"cpu"</span><span class="p">:</span> <span class="s2">"4"</span><span class="p">,</span> <span class="s2">"mem"</span><span class="p">:</span> <span class="s2">"8Gi"</span><span class="p">},</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">tuning</span><span class="o">=</span><span class="p">{</span><span class="s2">"tuning_mode"</span><span class="p">:</span> <span class="s2">"tune"</span><span class="p">,</span> <span class="s2">"tuning_trials"</span><span class="p">:</span> <span class="mi">8000</span><span class="p">,</span> <span class="s2">"tuning_runner"</span><span class="p">:</span> <span class="s2">"local"</span><span class="p">},</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">)</span>
 </span></code></pre></div>
-<p>Further tuning fields:</p>
-<ul>
-<li>Search: <code>max_trials_per_task</code>, <code>tuning_trials_per_iter</code>, <code>tuning_workers</code>,
-  <code>tuning_seed</code>, <code>tuning_ops</code>, <code>allow_partial_tuning</code>.</li>
-<li>Measurements: <code>tuning_number</code>, <code>tuning_repeat</code>, <code>tuning_min_repeat_ms</code>,
-  <code>tuning_alloc_repeat</code>, <code>tuning_enable_cpu_cache_flush</code>.</li>
-<li>Timeouts: <code>tuning_builder_timeout_sec</code>, <code>tuning_runner_timeout_sec</code>.</li>
-<li>RPC: <code>rpc_tracker_host</code>, <code>rpc_tracker_port</code>, <code>rpc_tracker_key</code>,
-  <code>rpc_session_timeout_sec</code>, with <code>tuning_runner="rpc"</code>.</li>
-</ul>
+<p>All tuning fields use the same names/defaults as the
+<a href="https://scc-digitalhub.github.io/docs/0.16/runtimes/tvm/#tuning-options">complete CORE tuning reference</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Purpose</th>
+<th>Fields</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Search and coverage</td>
+<td><code>tuning_mode</code>, <code>tuning_model_path</code>, <code>tuning_trials</code>, <code>max_trials_per_task</code>, <code>tuning_trials_per_iter</code>, <code>tuning_ops</code>, <code>allow_partial_tuning</code></td>
+</tr>
+<tr>
+<td>Measurements</td>
+<td><code>tuning_runner</code>, <code>tuning_workers</code>, <code>tuning_seed</code>, <code>tuning_number</code>, <code>tuning_repeat</code>, <code>tuning_min_repeat_ms</code>, <code>tuning_alloc_repeat</code>, <code>tuning_enable_cpu_cache_flush</code></td>
+</tr>
+<tr>
+<td>Timeouts</td>
+<td><code>tuning_builder_timeout_sec</code>, <code>tuning_runner_timeout_sec</code></td>
+</tr>
+<tr>
+<td>RPC</td>
+<td><code>rpc_tracker_host</code>, <code>rpc_tracker_port</code>, <code>rpc_tracker_key</code>, <code>rpc_session_timeout_sec</code></td>
+</tr>
+</tbody>
+</table>
+<p>RPC fields are active only for <code>tuning_mode="tune"</code> with <code>tuning_runner="rpc"</code>.
+That mode ignores <code>tuning_runner_timeout_sec</code> and uses <code>rpc_session_timeout_sec</code>.
+<code>apply</code> uses only the database/filter/coverage settings; <code>off</code> ignores all tuning fields.</p>
 <p>Local tuning checks the actual compile host, not the presence of <code>cross_cc</code>.
 For an incompatible target, measure on an RPC device or apply an existing database.</p>
 <h2 id="explicit-target">Explicit target</h2>
@@ -12542,7 +12564,9 @@ For an incompatible target, measure on an RPC device or apply an existing databa
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">)</span>
 </span></code></pre></div>
-<p>The target uses standard TVM keys. The selected <code>image</code> must contain the matching
+<p>The target uses standard TVM keys. Do not combine it with a non-auto preset;
+it does not inherit that preset's linker. The compiled metadata records the resolved
+<code>target</code> and, when different, <code>target_requested</code>. The latter is not a Run option. The selected <code>image</code> must contain the matching
 LLVM backend, compiler and libraries. Adding a target does not add a serving image,
 and this pipeline does not enable GPU/CUDA execution.</p>
 <div class="runtime-page-navigation">
@@ -12590,10 +12614,10 @@ and this pipeline does not enable GPU/CUDA execution.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.path", "navigation.top", "content.code.copy", "content.code.select"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.path", "navigation.top", "content.code.copy", "content.code.select"], "search": "../../../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       

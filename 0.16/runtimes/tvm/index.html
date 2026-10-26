@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -2116,10 +2116,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tips" class="md-nav__link">
+  <a href="#budget-and-measurements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tips
+        Budget and measurements
       
     </span>
   </a>
@@ -3066,10 +3066,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tips" class="md-nav__link">
+  <a href="#budget-and-measurements" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tips
+        Budget and measurements
       
     </span>
   </a>
@@ -3307,8 +3307,11 @@
 
 
 <h1 id="tvm-runtime">TVM Runtime</h1>
-<p>The <strong>TVM runtime</strong> turns a trained model into fast native code with <a href="https://tvm.apache.org/">Apache TVM</a> and serves it through the <a href="https://github.com/kserve/open-inference-protocol">Open Inference v2</a> protocol, over REST and gRPC.</p>
-<p>It takes a model in <strong>ONNX</strong> or <strong>TFLite</strong> format, compiles it for a CPU (x86 servers, 64-bit or 32-bit ARM devices such as a Raspberry Pi) and deploys it as a service, without writing code or building container images.</p>
+<p>The <strong>TVM runtime</strong> compiles a trained model into native code with <a href="https://tvm.apache.org/">Apache TVM</a> and serves it through the <a href="https://github.com/kserve/open-inference-protocol">Open Inference v2</a> protocol, over REST and gRPC.</p>
+<p>Use an <strong>ONNX</strong> or <strong>TFLite</strong> model with the Linux CPU pipeline described here.
+The toolkit compiles it; a Go or Rust runtime serves it. The same image can load
+different models. Compilation alone does not guarantee faster inference: measure
+the result on the intended device and use MetaSchedule when needed.</p>
 <p><img alt="TVM runtime pipeline" src="../../images/runtimes/tvm-pipeline.svg" /></p>
 <p>The runtime has three actions, run one after the other:</p>
 <table>
@@ -3342,13 +3345,13 @@
 </tbody>
 </table>
 <h2 id="how-it-works">How it works</h2>
-<ul>
-<li><strong>The function links the steps.</strong> When <code>build</code> completes, the platform writes the key of the new IR Model into the function field <code>ir_model</code>; when <code>compile</code> completes, it writes the key of the compiled Model into <code>so_model</code>. The next action reads that field, so no key has to be copied by hand.</li>
-<li><strong>One build, many targets.</strong> The Relax IR does not depend on the hardware: the same IR can be compiled once for each target architecture.</li>
-<li><strong>Everything is a Model.</strong> The IR and the compiled library are stored as Models of kind <code>tvm-ir</code> and <code>tvm-so</code>, with their input and output signature, so they can be inspected, versioned and reused.</li>
-<li><strong>No image per model.</strong> The <code>serve</code> action starts a generic serve image and downloads the compiled Model into it. Two serve images are available, in Go (default) and in Rust.</li>
-<li><strong>The right node for each model.</strong> A model compiled for ARM is served only on the ARM nodes of the cluster, and an x86 model only on the x86 nodes: see <a href="#where-the-service-runs">Where the service runs</a>.</li>
-</ul>
+<p>Build saves the IR reference in <code>function.spec.ir_model</code>; compile saves the compiled
+Model in <code>function.spec.so_model</code>. The next action uses that reference unless its
+Run supplies <code>model_path</code>. One IR can be compiled for several targets.</p>
+<p>These updates affect the <strong>same Function version</strong>, not a new version. A build
+leaves the previous SO usable. With concurrent compiles, the last successful
+reference update wins. Running services keep their selected Model; to select a
+specific build later, use a versioned <code>model_path</code>.</p>
 <h2 id="from-a-model-to-a-prediction">From a model to a prediction</h2>
 <table>
 <thead>
@@ -3393,21 +3396,57 @@
 </table>
 <p>The <a href="../../tutorials/tvm/intro/">TVM tutorial</a> walks through all the steps with a YOLOv8 model, from the console and from the CLI.</p>
 <h3 id="task-settings-and-run-options">Task settings and run options</h3>
-<p>The reusable <strong>Task</strong> holds the function reference and common execution settings:
-<code>profile</code>, <code>resources</code>, <code>envs</code>, <code>secrets</code> and <code>volumes</code>. A Run can override these common
-settings for one execution.</p>
-<p>All TVM-specific options belong to the <strong>Run</strong>: build conversion flags; compile target,
-optimization and tuning; serve model, image, replicas, workers and service configuration.
-In the console, fill common settings in the <strong>Task</strong> step and TVM options in the <strong>Run</strong>
-step. Compile options are grouped under <strong>Advanced compilation</strong> and <strong>MetaSchedule tuning</strong>.
-Each new run has its own options; it does not inherit TVM options from the task or a previous run.</p>
-<p>With the CLI, keep passing these values in the run YAML as shown below. With the API,
-use <code>tvm+build:run</code>, <code>tvm+compile:run</code> or <code>tvm+serve:run</code> and reference the corresponding
-task in <code>spec.task</code>. TVM options previously stored in tasks are not used or migrated:
-move them into the new run payload. Model types and function model references are unchanged.
-For a trigger, put these run options in <code>spec.template</code>; the trigger still references the
-reusable task through <code>spec.task</code>.</p>
-<hr />
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>What belongs there</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Function <code>spec</code></td>
+<td>Source <code>model</code>, <code>format</code>, generated <code>ir_model</code> and <code>so_model</code> references</td>
+</tr>
+<tr>
+<td>Task <code>spec</code></td>
+<td>Function reference, <code>profile</code>, <code>resources</code>, <code>envs</code>, <code>secrets</code>, <code>volumes</code></td>
+</tr>
+<tr>
+<td>Build Run <code>spec</code></td>
+<td>Toolkit <code>image</code> and conversion options</td>
+</tr>
+<tr>
+<td>Compile Run <code>spec</code></td>
+<td><code>model_path</code>, target selection, <code>tag</code>, <code>image</code>, <code>optimization</code>, <code>tuning</code></td>
+</tr>
+<tr>
+<td>Serve Run <code>spec</code></td>
+<td>Model, name, image, workers, replicas and service options</td>
+</tr>
+</tbody>
+</table>
+<p>A Run can override common Task settings. TVM options are specific to each Run;
+previous Runs and old Tasks do not supply their values. In the console, common
+settings are in <strong>Task</strong>, TVM options in <strong>Run</strong>. A compile Run looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tvm+compile:run</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tvm+compile://my-project/&lt;task-id&gt;</span>
+<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64</span>
+<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64</span>
+<span class="w">  </span><span class="nt">optimization</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">opt_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">    </span><span class="nt">benchmark_runs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">  </span><span class="nt">tuning</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tuning_mode</span><span class="p">:</span><span class="w"> </span><span class="s">"off"</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span><span class="p p-Indicator">,</span><span class="nt"> mem</span><span class="p">:</span><span class="w"> </span><span class="nv">8Gi</span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<p>With the REST API, create the Task first and use its key in <code>spec.task</code>. The run
+kinds are <code>tvm+build:run</code>, <code>tvm+compile:run</code> and <code>tvm+serve:run</code>. With the SDK, pass
+these options to <code>function.run(...)</code>. With <code>dhcli run</code>, pass the <code>spec</code> in a YAML file.
+For scheduled/lifecycle runs, use the trigger's <code>spec.template</code>.</p>
+<p>Flat compile parameters are also accepted. If a field is supplied both flat and
+inside a group, the grouped value wins; saved specs use the grouped form.</p>
 <h2 id="source-models">Source Models</h2>
 <p>Upload the model as a Model of kind <code>onnx</code> or <code>tflite</code>. The fields only describe the model and are all optional: the <code>build</code> action reads the real signature from the file.</p>
 <table>
@@ -3487,7 +3526,7 @@ reusable task through <code>spec.task</code>.</p>
 <li>Run the ONNX shape inference.</li>
 <li>Convert the graph into Relax IR, with <code>float32</code> as default data type.</li>
 <li>If some outputs of the IR have no shape, simplify the graph with onnxsim and convert it again (see <a href="#outputs-without-a-shape">Outputs without a shape</a>).</li>
-<li>Save the IR with its <code>metadata.json</code> and publish the Model.</li>
+<li>Save the IR and metadata, then publish the Model.</li>
 </ol>
 </div>
 <div class="tabbed-block">
@@ -3528,7 +3567,7 @@ reusable task through <code>spec.task</code>.</p>
 <tr>
 <td><code style="white-space: nowrap">strict_shape_inference</code></td>
 <td><code>false</code></td>
-<td>Runs the ONNX shape inference in strict mode.</td>
+<td>Runs strict shape inference; a failure is logged and conversion continues without the inferred graph.</td>
 </tr>
 <tr>
 <td><code>data_prop</code></td>
@@ -3575,7 +3614,7 @@ reusable task through <code>spec.task</code>.</p>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">model.relax.ir</code></td>
-<td>A readable dump of the IR, for debugging.</td>
+<td>An optional readable IR dump for debugging; compilation uses the JSON file.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">metadata.json</code></td>
@@ -3702,13 +3741,18 @@ then restart CORE. Entries merge with the bundled profiles:</p>
 </code></pre></div>
 <p>The new profile is selected as <code>target_architecture: arm64_pi4</code>. <code>target</code> contains
 standard TVM keys: <code>mtriple</code> identifies the architecture/OS/ABI, <code>mcpu</code> selects the
-CPU, <code>mattr</code> lists instruction features and <code>num-cores</code> sets the target thread count.
-CORE converts this mapping to the existing TVM JSON format, preserving value types.</p>
+CPU, <code>mattr</code> lists instruction features and <code>num-cores</code> sets the target core count used for scheduling.
+Spring reads the YAML once; CORE converts each target mapping to a JSON value,
+preserving lists and numbers. The compiler and console use the same catalogue.</p>
 <p><code>linker.command</code> is the C++ compiler used to link <code>model.so</code>; <code>linker.options</code> is a
-list of extra arguments, such as <code>["--sysroot=/opt/sysroots/arm64"]</code>. Optional profile
-fields are <code>aliases</code> (alternative names) and <code>compiler-architecture</code> (a Kubernetes
+list of separate arguments, such as <code>["--sysroot=/opt/sysroots/arm64"]</code>. Optional profile
+fields are <code>aliases</code> (unique lowercase alternative names) and <code>compiler-architecture</code> (a Kubernetes
 architecture constraint for the compile node, needed by <code>amd64_native</code>). The separate
 Run <code>profile</code> chooses where the Job executes; it does not select the model's target.</p>
+<p><code>optimization.target_num_cores</code> overrides the Job CPU request; either one overrides
+<code>target.num-cores</code>. If neither is set, the value in the target remains, including
+with <code>mcpu: native</code>; native detection supplies a core count only when it is absent.
+Use an explicit core count when tuning for a device with different resources.</p>
 <p>Run options keep their names: <code>optimization.cross_cc</code> overrides <code>linker.command</code>,
 and <code>optimization.cross_cc_options</code> overrides <code>linker.options</code>.
 For compiler arguments, choose <strong>Profile defaults</strong> to inherit the YAML configuration,
@@ -3730,7 +3774,8 @@ are unchanged.</p>
 <span class="w">  </span><span class="nt">cross_cc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aarch64-linux-gnu-g++</span>
 <span class="w">  </span><span class="nt">cross_cc_options</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
 </code></pre></div>
-<p>Do not combine an explicit target with another profile. <code>cross_cc_options</code> passes
+<p>Do not combine an explicit target with a non-auto profile. An explicit target
+does not inherit a preset's linker settings. <code>cross_cc_options</code> passes
 arguments separately; for example <code>["--sysroot=/opt/sysroots/arm64"]</code> uses target
 libraries at that path <strong>inside the compile container</strong>.</p>
 <p>The compiler links a small LLVM object before processing the model, so a missing
@@ -3739,256 +3784,142 @@ or incompatible toolchain fails early. Another CPU family may require a custom
 does not add a runtime image. This integration remains Linux/CPU; Jetson Orin CUDA
 needs a separate GPU integration.</p>
 <h3 id="compile-options">Compile options</h3>
-<p>All fields are optional.</p>
+<p>All fields are optional. These fields are directly inside the Run <code>spec</code>:</p>
 <table>
 <thead>
 <tr>
 <th>Field</th>
+<th>Type</th>
 <th>Default</th>
-<th>What it does</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code style="white-space: nowrap">target_architecture</code></td>
+<td><code>model_path</code></td>
+<td>string</td>
+<td>Function <code>ir_model</code></td>
+<td>IR Model to compile; an explicit reference always wins.</td>
+</tr>
+<tr>
+<td><code>target_architecture</code></td>
+<td>string</td>
 <td><code>auto</code></td>
-<td>Target CPU profile, from the table above.</td>
+<td>Name from the configured CPU catalogue.</td>
 </tr>
 <tr>
 <td><code>target</code></td>
-<td>—</td>
-<td>Explicit standard LLVM target object, instead of a non-auto profile.</td>
-</tr>
-<tr>
-<td><code style="white-space: nowrap">target_num_cores</code></td>
-<td><code>resources.cpu</code></td>
-<td>Number of cores the generated code is optimized for. Serve with the same number of threads.</td>
+<td>object</td>
+<td>unset</td>
+<td>Standard LLVM target instead of a non-auto preset.</td>
 </tr>
 <tr>
 <td><code>tag</code></td>
+<td>string</td>
 <td><code>so</code></td>
-<td>Suffix of the compiled Model name, <code>&lt;function&gt;-&lt;tag&gt;</code>. Use one tag per target, for example <code>amd64</code> or <code>arm64</code>.</td>
-</tr>
-<tr>
-<td><code>opt_level</code></td>
-<td><code>3</code></td>
-<td>TVM optimization level, from <code>0</code> to <code>3</code>.</td>
-</tr>
-<tr>
-<td><code>exec_mode</code></td>
-<td><code>bytecode</code></td>
-<td>How the model graph runs: <code>bytecode</code> (interpreted by the Relax virtual machine) or <code>compiled</code> (native code).</td>
-</tr>
-<tr>
-<td><code style="white-space: nowrap">model_path</code></td>
-<td>function <code>ir_model</code></td>
-<td>Key of another IR Model to compile.</td>
-</tr>
-<tr>
-<td><code>cross_cc</code></td>
-<td>set by profile</td>
-<td>C++ compiler linking <code>model.so</code>. Explicit cross targets must supply the matching compiler.</td>
-</tr>
-<tr>
-<td><code>cross_cc_options</code></td>
-<td><code>[]</code></td>
-<td>Compiler argument list, including optional sysroot/library paths inside the Job.</td>
-</tr>
-<tr>
-<td><code style="white-space: nowrap">benchmark_runs</code></td>
-<td><code>10</code></td>
-<td>Timed inferences saved in <code>metadata.json</code>; <code>0</code> disables them. Skipped when the target cannot execute on the compile host.</td>
-</tr>
-<tr>
-<td><code style="white-space: nowrap">relax_pipeline</code></td>
-<td><code>default</code></td>
-<td>Name of the Relax optimization pipeline.</td>
-</tr>
-<tr>
-<td><code style="white-space: nowrap">tir_pipeline</code></td>
-<td><code>default</code></td>
-<td>Name of the TIR optimization pipeline.</td>
-</tr>
-<tr>
-<td><code style="white-space: nowrap">system_lib</code></td>
-<td><code>false</code></td>
-<td>Advanced: builds a system-library module, which the serve images cannot load.</td>
-</tr>
-<tr>
-<td><code style="white-space: nowrap">params_path</code></td>
-<td><code>params.bin</code> of the IR</td>
-<td>Path, inside the Job, of the weights file to embed.</td>
+<td>Model name suffix: <code>&lt;function&gt;-&lt;tag&gt;</code>. Use a different tag for each target if useful.</td>
 </tr>
 <tr>
 <td><code>image</code></td>
-<td>toolkit image</td>
-<td>Another image for this run.</td>
+<td>string</td>
+<td>Toolkit image</td>
+<td>Image used by this compile Job.</td>
 </tr>
 </tbody>
 </table>
-<p>The tuning options are described in <a href="#model-optimization">Model Optimization</a>.</p>
-<h3 id="compile-examples">Compile examples</h3>
-<p>In the console, open the function, select the <strong>compile</strong> tab and click <code>CREATE</code>: set resources and the run profile in the <strong>Task</strong> step, then the target and TVM options in the <strong>Run</strong> step. With the CLI, save the YAML in a file and run <code>dhcli run tvm+compile -p &lt;project&gt; -n &lt;function&gt; -f &lt;file&gt;</code>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Intel/AMD 64-bit (amd64)</label><label for="__tabbed_2_2">ARM 64-bit (arm64)</label><label for="__tabbed_2_3">ARM 32-bit (arm32, ARMv7 hard-float)</label><label for="__tabbed_2_4">A specific IR version</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Runs on Intel/AMD 64-bit servers and PCs with the x86-64-v2 feature set.</p>
+<p>The following fields go inside <code>optimization</code> (<strong>Advanced compilation</strong>):</p>
 <table>
 <thead>
 <tr>
 <th>Field</th>
-<th>Value</th>
+<th>Type</th>
+<th>Default</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code style="white-space: nowrap">target_architecture</code></td>
-<td><code>amd64</code></td>
-</tr>
-<tr>
-<td><code>tag</code></td>
-<td><code>amd64</code></td>
+<td><code>target_num_cores</code></td>
+<td>integer ≥ 1</td>
+<td>Job CPU request, rounded up</td>
+<td>Cores used to optimize the generated code; see the precedence above.</td>
 </tr>
 <tr>
 <td><code>opt_level</code></td>
+<td>integer 0–3</td>
 <td><code>3</code></td>
+<td>TVM pass optimization level.</td>
 </tr>
 <tr>
-<td><code>resources</code></td>
-<td>CPU <code>4</code>, memory <code>8Gi</code></td>
+<td><code>exec_mode</code></td>
+<td>string</td>
+<td><code>bytecode</code></td>
+<td>Relax VM graph execution: <code>bytecode</code> or <code>compiled</code>. Both use compiled operators.</td>
+</tr>
+<tr>
+<td><code>cross_cc</code></td>
+<td>string</td>
+<td>Preset linker, otherwise native compiler</td>
+<td>C++ compiler linking <code>model.so</code>; e.g. <code>aarch64-linux-gnu-g++</code>.</td>
+</tr>
+<tr>
+<td><code>cross_cc_options</code></td>
+<td>list of strings</td>
+<td>Preset arguments, normally <code>[]</code></td>
+<td>Separate linker arguments. Explicit <code>[]</code> clears the preset arguments.</td>
+</tr>
+<tr>
+<td><code>relax_pipeline</code></td>
+<td>string</td>
+<td><code>default</code></td>
+<td>Installed Relax pipeline name.</td>
+</tr>
+<tr>
+<td><code>tir_pipeline</code></td>
+<td>string</td>
+<td><code>default</code></td>
+<td>Installed TIR pipeline name.</td>
+</tr>
+<tr>
+<td><code>system_lib</code></td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td>Advanced system-library mode; the Go/Rust serve images cannot load it.</td>
+</tr>
+<tr>
+<td><code>params_path</code></td>
+<td>string</td>
+<td>IR <code>params.bin</code></td>
+<td>Optional weights file path inside the Job.</td>
+</tr>
+<tr>
+<td><code>benchmark_runs</code></td>
+<td>integer ≥ 0</td>
+<td><code>10</code></td>
+<td>Timed CPU inferences on the compile host; <code>0</code> disables them.</td>
 </tr>
 </tbody>
 </table>
+<p>These optimization settings still apply when MetaSchedule is off. Tuning fields
+belong to the separate <a href="#tuning-options">tuning group</a>.</p>
+<h3 id="compile-examples">Compile examples</h3>
+<p>In the console, choose <strong>compile → CREATE</strong> and set the target in the Run step.
+With the CLI, save this as <code>compile.yaml</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64</span>
 <span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64</span>
-<span class="w">  </span><span class="nt">opt_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
-<span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
+<span class="w">  </span><span class="nt">optimization</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">opt_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span><span class="p p-Indicator">,</span><span class="nt"> mem</span><span class="p">:</span><span class="w"> </span><span class="nv">8Gi</span><span class="p p-Indicator">}</span>
 </code></pre></div>
-<p>Result: the Model <code>&lt;function&gt;-amd64</code>, which the <code>serve</code> action deploys on the AMD64 nodes of the cluster.</p>
-</div>
-<div class="tabbed-block">
-<p>For a Raspberry Pi 3, 4 or 5 with a 64-bit OS (<code>uname -m</code> prints <code>aarch64</code>) and other 64-bit ARM devices.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code style="white-space: nowrap">target_architecture</code></td>
-<td><code>arm64</code> (or <code>arm64_pi5</code> for a Raspberry Pi 5)</td>
-</tr>
-<tr>
-<td><code>tag</code></td>
-<td><code>arm64</code></td>
-</tr>
-<tr>
-<td><code>cross_cc</code></td>
-<td>leave empty: <code>aarch64-linux-gnu-g++</code> is used</td>
-</tr>
-<tr>
-<td><code>opt_level</code></td>
-<td><code>3</code></td>
-</tr>
-<tr>
-<td><code>resources</code></td>
-<td>CPU <code>4</code>, memory <code>8Gi</code></td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arm64</span>
-<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arm64</span>
-<span class="w">  </span><span class="nt">opt_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
-<span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>run<span class="w"> </span>tvm+compile<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-n<span class="w"> </span>yolo-function<span class="w"> </span>-f<span class="w"> </span>compile.yaml
 </code></pre></div>
-<p>Result: the Model <code>&lt;function&gt;-arm64</code>, whose <code>model.so</code> is an aarch64 library. Serve it on an ARM node of the cluster, or run it on the device as shown in <a href="#test-the-service">Test the service</a>.</p>
-</div>
-<div class="tabbed-block">
-<p>For a Raspberry Pi 2, 3 or 4 with a 32-bit OS (<code>uname -m</code> prints <code>armv7l</code>).</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code style="white-space: nowrap">target_architecture</code></td>
-<td><code>arm32</code></td>
-</tr>
-<tr>
-<td><code>tag</code></td>
-<td><code>arm32</code></td>
-</tr>
-<tr>
-<td><code>cross_cc</code></td>
-<td>leave empty: <code>arm-linux-gnueabihf-g++</code> is used</td>
-</tr>
-<tr>
-<td><code>opt_level</code></td>
-<td><code>3</code></td>
-</tr>
-<tr>
-<td><code>resources</code></td>
-<td>CPU <code>4</code>, memory <code>8Gi</code></td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arm32</span>
-<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arm32</span>
-<span class="w">  </span><span class="nt">opt_level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
-<span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
-</code></pre></div>
-<p>Result: the Model <code>&lt;function&gt;-arm32</code>, whose <code>model.so</code> is an ARMv7 hard-float library requiring NEON. It runs with the ARMv7 Go or Rust runtime image on a compatible device. Serving through CORE also requires an ARMv7-compatible init image.</p>
-</div>
-<div class="tabbed-block">
-<p>To compile an older IR instead of the latest one written in <code>ir_model</code>.</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code style="white-space: nowrap">model_path</code></td>
-<td>the IR Model key, e.g. <code>store://my-project/model/tvm-ir/yolo-function-ir:&lt;id&gt;</code></td>
-</tr>
-<tr>
-<td><code style="white-space: nowrap">target_architecture</code></td>
-<td><code>amd64</code></td>
-</tr>
-<tr>
-<td><code>tag</code></td>
-<td><code>amd64-v1</code></td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">model_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">store://my-project/model/tvm-ir/yolo-function-ir:&lt;id&gt;</span>
-<span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64</span>
-<span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64-v1</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-<div class="admonition warning">
-<p class="admonition-title"><code>so_model</code> points to the last compile</p>
-<p>Every <code>compile</code> run writes its Model into the function field <code>so_model</code>, and <code>serve</code> deploys <code>so_model</code> by default. After compiling for ARM, <code>so_model</code> points to the ARM library, which the platform serves only on ARM nodes: to serve the AMD64 build, set the serve field <code>model_path</code> to its key (e.g. <code>store://my-project/model/tvm-so/yolo-function-amd64</code>).</p>
-</div>
+<p>Change <code>target_architecture</code> and <code>tag</code> to <code>arm64</code> or <code>arm32</code> to compile the same IR
+for those devices. The preset supplies the linker. For a specific IR version, add
+<code>model_path: store://my-project/model/tvm-ir/yolo-function-ir:&lt;id&gt;</code> to the Run.</p>
+<p>Each successful compile updates <code>so_model</code>. After an ARM compile, a new serve uses
+that ARM Model. To serve an earlier AMD64 build, set serve <code>model_path</code> to its
+versioned <code>tvm-so</code> key. An existing service is not changed.</p>
 <h3 id="compile-output">Compile output</h3>
 <table>
 <thead>
@@ -4004,7 +3935,7 @@ needs a separate GPU integration.</p>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">metadata.json</code></td>
-<td>The IR metadata plus how the library was built: <code>target</code>, <code>target_triple</code>, <code>tvm_version</code>, <code>tvm_git_commit</code>, <code>opt_level</code>, <code>exec_mode</code>, <code>relax_pipeline</code>, <code>tir_pipeline</code>, <code>tag</code>, and the <code>benchmark</code> and <code>meta_schedule</code> sections when present.</td>
+<td>The IR metadata plus how the library was built: <code>target</code>, optional <code>target_requested</code>, <code>target_triple</code>, <code>tvm_version</code>, <code>tvm_git_commit</code>, <code>opt_level</code>, <code>exec_mode</code>, <code>relax_pipeline</code>, <code>tir_pipeline</code>, <code>tag</code>, and the <code>benchmark</code> and <code>meta_schedule</code> sections when present.</td>
 </tr>
 <tr>
 <td><code>tuning/</code></td>
@@ -4012,116 +3943,100 @@ needs a separate GPU integration.</p>
 </tr>
 </tbody>
 </table>
-<p><code>target_triple</code> is the architecture of the code, such as <code>x86_64-pc-linux-gnu</code> or <code>aarch64-linux-gnu</code>: the platform reads it to choose the nodes of the service.</p>
+<p>The metadata fields describe different stages:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>target</code></td>
+<td>Effective TVM target used to compile, with the resolved triple, CPU and core count.</td>
+</tr>
+<tr>
+<td><code>target_requested</code></td>
+<td>Original target passed to the compiler, saved when different from <code>target</code>; useful for diagnosing <code>auto</code> or <code>mcpu: native</code>. Not a Run option.</td>
+</tr>
+<tr>
+<td><code>target_triple</code></td>
+<td>Architecture, OS and ABI, e.g. <code>aarch64-linux-gnu</code>; CORE uses it to select a serving architecture.</td>
+</tr>
+</tbody>
+</table>
+<p>The Run's <code>target</code> is an input object; the Model's <code>target</code> is the resolved target
+serialized as a string. The Go/Rust runtime consumes the Model metadata, not the
+preset name or CORE's YAML file.</p>
 <p><code>toolchain</code> records the compiler executable, its argument list and the compiler
 host triple. These identify how the library was linked; they do not change where
 the compiled model can run.</p>
 <hr />
 <h2 id="model-optimization">Model Optimization</h2>
-<p>On CPU, an untuned model works, but it can be several times slower than ONNX Runtime: TVM has no ready-made optimized code for the operators. <strong>Tuning</strong> with MetaSchedule measures many variants of each operator on the real hardware and keeps the fastest ones.</p>
-<p>Tuning is slow, so it is done once and then reused:</p>
+<p>Untuned CPU code can be slower than ONNX Runtime. <strong>MetaSchedule</strong> measures candidate
+schedules on the target hardware and applies the best valid records it finds.
+The result depends on the model, hardware, thread count and search budget; compare
+measured inference times before assuming an improvement.</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Automatic</th>
-<th>What you do</th>
+<th>Mode</th>
+<th>Active settings</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Saving the result</td>
-<td>Yes: every <code>compile</code> with <code>tuning_mode: tune</code> saves the tuning database in the <code>tuning/</code> folder of the compiled Model.</td>
-<td>Nothing.</td>
+<td><code>off</code> (default)</td>
+<td>No tuning fields</td>
+<td>Ordinary compilation; other tuning values are retained but ignored before validation.</td>
 </tr>
 <tr>
-<td>Reusing the result</td>
-<td><strong>No</strong>: a <code>compile</code> never looks for earlier tunings by itself.</td>
-<td>Set <code>tuning_mode</code> and <code>tuning_model_path</code> in the new <code>compile</code> run.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="tune-once">Tune once</h3>
-<p>Run a <code>compile</code> with tuning, on the same kind of CPU used for serving. In the console, open the <strong>compile</strong> tab, set resources in the <strong>Task</strong> step, then the target and <strong>MetaSchedule tuning</strong> in the <strong>Run</strong> step:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code style="white-space: nowrap">target_architecture</code></td>
-<td><code>amd64_native</code></td>
-</tr>
-<tr>
-<td><code>target_num_cores</code></td>
-<td><code>4</code></td>
-</tr>
-<tr>
-<td><code>tag</code></td>
-<td><code>tuned</code></td>
-</tr>
-<tr>
-<td><code>tuning_mode</code></td>
 <td><code>tune</code></td>
+<td>Database/coverage, search and measurement settings</td>
+<td>Measures candidates and saves the database in the compiled Model's <code>tuning/</code> folder.</td>
 </tr>
 <tr>
-<td><code>tuning_trials</code></td>
-<td><code>8000</code></td>
-</tr>
-<tr>
-<td><code style="white-space: nowrap">max_trials_per_task</code></td>
-<td><code>256</code></td>
-</tr>
-<tr>
-<td><code>resources</code></td>
-<td>CPU <code>4</code>, memory <code>8Gi</code></td>
+<td><code>apply</code></td>
+<td><code>tuning_model_path</code>, <code>tuning_ops</code>, <code>allow_partial_tuning</code></td>
+<td>Uses a selected database without running a search.</td>
 </tr>
 </tbody>
 </table>
+<p>The form hides inactive fields and supplies typed defaults when tuning is enabled.
+The total <code>tuning_trials</code> budget remains your choice. A later Run never discovers a
+database automatically: set <code>tuning_model_path</code> to reuse or continue one.</p>
+<h3 id="tune-once">Tune once</h3>
+<p>Tune on hardware compatible with the serving CPU. Set resources in <strong>Task</strong>, then
+the target, <strong>Advanced compilation</strong> and <strong>MetaSchedule tuning</strong> in <strong>Run</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64_native</span>
-<span class="w">  </span><span class="nt">target_num_cores</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 <span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tuned</span>
-<span class="w">  </span><span class="nt">tuning_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tune</span>
-<span class="w">  </span><span class="nt">tuning_trials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
-<span class="w">  </span><span class="nt">max_trials_per_task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">256</span>
 <span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"4"</span>
+<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">'4'</span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8Gi</span>
+<span class="w">  </span><span class="nt">optimization</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">target_num_cores</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">  </span><span class="nt">tuning</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tuning_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tune</span>
+<span class="w">    </span><span class="nt">tuning_trials</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">    </span><span class="nt">max_trials_per_task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">256</span>
 </code></pre></div>
 <p>Result: the Model <code>&lt;function&gt;-tuned</code>, whose <code>tuning/</code> folder holds the database. Its key, shown in the detail page of the Model, is what the next compiles need, for example <code>store://my-project/model/tvm-so/yolo-function-tuned:&lt;id&gt;</code>.</p>
 <h3 id="reuse-a-tuning">Reuse a tuning</h3>
-<p>To compile again without measuring, start a new <code>compile</code> and fill in <strong>two fields</strong>:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>tuning_mode</code></td>
-<td><code>apply</code></td>
-</tr>
-<tr>
-<td><code style="white-space: nowrap">tuning_model_path</code></td>
-<td>the key of the tuned Model, e.g. <code>store://my-project/model/tvm-so/yolo-function-tuned:&lt;id&gt;</code></td>
-</tr>
-</tbody>
-</table>
-<p>Keep <strong>the same <code>target_architecture</code> and <code>target_num_cores</code></strong> as the tuning; fields such as <code>tag</code> or <code>exec_mode</code> can change.</p>
+<p>Set <code>tuning_mode: apply</code> and the versioned key of the tuned Model. Keep the same
+effective target and core count:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">target_architecture</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amd64_native</span>
-<span class="w">  </span><span class="nt">target_num_cores</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
 <span class="w">  </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fast</span>
-<span class="w">  </span><span class="nt">tuning_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apply</span>
-<span class="w">  </span><span class="nt">tuning_model_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">store://my-project/model/tvm-so/yolo-function-tuned:&lt;id&gt;</span>
+<span class="w">  </span><span class="nt">optimization</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">target_num_cores</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">  </span><span class="nt">tuning</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tuning_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apply</span>
+<span class="w">    </span><span class="nt">tuning_model_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">store://my-project/model/tvm-so/yolo-function-tuned:&lt;id&gt;</span>
 </code></pre></div>
-<p>The Job downloads the <code>tuning/</code> folder of that Model, checks it and uses its best variants: the run takes minutes instead of hours. The <code>meta_schedule</code> section of the new <code>metadata.json</code> shows <code>"mode": "apply"</code> and <code>"database_reused": true</code>. The new Model has its own copy of <code>tuning/</code>, so it can be reused in turn.</p>
+<p>The Job downloads and validates that Model's <code>tuning/</code> folder, then applies its records without new measurements. The <code>meta_schedule</code> section of the new <code>metadata.json</code> shows <code>"mode": "apply"</code> and <code>"database_reused": true</code>. The new Model has its own copy of <code>tuning/</code>, so it can be reused in turn.</p>
 <p>A tuning can be reused only when these match:</p>
 <table>
 <thead>
@@ -4137,22 +4052,23 @@ the compiled model can run.</p>
 </tr>
 <tr>
 <td>Target</td>
-<td>Same <code>target_architecture</code> <strong>and</strong> same <code>target_num_cores</code>. When <code>target_num_cores</code> is empty it comes from <code>resources.cpu</code>: changing the CPUs of the run makes the database incompatible. With <code>amd64_native</code> the CPU model of the node counts too.</td>
+<td>Same effective target, including CPU features <strong>and</strong> <code>target_num_cores</code>. When <code>target_num_cores</code> is empty it comes from <code>resources.cpu</code>: changing the CPUs of the run makes the database incompatible. With <code>amd64_native</code> the CPU model of the node counts too.</td>
 </tr>
 <tr>
 <td>IR</td>
-<td>Same IR Model: same source model and same <code>build</code> options.</td>
+<td>Matching source/IR identity; changing the model or conversion can invalidate the database.</td>
 </tr>
 <tr>
 <td>Coverage</td>
-<td>The database must cover every operator of the model, unless <code>allow_partial_tuning</code> is <code>true</code>.</td>
+<td>All selected tunable functions need valid records unless <code>allow_partial_tuning</code> is <code>true</code>. Unselected operations keep default schedules.</td>
 </tr>
 </tbody>
 </table>
 <p>When something does not match, the run stops in <strong>ERROR</strong> with <code>incompatible MetaSchedule database</code> and the list of differences, or with <code>does not cover every selected function</code>.</p>
 <h3 id="continue-a-tuning">Continue a tuning</h3>
-<p>To add more measurements to an existing database, run <code>compile</code> with <code>tuning_mode: tune</code>, the key of the tuned Model in <code>tuning_model_path</code> and the extra <code>tuning_trials</code>. The search restarts from the variants already measured.</p>
+<p>To add more measurements to an existing database, run <code>compile</code> with <code>tuning_mode: tune</code>, the key of the tuned Model in <code>tuning_model_path</code> and a <code>tuning_trials</code> budget for the search. The search restarts from the variants already measured.</p>
 <h3 id="tuning-options">Tuning options</h3>
+<p>All these fields go inside <code>tuning</code>. Counts are integers; timeouts are seconds.</p>
 <table>
 <thead>
 <tr>
@@ -4175,7 +4091,7 @@ the compiled model can run.</p>
 <tr>
 <td><code style="white-space: nowrap">max_trials_per_task</code></td>
 <td><code>16</code></td>
-<td>Most variants a single task (operator) may use.</td>
+<td>Maximum variants per extracted tuning task (which can contain fused operators).</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">tuning_trials_per_iter</code></td>
@@ -4185,7 +4101,7 @@ the compiled model can run.</p>
 <tr>
 <td><code>tuning_ops</code></td>
 <td>all</td>
-<td>Tune only the tasks whose name contains one of these words, e.g. <code>conv2d</code>.</td>
+<td>List of task-name filters, e.g. <code>[conv2d]</code>; applies to both <code>tune</code> and <code>apply</code>.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">tuning_model_path</code></td>
@@ -4195,7 +4111,7 @@ the compiled model can run.</p>
 <tr>
 <td><code>tuning_workers</code></td>
 <td><code>resources.cpu</code></td>
-<td>Variants compiled in parallel.</td>
+<td>Parallel candidate builds; with RPC, also the maximum parallel device connections.</td>
 </tr>
 <tr>
 <td><code>tuning_seed</code></td>
@@ -4235,12 +4151,12 @@ the compiled model can run.</p>
 <tr>
 <td><code style="white-space: nowrap">tuning_runner_timeout_sec</code></td>
 <td><code>30</code></td>
-<td>Time limit to run one variant.</td>
+<td>Local runner timeout; ignored with RPC, which uses its session timeout.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">allow_partial_tuning</code></td>
 <td><code>false</code></td>
-<td>Accepts a budget or a database that does not cover every task. For quick tests only.</td>
+<td>Allows incomplete optimization for intentional partial searches; it still requires usable records.</td>
 </tr>
 </tbody>
 </table>
@@ -4249,7 +4165,10 @@ error returned by TVM. The Job log shows that cause directly. On a busy node, se
 larger builder/runner timeouts explicitly. Compilation stops before publication
 when the database has no valid records.</p>
 <h3 id="tuning-on-a-device">Tuning on a device</h3>
-<p>A Job running on an x86 node cannot measure ARM code. To tune for an ARM device, register the device with a TVM RPC tracker and let the Job measure on it, or <code>apply</code> a database tuned on the device.</p>
+<p>For a target that cannot execute on the compile node, register a compatible device
+with a TVM RPC tracker and use <code>tuning_runner: rpc</code>. The device needs the matching
+TVM runtime and libraries. Alternatively, use <code>apply</code> with a compatible database.
+These fields also belong inside <code>tuning</code>:</p>
 <table>
 <thead>
 <tr>
@@ -4286,20 +4205,29 @@ when the database has no valid records.</p>
 </tr>
 </tbody>
 </table>
-<p>CORE rejects missing tuning budgets and databases. The compile Job checks the actual
+<p>Local tuning ignores RPC fields. CORE rejects missing tuning budgets/databases,
+<code>tuning_workers</code> above the Job CPU allocation, and local target cores above that
+allocation. The compile Job checks the actual
 host architecture, ABI and CPU instructions detectable by LLVM before local
 measurements; this is not an exhaustive CPU compatibility certification. ARM targets can
 be tuned locally on compatible ARM nodes; using <code>cross_cc</code> is not itself a reason
 to reject local tuning or skip a benchmark. Otherwise use RPC or apply a matching
 database. RPC receives candidates linked with the same compiler/options as the
-final model. CPU-feature checks are conservative, not a certification of every device.</p>
-<h3 id="tips">Tips</h3>
+final model.</p>
+<h3 id="budget-and-measurements">Budget and measurements</h3>
 <ul>
-<li><strong>Budget.</strong> Give at least <code>tasks × min(64, max_trials_per_task)</code> trials, so that every task is measured once. The compile log prints the number of tasks and this minimum; 64 to 256 trials per task is a good range.</li>
-<li><strong>Threads.</strong> Serve with the same number of threads per worker as <code>target_num_cores</code>.</li>
-<li><strong>Compare.</strong> The <code>benchmark</code> section of <code>metadata.json</code> holds the timings of every compiled model.</li>
+<li>The first-round budget is <code>selected tasks × min(tuning_trials_per_iter, max_trials_per_task)</code>.
+  The log reports it. The default cap of 16 trials per task is small; increase it
+  together with the total budget for a wider search.</li>
+<li>Use the same target and threads per worker when tuning, benchmarking and serving.</li>
+<li><code>benchmark_runs</code> measures TVM in a subprocess on the <strong>compile host</strong>: synthetic
+  inputs are allocated first, up to five warm-ups run, then the configured number
+  of VM calls are timed. Metadata records <code>mean_ms</code>, <code>p50_ms</code>, <code>p90_ms</code>, <code>min_ms</code>,
+  thread count and sample count. It excludes image preparation, HTTP and model loading.</li>
+<li>An incompatible host, unsupported CPU instructions or a failed benchmark can
+  produce <code>benchmark.skipped</code>; that is not an inference result on the target device.
+  This built-in benchmark does not compare against ONNX Runtime.</li>
 </ul>
-<hr />
 <h2 id="serve-action">Serve action</h2>
 <p>The <code>serve</code> action deploys the compiled Model. An init container downloads <code>model.so</code> and <code>metadata.json</code> into the pod; the serve image loads them and exposes the model on port <code>8080</code> (REST) and <code>9000</code> (gRPC).</p>
 <h3 id="serve-options">Serve options</h3>
@@ -4321,12 +4249,12 @@ final model. CPU-feature checks are conservative, not a certification of every d
 <tr>
 <td><code style="white-space: nowrap">served_name</code></td>
 <td>function name</td>
-<td>Name of the model in the API, <code>/v2/models/&lt;served_name&gt;</code>. Letters, digits, <code>.</code>, <code>_</code> and <code>-</code>.</td>
+<td>Name of the model in the API, <code>/v2/models/&lt;served_name&gt;</code>. Letters, digits, <code>.</code>, <code>_</code> and <code>-</code>, starting and ending with a letter or digit.</td>
 </tr>
 <tr>
 <td><code>replicas</code></td>
 <td><code>1</code></td>
-<td>Number of pods.</td>
+<td>Number of pods, zero or greater.</td>
 </tr>
 <tr>
 <td><code>workers</code></td>
@@ -4356,8 +4284,15 @@ final model. CPU-feature checks are conservative, not a certification of every d
 <span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"2"</span>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
 </code></pre></div>
-<p>When the run requests CPUs, each worker uses <code>resources.cpu / workers</code> TVM threads. To choose the number yourself, add <code>TVM_NUM_THREADS</code> to <code>envs</code>.</p>
-<p>When the run is <strong>RUNNING</strong>, its <code>status.service</code> field shows the address, for example <code>s-tvmserve-&lt;run-id&gt;.&lt;namespace&gt;:8080</code>.</p>
+<p>When the Run requests CPUs, CORE derives the thread count from CPUs divided by workers (at least one thread). To choose the number yourself, add <code>TVM_NUM_THREADS</code> to <code>envs</code>.</p>
+<p>When the Run is <strong>RUNNING</strong>, <code>status.service</code> reports the platform address.
+<code>status.inference_v2</code> contains <code>baseUrl</code>, <code>model</code>, <code>inferenceUrl</code>, <code>modelMetadataUrl</code>,
+<code>modelReadinessUrl</code>, <code>readinessUrl</code> and <code>livenessUrl</code> for the console client.
+<code>served_name</code> defaults to the Function name; <code>service_name</code> does not rename the model.
+Use REST port <code>8080</code>, not gRPC port <code>9000</code>.</p>
+<p>An explicit <code>model_path</code> wins over the Function reference. The selected key is
+saved in the Run; clear it when copying a Run if the new service should use the
+Function's current <code>so_model</code>.</p>
 <h3 id="where-the-service-runs">Where the service runs</h3>
 <p>A <code>model.so</code> runs only on the CPU architecture it was compiled for. The platform reads the architecture from the compiled Model and starts the service only on the nodes of the same architecture (the node label <code>kubernetes.io/arch</code>):</p>
 <table>
@@ -4390,7 +4325,7 @@ only AMD64 and ARM64. Matching the architecture does not replace CPU-feature and
 compatibility checks; for example, an <code>arm64_pi5</code> model needs a compatible Cortex-A76 CPU.</p>
 <div class="admonition warning">
 <p class="admonition-title">No node of the right architecture</p>
-<p>If the cluster has no node of the model architecture, the service stays <strong>PENDING</strong>. Delete the run, and serve a Model compiled for the nodes of the cluster.</p>
+<p>If the cluster has no node of the model architecture, the service stays <strong>PENDING</strong>. Choose a compatible node/profile or serve a Model compiled for the available nodes.</p>
 </div>
 <p>A <code>profile</code> that sets its own node selector takes precedence over this choice.</p>
 <h3 id="endpoints">Endpoints</h3>
@@ -4436,49 +4371,23 @@ compatibility checks; for example, an <code>arm64_pi5</code> model needs a compa
 </tbody>
 </table>
 <p>The gRPC API is the <code>inference.GRPCInferenceService</code> of the <a href="https://github.com/kserve/open-inference-protocol">KServe v2 protocol</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Model metadata</label><label for="__tabbed_3_2">Inference request</label><label for="__tabbed_3_3">Inference response</label><label for="__tabbed_3_4">Quantized tensor</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p><code>GET /v2/models/yolo-function</code></p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yolo-function"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"versions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"1"</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tvm"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="p">,</span><span class="w"> </span><span class="nt">"datatype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FP32"</span><span class="p">,</span><span class="w"> </span><span class="nt">"shape"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">640</span><span class="p">,</span><span class="w"> </span><span class="mi">640</span><span class="p">]</span><span class="w"> </span><span class="p">}],</span>
-<span class="w">  </span><span class="nt">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"output0"</span><span class="p">,</span><span class="w"> </span><span class="nt">"datatype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FP32"</span><span class="p">,</span><span class="w"> </span><span class="nt">"shape"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">84</span><span class="p">,</span><span class="w"> </span><span class="mi">8400</span><span class="p">]</span><span class="w"> </span><span class="p">}]</span>
-<span class="p">}</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<p><code>POST /v2/models/yolo-function/infer</code> (values shortened)</p>
+<p>Read <code>/v2/models/&lt;name&gt;</code> first, then send exactly the advertised input names,
+datatypes, shapes and number of values. For a model exposing <code>x: FP32 [1,4]</code>, this
+is a complete inference request (it is <strong>not</strong> a YOLO input):</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="p">,</span><span class="w"> </span><span class="nt">"datatype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FP32"</span><span class="p">,</span><span class="w"> </span><span class="nt">"shape"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">640</span><span class="p">,</span><span class="w"> </span><span class="mi">640</span><span class="p">],</span><span class="w"> </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.45</span><span class="p">,</span><span class="w"> </span><span class="mf">0.47</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x"</span><span class="p">,</span><span class="w"> </span><span class="nt">"datatype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FP32"</span><span class="p">,</span><span class="w"> </span><span class="nt">"shape"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">],</span><span class="w"> </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.0</span><span class="p">,</span><span class="w"> </span><span class="mf">4.0</span><span class="p">]}</span>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"model_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yolo-function"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"output0"</span><span class="p">,</span><span class="w"> </span><span class="nt">"datatype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FP32"</span><span class="p">,</span><span class="w"> </span><span class="nt">"shape"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">84</span><span class="p">,</span><span class="w"> </span><span class="mi">8400</span><span class="p">],</span><span class="w"> </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">5.2</span><span class="p">,</span><span class="w"> </span><span class="mf">11.8</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<p>For <code>int8</code> and <code>uint8</code> models the REST metadata also returns the quantization parameters, used as <code>real = (quantized - zero_point) * scale</code>. Per-axis quantization also returns <code>quantized_dimension</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"datatype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INT8"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"shape"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">224</span><span class="p">,</span><span class="w"> </span><span class="mi">224</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"scale"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.003921568859368563</span><span class="p">],</span><span class="w"> </span><span class="nt">"zero_point"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">-128</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-</div>
-</div>
-</div>
+<p>The response lists output tensors with their name, datatype, shape and data.
+For quantized <code>INT8</code>/<code>UINT8</code> tensors, REST metadata includes <code>parameters.scale</code>,
+<code>parameters.zero_point</code> and, when present, <code>parameters.quantized_dimension</code>.
+Recover real values with <code>real = (quantized - zero_point) * scale</code>; per-axis values
+apply along <code>quantized_dimension</code> (zero when omitted).</p>
+<p>Health success is HTTP <code>200</code>; clients should not require a JSON body, which differs
+between the Go and Rust servers. A metadata request is a convenient check through
+the CORE proxy.</p>
 <p>Rules for the requests:</p>
 <ul>
 <li><code>data</code> holds the values in row-major order, flat or nested.</li>
@@ -4487,8 +4396,9 @@ compatibility checks; for example, an <code>arm64_pi5</code> model needs a compa
 </ul>
 <hr />
 <h2 id="test-the-service">Test the service</h2>
-<p>The service is reachable only from inside the platform. There are three ways to test a model.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">From your computer</label><label for="__tabbed_4_2">Locally with Docker</label><label for="__tabbed_4_3">On an ARM device</label></div>
+<p>The default <code>ClusterIP</code> service is internal to the cluster. There are three ways to
+test it; NodePort/LoadBalancer access depends on the platform network configuration.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">From your computer</label><label for="__tabbed_2_2">Locally with Docker</label><label for="__tabbed_2_3">On an ARM device</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>The <a href="../../components/cli/">CLI</a> (version 0.15 or later) opens an authenticated port-forward to the service. It carries REST requests only.</p>
@@ -4497,8 +4407,7 @@ dhcli<span class="w"> </span>services<span class="w"> </span>-p<span class="w"> 
 dhcli<span class="w"> </span>port-forward<span class="w"> </span>-p<span class="w"> </span>my-project<span class="w"> </span>-f<span class="w"> </span>yolo-function<span class="w"> </span>-l<span class="w"> </span><span class="m">18080</span>
 </code></pre></div>
 <p>In another terminal:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:18080/v2/health/ready
-curl<span class="w"> </span>http://localhost:18080/v2/models/yolo-function
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:18080/v2/models/yolo-function
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4528,12 +4437,10 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 </div>
 </div>
 </div>
-<p>To send a real picture, use the Python client of the <a href="../../tutorials/tvm/test/">tutorial</a>, or the ready-made <a href="https://github.com/scc-digitalhub/digitalhub-core/tree/runtime-tvm/runtimes/runtime-tvm/test_infer">test scripts</a> (<code>yolo.py</code> for detection, <code>xinet.py</code> for pose models), which also draw the results on the picture:</p>
-<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>yolo.py<span class="w"> </span>--url<span class="w"> </span>http://localhost:18080<span class="w"> </span>--function<span class="w"> </span>yolo-function
-</code></pre></div>
-<hr />
+<p>The <a href="../../tutorials/tvm/test/">tutorial</a> includes a standalone Python client for a
+real picture. It does not depend on private or locally ignored test scripts.</p>
 <h2 id="common-run-options">Common run options</h2>
-<p>Every action accepts the standard options of the platform: <code>resources</code>, <code>envs</code>, <code>secrets</code>, <code>volumes</code> and <code>profile</code> (see <a href="../../tasks/kubernetes-resources/">Kubernetes resources</a>). Suggested resources:</p>
+<p>Every action accepts the standard options of the platform: <code>resources</code>, <code>envs</code>, <code>secrets</code>, <code>volumes</code> and <code>profile</code> (see <a href="../../tasks/kubernetes-resources/">Kubernetes resources</a>). Starting values for small models (adjust to the model and available resources):</p>
 <table>
 <thead>
 <tr>
@@ -4554,7 +4461,7 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 <td><code>compile</code></td>
 <td>4</td>
 <td>8 Gi</td>
-<td>With less memory the Job may be killed (exit code 137). Tuning is faster with more CPUs.</td>
+<td>Starting point for small models; tuning and larger models can need more memory.</td>
 </tr>
 <tr>
 <td><code>serve</code></td>
@@ -4564,10 +4471,13 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 </tr>
 </tbody>
 </table>
-<p><code>resources.disk</code> sets the size of the working volume of the Jobs (default <code>4Gi</code>).</p>
+<p><code>resources.disk</code> sets the working volume size (default <code>4Gi</code>). <code>profile</code> chooses
+platform scheduling/resources, not the model target. A profile node selector takes
+precedence over the runtime selector; choose compatible compiler and serving nodes.
+<code>inputs</code> records consumed entity keys; it does not contain inference tensor data.</p>
 <hr />
 <h2 id="inside-the-jobs">Inside the Jobs</h2>
-<p>The <code>build</code> and <code>compile</code> Jobs run the <code>tvm-toolkit</code> image, which contains only the tools: Apache TVM, LLVM, the ARM compilers and the ONNX and TFLite importers. The scripts that do the work are part of the runtime: the platform mounts them into each Job, so a new version of the platform updates them without a new image.</p>
+<p>The <code>build</code> and <code>compile</code> Jobs run the <code>tvm-toolkit</code> image, which contains only the tools: Apache TVM, LLVM, the native/cross compilers and the ONNX and TFLite importers. The scripts that do the work are part of the runtime: the platform mounts them into each Job, so a new version of the platform updates them without a new image.</p>
 <table>
 <thead>
 <tr>
@@ -4645,13 +4555,18 @@ The <code>DHCORE_*</code> credentials are used only for Core and are not forward
 </tr>
 <tr>
 <td>Maximum REST request</td>
-<td>512 MB</td>
+<td>512 MiB</td>
 <td>1 GiB</td>
 </tr>
 <tr>
 <td>Maximum gRPC message</td>
-<td>512 MB</td>
-<td>512 MB</td>
+<td>512 MiB</td>
+<td>512 MiB</td>
+</tr>
+<tr>
+<td>Maximum output tensors</td>
+<td>64</td>
+<td>No equivalent fixed limit</td>
 </tr>
 <tr>
 <td>Extra response field</td>
@@ -4665,7 +4580,8 @@ The <code>DHCORE_*</code> credentials are used only for Core and are not forward
 </tr>
 </tbody>
 </table>
-<p>Neither image contains Python. Both are configured with these environment variables:</p>
+<p>Neither image contains Python. Each serves one Model, without automatic request
+batching. Clients handle preprocessing and output decoding. Both use these environment variables:</p>
 <table>
 <thead>
 <tr>
@@ -4683,7 +4599,7 @@ The <code>DHCORE_*</code> credentials are used only for Core and are not forward
 <tr>
 <td><code style="white-space: nowrap">TVM_MODEL_NAME</code></td>
 <td><code>model</code></td>
-<td>Model name in the API. Set by the platform from <code>served_name</code>.</td>
+<td>Model name in the API. Set from <code>served_name</code>, otherwise the Function name.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">TVM_SERVE_WORKERS</code></td>
@@ -4754,6 +4670,11 @@ The <code>DHCORE_*</code> credentials are used only for Core and are not forward
 </thead>
 <tbody>
 <tr>
+<td><code>RUNTIME_TVM_CONFIG</code></td>
+<td>bundled YAML only</td>
+<td>Optional external YAML location, e.g. <code>file:/etc/digitalhub/runtime-tvm.yaml</code>; restart CORE after changing it.</td>
+</tr>
+<tr>
 <td><code style="white-space: nowrap">RUNTIME_TVM_BUILDER_ONNX</code></td>
 <td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0</code></td>
 <td>Image of <code>build</code> for ONNX models.</td>
@@ -4804,7 +4725,7 @@ The <code>DHCORE_*</code> credentials are used only for Core and are not forward
 <tbody>
 <tr>
 <td>The compile Job is killed (<code>OOMKilled</code>, exit code 137)</td>
-<td>Not enough memory: set at least <code>mem: 8Gi</code> and <code>cpu: "4"</code>.</td>
+<td>Inspect the pod termination reason. For <code>OOMKilled</code>, increase memory or reduce tuning workers; CPU allocation alone does not fix it.</td>
 </tr>
 <tr>
 <td>Build error <code>No Adapter From Version &lt;n&gt; for &lt;operator&gt;</code></td>
@@ -4817,6 +4738,10 @@ The <code>DHCORE_*</code> credentials are used only for Core and are not forward
 <tr>
 <td>Compile error <code>CodeGenVM cannot handle this intrinsic now</code></td>
 <td>The IR has outputs without a shape and onnxsim could not fix them: the build log shows <code>still have no shape</code>. Build with <code>simplify: true</code> to see the onnxsim error, or export the model again with fixed shapes. See <a href="#outputs-without-a-shape">Outputs without a shape</a>.</td>
+</tr>
+<tr>
+<td><code>model.relax.json not found</code></td>
+<td>Check the Run's explicit <code>model_path</code> and the IR Model files; clear the override to use <code>function.ir_model</code>.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">tvm+compile needs an IR model</code></td>
@@ -4832,7 +4757,7 @@ The <code>DHCORE_*</code> credentials are used only for Core and are not forward
 </tr>
 <tr>
 <td>The compile or serve run stays <strong>PENDING</strong></td>
-<td>No node of the cluster has the architecture the run needs: see <a href="#where-the-service-runs">Where the service runs</a>. Delete the run and choose another target or Model.</td>
+<td>No node of the cluster has the architecture the run needs: see <a href="#where-the-service-runs">Where the service runs</a>. Check the profile/node selector, available nodes and pod events before choosing another target or Model.</td>
 </tr>
 <tr>
 <td>The serve pod restarts right after starting</td>
@@ -4844,7 +4769,7 @@ The <code>DHCORE_*</code> credentials are used only for Core and are not forward
 </tr>
 <tr>
 <td>The endpoint cannot be reached from your computer</td>
-<td>Services are internal to the platform: use <code>dhcli port-forward</code>.</td>
+<td>The default service is internal: use <code>dhcli port-forward</code>, or a platform-approved external route.</td>
 </tr>
 </tbody>
 </table>
@@ -4860,29 +4785,25 @@ The <code>DHCORE_*</code> credentials are used only for Core and are not forward
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/scc-digitalhub/digitalhub-core/tree/runtime-tvm/runtimes/runtime-tvm">runtime-tvm</a></td>
+<td><a href="https://github.com/scc-digitalhub/digitalhub-core/tree/main/runtimes/runtime-tvm">runtime-tvm</a></td>
 <td>The runtime in the Core: actions, options and the scripts run by the Jobs.</td>
 </tr>
 <tr>
-<td><a href="https://github.com/scc-digitalhub/digitalhub-core/tree/runtime-tvm/runtimes/runtime-tvm/test_infer">test_infer</a></td>
-<td>Test scripts for detection and pose models, with guides for a remote platform.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/scc-digitalhub/digitalhub-tvm-toolkit/tree/0.26.0">digitalhub-tvm-toolkit</a></td>
+<td><a href="https://github.com/scc-digitalhub/digitalhub-tvm-toolkit">digitalhub-tvm-toolkit</a></td>
 <td>The image of <code>build</code> and <code>compile</code>: Apache TVM, LLVM, ARM compilers, ONNX and TFLite importers.</td>
 </tr>
 <tr>
-<td><a href="https://github.com/scc-digitalhub/digitalhub-serverless/blob/tvm-0.26.0/pkg/processor/runtime/tvm/README.md">Go serve runtime</a></td>
+<td><a href="https://github.com/scc-digitalhub/digitalhub-serverless/blob/serverless-tvm/pkg/processor/runtime/tvm/README.md">Go serve runtime</a></td>
 <td>The default serve image, in <code>digitalhub-serverless</code>.</td>
 </tr>
 <tr>
-<td><a href="https://github.com/scc-digitalhub/digitalhub-tvm-rust/tree/0.26.0">digitalhub-tvm-rust</a></td>
+<td><a href="https://github.com/scc-digitalhub/digitalhub-tvm-rust">digitalhub-tvm-rust</a></td>
 <td>The Rust serve image.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="management-with-sdk">Management with SDK</h2>
-<p>Check the <a href="https://scc-digitalhub.github.io/sdk-docs/reference/runtimes/tvm/overview/">SDK TVM runtime documentation</a> for more information.</p>
+<p>Check the <a href="https://scc-digitalhub.github.io/docs/0.16/sdk/reference/runtimes/tvm/overview/">SDK TVM runtime documentation</a> for more information.</p>
 <h2 id="see-also">See Also</h2>
 <ul>
 <li><a href="../../tutorials/tvm/intro/">Tutorial: compile and serve an ONNX model with TVM</a></li>
@@ -4922,10 +4843,10 @@ The <code>DHCORE_*</code> credentials are used only for Core and are not forward
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.path", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.path", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

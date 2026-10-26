@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -12189,7 +12189,13 @@
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">run</span><span class="o">.</span><span class="n">status</span>
 </span></code></pre></div>
-<p>The service endpoint is available in <code>run.status.service</code>.</p>
+<p><code>run.status.service</code> describes the Kubernetes service. <code>run.status.inference_v2</code>
+contains <code>model</code>, <code>baseUrl</code>, <code>inferenceUrl</code>, <code>modelMetadataUrl</code>, <code>modelReadinessUrl</code>,
+<code>readinessUrl</code> and <code>livenessUrl</code>. The model name is <code>served_name</code>, otherwise the
+Function name. Read metadata before constructing an inference tensor.</p>
+<p>The default service URL is internal to Kubernetes. Use <code>dhcli port-forward</code> to
+call REST from your computer; a browser cannot resolve a cluster-only hostname
+by itself. See the <a href="https://scc-digitalhub.github.io/docs/0.16/tutorials/tvm/test/">inference tutorial</a>.</p>
 <div class="runtime-page-navigation">
 <p><a class="md-button" href="../run/">Run</a></p>
 <p><a class="md-button" href="../action/">Action</a></p>
@@ -12235,10 +12241,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.path", "navigation.top", "content.code.copy", "content.code.select"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.path", "navigation.top", "content.code.copy", "content.code.select"], "search": "../../../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
       

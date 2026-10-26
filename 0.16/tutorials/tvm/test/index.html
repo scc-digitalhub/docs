@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -2446,17 +2446,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#use-the-test-scripts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Use the test scripts
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#run-the-model-on-your-computer" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2774,17 +2763,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#use-the-test-scripts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Use the test scripts
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#run-the-model-on-your-computer" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2912,7 +2890,7 @@
 </table>
 <p>In all cases the API is the same, so the <a href="#send-a-picture">Python client</a> works everywhere: only the address changes.</p>
 <h2 id="test-the-service-on-the-platform">Test the service on the platform</h2>
-<p>The service is reachable only from inside the platform. The CLI opens an authenticated <strong>port-forward</strong>: a local port that forwards each request to the service, through the platform proxy. It carries HTTP requests, so it can be used for the REST API only.</p>
+<p>The default ClusterIP service is reachable inside the cluster. The CLI opens an authenticated <strong>port-forward</strong>: a local port that forwards each request to the service, through the platform proxy. It carries HTTP requests, so it can be used for the REST API only.</p>
 <p><strong>1. Log in and check the service</strong> (log in again when the CLI answers <code>401</code>):</p>
 <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>login
 dhcli<span class="w"> </span>services<span class="w"> </span>-p<span class="w"> </span>tvm-test
@@ -2924,37 +2902,35 @@ dhcli<span class="w"> </span>services<span class="w"> </span>-p<span class="w"> 
 </code></pre></div>
 <p><code>-f</code> selects the most recent running service of the function; pass a run ID instead to choose a specific one. <code>-l</code> is the local port: any free port works.</p>
 <p><strong>3. Check the service</strong> in a second terminal:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:18080/v2/health/ready
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"ready"</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span>
-</code></pre></div>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:18080/v2/models/yolo-function
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"yolo-function"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"versions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"1"</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">"platform"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tvm"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"inputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"images"</span><span class="p">,</span><span class="w"> </span><span class="nt">"datatype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FP32"</span><span class="p">,</span><span class="w"> </span><span class="nt">"shape"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">640</span><span class="p">,</span><span class="w"> </span><span class="mi">640</span><span class="p">]</span><span class="w"> </span><span class="p">}],</span>
 <span class="w">  </span><span class="nt">"outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"output0"</span><span class="p">,</span><span class="w"> </span><span class="nt">"datatype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FP32"</span><span class="p">,</span><span class="w"> </span><span class="nt">"shape"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">84</span><span class="p">,</span><span class="w"> </span><span class="mi">8400</span><span class="p">]</span><span class="w"> </span><span class="p">}]</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>The optional <code>platform</code> field differs between Go and Rust; the tensor signature is
+what the client uses. Health endpoints indicate success with HTTP <code>200</code>, and may
+have an empty body.</p>
 <p>The model expects one <code>FP32</code> picture of 640×640 pixels in NCHW order, and returns 8400 candidate boxes, each with 4 coordinates and 80 class scores.</p>
 <h2 id="send-a-picture">Send a picture</h2>
 <p>Download a test picture:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-L<span class="w"> </span>-o<span class="w"> </span>bus.jpg<span class="w"> </span>https://ultralytics.com/images/bus.jpg
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-fL<span class="w"> </span>-o<span class="w"> </span>bus.jpg<span class="w"> </span>https://ultralytics.com/images/bus.jpg
 </code></pre></div>
-<p>Save this script as <code>client.py</code>. It reads the model signature, prepares the picture, calls the inference endpoint and prints the objects found. Set <code>URL</code> to the address of the service.</p>
+<p>Save this script as <code>client.py</code>. It reads the model signature, prepares the picture, calls the inference endpoint prints detected objects and saves <code>detections.jpg</code>. Set <code>URL</code> to the address of the service.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
 
 <span class="n">URL</span> <span class="o">=</span> <span class="s2">"http://localhost:18080"</span>   <span class="c1"># port-forward, or http://localhost:8080 with Docker</span>
 <span class="n">MODEL</span> <span class="o">=</span> <span class="s2">"yolo-function"</span>          <span class="c1"># the served name</span>
 
 <span class="c1"># 1. Read the model signature</span>
-<span class="n">meta</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">URL</span><span class="si">}</span><span class="s2">/v2/models/</span><span class="si">{</span><span class="n">MODEL</span><span class="si">}</span><span class="s2">"</span><span class="p">))</span>
+<span class="n">meta</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">URL</span><span class="si">}</span><span class="s2">/v2/models/</span><span class="si">{</span><span class="n">MODEL</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span>
 <span class="n">spec</span> <span class="o">=</span> <span class="n">meta</span><span class="p">[</span><span class="s2">"inputs"</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="n">spec</span><span class="p">[</span><span class="s2">"shape"</span><span class="p">]</span>          <span class="c1"># [1, 3, 640, 640]</span>
 
@@ -2978,89 +2954,36 @@ dhcli<span class="w"> </span>services<span class="w"> </span>-p<span class="w"> 
 
 <span class="c1"># 5. Keep the best boxes and drop the overlapping duplicates (non-maximum suppression)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">2</span><span class="p">:]</span> <span class="o">-</span> <span class="n">b</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">kept</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">scores</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.25</span><span class="p">:</span>
         <span class="k">break</span>
-    <span class="n">top_left</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">boxes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="n">kept</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">bottom_right</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">boxes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">:],</span> <span class="n">boxes</span><span class="p">[</span><span class="n">kept</span><span class="p">,</span> <span class="mi">2</span><span class="p">:])</span>
+    <span class="n">same_class</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">kept</span> <span class="k">if</span> <span class="n">classes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">top_left</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">boxes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">],</span> <span class="n">boxes</span><span class="p">[</span><span class="n">same_class</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">bottom_right</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">boxes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="p">:],</span> <span class="n">boxes</span><span class="p">[</span><span class="n">same_class</span><span class="p">,</span> <span class="mi">2</span><span class="p">:])</span>
     <span class="n">overlap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">bottom_right</span> <span class="o">-</span> <span class="n">top_left</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">overlap</span> <span class="o">/</span> <span class="p">(</span><span class="n">area</span><span class="p">(</span><span class="n">boxes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="n">area</span><span class="p">(</span><span class="n">boxes</span><span class="p">[</span><span class="n">kept</span><span class="p">])</span> <span class="o">-</span> <span class="n">overlap</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.45</span><span class="p">):</span>
+    <span class="n">union</span> <span class="o">=</span> <span class="n">area</span><span class="p">(</span><span class="n">boxes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="n">area</span><span class="p">(</span><span class="n">boxes</span><span class="p">[</span><span class="n">same_class</span><span class="p">])</span> <span class="o">-</span> <span class="n">overlap</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">overlap</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">union</span><span class="p">,</span> <span class="mf">1e-9</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.45</span><span class="p">):</span>
         <span class="n">kept</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
+<span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">kept</span><span class="p">:</span>
     <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">boxes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"class </span><span class="si">{</span><span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2">  score </span><span class="si">{</span><span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  box (</span><span class="si">{</span><span class="n">x1</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y1</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">) - (</span><span class="si">{</span><span class="n">x2</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y2</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">rectangle</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="n">outline</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">"detections.jpg"</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>python3<span class="w"> </span>client.py
 </code></pre></div>
-<p>The output looks like this:</p>
-<div class="highlight"><pre><span></span><code>class  0  score 0.89  box (529, 230) - (640, 520)
-class  0  score 0.89  box (40, 236) - (189, 537)
-class  5  score 0.88  box (4, 135) - (636, 443)
-class  0  score 0.87  box (176, 239) - (272, 509)
-class  0  score 0.61  box (-0, 326) - (61, 516)
-</code></pre></div>
-<p>Class <code>0</code> is <em>person</em> and class <code>5</code> is <em>bus</em> in the COCO dataset: the model found four people and the bus. The boxes are in the coordinates of the 640×640 input. Through the port-forward a request takes a few seconds, because the picture travels as about 12 MB of JSON.</p>
-<h2 id="use-the-test-scripts">Use the test scripts</h2>
-<p>The <a href="https://github.com/scc-digitalhub/digitalhub-core/tree/runtime-tvm/runtimes/runtime-tvm/test_infer">test_infer</a> scripts of the runtime do the same and draw the results on the picture: <code>yolo.py</code> for detection models, <code>xinet.py</code> for pose models (people with 17 keypoints).</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--branch<span class="w"> </span>runtime-tvm<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>https://github.com/scc-digitalhub/digitalhub-core.git
-<span class="nb">cd</span><span class="w"> </span>digitalhub-core/runtimes/runtime-tvm/test_infer
-
-python3<span class="w"> </span>yolo.py<span class="w"> </span>--url<span class="w"> </span>http://localhost:18080<span class="w"> </span>--function<span class="w"> </span>yolo-function
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>serve:     http://localhost:18080  model 'yolo-function'
-input:     images FP32 [1, 3, 640, 640]
-output:    output0 FP32 [1, 84, 8400]
-picture:   810x1080 -&gt; 640x640 letterbox, NCHW, [0,1]
-inference: REST in 5501 ms -&gt; output0 FP32 [1, 84, 8400]
-
-detections with conf &gt; 0.25, after NMS: 5
-  person         conf 0.90  box (671,385)-(810,880)
-  person         conf 0.88  box (222,407)-(344,856)
-  person         conf 0.87  box (50,398)-(244,905)
-  bus            conf 0.84  box (31,231)-(801,778)
-  person         conf 0.43  box (0,549)-(59,868)
-summary:   {'person': 4, 'bus': 1}
-picture:   .../test_infer/output/yolo-function.jpg
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>--url</code></td>
-<td>Address of the service: the port-forward, or the Docker container.</td>
-</tr>
-<tr>
-<td><code style="white-space: nowrap">--function</code></td>
-<td>Function name, also used as model name.</td>
-</tr>
-<tr>
-<td><code>--model</code></td>
-<td>Model name, when the run sets a <code>served_name</code> different from the function name.</td>
-</tr>
-<tr>
-<td><code>--mode grpc</code> and <code>--grpc-url</code></td>
-<td>Use gRPC, e.g. <code>--mode grpc --grpc-url localhost:9000</code> with Docker.</td>
-</tr>
-<tr>
-<td><code>--image</code></td>
-<td>Local path or URL of the picture (default: <code>bus.jpg</code>).</td>
-</tr>
-<tr>
-<td><code>--conf</code></td>
-<td>Minimum confidence of the results.</td>
-</tr>
-</tbody>
-</table>
-<p>The <a href="https://github.com/scc-digitalhub/digitalhub-core/blob/runtime-tvm/runtimes/runtime-tvm/test_infer/README.md">README</a> lists all the options.</p>
+<p>Class <code>0</code> means <em>person</em> and class <code>5</code> means <em>bus</em> for this COCO-trained model.
+Coordinates refer to the resized input image. Counts and scores depend on the
+export, image and preprocessing; they are not a fixed expected result.</p>
+<p>This small client resizes directly to show the full request/response flow. For an
+accuracy evaluation, use the model's reference preprocessing (including letterbox
+padding where required) and compare against the original model. Total HTTP latency
+includes JSON encoding, transfer and decoding; it is not pure inference time.</p>
 <h2 id="run-the-model-on-your-computer">Run the model on your computer</h2>
 <p>The compiled Model can run outside the platform with the same serve image. This works on a compatible Intel/AMD 64-bit computer with the <code>yolo-function-amd64</code> build.</p>
 <p><strong>1. Download the compiled Model:</strong></p>
@@ -3074,12 +2997,12 @@ ls<span class="w"> </span>yolo-model<span class="w">        </span><span class="
 <span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0
 </code></pre></div>
 <p>To use the Rust server instead, replace the image with <code>ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0</code>.</p>
-<p><strong>3. Test it</strong> in another terminal: set <code>URL = "http://localhost:8080"</code> in <code>client.py</code>, or use the test scripts, also over gRPC:</p>
+<p><strong>3. Test it</strong> in another terminal: set <code>URL = "http://localhost:8080"</code> in <code>client.py</code>:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:8080/v2/models/yolo-function
 python3<span class="w"> </span>client.py
-python3<span class="w"> </span>yolo.py<span class="w"> </span>--url<span class="w"> </span>http://localhost:8080<span class="w"> </span>--function<span class="w"> </span>yolo-function
-python3<span class="w"> </span>yolo.py<span class="w"> </span>--url<span class="w"> </span>http://localhost:8080<span class="w"> </span>--grpc-url<span class="w"> </span>localhost:9000<span class="w"> </span>--mode<span class="w"> </span>grpc<span class="w"> </span>--function<span class="w"> </span>yolo-function
 </code></pre></div>
+<p>For gRPC, use port <code>9000</code> with an Open Inference v2 client. CORE's HTTP port-forward
+does not carry gRPC. The <a href="../../../runtimes/tvm/#endpoints">runtime guide</a> lists the RPC methods.</p>
 <h2 id="run-the-model-on-a-raspberry-pi">Run the model on a Raspberry Pi</h2>
 <p>Use a Raspberry Pi with Docker and either a 64-bit OS (<code>linux/arm64</code>) or an
 ARMv7-compatible 32-bit OS (<code>linux/arm/v7</code>, hard-float ABI and NEON). Both Go and Rust
@@ -3144,10 +3067,10 @@ runtime image builds include these platforms. Use a model matching the OS and CP
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.path", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.path", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -2964,14 +2964,21 @@
 <p><img alt="services" src="../../images/runtimes/mlflowserve-services.png" /></p>
 <hr />
 <h2 id="tvm-compiled-model-serving">TVM Compiled Model Serving</h2>
-<p>The <a href="../../runtimes/tvm/"><strong>TVM runtime</strong></a> compiles ONNX and TFLite models into native code with Apache TVM, for x86 servers or ARM devices, and serves them through the Open Inference v2 protocol over REST and gRPC. It is useful when inference has to be fast on CPU, or when the same model has to run both in the platform and on edge devices.</p>
+<p>The <a href="../../runtimes/tvm/"><strong>TVM runtime</strong></a> compiles ONNX and TFLite models for Linux
+CPUs and serves them through Open Inference v2 over REST and gRPC. Compile the same
+IR for AMD64, ARM64 or ARM32, then use a matching Go/Rust runtime. Performance depends
+on the model, target and tuning; measure it on the intended device.</p>
 <h3 id="example-runtime-tasks_2">Example runtime tasks</h3>
 <p><strong>Compile once, serve on CPU</strong></p>
 <p>A model is converted, compiled for a target architecture and deployed, without writing code or building images.</p>
 <p>Example:</p>
 <ul>
-<li>Upload a YOLOv8n object detector exported to ONNX, run the <code>build</code> and <code>compile</code> actions of a <code>tvm</code> function for the <code>x86</code> target, and deploy the compiled model with the <code>serve</code> action.</li>
+<li>Upload YOLOv8n as ONNX, create a <code>tvm</code> Function, run <code>build</code>, then <code>compile</code> with
+  <code>target_architecture: amd64</code>, and deploy it with <code>serve</code>.</li>
 </ul>
+<p>TVM options belong to each Run. Compile groups advanced settings under
+<code>optimization</code> and <code>tuning</code>; the Task retains common Kubernetes settings.
+<code>profile</code> selects scheduling/resources and is separate from the model target.</p>
 <p>From the Core Manage UI, users can create the three runs from the <code>build</code>, <code>compile</code> and <code>serve</code> tabs of the function. The <a href="../../tutorials/tvm/intro/">TVM tutorial</a> shows the whole flow, including how to test the service from a local computer with the CLI.</p>
 <hr />
 <h2 id="custom-model-serving">Custom Model Serving</h2>
@@ -2985,7 +2992,10 @@
 <hr />
 <h2 id="inferencev2-client">InferenceV2 Client</h2>
 <p>The <strong>InferenceV2 Client</strong> is a specialized HTTP client built into the console for interacting with models served using the <a href="https://kserve.github.io/website/latest/modelserving/data_plane/v2_protocol/">Open Inference Protocol (V2)</a>. It provides a streamlined interface for sending inference requests and inspecting model metadata, along with real-time health monitoring.</p>
-<p>The InferenceV2 Client is automatically selected when a service run exposes an Inference V2 endpoint. This applies to models deployed with the <strong>MLflow Serve</strong> or <strong>Scikit-learn Serve</strong> runtimes — both of which expose models via the Open Inference Protocol V2.</p>
+<p>The InferenceV2 Client is selected when a service Run exposes Open Inference v2
+metadata, including <strong>MLflow Serve</strong>, <strong>Scikit-learn Serve</strong>, <strong>OpenInference</strong> and
+<strong>TVM Serve</strong>. For TVM, the model name is the Run's <code>served_name</code>, or the Function
+name when omitted; <code>service_name</code> does not change the model endpoint.</p>
 <h3 id="accessing-the-inferencev2-client">Accessing the InferenceV2 Client</h3>
 <p>When a service run is in a <strong>RUNNING</strong> state and provides an Inference V2 endpoint, the <strong>CLIENT</strong> button becomes available on the service list or run detail page. Clicking the button opens a dialog with the InferenceV2 Client.</p>
 <p><img alt="InferenceV2 Client placeholder" src="../../images/console/inference-v2-client.png" /></p>
@@ -3148,10 +3158,10 @@ Health checks are performed automatically when the client opens and reflect the 
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.path", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.path", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>
