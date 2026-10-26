@@ -4625,8 +4625,13 @@ batching. Clients handle preprocessing and output decoding. Both use these envir
 </table>
 <p>At startup, both images refuse a model, with a clear error, when it was compiled with another TVM release or for another CPU architecture, or when it uses an unsupported data type.</p>
 <div class="admonition note">
-<p class="admonition-title">Use images of the same release</p>
-<p>Compile and serve with images of the same release, such as <code>tvm-toolkit:0.26.0</code> and <code>tvm-runtime-go:0.26.0</code>: the serve images check that <code>model.so</code> was built with their own TVM version and commit. Recompile the models after upgrading the images.</p>
+<p class="admonition-title">Use compatible Apache TVM builds</p>
+<p>The serve images check that <code>model.so</code> was built with their own Apache TVM
+version and commit. Rebuild the IR and compiled models when either changes.
+An image tag can also identify a packaging revision: for example,
+<code>0.26.0-r1</code> can still contain Apache TVM <code>0.26.0</code>. Changing that revision alone
+does not require recompiling models, but verify the existing models with the
+new image before deployment. CPU, ABI and data-type requirements still apply.</p>
 </div>
 <hr />
 <h2 id="models-produced">Models produced</h2>
@@ -4713,6 +4718,22 @@ batching. Clients handle preprocessing and output decoding. Both use these envir
 </table>
 <p>To use Rust as the platform default, set <code>RUNTIME_TVM_SERVE=ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0</code> on Core. A single run can still select another image with <code>image</code>.</p>
 <p>A custom image must support the architecture of the nodes on which the model is served. A multi-arch image allows the same tag to be used across different architectures.</p>
+<p>Image maintainers can publish a new revision from <code>main</code> with the dedicated
+GitHub Actions workflow in each component repository. The manual inputs separate
+<code>tvm_version</code> (the Apache TVM release, such as <code>0.26.0</code>) from <code>image_tag</code> (the new
+image revision, such as <code>0.26.0-r1</code>). The workflow records the component commit and
+publishes the multi-arch tag after all architecture builds succeed. A merge into
+<code>main</code> alone does not publish images. See the release instructions for the
+<a href="https://github.com/scc-digitalhub/digitalhub-tvm-toolkit#release">toolkit</a>,
+<a href="https://github.com/scc-digitalhub/digitalhub-serverless/tree/main/pkg/processor/runtime/tvm#versions-and-release">Go runtime</a>
+and <a href="https://github.com/scc-digitalhub/digitalhub-tvm-rust#versions-and-release">Rust runtime</a>.</p>
+<p>After testing a published revision, set <code>RUNTIME_TVM_BUILDER_ONNX</code>,
+<code>RUNTIME_TVM_BUILDER_TFLITE</code> and <code>RUNTIME_TVM_COMPILER</code> to the new toolkit image, and
+<code>RUNTIME_TVM_SERVE</code> to the new Go or Rust image, then restart Core. The settings
+apply to new runs; replace existing serve runs to use the new image. A run's
+explicit <code>image</code> still overrides the platform default. Use a new tag or a digest
+for each revision: with <code>IfNotPresent</code>, overwriting a tag can leave nodes using
+an older cached image.</p>
 <hr />
 <h2 id="troubleshooting">Troubleshooting</h2>
 <table>
