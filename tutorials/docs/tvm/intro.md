@@ -1,6 +1,6 @@
 # Compiled models with TVM: introduction
 
-This scenario takes a trained model, compiles it into fast native code with the [TVM runtime](../../../runtimes/tvm/) and serves it through the Open Inference v2 protocol. The model is **YOLOv8n**, an object detector exported to ONNX.
+This scenario takes a trained model, compiles it into native CPU code with the [TVM runtime](../../../runtimes/tvm/) and serves it through the Open Inference v2 protocol. The model is **YOLOv8n**, an object detector exported to ONNX.
 
 ![TVM runtime pipeline](../images/tvm/tvm-pipeline.svg)
 
@@ -9,7 +9,9 @@ The scenario has two parts:
 1. [**Build, compile and serve**](deploy.md): upload the model, create a TVM function, run `build`, `compile` and `serve`, and compile the same model for ARM devices.
 2. [**Test the model**](test.md): send a picture to the service from your computer, run the model locally with Docker, or on a Raspberry Pi.
 
-Every step can be done from the **console** or from the **CLI** (`dhcli`): each page shows both.
+Deployment steps show both the **console** and **CLI** (`dhcli`). The test page
+provides a Python client. Start with untuned compilation to check the pipeline;
+use [MetaSchedule](../../../runtimes/tvm/#model-optimization) to investigate performance.
 
 ## Names used in this scenario
 
@@ -39,7 +41,9 @@ Use your own names if you prefer, and change the commands accordingly.
 
     ```sh
     pip install ultralytics
-    yolo export model=yolov8n.pt format=onnx
+    yolo export model=yolov8n.pt format=onnx imgsz=640 batch=1 dynamic=False nms=False
     ```
 
-    This creates `yolov8n.onnx`, with input `images` `[1, 3, 640, 640]` and output `output0` `[1, 84, 8400]`.
+    This normally creates `yolov8n.onnx` with input `images` `[1, 3, 640, 640]` and
+    output `[1, 84, 8400]`. Check the exported signature: the test client assumes
+    this detection layout and does its own non-maximum suppression.

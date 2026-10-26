@@ -7,12 +7,13 @@ render_macros: true
 ```python
 import digitalhub as dh
 
-project = dh.get_or_create_project("my_project")
+project = dh.get_or_create_project("my-project")
+model = project.log_onnx(name="mobilenet", source="mobilenet.onnx")
 
 function = project.new_function(
     name="mobilenet",
     kind="tvm",
-    model="s3://my-bucket/models/mobilenet.onnx",
+    model=model.key,
     format="onnx",
 )
 
@@ -21,10 +22,12 @@ build = function.run(
     wait=True,
 )
 
-compile = function.run(
+compile_run = function.run(
     action="compile",
     target_architecture="auto",
     optimization={"opt_level": 3},
+    tuning={"tuning_mode": "off"},
+    resources={"cpu": "4", "mem": "8Gi"},
     wait=True,
 )
 
@@ -32,6 +35,7 @@ serve = function.run(
     action="serve",
     served_name="mobilenet",
     replicas=1,
+    resources={"cpu": "4", "mem": "2Gi"},
     wait=True,
 )
 ```
@@ -46,7 +50,7 @@ Profile names come from CORE's `runtime-tvm.yaml`. Instead of selecting a profil
 an advanced run can provide the target directly:
 
 ```python
-compile = function.run(
+compile_run = function.run(
     "compile",
     target={"kind": "llvm", "mtriple": "aarch64-linux-gnu", "mcpu": "cortex-a72"},
     optimization={"cross_cc": "aarch64-linux-gnu-g++"},
@@ -54,6 +58,7 @@ compile = function.run(
 )
 ```
 
+Set the optional `profile` to choose a platform node, independently of this target.
 The compiler must exist in the selected compile image. See the
 [compile reference](tvm-compile/run.md) for tuning and toolchain options.
 

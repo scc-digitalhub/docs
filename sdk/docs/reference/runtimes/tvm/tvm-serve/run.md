@@ -16,13 +16,13 @@ Call `function.run(action="serve", ...)` with the service settings. The Run uses
 | [resources](../../../configuration/kubernetes.md#resources) | dict | | Resource values with optional `cpu`, `mem`, `gpu`, and `disk` keys. |
 | [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | | Environment variables. |
 | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | | List of secret names. |
-| [profile](../../../configuration/kubernetes.md#profile) | str | | Profile template. |
+| [profile](../../../configuration/kubernetes.md#profile) | str | | Scheduling/resource profile; does not select the model target. |
 | model_path | str | | Optional `store://` reference to a `tvm-so` Model; otherwise uses `function.so_model`. |
 | served_name | str | | Model name in `/v2/models/<name>`; defaults to the Function name. |
-| image | str | | TVM execution image. |
-| replicas | int | | Number of service replicas. |
-| workers | int | | Number of workers per replica. |
-| [service_type](../../../configuration/kubernetes.md#service-port-and-type) | str | | Kubernetes service type. |
+| image | str | | Go image by default; set the Rust image to use Rust for this Run. |
+| replicas | int | | Number of pods, zero or greater; default `1`. |
+| workers | int | | Parallel model copies per pod, at least one; default `1`. |
+| [service_type](../../../configuration/kubernetes.md#service-port-and-type) | str | | `ClusterIP` (default), `NodePort` or `LoadBalancer`. |
 | service_name | str | | Extra Kubernetes service name, `<function>-<service_name>`; distinct from `served_name`. |
 
 Serving options belong to the Run. Reusable Tasks contain only common infrastructure
@@ -31,6 +31,10 @@ settings, for example:
 ```python
 task = function.new_task(action="serve", resources={"cpu": "2", "mem": "2Gi"})
 ```
+
+The selected Model is pinned in this Run. Compiling another target does not change
+a running service; use a versioned `model_path` to select an earlier build.
+`profile` must select a node compatible with the Model's architecture and CPU.
 
 ## Example
 

@@ -72,7 +72,7 @@ The service is not exposed to the user's browser: access is mediated by the cons
 In addition to the standard HTTP client, the console provides specialized clients for specific model-serving scenarios. The appropriate client is automatically selected based on the service type:
 
 - **[Chat Client](../runtimes/chat-client.md)** — An interactive chat interface for LLM models served with OpenAI-compatible APIs. Used with HuggingFace Serve and KubeAI Text runtimes.
-- **[InferenceV2 Client](../runtimes/inference-v2-client.md)** — A dedicated client for models served using the Open Inference Protocol (V2), with built-in health monitoring and pre-configured endpoints. Used with MLflow Serve and Scikit-learn Serve runtimes.
+- **[InferenceV2 Client](../ml-tasks/serving-ml-models.md#inferencev2-client)** — A client for Open Inference v2 services, including MLflow Serve, Scikit-learn Serve, OpenInference and TVM Serve. It uses the model name and URLs reported by the Run.
 
 ## Exposing services externally
 

@@ -22,12 +22,19 @@ Define a `tvm` Function with the source model and optional artifact store keys.
 | ir_model | str | | Relax IR model reference; CORE updates it after a successful `build`. |
 | so_model | str | | Compiled model reference; CORE updates it after a successful `compile`. |
 
-The source model can be a local path, store key, or supported repository/archive URI. See the [code source reference](../../../configuration/code-sources.md) for URI formats.
+Use a `store://` Model reference or an `s3://`/`https://` source reachable by the
+CORE Job. A path on your laptop is not a remote Job input: upload it with
+`project.log_onnx(source="model.onnx", name="my-model")` (or `log_tflite`) and pass
+the returned Model's `.key`. Compilation and serving require the produced bundles,
+not the original ONNX/TFLite file.
 
 ## Example
 
 ```python
+import digitalhub as dh
+
 function = dh.new_function(
+    project="my-project",
     name="my-tvm-model",
     kind="tvm",
     model="s3://my-bucket/models/model.onnx",

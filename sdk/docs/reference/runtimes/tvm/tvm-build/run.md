@@ -15,16 +15,16 @@ Call `function.run(action="build", ...)` to convert the source model to Relax IR
 | [resources](../../../configuration/kubernetes.md#resources) | dict | | Resource values with optional `cpu`, `mem`, `gpu`, and `disk` keys. |
 | [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | | Environment variables. |
 | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | | List of secret names. |
-| [profile](../../../configuration/kubernetes.md#profile) | str | | Profile template. |
+| [profile](../../../configuration/kubernetes.md#profile) | str | | Scheduling/resource profile; does not select the model target. |
 | image | str | | Optional toolkit image override. |
-| simplify | bool | | Simplify the ONNX model before conversion. |
+| simplify | bool | | `false`: simplify before conversion; may also run automatically when imported outputs lack shapes. |
 | target_opset | int | | Convert to this ONNX opset. |
 | opset_override | int | | Importer opset override, without converting the model. |
-| strict_shape_inference | bool | | Enable strict shape inference. |
-| data_prop | bool | | Enable shape inference data propagation. |
-| keep_params_in_input | bool | | Save weights separately in `params.bin`; compile embeds them again. |
+| strict_shape_inference | bool | | `false`: enable strict ONNX shape inference; failures are logged. |
+| data_prop | bool | | `false`: propagate constants during shape inference. |
+| keep_params_in_input | bool | | `false`: save weights in `params.bin`; compile embeds them again. |
 | sanitize_input_names | bool | | Sanitize model input names; default `true`. |
-| inputs | dict[str, str] | | Mapping of input names to Dataitem or store keys. |
+| inputs | dict[str, str] | | Consumed entity keys for lineage, not inference tensor values. |
 
 Conversion settings apply to ONNX. The source `model` and `format` belong to the
 Function; CORE records the generated IR reference after success.

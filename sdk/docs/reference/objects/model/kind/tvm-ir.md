@@ -4,7 +4,11 @@ render_macros: true
 
 # TVM IR
 
-The `tvm-ir` kind stores a Relax IR model produced by `tvm` or `tvm+build`. Kind-specific fields, including source format, tensor signatures, and input handling, are documented with the creation functions.
+The `tvm-ir` kind stores a Relax IR model produced by a `tvm+build` Run. Kind-specific fields, including source format, tensor signatures, and input handling, are documented with the creation functions.
+
+The bundle contains `model.relax.json`, `metadata.json` and optional `params.bin`.
+Use the build action to convert ONNX/TFLite first; registering a Model does not
+convert the source or create an IR.
 
 ## Create
 
@@ -18,6 +22,9 @@ The `tvm-ir` kind stores a Relax IR model produced by `tvm` or `tvm+build`. Kind
 
 ### New
 
+Create a Model reference to an already uploaded bundle; this call does not compile
+or upload files.
+
 {% call function_doc("new_model", "digitalhub.entities") %}
     === "Creation example"
 
@@ -28,7 +35,7 @@ The `tvm-ir` kind stores a Relax IR model produced by `tvm` or `tvm+build`. Kind
             project="my-project",
             name="resnet18-relax",
             kind="tvm-ir",
-            path="s3://my-bucket/models/resnet18.relax",
+            path="s3://my-bucket/models/resnet18-ir/",
             source_format="onnx",
             entry="main",
         )

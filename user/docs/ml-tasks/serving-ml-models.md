@@ -62,7 +62,10 @@ Users can view the API endpoints for their deployed services in the 'services' t
 
 ## TVM Compiled Model Serving
 
-The [**TVM runtime**](../runtimes/tvm.md) compiles ONNX and TFLite models into native code with Apache TVM, for x86 servers or ARM devices, and serves them through the Open Inference v2 protocol over REST and gRPC. It is useful when inference has to be fast on CPU, or when the same model has to run both in the platform and on edge devices.
+The [**TVM runtime**](../runtimes/tvm.md) compiles ONNX and TFLite models for Linux
+CPUs and serves them through Open Inference v2 over REST and gRPC. Compile the same
+IR for AMD64, ARM64 or ARM32, then use a matching Go/Rust runtime. Performance depends
+on the model, target and tuning; measure it on the intended device.
 
 ### Example runtime tasks
 
@@ -72,7 +75,12 @@ A model is converted, compiled for a target architecture and deployed, without w
 
 Example:
 
-- Upload a YOLOv8n object detector exported to ONNX, run the `build` and `compile` actions of a `tvm` function for the `x86` target, and deploy the compiled model with the `serve` action.
+- Upload YOLOv8n as ONNX, create a `tvm` Function, run `build`, then `compile` with
+  `target_architecture: amd64`, and deploy it with `serve`.
+
+TVM options belong to each Run. Compile groups advanced settings under
+`optimization` and `tuning`; the Task retains common Kubernetes settings.
+`profile` selects scheduling/resources and is separate from the model target.
 
 From the Core Manage UI, users can create the three runs from the `build`, `compile` and `serve` tabs of the function. The [TVM tutorial](../../tutorials/tvm/intro/) shows the whole flow, including how to test the service from a local computer with the CLI.
 
@@ -94,7 +102,10 @@ It is possible to expose a custom model through the [**python serverless**](../r
 
 The **InferenceV2 Client** is a specialized HTTP client built into the console for interacting with models served using the [Open Inference Protocol (V2)](https://kserve.github.io/website/latest/modelserving/data_plane/v2_protocol/). It provides a streamlined interface for sending inference requests and inspecting model metadata, along with real-time health monitoring.
 
-The InferenceV2 Client is automatically selected when a service run exposes an Inference V2 endpoint. This applies to models deployed with the **MLflow Serve** or **Scikit-learn Serve** runtimes — both of which expose models via the Open Inference Protocol V2.
+The InferenceV2 Client is selected when a service Run exposes Open Inference v2
+metadata, including **MLflow Serve**, **Scikit-learn Serve**, **OpenInference** and
+**TVM Serve**. For TVM, the model name is the Run's `served_name`, or the Function
+name when omitted; `service_name` does not change the model endpoint.
 
 ### Accessing the InferenceV2 Client
 

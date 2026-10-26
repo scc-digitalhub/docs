@@ -1,6 +1,7 @@
 # Build, compile and serve the model
 
-In this part we upload the model, create a TVM function and run its three actions. Each action is a **run**: wait until a run is **COMPLETED** before starting the next one.
+In this part we upload the model, create a TVM function and run its three actions. Wait for build and compile Runs to become **COMPLETED** before the next step.
+A serve Run remains **RUNNING** while the service is available.
 
 With the CLI, each run reads its fields from a small YAML file; the commands expect the files in the current folder.
 
@@ -55,7 +56,7 @@ The runtime recognizes the format by itself: from the kind `onnx` of the Model, 
 
 ## 3. Build: ONNX to Relax IR
 
-`build` converts the model into Relax IR. YOLOv8n needs no conversion option: we only give the Job enough resources. The build log shows that the graph is simplified with onnxsim by itself: with TVM 0.26 this is expected for YOLOv8, see [Outputs without a shape](../../../runtimes/tvm/#outputs-without-a-shape).
+`build` converts the model into Relax IR. YOLOv8n needs no conversion option: we only give the Job enough resources. If the imported outputs lack shapes, the build automatically retries with onnxsim; see [Outputs without a shape](../../../runtimes/tvm/#outputs-without-a-shape).
 
 === "Console"
 
@@ -109,7 +110,7 @@ object and compiler options, as described in the [target guide](../../../runtime
     | --- | --- | --- |
     | `target_architecture`{: style="white-space: nowrap" } | `amd64` | requires x86-64-v2 (`amd64_v3` requires x86-64-v3, including AVX2 and FMA) |
     | `tag` | `amd64` | names the Model `yolo-function-amd64` |
-    | `opt_level` | `3` | full optimization |
+    | `optimization.opt_level` | `3` | TVM pass optimization level; separate from MetaSchedule tuning |
     | `resources` | CPU `4`, memory `8Gi` | compiling needs memory |
 
 === "CLI"
@@ -120,7 +121,8 @@ object and compiler options, as described in the [target guide](../../../runtime
     spec:
       target_architecture: amd64
       tag: amd64
-      opt_level: 3
+      optimization:
+        opt_level: 3
       resources:
         cpu: "4"
         mem: 8Gi
@@ -131,7 +133,9 @@ object and compiler options, as described in the [target guide](../../../runtime
     dhcli list runs -p tvm-test
     ```
 
-When the run is **COMPLETED**, the Model `yolo-function-amd64`, of kind `tvm-so`, contains `model.so` and `metadata.json`, and the function field `so_model` points to it. The `benchmark` section of `metadata.json` shows how long an inference takes.
+When the run is **COMPLETED**, the Model `yolo-function-amd64`, of kind `tvm-so`, contains `model.so` and `metadata.json`, and the function field `so_model` points to it. If the compile node can execute the target, `metadata.json` contains its synthetic
+CPU benchmark. Otherwise `benchmark.skipped` explains why it was not run. These
+are compile-node measurements, not timings on an ARM device or over HTTP.
 
 ## 5. Serve
 
@@ -143,7 +147,7 @@ When the run is **COMPLETED**, the Model `yolo-function-amd64`, of kind `tvm-so`
 
     | Field | Value | Why |
     | --- | --- | --- |
-    | `resources` | CPU `2`, memory `2Gi` | enough for YOLOv8n; TVM uses one thread per CPU |
+    | `resources` | CPU `4`, memory `2Gi` | starting point; one worker uses the same four threads as compilation |
 
 === "CLI"
 
@@ -152,7 +156,7 @@ When the run is **COMPLETED**, the Model `yolo-function-amd64`, of kind `tvm-so`
     ```yaml
     spec:
       resources:
-        cpu: "2"
+        cpu: "4"
         mem: 2Gi
     ```
 
@@ -172,11 +176,12 @@ The model is served with the name of the function, `yolo-function`. The platform
 
 ## 6. Compile for ARM devices (optional)
 
-The same IR can be compiled for ARM devices, such as a Raspberry Pi. The Job still runs on the cluster: the ARM library is cross-compiled. Check the device first:
+The same IR can be compiled for ARM devices, such as a Raspberry Pi. The Job runs on a toolkit-capable AMD64 or ARM64 node, selected through `profile`.
+The target architecture chooses the generated code; it does not move the Job to that device. Check the device first:
 
 ```sh
 uname -m          # kernel: aarch64 or armv7l
-getconf LONG_BIT  # userspace: 64 -> arm64, 32 -> arm32 (ARMv7 hard-float + NEON)
+getconf LONG_BIT  # userspace bitness; ARM32 also needs ARMv7, hard-float and NEON
 ```
 
 === "arm64 (64-bit OS)"
@@ -187,8 +192,8 @@ getconf LONG_BIT  # userspace: 64 -> arm64, 32 -> arm32 (ARMv7 hard-float + NEON
     | --- | --- |
     | `target_architecture`{: style="white-space: nowrap" } | `arm64` (or `arm64_pi5` for a Raspberry Pi 5) |
     | `tag` | `arm64` |
-    | `cross_cc` | leave empty: the right compiler is chosen automatically |
-    | `opt_level` | `3` |
+    | `optimization.cross_cc` | leave empty: the right compiler is chosen automatically |
+    | `optimization.opt_level` | `3` |
     | `resources` | CPU `4`, memory `8Gi` |
 
     **CLI**: create `compile-arm64.yaml` and start the run:
@@ -197,7 +202,8 @@ getconf LONG_BIT  # userspace: 64 -> arm64, 32 -> arm32 (ARMv7 hard-float + NEON
     spec:
       target_architecture: arm64
       tag: arm64
-      opt_level: 3
+      optimization:
+        opt_level: 3
       resources:
         cpu: "4"
         mem: 8Gi
@@ -217,8 +223,8 @@ getconf LONG_BIT  # userspace: 64 -> arm64, 32 -> arm32 (ARMv7 hard-float + NEON
     | --- | --- |
     | `target_architecture`{: style="white-space: nowrap" } | `arm32` |
     | `tag` | `arm32` |
-    | `cross_cc` | leave empty: the right compiler is chosen automatically |
-    | `opt_level` | `3` |
+    | `optimization.cross_cc` | leave empty: the right compiler is chosen automatically |
+    | `optimization.opt_level` | `3` |
     | `resources` | CPU `4`, memory `8Gi` |
 
     **CLI**: create `compile-arm32.yaml` and start the run:
@@ -227,7 +233,8 @@ getconf LONG_BIT  # userspace: 64 -> arm64, 32 -> arm32 (ARMv7 hard-float + NEON
     spec:
       target_architecture: arm32
       tag: arm32
-      opt_level: 3
+      optimization:
+        opt_level: 3
       resources:
         cpu: "4"
         mem: 8Gi
@@ -245,6 +252,6 @@ getconf LONG_BIT  # userspace: 64 -> arm64, 32 -> arm32 (ARMv7 hard-float + NEON
 
 !!! warning "Serving after an ARM compile"
 
-    Each compile writes its Model into `so_model`, and `serve` deploys `so_model` by default. After an ARM compile, `so_model` points to the ARM library, which the platform serves only on ARM nodes: without ARM nodes in the cluster the service stays **PENDING**. To serve the AMD64 build, set the serve field `model_path` to `store://tvm-test/model/tvm-so/yolo-function-amd64`. A service that is already running is not affected.
+    Each compile writes its Model into `so_model`, and `serve` deploys `so_model` by default. After an ARM compile, `so_model` points to the ARM library, which the platform serves only on ARM nodes: without ARM nodes in the cluster the service stays **PENDING**. To serve the AMD64 build, set the serve field `model_path` to `store://tvm-test/model/tvm-so/yolo-function-amd64:<id>`. A service that is already running is not affected.
 
 The ARM64 and ARM32 Models can run on compatible devices, as shown in [Test the model](test.md#run-the-model-on-a-raspberry-pi). They can also be served by the platform on matching cluster nodes, provided the runtime and init images both support the node architecture.
