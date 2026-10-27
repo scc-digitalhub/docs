@@ -12405,7 +12405,7 @@
 <td>target</td>
 <td>dict</td>
 <td></td>
-<td>Explicit standard LLVM target; omit the profile or leave it at <code>auto</code>.</td>
+<td>Explicit standard LLVM target object; omit <code>target_architecture</code> or set it to <code>auto</code>. The separate <code>profile</code> can still select scheduling/resources.</td>
 </tr>
 <tr>
 <td>optimization</td>
@@ -12564,8 +12564,10 @@ For an incompatible target, measure on an RPC device or apply an existing databa
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">)</span>
 </span></code></pre></div>
-<p>The target uses standard TVM keys. Do not combine it with a non-auto preset;
-it does not inherit that preset's linker. The compiled metadata records the resolved
+<p>The target uses standard TVM keys. Do not combine it with a non-auto
+<code>target_architecture</code>; it does not inherit preset linker settings. The separate
+<code>profile</code> still chooses platform scheduling and resources.
+The compiled metadata records the resolved
 <code>target</code> and, when different, <code>target_requested</code>. The latter is not a Run option. The selected <code>image</code> must contain the matching
 LLVM backend, compiler and libraries. Adding a target does not add a serving image,
 and this pipeline does not enable GPU/CUDA execution.</p>
