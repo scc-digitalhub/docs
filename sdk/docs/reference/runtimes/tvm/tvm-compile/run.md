@@ -19,7 +19,7 @@ Call `function.run(action="compile", ...)` with the target settings. The Run use
 | [profile](../../../configuration/kubernetes.md#profile) | str | | Scheduling/resource profile; does not select the model target. |
 | model_path | str | | Optional IR override; otherwise uses `function.ir_model`. |
 | target_architecture | str | | Profile from CORE's YAML catalogue; default `auto`. See [target architectures](action.md#target-architecture). |
-| target | dict | | Explicit standard LLVM target; omit the profile or leave it at `auto`. |
+| target | dict | | Explicit standard LLVM target object; omit `target_architecture` or set it to `auto`. The separate `profile` can still select scheduling/resources. |
 | optimization | dict | | Compiler settings described below. |
 | tuning | dict | | MetaSchedule settings described below; mode defaults to `off`. |
 | tag | str | | Model suffix `<function>-<tag>`; default `so`. |
@@ -106,8 +106,10 @@ run = function.run(
 )
 ```
 
-The target uses standard TVM keys. Do not combine it with a non-auto preset;
-it does not inherit that preset's linker. The compiled metadata records the resolved
+The target uses standard TVM keys. Do not combine it with a non-auto
+`target_architecture`; it does not inherit preset linker settings. The separate
+`profile` still chooses platform scheduling and resources.
+The compiled metadata records the resolved
 `target` and, when different, `target_requested`. The latter is not a Run option. The selected `image` must contain the matching
 LLVM backend, compiler and libraries. Adding a target does not add a serving image,
 and this pipeline does not enable GPU/CUDA execution.

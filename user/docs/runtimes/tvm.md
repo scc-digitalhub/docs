@@ -226,12 +226,13 @@ node; there is no ARM32 toolkit image.
 ### Configurable profiles
 
 Platform administrators configure profiles in CORE's `runtime-tvm.yaml`. Each entry
-separates its display name (`label`), standard TVM options (`target`) and C++ linker
-settings (`linker`). The reader supplies the same catalogue to the compiler and
-console schema; neither Java nor the SDK contains a fixed target enumeration.
+separates its display name (`label`), standard TVM options as a JSON string (`target`)
+and C++ linker settings (`linker`). The compiler and console use the same catalogue;
+neither Java nor the SDK contains a fixed target enumeration.
 
 Mount an override file and set `RUNTIME_TVM_CONFIG=file:/etc/digitalhub/runtime-tvm.yaml`,
-then restart CORE. Entries merge with the bundled profiles:
+then restart CORE. Keep all settings in one YAML document: the shared loader reads
+the first document only. Entries merge with the bundled profiles:
 
 ```yaml
 runtime:
@@ -239,22 +240,19 @@ runtime:
     targets:
       arm64_pi4:
         label: Raspberry Pi 4 - ARM 64-bit (Cortex-A72)
-        target:
-          kind: llvm
-          mtriple: aarch64-linux-gnu
-          mcpu: cortex-a72
-          mattr: [+neon]
-          num-cores: 4
+        target: >-
+          {"kind": "llvm", "mtriple": "aarch64-linux-gnu", "mcpu": "cortex-a72",
+           "mattr": ["+neon"], "num-cores": 4}
         linker:
           command: aarch64-linux-gnu-g++
           options: []
 ```
 
-The new profile is selected as `target_architecture: arm64_pi4`. `target` contains
-standard TVM keys: `mtriple` identifies the architecture/OS/ABI, `mcpu` selects the
-CPU, `mattr` lists instruction features and `num-cores` sets the target core count used for scheduling.
-Spring reads the YAML once; CORE converts each target mapping to a JSON value,
-preserving lists and numbers. The compiler and console use the same catalogue.
+The new profile is selected as `target_architecture: arm64_pi4`. YAML's `>-` stores
+the following JSON as a string. `mtriple` identifies the architecture/OS/ABI, `mcpu`
+selects the CPU, `mattr` lists instruction features and `num-cores` sets the target
+core count used for scheduling. The shared YAML reader loads this complete string,
+so JSON lists, numbers and nested options retain their types when passed to TVM.
 
 `linker.command` is the C++ compiler used to link `model.so`; `linker.options` is a
 list of separate arguments, such as `["--sysroot=/opt/sysroots/arm64"]`. Optional profile
@@ -274,10 +272,18 @@ or **Custom arguments** to replace it. An explicit empty list clears those defau
 
 An override file keeps omitted profiles and fields. Supplying `target` replaces its
 whole definition rather than inheriting potentially incompatible CPU features.
-To migrate an old override file, expand the quoted JSON target into a YAML mapping
-and move `cross-cc` / `cross-cc-options` under `linker.command` / `linker.options`.
-Old forms are rejected with a configuration error. SDK requests and model metadata
-are unchanged.
+When migrating older override files:
+
+- Replace each `target` YAML mapping with a JSON string as shown above.
+- Move profile-level `cross-cc` to `linker.command`.
+- Move profile-level `cross-cc-options` to `linker.options`.
+- Combine settings from documents separated by `---` into one YAML document;
+  only the first document is loaded.
+
+This format applies only to the administrator's catalogue: an explicit Run `target`
+remains an object, and `optimization.cross_cc` / `optimization.cross_cc_options`
+remain Run options. SDK requests and model metadata are unchanged.
+Invalid target JSON or unknown target-profile fields prevent CORE from starting.
 
 ### Explicit target for one run
 
