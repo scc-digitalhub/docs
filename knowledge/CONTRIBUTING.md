@@ -72,8 +72,9 @@ on multiple release branches without depending on a sibling CLI checkout. The ge
 requires the matching Core schemas and, for descriptions, the Console translations (see the
 generation command above).
 
-Run `go test ./...` in the CLI repository to validate embedded templates, skill discovery,
-installation, and version substitution. No docs-side copies or bootstrap simulator are needed.
+Run `go vet ./...` and `go build ./...` in the CLI repository before release. Separately verify
+installation, local skill links, and version substitution in a temporary workspace.
+No docs-side copies or bootstrap simulator are needed.
 Before releasing, ensure every remote knowledge target in the CLI templates exists on the
 supported docs release branch; publish knowledge before distributing the CLI release that
 references it.
