@@ -1,0 +1,62 @@
+# DigitalHub Platform — Agent Knowledge Base
+
+> Reference knowledge for AI agents operating the DigitalHub platform via the `dhcli` CLI.
+> Entities and runtimes are the core model; every page is plain Markdown, relative to this file.
+> Resolve links against this file's fetched URL, keeping the same docs branch selected from the Core major.minor version.
+> Resolve links inside each page against that page's URL; never fall back to main, latest, or another release.
+
+## Entities (Core Domain)
+
+- [Entities Overview](entities/index.md): Core reference index for all DigitalHub Platform entities, their URI schemes, versioning semantics, and dhcli CRUD support.
+- [Artifact Entity](entities/artifact.md): Unstructured files, archives, plots, and bundles stored in S3 object storage and managed via dhcli upload, download, and CRUD commands.
+- [Dataitem Entity](entities/dataitem.md): Structured tabular datasets (table), generic datasets (dataitem), and Croissant ML metadata datasets (croissant) backed by S3 or SQL stores.
+- [Function Entity](entities/function.md): Executable template entity across 16 runtimes (python, container, dbt, serving, flower, guardrail) created via dhcli create functions and executed via dhcli run.
+- [Model Entity](entities/model.md): Versioned ML and DL model artifacts (sklearn, mlflow, huggingface, model) with lineage, metrics, and direct deployment to serving runtimes.
+- [Project Entity](entities/project.md): Top-level multi-tenant workspace and namespace for all DigitalHub entities, default storage configuration, and project CRUD via dhcli.
+- [Run Entity](entities/run.md): Immutable execution instance of a Function or Workflow task, its lifecycle state machine, run.yaml anatomy, logs, metrics, and stopping runs via dhcli.
+- [Secret Entity](entities/secret.md): Project-scoped sensitive credentials backed by Kubernetes Secrets and injected as environment variables into Function and Workflow runs.
+- [Task Entity](entities/task.md): Intermediary binding between a Function/Workflow and an execution action (build, job, serve, pipeline) auto-managed by dhcli run.
+- [Trigger Entity](entities/trigger.md): Automated execution triggers (scheduler cron triggers and lifecycle event triggers) that launch Function or Workflow runs.
+- [Workflow Entity](entities/workflow.md): Multi-step DAG pipelines authored in Hera (Argo Workflows) or KFP (Kubeflow Pipelines), registered via dhcli and executed via the SDK fallback.
+
+## Runtimes (Execution Engines)
+
+- [Runtimes Overview](runtimes/index.md): Master decision matrix and task mapping for all DigitalHub Function and Workflow runtimes (Python, Container, DBT, Hera, KFP, ModelServe, vLLM, KubeAI, OpenInference, Guardrail, Flower).
+- [Container Runtime](runtimes/container.md): Run custom Docker/OCI images as Kubernetes batch jobs (container+job), HTTP services (container+serve), persistent deployments (container+deploy), or Kaniko image builds (container+build).
+- [DBT Runtime](runtimes/dbt.md): Run SQL data transformations over tabular Dataitems in PostgreSQL/Dremio using dbt (dbt+transform).
+- [Flower Federated Learning Runtime](runtimes/flower.md): Deploy Flower SuperLink servers (flower-server), SuperNode clients (flower-client), and federated training applications (flower-app).
+- [Guardrail Runtime](runtimes/guardrail.md): Deploy Python LLM input/output safety guardrail validation services (guardrail+build, guardrail+serve).
+- [Hera Workflow Runtime (Argo)](runtimes/hera.md): Author and execute multi-step Argo Workflows DAG pipelines using the digitalhub_runtime_hera Python DSL.
+- [HuggingFace Serve Runtime](runtimes/huggingfaceserve.md): Deploy HuggingFace Transformer and PyTorch models via KServe HuggingFace serving runtime (huggingfaceserve+serve).
+- [KFP Workflow Runtime (Kubeflow Pipelines)](runtimes/kfp.md): Author and execute multi-step Kubeflow Pipelines DAGs using the digitalhub_runtime_kfp Python DSL.
+- [KubeAI Serve Runtime (Text & Speech)](runtimes/kubeai.md): Autoscaled LLM, embedding, and Whisper speech serving on KubeAI using VLLM or OLlama engines (kubeai-text+serve, kubeai-speech+serve).
+- [MLflow Serve Runtime](runtimes/mlflowserve.md): Build and deploy MLflow Model entities as KServe OpenInference v2 HTTP services (mlflowserve+build, mlflowserve+serve).
+- [OpenInference Runtime](runtimes/openinference.md): Author custom Python inference handlers that expose a standardized KServe OpenInference v2 REST API (openinference+build, openinference+serve).
+- [Python Runtime](runtimes/python.md): Execute Python batch jobs (python+job), Nuclio serverless HTTP services (python+serve), and Kaniko container image builds (python+build) via dhcli.
+- [Scikit-Learn Serve Runtime](runtimes/sklearnserve.md): Deploy Scikit-Learn (.pkl / .joblib) Model entities as KServe OpenInference v2 HTTP endpoints (sklearnserve+serve).
+- [vLLM Serve Runtime (Text, Speech, Pooling)](runtimes/vllmserve.md): High-throughput GPU serving for LLMs (vllmserve-text), ASR speech models (vllmserve-speech), and embeddings/rerankers (vllmserve-pooling) with an OpenAI-compatible API.
+
+## CLI Reference (dhcli)
+
+- [DigitalHub CLI (`dhcli`) Command Reference & Overview](cli/index.md): Master reference and operational guide for the DigitalHub CLI (`dhcli`): global flags, supported resource types, command cheatsheet, and non-interactive automation rules.
+- [CLI Environment Registration, Authentication & Configuration](cli/auth-and-env.md): Registering DigitalHub Core endpoints, OAuth2 PKCE vs non-interactive PAT login, managing multiple environments in `.dhcore.ini`, inspecting short-lived credentials, and bootstrapping workspaces with `dhcli init`.
+- [CLI Resource CRUD Operations & YAML Manifest Anatomy](cli/crud-and-yaml-anatomy.md): Universal YAML manifest structure (`kind`, `name`, `project`, `metadata`, `spec`) and executing `create`, `get`, `list`, `update`, and `delete` via `dhcli`.
+- [CLI Task Execution, Run Monitoring, Logs & Metrics](cli/execution-and-runs.md): Triggering function executions with `dhcli run <kind>+<action>`, passing run configuration YAML, streaming container logs (`dhcli log`), reading pod metrics (`dhcli metrics`), and stopping runs.
+- [CLI File Upload/Download & Service Networking (Port-Forward & Proxy)](cli/storage-and-services.md): Uploading and downloading artifacts, models, and dataitems to/from S3 via `dhcli upload` and `dhcli download`, listing active cluster services (`dhcli services`), and tunneling traffic via `port-forward` and `proxy`.
+
+## Python SDK (In-Container Handlers & Fallback)
+
+- [DigitalHub Python SDK Knowledge Domain](sdk/index.md): Domain router for the DigitalHub Python SDK, separating in-container Python handler authoring and pipeline DSLs from host-side CLI management.
+- [Reading & Logging Data, Models, Artifacts & Metrics in Python](sdk/data-models-and-metrics.md): Reading Dataitems/Artifacts/Models inside Python handlers and logging outputs, models, artifacts, and metrics to DigitalHub Core.
+- [Authoring Python Handlers (`def handler`, Inputs, Parameters & Outputs)](sdk/handler-authoring.md): How to write Python handler functions that execute inside the DigitalHub Python runtime: reserved injected arguments (`project`, `run`, `context`, `event`), `inputs` vs `parameters`, optional `@handler` output decorators, and `init` functions.
+- [Interactive Notebook Python SDK Reference (`import digitalhub as dh`)](sdk/interactive-sdk-reference.md): Compact reference for interactive Python SDK usage inside Jupyter notebooks (import digitalhub as dh).
+- [Python SDK Fallback for CLI Gaps](sdk/sdk-fallback.md): Minimal one-line Python SDK recipes for operations not exposed as dhcli commands (executing workflows, creating secrets, and attaching triggers).
+- [Authoring Workflow Pipelines in Python (`hera` & `kfp` DSL)](sdk/workflow-pipelines-dsl.md): Authoring multi-step DAG pipelines in Python using digitalhub_runtime_hera.dsl (Argo Workflows) and digitalhub_runtime_kfp.dsl (Kubeflow Pipelines).
+
+## Platform Architecture, Kubernetes & Troubleshooting
+
+- [DigitalHub Platform Architecture & Management](management/index.md): Platform architecture and management index covering the 3-layer DigitalHub architecture, entity dependency graph, storage backends, Kubernetes resource management, governance, and troubleshooting.
+- [Platform Governance, Naming Standards & Security Rules](management/governance-and-security.md): Governance standards, RFC-1123 naming rules, metadata labeling conventions, secret security policies, and resource hygiene for the DigitalHub Platform.
+- [Entity Keys (`store://`), Source URIs, Versioning & State Machines](management/keys-and-lifecycle.md): Platform reference for `store://` entity keys, source code URI schemes (`git+https://`, `zip+s3://`), entity versioning and spec immutability rules, Run state transitions, and Console UI URL routing.
+- [Kubernetes Compute Resources, Volumes, Secrets & Networking](management/kubernetes-resources.md): Comprehensive reference for Kubernetes compute resources (CPU, memory, GPU, profiles), persistent/ephemeral volume mounts, environment variables, secrets, and service networking in DigitalHub YAML specs.
+- [Diagnostic & Troubleshooting Runbook](management/troubleshooting.md): Diagnostic runbook and error resolution catalog for dhcli authentication, YAML schema validation errors, Kaniko image build failures, Python handler exceptions, and Kubernetes pod crashes.
