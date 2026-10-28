@@ -2,7 +2,7 @@
 id: mgmt-kubernetes-resources
 domain: management
 type: reference
-version: "0.15"
+version: "0.16"
 tags: [kubernetes, k8s, resources, cpu, mem, gpu, profile, volumes, pvc, empty_dir, ephemeral, envs, secrets, service_ports, replicas, node_selector, tolerations]
 schemas:
   - function/container.json

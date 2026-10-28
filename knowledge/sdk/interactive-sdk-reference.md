@@ -2,7 +2,7 @@
 id: sdk-interactive-reference
 domain: sdk
 type: reference
-version: "0.15"
+version: "0.16"
 tags: [sdk, python, notebook, jupyter, get_or_create_project, new_function, new_workflow, run]
 summary: Compact reference for interactive Python SDK usage inside Jupyter notebooks (import digitalhub as dh).
 ---

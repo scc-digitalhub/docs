@@ -2,7 +2,7 @@
 id: sdk-workflow-pipelines-dsl
 domain: sdk
 type: reference
-version: "0.15"
+version: "0.16"
 tags: [sdk, workflow, hera, kfp, argo, pipeline, dag, step, dsl]
 summary: Authoring multi-step DAG pipelines in Python using digitalhub_runtime_hera.dsl (Argo Workflows) and digitalhub_runtime_kfp.dsl (Kubeflow Pipelines).
 ---
@@ -113,7 +113,7 @@ def pipeline():
 3. **Passing Workflow-Level Parameters**:
    - Declare `arguments=[Parameter(name="raw_dataset_key")]` on `Workflow(...)`.
    - Reference them inside `template["inputs"]` or `template["parameters"]` using `"{{workflow.parameters.raw_dataset_key}}"`.
-   - When executing `kind: hera+pipeline:run` via `dhcli execute -f`, pass `spec.parameters.raw_dataset_key: "store://..."`.
+   - When executing the pipeline (`wf.run("pipeline", parameters=...)`), pass `parameters={"raw_dataset_key": "store://..."}`.
 
 ---
 
@@ -158,8 +158,7 @@ Once `pipeline.py` is authored:
    ```bash
    base64 -i pipeline.py | tr -d '\n'
    ```
-2. **Create the `kind: hera` Workflow (`dhcli create -f workflow.yaml -p <project>`)** with `spec.source.handler: "pipeline"` and `spec.source.base64: "<encoded>"`.
-3. **Run `kind: hera+build:run`** (`dhcli execute -f build-run.yaml -p <project>`) to compile the Python code into `spec.workflow`.
-4. **Run `kind: hera+pipeline:run`** (`dhcli execute -f pipeline-run.yaml -p <project>`) to execute the DAG on the cluster.
-*(See [specs-workflows-and-triggers.md](../cli/specs-workflows-and-triggers.md) for the exact YAML manifests).*
+2. **Create the `kind: hera` Workflow (`dhcli create workflows -p <project> -f workflow.yaml`)** with `spec.source.handler: "pipeline"` and `spec.source.base64: "<encoded>"`.
+3. **Build & Run the Pipeline**: Because `dhcli run` targets functions, trigger `build` and `pipeline` on the workflow via the Python SDK (`wf.run("build", wait=True)` followed by `wf.run("pipeline", parameters={...})`), then monitor runs and logs via `dhcli list runs -p <project>` and `dhcli log <run-id> -p <project>`.
+*(See [hera.md](../runtimes/hera.md) and [workflow.md](../entities/workflow.md) and [kfp.md](../runtimes/kfp.md) for full details).*
 

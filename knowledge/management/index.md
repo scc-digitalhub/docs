@@ -2,7 +2,7 @@
 id: mgmt-index
 domain: management
 type: index
-version: "0.15"
+version: "0.16"
 tags: [management, architecture, core, kubernetes, storage, s3, store-uri, governance, troubleshooting]
 summary: Platform architecture and management index covering the 3-layer DigitalHub architecture, entity dependency graph, storage backends, Kubernetes resource management, governance, and troubleshooting.
 ---

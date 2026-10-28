@@ -2,7 +2,7 @@
 id: sdk-index
 domain: sdk
 type: index
-version: "0.15"
+version: "0.16"
 tags: [sdk, python, index, handler, hera, kfp, notebook]
 summary: Domain router for the DigitalHub Python SDK, separating in-container Python handler authoring and pipeline DSLs from host-side CLI management.
 ---

@@ -41,7 +41,7 @@ metadata:
     - "stage:etl"
 spec:
   # Kind-specific specification fields validated against Core JSON Schemas
-  # See cli/specs-data-and-storage.md, cli/specs-functions-and-runtimes.md, cli/specs-workflows-and-triggers.md
+  # See entities/*.md and runtimes/*.md for the per-kind spec fields
 ```
 
 ---

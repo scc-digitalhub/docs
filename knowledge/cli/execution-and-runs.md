@@ -103,33 +103,39 @@ Key fields in the `dhcli get -p <proj> runs <run_id> -o json` response:
 
 ---
 
-## 3. Fetching Container Execution Logs (`dhcli log`)
+## 3. Fetching Container Execution Logs (`dhcli log`) & Persisted Logs Fallback
 
 To retrieve stdout and stderr captured from the Kubernetes pod executing the run:
 
 ```bash
-# Fetch current logs of the main execution container (Recommended for Agents)
+# Fetch current logs of the main execution container while pod is running
 dhcli log -p my-project <run_id>
 
-# Specify a specific container name inside the pod (-c)
+# Select a specific container inside the pod (-c)
 dhcli log -p my-project -c <container_name> <run_id>
 ```
 
+> ⚠️ **CRITICAL FALLBACK FOR TERMINATED PODS (`container not found`)**:
+> Once a Kubernetes pod completes or terminates (`COMPLETED` or `ERROR`), `dhcli log <run-id>` often returns `Failed: container not found` because the live pod was evicted.
+> DigitalHub Core persists the stdout/stderr collected from the pod as `log` entities (the `content` field is Base64-encoded; each entity references its run via the `run` field). Retrieve them with:
+> ```bash
+> dhcli list logs -p <project> -o json | jq -r '.[] | select(.run == "<run_id>") | .content | @base64d'
+> ```
+
 > **WARNING FOR AI AGENTS**:
-> Never pass the `-f` (`--follow`) flag when calling `dhcli log` from an automated tool call! `dhcli log -f` polls in an infinite 5-second loop until the process is killed. Always run `dhcli log -p <project> <run_id>` without `-f`.
+> Never pass the `-f` (`--follow`) flag when calling `dhcli log` from an automated tool call! The same applies to `dhcli metrics -f`. Always run without `-f`.
 
 ---
 
-## 4. Inspecting Container Resource Metrics (`dhcli metrics`)
+## 4. Hardware Resource Metrics (`dhcli metrics`) vs Evaluation Metrics
 
-To check CPU, RAM, GPU utilization, GPU memory, and network I/O of a running or completed run:
+> ⚠️ **METRIC TYPE DISTINCTION**:
+> - `dhcli metrics run <run_id>` inspects **Kubernetes container resource usage** (CPU, RAM, GPU memory from cAdvisor/Prometheus).
+> - It does **NOT** return machine learning evaluation metrics (`loss`, `accuracy`) logged via `run.log_metric()`! Custom ML metrics are returned by the handler or stored on the `Model` entity (`model.log_metrics({...})`).
 
 ```bash
-# Human-readable summary (avg, sum, max, min for cpu, memory, gpu, gpu-memory)
-dhcli metrics -p my-project run <run_id>
-
-# Full time-series metrics in JSON format
-dhcli metrics -p my-project run <run_id> -o json
+# Summary of CPU, memory, GPU utilization
+dhcli metrics run <run_id> -p my-project
 ```
 
 ---

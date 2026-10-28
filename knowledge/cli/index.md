@@ -69,8 +69,9 @@ Commands that operate on platform entities (`create`, `get`, `list`, `update`, `
 | **`artifacts`** | `artifact` | Yes | Yes (UUID) | General files, source archives, or binary objects stored in the datalake. |
 | **`models`** | `model` | Yes | Yes (UUID) | Trained ML/AI model entities (`model`, `sklearn`, `mlflow`, `huggingface`, ...). |
 | **`logs`** | `log` | Yes | No (UUID) | Persisted container log records associated with runs. |
-| **`secrets`** | `secret` | Yes | No (UUID) | Project-scoped key-value credentials backed by Kubernetes Secrets. *(Requires Core API / CLI resource mapping)* |
-| **`triggers`** | `trigger` | Yes | No (UUID) | Scheduled (`scheduler`) or event-driven (`lifecycle`) execution triggers. *(Requires Core API / CLI resource mapping)* |
+
+> **Entities managed via SDK fallback (`secret`, `trigger`, and running `workflow` pipelines)**:
+> `dhcli` `keys.Resources` supports the 8 resource types above (`projects`, `functions`, `workflows`, `runs`, `dataitems`, `artifacts`, `models`, `logs`). To create a `Secret`, attach a `Trigger`, or run a `Workflow` (`hera`/`kfp` `build` + `pipeline`), use a one-liner Python SDK call inside the workspace venv created by `dhcli init` (see [`../sdk/interactive-sdk-reference.md`](../sdk/interactive-sdk-reference.md)).
 
 ---
 

@@ -2,7 +2,7 @@
 id: mgmt-governance-and-security
 domain: management
 type: reference
-version: "0.15"
+version: "0.16"
 tags: [governance, security, naming, rfc-1123, labels, metadata, secrets, rbac, best-practices]
 summary: Governance standards, RFC-1123 naming rules, metadata labeling conventions, secret security policies, and resource hygiene for the DigitalHub Platform.
 ---
