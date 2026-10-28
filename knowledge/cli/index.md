@@ -90,7 +90,7 @@ Commands that operate on platform entities (`create`, `get`, `list`, `update`, `
 | **`remove`** | `dhcli remove <env>` | Remove an environment section from `.dhcore.ini`. |
 | **`config`** | `dhcli config [-e <env>] [-o short\|json\|yaml]` | Print non-secret environment configuration (endpoints, S3 bucket, API level/version). |
 | **`credentials`**| `dhcli credentials [-e <env>] [-o short\|json\|yaml]` | Print active short-lived credentials (AWS S3 keys, DB password, Core access/refresh tokens). |
-| **`init`** | `dhcli init [-e <env>] [--pre] [venv_path]` | Create/activate a Python virtual environment and install matching `digitalhub[full]` + `digitalhub-runtime-python`. |
+| **`init`** | `dhcli init [-e <env>] (--agent \| [--pre] [venv_path])` | With `--agent`, install version-pinned agent templates (`AGENTS.md`, `CLAUDE.md`, `.agents/skills/`) in CWD; otherwise create/activate a Python venv and install matching `digitalhub[full]` + `digitalhub-runtime-python`. |
 
 ### 3.2 Resource CRUD Commands
 *(Detailed in [`cli/crud-and-yaml-anatomy.md`](crud-and-yaml-anatomy.md))*
