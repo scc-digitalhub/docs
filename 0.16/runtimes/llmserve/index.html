@@ -2648,14 +2648,14 @@ KubeAI does not depend on other systems like Istio &amp; Knative (for scale-from
 <h2 id="vllm-serving-runtime">vLLM Serving runtime</h2>
 <p>The specification of the vLLM runtime functions consists of the following elements:</p>
 <ul>
-<li><code>url</code> defining the URL of the model, either from the platform storage or from HuggingFace catalog (e.g., 'hf://Qwen/Qwen2.5-0.5B')</li>
+<li><code>url</code> defining the URL of the model from the platform catalog (use the <em>key</em>)</li>
 <li><code>model_name</code> defining the name of the exposed model</li>
 <li><code>image</code> defining the base image to use for serving the model if different from the one used by the platform by default</li>
 <li><code>adapters</code> defining the list of LoRA adapters (with <code>name</code> and <code>url</code>) to be used for serving the model</li>
 </ul>
 <p>The specification of the vLLM run additionally, allows for defining the following elements:</p>
 <ul>
-<li><code>url</code> defining the URL of the model to serve, either from the platform storage or from HuggingFace catalog (e.g., 'hf://Qwen/Qwen2.5-0.5B')</li>
+<li><code>url</code> defining the URL of the model to serve from platform catalog (use the <em>key</em>), which must be a version of the one specified in the function spec</li>
 <li><code>args</code> defining the list of arguments to be passed to the vLLM engine</li>
 <li><code>enable_telemetry</code> defining if the telemetry should be enabled or not</li>
 <li><code>use_cpu_image</code> defining if the CPU-only image should be used for serving the model.</li>
