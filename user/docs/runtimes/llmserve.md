@@ -60,14 +60,14 @@ It is also possible to access the exposed model API through the KubeAI model pro
 
 The specification of the vLLM runtime functions consists of the following elements:
 
-- `url` defining the URL of the model, either from the platform storage or from HuggingFace catalog (e.g., 'hf://Qwen/Qwen2.5-0.5B')
+- `url` defining the URL of the model from the platform catalog (use the *key*)
 - `model_name` defining the name of the exposed model
 - `image` defining the base image to use for serving the model if different from the one used by the platform by default
 - `adapters` defining the list of LoRA adapters (with `name` and `url`) to be used for serving the model
 
 The specification of the vLLM run additionally, allows for defining the following elements:
 
-- `url` defining the URL of the model to serve, either from the platform storage or from HuggingFace catalog (e.g., 'hf://Qwen/Qwen2.5-0.5B')
+- `url` defining the URL of the model to serve from platform catalog (use the *key*), which must be a version of the one specified in the function spec
 - `args` defining the list of arguments to be passed to the vLLM engine
 - `enable_telemetry` defining if the telemetry should be enabled or not
 - `use_cpu_image` defining if the CPU-only image should be used for serving the model.
