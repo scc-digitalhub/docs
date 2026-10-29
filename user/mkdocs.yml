@@ -69,6 +69,7 @@ nav:
   - Extensions reference:
       - "extensions/overview.md"
       - "extensions/envoygw.md"
+      - "extensions/autoscaler.md"
 
   - CLI Reference:
       - "cli/installation.md"
