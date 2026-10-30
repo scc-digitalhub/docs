@@ -44,12 +44,12 @@ and embedded in the CLI binary. They do not live in the docs repository.
 6. **Relative links only** between knowledge pages, so they resolve on any branch and from raw URLs.
    Resolve them against the fetched page URL, not the user's local workspace. Catalog `path` values
    are relative to `knowledge/` on the selected branch. Do not hard-code a release or link to `main`/`latest`.
-7. **No template placeholders in knowledge links.** `{{DOCS}}` belongs only in the CLI's
+7. **No template placeholders in knowledge links.** `<%DOCS%>` belongs only in the CLI's
    agent templates. `dhcli init --agent` replaces it with the GitHub raw repository
    root for the connected Core's `major.minor` branch (for example, `0.16.2` selects `0.16`).
    It unpacks the embedded router and skills locally; the agent fetches knowledge from that branch
    on demand, without falling back to another release. Knowledge pages are fetched as-is, so they must not use
-   `{{DOCS}}` in link targets. If you need literal double braces (dbt, Jinja), fence them in code blocks.
+   `<%DOCS%>` in link targets. If you need literal double braces (dbt, Jinja), fence them in code blocks.
 8. **No secrets** in examples. Reference Kubernetes secrets by name and use `<token>` placeholders.
 
 ## Release checklist

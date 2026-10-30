@@ -25,6 +25,7 @@ class AgentLinkTests(unittest.TestCase):
                         continue  # Maintainer links to other repositories are not knowledge references.
                     with self.subTest(branch=branch, source=source.relative_to(ROOT), target=target):
                         self.assertNotIn("{{DOCS}}", target)
+                        self.assertNotIn("<%DOCS%>", target)
                         self.assertFalse(urlsplit(target).scheme, target)
                         resolved = urljoin(source_url, target)
                         self.assertTrue(resolved.startswith(base), resolved)
@@ -35,7 +36,7 @@ class AgentLinkTests(unittest.TestCase):
         catalog = (ROOT / "knowledge/index.md").read_text(encoding="utf-8")
         for relative in re.findall(r'^\s+path: "([^"]+)"', catalog, re.MULTILINE):
             with self.subTest(path=relative):
-                self.assertFalse(relative.startswith(("/", "http", "{{")))
+                self.assertFalse(relative.startswith(("/", "http", "{{", "<%")))
                 self.assertTrue((ROOT / "knowledge" / relative).is_file())
 
     def test_llms_catalog_covers_knowledge_pages(self):

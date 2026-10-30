@@ -111,13 +111,18 @@ dhcli credentials -o json
 
 ## 5. Bootstrapping a Workspace (`dhcli init`)
 
-`dhcli init` supports two distinct workspace initialization modes:
+`dhcli init` supports three distinct workspace initialization modes (pass `--environment <env>` or `-e <env>` to select a specific registered environment):
 - **Agent workspace (`dhcli init --agent`)**: Fetches the connected Core server's `dhcore_version` and unpacks the CLI's embedded `AGENTS.md`, `CLAUDE.md`, and `.agents/skills/` into the current working directory (without creating a Python virtual environment or installing Python packages).
+- **Local `.env` export (`dhcli init --env`)**: Merges the active environment's non-secret configuration and refreshed credentials into a local `.env` file in the current working directory (with owner-only `0600` permissions) without creating a Python virtual environment.
 - **Python virtual environment (`dhcli init [venv_path]`)**: Creates (or activates) a local Python virtual environment (`venv` or `uv`) and installs the exact minor version of `digitalhub[full]` and `digitalhub-runtime-python` matching the connected Core server's `dhcore_version`.
 
 ```bash
 # Install version-pinned agent instructions and skills in the current working directory
 dhcli init --agent
+
+# Export configuration and refreshed credentials to ./.env (owner-only 0600 permissions)
+dhcli init --env
+dhcli init --env --environment prod
 
 # Create/update a Python virtual environment at ./.venv matching the active Core version
 dhcli init ./.venv
@@ -132,7 +137,7 @@ Agent instructions and skills are embedded from the CLI repository's
 `templates/` folder, not downloaded from the docs repository. It installs `AGENTS.md`,
 `CLAUDE.md` and `.agents/skills/` in the **current working directory**, without requiring Python or
 installing SDK packages.
-For Core `0.16.2`, all `{{DOCS}}` placeholders become
+For Core `0.16.2`, all `<%DOCS%>` placeholders become
 `https://raw.githubusercontent.com/scc-digitalhub/docs/0.16`; the agent fetches knowledge
 on demand from its `knowledge/` directory. Relative knowledge links resolve against the
 page URL and stay on that branch. `CLAUDE.md` directs Claude to the installed `AGENTS.md`.
@@ -141,7 +146,13 @@ Agents must report missing knowledge rather than fall back to another release.
 Identical installed files are left unchanged on repeated initialization; conflicting files
 and symlink destinations cause an error before installation. Move conflicting files aside
 and reconcile customizations before reinitializing for a different Core version. Failed writes
-roll back files and directories created by the installation. Without `--agent`, initialization
-retains its existing Python-environment behavior.
+roll back files and directories created by the installation.
 
-> **Note for Automated Agents**: `dhcli init [venv_path]` (without `--agent`) prompts for `Y/n` confirmation before installing Python packages. Pipe `echo y | dhcli init ./.venv` if running non-interactively. `dhcli init --agent` runs non-interactively without prompting.
+With `--env`, the CLI refreshes credentials if needed, merges all configuration and credential
+entries (uppercased) with any existing regular `.env` file in the current working directory
+(parsed strictly via dotenv), and atomically replaces `.env` with owner-only (`0600`) permissions.
+Keep `.env` out of version control and do not print its contents, as it contains live credentials.
+
+Without `--agent` or `--env`, initialization retains its existing Python-environment behavior.
+
+> **Note for Automated Agents**: `dhcli init [venv_path]` (without `--agent` or `--env`) prompts for `Y/n` confirmation before installing Python packages. Pipe `echo y | dhcli init ./.venv` if running non-interactively. `dhcli init --agent` and `dhcli init --env` run non-interactively without prompting.
