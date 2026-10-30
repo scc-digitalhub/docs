@@ -1,0 +1,2975 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="http://docs/user/tasks/agents/">
+      
+      
+        <link rel="prev" href="../pat/">
+      
+      
+        <link rel="next" href="../../data-tasks/data/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Working with Agents - Digital Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/portal_selection.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/colors.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="orange" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#working-with-agents" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+
+
+  
+
+
+<!-- Header -->
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../.."
+      title="Digital Hub"
+      class="md-header__button md-logo"
+      aria-label="Digital Hub"
+      data-md-component="logo"
+    >
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Digital Hub
+          </span>
+          <div class="dropdown">
+            <button class="dd-button" id="dd-version">
+              
+              
+                
+              
+              <span class="dd-text">0.16
+                
+              </span>
+              <span class="dd-arrow">&#9660;</span>
+              
+              
+                
+                
+              
+              
+                
+              
+                
+                  <a href="https://scc-digitalhub.github.io/docs/0.15">0.15
+                    
+                      <span id="stable-text"> (stable)</span>
+                    
+                  </a>
+                
+              
+                
+                  <a href="https://scc-digitalhub.github.io/docs/0.14">0.14
+                    
+                  </a>
+                
+              
+                
+                  <a href="https://scc-digitalhub.github.io/docs/0.13">0.13
+                    
+                  </a>
+                
+              
+            </button>
+          </div>
+          <div class="dropdown">
+            <button class="dd-button" id="dd-portal">
+              <span class="dd-text">User</span>
+              <span class="dd-arrow">&#9660;</span>
+              
+                
+                  
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.16/admin">Admin</a>
+                  
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.16/tutorials">Tutorials</a>
+                  
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.16/sdk">SDK</a>
+                  
+                
+              
+            </button>
+          </div>
+          <div>
+            <a class="external-link" href="https://scc-digitalhub.github.io/hub" target="_blank">Hub &#9657;</a>
+          </div>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Working with Agents
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette toggle -->
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="orange" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+
+    <!-- User preference: color palette -->
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+
+      <!-- Search interface -->
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    <!-- Repository information -->
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Digital Hub" class="md-nav__button md-logo" aria-label="Digital Hub" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Digital Hub
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview and architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../entities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key Concepts and Entities
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tasks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tasks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common Tasks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Common Tasks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manage Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Define and Execute Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Invoke, Use, and Expose Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manage Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../triggers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Triggers and Automation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workspaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Interactive Workspaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Define and use Kubernetes Resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-source/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manage Source Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secrets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manage Secrets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Personal Access Tokens (PATs)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working with Agents
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working with Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview-router-local-skills-version-pinned-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Overview: Router, Local Skills &amp; Version-Pinned Knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-bootstrap-an-agent-workspace-dhcli-init-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Bootstrap an Agent Workspace (dhcli init --agent)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Bootstrap an Agent Workspace (dhcli init --agent)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-dhcli-init-agent-creates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What dhcli init --agent Creates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safe-file-handling-idempotency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safe File Handling &amp; Idempotency
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-optional-python-sdk-virtual-environment-dhcli-init-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Optional Python SDK Virtual Environment (dhcli init [path])
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#included-agent-skills-reference-agentsskills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Included Agent Skills Reference (.agents/skills/)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-operating-rules-for-ai-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Operating Rules for AI Agents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-to-end-example-using-an-ai-agent-on-a-new-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End-to-End Example: Using an AI Agent on a New Project
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data-related Tasks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data-related Tasks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-tasks/data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data and Transformations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-tasks/files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Browse File in Datalake
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ML-related Tasks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ML-related Tasks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-tasks/models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create and Manage ML Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-tasks/serving-generative-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serving Generative Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-tasks/serving-ml-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serving Machine Learning Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-tasks/metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Track Experiments and Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ml-tasks/guardrails/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Service Guardrails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Components
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Components
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landing Page
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/dh_console/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Core UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/resourcemanager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes Resource Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive Workspaces
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Interactive Workspaces
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/code-toolbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code Toolbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5_2" id="__nav_7_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community Workspaces
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Community Workspaces
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/dremio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dremio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/sqlpad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLPad
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../components/grafana/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grafana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtimes reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtimes reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serverless (Python)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/container/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Container
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/hera/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hera Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/llmserve/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Serving: LLMs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/mlflowserve/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Serving: MLflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/sklearnserve/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Serving: Scikit-learn
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/tvm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Serving: TVM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/oi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Open Inference (Python)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/guardrail/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guardrail (Python)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/hydra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hydra (Python)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/ray/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ray (Python)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/fl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Federated Learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/dbt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DBT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../runtimes/servicegraph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extensions reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extensions/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extensions/envoygw/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gateway Extension
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extensions/autoscaler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run autoscaler
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CLI Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI commands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples and Tutorials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview-router-local-skills-version-pinned-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Overview: Router, Local Skills &amp; Version-Pinned Knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-bootstrap-an-agent-workspace-dhcli-init-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Bootstrap an Agent Workspace (dhcli init --agent)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Bootstrap an Agent Workspace (dhcli init --agent)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-dhcli-init-agent-creates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What dhcli init --agent Creates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#safe-file-handling-idempotency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safe File Handling &amp; Idempotency
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-optional-python-sdk-virtual-environment-dhcli-init-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Optional Python SDK Virtual Environment (dhcli init [path])
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#included-agent-skills-reference-agentsskills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Included Agent Skills Reference (.agents/skills/)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-operating-rules-for-ai-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Operating Rules for AI Agents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#end-to-end-example-using-an-ai-agent-on-a-new-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        End-to-End Example: Using an AI Agent on a New Project
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../projects/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Tasks
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../projects/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Common Tasks
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="working-with-agents">Working with Agents</h1>
+<p>DigitalHub provides first-class support for AI coding assistants (such as <strong>Claude Code</strong>, <strong>GitHub Copilot</strong>, <strong>Cursor</strong>, <strong>Windsurf</strong>, <strong>Codex</strong>, and <strong>Antigravity</strong>) and autonomous platform agents through the DigitalHub CLI (<code>dhcli</code>).</p>
+<p>With a single command (<code>dhcli init --agent</code>), you can bootstrap any project repository with:</p>
+<ul>
+<li><strong><code>AGENTS.md</code></strong>: The single source of truth router and operating manual for AI agents working with DigitalHub.</li>
+<li><strong><code>CLAUDE.md</code></strong>: An entry-point pointer directing Claude Code to read and follow <code>AGENTS.md</code>.</li>
+<li><strong><code>.agents/skills/dh-*/SKILL.md</code></strong>: 10 self-contained, step-by-step procedural runbooks covering every core platform workflow (environment setup, Python functions, S3 data/artifacts, dbt SQL transformations, containers, ML/LLM serving, guardrails, Hera/KFP workflows, secrets, and run troubleshooting).</li>
+<li><strong>Version-Pinned Remote Knowledge Base</strong>: All documentation links inside <code>AGENTS.md</code> and <code>.agents/skills/</code> are automatically pinned to the <code>major.minor</code> release branch of your connected DigitalHub Core instance (for example, Core <code>0.16.2</code> pins to <code>0.16</code>).</li>
+</ul>
+<hr />
+<h2 id="architecture-overview-router-local-skills-version-pinned-knowledge">Architecture Overview: Router, Local Skills &amp; Version-Pinned Knowledge</h2>
+<p>DigitalHub separates agent instructions into two layers so that your local repository stays lightweight while always matching the exact API and schema version of your connected platform:</p>
+<div class="highlight"><pre><span></span><code>digitalhub-cli (embedded templates)       Your Project Workspace (after dhcli init --agent)
+  templates/AGENTS.md          ───────►     AGENTS.md
+  templates/CLAUDE.md          ───────►     CLAUDE.md
+  templates/skills/dh-*/       ───────►     .agents/skills/dh-*/SKILL.md
+                                                      │
+                                                      ▼ (fetched on demand, pinned to Core major.minor)
+                                            https://raw.githubusercontent.com/scc-digitalhub/docs/&lt;major.minor&gt;/knowledge/
+                                              ├── llms.txt &amp; index.md
+                                              ├── entities/     (project, function, workflow, task, run, ...)
+                                              ├── runtimes/     (python, container, dbt, hera, kfp, vllmserve, ...)
+                                              ├── cli/          (index, auth-and-env, crud-and-yaml-anatomy, ...)
+                                              ├── sdk/          (handler-authoring, data-models-and-metrics, ...)
+                                              └── management/   (keys-and-lifecycle, kubernetes-resources, ...)
+</code></pre></div>
+<ol>
+<li><strong>Embedded Agent Router &amp; Procedural Skills (Local)</strong>:
+   <code>AGENTS.md</code>, <code>CLAUDE.md</code>, and <code>.agents/skills/dh-*/SKILL.md</code> are embedded directly inside the <code>dhcli</code> binary (<code>templates/</code>). Running <code>dhcli init --agent</code> renders them into your current working directory without requiring Python or downloading files from GitHub.</li>
+<li><strong>Version-Pinned Knowledge Base (Remote, On-Demand)</strong>:
+   During <code>dhcli init --agent</code>, the CLI queries the active Core endpoint's <code>/.well-known/configuration</code>, reads <code>dhcore_version</code> (for example, <code>0.16.2</code>), and substitutes every <code>&lt;%DOCS%&gt;</code> template placeholder with <code>https://raw.githubusercontent.com/scc-digitalhub/docs/0.16</code>. When an AI agent needs an entity schema or runtime specification, it fetches only the relevant Markdown page from that release branch's <code>knowledge/</code> directory.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Strict Version Pinning</p>
+</div>
+<p>Agents are instructed never to fall back to <code>main</code>, <code>latest</code>, or a different release branch if a knowledge URL is unreachable. Relative links inside fetched knowledge pages resolve against the fetched page's URL, keeping the agent on the exact same <code>major.minor</code> release.</p>
+<hr />
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before initializing an agent workspace, make sure <code>dhcli</code> is installed and connected to a DigitalHub Core environment:</p>
+<ol>
+<li><strong>Register your DigitalHub Core endpoint</strong> (if not already registered):
+   <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>register<span class="w"> </span>-e<span class="w"> </span>my-env<span class="w"> </span>https://core.digitalhub.example.com
+dhcli<span class="w"> </span>use<span class="w"> </span>my-env
+</code></pre></div></li>
+<li><strong>Authenticate</strong>:</li>
+<li><strong>Interactive workstation (OAuth2 PKCE browser login)</strong>:
+     <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>login
+</code></pre></div></li>
+<li><strong>Headless / Agent / CI environment (<a href="../pat/">Personal Access Token</a>)</strong>:
+     <div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>login<span class="w"> </span>--pat<span class="w"> </span><span class="s2">"&lt;your-personal-access-token&gt;"</span>
+<span class="c1"># Or via environment variable:</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DHCORE_PERSONAL_ACCESS_TOKEN</span><span class="o">=</span><span class="s2">"&lt;your-personal-access-token&gt;"</span>
+dhcli<span class="w"> </span>login
+</code></pre></div></li>
+</ol>
+<hr />
+<h2 id="step-1-bootstrap-an-agent-workspace-dhcli-init-agent">Step 1: Bootstrap an Agent Workspace (<code>dhcli init --agent</code>)</h2>
+<p>From the root of your project repository, run:</p>
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>init<span class="w"> </span>--agent
+</code></pre></div>
+<p>To use a specific registered environment instead of the current default, pass <code>--environment</code> (<code>-e</code>):</p>
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>init<span class="w"> </span>--agent<span class="w"> </span>--environment<span class="w"> </span>my-env
+</code></pre></div>
+<h3 id="what-dhcli-init-agent-creates">What <code>dhcli init --agent</code> Creates</h3>
+<p>The command inspects your connected Core version and writes the following structure into the current working directory:</p>
+<div class="highlight"><pre><span></span><code>.
+├── AGENTS.md
+├── CLAUDE.md
+└── .agents/
+    └── skills/
+        ├── dh-author-and-run-python/
+        │   └── SKILL.md
+        ├── dh-data-and-storage/
+        │   └── SKILL.md
+        ├── dh-deploy-container-service/
+        │   └── SKILL.md
+        ├── dh-environment-setup/
+        │   └── SKILL.md
+        ├── dh-guardrail-and-evaluate-llm/
+        │   └── SKILL.md
+        ├── dh-orchestrate-workflow/
+        │   └── SKILL.md
+        ├── dh-secure-and-configure-secrets/
+        │   └── SKILL.md
+        ├── dh-serve-ml-and-llm/
+        │   └── SKILL.md
+        ├── dh-transform-with-dbt/
+        │   └── SKILL.md
+        └── dh-troubleshoot-run/
+            └── SKILL.md
+</code></pre></div>
+<h3 id="safe-file-handling-idempotency">Safe File Handling &amp; Idempotency</h3>
+<ul>
+<li><strong>No Python dependency required</strong>: <code>dhcli init --agent</code> does <strong>not</strong> create a Python virtual environment or install Python packages.</li>
+<li><strong>Idempotent re-runs</strong>: If you run <code>dhcli init --agent</code> again against the same Core <code>major.minor</code> version and the existing files are identical, they are left untouched.</li>
+<li><strong>Conflict protection</strong>: Existing files with different content (for example, local customizations or templates pinned to another Core version) are <strong>never overwritten</strong>. Move conflicting files aside and reconcile your changes before re-initializing.</li>
+<li><strong>Symlink rejection &amp; atomic rollback</strong>: Symlinked target paths or directories are rejected, and any failed installation automatically rolls back newly created files and directories.</li>
+</ul>
+<hr />
+<h2 id="step-2-optional-python-sdk-virtual-environment-dhcli-init-path">Step 2: Optional Python SDK Virtual Environment (<code>dhcli init [path]</code>)</h2>
+<p>While AI agents execute nearly all platform operations directly via <code>dhcli</code> and declarative YAML manifests, a local Python virtual environment with <code>digitalhub[full]</code> is useful in two scenarios:</p>
+<ol>
+<li>Authoring and running interactive Jupyter notebooks (<code>.ipynb</code>).</li>
+<li>Executing the three SDK gap fallbacks for operations not directly exposed as standalone <code>dhcli</code> commands (triggering a <code>workflow</code> pipeline run, creating a project <code>secret</code>, or attaching a <code>trigger</code>).</li>
+</ol>
+<p>To create or update a Python virtual environment pinned to your connected Core's <code>major.minor</code> release:</p>
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>init<span class="w"> </span>./.venv
+</code></pre></div>
+<p>In non-interactive shells or agent sessions, pipe confirmation to <code>stdin</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>y<span class="w"> </span><span class="p">|</span><span class="w"> </span>dhcli<span class="w"> </span>init<span class="w"> </span>./.venv
+</code></pre></div>
+<hr />
+<h2 id="included-agent-skills-reference-agentsskills">Included Agent Skills Reference (<code>.agents/skills/</code>)</h2>
+<p>Once <code>dhcli init --agent</code> has been executed, AI coding assistants automatically discover <code>AGENTS.md</code> and load the appropriate procedural skill from <code>.agents/skills/</code>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Skill Name</th>
+<th style="text-align: left;">Path</th>
+<th style="text-align: left;">When to Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>dh-environment-setup</code></strong></td>
+<td style="text-align: left;"><code>.agents/skills/dh-environment-setup/SKILL.md</code></td>
+<td style="text-align: left;">Registering Core endpoints (<code>dhcli register</code>), authenticating (<code>dhcli login</code>), switching environments (<code>dhcli use</code>), bootstrapping <code>.venv</code> (<code>dhcli init</code>), and creating projects.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>dh-secure-and-configure-secrets</code></strong></td>
+<td style="text-align: left;"><code>.agents/skills/dh-secure-and-configure-secrets/SKILL.md</code></td>
+<td style="text-align: left;">Creating Kubernetes-backed project secrets via the Python SDK fallback and mounting them into runs via <code>spec.secrets</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>dh-data-and-storage</code></strong></td>
+<td style="text-align: left;"><code>.agents/skills/dh-data-and-storage/SKILL.md</code></td>
+<td style="text-align: left;">Uploading local files, folders, datasets, and models to S3 (<code>dhcli upload</code>), registering remote <code>s3://</code>, <code>https://</code>, or <code>sql://</code> tables, and downloading entities (<code>dhcli download</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>dh-author-and-run-python</code></strong></td>
+<td style="text-align: left;"><code>.agents/skills/dh-author-and-run-python/SKILL.md</code></td>
+<td style="text-align: left;">Authoring Python <code>job</code> and Nuclio <code>serve</code> handlers, Base64-encoding scripts into <code>spec.source.base64</code>, building custom images (<code>python+build</code>), and running via <code>dhcli run</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>dh-transform-with-dbt</code></strong></td>
+<td style="text-align: left;"><code>.agents/skills/dh-transform-with-dbt/SKILL.md</code></td>
+<td style="text-align: left;">Writing SQL data transformations in dbt, Base64-encoding <code>.sql</code> queries into <code>kind: dbt</code> functions, and executing <code>dbt+transform</code> runs over tabular <code>Dataitem</code> inputs.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>dh-deploy-container-service</code></strong></td>
+<td style="text-align: left;"><code>.agents/skills/dh-deploy-container-service/SKILL.md</code></td>
+<td style="text-align: left;">Running custom Docker/OCI images as Kubernetes batch jobs (<code>container+job</code>), web UIs or APIs (<code>container+serve</code>), persistent deployments (<code>container+deploy</code>), or in-cluster image builds (<code>container+build</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>dh-serve-ml-and-llm</code></strong></td>
+<td style="text-align: left;"><code>.agents/skills/dh-serve-ml-and-llm/SKILL.md</code></td>
+<td style="text-align: left;">Deploying Scikit-Learn (<code>sklearnserve</code>), MLflow (<code>mlflowserve</code>), HuggingFace (<code>huggingfaceserve</code>), vLLM (<code>vllmserve-text</code>, <code>vllmserve-speech</code>, <code>vllmserve-pooling</code>), and KubeAI (<code>kubeai-text</code>, <code>kubeai-speech</code>) inference services.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>dh-guardrail-and-evaluate-llm</code></strong></td>
+<td style="text-align: left;"><code>.agents/skills/dh-guardrail-and-evaluate-llm/SKILL.md</code></td>
+<td style="text-align: left;">Deploying real-time LLM input/output safety guardrails (<code>guardrail+serve</code>) and standardized KServe OpenInference v2 Python handlers (<code>openinference+serve</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>dh-orchestrate-workflow</code></strong></td>
+<td style="text-align: left;"><code>.agents/skills/dh-orchestrate-workflow/SKILL.md</code></td>
+<td style="text-align: left;">Authoring multi-step DAG pipelines in Python using Hera (Argo Workflows) or Kubeflow Pipelines (KFP), registering workflows (<code>dhcli create workflows</code>), building/running pipelines, and attaching cron (<code>scheduler</code>) or <code>lifecycle</code> triggers.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong><code>dh-troubleshoot-run</code></strong></td>
+<td style="text-align: left;"><code>.agents/skills/dh-troubleshoot-run/SKILL.md</code></td>
+<td style="text-align: left;">Diagnosing failed (<code>ERROR</code>) or stuck (<code>READY</code>/<code>RUNNING</code>) runs, inspecting live container logs (<code>dhcli log</code>) or persisted Base64 <code>log</code> entities, and checking pod metrics (<code>dhcli metrics</code>).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="core-operating-rules-for-ai-agents">Core Operating Rules for AI Agents</h2>
+<p>The installed <code>AGENTS.md</code> enforces several golden rules that keep agent workflows deterministic and safe:</p>
+<ol>
+<li><strong>CLI-First Execution (<code>dhcli</code> + Declarative YAML)</strong>:
+   All host-side entity CRUD (<code>projects</code>, <code>functions</code>, <code>workflows</code>, <code>runs</code>, <code>dataitems</code>, <code>artifacts</code>, <code>models</code>, <code>logs</code>), S3 transfers (<code>upload</code>, <code>download</code>), task execution (<code>run</code>), log inspection (<code>log</code>), and service exposure (<code>services</code>, <code>port-forward</code>, <code>proxy</code>) use <code>dhcli</code> and YAML manifests.</li>
+<li><strong>Host CLI vs. In-Container SDK Separation</strong>:
+   <code>dhcli</code> manages platform entities and runs from the host machine, while the <code>digitalhub</code> Python SDK is used inside container handler scripts (<code>def handler(project, run, ...):</code>) to read inputs (<code>di.as_df()</code>) and log outputs (<code>project.log_dataitem()</code>, <code>project.log_model()</code>, <code>run.log_metric()</code>).</li>
+<li><strong>Base64 Source Encoding for Code-Backed Entities</strong>:
+   Because <code>dhcli create</code> submits YAML manifests directly to the Core REST API without reading external <code>.py</code> or <code>.sql</code> files from local disk, agents Base64-encode local handler scripts (<code>base64 -i handler.py | tr -d '\n'</code>) into <code>spec.source.base64</code>.</li>
+<li><strong>Non-Blocking Inspection</strong>:
+   Agents always request structured output (<code>-o json</code> or <code>-o yaml</code>) for programmatic inspection and never pass blocking streaming flags like <code>dhcli log -f</code> or <code>dhcli metrics -f</code> inside automated tool calls.</li>
+</ol>
+<hr />
+<h2 id="end-to-end-example-using-an-ai-agent-on-a-new-project">End-to-End Example: Using an AI Agent on a New Project</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Authenticate with DigitalHub Core</span>
+dhcli<span class="w"> </span>register<span class="w"> </span>-e<span class="w"> </span>dev<span class="w"> </span>https://core.digitalhub.example.com
+dhcli<span class="w"> </span>use<span class="w"> </span>dev
+dhcli<span class="w"> </span>login<span class="w"> </span>--pat<span class="w"> </span><span class="s2">"&lt;your-pat&gt;"</span>
+
+<span class="c1"># 2. Create a project directory and install version-pinned agent instructions &amp; skills</span>
+mkdir<span class="w"> </span>my-ai-project<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>my-ai-project
+dhcli<span class="w"> </span>init<span class="w"> </span>--agent
+
+<span class="c1"># 3. Launch your AI coding assistant (e.g., Claude Code, GitHub Copilot, Cursor)</span>
+<span class="c1"># Prompt example:</span>
+<span class="w"> </span>Create<span class="w"> </span>a<span class="w"> </span>project<span class="w"> </span>called<span class="w"> </span><span class="s1">'iris-ml-project'</span>,<span class="w"> </span>register<span class="w"> </span>the<span class="w"> </span>dataset<span class="w"> </span>from
+<span class="w"> </span><span class="s1">'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv'</span>,
+<span class="w"> </span>write<span class="w"> </span>a<span class="w"> </span>python<span class="w"> </span><span class="k">function</span><span class="w"> </span>that<span class="w"> </span>trains<span class="w"> </span>a<span class="w"> </span>Scikit-Learn<span class="w"> </span>RandomForest<span class="w"> </span>classifier
+<span class="w"> </span>on<span class="w"> </span>it,<span class="w">  </span>and<span class="w"> </span>run<span class="w"> </span>the<span class="w"> </span>job<span class="w"> </span>to<span class="w"> </span>log<span class="w"> </span>the<span class="w"> </span>metrics<span class="w"> </span>and<span class="w"> </span>final<span class="w"> </span>model.<span class="s2">"</span>
+</code></pre></div>
+<p>Your AI assistant will automatically read <code>AGENTS.md</code>, follow <code>.agents/skills/dh-environment-setup/SKILL.md</code>, <code>.agents/skills/dh-data-and-storage/SKILL.md</code>, and <code>.agents/skills/dh-author-and-run-python/SKILL.md</code>, and consult the remote <code>knowledge/</code> pages matching your Core version.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.path", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>

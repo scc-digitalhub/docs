@@ -834,6 +834,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tasks/agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working with Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2386,6 +2414,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Obtaining configuration and credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exporting-a-local-env-file-dhcli-init-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting a local .env file (dhcli init --env)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bootstrapping-an-ai-agent-workspace-dhcli-init-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bootstrapping an AI agent workspace (dhcli init --agent)
+      
+    </span>
+  </a>
+  
 </li>
       
     </ul>
@@ -2571,6 +2627,34 @@
     <span class="md-ellipsis">
       
         Obtaining configuration and credentials
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Obtaining configuration and credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exporting-a-local-env-file-dhcli-init-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exporting a local .env file (dhcli init --env)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bootstrapping-an-ai-agent-workspace-dhcli-init-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bootstrapping an AI agent workspace (dhcli init --agent)
       
     </span>
   </a>
@@ -2835,6 +2919,29 @@ Type<span class="w"> </span><span class="s2">"help"</span>,<span class="w"> </sp
 <span class="nv">DHCORE_ACCESS_TOKEN</span><span class="o">=[</span>value<span class="o">]</span>
 <span class="nv">DHCORE_REFRESH_TOKEN</span><span class="o">=[</span>value<span class="o">]</span>
 </code></pre></div>
+<h3 id="exporting-a-local-env-file-dhcli-init-env">Exporting a local <code>.env</code> file (<code>dhcli init --env</code>)</h3>
+<p>When working locally with external tools, scripts, or applications that expect standard environment variables (<code>DHCORE_ENDPOINT</code>, <code>DHCORE_ACCESS_TOKEN</code>, <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code>, <code>S3_BUCKET</code>, etc.), you can write both non-secret configuration and refreshed credentials directly into a local <code>.env</code> file in the current working directory (without creating a Python virtual environment):</p>
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>init<span class="w"> </span>--env
+<span class="c1"># Or select a specific registered environment:</span>
+dhcli<span class="w"> </span>init<span class="w"> </span>--env<span class="w"> </span>--environment<span class="w"> </span>my-env
+
+<span class="c1"># Load into the current shell:</span>
+<span class="nb">set</span><span class="w"> </span>-a<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>.env<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>+a
+</code></pre></div>
+<ul>
+<li><strong>Automatic credential check &amp; refresh</strong>: Before writing <code>.env</code>, <code>dhcli</code> checks the active environment and refreshes short-lived credentials if needed.</li>
+<li><strong>Safe dotenv merging</strong>: If a regular <code>.env</code> file already exists in the current working directory, <code>dhcli</code> parses it strictly as dotenv and merges the exported DigitalHub variables (converting variable names to uppercase) while preserving your existing custom variables. Comments and formatting are normalized into sorted <code>KEY="escaped_value"</code> lines.</li>
+<li><strong>Owner-only permissions &amp; atomic replacement</strong>: The file is written to a private temporary file (<code>0600</code> owner-only permissions), synced to disk, and atomically renamed to <code>.env</code>. Non-regular files (such as symlinks) and malformed <code>.env</code> files are rejected without modifying the existing file.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Keep <code>.env</code> out of version control</p>
+<p>Because <code>.env</code> contains live bearer tokens (<code>DHCORE_ACCESS_TOKEN</code>, <code>DHCORE_REFRESH_TOKEN</code>), S3 STS keys (<code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code>, <code>AWS_SESSION_TOKEN</code>), and database credentials, add <code>.env</code> to <code>.gitignore</code> and regenerate it with <code>dhcli init --env</code> whenever short-lived tokens expire.</p>
+</div>
+<h2 id="bootstrapping-an-ai-agent-workspace-dhcli-init-agent">Bootstrapping an AI agent workspace (<code>dhcli init --agent</code>)</h2>
+<p>To configure a project directory for AI coding assistants (Claude Code, GitHub Copilot, Cursor, Windsurf, Codex, Antigravity) with instructions and skills pinned to the connected Core release:</p>
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>init<span class="w"> </span>--agent
+</code></pre></div>
+<p>This queries the connected Core's <code>dhcore_version</code> from <code>/.well-known/configuration</code> and installs the CLI's embedded <code>AGENTS.md</code>, <code>CLAUDE.md</code>, and <code>.agents/skills/dh-*/SKILL.md</code> into the current working directory, with all remote knowledge links (<code>&lt;%DOCS%&gt;</code>) pinned to the matching <code>major.minor</code> documentation branch (for example, <code>0.16.2</code> selects <code>0.16</code>). Existing conflicting files are never overwritten. For a complete guide and examples, see <a href="../../tasks/agents/">Working with Agents</a>.</p>
 
 
 

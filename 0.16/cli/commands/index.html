@@ -832,6 +832,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tasks/agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Working with Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3056,15 +3084,30 @@ If no environment is specified, it will use the default one.</p>
 </code></pre></div>
 It will remove the section from the configuration file.</p>
 <h3 id="init"><code>init</code></h3>
-<p><code>init</code> creates or activates a Python virtual environment and installs the platform's Python packages (<code>digitalhub[full]</code> and <code>digitalhub-runtime-python</code>). Python 3.9–3.12 must be available as <code>python3</code>. It takes the following parameters:</p>
+<p><code>init</code> initializes a local workspace in one of three modes: creating/activating a Python virtual environment, exporting configuration and credentials to a <code>.env</code> file (<code>--env</code>), or installing version-pinned AI agent templates (<code>--agent</code>). It takes the following parameters:</p>
 <ul>
-<li><code>-e environment</code> <em>Optional</em></li>
-<li><code>--pre</code> <em>Optional</em>. Boolean. Include pre-release (beta) versions when installing packages.</li>
-<li><code>path</code> <em>Optional</em>. Filesystem path of the virtual environment. If missing, the current environment name is used; if that is also empty, the current directory is used.</li>
+<li><code>-e, --environment name</code> <em>Optional</em>. Registered environment to use. If omitted, uses the default active environment.</li>
+<li><code>--env</code> <em>Optional</em>. Boolean. Write configuration and refreshed credentials to a local <code>.env</code> file in the current working directory without creating a Python virtual environment. Cannot be combined with <code>--agent</code>, <code>--pre</code>, or a <code>path</code> argument.</li>
+<li><code>--agent</code> <em>Optional</em>. Boolean. Install embedded agent templates (<code>AGENTS.md</code>, <code>CLAUDE.md</code>, and <code>.agents/skills/</code>) in the current working directory with remote knowledge links pinned to the connected Core's <code>major.minor</code> version, without creating a Python virtual environment. Cannot be combined with <code>--env</code>, <code>--pre</code>, or a <code>path</code> argument.</li>
+<li><code>--pre</code> <em>Optional</em>. Boolean. Include pre-release (beta) versions when installing Python packages.</li>
+<li><code>path</code> <em>Optional</em> (Python venv mode only). Filesystem path of the virtual environment. If missing, the current environment name is used; if that is also empty, the current directory is used.</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>init<span class="w"> </span>./venv
+<p>Initialize a Python virtual environment matching Core's <code>major.minor</code> version (Python 3.9–3.12 must be available as <code>python3</code>):
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>init<span class="w"> </span>./venv
 </code></pre></div>
-It will match core's minor version as indicated in the specified environment. If no environment is specified, it will use the default one. If the path already contains a valid venv, dependencies are installed without recreating it. The command will ask for confirmation before installing.</p>
+If the path already contains a valid venv, dependencies (<code>digitalhub[full]</code> and <code>digitalhub-runtime-python</code>) are installed without recreating it. The command asks for confirmation before installing.</p>
+<p>Export the active (or specified) environment's configuration and refreshed credentials into <code>.env</code>:
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>init<span class="w"> </span>--env
+dhcli<span class="w"> </span>init<span class="w"> </span>--env<span class="w"> </span>--environment<span class="w"> </span>example
+</code></pre></div>
+With <code>--env</code>, the CLI validates and refreshes short-lived credentials if needed, then writes all configuration and credential entries (<code>DHCORE_ENDPOINT</code>, <code>DHCORE_ACCESS_TOKEN</code>, <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code>, <code>S3_BUCKET</code>, etc.) as uppercase <code>KEY="value"</code> pairs to <code>.env</code> in the current working directory. If a regular <code>.env</code> file already exists, it is strictly parsed as dotenv and existing custom variables are preserved unless replaced by exported values (comments and formatting are normalized). The file is atomically replaced with owner-only (<code>0600</code>) permissions; non-regular files (such as symlinks) or malformed dotenv files are rejected without modifying the existing file.</p>
+<div class="admonition warning">
+<p class="admonition-title">Keep <code>.env</code> out of version control</p>
+<p>Because <code>.env</code> contains live credentials and tokens, add <code>.env</code> to <code>.gitignore</code> and re-run <code>dhcli init --env</code> when credentials expire. To load variables into your current shell session, run <code>set -a &amp;&amp; source .env &amp;&amp; set +a</code>.</p>
+</div>
+<p>Install version-pinned AI agent instructions (<code>AGENTS.md</code>, <code>CLAUDE.md</code>) and procedural skills (<code>.agents/skills/dh-*/SKILL.md</code>) in the current working directory (see <a href="../../tasks/agents/">Working with Agents</a>):
+<div class="highlight"><pre><span></span><code>dhcli<span class="w"> </span>init<span class="w"> </span>--agent
+</code></pre></div></p>
 <h3 id="create"><code>create</code></h3>
 <p><code>create</code> will create an instance of the indicated resource on the platform. It takes the following parameters:</p>
 <ul>
