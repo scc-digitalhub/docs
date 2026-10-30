@@ -27,6 +27,7 @@ nav:
           - "tasks/code-source.md"
           - "tasks/secrets.md"
           - "tasks/pat.md"
+          - "tasks/agents.md"
           #   - "tasks/git.md"
       - Data-related Tasks:
           - "data-tasks/data.md"
