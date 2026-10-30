@@ -84,16 +84,34 @@ dhcli remove example
 It will remove the section from the configuration file.
 
 ### `init`
-`init` creates or activates a Python virtual environment and installs the platform's Python packages (`digitalhub[full]` and `digitalhub-runtime-python`). Python 3.9–3.12 must be available as `python3`. It takes the following parameters:
+`init` initializes a local workspace in one of three modes: creating/activating a Python virtual environment, exporting configuration and credentials to a `.env` file (`--env`), or installing version-pinned AI agent templates (`--agent`). It takes the following parameters:
 
-- `-e environment` *Optional*
-- `--pre` *Optional*. Boolean. Include pre-release (beta) versions when installing packages.
-- `path` *Optional*. Filesystem path of the virtual environment. If missing, the current environment name is used; if that is also empty, the current directory is used.
+- `-e, --environment name` *Optional*. Registered environment to use. If omitted, uses the default active environment.
+- `--env` *Optional*. Boolean. Write configuration and refreshed credentials to a local `.env` file in the current working directory without creating a Python virtual environment. Cannot be combined with `--agent`, `--pre`, or a `path` argument.
+- `--agent` *Optional*. Boolean. Install embedded agent templates (`AGENTS.md`, `CLAUDE.md`, and `.agents/skills/`) in the current working directory with remote knowledge links pinned to the connected Core's `major.minor` version, without creating a Python virtual environment. Cannot be combined with `--env`, `--pre`, or a `path` argument.
+- `--pre` *Optional*. Boolean. Include pre-release (beta) versions when installing Python packages.
+- `path` *Optional* (Python venv mode only). Filesystem path of the virtual environment. If missing, the current environment name is used; if that is also empty, the current directory is used.
 
+Initialize a Python virtual environment matching Core's `major.minor` version (Python 3.9–3.12 must be available as `python3`):
 ``` sh
 dhcli init ./venv
 ```
-It will match core's minor version as indicated in the specified environment. If no environment is specified, it will use the default one. If the path already contains a valid venv, dependencies are installed without recreating it. The command will ask for confirmation before installing.
+If the path already contains a valid venv, dependencies (`digitalhub[full]` and `digitalhub-runtime-python`) are installed without recreating it. The command asks for confirmation before installing.
+
+Export the active (or specified) environment's configuration and refreshed credentials into `.env`:
+``` sh
+dhcli init --env
+dhcli init --env --environment example
+```
+With `--env`, the CLI validates and refreshes short-lived credentials if needed, then writes all configuration and credential entries (`DHCORE_ENDPOINT`, `DHCORE_ACCESS_TOKEN`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `S3_BUCKET`, etc.) as uppercase `KEY="value"` pairs to `.env` in the current working directory. If a regular `.env` file already exists, it is strictly parsed as dotenv and existing custom variables are preserved unless replaced by exported values (comments and formatting are normalized). The file is atomically replaced with owner-only (`0600`) permissions; non-regular files (such as symlinks) or malformed dotenv files are rejected without modifying the existing file.
+
+!!! warning "Keep `.env` out of version control"
+    Because `.env` contains live credentials and tokens, add `.env` to `.gitignore` and re-run `dhcli init --env` when credentials expire. To load variables into your current shell session, run `set -a && source .env && set +a`.
+
+Install version-pinned AI agent instructions (`AGENTS.md`, `CLAUDE.md`) and procedural skills (`.agents/skills/dh-*/SKILL.md`) in the current working directory (see [Working with Agents](../tasks/agents.md)):
+``` sh
+dhcli init --agent
+```
 
 ### `create`
 `create` will create an instance of the indicated resource on the platform. It takes the following parameters:

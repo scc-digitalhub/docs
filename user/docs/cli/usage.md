@@ -270,3 +270,34 @@ DB_PASSWORD=[value]
 DHCORE_ACCESS_TOKEN=[value]
 DHCORE_REFRESH_TOKEN=[value]
 ```
+
+### Exporting a local `.env` file (`dhcli init --env`)
+
+When working locally with external tools, scripts, or applications that expect standard environment variables (`DHCORE_ENDPOINT`, `DHCORE_ACCESS_TOKEN`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `S3_BUCKET`, etc.), you can write both non-secret configuration and refreshed credentials directly into a local `.env` file in the current working directory (without creating a Python virtual environment):
+
+```sh
+dhcli init --env
+# Or select a specific registered environment:
+dhcli init --env --environment my-env
+
+# Load into the current shell:
+set -a && source .env && set +a
+```
+
+- **Automatic credential check & refresh**: Before writing `.env`, `dhcli` checks the active environment and refreshes short-lived credentials if needed.
+- **Safe dotenv merging**: If a regular `.env` file already exists in the current working directory, `dhcli` parses it strictly as dotenv and merges the exported DigitalHub variables (converting variable names to uppercase) while preserving your existing custom variables. Comments and formatting are normalized into sorted `KEY="escaped_value"` lines.
+- **Owner-only permissions & atomic replacement**: The file is written to a private temporary file (`0600` owner-only permissions), synced to disk, and atomically renamed to `.env`. Non-regular files (such as symlinks) and malformed `.env` files are rejected without modifying the existing file.
+
+!!! warning "Keep `.env` out of version control"
+    Because `.env` contains live bearer tokens (`DHCORE_ACCESS_TOKEN`, `DHCORE_REFRESH_TOKEN`), S3 STS keys (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_SESSION_TOKEN`), and database credentials, add `.env` to `.gitignore` and regenerate it with `dhcli init --env` whenever short-lived tokens expire.
+
+
+## Bootstrapping an AI agent workspace (`dhcli init --agent`)
+
+To configure a project directory for AI coding assistants (Claude Code, GitHub Copilot, Cursor, Windsurf, Codex, Antigravity) with instructions and skills pinned to the connected Core release:
+
+```sh
+dhcli init --agent
+```
+
+This queries the connected Core's `dhcore_version` from `/.well-known/configuration` and installs the CLI's embedded `AGENTS.md`, `CLAUDE.md`, and `.agents/skills/dh-*/SKILL.md` into the current working directory, with all remote knowledge links (`<%DOCS%>`) pinned to the matching `major.minor` documentation branch (for example, `0.16.2` selects `0.16`). Existing conflicting files are never overwritten. For a complete guide and examples, see [Working with Agents](../tasks/agents.md).
