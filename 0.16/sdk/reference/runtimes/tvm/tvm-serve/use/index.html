@@ -12193,6 +12193,13 @@
 contains <code>model</code>, <code>baseUrl</code>, <code>inferenceUrl</code>, <code>modelMetadataUrl</code>, <code>modelReadinessUrl</code>,
 <code>readinessUrl</code> and <code>livenessUrl</code>. The model name is <code>served_name</code>, otherwise the
 Function name. Read metadata before constructing an inference tensor.</p>
+<p>Use the metadata datatype and a concrete shape consistent with its rank and static
+dimensions; send exactly the number of values implied by that shape. Go <code>0.26.0-r3</code>
+and Rust <code>0.26.0-r2</code> reject incompatible tensors with HTTP <code>400</code> or gRPC
+<code>INVALID_ARGUMENT</code>, while preserving positional input matching when names do not
+all match. Older images may behave differently; see the
+<a href="https://scc-digitalhub.github.io/docs/0.16/runtimes/tvm/#input-validation">input validation guide</a>
+for image versions, numeric limits and gRPC encoding rules.</p>
 <p>The default service URL is internal to Kubernetes. Use <code>dhcli port-forward</code> to
 call REST from your computer; a browser cannot resolve a cluster-only hostname
 by itself. See the <a href="https://scc-digitalhub.github.io/docs/0.16/tutorials/tvm/test/">inference tutorial</a>.</p>

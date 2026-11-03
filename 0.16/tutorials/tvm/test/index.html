@@ -2432,6 +2432,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Test the service on the platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-request-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check request failures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2749,6 +2766,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Test the service on the platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-request-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check request failures
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2915,6 +2949,21 @@ dhcli<span class="w"> </span>services<span class="w"> </span>-p<span class="w"> 
 what the client uses. Health endpoints indicate success with HTTP <code>200</code>, and may
 have an empty body.</p>
 <p>The model expects one <code>FP32</code> picture of 640×640 pixels in NCHW order, and returns 8400 candidate boxes, each with 4 coordinates and 80 class scores.</p>
+<h3 id="check-request-failures">Check request failures</h3>
+<p>Read metadata from the deployed service each time you change the model or serving
+image. Go <code>0.26.0-r3</code> and Rust <code>0.26.0-r2</code> check datatype, rank, static dimensions, numeric
+ranges and value count before calling TVM. For example, this model requires
+<code>[1, 3, 640, 640]</code>; <code>[1, 3, 320, 1280]</code> is invalid even though both contain the same
+number of values. A wrong tensor name can still use positional matching, so it is
+not a reliable negative test.</p>
+<p>Invalid tensors return HTTP <code>400</code> / gRPC <code>INVALID_ARGUMENT</code>;
+an unknown model returns <code>404</code> / <code>NOT_FOUND</code>. TVM execution failures return HTTP
+<code>500</code>; gRPC returns <code>UNKNOWN</code> in Go and <code>INTERNAL</code> in Rust. Inspect server logs for
+details. After testing a rejected request,
+send a valid one again to verify that inference still works.</p>
+<p>Older Go <code>0.26.0-r2</code> and Rust <code>0.26.0-r1</code> images predate these validation fixes.
+Use the versions shown below to test this behavior. See
+<a href="../../../runtimes/tvm/#input-validation">Input validation</a> for the complete contract.</p>
 <h2 id="send-a-picture">Send a picture</h2>
 <p>Download a test picture:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-fL<span class="w"> </span>-o<span class="w"> </span>bus.jpg<span class="w"> </span>https://ultralytics.com/images/bus.jpg
@@ -2994,9 +3043,9 @@ ls<span class="w"> </span>yolo-model<span class="w">        </span><span class="
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/yolo-model:/shared/model"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">TVM_MODEL_NAME</span><span class="o">=</span>yolo-function<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2
+<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r3
 </code></pre></div>
-<p>To use the Rust server instead, replace the image with <code>ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r1</code>.</p>
+<p>To use the Rust server instead, replace the image with <code>ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r2</code>.</p>
 <p><strong>3. Test it</strong> in another terminal: set <code>URL = "http://localhost:8080"</code> in <code>client.py</code>:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:8080/v2/models/yolo-function
 python3<span class="w"> </span>client.py
@@ -3018,7 +3067,7 @@ runtime image builds include these platforms. Use a model matching the OS and CP
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/yolo-model:/shared/model"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">TVM_MODEL_NAME</span><span class="o">=</span>yolo-function<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2
+<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r3
 </code></pre></div>
 <p><strong>3. Test it</strong> from any computer of the same network, with <code>URL = "http://&lt;device&gt;:8080"</code> in <code>client.py</code>.</p>
 <div class="admonition tip">

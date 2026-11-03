@@ -12374,6 +12374,12 @@ settings, for example:</p>
 <p>The selected Model is pinned in this Run. Compiling another target does not change
 a running service; use a versioned <code>model_path</code> to select an earlier build.
 <code>profile</code> must select a node compatible with the Model's architecture and CPU.</p>
+<p>These parameters configure the service; inference tensors are sent directly to its
+REST or gRPC endpoint. Request validation is implemented by the Go/Rust serving
+image and does not require new SDK parameters. Go <code>0.26.0-r3</code> and Rust <code>0.26.0-r2</code>
+include these checks. Set <code>image</code> to the desired version if the platform default
+still uses an older runtime. See the
+<a href="https://scc-digitalhub.github.io/docs/0.16/runtimes/tvm/#input-validation">input validation guide</a>.</p>
 <h2 id="example">Example</h2>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="n">action</span><span class="o">=</span><span class="s2">"serve"</span><span class="p">,</span>

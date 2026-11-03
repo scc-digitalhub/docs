@@ -2176,6 +2176,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#input-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input validation
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3154,6 +3165,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#input-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input validation
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3750,9 +3772,10 @@ node; there is no ARM32 toolkit image.</p>
 separates its display name (<code>label</code>), standard TVM options as a JSON string (<code>target</code>)
 and C++ linker settings (<code>linker</code>). The compiler and console use the same catalogue;
 neither Java nor the SDK contains a fixed target enumeration.</p>
-<p>Mount an override file and set <code>RUNTIME_TVM_CONFIG=file:/etc/digitalhub/runtime-tvm.yaml</code>,
-then restart CORE. Keep all settings in one YAML document: the shared loader reads
-the first document only. Entries merge with the bundled profiles:</p>
+<p>Mount an override file, set
+<code>SPRING_CONFIG_ADDITIONAL_LOCATION=file:/etc/digitalhub/runtime-tvm.yaml</code> and restart
+CORE. Spring Boot loads the external file alongside the usual application settings.
+Omitted profiles and fields retain their bundled defaults:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">runtime</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tvm</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">targets</span><span class="p">:</span>
@@ -3783,20 +3806,25 @@ Use an explicit core count when tuning for a device with different resources.</p
 and <code>optimization.cross_cc_options</code> overrides <code>linker.options</code>.
 For compiler arguments, choose <strong>Profile defaults</strong> to inherit the YAML configuration,
 or <strong>Custom arguments</strong> to replace it. An explicit empty list clears those defaults.</p>
-<p>An override file keeps omitted profiles and fields. Supplying <code>target</code> replaces its
-whole definition rather than inheriting potentially incompatible CPU features.
+<p>Lists replace lower-priority lists; <code>aliases: []</code> or <code>linker.options: []</code> clears them.
+Supplying <code>target</code> replaces its whole definition rather than inheriting potentially
+incompatible CPU features.
 When migrating older override files:</p>
 <ul>
+<li>Replace <code>RUNTIME_TVM_CONFIG</code> with <code>SPRING_CONFIG_ADDITIONAL_LOCATION</code> and unset
+  the old variable. The dedicated TVM configuration path is no longer read.</li>
 <li>Replace each <code>target</code> YAML mapping with a JSON string as shown above.</li>
 <li>Move profile-level <code>cross-cc</code> to <code>linker.command</code>.</li>
 <li>Move profile-level <code>cross-cc-options</code> to <code>linker.options</code>.</li>
-<li>Combine settings from documents separated by <code>---</code> into one YAML document;
-  only the first document is loaded.</li>
 </ul>
 <p>This format applies only to the administrator's catalogue: an explicit Run <code>target</code>
 remains an object, and <code>optimization.cross_cc</code> / <code>optimization.cross_cc_options</code>
 remain Run options. SDK requests and model metadata are unchanged.
-Invalid target JSON or unknown target-profile fields prevent CORE from starting.</p>
+Invalid target JSON or unknown configuration-file properties under <code>runtime.tvm</code>
+prevent CORE from starting. As in standard Spring Boot binding, unknown environment
+variables and JVM system properties are ignored. External files follow standard
+configuration precedence and profile rules. A configured file must exist unless its
+location starts with <code>optional:</code>.</p>
 <h3 id="explicit-target-for-one-run">Explicit target for one run</h3>
 <p>For an advanced, one-off configuration, omit <code>target_architecture</code> or leave it at
 <code>auto</code>, then provide a standard TVM LLVM target:</p>
@@ -4082,7 +4110,7 @@ effective target and core count:</p>
 <tbody>
 <tr>
 <td>TVM version and commit</td>
-<td>Use a toolkit containing the same Apache TVM version and commit, e.g. <code>tvm-toolkit:0.26.0-r1</code>.</td>
+<td>Use a toolkit containing the same Apache TVM version and commit, e.g. <code>tvm-toolkit:0.26.0-r2</code>.</td>
 </tr>
 <tr>
 <td>Target</td>
@@ -4319,6 +4347,11 @@ final model.</p>
 <span class="w">    </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
 </code></pre></div>
 <p>When the Run requests CPUs, CORE derives the thread count from CPUs divided by workers (at least one thread). To choose the number yourself, add <code>TVM_NUM_THREADS</code> to <code>envs</code>.</p>
+<p>Size <code>workers</code> and the pod's CPU/memory allocation for the expected concurrency.
+With Go <code>0.26.0-r3</code>, a request waiting for a free Nuclio worker
+returns HTTP <code>503</code> / gRPC <code>RESOURCE_EXHAUSTED</code> when worker allocation times out.
+The older Go <code>0.26.0-r2</code> image can return HTTP <code>500</code> for this condition.
+This capacity limit is separate from tensor validation and native execution errors.</p>
 <p>When the Run is <strong>RUNNING</strong>, <code>status.service</code> reports the platform address.
 <code>status.inference_v2</code> contains <code>baseUrl</code>, <code>model</code>, <code>inferenceUrl</code>, <code>modelMetadataUrl</code>,
 <code>modelReadinessUrl</code>, <code>readinessUrl</code> and <code>livenessUrl</code> for the console client.
@@ -4428,6 +4461,64 @@ the CORE proxy.</p>
 <li>Inputs are matched by name when every input has a name that matches the model; otherwise by position.</li>
 <li>Supported data types: <code>FP32</code>, <code>FP64</code>, <code>INT8</code>, <code>INT16</code>, <code>INT32</code>, <code>INT64</code>, <code>UINT8</code>, <code>UINT16</code>, <code>UINT32</code>, <code>UINT64</code>. <code>FP16</code> is not supported.</li>
 </ul>
+<h3 id="input-validation">Input validation</h3>
+<div class="admonition note">
+<p class="admonition-title">Runtime image versions</p>
+<p>Go <code>0.26.0-r3</code> and Rust <code>0.26.0-r2</code> include the validation below. Older Go
+<code>0.26.0-r2</code> and Rust <code>0.26.0-r1</code> images do not include these fixes. Select the
+desired version with the serve Run's <code>image</code> field or configure the platform
+default. Existing compatible models can be reused when the Apache TVM version
+and commit are unchanged.</p>
+</div>
+<p>Both runtimes validate requests against the loaded model before executing TVM:</p>
+<ul>
+<li>Supply one tensor per model input, with the advertised datatype, rank and static
+  dimensions. Matching the total number of values alone is insufficient: <code>[1, 4]</code>
+  and <code>[2, 2]</code> are different shapes.</li>
+<li>Negative dimensions in <strong>model metadata</strong> allow dynamic sizes. Request dimensions
+  must be nonnegative and the number of values must equal their product. A scalar
+  has shape <code>[]</code> and one value. A dynamic signature still depends on the shapes
+  supported by the compiled model.</li>
+<li>Numeric values must be finite and fit their datatype. Integer values must be
+  integral: <code>1.0</code> and <code>1e1</code> are accepted, while <code>1.5</code> and out-of-range values are
+  rejected. Use integer JSON literals to retain full <code>INT64</code>/<code>UINT64</code> precision.</li>
+<li>gRPC accepts typed <code>contents</code> or little-endian <code>raw_input_contents</code>. Do not combine
+  them in one request. Raw encoding requires exactly one buffer per input, with the
+  expected datatype and byte count.</li>
+</ul>
+<p>Input names retain the positional fallback described above; an unknown tensor name
+alone does not make a request invalid. The served <strong>model name</strong> must match for
+inference and metadata requests, including over gRPC.</p>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>REST</th>
+<th>gRPC</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Invalid input</td>
+<td><code>400</code></td>
+<td><code>INVALID_ARGUMENT</code></td>
+<td>Datatype, shape, values and payload encoding against model metadata.</td>
+</tr>
+<tr>
+<td>Unknown model</td>
+<td><code>404</code></td>
+<td><code>NOT_FOUND</code></td>
+<td>The Run's <code>served_name</code>, otherwise the Function name; supply it explicitly to gRPC.</td>
+</tr>
+<tr>
+<td>TVM execution failure</td>
+<td><code>500</code></td>
+<td>Go: <code>UNKNOWN</code>; Rust: <code>INTERNAL</code></td>
+<td>Server logs for the native error. Rust returns a generic message to the client.</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2 id="test-the-service">Test the service</h2>
 <p>The default <code>ClusterIP</code> service is internal to the cluster. There are three ways to
@@ -4451,7 +4542,7 @@ dhcli<span class="w"> </span>port-forward<span class="w"> </span>-p<span class="
 docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/yolo-model:/shared/model"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">TVM_MODEL_NAME</span><span class="o">=</span>yolo-function<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2
+<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r3
 </code></pre></div>
 <p>In another terminal:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:8080/v2/models/yolo-function
@@ -4465,7 +4556,7 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>-p<span class="w"> </span><span class="m">9000</span>:9000<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-v<span class="w"> </span><span class="s2">"</span><span class="nv">$PWD</span><span class="s2">/yolo-model:/shared/model"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-e<span class="w"> </span><span class="nv">TVM_MODEL_NAME</span><span class="o">=</span>yolo-function<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2
+<span class="w">  </span>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r3
 </code></pre></div>
 <p>For a 32-bit OS, download <code>yolo-function-arm32</code> instead. For a 64-bit OS, use <code>arm64</code> (or <code>arm64_pi5</code> on Pi 5). Docker picks the image variant of the device automatically. This standalone example does not use CORE's init image.</p>
 </div>
@@ -4547,15 +4638,28 @@ precedence over the runtime selector; choose compatible compiler and serving nod
 </tbody>
 </table>
 <p>The platform chooses the script from the action and the source format, and passes every option of the run as an environment variable (<code>TVM_TARGET</code>, <code>TVM_OPT_LEVEL</code>, ...). When the script ends, the platform copies the key of the published Model into the function field <code>ir_model</code> or <code>so_model</code>.</p>
-<p>Publication uses direct HTTP calls to Core, not the DigitalHub SDK. Core supplies
-signed upload URLs and the storage path. The scripts upload the artifacts, including
-large files through multipart uploads, register the Model and verify the run output.
-The <code>DHCORE_*</code> credentials are used only for Core and are not forwarded to storage.</p>
+<p>Publication uses direct HTTP calls to CORE, without installing or calling the
+DigitalHub SDK. It follows the same Model lifecycle: <code>CREATED</code> → <code>UPLOADING</code> →
+<code>READY</code>. The publisher registers the Model, uploads its artifacts through signed
+storage URLs, records file information and marks the Model ready before recording
+its key in the Run outputs. Large files use multipart uploads. Up to 100 file
+entries are stored in <code>status.files</code>; larger collections use CORE's file index.
+Upload failures mark the Model <code>ERROR</code>.</p>
+<p>A <code>READY</code> Model is distinct from a <code>COMPLETED</code> build or compile Run. Wait for the
+Run to complete successfully before starting the next action. Output registration
+and Function reference updates retry transient failures up to three attempts; if
+either cannot be confirmed, the Run fails and the registered Model remains
+recoverable from the log and, when recorded, <code>run.status.outputs</code>.</p>
+<p>If the monitor advances a Run from <code>PENDING</code> to <code>RUNNING</code> during an output update,
+CORE can reject the stale update with <code>Invalid transition from state RUNNING to
+state PENDING.</code> The publisher rereads the Run and retries the merge; other HTTP
+<code>400</code> responses to Run updates remain errors. The <code>DHCORE_*</code> credentials are used
+only for CORE and are not forwarded to storage.</p>
 <hr />
 <h2 id="serving-runtimes">Serving runtimes</h2>
 <p>The <code>serve</code> action can use two images. They read the same model folder, expose the same endpoints on the same ports and accept the same requests. Go is the platform default; use the <code>image</code> field to choose another serve image for a single run:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r1</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r2</span>
 </code></pre></div>
 <p>Each image is multi-arch: the same tag serves <code>amd64</code>, <code>arm64</code> and <code>arm/v7</code> nodes, and each node downloads its own variant. There is no image to choose per architecture.</p>
 <table>
@@ -4569,8 +4673,8 @@ The <code>DHCORE_*</code> credentials are used only for Core and are not forward
 <tbody>
 <tr>
 <td>Image</td>
-<td><code>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2</code></td>
-<td><code>ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r1</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r3</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r2</code></td>
 </tr>
 <tr>
 <td>Server</td>
@@ -4709,28 +4813,28 @@ new image before deployment. CPU, ABI and data-type requirements still apply.</p
 </thead>
 <tbody>
 <tr>
-<td><code>RUNTIME_TVM_CONFIG</code></td>
-<td>bundled YAML only</td>
-<td>Optional external YAML location, e.g. <code>file:/etc/digitalhub/runtime-tvm.yaml</code>; restart CORE after changing it.</td>
+<td><code>SPRING_CONFIG_ADDITIONAL_LOCATION</code></td>
+<td>no additional file</td>
+<td>Additional Spring Boot configuration location, e.g. <code>file:/etc/digitalhub/runtime-tvm.yaml</code>; restart CORE after changing it.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">RUNTIME_TVM_BUILDER_ONNX</code></td>
-<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r1</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r2</code></td>
 <td>Image of <code>build</code> for ONNX models.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">RUNTIME_TVM_BUILDER_TFLITE</code></td>
-<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r1</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r2</code></td>
 <td>Image of <code>build</code> for TFLite models.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">RUNTIME_TVM_COMPILER</code></td>
-<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r1</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-toolkit:0.26.0-r2</code></td>
 <td>Image of <code>compile</code>.</td>
 </tr>
 <tr>
 <td><code style="white-space: nowrap">RUNTIME_TVM_SERVE</code></td>
-<td><code>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r2</code></td>
+<td><code>ghcr.io/scc-digitalhub/tvm-runtime-go:0.26.0-r3</code></td>
 <td>Default image of <code>serve</code>, overridden by the run's <code>image</code> field.</td>
 </tr>
 <tr>
@@ -4750,9 +4854,9 @@ new image before deployment. CPU, ABI and data-type requirements still apply.</p
 </tr>
 </tbody>
 </table>
-<p>To use Rust as the platform default, set <code>RUNTIME_TVM_SERVE=ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r1</code> on Core. A single run can still select another image with <code>image</code>.</p>
+<p>To use Rust as the platform default, set <code>RUNTIME_TVM_SERVE=ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r2</code> on Core. A single run can still select another image with <code>image</code>.</p>
 <p>These images contain Apache TVM <code>0.26.0</code>: toolkit and Rust use image revision
-<code>0.26.0-r1</code>, while Go uses <code>0.26.0-r2</code>. Different image revisions can contain the
+<code>0.26.0-r2</code>, while Go uses <code>0.26.0-r3</code>. Different image revisions can contain the
 same Apache TVM version and commit.</p>
 <p>A custom image must support the architecture of the nodes on which the model is served. A multi-arch image allows the same tag to be used across different architectures.</p>
 <p>Image maintainers can publish a new revision from <code>main</code> with the dedicated
@@ -4826,6 +4930,10 @@ an older cached image.</p>
 <tr>
 <td><code>404</code> on <code>/v2/models/&lt;name&gt;</code></td>
 <td>The name is not the <code>served_name</code> of the run (by default, the function name).</td>
+</tr>
+<tr>
+<td>Inference returns <code>400</code> / <code>INVALID_ARGUMENT</code></td>
+<td>Compare the request datatype, full shape, value count and numeric ranges with model metadata. For gRPC, use typed or raw contents, never both. See <a href="#input-validation">Input validation</a> for the runtime versions concerned.</td>
 </tr>
 <tr>
 <td>The endpoint cannot be reached from your computer</td>
