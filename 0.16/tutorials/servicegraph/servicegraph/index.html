@@ -3201,7 +3201,7 @@
 </ul>
 <h3 id="31-create-a-video-artifact-and-share-with-presigned-link">3.1. Create a video artifact and share with presigned link</h3>
 <p>For demo purposes, we will use a test video and create a presigned link to share it with the go2rtc container. Indeed, it is possible to use any arbitrary video source for the same purpose.</p>
-<div class="highlight"><pre><span></span><code><span class="n">project</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="s2">"video"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"artifact"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">"video.mp4"</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">project</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"video"</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s2">"video.mp4"</span><span class="p">)</span>
 </code></pre></div>
 <p>To create a presigned S3 link, it is sufficient to do this using Core UI. Access the file in the browser and share it. This will generate the presigned link of defined duration.</p>
 <p><img alt="Presigned link" src="../images/share.png" /></p>
