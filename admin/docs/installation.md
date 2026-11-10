@@ -46,13 +46,11 @@ Digitalhub has been installed. Check its status by running:
   kubectl --namespace digitalhub get pods
 
 Digitalhub componet URLs:
-  - Dashboard: http://192.168.76.2:30110
-  - Jupyter: http://192.168.76.2:30040 (Create jupyter workspace from template in the coder dashboard before use)
-  - Dremio: http://192.168.76.2:30120 (Create dremio workspace from template in the coder dashboard before use)
-  - Sqlpad: http://192.168.76.2:30140 (Create sqlpad workspace from template in the coder dashboard before use)
-  - Grafana: http://192.168.76.2:30130 (Create grafana workspace from template in the coder dashboard before use)
-  - Docker Registry: http://192.168.76.2:30150
-  - Coder: http://192.168.76.2:30170 (Username: test@digitalhub.test Password: Test12456@!)
-  - Core: http://192.168.76.2:30180
-  - Kubernetes Resource Manager: http://192.168.76.2:30160
+  - Dashboard: http://192.168.94.2:30110
+  - Code-Toolbox: http://192.168.94.2:30050 (Create code-toolbox workspace from template in the coder dashboard before use)
+  - Docker Registry: http://192.168.94.2:30150
+  - Coder: http://192.168.94.2:30170 (Username: test@digitalhub.test Password: Test12456@!)
+  - Core: http://192.168.94.2:30180 (Username: coreuser Password: corepwd)
+  - Kubernetes Resource Manager: http://192.168.94.2:30220
+  - Open WebUI: http://192.168.94.2:30210
 ```  
