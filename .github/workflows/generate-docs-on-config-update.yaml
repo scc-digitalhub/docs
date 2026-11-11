@@ -48,6 +48,7 @@ jobs:
             cd sdk
             pip install -r requirements.txt || echo "Failed to install SDK requirements"
             mkdocs build || echo "Failed to build SDK documentation"
+            rm -rf __pycache__
             cd ..
             python merge_search_indices.py || echo "No script to merge search indices for this version"
             mkdir -p ./site
