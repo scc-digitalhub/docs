@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -225,12 +225,6 @@
                 
                   
                     <a href="https://scc-digitalhub.github.io/docs/0.16">0.16</a>
-                  
-                
-              
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs">current</a>
                   
                 
               
@@ -3183,18 +3177,18 @@ You will then refernce the source code according to a specific <code>Function</c
 <h4 id="function-example">Function example</h4>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;my_project&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"my_project"</span><span class="p">)</span>
 
-<span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">SELECT * FROM {{ ref(&quot;my_table&quot;) }}</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
+<span class="s2">SELECT * FROM {{ ref("my_table") }}</span>
+<span class="s2">"""</span>
 
-<span class="n">dataitem</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="s2">&quot;my_dataitem&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;path-to-some-data&quot;</span><span class="p">)</span>
+<span class="n">dataitem</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="s2">"my_dataitem"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"table"</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">"path-to-some-data"</span><span class="p">)</span>
 
 <span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
-    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dbt&quot;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_function&quot;</span><span class="p">,</span>
-    <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="n">sql</span><span class="p">}</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">"dbt"</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"my_function"</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">"code"</span><span class="p">:</span> <span class="n">sql</span><span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="task">Task</h3>
@@ -3272,9 +3266,9 @@ A <code>Task</code> is created with the <code>run()</code> method, so it's not m
 </table>
 <h4 id="task-example">Task example</h4>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span>
-    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;my_table&quot;</span><span class="p">:</span> <span class="n">my_dataitem</span><span class="o">.</span><span class="n">key</span><span class="p">},</span>
-    <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;output_table&quot;</span><span class="p">:</span> <span class="s2">&quot;my_output_table&quot;</span><span class="p">},</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">"transform"</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">"my_table"</span><span class="p">:</span> <span class="n">my_dataitem</span><span class="o">.</span><span class="n">key</span><span class="p">},</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">"output_table"</span><span class="p">:</span> <span class="s2">"my_output_table"</span><span class="p">},</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="run">Run</h3>
@@ -3319,13 +3313,13 @@ The run's parameters are passed alongside the task's ones.</p>
 </table>
 <h4 id="run-example">Run example</h4>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
     <span class="n">inputs</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;dataitem&quot;</span><span class="p">:</span> <span class="n">dataitem</span><span class="o">.</span><span class="n">key</span>
+        <span class="s2">"dataitem"</span><span class="p">:</span> <span class="n">dataitem</span><span class="o">.</span><span class="n">key</span>
     <span class="p">},</span>
     <span class="n">outputs</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;dataitem&quot;</span><span class="p">:</span> <span class="s2">&quot;mapped-name&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;some-label&quot;</span>
+        <span class="s2">"dataitem"</span><span class="p">:</span> <span class="s2">"mapped-name"</span><span class="p">,</span>
+        <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"some-label"</span>
     <span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
@@ -3333,32 +3327,32 @@ The run's parameters are passed alongside the task's ones.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
 <span class="c1"># Get or create project</span>
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;project-dbt&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"project-dbt"</span><span class="p">)</span>
 
 <span class="c1"># Create new input dataitem</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://gist.githubusercontent.com/kevin336/acbb2271e66c10a5b73aacf82ca82784/raw/e38afe62e088394d61ed30884dd50a6826eee0a8/employees.csv&quot;</span>
-<span class="n">di</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;employees&quot;</span><span class="p">,</span>
-                          <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="p">,</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://gist.githubusercontent.com/kevin336/acbb2271e66c10a5b73aacf82ca82784/raw/e38afe62e088394d61ed30884dd50a6826eee0a8/employees.csv"</span>
+<span class="n">di</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"employees"</span><span class="p">,</span>
+                          <span class="n">kind</span><span class="o">=</span><span class="s2">"table"</span><span class="p">,</span>
                           <span class="n">path</span><span class="o">=</span><span class="n">url</span><span class="p">)</span>
 
 <span class="c1"># Create new function</span>
-<span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="n">sql</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">WITH tab AS (</span>
 <span class="s2">    SELECT  *</span>
-<span class="s2">    FROM    {{ ref(&quot;employees&quot;) }}</span>
+<span class="s2">    FROM    {{ ref("employees") }}</span>
 <span class="s2">)</span>
 <span class="s2">SELECT  *</span>
 <span class="s2">FROM    tab</span>
-<span class="s2">WHERE   tab.&quot;DEPARTMENT_ID&quot; = &quot;60&quot;</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;function-dbt&quot;</span><span class="p">,</span>
-                                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dbt&quot;</span><span class="p">,</span>
-                                <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="n">sql</span><span class="p">})</span>
+<span class="s2">WHERE   tab."DEPARTMENT_ID" = "60"</span>
+<span class="s2">"""</span>
+<span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"function-dbt"</span><span class="p">,</span>
+                                <span class="n">kind</span><span class="o">=</span><span class="s2">"dbt"</span><span class="p">,</span>
+                                <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">"code"</span><span class="p">:</span> <span class="n">sql</span><span class="p">})</span>
 
 <span class="c1"># Run function</span>
-<span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span>
-                   <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;employees&quot;</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">},</span>
-                   <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;output_table&quot;</span><span class="p">:</span> <span class="s2">&quot;department-60&quot;</span><span class="p">})</span>
+<span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"transform"</span><span class="p">,</span>
+                   <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">"employees"</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">},</span>
+                   <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">"output_table"</span><span class="p">:</span> <span class="s2">"department-60"</span><span class="p">})</span>
 
 <span class="c1"># Refresh run</span>
 <span class="n">run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
@@ -3405,10 +3399,10 @@ The run's parameters are passed alongside the task's ones.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

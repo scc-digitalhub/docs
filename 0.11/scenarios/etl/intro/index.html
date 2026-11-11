@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -141,12 +141,6 @@
                 
                 
               
-              
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs">current</a>
-                  
-                
               
                 
                   
@@ -3083,7 +3077,7 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 </code></pre></div>
 <p>Create a project:</p>
-<div class="highlight"><pre><span></span><code><span class="n">PROJECT</span> <span class="o">=</span> <span class="s2">&quot;demo-etl&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">PROJECT</span> <span class="o">=</span> <span class="s2">"demo-etl"</span>
 <span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="n">PROJECT</span><span class="p">)</span>
 </code></pre></div>
 <p>Check that the project has been created successfully:</p>
@@ -3092,16 +3086,16 @@
 <h2 id="peek-at-the-data">Peek at the data</h2>
 <p>Let's take a look at the data we will work with, which is available in CSV (Comma-Separated Values) format at a remote API.</p>
 <p>Set the URL to the data and the file name:</p>
-<div class="highlight"><pre><span></span><code><span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?lang=it&amp;timezone=Europe</span><span class="si">%2F</span><span class="s2">Rome&amp;use_labels=true&amp;delimiter=%3B&quot;</span>
-<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;rilevazione-flusso-veicoli-tramite-spire-anno-2023.csv&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">URL</span> <span class="o">=</span> <span class="s2">"https://opendata.comune.bologna.it/api/explore/v2.1/catalog/datasets/rilevazione-flusso-veicoli-tramite-spire-anno-2023/exports/csv?lang=it&amp;timezone=Europe</span><span class="si">%2F</span><span class="s2">Rome&amp;use_labels=true&amp;delimiter=%3B"</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">"rilevazione-flusso-veicoli-tramite-spire-anno-2023.csv"</span>
 </code></pre></div>
 <p>Download the file and save it locally:</p>
 <div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">URL</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">"wb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </code></pre></div>
 <p>Use <em>pandas</em> to read the file into a dataframe:</p>
-<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">";"</span><span class="p">)</span>
 </code></pre></div>
 <p>You can now run <code>df.head()</code> to view the first few records of the dataset. They contain information about how many vehicles have passed a sensor (spire), located at specific coordinates, within different time slots. If you wish, use <code>df.dtypes</code> to list the columns and respective types of the data, or <code>df.size</code> to know the data's size in Bytes.</p>
 <p><img alt="Jupyter head image" src="../../../images/scenario-etl/jupyter-head.png" /></p>
@@ -3138,10 +3132,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

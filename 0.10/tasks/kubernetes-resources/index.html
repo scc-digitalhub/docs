@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -141,12 +141,6 @@
                 
                 
               
-              
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs">current</a>
-                  
-                
               
                 
                   
@@ -3176,11 +3170,11 @@ The platform will add the selectors as-is to k8s resources such as Jobs, Pods, D
 You need to declare the volume type as <code>persistent_volume_claim</code>, a name for the PVC for the user (e.g., <code>my-pvc</code>), the mount path on the container and a spec with the name of the PVC on Kubernetes (e.g., <code>pvc-name-on-k8s</code>). 
 PVs need to exist before launching the run, otherwise the claim will fail.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">volume_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;persistent_volume_claim&quot;</span><span class="err">,</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-pvc&quot;</span><span class="err">,</span>
-<span class="w">          </span><span class="nt">mount_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/data&quot;</span><span class="err">,</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">volume_type</span><span class="p">:</span><span class="w"> </span><span class="s">"persistent_volume_claim"</span><span class="err">,</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"my-pvc"</span><span class="err">,</span>
+<span class="w">          </span><span class="nt">mount_path</span><span class="p">:</span><span class="w"> </span><span class="s">"/data"</span><span class="err">,</span>
 <span class="w">          </span><span class="nt">spec</span><span class="p">:</span><span class="w"> </span>
-<span class="w">            </span><span class="nt">claim_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;pvc-name-on-k8s&quot;</span><span class="err">,</span>
+<span class="w">            </span><span class="nt">claim_name</span><span class="p">:</span><span class="w"> </span><span class="s">"pvc-name-on-k8s"</span><span class="err">,</span>
 </code></pre></div>
 <h2 id="resources">Resources</h2>
 <p>Users can request a specific amount of hardware resources (cpu, memory, gpu) for a given run by declaring them  via the <code>resources</code> spec parameter.</p>
@@ -3194,8 +3188,8 @@ PVs need to exist before launching the run, otherwise the claim will fail.</p>
 <p>To request a specific amount of CPU for the run, declare the resource type as <code>cpu</code> and specify request and/or limit values.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">cpu</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
-<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;12&quot;</span>
+<span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="s">"10"</span>
+<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="s">"12"</span>
 </code></pre></div>
 <h3 id="ram-memory">RAM memory</h3>
 <p>To request a specific amount of RAM memory for the run, declare the resource type as <code>mem</code> and specify request and/or limit values.</p>
@@ -3208,7 +3202,7 @@ PVs need to exist before launching the run, otherwise the claim will fail.</p>
 <p>To request GPU resources, specify the resource type <code>gpu</code> and set the requested value as a limit.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="w">    </span>
+<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span><span class="w">    </span>
 </code></pre></div>
 <h2 id="secrets">Secrets</h2>
 <p>Users can request a secret injection into the run being launched by passing the identifier inside the <code>secrets</code> field.
@@ -3261,7 +3255,7 @@ It accepts an integer value.</p>
 <span class="w">  </span><span class="nt">mem</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32Gi</span>
 <span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">    </span><span class="nt">limits</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
 </code></pre></div>
 <p>In order to provide such definitions, users can leverage the SDK or the Core UI to programmatically or interactively define their request.
 Please see the <a href="https://scc-digitalhub.github.io/sdk-docs/runtimes/kubernetes-resources/">Kubernetes Resources</a> section of the documentation for more information.</p>
@@ -3302,10 +3296,10 @@ The profile allow for abstracting the platform users from the underlying complex
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -225,12 +225,6 @@
                 
                   
                     <a href="https://scc-digitalhub.github.io/docs/0.16">0.16</a>
-                  
-                
-              
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs">current</a>
                   
                 
               
@@ -3842,18 +3836,18 @@ In the second section, we will see what can be done with the <code>Artifact</cod
 Example:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"my-project"</span><span class="p">)</span>
 
 <span class="c1">## From library</span>
-<span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-artifact&quot;</span><span class="p">,</span>
-                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span>
-                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-artifact.ext&quot;</span><span class="p">)</span>
+<span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">"my-artifact"</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">"artifact"</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">"s3://my-bucket/my-artifact.ext"</span><span class="p">)</span>
 
 <span class="c1">## From project</span>
-<span class="n">artifact</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-artifact&quot;</span><span class="p">,</span>
-                                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span>
-                                <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-artifact.ext&quot;</span><span class="p">)</span>
+<span class="n">artifact</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"my-artifact"</span><span class="p">,</span>
+                                <span class="n">kind</span><span class="o">=</span><span class="s2">"artifact"</span><span class="p">,</span>
+                                <span class="n">path</span><span class="o">=</span><span class="s2">"s3://my-bucket/my-artifact.ext"</span><span class="p">)</span>
 </code></pre></div>
 <p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete an artifact. It focus on managing artifacts from library. If you want to manage artifacts from the project, you can use the <code>Project</code> object and avoid to specify the <code>project</code> parameter.</p>
 <h5 id="create_2">Create</h5>
@@ -3876,10 +3870,10 @@ Example:</p>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the <em>spec</em> constructor</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-artifact&quot;</span><span class="p">,</span>
-                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span>
-                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-artifact.ext&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">"my-artifact"</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">"artifact"</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">"s3://my-bucket/my-artifact.ext"</span><span class="p">)</span>
 </code></pre></div>
 <h5 id="read_2">Read</h5>
 <p>To read an artifact you can use the <code>get_artifact()</code> or <code>import_artifact()</code> methods. The first one searches for the artifact into the backend, the second one load it from a local yaml.</p>
@@ -3895,11 +3889,11 @@ Example:</p>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">entity_name</span><span class="o">=</span><span class="s2">&quot;my-artifact&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                           <span class="n">entity_name</span><span class="o">=</span><span class="s2">"my-artifact"</span><span class="p">)</span>
 
-<span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">entity_id</span><span class="o">=</span><span class="s2">&quot;uuid-of-my-artifact&quot;</span><span class="p">)</span>
+<span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                           <span class="n">entity_id</span><span class="o">=</span><span class="s2">"uuid-of-my-artifact"</span><span class="p">)</span>
 </code></pre></div>
 <h6 id="import">Import</h6>
 <p>The mandatory parameters are:</p>
@@ -3907,7 +3901,7 @@ Example:</p>
 <li><strong><code>file</code></strong>: file path to the artifact yaml</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">import_artifact</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;./some-path/my-artifact.yaml&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">import_artifact</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">"./some-path/my-artifact.yaml"</span><span class="p">)</span>
 </code></pre></div>
 <h5 id="update_2">Update</h5>
 <p>To update an artifact you can use the <code>update_artifact()</code> method.</p>
@@ -3920,12 +3914,12 @@ Example:</p>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-artifact&quot;</span><span class="p">,</span>
-                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span>
-                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-artifact.ext&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">"my-artifact"</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">"artifact"</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">"s3://my-bucket/my-artifact.ext"</span><span class="p">)</span>
 
-<span class="n">artifact</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;My new description&quot;</span>
+<span class="n">artifact</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">"My new description"</span>
 
 <span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">update_artifact</span><span class="p">(</span><span class="n">artifact</span><span class="o">=</span><span class="n">artifact</span><span class="p">)</span>
 </code></pre></div>
@@ -3943,12 +3937,12 @@ Example:</p>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-artifact&quot;</span><span class="p">,</span>
-                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;artifact&quot;</span><span class="p">,</span>
-                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-artifact.ext&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">artifact</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">"my-artifact"</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">"artifact"</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">"s3://my-bucket/my-artifact.ext"</span><span class="p">)</span>
 
-<span class="n">dh</span><span class="o">.</span><span class="n">delete_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+<span class="n">dh</span><span class="o">.</span><span class="n">delete_artifact</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
                    <span class="n">entity_id</span><span class="o">=</span><span class="n">artifact</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
 </code></pre></div>
 <h5 id="list">List</h5>
@@ -3962,7 +3956,7 @@ Example:</p>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">artifacts</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">list_artifacts</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">artifacts</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">list_artifacts</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="artifact-object">Artifact object</h4>
 <p>The <code>Artifact</code> object is built using the <code>new_artifact()</code> method. There are several variations of the <code>Artifact</code> object based on the <code>kind</code> of the artifact. The SDK supports the following kinds:</p>
@@ -4020,18 +4014,18 @@ In the second section, we will see what can be done with the <code>Dataitem</cod
 Example:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"my-project"</span><span class="p">)</span>
 
 <span class="c1">## From library</span>
-<span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-dataitem&quot;</span><span class="p">,</span>
-                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dataitem&quot;</span><span class="p">,</span>
-                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-dataitem.ext&quot;</span><span class="p">)</span>
+<span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">"my-dataitem"</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">"dataitem"</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">"s3://my-bucket/my-dataitem.ext"</span><span class="p">)</span>
 
 <span class="c1">## From project</span>
-<span class="n">dataitem</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-dataitem&quot;</span><span class="p">,</span>
-                                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dataitem&quot;</span><span class="p">,</span>
-                                <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-dataitem.ext&quot;</span><span class="p">)</span>
+<span class="n">dataitem</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"my-dataitem"</span><span class="p">,</span>
+                                <span class="n">kind</span><span class="o">=</span><span class="s2">"dataitem"</span><span class="p">,</span>
+                                <span class="n">path</span><span class="o">=</span><span class="s2">"s3://my-bucket/my-dataitem.ext"</span><span class="p">)</span>
 </code></pre></div>
 <p>The syntax is the same for all CRUD methods. The following sections describe how to create, read, update and delete a dataitem. It focus on managing dataitems from library. If you want to manage dataitems from the project, you can use the <code>Project</code> object and avoid to specify the <code>project</code> parameter.</p>
 <h5 id="create_3">Create</h5>
@@ -4053,10 +4047,10 @@ Example:</p>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the <em>spec</em> constructor</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-dataitem&quot;</span><span class="p">,</span>
-                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dataitem&quot;</span><span class="p">,</span>
-                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-dataitem.ext&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">"my-dataitem"</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">"dataitem"</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">"s3://my-bucket/my-dataitem.ext"</span><span class="p">)</span>
 </code></pre></div>
 <h5 id="read_3">Read</h5>
 <p>To read a dataitem you can use the <code>get_dataitem()</code> or <code>import_dataitem()</code> methods. The first one searches for the dataitem into the backend, the second one load it from a local yaml.</p>
@@ -4072,11 +4066,11 @@ Example:</p>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">entity_name</span><span class="o">=</span><span class="s2">&quot;my-dataitem&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                           <span class="n">entity_name</span><span class="o">=</span><span class="s2">"my-dataitem"</span><span class="p">)</span>
 
-<span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">entity_id</span><span class="o">=</span><span class="s2">&quot;uuid-of-my-dataitem&quot;</span><span class="p">)</span>
+<span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                           <span class="n">entity_id</span><span class="o">=</span><span class="s2">"uuid-of-my-dataitem"</span><span class="p">)</span>
 </code></pre></div>
 <h6 id="import_1">Import</h6>
 <p>The mandatory parameters are:</p>
@@ -4084,7 +4078,7 @@ Example:</p>
 <li><strong><code>file</code></strong>: file path to the dataitem yaml</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">import_dataitem</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;./some-path/my-dataitem.yaml&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">import_dataitem</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">"./some-path/my-dataitem.yaml"</span><span class="p">)</span>
 </code></pre></div>
 <h5 id="update_3">Update</h5>
 <p>To update a dataitem you can use the <code>update_dataitem()</code> method.</p>
@@ -4097,12 +4091,12 @@ Example:</p>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-dataitem&quot;</span><span class="p">,</span>
-                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dataitem&quot;</span><span class="p">,</span>
-                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-dataitem.ext&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">"my-dataitem"</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">"dataitem"</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">"s3://my-bucket/my-dataitem.ext"</span><span class="p">)</span>
 
-<span class="n">dataitem</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;My new description&quot;</span>
+<span class="n">dataitem</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">"My new description"</span>
 
 <span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">update_dataitem</span><span class="p">(</span><span class="n">dataitem</span><span class="o">=</span><span class="n">dataitem</span><span class="p">)</span>
 </code></pre></div>
@@ -4120,12 +4114,12 @@ Example:</p>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-dataitem&quot;</span><span class="p">,</span>
-                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;dataitem&quot;</span><span class="p">,</span>
-                           <span class="n">path</span><span class="o">=</span><span class="s2">&quot;s3://my-bucket/my-dataitem.ext&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">dataitem</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">"my-dataitem"</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">"dataitem"</span><span class="p">,</span>
+                           <span class="n">path</span><span class="o">=</span><span class="s2">"s3://my-bucket/my-dataitem.ext"</span><span class="p">)</span>
 
-<span class="n">dh</span><span class="o">.</span><span class="n">delete_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
+<span class="n">dh</span><span class="o">.</span><span class="n">delete_dataitem</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
                    <span class="n">entity_id</span><span class="o">=</span><span class="n">dataitem</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
 </code></pre></div>
 <h5 id="list_1">List</h5>
@@ -4139,7 +4133,7 @@ Example:</p>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that comunicate with the backend</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">dataitems</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">list_dataitems</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">dataitems</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">list_dataitems</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="dataitem-object">Dataitem object</h4>
 <p>The <code>Dataitem</code> object is built using the <code>new_dataitem()</code> method. There are several variations of the <code>Dataitem</code> object based on the <code>kind</code> of the dataitem. The SDK supports the following kinds:</p>
@@ -4220,10 +4214,10 @@ The method accepts the following parameters:</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -225,12 +225,6 @@
                 
                   
                     <a href="https://scc-digitalhub.github.io/docs/0.16">0.16</a>
-                  
-                
-              
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs">current</a>
                   
                 
               
@@ -2731,11 +2725,11 @@ pip<span class="w"> </span>install<span class="w"> </span>core/modules/container
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s1">&#39;my_project&#39;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s1">'my_project'</span><span class="p">)</span>
 <span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
-    <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;dbt&#39;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_function&#39;</span><span class="p">,</span>
-    <span class="n">image</span><span class="o">=</span><span class="s2">&quot;hello-world:latest&quot;</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s1">'dbt'</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">'my_function'</span><span class="p">,</span>
+    <span class="n">image</span><span class="o">=</span><span class="s2">"hello-world:latest"</span>
 <span class="p">)</span>
 </code></pre></div>
 <h2 id="task">Task</h2>
@@ -2771,7 +2765,7 @@ pip<span class="w"> </span>install<span class="w"> </span>core/modules/container
 </ul>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s1">&#39;job&#39;</span>
+    <span class="n">action</span><span class="o">=</span><span class="s1">'job'</span>
 <span class="p">)</span>
 </code></pre></div>
 <h2 id="notes">Notes</h2>
@@ -2779,22 +2773,22 @@ pip<span class="w"> </span>install<span class="w"> </span>core/modules/container
 <h2 id="snippet-example">Snippet example</h2>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
-<span class="n">proj</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;project-container&quot;</span><span class="p">)</span>
+<span class="n">proj</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"project-container"</span><span class="p">)</span>
 
 <span class="c1"># Run container</span>
-<span class="n">func_cont</span> <span class="o">=</span> <span class="n">proj</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;function-container&quot;</span><span class="p">,</span>
-                              <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">,</span>
-                              <span class="n">image</span><span class="o">=</span><span class="s2">&quot;hello-world:latest&quot;</span><span class="p">)</span>
-<span class="n">run_cont</span> <span class="o">=</span> <span class="n">func_cont</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;job&quot;</span><span class="p">)</span>
+<span class="n">func_cont</span> <span class="o">=</span> <span class="n">proj</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"function-container"</span><span class="p">,</span>
+                              <span class="n">kind</span><span class="o">=</span><span class="s2">"container"</span><span class="p">,</span>
+                              <span class="n">image</span><span class="o">=</span><span class="s2">"hello-world:latest"</span><span class="p">)</span>
+<span class="n">run_cont</span> <span class="o">=</span> <span class="n">func_cont</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"job"</span><span class="p">)</span>
 
 
 <span class="c1"># Serve stremlit service</span>
-<span class="n">func_serve</span> <span class="o">=</span> <span class="n">proj</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;function-serve&quot;</span><span class="p">,</span>
-                               <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;container&quot;</span><span class="p">,</span>
-                               <span class="n">image</span><span class="o">=</span><span class="s2">&quot;ghcr.io/scc-digitalhub/digitalhub-core-streamlit:latest&quot;</span><span class="p">)</span>
-<span class="n">run_serve</span> <span class="o">=</span> <span class="n">func_serve</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;serve&quot;</span><span class="p">,</span>
-                           <span class="n">service_ports</span><span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8085</span><span class="p">,</span> <span class="s2">&quot;target_port&quot;</span><span class="p">:</span> <span class="mi">8501</span><span class="p">}],</span>
-                           <span class="n">service_type</span><span class="o">=</span><span class="s2">&quot;NodePort&quot;</span><span class="p">)</span>
+<span class="n">func_serve</span> <span class="o">=</span> <span class="n">proj</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"function-serve"</span><span class="p">,</span>
+                               <span class="n">kind</span><span class="o">=</span><span class="s2">"container"</span><span class="p">,</span>
+                               <span class="n">image</span><span class="o">=</span><span class="s2">"ghcr.io/scc-digitalhub/digitalhub-core-streamlit:latest"</span><span class="p">)</span>
+<span class="n">run_serve</span> <span class="o">=</span> <span class="n">func_serve</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"serve"</span><span class="p">,</span>
+                           <span class="n">service_ports</span><span class="o">=</span> <span class="p">[{</span><span class="s2">"port"</span><span class="p">:</span> <span class="mi">8085</span><span class="p">,</span> <span class="s2">"target_port"</span><span class="p">:</span> <span class="mi">8501</span><span class="p">}],</span>
+                           <span class="n">service_type</span><span class="o">=</span><span class="s2">"NodePort"</span><span class="p">)</span>
 </code></pre></div>
 
 
@@ -2838,10 +2832,10 @@ pip<span class="w"> </span>install<span class="w"> </span>core/modules/container
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

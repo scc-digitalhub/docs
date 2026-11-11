@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -27,10 +27,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -223,12 +223,6 @@
                 
                   
                     <a href="https://scc-digitalhub.github.io/docs/0.16">0.16</a>
-                  
-                
-              
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs">current</a>
                   
                 
               
@@ -2730,15 +2724,15 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s1">&#39;my_project&#39;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s1">'my_project'</span><span class="p">)</span>
 
-<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;path-to-some-code.py&#39;</span>
-<span class="n">dataitem</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="s2">&quot;my_dataitem&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;path-to-some-data&quot;</span><span class="p">)</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">'path-to-some-code.py'</span>
+<span class="n">dataitem</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="s2">"my_dataitem"</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"table"</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">"path-to-some-data"</span><span class="p">)</span>
 
 <span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span>
-    <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;mlrun&#39;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_function&#39;</span><span class="p">,</span>
-    <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="n">path</span><span class="p">}</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s1">'mlrun'</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">'my_function'</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">"source"</span><span class="p">:</span> <span class="n">path</span><span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
 <h2 id="task">Task</h2>
@@ -2771,11 +2765,11 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </ul>
 <p>For example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s1">&#39;job&#39;</span><span class="p">,</span>
-    <span class="n">inputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;mlrun-input-param-name&quot;</span><span class="p">:</span> <span class="n">my_dataitem</span><span class="o">.</span><span class="n">key</span><span class="p">}],</span>
-    <span class="n">outputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;mlrun-input-param-name&quot;</span><span class="p">:</span> <span class="s2">&quot;my-output-name&quot;</span><span class="p">}],</span>
-    <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">}},</span>
-    <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;simple-mlrun-output-value-name&quot;</span><span class="p">]</span>
+    <span class="n">action</span><span class="o">=</span><span class="s1">'job'</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">"mlrun-input-param-name"</span><span class="p">:</span> <span class="n">my_dataitem</span><span class="o">.</span><span class="n">key</span><span class="p">}],</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">"mlrun-input-param-name"</span><span class="p">:</span> <span class="s2">"my-output-name"</span><span class="p">}],</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">"inputs"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"key"</span><span class="p">:</span> <span class="s2">"value"</span><span class="p">}},</span>
+    <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">"simple-mlrun-output-value-name"</span><span class="p">]</span>
 <span class="p">)</span>
 </code></pre></div>
 <h2 id="runtime-workflow">Runtime workflow</h2>
@@ -2791,27 +2785,27 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
 <span class="c1"># Get or create project</span>
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;project-mlrun&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"project-mlrun"</span><span class="p">)</span>
 
 <span class="c1"># Create new input dataitem</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://gist.githubusercontent.com/kevin336/acbb2271e66c10a5b73aacf82ca82784/raw/e38afe62e088394d61ed30884dd50a6826eee0a8/employees.csv&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://gist.githubusercontent.com/kevin336/acbb2271e66c10a5b73aacf82ca82784/raw/e38afe62e088394d61ed30884dd50a6826eee0a8/employees.csv"</span>
 
 <span class="c1"># Create new dataitem</span>
-<span class="n">dataitem</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;url-dataitem&quot;</span><span class="p">,</span>
-                                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="p">,</span>
+<span class="n">dataitem</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"url-dataitem"</span><span class="p">,</span>
+                                <span class="n">kind</span><span class="o">=</span><span class="s2">"table"</span><span class="p">,</span>
                                 <span class="n">path</span><span class="o">=</span><span class="n">url</span><span class="p">)</span>
 
 <span class="c1"># Create new function</span>
-<span class="n">downloader_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;mlrun-downloader&quot;</span><span class="p">,</span>
-                                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;mlrun&quot;</span><span class="p">,</span>
-                                           <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;source&quot;</span><span class="p">:</span><span class="s2">&quot;pipeline.py&quot;</span><span class="p">},</span>
-                                           <span class="n">handler</span><span class="o">=</span><span class="s2">&quot;downloader&quot;</span><span class="p">,</span>
-                                           <span class="n">image</span><span class="o">=</span><span class="s2">&quot;mlrun/mlrun&quot;</span><span class="p">)</span>
+<span class="n">downloader_function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"mlrun-downloader"</span><span class="p">,</span>
+                                           <span class="n">kind</span><span class="o">=</span><span class="s2">"mlrun"</span><span class="p">,</span>
+                                           <span class="n">source</span><span class="o">=</span><span class="p">{</span><span class="s2">"source"</span><span class="p">:</span><span class="s2">"pipeline.py"</span><span class="p">},</span>
+                                           <span class="n">handler</span><span class="o">=</span><span class="s2">"downloader"</span><span class="p">,</span>
+                                           <span class="n">image</span><span class="o">=</span><span class="s2">"mlrun/mlrun"</span><span class="p">)</span>
 
 <span class="c1"># Run function</span>
-<span class="n">downloader_run</span> <span class="o">=</span> <span class="n">downloader_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
-                                         <span class="n">inputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">dataitem</span><span class="o">.</span><span class="n">key</span><span class="p">}],</span>
-                                         <span class="n">outputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;dataset&quot;</span><span class="p">}])</span>
+<span class="n">downloader_run</span> <span class="o">=</span> <span class="n">downloader_function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"job"</span><span class="p">,</span>
+                                         <span class="n">inputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">"url"</span><span class="p">:</span> <span class="n">dataitem</span><span class="o">.</span><span class="n">key</span><span class="p">}],</span>
+                                         <span class="n">outputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">"dataset"</span><span class="p">:</span> <span class="s2">"dataset"</span><span class="p">}])</span>
 
 <span class="c1"># Run refresh</span>
 <span class="n">downloader_run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
@@ -2820,10 +2814,10 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">mlrun</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="nd">@mlrun</span><span class="o">.</span><span class="n">handler</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dataset&quot;</span><span class="p">])</span>
+<span class="nd">@mlrun</span><span class="o">.</span><span class="n">handler</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">"dataset"</span><span class="p">])</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">downloader</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="n">mlrun</span><span class="o">.</span><span class="n">DataItem</span><span class="p">):</span>
     <span class="c1"># read and rewrite to normalize and export as data</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">as_df</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;parquet&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">as_df</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">'parquet'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span>
 </code></pre></div>
 
@@ -2868,10 +2862,10 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

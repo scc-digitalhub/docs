@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -225,12 +225,6 @@
                 
                   
                     <a href="https://scc-digitalhub.github.io/docs/0.16">0.16</a>
-                  
-                
-              
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs">current</a>
                   
                 
               
@@ -3246,17 +3240,17 @@ with respect to the function definition and execution is the following:</p>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"my-project"</span><span class="p">)</span>
 
 <span class="c1">## From library</span>
-<span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-function&quot;</span><span class="p">,</span>
-    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;function-kind&quot;</span><span class="p">,</span>
+<span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"my-function"</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">"function-kind"</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="c1">## From project</span>
-<span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-function&quot;</span><span class="p">,</span>
-    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;function-kind&quot;</span><span class="p">,</span>
+<span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"my-function"</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">"function-kind"</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="create_2">Create</h3>
@@ -3276,9 +3270,9 @@ with respect to the function definition and execution is the following:</p>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the <em>spec</em> constructor</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my-function&quot;</span><span class="p">,</span>
-                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;function-kind&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="s2">"my-function"</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">"function-kind"</span><span class="p">,</span>
                            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="read_1">Read</h3>
@@ -3295,11 +3289,11 @@ with respect to the function definition and execution is the following:</p>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the back-end</li>
 </ul>
 <p>Examples:</p>
-<div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">entity_name</span><span class="o">=</span><span class="s2">&quot;my-function&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                           <span class="n">entity_name</span><span class="o">=</span><span class="s2">"my-function"</span><span class="p">)</span>
 
-<span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                           <span class="n">entity_id</span><span class="o">=</span><span class="s2">&quot;uuid-of-my-function&quot;</span><span class="p">)</span>
+<span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                           <span class="n">entity_id</span><span class="o">=</span><span class="s2">"uuid-of-my-function"</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="import">Import</h4>
 <p>Mandatory parameters are:</p>
@@ -3307,7 +3301,7 @@ with respect to the function definition and execution is the following:</p>
 <li><strong><code>file</code></strong>: file path to the function yaml</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">import_function</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;my-function.yaml&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">import_function</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">"my-function.yaml"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="update_1">Update</h3>
 <p>To update a function, use the <code>update_function()</code> method.</p>
@@ -3338,8 +3332,8 @@ with respect to the function definition and execution is the following:</p>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the back-end</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">delete_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">,</span>
-                              <span class="n">entity_name</span><span class="o">=</span><span class="s2">&quot;my-function&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">delete_function</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">,</span>
+                              <span class="n">entity_name</span><span class="o">=</span><span class="s2">"my-function"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="list">List</h3>
 <p>To list all functions, use the <code>list_functions()</code> method.</p>
@@ -3352,7 +3346,7 @@ with respect to the function definition and execution is the following:</p>
 <li><strong><code>kwargs</code></strong>: keyword arguments passed to the client that communicates with the back-end</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">functions</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">list_functions</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;my-project&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">functions</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">list_functions</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">"my-project"</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="function-object">Function object</h3>
 <p>The <code>Function</code> object represents an executable function. The object exposes methods for saving and exporting the <em>entity</em> function into backend or locally as yaml and to execute it.</p>
@@ -3372,7 +3366,7 @@ with respect to the function definition and execution is the following:</p>
 <li><strong><code>filename</code></strong>: the name of the file to export</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">function</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;my-function.yaml&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">function</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">"my-function.yaml"</span><span class="p">)</span>
 </code></pre></div>
 <h4 id="run">Run</h4>
 <p>To run a function, use the <code>run()</code> method. This method is a shortcut for:</p>
@@ -3409,9 +3403,9 @@ with respect to the function definition and execution is the following:</p>
 </ul>
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
-    <span class="n">action</span><span class="o">=</span><span class="s2">&quot;job&quot;</span><span class="p">,</span>
-    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;input-param&quot;</span><span class="p">:</span> <span class="s2">&quot;input-value&quot;</span><span class="p">},</span>
-    <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;output-param&quot;</span><span class="p">:</span> <span class="s2">&quot;output-value&quot;</span><span class="p">}</span>
+    <span class="n">action</span><span class="o">=</span><span class="s2">"job"</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">"input-param"</span><span class="p">:</span> <span class="s2">"input-value"</span><span class="p">},</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="p">{</span><span class="s2">"output-param"</span><span class="p">:</span> <span class="s2">"output-value"</span><span class="p">}</span>
 <span class="p">)</span>
 </code></pre></div>
 
@@ -3456,10 +3450,10 @@ with respect to the function definition and execution is the following:</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

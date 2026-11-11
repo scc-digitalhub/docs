@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -225,12 +225,6 @@
                 
                   
                     <a href="https://scc-digitalhub.github.io/docs/0.16">0.16</a>
-                  
-                
-              
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs">current</a>
                   
                 
               
@@ -2778,18 +2772,18 @@ pip<span class="w"> </span>install<span class="w"> </span>data/modules/nefertem<
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub_core</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
 <span class="n">constraint</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;constraint&#39;</span><span class="p">:</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="s1">&#39;field-name&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;field_type&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;check_country_string&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;resources&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ref-source&#39;</span><span class="p">],</span>
-  <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;const-type&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">5</span>
+  <span class="s1">'constraint'</span><span class="p">:</span> <span class="s1">'type'</span><span class="p">,</span>
+  <span class="s1">'field'</span><span class="p">:</span> <span class="s1">'field-name'</span><span class="p">,</span>
+  <span class="s1">'field_type'</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'name'</span><span class="p">:</span> <span class="s1">'check_country_string'</span><span class="p">,</span>
+  <span class="s1">'resources'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'ref-source'</span><span class="p">],</span>
+  <span class="s1">'title'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+  <span class="s1">'type'</span><span class="p">:</span> <span class="s1">'const-type'</span><span class="p">,</span>
+  <span class="s1">'value'</span><span class="p">:</span> <span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'weight'</span><span class="p">:</span> <span class="mi">5</span>
 <span class="p">}</span>
-<span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;nefertem-function&quot;</span><span class="p">,</span>
-                           <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;nefertem&quot;</span><span class="p">,</span>
+<span class="n">function</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"nefertem-function"</span><span class="p">,</span>
+                           <span class="n">kind</span><span class="o">=</span><span class="s2">"nefertem"</span><span class="p">,</span>
                            <span class="n">constraints</span><span class="o">=</span><span class="p">[</span><span class="n">constraint</span><span class="p">])</span>
 </code></pre></div>
 <h2 id="task">Task</h2>
@@ -2815,9 +2809,9 @@ pip<span class="w"> </span>install<span class="w"> </span>data/modules/nefertem<
 <li><strong><code>replicas</code></strong>: the number of replicas of the deployment</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;validate&quot;</span><span class="p">,</span>
-                   <span class="n">framework</span><span class="o">=</span><span class="s2">&quot;frictionless&quot;</span><span class="p">,</span>
-                   <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;employees&quot;</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"validate"</span><span class="p">,</span>
+                   <span class="n">framework</span><span class="o">=</span><span class="s2">"frictionless"</span><span class="p">,</span>
+                   <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">"employees"</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">})</span>
 </code></pre></div>
 <h3 id="profile-task-parameters">Profile task parameters</h3>
 <p>When you want to execute a task of kind <code>profile</code>, you need to pass the following mandatory parameters to the function method <code>run()</code>:</p>
@@ -2840,9 +2834,9 @@ pip<span class="w"> </span>install<span class="w"> </span>data/modules/nefertem<
 <li><strong><code>replicas</code></strong>: the number of replicas of the deployment</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;profile&quot;</span><span class="p">,</span>
-                   <span class="n">framework</span><span class="o">=</span><span class="s2">&quot;frictionless&quot;</span><span class="p">,</span>
-                   <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;employees&quot;</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"profile"</span><span class="p">,</span>
+                   <span class="n">framework</span><span class="o">=</span><span class="s2">"frictionless"</span><span class="p">,</span>
+                   <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">"employees"</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">})</span>
 </code></pre></div>
 <h3 id="infer-task-parameters">Infer task parameters</h3>
 <p>When you want to execute a task of kind <code>infer</code>, you need to pass the following mandatory parameters to the function method <code>run()</code>:</p>
@@ -2865,9 +2859,9 @@ pip<span class="w"> </span>install<span class="w"> </span>data/modules/nefertem<
 <li><strong><code>replicas</code></strong>: the number of replicas of the deployment</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;infer&quot;</span><span class="p">,</span>
-                   <span class="n">framework</span><span class="o">=</span><span class="s2">&quot;frictionless&quot;</span><span class="p">,</span>
-                   <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;employees&quot;</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"infer"</span><span class="p">,</span>
+                   <span class="n">framework</span><span class="o">=</span><span class="s2">"frictionless"</span><span class="p">,</span>
+                   <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">"employees"</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">})</span>
 </code></pre></div>
 <h2 id="runtime-workflow">Runtime workflow</h2>
 <p>The Nefertem runtime execution workflow is the following:</p>
@@ -2905,34 +2899,34 @@ pip<span class="w"> </span>install<span class="w"> </span>data/modules/nefertem<
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
 <span class="c1"># Get or create project</span>
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;project-nefertem&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"project-nefertem"</span><span class="p">)</span>
 
 <span class="c1"># Create dataitem</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://gist.githubusercontent.com/kevin336/acbb2271e66c10a5b73aacf82ca82784/raw/e38afe62e088394d61ed30884dd50a6826eee0a8/employees.csv&quot;</span>
-<span class="n">di</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;employees&quot;</span><span class="p">,</span>
-                          <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="p">,</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://gist.githubusercontent.com/kevin336/acbb2271e66c10a5b73aacf82ca82784/raw/e38afe62e088394d61ed30884dd50a6826eee0a8/employees.csv"</span>
+<span class="n">di</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"employees"</span><span class="p">,</span>
+                          <span class="n">kind</span><span class="o">=</span><span class="s2">"table"</span><span class="p">,</span>
                           <span class="n">path</span><span class="o">=</span><span class="n">url</span><span class="p">)</span>
 
 <span class="c1"># Create function</span>
 <span class="n">constraint</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;constraint&#39;</span><span class="p">:</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="s1">&#39;SALARY&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;field_type&#39;</span><span class="p">:</span> <span class="s1">&#39;number&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;check_value_integer&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;resources&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;employees&#39;</span><span class="p">],</span>
-  <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;frictionless&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;number&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">5</span>
+  <span class="s1">'constraint'</span><span class="p">:</span> <span class="s1">'type'</span><span class="p">,</span>
+  <span class="s1">'field'</span><span class="p">:</span> <span class="s1">'SALARY'</span><span class="p">,</span>
+  <span class="s1">'field_type'</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+  <span class="s1">'name'</span><span class="p">:</span> <span class="s1">'check_value_integer'</span><span class="p">,</span>
+  <span class="s1">'title'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+  <span class="s1">'resources'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'employees'</span><span class="p">],</span>
+  <span class="s1">'type'</span><span class="p">:</span> <span class="s1">'frictionless'</span><span class="p">,</span>
+  <span class="s1">'value'</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+  <span class="s1">'weight'</span><span class="p">:</span> <span class="mi">5</span>
 <span class="p">}</span>
-<span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;function-nefertem&quot;</span><span class="p">,</span>
-                                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;nefertem&quot;</span><span class="p">,</span>
+<span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"function-nefertem"</span><span class="p">,</span>
+                                <span class="n">kind</span><span class="o">=</span><span class="s2">"nefertem"</span><span class="p">,</span>
                                 <span class="n">constraints</span><span class="o">=</span><span class="p">[</span><span class="n">constraint</span><span class="p">])</span>
 
 <span class="c1"># Run validate task</span>
-<span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;validate&quot;</span><span class="p">,</span>
-                   <span class="n">framework</span><span class="o">=</span><span class="s2">&quot;frictionless&quot;</span><span class="p">,</span>
-                   <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;employees&quot;</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">})</span>
+<span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"validate"</span><span class="p">,</span>
+                   <span class="n">framework</span><span class="o">=</span><span class="s2">"frictionless"</span><span class="p">,</span>
+                   <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">"employees"</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">})</span>
 
 <span class="c1"># Refresh run</span>
 <span class="n">run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
@@ -2979,10 +2973,10 @@ pip<span class="w"> </span>install<span class="w"> </span>data/modules/nefertem<
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

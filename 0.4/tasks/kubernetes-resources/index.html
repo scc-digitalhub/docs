@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -225,12 +225,6 @@
                 
                   
                     <a href="https://scc-digitalhub.github.io/docs/0.16">0.16</a>
-                  
-                
-              
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs">current</a>
                   
                 
               
@@ -2813,11 +2807,11 @@
 <p>You can ask for a persistent volume claim (pvc) to be mounted on the container being launched by the task.
 You need to declare the volume type as <code>persistent_volume_claim</code>, a name for the PVC for the user (e.g., <code>my-pvc</code>), the mount path on the container and a spec with the name of the PVC on Kubernetes (e.g., <code>pvc-name-on-k8s</code>).</p>
 <div class="highlight"><pre><span></span><code><span class="n">volumes</span> <span class="o">=</span> <span class="p">[{</span>
-        <span class="s2">&quot;volume_type&quot;</span><span class="p">:</span> <span class="s2">&quot;persistent_volume_claim&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my-pvc&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;mount_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/data&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;claim_name&quot;</span><span class="p">:</span> <span class="s2">&quot;pvc-name-on-k8s&quot;</span><span class="p">,</span>
+        <span class="s2">"volume_type"</span><span class="p">:</span> <span class="s2">"persistent_volume_claim"</span><span class="p">,</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"my-pvc"</span><span class="p">,</span>
+        <span class="s2">"mount_path"</span><span class="p">:</span> <span class="s2">"/data"</span><span class="p">,</span>
+        <span class="s2">"spec"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"claim_name"</span><span class="p">:</span> <span class="s2">"pvc-name-on-k8s"</span><span class="p">,</span>
             <span class="p">}</span>
 <span class="p">}]</span>
 
@@ -2827,11 +2821,11 @@ You need to declare the volume type as <code>persistent_volume_claim</code>, a n
 <p>You can ask for a configmap to be mounted on the container being launched by the task.
 You need to declare the volume type as <code>config_map</code>, a name for the ConfigMap for the user (e.g., <code>my-config-map</code>), the mount path on the container and a spec with the name of the ConfigMap on Kubernetes (e.g., <code>config-map-name-on-k8s</code>).</p>
 <div class="highlight"><pre><span></span><code><span class="n">volumes</span> <span class="o">=</span> <span class="p">[{</span>
-        <span class="s2">&quot;volume_type&quot;</span><span class="p">:</span> <span class="s2">&quot;config_map&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my-config-map&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;mount_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/data&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;config-map-name-on-k8s&quot;</span>
+        <span class="s2">"volume_type"</span><span class="p">:</span> <span class="s2">"config_map"</span><span class="p">,</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"my-config-map"</span><span class="p">,</span>
+        <span class="s2">"mount_path"</span><span class="p">:</span> <span class="s2">"/data"</span><span class="p">,</span>
+        <span class="s2">"spec"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"config-map-name-on-k8s"</span>
         <span class="p">}</span>
 <span class="p">}]</span>
 
@@ -2841,11 +2835,11 @@ You need to declare the volume type as <code>config_map</code>, a name for the C
 <p>You can ask for a secret to be mounted on the container being launched by the task.
 You need to declare the volume type as <code>secret</code>, a name for the Secret for the user (e.g., <code>my-secret</code>), the mount path on the container and a spec with the name of the Secret on Kubernetes (e.g., <code>secret-name-on-k8s</code>).</p>
 <div class="highlight"><pre><span></span><code><span class="n">volumes</span> <span class="o">=</span> <span class="p">[{</span>
-        <span class="s2">&quot;volume_type&quot;</span><span class="p">:</span> <span class="s2">&quot;secret&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;my-secret&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;mount_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/data&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;spec&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;secret_name&quot;</span><span class="p">:</span> <span class="s2">&quot;secret-name-on-k8s&quot;</span>
+        <span class="s2">"volume_type"</span><span class="p">:</span> <span class="s2">"secret"</span><span class="p">,</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"my-secret"</span><span class="p">,</span>
+        <span class="s2">"mount_path"</span><span class="p">:</span> <span class="s2">"/data"</span><span class="p">,</span>
+        <span class="s2">"spec"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"secret_name"</span><span class="p">:</span> <span class="s2">"secret-name-on-k8s"</span>
         <span class="p">}</span>
 <span class="p">}]</span>
 
@@ -2863,9 +2857,9 @@ At the moment Digitalhub SDK supports:</p>
 <p>You can request a specific amount of CPU for the task.
 You need to declare the resource type as <code>cpu</code>, request and/or limit specifications.</p>
 <div class="highlight"><pre><span></span><code><span class="n">resources</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;cpu&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;requests&quot;</span><span class="p">:</span> <span class="s2">&quot;12&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;limits&quot;</span><span class="p">:</span> <span class="s2">&quot;16&quot;</span>
+    <span class="s2">"cpu"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"requests"</span><span class="p">:</span> <span class="s2">"12"</span><span class="p">,</span>
+        <span class="s2">"limits"</span><span class="p">:</span> <span class="s2">"16"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -2875,8 +2869,8 @@ You need to declare the resource type as <code>cpu</code>, request and/or limit 
 <p>You can request a specific amount of RAM memory for the task.
 You need to declare the resource type as <code>mem</code>, request and/or limit specifications.</p>
 <div class="highlight"><pre><span></span><code><span class="n">resources</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;mem&quot;</span><span class="p">{</span>
-        <span class="s2">&quot;requests&quot;</span><span class="p">:</span> <span class="s2">&quot;64Gi&quot;</span><span class="p">,</span>
+    <span class="s2">"mem"</span><span class="p">{</span>
+        <span class="s2">"requests"</span><span class="p">:</span> <span class="s2">"64Gi"</span><span class="p">,</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">resources</span><span class="o">=</span><span class="n">resources</span><span class="p">)</span>
@@ -2887,15 +2881,15 @@ You need to declare the resource type as <code>gpu</code>, request and/or limit 
 Other times you may need to specify a list of labels with the <code>labels</code> parameter.</p>
 <p>Here is an example for the digitahub in FBK that uses the <code>tolerations</code> parameter:</p>
 <div class="highlight"><pre><span></span><code><span class="n">resources</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;gpu&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;limits&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+    <span class="s2">"gpu"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"limits"</span><span class="p">:</span> <span class="s2">"1"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="n">toleration</span> <span class="o">=</span> <span class="p">[{</span>
-    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;nvidia.com/gpu&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;Equal&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;v100&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;effect&quot;</span><span class="p">:</span> <span class="s2">&quot;NoSchedule&quot;</span>
+    <span class="s2">"key"</span><span class="p">:</span> <span class="s2">"nvidia.com/gpu"</span><span class="p">,</span>
+    <span class="s2">"operator"</span><span class="p">:</span> <span class="s2">"Equal"</span><span class="p">,</span>
+    <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"v100"</span><span class="p">,</span>
+    <span class="s2">"effect"</span><span class="p">:</span> <span class="s2">"NoSchedule"</span>
 <span class="p">}]</span>
 <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">resources</span><span class="o">=</span><span class="n">resources</span><span class="p">,</span> <span class="n">tolerations</span><span class="o">=</span><span class="n">toleration</span><span class="p">)</span>
 </code></pre></div>
@@ -2908,14 +2902,14 @@ You can inject:</p>
 </ul>
 <h3 id="secrets">Secrets</h3>
 <p>You can request a secret injection into the container being launched by the task by passing the reference to the backend with the <code>secrets</code> task parameters.</p>
-<div class="highlight"><pre><span></span><code><span class="n">secrets</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;my-secret&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">secrets</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"my-secret"</span><span class="p">]</span>
 <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">secrets</span><span class="o">=</span><span class="n">secrets</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="environment-variables">Environment variables</h3>
 <p>You can request an environment variable injection into the container being launched by the task by passing the reference to the backend with the <code>env</code> task parameters.</p>
 <div class="highlight"><pre><span></span><code><span class="n">env</span> <span class="o">=</span> <span class="p">[{</span>
-    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;env-name&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span>
+    <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"env-name"</span><span class="p">,</span>
+    <span class="s2">"value"</span><span class="p">:</span> <span class="s2">"value"</span>
 <span class="p">}]</span>
 <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">env</span><span class="o">=</span><span class="n">env</span><span class="p">)</span>
 </code></pre></div>
@@ -2961,10 +2955,10 @@ You can inject:</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -144,12 +144,6 @@
               
                 
                   
-                    <a href="https://scc-digitalhub.github.io/docs">current</a>
-                  
-                
-              
-                
-                  
                     <a href="https://scc-digitalhub.github.io/docs/0.16">0.16</a>
                   
                 
@@ -160,6 +154,12 @@
                   
                 
               
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.13">0.13</a>
+                  
                 
               
             </button>
@@ -1632,8 +1632,8 @@
 <p>The body of the function will perform any kind of computation that your page may need, while the return segment will contain the form or datagrid to display.</p>
 <p>Then, register these functions within a view and export it:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">CustomView</span><span class="o">:</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;myresource.example.com&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;My Resource&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">'myresource.example.com'</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">'My Resource'</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">list</span><span class="o">:</span><span class="w"> </span><span class="nx">CrList</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">show</span><span class="o">:</span><span class="w"> </span><span class="nx">CrShow</span><span class="p">,</span>
 <span class="w">    </span><span class="nx">create</span><span class="o">:</span><span class="w"> </span><span class="nx">CrCreate</span><span class="p">,</span>
@@ -1644,11 +1644,11 @@
 </code></pre></div>
 <h2 id="register-the-custom-view">Register the custom view</h2>
 <p>Once the custom view file is ready, you simply need to register it. Open <code>frontend/src/App.tsx</code> and import the view:</p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">crExample</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./resources/cr.myresource.example.com&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">crExample</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./resources/cr.myresource.example.com'</span><span class="p">;</span>
 </code></pre></div>
 <p>Then, register it by adding a line to the <code>customView</code> structure:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">customViews</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">[</span><span class="nx">index</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">View</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="s1">&#39;myresource.example.com&#39;</span><span class="o">:</span><span class="w"> </span><span class="nx">crExample</span><span class="p">,</span>
+<span class="w">    </span><span class="s1">'myresource.example.com'</span><span class="o">:</span><span class="w"> </span><span class="nx">crExample</span><span class="p">,</span>
 <span class="w">    </span><span class="p">...</span>
 <span class="p">};</span>
 </code></pre></div>
@@ -1684,10 +1684,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

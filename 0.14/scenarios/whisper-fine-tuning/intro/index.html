@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -144,12 +144,6 @@
               
                 
                   
-                    <a href="https://scc-digitalhub.github.io/docs">current</a>
-                  
-                
-              
-                
-                  
                     <a href="https://scc-digitalhub.github.io/docs/0.16">0.16</a>
                   
                 
@@ -160,6 +154,12 @@
                   
                 
               
+                
+              
+                
+                  
+                    <a href="https://scc-digitalhub.github.io/docs/0.13">0.13</a>
+                  
                 
               
             </button>
@@ -3780,10 +3780,10 @@
 <p>Import the platform's library and create a project:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 
-<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;whisper-fine-tuning&quot;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"whisper-fine-tuning"</span><span class="p">)</span>
 </code></pre></div>
 <p>Create a secret as follows, make sure you replace the value with the token that has access to the aforementioned repository:</p>
-<div class="highlight"><pre><span></span><code><span class="n">project</span><span class="o">.</span><span class="n">new_secret</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;HF_TOKEN&quot;</span><span class="p">,</span> <span class="n">secret_value</span><span class="o">=</span><span class="s2">&quot;my-token&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">project</span><span class="o">.</span><span class="n">new_secret</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"HF_TOKEN"</span><span class="p">,</span> <span class="n">secret_value</span><span class="o">=</span><span class="s2">"my-token"</span><span class="p">)</span>
 </code></pre></div>
 <p>The functions we will run use code from a Python file. Due to the many lines this file has, instead of presenting it in this documentation, we invite you to download it from the Whisper fine-tuning scenario in <a href="https://github.com/scc-digitalhub/digitalhub-tutorials/blob/0.14.x/s8-whisper-fine-tuning/src/fine_tuning_seq2seq.py">the tutorials repository</a>.</p>
 <p>Use the <code>src</code> directory and ensure it is at the same level of the notebook you're using. </p>
@@ -3819,10 +3819,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>

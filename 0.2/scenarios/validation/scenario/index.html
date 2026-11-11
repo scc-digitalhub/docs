@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -225,12 +225,6 @@
                 
                   
                     <a href="https://scc-digitalhub.github.io/docs/0.16">0.16</a>
-                  
-                
-              
-                
-                  
-                    <a href="https://scc-digitalhub.github.io/docs">current</a>
                   
                 
               
@@ -2465,7 +2459,7 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">digitalhub</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dh</span>
 </code></pre></div>
 <p>Create a project:</p>
-<div class="highlight"><pre><span></span><code><span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">&quot;project-nefertem&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">project</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">get_or_create_project</span><span class="p">(</span><span class="s2">"project-nefertem"</span><span class="p">)</span>
 </code></pre></div>
 <p>Check that the project has been created successfully:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
@@ -2473,12 +2467,12 @@
 <h2 id="set-data-source">Set data source</h2>
 <p>The data we will use is available as a CSV file on GitHub. It is a generic sample table of employees.
 The URL to the data is:</p>
-<div class="highlight"><pre><span></span><code><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://gist.githubusercontent.com/kevin336/acbb2271e66c10a5b73aacf82ca82784/raw/e38afe62e088394d61ed30884dd50a6826eee0a8/employees.csv&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">url</span> <span class="o">=</span> <span class="s2">"https://gist.githubusercontent.com/kevin336/acbb2271e66c10a5b73aacf82ca82784/raw/e38afe62e088394d61ed30884dd50a6826eee0a8/employees.csv"</span>
 </code></pre></div>
 <p>We can now create a dataitem to represent the data source that we want to operate transformation on. The Nefertem runtime will use the dataitem specifications to fetch the data and perform the <code>validate</code> task on it.</p>
 <p>To create the dataitem, we call the <code>new_dataitem</code> method of the project object. We pass the following mandatory parameters:</p>
-<div class="highlight"><pre><span></span><code><span class="n">di</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;employees&quot;</span><span class="p">,</span>
-                          <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">di</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_dataitem</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"employees"</span><span class="p">,</span>
+                          <span class="n">kind</span><span class="o">=</span><span class="s2">"table"</span><span class="p">,</span>
                           <span class="n">path</span><span class="o">=</span><span class="n">url</span><span class="p">)</span>
 </code></pre></div>
 <p>The parameters are:</p>
@@ -2492,20 +2486,20 @@ The URL to the data is:</p>
 <p>We can now set up the function that operates a validation task on the dataitem.
 First we define the <em>constraint</em> that we want to validate. A <em>constaint</em> is a rule that we wanto to check against the data. In this case, we want to check that the <code>SALARY</code> column is of type <code>int</code>. We define the <em>constraint</em> as a dictionary:</p>
 <div class="highlight"><pre><span></span><code><span class="n">constraint</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">&#39;constraint&#39;</span><span class="p">:</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;field&#39;</span><span class="p">:</span> <span class="s1">&#39;SALARY&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;field_type&#39;</span><span class="p">:</span> <span class="s1">&#39;number&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;check_value_integer&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;resources&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;employees&#39;</span><span class="p">],</span>
-  <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;frictionless&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;number&#39;</span><span class="p">,</span>
-  <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">5</span>
+  <span class="s1">'constraint'</span><span class="p">:</span> <span class="s1">'type'</span><span class="p">,</span>
+  <span class="s1">'field'</span><span class="p">:</span> <span class="s1">'SALARY'</span><span class="p">,</span>
+  <span class="s1">'field_type'</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+  <span class="s1">'name'</span><span class="p">:</span> <span class="s1">'check_value_integer'</span><span class="p">,</span>
+  <span class="s1">'title'</span><span class="p">:</span> <span class="s1">''</span><span class="p">,</span>
+  <span class="s1">'resources'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'employees'</span><span class="p">],</span>
+  <span class="s1">'type'</span><span class="p">:</span> <span class="s1">'frictionless'</span><span class="p">,</span>
+  <span class="s1">'value'</span><span class="p">:</span> <span class="s1">'number'</span><span class="p">,</span>
+  <span class="s1">'weight'</span><span class="p">:</span> <span class="mi">5</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>With the <em>constraint</em> defined, we can now create the function from the project object. We pass the following parameters:</p>
-<div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;function-nefertem&quot;</span><span class="p">,</span>
-                                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;nefertem&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="n">function</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">new_function</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"function-nefertem"</span><span class="p">,</span>
+                                <span class="n">kind</span><span class="o">=</span><span class="s2">"nefertem"</span><span class="p">,</span>
                                 <span class="n">constraints</span><span class="o">=</span><span class="p">[</span><span class="n">constraint</span><span class="p">])</span>
 </code></pre></div>
 <p>The parameters are:</p>
@@ -2521,9 +2515,9 @@ First we define the <em>constraint</em> that we want to validate. A <em>constain
 <li>framework we want to use (in this case, <code>frictionless</code>)</li>
 <li>the inputs map the resource defined in the constraint with our dataitem key. The runtime will collect the data referenced in the dataitem path an treat that data as Nefertem <code>DataResource</code>.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;validate&quot;</span><span class="p">,</span>
-                   <span class="n">framework</span><span class="o">=</span><span class="s2">&quot;frictionless&quot;</span><span class="p">,</span>
-                   <span class="n">inputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;employees&quot;</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">}])</span>
+<div class="highlight"><pre><span></span><code><span class="n">run</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"validate"</span><span class="p">,</span>
+                   <span class="n">framework</span><span class="o">=</span><span class="s2">"frictionless"</span><span class="p">,</span>
+                   <span class="n">inputs</span><span class="o">=</span><span class="p">[{</span><span class="s2">"employees"</span><span class="p">:</span> <span class="n">di</span><span class="o">.</span><span class="n">key</span><span class="p">}])</span>
 </code></pre></div>
 <p>We can check the status of the run:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">run</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>
@@ -2541,7 +2535,7 @@ We can get the artifact list from the run:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">artifacts</span><span class="p">)</span>
 </code></pre></div>
 <p>If we want to get the report, we can get it from the artifact and read it:</p>
-<div class="highlight"><pre><span></span><code><span class="n">path</span> <span class="o">=</span> <span class="n">artifacts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;run-metadata&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">path</span> <span class="o">=</span> <span class="n">artifacts</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"run-metadata"</span><span class="p">]</span><span class="o">.</span><span class="n">download</span><span class="p">()</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
@@ -2588,10 +2582,10 @@ We can get the artifact list from the run:</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.expand", "navigation.path", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>
