@@ -50,14 +50,18 @@ jobs:
               echo "Deploying docs for: $v"
               export DOCS_VERSION="v:$v"
               git checkout $v
-              cd user && mkdocs build && cd ..
-              cd admin && mkdocs build && cd ..
-              cd tutorials && mkdocs build && cd ..
-              cd sdk
-              pip install -r requirements.txt || echo "Failed to install SDK requirements"
-              mkdocs build || echo "Failed to build SDK documentation"
-              cd ..
-              python merge_search_indices.py
+              cd user && mkdocs build && cd .. && echo "Built user" || echo "No user portal"
+              cd admin && mkdocs build && cd .. && echo "Built admin" || echo "No admin portal"
+              cd tutorials && mkdocs build && cd .. && echo "Built tutorials" || echo "No tutorials portal"
+              INSDK=false
+              cd sdk && INSDK=true || echo "No sdk portal"
+              if [ "$INSDK" = true ] ; then
+                pip install -r requirements.txt && echo "Installed SDK requirements" || echo "Failed to install SDK requirements"
+                mkdocs build && echo "Built sdk" || echo "Failed to build SDK documentation"
+                rm -rf __pycache__ && echo "Removed __pycache__" || echo "No __pycache__ directory to remove."
+                cd ..
+              fi
+              python merge_search_indices.py || echo "No script to merge search indices for this version."
               mkdir -p ./site
               [ ! -d user/site ] || mv user/site site/$v
               [ ! -d admin/site ] || mv admin/site site/$v/admin
