@@ -1,0 +1,2 @@
+description: With the platform it is possible to create and serve LLM HuggingFace-compatible-models. Specifically, it is possible to serve directly the LLM models from the HuggingFace catalogue provided the id of the model or to serve the fine-tuned model from the specified path, such as S3.
+notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/STABLE_VERSION/tutorials/examples/mlllm/classification-generation.ipynb

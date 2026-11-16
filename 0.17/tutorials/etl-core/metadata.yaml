@@ -1,0 +1,2 @@
+description: We collect some data regarding organizations, analyze and transform it, then expose the resulting dataset.
+notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/STABLE_VERSION/tutorials/examples/etl-core/etl-core.ipynb

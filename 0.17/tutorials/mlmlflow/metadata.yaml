@@ -1,0 +1,2 @@
+description: This scenario provides a quick overview of developing and deploying a machine learning application based on model tracked with MLFlow framework using the functionalities of the platform.
+notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/STABLE_VERSION/tutorials/examples/mlmlflow/01-mlflow.ipynb

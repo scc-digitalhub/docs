@@ -1,0 +1,2 @@
+description: In this tutorial we  demonstrate how to deploy a Visual Question Answering (VQA) service using the BLIP model from Salesforce and serve it via the OpenInference runtime on the platform.
+notebook: https://raw.githubusercontent.com/scc-digitalhub/docs/refs/heads/STABLE_VERSION/tutorials/examples/openinference/openinference.ipynb
