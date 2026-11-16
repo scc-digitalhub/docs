@@ -255,3 +255,16 @@ getconf LONG_BIT  # userspace bitness; ARM32 also needs ARMv7, hard-float and NE
     Each compile writes its Model into `so_model`, and `serve` deploys `so_model` by default. After an ARM compile, `so_model` points to the ARM library, which the platform serves only on ARM nodes: without ARM nodes in the cluster the service stays **PENDING**. To serve the AMD64 build, set the serve field `model_path` to `store://tvm-test/model/tvm-so/yolo-function-amd64:<id>`. A service that is already running is not affected.
 
 The ARM64 and ARM32 Models can run on compatible devices, as shown in [Test the model](test.md#run-the-model-on-a-raspberry-pi). They can also be served by the platform on matching cluster nodes, provided the runtime and init images both support the node architecture.
+
+## 7. CUDA on Jetson Orin (optional)
+
+The `arm64` build above uses the Jetson CPU. To use its GPU, compile the same IR
+with `target_architecture: jetson_orin_cuda` and a separate CUDA-enabled toolkit
+image, then serve the resulting Model with a CUDA-enabled Go/Rust image and the
+existing GPU profile/resources. Pin `model_path` to the intended compiled Model;
+selecting a profile does not select or recompile it.
+
+Use the [CUDA guide](../../../runtimes/tvm/#cuda-fp32-optional) for the complete
+compile/serve examples, image build instructions and real-device tuning requirements.
+Its `local/...` image names are development placeholders. Compilation can run on
+AMD64 without a GPU; actual Jetson/NVIDIA inference, accuracy and tuning are **NOT_RUN**.

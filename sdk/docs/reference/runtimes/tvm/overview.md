@@ -20,9 +20,15 @@ after successful runs; the next action uses them unless the Run sets `model_path
 
 Common Task settings can be overridden for one Run. TVM options from previous Runs
 or old Tasks are not defaults for new Runs.
-Compile CPU profiles come from CORE's `runtime-tvm.yaml`; advanced runs can provide
-a standard LLVM target instead. The separate `profile` chooses where a Job or
+Compile profiles come from CORE's `runtime-tvm.yaml`; advanced runs can provide
+a standard LLVM or CUDA target instead. The separate `profile` chooses where a Job or
 service executes; it does not choose the generated Model's target.
+
+CPU remains the default without NVIDIA dependencies. Optional CUDA FP32 uses
+separate toolkit/runtime images, the existing GPU resources and a target with a
+nested LLVM host. See the authoritative
+[CUDA guide](https://scc-digitalhub.github.io/docs/0.16/runtimes/tvm/#cuda-fp32-optional)
+for offline compilation, real-device tuning and hardware validation limits.
 
 TVM actions run on Kubernetes through CORE. Running a compiled model directly in
 a local Go/Rust container is distinct from an SDK `local_execution` implementation.

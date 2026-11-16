@@ -35,6 +35,11 @@ task = function.new_task(action="serve", resources={"cpu": "2", "mem": "2Gi"})
 The selected Model is pinned in this Run. Compiling another target does not change
 a running service; use a versioned `model_path` to select an earlier build.
 `profile` must select a node compatible with the Model's architecture and CPU.
+For a CUDA artifact, also select a CUDA-enabled runtime image and provide the
+existing `resources={"gpu": "1"}`/GPU profile settings. The backend comes from Model
+metadata; there is no new device option and no CPU fallback. A GPU profile does not
+change the selected Model. See the
+[CUDA guide](https://scc-digitalhub.github.io/docs/0.16/runtimes/tvm/#serve-on-a-gpu-node).
 
 These parameters configure the service; inference tensors are sent directly to its
 REST or gRPC endpoint. Request validation is implemented by the Go/Rust serving

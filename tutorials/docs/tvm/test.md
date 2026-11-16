@@ -49,8 +49,9 @@ curl http://localhost:18080/v2/models/yolo-function
 ```
 
 The optional `platform` field differs between Go and Rust; the tensor signature is
-what the client uses. Health endpoints indicate success with HTTP `200`, and may
-have an empty body.
+what the client uses. Health endpoints indicate success with HTTP `200`. Rust
+returns a JSON object (`{}`) with `Content-Type: application/json` so these checks
+also work through the CORE proxy.
 
 The model expects one `FP32` picture of 640×640 pixels in NCHW order, and returns 8400 candidate boxes, each with 4 coordinates and 80 class scores.
 
