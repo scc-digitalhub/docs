@@ -4,8 +4,10 @@ render_macros: true
 
 # Create a TVM Function for Serving
 
-The serve action uses the same `tvm` Function specification as the [build action](../tvm-build/create.md). Create the Function with its source model and generated `ir_model` and `so_model` references. Normally leave these empty and let
-build/compile update them; an existing versioned reference can be supplied explicitly.
+The serve action uses the same `tvm` Function as the [build action](../tvm-build/create.md).
+The Function holds the source model and the IR reference produced by Build.
+After Compile completes, pass its `status.outputs.compiled_so` key in the Serve
+Run's required `model_path`. The compiled Model is not stored on the Function.
 
 ```python
 import digitalhub as dh

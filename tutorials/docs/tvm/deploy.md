@@ -133,13 +133,17 @@ object and compiler options, as described in the [target guide](../../../runtime
     dhcli list runs -p tvm-test
     ```
 
-When the run is **COMPLETED**, the Model `yolo-function-amd64`, of kind `tvm-so`, contains `model.so` and `metadata.json`, and the function field `so_model` points to it. If the compile node can execute the target, `metadata.json` contains its synthetic
+When the run is **COMPLETED**, the Model `yolo-function-amd64`, of kind `tvm-so`,
+contains `model.so` and `metadata.json`. Its versioned key is in that Run's
+`status.outputs.compiled_so`; copy it for the Serve step. The Function is unchanged.
+If the compile node can execute the target, `metadata.json` contains its synthetic
 CPU benchmark. Otherwise `benchmark.skipped` explains why it was not run. These
 are compile-node measurements, not timings on an ARM device or over HTTP.
 
 ## 5. Serve
 
-`serve` deploys the model in `so_model` as an Open Inference v2 service, on port `8080` (REST) and `9000` (gRPC).
+`serve` deploys the Model selected by `model_path` as an Open Inference v2 service,
+on port `8080` (REST) and `9000` (gRPC). Use the output key of the AMD64 Compile above.
 
 === "Console"
 
@@ -147,6 +151,7 @@ are compile-node measurements, not timings on an ARM device or over HTTP.
 
     | Field | Value | Why |
     | --- | --- | --- |
+    | `model_path` | the versioned key from the AMD64 Compile's `status.outputs.compiled_so` | selects that compiled Model |
     | `resources` | CPU `4`, memory `2Gi` | starting point; one worker uses the same four threads as compilation |
 
 === "CLI"
@@ -155,6 +160,7 @@ are compile-node measurements, not timings on an ARM device or over HTTP.
 
     ```yaml
     spec:
+      model_path: store://tvm-test/model/tvm-so/yolo-function-amd64:<compiled-model-id>
       resources:
         cpu: "4"
         mem: 2Gi
@@ -164,6 +170,9 @@ are compile-node measurements, not timings on an ARM device or over HTTP.
     dhcli run tvm+serve -p tvm-test -n yolo-function -f serve.yaml
     dhcli services -p tvm-test
     ```
+
+    Replace `<compiled-model-id>` with the ID from the Compile output key. A key
+    without a version is not accepted for Serve.
 
 When the service is **RUNNING**, `dhcli services` shows it:
 
@@ -250,9 +259,13 @@ getconf LONG_BIT  # userspace bitness; ARM32 also needs ARMv7, hard-float and NE
     32-bit OS, hard-float ABI and NEON. Serving through CORE on an ARM32 cluster node also
     requires an ARMv7-compatible init image; the default init image is AMD64/ARM64 only.
 
-!!! warning "Serving after an ARM compile"
+!!! note "Choose the Compile output to serve"
 
-    Each compile writes its Model into `so_model`, and `serve` deploys `so_model` by default. After an ARM compile, `so_model` points to the ARM library, which the platform serves only on ARM nodes: without ARM nodes in the cluster the service stays **PENDING**. To serve the AMD64 build, set the serve field `model_path` to `store://tvm-test/model/tvm-so/yolo-function-amd64:<id>`. A service that is already running is not affected.
+    Each Compile keeps its own output key. An ARM Compile does not replace the
+    AMD64 selection. Every Serve needs `model_path`: use the AMD64 Compile's key
+    for an AMD64 node, or the ARM Compile's key for a compatible ARM node. Without
+    a matching node, that service stays **PENDING**. Existing services keep their
+    selected Model.
 
 The ARM64 and ARM32 Models can run on compatible devices, as shown in [Test the model](test.md#run-the-model-on-a-raspberry-pi). They can also be served by the platform on matching cluster nodes, provided the runtime and init images both support the node architecture.
 

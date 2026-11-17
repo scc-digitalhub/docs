@@ -17,6 +17,7 @@ Call `function.run(action="build", ...)` to convert the source model to Relax IR
 | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | | List of secret names. |
 | [profile](../../../configuration/kubernetes.md#profile) | str | | Scheduling/resource profile; does not select the model target. |
 | image | str | | Optional toolkit image override. |
+| sort_onnx | bool | | `false`: order ONNX nodes by their dependencies before conversion; validation remains enabled when sorting is off. |
 | simplify | bool | | `false`: simplify before conversion; may also run automatically when imported outputs lack shapes. |
 | target_opset | int | | Convert to this ONNX opset. |
 | opset_override | int | | Importer opset override, without converting the model. |
@@ -28,6 +29,11 @@ Call `function.run(action="build", ...)` to convert the source model to Relax IR
 
 Conversion settings apply to ONNX. The source `model` and `format` belong to the
 Function; CORE records the generated IR reference after success.
+
+`sort_onnx` is independent of `simplify`. If sorting alone fixes a rejected graph,
+the build error recommends `sort_onnx=True`. Retry with that option; the source
+ONNX file remains unchanged and the build publishes the resulting IR, not another
+ONNX Model. Missing inputs and cycles require fixing the source model.
 
 Reusable Tasks contain only common infrastructure settings, for example:
 

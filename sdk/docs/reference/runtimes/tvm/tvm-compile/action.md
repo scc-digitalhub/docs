@@ -10,7 +10,8 @@ Use the `compile` action to compile a Relax IR model for a target architecture a
 
 Select a target profile and optional compiler and TVM pipeline settings to produce
 the compiled artifact. These settings belong to the Run; reusable Tasks contain only
-common infrastructure settings. CORE records the result in `function.so_model`.
+common infrastructure settings. CORE records the compiled Model key in this Run's
+`status.outputs.compiled_so`. It does not change the Function.
 
 ## Target architecture
 

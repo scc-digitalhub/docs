@@ -9,12 +9,13 @@ Use Apache TVM to convert ONNX or TFLite models to Relax IR, compile them for a 
 {{ runtime_prerequisites("digitalhub-runtime-tvm") }}
 
 Run the actions in order: **Build → Compile → Serve**. Configure the Function with
-the source model and format. CORE updates its `ir_model` and `so_model` references
-after successful runs; the next action uses them unless the Run sets `model_path`.
+the source model and format. Build saves its IR reference in `function.ir_model`.
+Each Compile Run returns its own Model key in `status.outputs.compiled_so`.
+Pass the chosen key to the Serve Run's required `model_path`.
 
 | Spec | Responsibility |
 | --- | --- |
-| Function | Source `model`, `format`; generated `ir_model` and `so_model` references |
+| Function | Source `model`, `format`; generated `ir_model` reference |
 | Task | Function reference and common resources, profiles, environment, secrets and volumes |
 | Run | Per-execution TVM options; compile groups them under `optimization` and `tuning` |
 
