@@ -8,9 +8,10 @@ Use the `serve` action to deploy a compiled TVM `model.so` as a service on Kuber
 
 ## What the action does
 
-The Run uses `function.so_model` unless it supplies `model_path`. Configure the
-served model name, replicas and workers on the Run; reusable Tasks contain common
-infrastructure settings.
+Set the Run's required `so_model_path` to the versioned Model key from the chosen
+Compile Run's `status.outputs.compiled_so`. Configure the served model name,
+replicas and workers on the Run; reusable Tasks contain common infrastructure
+settings. Serve does not select the latest Compile or use a Function reference.
 
 {{ overview_cards([
     ("Create", "create.md", "Use the TVM Function created for the build action."),

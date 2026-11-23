@@ -63,8 +63,10 @@ Users can view the API endpoints for their deployed services in the 'services' t
 ## TVM Compiled Model Serving
 
 The [**TVM runtime**](../runtimes/tvm.md) compiles ONNX and TFLite models for Linux
-CPUs and serves them through Open Inference v2 over REST and gRPC. Compile the same
-IR for AMD64, ARM64 or ARM32, then use a matching Go/Rust runtime. Performance depends
+CPUs, with an optional [CUDA FP32 path](../runtimes/tvm.md#cuda-fp32-optional), and serves
+them through Open Inference v2 over REST and gRPC. Compile the same IR for the target,
+then use a matching Go/Rust runtime. CPU AMD64, ARM64 and ARM32 remain supported.
+CUDA needs separate images and NVIDIA device access. Performance depends
 on the model, target and tuning; measure it on the intended device.
 
 ### Example runtime tasks

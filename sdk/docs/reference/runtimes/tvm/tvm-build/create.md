@@ -4,7 +4,8 @@ render_macros: true
 
 # Create a TVM Function
 
-Define a `tvm` Function with the source model and optional artifact store keys.
+Define a `tvm` Function with the source model. Build records the generated IR key
+in this Function; each Compile Run keeps its own compiled Model key.
 
 ## Parameters
 
@@ -20,7 +21,6 @@ Define a `tvm` Function with the source model and optional artifact store keys.
 | model | str | ✓ | Source model path or store key. |
 | format | str | | Source model format: `auto`, `onnx`, or `tflite`. |
 | ir_model | str | | Relax IR model reference; CORE updates it after a successful `build`. |
-| so_model | str | | Compiled model reference; CORE updates it after a successful `compile`. |
 
 Use a `store://` Model reference or an `s3://`/`https://` source reachable by the
 CORE Job. A path on your laptop is not a remote Job input: upload it with

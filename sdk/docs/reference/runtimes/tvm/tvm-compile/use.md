@@ -4,8 +4,10 @@ render_macros: true
 
 # Use a TVM Compile Run
 
-Compilation produces a `model.so` artifact and CORE updates `function.so_model`.
-The next serve uses that reference automatically.
+Compilation publishes a Model containing `model.so` and `metadata.json`.
+Read its key from the Compile Run's `status.outputs.compiled_so` and pass it to
+the Serve Run. The Function keeps the IR reference, so different targets can use
+the same IR without replacing each other's compiled Model selection.
 
 ```python
 compile_run = function.run(
@@ -16,12 +18,14 @@ compile_run = function.run(
 
 serve_run = function.run(
     action="serve",
+    so_model_path=compile_run.status.to_dict()["outputs"]["compiled_so"],
     served_name="my-model",
     wait=True,
 )
 ```
 
-To serve a different compiled model, set the serve Run's `model_path`, for example
-`store://my-project/model/tvm-so/model-so:version`.
+To serve another compiled Model, use its versioned key in `so_model_path`, for example
+`store://my-project/model/tvm-so/model-so:version`. A new Compile does not change
+an existing Serve Run.
 
 {{ page_navigation(("Run", "run.md"), ("Action", "action.md")) }}

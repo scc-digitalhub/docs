@@ -4,8 +4,9 @@ render_macros: true
 
 # Serve a TVM Model
 
-Call `function.run(action="serve", ...)` with the service settings. The Run uses
-`function.so_model` unless you set `model_path` explicitly.
+Call `function.run(action="serve", ...)` with the service settings and the required
+`so_model_path`. Use the versioned Model key from the chosen Compile Run's
+`status.outputs.compiled_so`.
 
 ## Parameters
 
@@ -17,7 +18,7 @@ Call `function.run(action="serve", ...)` with the service settings. The Run uses
 | [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | | Environment variables. |
 | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | | List of secret names. |
 | [profile](../../../configuration/kubernetes.md#profile) | str | | Scheduling/resource profile; does not select the model target. |
-| model_path | str | | Optional `store://` reference to a `tvm-so` Model; otherwise uses `function.so_model`. |
+| so_model_path | str | ✓ | Versioned `store://.../model/tvm-so/<name>:<id>` key from the chosen Compile Run's `status.outputs.compiled_so`. |
 | served_name | str | | Model name in `/v2/models/<name>`; defaults to the Function name. |
 | image | str | | Go image by default; set the Rust image to use Rust for this Run. |
 | replicas | int | | Number of pods, zero or greater; default `1`. |
@@ -32,9 +33,15 @@ settings, for example:
 task = function.new_task(action="serve", resources={"cpu": "2", "mem": "2Gi"})
 ```
 
-The selected Model is pinned in this Run. Compiling another target does not change
-a running service; use a versioned `model_path` to select an earlier build.
+The selected Model is saved in this Run. Compiling another target does not change
+its selection. Every new Serve Run needs `so_model_path`, including when reusing an
+older compiled Model. If old Function data contains `so_model`, Serve ignores it.
 `profile` must select a node compatible with the Model's architecture and CPU.
+For a CUDA artifact, also select a CUDA-enabled runtime image and provide the
+existing `resources={"gpu": "1"}`/GPU profile settings. The backend comes from Model
+metadata; there is no new device option and no CPU fallback. A GPU profile does not
+change the selected Model. See the
+[CUDA guide](https://scc-digitalhub.github.io/docs/0.16/runtimes/tvm/#serve-on-a-gpu-node).
 
 These parameters configure the service; inference tensors are sent directly to its
 REST or gRPC endpoint. Request validation is implemented by the Go/Rust serving
@@ -48,6 +55,7 @@ still uses an older runtime. See the
 ```python
 run = function.run(
     action="serve",
+    so_model_path="store://my-project/model/tvm-so/my-model:<compiled-model-id>",
     served_name="my-model",
     replicas=1,
     wait=True,

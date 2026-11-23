@@ -2,10 +2,11 @@
 
 The **TVM runtime** compiles a trained model into native code with [Apache TVM](https://tvm.apache.org/) and serves it through the [Open Inference v2](https://github.com/kserve/open-inference-protocol) protocol, over REST and gRPC.
 
-Use an **ONNX** or **TFLite** model with the Linux CPU pipeline described here.
-The toolkit compiles it; a Go or Rust runtime serves it. The same image can load
-different models. Compilation alone does not guarantee faster inference: measure
-the result on the intended device and use MetaSchedule when needed.
+Use an **ONNX** or **TFLite** model with the Linux CPU pipeline described here, or
+the optional [CUDA FP32 pipeline](#cuda-fp32-optional). CPU images and defaults
+remain independent of NVIDIA libraries. The toolkit compiles the model; a matching
+Go or Rust runtime serves it. Compilation alone does not guarantee faster inference:
+measure the result on the intended device and use MetaSchedule when needed.
 
 ![TVM runtime pipeline](../images/runtimes/tvm-pipeline.svg)
 
@@ -17,16 +18,22 @@ The runtime has three actions, run one after the other:
 | `compile` | Compiles the Relax IR into a native library, `model.so`, for a target architecture | Kubernetes Job | Model `<function>-<tag>`, kind `tvm-so` |
 | `serve` | Deploys the compiled model as an Open Inference v2 service | Kubernetes Deployment and Service | Inference service |
 
+For older Runs, `model_path` is read as `ir_model_path` on Compile and
+as `so_model_path` on Serve. New requests should use the phase-specific name.
+
 ## How it works
 
-Build saves the IR reference in `function.spec.ir_model`; compile saves the compiled
-Model in `function.spec.so_model`. The next action uses that reference unless its
-Run supplies `model_path`. One IR can be compiled for several targets.
+Build saves the IR reference in `function.spec.ir_model`, on the **same Function
+version**. One IR can be compiled for several targets.
 
-These updates affect the **same Function version**, not a new version. A build
-leaves the previous SO usable. With concurrent compiles, the last successful
-reference update wins. Running services keep their selected Model; to select a
-specific build later, use a versioned `model_path`.
+Each Compile Run keeps the key of its own compiled Model in
+`status.outputs.compiled_so`. It does not change the Function. Give the Serve Run
+this versioned key in its required `so_model_path`. Compiling another target does not
+replace that choice or change a running service. The binary stays in the Model's
+storage; the Run stores only its key.
+
+Old stored `so_model` fields are ignored, not deleted. Every new Serve Run still
+needs `so_model_path`; there is no automatic choice of the latest Compile.
 
 ## From a model to a prediction
 
@@ -36,7 +43,7 @@ specific build later, use a versioned `model_path`.
 | 2. Create the function | Create a function of kind `tvm` that points to the Model | [Function](#function) |
 | 3. Build | Run the `build` action | [Build action](#build-action) |
 | 4. Compile | Run the `compile` action for your target | [Compile action](#compile-action), [examples](#compile-examples) |
-| 5. Serve | Run the `serve` action | [Serve action](#serve-action) |
+| 5. Serve | Pass the chosen Compile's output key in `so_model_path` and run `serve` | [Serve action](#serve-action) |
 | 6. Test | Send a request to the service | [Test the service](#test-the-service) |
 
 The [TVM tutorial](../../tutorials/tvm/intro/) walks through all the steps with a YOLOv8 model, from the console and from the CLI.
@@ -45,11 +52,11 @@ The [TVM tutorial](../../tutorials/tvm/intro/) walks through all the steps with 
 
 | Where | What belongs there |
 | --- | --- |
-| Function `spec` | Source `model`, `format`, generated `ir_model` and `so_model` references |
+| Function `spec` | Source `model`, `format`, generated `ir_model` reference |
 | Task `spec` | Function reference, `profile`, `resources`, `envs`, `secrets`, `volumes` |
 | Build Run `spec` | Toolkit `image` and conversion options |
-| Compile Run `spec` | `model_path`, target selection, `tag`, `image`, `optimization`, `tuning` |
-| Serve Run `spec` | Model, name, image, workers, replicas and service options |
+| Compile Run `spec` | `ir_model_path`, target selection, `tag`, `image`, `optimization`, `tuning` |
+| Serve Run `spec` | Required versioned `so_model_path`, name, image, workers, replicas and service options |
 
 A Run can override common Task settings. TVM options are specific to each Run;
 previous Runs and old Tasks do not supply their values. In the console, common
@@ -101,7 +108,6 @@ A function of kind `tvm` describes the model to compile and serve.
 | `model` | yes | The key of the source Model (`store://<project>/model/<kind>/<name>:<id>`, or without `:<id>` for the latest version), or an `s3://` or `https://` path. |
 | `format` | no | `auto` (default), `onnx` or `tflite`. `auto` uses the kind of the Model, otherwise the file extension. |
 | `ir_model` | no | Leave it empty: `build` fills it. |
-| `so_model` | no | Leave it empty: `compile` fills it. |
 
 ```yaml
 kind: tvm
@@ -123,11 +129,11 @@ The `build` action runs a Job that converts the source model into Relax IR and s
 
 === "ONNX"
 
-    1. Load the ONNX model.
+    1. Load the ONNX model. If `sort_onnx` is enabled, sort its dependencies with the standard `onnx-ir` topological pass, preserving the original file.
     2. Optionally convert it to another operator set version (`target_opset`).
     3. Optionally simplify the graph with onnxsim (`simplify`).
     4. Run the ONNX shape inference.
-    5. Convert the graph into Relax IR, with `float32` as default data type.
+    5. Validate and convert the graph into Relax IR, preserving each input data type.
     6. If some outputs of the IR have no shape, simplify the graph with onnxsim and convert it again (see [Outputs without a shape](#outputs-without-a-shape)).
     7. Save the IR and metadata, then publish the Model.
 
@@ -143,6 +149,7 @@ All fields are optional: for most models the defaults are enough. The conversion
 
 | Field | Default | What it does |
 | --- | --- | --- |
+| `sort_onnx` | `false` | Orders nodes by their dependencies before conversion. Validation remains enabled when sorting is off. |
 | `simplify` | `false` | Simplifies the graph with onnxsim before converting it. When `false`, the build still does it by itself if the converted outputs have no shape. |
 | `target_opset`{: style="white-space: nowrap" } | empty | Converts the model to this ONNX operator set version first. Leave it empty unless the model needs it: the conversion fails when ONNX has no converter for an operator. |
 | `opset_override`{: style="white-space: nowrap" } | model opset | Operator set version the TVM importer assumes, instead of the one declared by the model. |
@@ -151,6 +158,16 @@ All fields are optional: for most models the defaults are enough. The conversion
 | `keep_params_in_input`{: style="white-space: nowrap" } | `false` | Keeps the weights in a separate `params.bin`; `compile` embeds them again. |
 | `sanitize_input_names`{: style="white-space: nowrap" } | `true` | Rewrites the input names into valid identifiers. |
 | `image` | toolkit image | Another image for this run. |
+
+When enabled, ONNX sorting also covers subgraphs and runs again after transformations.
+It is separate from `simplify` and does not save another ONNX Model. The source
+file stays unchanged. If sorting alone would fix a rejected graph, the build error
+suggests enabling it. Retry with `sort_onnx: true` in the Build Run, or
+`sort_onnx=True` in the SDK.
+Missing inputs, cycles and other invalid graphs keep the checker's reason.
+Unknown dimensions are stored as `-1`, while explicit zero dimensions stay zero.
+Unsupported tensor types fail explicitly. The separate upstream Relax dynamic
+reshape defect has not been established for all ONNX models.
 
 ### Outputs without a shape
 
@@ -178,10 +195,14 @@ If onnxsim cannot simplify the graph, the build keeps the first conversion and w
 
 The `compile` action runs a Job that compiles the Relax IR into `model.so` for a target architecture and saves it as the Model `<function>-<tag>` (`<function>-so` by default), of kind `tvm-so`, linked to the IR Model it comes from.
 
-### Target CPU profiles
+<a id="target-cpu-profiles"></a>
 
-The console displays **Target CPU Profile**: the architecture comes first, followed by
-an optional CPU feature level or board profile. `amd64` means Intel/AMD 64-bit,
+### Target profiles
+
+The console displays **Target profile**; its API key remains `target_architecture`.
+Profiles describe the generated code, independently of node scheduling.
+For CPU profiles, the architecture comes first, followed by an optional CPU feature
+level or board profile. `amd64` means Intel/AMD 64-bit,
 `arm64` means ARM 64-bit (AArch64), and our `arm32` profile requires ARMv7 hard-float
 with NEON. Armv7/Armv8/Armv9 are architecture generations, not synonyms for bitness.
 
@@ -194,10 +215,13 @@ with NEON. Armv7/Armv8/Armv9 are architecture generations, not synonyms for bitn
 | `arm64` | 64-bit ARM (aarch64) | Raspberry Pi 3, 4, 5 with a 64-bit OS, NVIDIA Jetson, ARM servers |
 | `arm64_pi5` | Raspberry Pi 5 (Cortex-A76, 4 cores) | Raspberry Pi 5 with a 64-bit OS |
 | `arm32` | ARMv7-compatible 32-bit ARM with the hard-float ABI and NEON (armhf) | Raspberry Pi 2, 3, 4 with a 32-bit OS |
+| `jetson_orin_cuda` | CUDA `sm_87` with an ARM64 Linux GNU host | Jetson Orin; requires the optional CUDA toolkit and runtime |
 
 A more specific profile can improve performance, but requires compatible CPU features.
 The model, OS and runtime must also agree on bitness and ABI. `auto` does not enable
-native CPU optimization; `arm64_pi5` is not portable to Pi 3/4.
+native CPU optimization; `arm64_pi5` is not portable to Pi 3/4. `arm64` also runs on
+a compatible Jetson CPU without using its GPU. The CUDA profile is a separate
+compilation target; it does not convert a CPU artifact or select a GPU node/image.
 
 Legacy API values remain accepted: `cpu`/`llvm` → `auto`, `x86` → `amd64`,
 `x86_v3` → `amd64_v3`, `x86_native` → `amd64_native`, `armv7l` → `arm32`.
@@ -207,7 +231,7 @@ LLVM triples, compiler names and container platforms keep their standard names.
 
 !!! note "Runtime images and CORE's init image"
 
-    Go and Rust runtime image builds cover AMD64, ARM64 and ARMv7. ARM32 compilation
+    Go and Rust CPU runtime image builds cover AMD64, ARM64 and ARMv7. ARM32 compilation
     and inference remain supported. CORE's default init image covers only AMD64 and
     ARM64, so serving on an ARM32 cluster node also requires an ARMv7-compatible init
     image to download the model. Standalone serving with a mounted model does not use it.
@@ -265,6 +289,7 @@ Run `profile` chooses where the Job executes; it does not select the model's tar
 `target.num-cores`. If neither is set, the value in the target remains, including
 with `mcpu: native`; native detection supplies a core count only when it is absent.
 Use an explicit core count when tuning for a device with different resources.
+For CUDA, these CPU settings apply to the nested LLVM `host`, not to GPU limits.
 
 Run options keep their names: `optimization.cross_cc` overrides `linker.command`,
 and `optimization.cross_cc_options` overrides `linker.options`.
@@ -294,7 +319,8 @@ location starts with `optional:`.
 ### Explicit target for one run
 
 For an advanced, one-off configuration, omit `target_architecture` or leave it at
-`auto`, then provide a standard TVM LLVM target:
+`auto`, then provide a standard TVM target of kind `llvm` or `cuda`. For example,
+this LLVM target generates ARM64 CPU code:
 
 ```yaml
 target:
@@ -314,8 +340,8 @@ libraries at that path **inside the compile container**.
 The compiler links a small LLVM object before processing the model, so a missing
 or incompatible toolchain fails early. Another CPU family may require a custom
 `image` with its LLVM backend, compiler and target libraries. Configuring its name
-does not add a runtime image. This integration remains Linux/CPU; Jetson Orin CUDA
-needs a separate GPU integration.
+does not add a runtime image. CUDA additionally needs a CUDA-enabled toolkit and
+runtime; see [CUDA FP32](#cuda-fp32-optional).
 
 ### Compile options
 
@@ -323,9 +349,9 @@ All fields are optional. These fields are directly inside the Run `spec`:
 
 | Field | Type | Default | Purpose |
 | --- | --- | --- | --- |
-| `model_path` | string | Function `ir_model` | IR Model to compile; an explicit reference always wins. |
-| `target_architecture` | string | `auto` | Name from the configured CPU catalogue. |
-| `target` | object | unset | Standard LLVM target instead of a non-auto preset. |
+| `ir_model_path` | string | Function `ir_model` | IR Model to compile; an explicit reference always wins. |
+| `target_architecture` | string | `auto` | Name from the configured target catalogue. |
+| `target` | object | unset | Standard LLVM or CUDA target instead of a non-auto preset. CUDA requires `arch` and a nested LLVM `host` with an explicit Linux GNU triple. |
 | `tag` | string | `so` | Model name suffix: `<function>-<tag>`. Use a different tag for each target if useful. |
 | `image` | string | Toolkit image | Image used by this compile Job. |
 
@@ -333,7 +359,7 @@ The following fields go inside `optimization` (**Advanced compilation**):
 
 | Field | Type | Default | Purpose |
 | --- | --- | --- | --- |
-| `target_num_cores` | integer ≥ 1 | Job CPU request, rounded up | Cores used to optimize the generated code; see the precedence above. |
+| `target_num_cores` | integer ≥ 1 | Job CPU request, rounded up | CPU cores used to optimize the generated code; applies to the LLVM host for CUDA. |
 | `opt_level` | integer 0–3 | `3` | TVM pass optimization level. |
 | `exec_mode` | string | `bytecode` | Relax VM graph execution: `bytecode` or `compiled`. Both use compiled operators. |
 | `cross_cc` | string | Preset linker, otherwise native compiler | C++ compiler linking `model.so`; e.g. `aarch64-linux-gnu-g++`. |
@@ -342,7 +368,7 @@ The following fields go inside `optimization` (**Advanced compilation**):
 | `tir_pipeline` | string | `default` | Installed TIR pipeline name. |
 | `system_lib` | boolean | `false` | Advanced system-library mode; the Go/Rust serve images cannot load it. |
 | `params_path` | string | IR `params.bin` | Optional weights file path inside the Job. |
-| `benchmark_runs` | integer ≥ 0 | `10` | Timed CPU inferences on the compile host; `0` disables them. |
+| `benchmark_runs` | integer ≥ 0 | `10` | Timed inferences on a compatible compile host/device; `0` disables them. Offline CUDA compilation skips GPU measurements. |
 
 These optimization settings still apply when MetaSchedule is off. Tuning fields
 belong to the separate [tuning group](#tuning-options).
@@ -367,11 +393,12 @@ dhcli run tvm+compile -p my-project -n yolo-function -f compile.yaml
 
 Change `target_architecture` and `tag` to `arm64` or `arm32` to compile the same IR
 for those devices. The preset supplies the linker. For a specific IR version, add
-`model_path: store://my-project/model/tvm-ir/yolo-function-ir:<id>` to the Run.
+`ir_model_path: store://my-project/model/tvm-ir/yolo-function-ir:<id>` to the Run.
 
-Each successful compile updates `so_model`. After an ARM compile, a new serve uses
-that ARM Model. To serve an earlier AMD64 build, set serve `model_path` to its
-versioned `tvm-so` key. An existing service is not changed.
+Each successful Compile records its Model key in `status.outputs.compiled_so`.
+To serve the AMD64 build, copy that Compile's versioned `tvm-so` key into the Serve
+Run's `so_model_path`. To serve the ARM build, use the ARM Compile's key instead.
+Neither compilation replaces the other's output or changes an existing service.
 
 ### Compile output
 
@@ -385,9 +412,9 @@ The metadata fields describe different stages:
 
 | Field | Meaning |
 | --- | --- |
-| `target` | Effective TVM target used to compile, with the resolved triple, CPU and core count. |
+| `target` | Effective TVM target used to compile, including the nested LLVM host for CUDA. |
 | `target_requested` | Original target passed to the compiler, saved when different from `target`; useful for diagnosing `auto` or `mcpu: native`. Not a Run option. |
-| `target_triple` | Architecture, OS and ABI, e.g. `aarch64-linux-gnu`; CORE uses it to select a serving architecture. |
+| `target_triple` | Host architecture, OS and ABI, e.g. `aarch64-linux-gnu`; for CUDA this comes from `target.host.mtriple`. CORE uses it to select a serving architecture. |
 
 The Run's `target` is an input object; the Model's `target` is the resolved target
 serialized as a string. The Go/Rust runtime consumes the Model metadata, not the
@@ -396,6 +423,167 @@ preset name or CORE's YAML file.
 `toolchain` records the compiler executable, its argument list and the compiler
 host triple. These identify how the library was linked; they do not change where
 the compiled model can run.
+
+## CUDA FP32 (optional)
+
+CUDA uses separate toolkit and Go/Rust runtime images for Linux AMD64 or ARM64.
+The existing CPU images, including ARM32, remain usable without NVIDIA libraries.
+The initial GPU scope is **FP32**. FP16/BFLOAT16 serving inputs and outputs are unsupported;
+internal mixed precision operations require separate GPU accuracy and kernel checks. A CPU model runs on a
+compatible Jetson ARM64 CPU; using its GPU requires compiling a CUDA model and
+selecting a CUDA runtime image.
+
+The intended Jetson deployment baseline is **JetPack 7.2**, L4T **39.2**, CUDA
+**13.2.1** and Ubuntu **24.04**, as listed in NVIDIA's
+[JetPack 7.2 release information](https://developer.nvidia.com/embedded/jetpack/downloads/archive-7.2).
+Verify the installed vendor stack and container compatibility on the device.
+For the current ARM64 base, the host also requires **NVIDIA Container Toolkit 1.19.1
+or newer**. Check `nvidia-ctk --version`: the JetPack version does not establish this.
+Version 1.19.0 fails in the compatibility hook before the container entrypoint;
+[NVIDIA fixed the parser in 1.19.1](https://github.com/NVIDIA/nvidia-container-toolkit/releases/tag/v1.19.1).
+Update the host toolkit; disabling image requirements does not fix the parser.
+
+Before starting a GPU container, record the actual Jetson stack on the node:
+
+```sh
+uname -m
+cat /etc/nv_tegra_release
+nvidia-ctk --version
+```
+
+These commands only inspect the host. Inside the selected CUDA toolkit container,
+with the node's real GPU access enabled, check that `tvm.cuda(0).exist` is true
+before compiling for measurements or running inference. An absent device is an
+unavailable hardware test, not a successful CUDA check. Keep driver stubs out of
+this container's loader path. Use the existing node profile when running through
+CORE; no additional node selector is needed.
+
+Real Jetson and AMD64 NVIDIA inference,
+numerical accuracy, tuning and performance validation are **NOT_RUN**; offline
+compilation and checks without a GPU do not certify them.
+
+### Compile without a GPU
+
+The CUDA toolkit can compile on AMD64 for either AMD64 or ARM64 hosts without a
+GPU. Use `tuning_mode: "off"`, or `apply` with a compatible existing database.
+The `jetson_orin_cuda` preset supplies this standard TVM target and the
+`aarch64-linux-gnu-g++` linker:
+
+```json
+{"kind":"cuda","arch":"sm_87","host":{"kind":"llvm","mtriple":"aarch64-linux-gnu"}}
+```
+
+The nested `host` describes the CPU part of `model.so`; the CUDA `arch` describes
+the GPU. For AMD64 NVIDIA, provide an explicit target with
+`host.mtriple: x86_64-linux-gnu` and the actual GPU's `sm_...` architecture, plus a
+matching host linker. Keep `target_architecture` at `auto` when providing `target`.
+There is no separate top-level `target_host` or serving device option.
+
+For example, save this as `compile-orin-cuda.yaml`:
+
+```yaml
+spec:
+  target_architecture: jetson_orin_cuda
+  tag: orin-cuda
+  profile: amd64-compiler # Replace with your configured AMD64 node profile.
+  image: local/tvm-toolkit:0.26.0-cuda13.2.1-amd64
+  resources: {cpu: "4", mem: 8Gi}
+  envs:
+    - name: LD_LIBRARY_PATH
+      value: /opt/tvm/cuda-driver-stubs:/opt/tvm/lib:/usr/local/cuda/lib64
+  optimization:
+    benchmark_runs: 0
+  tuning:
+    tuning_mode: "off"
+```
+
+```sh
+dhcli run tvm+compile -p my-project -n yolo-function -f compile-orin-cuda.yaml
+```
+
+All `local/...` CUDA image names here are **development examples**, not published
+GHCR tags. Build the images from the component repositories, then load them on the
+selected nodes or replace them with your registry references. For example, from
+the toolkit repository:
+
+```sh
+docker build -f tvm-toolkit/Dockerfile.cuda \
+  --build-arg TVM_CUDA_BUILD_JOBS=2 \
+  -t local/tvm-toolkit:0.26.0-cuda13.2.1-amd64 tvm-toolkit
+```
+
+The toolkit includes CUDA compilation tools and a CUDA-enabled TVM runtime. A
+driver stub is available only for isolated compilation/checks without a GPU;
+opt in with `LD_LIBRARY_PATH=/opt/tvm/cuda-driver-stubs:/opt/tvm/lib:/usr/local/cuda/lib64`
+for that process. Never add the stub directory to a serving or measurement process.
+The toolkit's `check_cuda.py --require-no-gpu` checks generated libraries for both
+host architectures; it does not run CUDA kernels on hardware.
+
+### Serve on a GPU node
+
+Use the existing `profile`, `resources.gpu`, `image` and `envs` settings. The
+platform's configured profile selects a suitable GPU node and NVIDIA device access;
+the compile target does not select a node or image. For example:
+
+```yaml
+spec:
+  so_model_path: store://my-project/model/tvm-so/yolo-function-orin-cuda:<id>
+  image: local/tvm-runtime-go:0.26-cuda13.2.1
+  profile: your-jetson-gpu-profile
+  workers: 1
+  resources: {cpu: "4", mem: 2Gi, gpu: "1"}
+```
+
+Replace the profile, image and versioned Model key with your deployment values.
+The selected Model is always the required `so_model_path`; choosing a GPU profile
+does not choose or recompile a Model. A CUDA-capable Go or
+Rust runtime derives its backend from artifact metadata, uses visible CUDA device
+`0` and a CPU host, and fails clearly when the required backend/device is absent.
+There is no CPU fallback for a CUDA artifact. NVIDIA driver/device access must be
+provided by the host's container runtime. For standalone Docker, use the matching
+CUDA image and model with the host's supported GPU options, for example `--gpus all`
+on a configured AMD64 NVIDIA host. Runtime images do not need `nvcc` or driver stubs.
+
+Start with one worker: every worker loads its own model and uses GPU memory. REST
+and gRPC requests remain unchanged. Serving copies inputs and outputs and waits
+for GPU completion before returning a response.
+
+### Tune and measure on hardware
+
+`tune` needs an available compatible GPU locally, or an existing GPU device
+registered with the TVM RPC tracker. The base Orin preset intentionally omits
+hardware limits. On the actual measurement device, query them with the matching
+CUDA-enabled TVM build:
+
+```python
+import tvm
+
+device = tvm.cuda(0)
+if not device.exist:
+    raise RuntimeError("No CUDA device is available; hardware measurement was not run")
+detected = tvm.target.Target.from_device(device)
+for name in ("arch", "max_shared_memory_per_block", "max_threads_per_block", "thread_warp_size"):
+    print(name, detected.attrs[name])
+```
+
+Supply these actual GPU limits in an explicit CUDA `target`, alongside its nested
+LLVM host. Do not infer them from CPU requests or invent defaults. Local tuning
+checks the GPU and limits; RPC tuning requires the supplied device profile.
+`tuning_workers` defaults to `1` for CUDA and controls parallel candidate builds;
+GPU measurements remain sequential, including RPC. Increasing builder workers
+does not measure several candidates at once on one GPU. CPU cache flushing is
+rejected for active CUDA tuning. `off` and `apply` do not require GPU measurements.
+For `apply`, retain the tuned Model's exact effective target, including its GPU
+limits and LLVM host settings; a base preset without those limits is not equivalent.
+
+CUDA compile benchmarks synchronize work and report `input_resident` (inputs
+already on the GPU, measured with the CUDA time evaluator) separately from
+`input_transfer_inclusive` (host-to-device inputs plus inference, synchronized wall
+time). Both exclude output transfer, HTTP, preprocessing and model loading.
+Client end-to-end latency includes those additional costs; it is a separate
+measurement. Without a usable local GPU/host combination, `benchmark.skipped`
+explains why no timing was produced. Do not report compilation success as a GPU
+inference or performance result.
 
 ---
 
@@ -418,7 +606,9 @@ database automatically: set `tuning_model_path` to reuse or continue one.
 
 ### Tune once
 
-Tune on hardware compatible with the serving CPU. Set resources in **Task**, then
+Tune on hardware compatible with the serving device. The example below is for CPU;
+CUDA also requires the [hardware profile and GPU access](#tune-and-measure-on-hardware).
+Set resources in **Task**, then
 the target, **Advanced compilation** and **MetaSchedule tuning** in **Run**:
 
 ```yaml
@@ -461,7 +651,7 @@ A tuning can be reused only when these match:
 | Must match | Why it matters |
 | --- | --- |
 | TVM version and commit | Use a toolkit containing the same Apache TVM version and commit, e.g. `tvm-toolkit:0.26.0-r2`. |
-| Target | Same effective target, including CPU features **and** `target_num_cores`. When `target_num_cores` is empty it comes from `resources.cpu`: changing the CPUs of the run makes the database incompatible. With `amd64_native` the CPU model of the node counts too. |
+| Target | Same effective target, including CPU features, CUDA architecture/limits and LLVM host settings where applicable, and `target_num_cores`. When `target_num_cores` is empty it comes from `resources.cpu`: changing the CPUs of the run makes the database incompatible. With `amd64_native` the CPU model of the node counts too. |
 | IR | Matching source/IR identity; changing the model or conversion can invalidate the database. |
 | Coverage | All selected tunable functions need valid records unless `allow_partial_tuning` is `true`. Unselected operations keep default schedules. |
 
@@ -483,13 +673,13 @@ All these fields go inside `tuning`. Counts are integers; timeouts are seconds.
 | `tuning_trials_per_iter`{: style="white-space: nowrap" } | `64` | Variants measured for each task in one round. |
 | `tuning_ops` | all | List of task-name filters, e.g. `[conv2d]`; applies to both `tune` and `apply`. |
 | `tuning_model_path`{: style="white-space: nowrap" } | empty | An earlier compiled Model: `tune` continues its search, `apply` uses it. **Required** with `apply`. |
-| `tuning_workers` | `resources.cpu` | Parallel candidate builds; with RPC, also the maximum parallel device connections. |
+| `tuning_workers` | CPU: `resources.cpu`; CUDA: `1` | Parallel candidate builds. CPU RPC also uses this connection limit; CUDA measurements stay sequential. |
 | `tuning_seed` | `0` | Random seed, for repeatable searches. |
 | `tuning_number` | `3` | Runs averaged in one measurement. |
 | `tuning_repeat` | `1` | Measurements taken for each variant. |
 | `tuning_min_repeat_ms`{: style="white-space: nowrap" } | `100` | Minimum length of one measurement, in milliseconds. |
 | `tuning_alloc_repeat`{: style="white-space: nowrap" } | `1` | Input buffers rotated between measurements, to reduce cache effects. |
-| `tuning_enable_cpu_cache_flush`{: style="white-space: nowrap" } | `false` | Flushes the CPU caches before each measurement. |
+| `tuning_enable_cpu_cache_flush`{: style="white-space: nowrap" } | `false` | Flushes CPU caches before each CPU measurement; rejected for active CUDA tuning. |
 | `tuning_builder_timeout_sec`{: style="white-space: nowrap" } | `30` | Time limit to compile one variant. |
 | `tuning_runner_timeout_sec`{: style="white-space: nowrap" } | `30` | Local runner timeout; ignored with RPC, which uses its session timeout. |
 | `allow_partial_tuning`{: style="white-space: nowrap" } | `false` | Allows incomplete optimization for intentional partial searches; it still requires usable records. |
@@ -530,13 +720,14 @@ final model.
   The log reports it. The default cap of 16 trials per task is small; increase it
   together with the total budget for a wider search.
 - Use the same target and threads per worker when tuning, benchmarking and serving.
-- `benchmark_runs` measures TVM in a subprocess on the **compile host**: synthetic
+- For CPU, `benchmark_runs` measures TVM in a subprocess on the **compile host**: synthetic
   inputs are allocated first, up to five warm-ups run, then the configured number
   of VM calls are timed. Metadata records `mean_ms`, `p50_ms`, `p90_ms`, `min_ms`,
   thread count and sample count. It excludes image preparation, HTTP and model loading.
 - An incompatible host, unsupported CPU instructions or a failed benchmark can
   produce `benchmark.skipped`; that is not an inference result on the target device.
   This built-in benchmark does not compare against ONNX Runtime.
+- CUDA has [separate synchronized resident and transfer-inclusive timings](#tune-and-measure-on-hardware).
 
 ## Serve action
 
@@ -544,11 +735,11 @@ The `serve` action deploys the compiled Model. An init container downloads `mode
 
 ### Serve options
 
-All fields are optional.
+`so_model_path` is required. The other fields are optional.
 
 | Field | Default | What it does |
 | --- | --- | --- |
-| `model_path`{: style="white-space: nowrap" } | function `so_model` | Key of the compiled Model to serve. |
+| `so_model_path`{: style="white-space: nowrap" } | required | Versioned `store://.../model/tvm-so/<name>:<id>` key from the chosen Compile Run's `status.outputs.compiled_so`. |
 | `served_name`{: style="white-space: nowrap" } | function name | Name of the model in the API, `/v2/models/<served_name>`. Letters, digits, `.`, `_` and `-`, starting and ending with a letter or digit. |
 | `replicas` | `1` | Number of pods, zero or greater. |
 | `workers` | `1` | Requests handled in parallel by each pod; each worker loads its own copy of the model. |
@@ -558,6 +749,7 @@ All fields are optional.
 
 ```yaml
 spec:
+  so_model_path: store://my-project/model/tvm-so/yolo-function-amd64:<compiled-model-id>
   workers: 1
   resources:
     cpu: "2"
@@ -578,19 +770,20 @@ When the Run is **RUNNING**, `status.service` reports the platform address.
 `served_name` defaults to the Function name; `service_name` does not rename the model.
 Use REST port `8080`, not gRPC port `9000`.
 
-An explicit `model_path` wins over the Function reference. The selected key is
-saved in the Run; clear it when copying a Run if the new service should use the
-Function's current `so_model`.
+The selected `so_model_path` is saved in the Run. When copying a Run, keep that key to
+serve the same Model, or replace it with the output of another successful Compile.
+Leaving it empty is an error, even if old Function data contains `so_model`.
 
 ### Where the service runs
 
-A `model.so` runs only on the CPU architecture it was compiled for. The platform reads the architecture from the compiled Model and starts the service only on the nodes of the same architecture (the node label `kubernetes.io/arch`):
+A `model.so` runs only on the host CPU architecture it was compiled for. The platform reads the architecture from the compiled Model and starts the service only on the nodes of the same architecture (the node label `kubernetes.io/arch`):
 
 | Compiled for | Nodes of the service |
 | --- | --- |
 | `amd64`, `amd64_v3`, `amd64_native`, `auto` on an AMD64 node | `amd64` |
 | `arm64`, `arm64_pi5`, `auto` on an ARM64 node | `arm64` |
 | `arm32` | `arm` (ARMv7, hard-float, NEON) |
+| `jetson_orin_cuda` | `arm64`, with compatible NVIDIA GPU/driver access and a CUDA runtime image |
 
 Go and Rust runtime image builds include all three architectures. Each node downloads
 its image variant. An ARM64 model can be served inside the platform when the cluster
@@ -604,6 +797,8 @@ compatibility checks; for example, an `arm64_pi5` model needs a compatible Corte
     If the cluster has no node of the model architecture, the service stays **PENDING**. Choose a compatible node/profile or serve a Model compiled for the available nodes.
 
 A `profile` that sets its own node selector takes precedence over this choice.
+CUDA also needs the [GPU resources and matching image](#serve-on-a-gpu-node);
+the host architecture selector alone does not provide GPU access.
 
 ### Endpoints
 
@@ -774,7 +969,11 @@ The `build` and `compile` Jobs run the `tvm-toolkit` image, which contains only 
 | `publish.py` | Uploads the result as a Model of kind `tvm-ir` or `tvm-so` and records it in the run. |
 | `common.py` | Helpers shared by the other scripts. |
 
-The platform chooses the script from the action and the source format, and passes every option of the run as an environment variable (`TVM_TARGET`, `TVM_OPT_LEVEL`, ...). When the script ends, the platform copies the key of the published Model into the function field `ir_model` or `so_model`.
+The platform chooses the script from the action and the source format, and passes
+the Run's options as environment variables (`TVM_TARGET`, `TVM_OPT_LEVEL`, ...).
+Build records the published IR key in the Function's `ir_model`. Compile records
+its compiled Model key in the Run's `status.outputs.compiled_so`, without updating
+the Function.
 
 Publication uses direct HTTP calls to CORE, without installing or calling the
 DigitalHub SDK. It follows the same Model lifecycle: `CREATED` → `UPLOADING` →
@@ -786,7 +985,7 @@ Upload failures mark the Model `ERROR`.
 
 A `READY` Model is distinct from a `COMPLETED` build or compile Run. Wait for the
 Run to complete successfully before starting the next action. Output registration
-and Function reference updates retry transient failures up to three attempts; if
+and Build's Function reference update retry transient failures up to three attempts; if
 either cannot be confirmed, the Run fails and the registered Model remains
 recoverable from the log and, when recorded, `run.status.outputs`.
 
@@ -800,14 +999,16 @@ only for CORE and are not forwarded to storage.
 
 ## Serving runtimes
 
-The `serve` action can use two images. They read the same model folder, expose the same endpoints on the same ports and accept the same requests. Go is the platform default; use the `image` field to choose another serve image for a single run:
+The `serve` action supports Go and Rust images. They read the same model folder, expose the same endpoints on the same ports and accept the same requests. Go is the platform default; use the `image` field to choose another serve image for a single run:
 
 ```yaml
 spec:
   image: ghcr.io/scc-digitalhub/tvm-runtime-rust:0.26.0-r2
 ```
 
-Each image is multi-arch: the same tag serves `amd64`, `arm64` and `arm/v7` nodes, and each node downloads its own variant. There is no image to choose per architecture.
+The CPU images below are multi-arch: the same tag serves `amd64`, `arm64` and
+`arm/v7` nodes, and each node downloads its own variant. Optional CUDA images are
+separate AMD64/ARM64 builds; see [CUDA FP32](#cuda-fp32-optional).
 
 | | Go (default) | Rust |
 | --- | --- | --- |
@@ -833,7 +1034,10 @@ batching. Clients handle preprocessing and output decoding. Both use these envir
 | `TVM_SERVE_PORT`{: style="white-space: nowrap" } | `8080` | REST port. |
 | `TVM_SERVE_GRPC_PORT`{: style="white-space: nowrap" } | `9000` | gRPC port. |
 
-At startup, both images refuse a model, with a clear error, when it was compiled with another TVM release or for another CPU architecture, or when it uses an unsupported data type.
+At startup, both runtimes refuse a model, with a clear error, when it was compiled
+with another TVM release or for another host CPU architecture, or when it uses an
+unsupported data type. A CPU build rejects CUDA artifacts; a CUDA build additionally
+requires its CUDA backend, driver and visible device.
 
 !!! note "Use compatible Apache TVM builds"
 
@@ -913,12 +1117,15 @@ an older cached image.
 | Build error `No Adapter From Version <n> for <operator>` | `target_opset` asks for a conversion ONNX cannot do: leave `target_opset` empty, or choose a version supported by all the operators. |
 | Build error `cannot detect the TVM source format` | The Model is of kind `model` and its path has no `.onnx` or `.tflite` extension: use a Model of kind `onnx` or `tflite`, or set `format` in the function. |
 | Compile error `CodeGenVM cannot handle this intrinsic now` | The IR has outputs without a shape and onnxsim could not fix them: the build log shows `still have no shape`. Build with `simplify: true` to see the onnxsim error, or export the model again with fixed shapes. See [Outputs without a shape](#outputs-without-a-shape). |
-| `model.relax.json not found` | Check the Run's explicit `model_path` and the IR Model files; clear the override to use `function.ir_model`. |
-| `tvm+compile needs an IR model`{: style="white-space: nowrap" } | Run `build` first, or set `model_path` to an IR Model. |
-| `tvm+serve needs a compiled .so model`{: style="white-space: nowrap" } | Run `compile` first, or set `model_path` to a compiled Model. |
+| `model.relax.json not found` | Check the Run's explicit `ir_model_path` and the IR Model files; clear the override to use `function.ir_model`. |
+| `tvm+compile needs an IR model`{: style="white-space: nowrap" } | Run `build` first, or set `ir_model_path` to an IR Model. |
+| `tvm+serve requires run.so_model_path`{: style="white-space: nowrap" } | Set `so_model_path` to the versioned `tvm-so` key in the chosen Compile Run's `status.outputs.compiled_so`. |
+| Build reports `not topologically sorted` | Retry with `sort_onnx: true` when the error recommends it. This fixes node order, not missing inputs or cycles. |
 | The compile run goes to **ERROR** at once, with a message about tuning | The tuning options do not fit together, for example `tune` without `tuning_trials`: see [Tuning options](#tuning-options). |
 | The compile or serve run stays **PENDING** | No node of the cluster has the architecture the run needs: see [Where the service runs](#where-the-service-runs). Check the profile/node selector, available nodes and pod events before choosing another target or Model. |
 | The serve pod restarts right after starting | The log explains why: the model was compiled with another TVM release, with `system_lib`, or uses an unsupported data type. Recompile it with the toolkit of the same release. |
+| CUDA backend/device is unavailable | Select a CUDA-enabled image and provide real NVIDIA driver/device access. A CPU image cannot execute CUDA artifacts. Driver stubs are only for isolated offline compilation. |
+| CUDA tuning reports missing limits | Query `Target.from_device` on the measurement GPU and supply its actual limits in an explicit target; the Orin compile preset intentionally omits them. |
 | `404` on `/v2/models/<name>` | The name is not the `served_name` of the run (by default, the function name). |
 | Inference returns `400` / `INVALID_ARGUMENT` | Compare the request datatype, full shape, value count and numeric ranges with model metadata. For gRPC, use typed or raw contents, never both. See [Input validation](#input-validation) for the runtime versions concerned. |
 | The endpoint cannot be reached from your computer | The default service is internal: use `dhcli port-forward`, or a platform-approved external route. |

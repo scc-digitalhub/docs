@@ -9,20 +9,27 @@ Use Apache TVM to convert ONNX or TFLite models to Relax IR, compile them for a 
 {{ runtime_prerequisites("digitalhub-runtime-tvm") }}
 
 Run the actions in order: **Build → Compile → Serve**. Configure the Function with
-the source model and format. CORE updates its `ir_model` and `so_model` references
-after successful runs; the next action uses them unless the Run sets `model_path`.
+the source model and format. Build saves its IR reference in `function.ir_model`.
+Each Compile Run returns its own Model key in `status.outputs.compiled_so`.
+Pass the chosen key to the Serve Run's required `so_model_path`.
 
 | Spec | Responsibility |
 | --- | --- |
-| Function | Source `model`, `format`; generated `ir_model` and `so_model` references |
+| Function | Source `model`, `format`; generated `ir_model` reference |
 | Task | Function reference and common resources, profiles, environment, secrets and volumes |
 | Run | Per-execution TVM options; compile groups them under `optimization` and `tuning` |
 
 Common Task settings can be overridden for one Run. TVM options from previous Runs
 or old Tasks are not defaults for new Runs.
-Compile CPU profiles come from CORE's `runtime-tvm.yaml`; advanced runs can provide
-a standard LLVM target instead. The separate `profile` chooses where a Job or
+Compile profiles come from CORE's `runtime-tvm.yaml`; advanced runs can provide
+a standard LLVM or CUDA target instead. The separate `profile` chooses where a Job or
 service executes; it does not choose the generated Model's target.
+
+CPU remains the default without NVIDIA dependencies. Optional CUDA FP32 uses
+separate toolkit/runtime images, the existing GPU resources and a target with a
+nested LLVM host. See the authoritative
+[CUDA guide](https://scc-digitalhub.github.io/docs/0.16/runtimes/tvm/#cuda-fp32-optional)
+for offline compilation, real-device tuning and hardware validation limits.
 
 TVM actions run on Kubernetes through CORE. Running a compiled model directly in
 a local Go/Rust container is distinct from an SDK `local_execution` implementation.

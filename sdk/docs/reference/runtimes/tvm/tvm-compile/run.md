@@ -5,7 +5,7 @@ render_macros: true
 # Compile a TVM Model
 
 Call `function.run(action="compile", ...)` with the target settings. The Run uses
-`function.ir_model` unless you set `model_path` explicitly.
+`function.ir_model` unless you set `ir_model_path` explicitly.
 
 ## Parameters
 
@@ -17,9 +17,9 @@ Call `function.run(action="compile", ...)` with the target settings. The Run use
 | [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | | Environment variables. |
 | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | | List of secret names. |
 | [profile](../../../configuration/kubernetes.md#profile) | str | | Scheduling/resource profile; does not select the model target. |
-| model_path | str | | Optional IR override; otherwise uses `function.ir_model`. |
+| ir_model_path | str | | Optional IR override; otherwise uses `function.ir_model`. |
 | target_architecture | str | | Profile from CORE's YAML catalogue; default `auto`. See [target architectures](action.md#target-architecture). |
-| target | dict | | Explicit standard LLVM target object; omit `target_architecture` or set it to `auto`. The separate `profile` can still select scheduling/resources. |
+| target | dict | | Explicit standard LLVM or CUDA target object; omit `target_architecture` or set it to `auto`. CUDA requires `arch` and a nested LLVM `host` with an explicit Linux GNU triple. |
 | optimization | dict | | Compiler settings described below. |
 | tuning | dict | | MetaSchedule settings described below; mode defaults to `off`. |
 | tag | str | | Model suffix `<function>-<tag>`; default `so`. |
@@ -51,7 +51,7 @@ explicit grouped values take precedence.
 
 | Field | Default | Meaning |
 | --- | --- | --- |
-| `target_num_cores` | Job CPU request, rounded up | Cores used to optimize the target. This field wins over the CPU request; both override preset `num-cores`. |
+| `target_num_cores` | Job CPU request, rounded up | CPU cores used to optimize the target; applies to CUDA's LLVM host. This field wins over the CPU request; both override preset `num-cores`. |
 | `opt_level` | `3` | TVM optimization level, 0–3. |
 | `cross_cc` | profile default | C++ compiler linking `model.so`. |
 | `cross_cc_options` | profile defaults | Separate compiler arguments; e.g. `["--sysroot=/opt/sysroots/arm64"]`. An explicit `[]` clears profile arguments. |
@@ -111,7 +111,16 @@ The target uses standard TVM keys. Do not combine it with a non-auto
 `profile` still chooses platform scheduling and resources.
 The compiled metadata records the resolved
 `target` and, when different, `target_requested`. The latter is not a Run option. The selected `image` must contain the matching
-LLVM backend, compiler and libraries. Adding a target does not add a serving image,
-and this pipeline does not enable GPU/CUDA execution.
+LLVM backend, compiler and libraries. Adding a target does not add a serving image.
+
+For CUDA, use the standard nested host form, for example
+`{"kind": "cuda", "arch": "sm_87", "host": {"kind": "llvm", "mtriple": "aarch64-linux-gnu"}}`.
+The base `jetson_orin_cuda` preset can compile offline with a CUDA toolkit in `off`
+mode. `apply` also works offline, retaining the tuned Model's exact target, including
+GPU limits and host settings. Active tuning needs actual GPU limits from `Target.from_device`
+and local GPU access or the existing RPC runner. CUDA builder workers default to
+one; device measurements remain sequential. See the
+[CUDA guide](https://scc-digitalhub.github.io/docs/0.16/runtimes/tvm/#cuda-fp32-optional)
+for image configuration, isolated driver-stub opt-in and synchronized timing semantics.
 
 {{ page_navigation(("Create", "create.md"), ("Use", "use.md")) }}

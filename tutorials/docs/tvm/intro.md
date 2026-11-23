@@ -13,6 +13,11 @@ Deployment steps show both the **console** and **CLI** (`dhcli`). The test page
 provides a Python client. Start with untuned compilation to check the pipeline;
 use [MetaSchedule](../../../runtimes/tvm/#model-optimization) to investigate performance.
 
+This tutorial follows the CPU path, which also works on a compatible Jetson ARM64
+CPU. For optional GPU compilation and serving, follow the
+[CUDA FP32 guide](../../../runtimes/tvm/#cuda-fp32-optional). It covers separate images,
+GPU access and hardware tuning; real NVIDIA/Jetson execution remains **NOT_RUN**.
+
 ## Names used in this scenario
 
 | What | Name |

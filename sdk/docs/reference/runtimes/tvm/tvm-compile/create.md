@@ -4,8 +4,10 @@ render_macros: true
 
 # Create a TVM Function for Compilation
 
-The compile action uses the same `tvm` Function specification as the [build action](../tvm-build/create.md). Create the Function with its source model and generated `ir_model` and `so_model` references. Normally leave these empty and let
-build/compile update them; an existing versioned reference can be supplied explicitly.
+The compile action uses the same `tvm` Function as the [build action](../tvm-build/create.md).
+Create it with the source model and normally leave `ir_model` empty for Build to fill.
+Compile reads that IR, or the IR selected by its Run's `ir_model_path`. Its compiled
+Model key belongs to the Compile Run, not the Function.
 
 ```python
 import digitalhub as dh
