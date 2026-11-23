@@ -6,7 +6,7 @@ render_macros: true
 
 The compile action uses the same `tvm` Function as the [build action](../tvm-build/create.md).
 Create it with the source model and normally leave `ir_model` empty for Build to fill.
-Compile reads that IR, or the IR selected by its Run's `model_path`. Its compiled
+Compile reads that IR, or the IR selected by its Run's `ir_model_path`. Its compiled
 Model key belongs to the Compile Run, not the Function.
 
 ```python

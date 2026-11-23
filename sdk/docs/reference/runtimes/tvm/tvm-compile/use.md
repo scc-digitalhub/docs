@@ -18,13 +18,13 @@ compile_run = function.run(
 
 serve_run = function.run(
     action="serve",
-    model_path=compile_run.status.to_dict()["outputs"]["compiled_so"],
+    so_model_path=compile_run.status.to_dict()["outputs"]["compiled_so"],
     served_name="my-model",
     wait=True,
 )
 ```
 
-To serve another compiled Model, use its versioned key in `model_path`, for example
+To serve another compiled Model, use its versioned key in `so_model_path`, for example
 `store://my-project/model/tvm-so/model-so:version`. A new Compile does not change
 an existing Serve Run.
 

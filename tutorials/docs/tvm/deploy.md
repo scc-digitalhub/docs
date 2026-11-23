@@ -142,7 +142,7 @@ are compile-node measurements, not timings on an ARM device or over HTTP.
 
 ## 5. Serve
 
-`serve` deploys the Model selected by `model_path` as an Open Inference v2 service,
+`serve` deploys the Model selected by `so_model_path` as an Open Inference v2 service,
 on port `8080` (REST) and `9000` (gRPC). Use the output key of the AMD64 Compile above.
 
 === "Console"
@@ -151,7 +151,7 @@ on port `8080` (REST) and `9000` (gRPC). Use the output key of the AMD64 Compile
 
     | Field | Value | Why |
     | --- | --- | --- |
-    | `model_path` | the versioned key from the AMD64 Compile's `status.outputs.compiled_so` | selects that compiled Model |
+    | `so_model_path` | the versioned key from the AMD64 Compile's `status.outputs.compiled_so` | selects that compiled Model |
     | `resources` | CPU `4`, memory `2Gi` | starting point; one worker uses the same four threads as compilation |
 
 === "CLI"
@@ -160,7 +160,7 @@ on port `8080` (REST) and `9000` (gRPC). Use the output key of the AMD64 Compile
 
     ```yaml
     spec:
-      model_path: store://tvm-test/model/tvm-so/yolo-function-amd64:<compiled-model-id>
+      so_model_path: store://tvm-test/model/tvm-so/yolo-function-amd64:<compiled-model-id>
       resources:
         cpu: "4"
         mem: 2Gi
@@ -262,7 +262,7 @@ getconf LONG_BIT  # userspace bitness; ARM32 also needs ARMv7, hard-float and NE
 !!! note "Choose the Compile output to serve"
 
     Each Compile keeps its own output key. An ARM Compile does not replace the
-    AMD64 selection. Every Serve needs `model_path`: use the AMD64 Compile's key
+    AMD64 selection. Every Serve needs `so_model_path`: use the AMD64 Compile's key
     for an AMD64 node, or the ARM Compile's key for a compatible ARM node. Without
     a matching node, that service stays **PENDING**. Existing services keep their
     selected Model.
@@ -274,7 +274,7 @@ The ARM64 and ARM32 Models can run on compatible devices, as shown in [Test the 
 The `arm64` build above uses the Jetson CPU. To use its GPU, compile the same IR
 with `target_architecture: jetson_orin_cuda` and a separate CUDA-enabled toolkit
 image, then serve the resulting Model with a CUDA-enabled Go/Rust image and the
-existing GPU profile/resources. Pin `model_path` to the intended compiled Model;
+existing GPU profile/resources. Pin `so_model_path` to the intended compiled Model;
 selecting a profile does not select or recompile it.
 
 Use the [CUDA guide](../../../runtimes/tvm/#cuda-fp32-optional) for the complete

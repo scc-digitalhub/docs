@@ -20,7 +20,7 @@ compile_run = function.run(
 )
 ```
 
-To compile a different existing IR, set the compile Run's `model_path`, for example
+To compile a different existing IR, set the compile Run's `ir_model_path`, for example
 `store://my-project/model/tvm-ir/model-ir:version`.
 
 {{ page_navigation(("Run", "run.md"), ("Action", "action.md")) }}

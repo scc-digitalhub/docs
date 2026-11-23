@@ -7,7 +7,7 @@ render_macros: true
 The serve action uses the same `tvm` Function as the [build action](../tvm-build/create.md).
 The Function holds the source model and the IR reference produced by Build.
 After Compile completes, pass its `status.outputs.compiled_so` key in the Serve
-Run's required `model_path`. The compiled Model is not stored on the Function.
+Run's required `so_model_path`. The compiled Model is not stored on the Function.
 
 ```python
 import digitalhub as dh

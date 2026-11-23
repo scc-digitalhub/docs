@@ -18,6 +18,9 @@ The runtime has three actions, run one after the other:
 | `compile` | Compiles the Relax IR into a native library, `model.so`, for a target architecture | Kubernetes Job | Model `<function>-<tag>`, kind `tvm-so` |
 | `serve` | Deploys the compiled model as an Open Inference v2 service | Kubernetes Deployment and Service | Inference service |
 
+For older Runs, `model_path` is read as `ir_model_path` on Compile and
+as `so_model_path` on Serve. New requests should use the phase-specific name.
+
 ## How it works
 
 Build saves the IR reference in `function.spec.ir_model`, on the **same Function
@@ -25,12 +28,12 @@ version**. One IR can be compiled for several targets.
 
 Each Compile Run keeps the key of its own compiled Model in
 `status.outputs.compiled_so`. It does not change the Function. Give the Serve Run
-this versioned key in its required `model_path`. Compiling another target does not
+this versioned key in its required `so_model_path`. Compiling another target does not
 replace that choice or change a running service. The binary stays in the Model's
 storage; the Run stores only its key.
 
 Old stored `so_model` fields are ignored, not deleted. Every new Serve Run still
-needs `model_path`; there is no automatic choice of the latest Compile.
+needs `so_model_path`; there is no automatic choice of the latest Compile.
 
 ## From a model to a prediction
 
@@ -40,7 +43,7 @@ needs `model_path`; there is no automatic choice of the latest Compile.
 | 2. Create the function | Create a function of kind `tvm` that points to the Model | [Function](#function) |
 | 3. Build | Run the `build` action | [Build action](#build-action) |
 | 4. Compile | Run the `compile` action for your target | [Compile action](#compile-action), [examples](#compile-examples) |
-| 5. Serve | Pass the chosen Compile's output key in `model_path` and run `serve` | [Serve action](#serve-action) |
+| 5. Serve | Pass the chosen Compile's output key in `so_model_path` and run `serve` | [Serve action](#serve-action) |
 | 6. Test | Send a request to the service | [Test the service](#test-the-service) |
 
 The [TVM tutorial](../../tutorials/tvm/intro/) walks through all the steps with a YOLOv8 model, from the console and from the CLI.
@@ -52,8 +55,8 @@ The [TVM tutorial](../../tutorials/tvm/intro/) walks through all the steps with 
 | Function `spec` | Source `model`, `format`, generated `ir_model` reference |
 | Task `spec` | Function reference, `profile`, `resources`, `envs`, `secrets`, `volumes` |
 | Build Run `spec` | Toolkit `image` and conversion options |
-| Compile Run `spec` | `model_path`, target selection, `tag`, `image`, `optimization`, `tuning` |
-| Serve Run `spec` | Required versioned `model_path`, name, image, workers, replicas and service options |
+| Compile Run `spec` | `ir_model_path`, target selection, `tag`, `image`, `optimization`, `tuning` |
+| Serve Run `spec` | Required versioned `so_model_path`, name, image, workers, replicas and service options |
 
 A Run can override common Task settings. TVM options are specific to each Run;
 previous Runs and old Tasks do not supply their values. In the console, common
@@ -346,7 +349,7 @@ All fields are optional. These fields are directly inside the Run `spec`:
 
 | Field | Type | Default | Purpose |
 | --- | --- | --- | --- |
-| `model_path` | string | Function `ir_model` | IR Model to compile; an explicit reference always wins. |
+| `ir_model_path` | string | Function `ir_model` | IR Model to compile; an explicit reference always wins. |
 | `target_architecture` | string | `auto` | Name from the configured target catalogue. |
 | `target` | object | unset | Standard LLVM or CUDA target instead of a non-auto preset. CUDA requires `arch` and a nested LLVM `host` with an explicit Linux GNU triple. |
 | `tag` | string | `so` | Model name suffix: `<function>-<tag>`. Use a different tag for each target if useful. |
@@ -390,11 +393,11 @@ dhcli run tvm+compile -p my-project -n yolo-function -f compile.yaml
 
 Change `target_architecture` and `tag` to `arm64` or `arm32` to compile the same IR
 for those devices. The preset supplies the linker. For a specific IR version, add
-`model_path: store://my-project/model/tvm-ir/yolo-function-ir:<id>` to the Run.
+`ir_model_path: store://my-project/model/tvm-ir/yolo-function-ir:<id>` to the Run.
 
 Each successful Compile records its Model key in `status.outputs.compiled_so`.
 To serve the AMD64 build, copy that Compile's versioned `tvm-so` key into the Serve
-Run's `model_path`. To serve the ARM build, use the ARM Compile's key instead.
+Run's `so_model_path`. To serve the ARM build, use the ARM Compile's key instead.
 Neither compilation replaces the other's output or changes an existing service.
 
 ### Compile output
@@ -524,7 +527,7 @@ the compile target does not select a node or image. For example:
 
 ```yaml
 spec:
-  model_path: store://my-project/model/tvm-so/yolo-function-orin-cuda:<id>
+  so_model_path: store://my-project/model/tvm-so/yolo-function-orin-cuda:<id>
   image: local/tvm-runtime-go:0.26-cuda13.2.1
   profile: your-jetson-gpu-profile
   workers: 1
@@ -532,7 +535,7 @@ spec:
 ```
 
 Replace the profile, image and versioned Model key with your deployment values.
-The selected Model is always the required `model_path`; choosing a GPU profile
+The selected Model is always the required `so_model_path`; choosing a GPU profile
 does not choose or recompile a Model. A CUDA-capable Go or
 Rust runtime derives its backend from artifact metadata, uses visible CUDA device
 `0` and a CPU host, and fails clearly when the required backend/device is absent.
@@ -732,11 +735,11 @@ The `serve` action deploys the compiled Model. An init container downloads `mode
 
 ### Serve options
 
-`model_path` is required. The other fields are optional.
+`so_model_path` is required. The other fields are optional.
 
 | Field | Default | What it does |
 | --- | --- | --- |
-| `model_path`{: style="white-space: nowrap" } | required | Versioned `store://.../model/tvm-so/<name>:<id>` key from the chosen Compile Run's `status.outputs.compiled_so`. |
+| `so_model_path`{: style="white-space: nowrap" } | required | Versioned `store://.../model/tvm-so/<name>:<id>` key from the chosen Compile Run's `status.outputs.compiled_so`. |
 | `served_name`{: style="white-space: nowrap" } | function name | Name of the model in the API, `/v2/models/<served_name>`. Letters, digits, `.`, `_` and `-`, starting and ending with a letter or digit. |
 | `replicas` | `1` | Number of pods, zero or greater. |
 | `workers` | `1` | Requests handled in parallel by each pod; each worker loads its own copy of the model. |
@@ -746,7 +749,7 @@ The `serve` action deploys the compiled Model. An init container downloads `mode
 
 ```yaml
 spec:
-  model_path: store://my-project/model/tvm-so/yolo-function-amd64:<compiled-model-id>
+  so_model_path: store://my-project/model/tvm-so/yolo-function-amd64:<compiled-model-id>
   workers: 1
   resources:
     cpu: "2"
@@ -767,7 +770,7 @@ When the Run is **RUNNING**, `status.service` reports the platform address.
 `served_name` defaults to the Function name; `service_name` does not rename the model.
 Use REST port `8080`, not gRPC port `9000`.
 
-The selected `model_path` is saved in the Run. When copying a Run, keep that key to
+The selected `so_model_path` is saved in the Run. When copying a Run, keep that key to
 serve the same Model, or replace it with the output of another successful Compile.
 Leaving it empty is an error, even if old Function data contains `so_model`.
 
@@ -1114,9 +1117,9 @@ an older cached image.
 | Build error `No Adapter From Version <n> for <operator>` | `target_opset` asks for a conversion ONNX cannot do: leave `target_opset` empty, or choose a version supported by all the operators. |
 | Build error `cannot detect the TVM source format` | The Model is of kind `model` and its path has no `.onnx` or `.tflite` extension: use a Model of kind `onnx` or `tflite`, or set `format` in the function. |
 | Compile error `CodeGenVM cannot handle this intrinsic now` | The IR has outputs without a shape and onnxsim could not fix them: the build log shows `still have no shape`. Build with `simplify: true` to see the onnxsim error, or export the model again with fixed shapes. See [Outputs without a shape](#outputs-without-a-shape). |
-| `model.relax.json not found` | Check the Run's explicit `model_path` and the IR Model files; clear the override to use `function.ir_model`. |
-| `tvm+compile needs an IR model`{: style="white-space: nowrap" } | Run `build` first, or set `model_path` to an IR Model. |
-| `tvm+serve requires run.model_path`{: style="white-space: nowrap" } | Set `model_path` to the versioned `tvm-so` key in the chosen Compile Run's `status.outputs.compiled_so`. |
+| `model.relax.json not found` | Check the Run's explicit `ir_model_path` and the IR Model files; clear the override to use `function.ir_model`. |
+| `tvm+compile needs an IR model`{: style="white-space: nowrap" } | Run `build` first, or set `ir_model_path` to an IR Model. |
+| `tvm+serve requires run.so_model_path`{: style="white-space: nowrap" } | Set `so_model_path` to the versioned `tvm-so` key in the chosen Compile Run's `status.outputs.compiled_so`. |
 | Build reports `not topologically sorted` | Retry with `sort_onnx: true` when the error recommends it. This fixes node order, not missing inputs or cycles. |
 | The compile run goes to **ERROR** at once, with a message about tuning | The tuning options do not fit together, for example `tune` without `tuning_trials`: see [Tuning options](#tuning-options). |
 | The compile or serve run stays **PENDING** | No node of the cluster has the architecture the run needs: see [Where the service runs](#where-the-service-runs). Check the profile/node selector, available nodes and pod events before choosing another target or Model. |

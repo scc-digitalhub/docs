@@ -33,7 +33,7 @@ compile_run = function.run(
 
 serve = function.run(
     action="serve",
-    model_path=compile_run.status.to_dict()["outputs"]["compiled_so"],
+    so_model_path=compile_run.status.to_dict()["outputs"]["compiled_so"],
     served_name="mobilenet",
     replicas=1,
     resources={"cpu": "4", "mem": "2Gi"},
@@ -43,7 +43,7 @@ serve = function.run(
 
 Build saves the IR reference in the Function's `ir_model`. Each Compile Run keeps
 its own compiled Model key in `status.outputs.compiled_so`. Pass that key to the
-Serve Run's required `model_path`, as above. Compiling another target does not
+Serve Run's required `so_model_path`, as above. Compiling another target does not
 change the Model selected for this service.
 TVM options belong to the Run; Task settings cover resources, profiles and volumes.
 

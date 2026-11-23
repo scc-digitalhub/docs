@@ -219,7 +219,7 @@ docker run --rm -p 8080:8080 -p 9000:9000 \
 
 !!! tip "A Raspberry Pi in the cluster"
 
-    When the Raspberry Pi is a node of the cluster, there is no need to start Docker manually: run `serve` with `model_path` set to the ARM Model. Both the runtime and init images must support the node architecture. CORE's default init image covers only AMD64 and ARM64, so an ARM32 node requires an ARMv7-compatible init image to download the model. Test the service with the port-forward, as in [the first section](#test-the-service-on-the-platform).
+    When the Raspberry Pi is a node of the cluster, there is no need to start Docker manually: run `serve` with `so_model_path` set to the ARM Model. Both the runtime and init images must support the node architecture. CORE's default init image covers only AMD64 and ARM64, so an ARM32 node requires an ARMv7-compatible init image to download the model. Test the service with the port-forward, as in [the first section](#test-the-service-on-the-platform).
 
 ## Clean up
 

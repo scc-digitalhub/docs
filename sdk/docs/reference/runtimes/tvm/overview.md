@@ -11,7 +11,7 @@ Use Apache TVM to convert ONNX or TFLite models to Relax IR, compile them for a 
 Run the actions in order: **Build → Compile → Serve**. Configure the Function with
 the source model and format. Build saves its IR reference in `function.ir_model`.
 Each Compile Run returns its own Model key in `status.outputs.compiled_so`.
-Pass the chosen key to the Serve Run's required `model_path`.
+Pass the chosen key to the Serve Run's required `so_model_path`.
 
 | Spec | Responsibility |
 | --- | --- |

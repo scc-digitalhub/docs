@@ -5,7 +5,7 @@ render_macros: true
 # Compile a TVM Model
 
 Call `function.run(action="compile", ...)` with the target settings. The Run uses
-`function.ir_model` unless you set `model_path` explicitly.
+`function.ir_model` unless you set `ir_model_path` explicitly.
 
 ## Parameters
 
@@ -17,7 +17,7 @@ Call `function.run(action="compile", ...)` with the target settings. The Run use
 | [envs](../../../configuration/kubernetes.md#secrets-and-envs) | list[dict] | | Environment variables. |
 | [secrets](../../../configuration/kubernetes.md#secrets-and-envs) | list[str] | | List of secret names. |
 | [profile](../../../configuration/kubernetes.md#profile) | str | | Scheduling/resource profile; does not select the model target. |
-| model_path | str | | Optional IR override; otherwise uses `function.ir_model`. |
+| ir_model_path | str | | Optional IR override; otherwise uses `function.ir_model`. |
 | target_architecture | str | | Profile from CORE's YAML catalogue; default `auto`. See [target architectures](action.md#target-architecture). |
 | target | dict | | Explicit standard LLVM or CUDA target object; omit `target_architecture` or set it to `auto`. CUDA requires `arch` and a nested LLVM `host` with an explicit Linux GNU triple. |
 | optimization | dict | | Compiler settings described below. |
